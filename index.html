@@ -33,7 +33,8 @@
 <meta name="twitter:title" content="AGW Jahrestagung 2026 · Riva San Vitale">
 <meta name="twitter:description" content="Zukunftsperspektiven der Theoriegeschichte — 25.–27. Juni 2026, Virginia Tech Steger Center.">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" crossorigin="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -717,20 +718,15 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
         </div>
 
         <h3 style="font-family:'EB Garamond',serif;font-size:1.3rem;font-weight:500;color:var(--navy);margin:28px 0 14px;" data-i18n="sec_ttl_venue">Tagungsort</h3>
-        <div style="border-radius:10px;overflow:hidden;border:1px solid var(--border);margin-bottom:12px;">
-          <iframe
-            title="Steger Center — Via Settala 8, Riva San Vitale"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=8.963%2C45.911%2C8.976%2C45.919&amp;layer=mapnik&amp;marker=45.9144%2C8.9687"
-            width="100%" height="240"
-            style="display:block;border:0;"
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+                <div style="border-radius:10px;overflow:hidden;border:1px solid var(--border);margin-bottom:10px;box-shadow:0 2px 8px rgba(0,0,0,.06);">
+          <div id="logistik-map" style="height:420px;width:100%;"></div>
         </div>
-        <div style="font-size:11.5px;color:var(--text-faint);margin-bottom:14px;display:flex;gap:10px;">
-          <a href="https://www.openstreetmap.org/?mlat=45.9144&amp;mlon=8.9687#map=16/45.9144/8.9687" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">↗ OpenStreetMap</a>
-          <span>·</span>
-          <a href="https://maps.google.com/?q=Via+Settala+8,+6826+Riva+San+Vitale,+Switzerland" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;">↗ Google Maps</a>
+        <div style="display:flex;flex-wrap:wrap;gap:10px 18px;font-size:12px;color:var(--text-muted);margin-bottom:14px;padding:0 2px;">
+          <span><span style="color:#B8860B;font-size:14px;">●</span> Tagungsort</span>
+          <span><span style="color:#3A6BAF;font-size:14px;">●</span> Hotels</span>
+          <span><span style="color:#C0392B;font-size:14px;">●</span> Restaurant</span>
+          <span><span style="color:#27AE60;font-size:14px;">●</span> Bahnhof / Transport</span>
+          <span><span style="color:#8E44AD;font-size:14px;">●</span> Ausflugsziele</span>
         </div>
         <div class="info-card">
           <div class="info-body">
@@ -749,22 +745,32 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
   <div class="section-inner">
     <div class="section-label" data-i18n="sec_lbl_archive">Konferenzarchiv</div>
     <h2 class="section-title" data-i18n="sec_ttl_archive">Frühere Jahrestagungen</h2>
-    <p class="section-intro" data-i18n="sec_intro_archive">Der AGW trifft sich jährlich zu seiner Jahrestagung. Nachfolgend ein Überblick über zurückliegende Konferenzen mit Programmen und ausgewählten Beiträgen.</p>
+    <p class="section-intro" data-i18n="sec_intro_archive">46 Jahrestagungen seit der Gründung 1980. Beiträge und Referenten werden laufend ergänzt.</p>
 
-    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:24px;">
-      <input type="text" class="members-search" id="archive-search" style="margin-bottom:0;max-width:300px;"
-        oninput="renderArchive()" placeholder="Thema, Ort oder Referent suchen… / Search…">
-      <div style="display:flex;gap:4px;" id="arch-decade-btns">
-        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade active" onclick="setArchiveDecade('all',this)"><span data-i18n="pub_filter_all">Alle</span></button>
-        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('2020s',this)">2020–</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('2010s',this)">2010–19</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('2000s',this)">2000–09</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('1990s',this)">1990–99</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('1980s',this)">1980–89</button>
-      </div>
+    <!-- Search + filters -->
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px;">
+      <input type="text" class="members-search" id="archive-search"
+        style="margin-bottom:0;max-width:320px;"
+        oninput="renderArchive()"
+        placeholder="Thema, Ort, Referent… / theme, location, speaker…">
       <span style="font-size:12px;color:var(--text-faint);" id="arch-count"></span>
     </div>
-    <div class="archive-grid" id="archive-list"></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
+      <button class="btn btn-sm btn-outline pub-filter-btn arch-decade active" onclick="setArchiveDecade('all',this)" data-i18n="pub_filter_all">Alle</button>
+      <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('2020s',this)">2020–</button>
+      <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('2010s',this)">2010–19</button>
+      <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('2000s',this)">2000–09</button>
+      <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('1990s',this)">1990–99</button>
+      <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('1980s',this)">1980–89</button>
+      <span style="color:var(--border);padding:0 4px;">|</span>
+      <button class="btn btn-sm btn-outline pub-filter-btn arch-country active" onclick="setArchiveCountry('all',this)" data-i18n="pub_filter_all">Alle Länder</button>
+      <button class="btn btn-sm btn-outline pub-filter-btn arch-country" onclick="setArchiveCountry('DE',this)">🇩🇪 DE</button>
+      <button class="btn btn-sm btn-outline pub-filter-btn arch-country" onclick="setArchiveCountry('AT',this)">🇦🇹 AT</button>
+      <button class="btn btn-sm btn-outline pub-filter-btn arch-country" onclick="setArchiveCountry('CH',this)">🇨🇭 CH</button>
+      <button class="btn btn-sm btn-outline pub-filter-btn arch-country" onclick="setArchiveCountry('UK',this)">🇬🇧 UK</button>
+    </div>
+
+    <div id="archive-list"></div>
   </div>
 </section>
 
@@ -1016,6 +1022,7 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin=""></script>
 <script>
 /* ── Language toggle ── */
 // ════════════════════════════════════════════════════════════════════════
@@ -1450,159 +1457,263 @@ function renderMembers(list) {
 
 /* ── Archive data ── */
 const ARCHIVE = [
-  { nr:46, year:2026, loc_de:'Riva San Vitale, Tessin', loc_en:'Riva San Vitale, Ticino', theme:'Zukunftsperspektiven der Theoriegeschichte: Methoden, Themen, Kontroversen', theme_en:'Future Perspectives in the History of Economic Thought: Methods, Topics, Controversies', vol:null, vol_label:'Band XLIII (angekündigt)', papers:[
-    { author:'Hans-Michael Trautwein (Oldenburg) · Richard Sturn (Graz)', title:'Der Stand und die Zukunft der theoriegeschichtlichen Forschung' },
-    { author:'Alexander Linsbichler (Linz)', title:'Theoriegeschichte und Wissenschaftsphilosophie: Gedanken zum schlummernden Potenzial einer prekären Kooperation' },
-    { author:'Gilles Campagnolo (Paris)', title:'Inhalt und Grenzen der «philosophie économique»' },
-    { author:'Catherine Herfeld (Hannover)', title:'Worum geht es eigentlich? Zentrale Einsichten aus Gesprächen über die Theorie rationalen Entscheidens' },
-    { author:'Hermann Rauchenschwandtner (Salzburg)', title:'Wirtschaft und Leben: Zu Friedrich von Gottl-Ottlilienfelds Ökonomik' },
-    { author:'Anselm Küsters (Berlin/Stuttgart)', title:'Zwischen Freiburg und Michigan: Quantitative Textanalyse transnationaler Verbindungen in der ordoliberalen Tradition' },
-    { author:'Karl Milford (Wien)', title:'Theorien des wissenschaftlichen Fortschritts und Geschichtsschreibung der Wirtschaftswissenschaften' },
-    { author:'Andreas Lingg (Witten/Herdecke)', title:'Geschichte schreiben. Die Vergangenheit der ökonomischen Moderne' },
-    { author:'Andrea Franc (Luzern)', title:'Wie Geschichte des ökonomischen Denkens unterrichten?' },
-    { author:'Lachezar Grudev (Chemnitz)', title:'Geschichte der ökonomischen Analyse – wozu? Eine kritische Auseinandersetzung mit dem Geschichtsverständnis der heutigen Ökonomen' }
+  { nr:46, year:2026, dates:'25.–27. Juni 2026', country:'CH', loc_de:'Riva San Vitale, Tessin', loc_en:'Riva San Vitale, Ticino', venue:'Virginia Tech Steger Center, Villa Maderni', theme:'Zukunftsperspektiven der Theoriegeschichte: Methoden, Themen, Kontroversen', theme_en:'Future Perspectives in the History of Economic Thought: Methods, Topics, Controversies', vol:null, papers:[
+    { author:'Hans-Michael Trautwein · Richard Sturn', title:'Der Stand und die Zukunft der theoriegeschichtlichen Forschung', inst:'Oldenburg · Graz' },
+    { author:'Alexander Linsbichler', title:'Theoriegeschichte und Wissenschaftsphilosophie', inst:'Linz' },
+    { author:'Gilles Campagnolo', title:'Inhalt und Grenzen der «philosophie économique»', inst:'Paris' },
+    { author:'Catherine Herfeld', title:'Worum geht es eigentlich? Rationale Entscheidungstheorie', inst:'Hannover' },
+    { author:'Hermann Rauchenschwandtner', title:'Wirtschaft und Leben: Friedrich von Gottl-Ottlilienfeld', inst:'Salzburg' },
+    { author:'Anselm Küsters', title:'Quantitative Textanalyse transnationaler Verbindungen in der ordoliberalen Tradition', inst:'Berlin/Stuttgart' },
+    { author:'Karl Milford', title:'Theorien des wissenschaftlichen Fortschritts und Geschichtsschreibung', inst:'Wien' },
+    { author:'Andreas Lingg', title:'Geschichte schreiben. Die Vergangenheit der ökonomischen Moderne', inst:'Witten/Herdecke' },
+    { author:'Andrea Franc', title:'Wie Geschichte des ökonomischen Denkens unterrichten?', inst:'Luzern' },
+    { author:'Lachezar Grudev', title:'Geschichte der ökonomischen Analyse – wozu?', inst:'Chemnitz' }
   ] },
-  { nr:45, year:2025, loc_de:'Bayreuth', loc_en:'Bayreuth', theme:'Theoriegeschichte der Geoökonomik', theme_en:'History of Economic Thought on Geo-economics', vol:null, vol_label:null, papers:[
-    { author:'Julius Nipperdey (Saarbrücken)', title:'Kameralismus und die globale Wirtschaft' },
-    { author:'Richard Sturn (Graz)', title:'Adam Smiths Geoökonomik: Zwischen Freihandelsideal und geopolitischem Realismus' },
-    { author:'Birger Priddat (Witten/Herdecke)', title:'Über den Handel. Kant und Fichte. Pro und Contra.' },
-    { author:'Werner Plumpe (Frankfurt am Main)', title:'Friedrich List' },
-    { author:'Kiichiro Yagi (Osaka)', title:'Colonialism Studies in the Age of Japanese Empire: Inazo Nitobe, Tadao Yanaihara, and Marxists' },
-    { author:'Jan-Otmar Hesse (Bayreuth)', title:'Herbert Giersch und die Kieler Schule der Standorttheorie' },
-    { author:'Reinhard Schumacher, Svenja Flechtner, Matthias Störring', title:'Charlotte Leubuscher (1888–1961): Von der Sozialen Frage zur Pionierin der Entwicklungsökonomik' },
-    { author:'Daniel Nientiedt (Freiburg)', title:'Hayek zu Internationalem Föderalismus' }
+  { nr:45, year:2025, dates:'9.–10. Mai 2025', country:'DE', loc_de:'Bayreuth', loc_en:'Bayreuth', venue:'Universität Bayreuth', theme:'Theoriegeschichte der Geoökonomik', theme_en:'History of Economic Thought on Geo-economics', vol:null, papers:[
+    { author:'Julius Nipperdey', title:'Kameralismus und die globale Wirtschaft', inst:'Saarbrücken' },
+    { author:'Richard Sturn', title:'Adam Smiths Geoökonomik: Zwischen Freihandelsideal und geopolitischem Realismus', inst:'Graz' },
+    { author:'Birger Priddat', title:'Über den Handel. Kant und Fichte. Pro und Contra.', inst:'Witten/Herdecke' },
+    { author:'Werner Plumpe', title:'Friedrich List', inst:'Frankfurt am Main' },
+    { author:'Kiichiro Yagi', title:'Colonialism Studies in the Age of Japanese Empire: Inazo Nitobe, Tadao Yanaihara, and Marxists', inst:'Osaka' },
+    { author:'Jan-Otmar Hesse', title:'Herbert Giersch und die Kieler Schule der Standorttheorie', inst:'Bayreuth' },
+    { author:'Reinhard Schumacher · Svenja Flechtner · Matthias Störring', title:'Charlotte Leubuscher (1888–1961): Von der Sozialen Frage zur Pionierin der Entwicklungsökonomik', inst:'Siegen/Berlin' },
+    { author:'Daniel Nientiedt', title:'Hayek zu Internationalem Föderalismus', inst:'Freiburg' }
   ] },
-  { nr:44, year:2024, loc_de:'Fulda', loc_en:'Fulda', theme:'Frauen in der Geschichte der Wirtschaftswissenschaften', theme_en:'Women in the History of Economics', vol:null, vol_label:null, papers:[
-    { author:'Kerstin Dross-Krüpe', title:'Frauen und Wirtschaft in der römischen Antike' },
-    { author:'Charlotte Backerra', title:'Regierende Frauen in der frühen Neuzeit und ihre Wirtschaftskompetenz' },
-    { author:'Elisabeth Allgoewer', title:'Frauen im Verein für Socialpolitik' },
-    { author:'Christian Kremser', title:'Beatrice Webb (1858–1943) als Ökonomin – Schlaglichter auf Leben, Werk und Wirkung' },
-    { author:'Günther Chaloupek', title:'Helene Bauer (1871–1942) – »bürgerliche und sozialistische Ökonomie«' },
-    { author:'Reinhard Schumacher, Svenja Flechtner, Matthias Störring', title:'Charlotte Leubuscher (1888–1961): Von der Sozialen Frage zur Pionierin der Entwicklungsökonomik' },
-    { author:'Uwe Dathe / Daniel Nientiedt', title:'Edith Eucken (1896–1985)' },
-    { author:'Hans Frambach', title:'Cläre Tisch (1907–1941) – Leben und Werk' },
-    { author:'Harald Hagemann', title:'Fanny Ginor (1911–2007): »Die Basler Nationalökonomie nach Israel getragen«' },
-    { author:'Lachezar Grudev', title:'Vera Smith (1912–1976). Eine mutige Ökonomin im Spannungsfeld dreier Welten' },
-    { author:'Bertram Schefold', title:'Joan Robinson (1903–1983) – eine persönliche Charakterisierung (»Kamingespräch«)' }
+  { nr:44, year:2024, dates:'30. Mai – 1. Juni 2024', country:'DE', loc_de:'Fulda', loc_en:'Fulda', venue:'Stadtschloss Fulda, Marmorsaal', theme:'Frauen in der Geschichte der Wirtschaftswissenschaften', theme_en:'Women in the History of Economics', vol:null, papers:[
+    { author:'Kerstin Dross-Krüpe', title:'Frauen und Wirtschaft in der römischen Antike', inst:'' },
+    { author:'Charlotte Backerra', title:'Regierende Frauen in der frühen Neuzeit und ihre Wirtschaftskompetenz', inst:'' },
+    { author:'Elisabeth Allgoewer', title:'Frauen im Verein für Socialpolitik', inst:'Hamburg' },
+    { author:'Christian Kremser', title:'Beatrice Webb (1858–1943) als Ökonomin', inst:'' },
+    { author:'Günther Chaloupek', title:'Helene Bauer (1871–1942) – bürgerliche und sozialistische Ökonomie', inst:'Wien' },
+    { author:'Reinhard Schumacher · Svenja Flechtner · Matthias Störring', title:'Charlotte Leubuscher (1888–1961)', inst:'Siegen/Berlin' },
+    { author:'Uwe Dathe · Daniel Nientiedt', title:'Edith Eucken (1896–1985)', inst:'' },
+    { author:'Hans Frambach', title:'Cläre Tisch (1907–1941) – Leben und Werk', inst:'Wuppertal' },
+    { author:'Harald Hagemann', title:'Fanny Ginor (1911–2007): Die Basler Nationalökonomie nach Israel getragen', inst:'Hohenheim' },
+    { author:'Lachezar Grudev', title:'Vera Smith (1912–1976). Eine mutige Ökonomin im Spannungsfeld dreier Welten', inst:'Zwickau' },
+    { author:'Bertram Schefold', title:'Joan Robinson (1903–1983) – eine persönliche Charakterisierung (Kamingespräch)', inst:'Frankfurt' }
   ] },
-  { nr:43, year:2023, loc_de:'Edinburgh', loc_en:'Edinburgh', theme:'Adam Smith @ 300', theme_en:'Adam Smith @ 300', vol:'XLII', vol_label:'Band XLII', papers:[
-    { author:'Karen Horn (Erfurt)', title:'Geschichte der Wirtschaftswissenschaften als interdisziplinäre Aufgabe: Ein Überblick über die jüngere Adam-Smith-Forschung' },
-    { author:'Philipp Robinson Rössner (Manchester)', title:'Smith\'s Scotland. Contextualising the Wealth of Nations from a not primarily intellectual or ideas-based approach' },
-    { author:'Sabine Föllinger (Marburg)', title:'Antike Philosophie im Denken von Adam Smith' },
-    { author:'Reinhard Schumacher (Potsdam)', title:'Die unterschiedlichen Ansichten Adam Smiths und David Humes über das Verhältnis von wirtschaftlicher Entwicklung und zwischenstaatlichen Kriegen' },
-    { author:'Ludwig Nellinger (Bonn)', title:'Methodik und Erkenntnisfortschritt: Adam Smith und Johann Heinrich von Thünen' },
-    { author:'Heinz D. Kurz (Graz)', title:'Smith, Marx und Schumpeter über den Zivilisationsprozess. Ein Vergleich ihrer evolutorischen Ansätze' },
-    { author:'Reinhard Blomert (Berlin)', title:'Adam Smith über Gentlemen, Geschäftsleute und innere Richter. Eine Rekonfiguration' }
+  { nr:43, year:2023, dates:'21.–23. Juni 2023', country:'UK', loc_de:'Edinburgh', loc_en:'Edinburgh', venue:'Panmure House / Queen Margaret University', theme:'Adam Smith @ 300', theme_en:'Adam Smith @ 300', vol:'XLII', papers:[
+    { author:'Karen Horn', title:'Geschichte der Wirtschaftswissenschaften als interdisziplinäre Aufgabe: Ein Überblick über die jüngere Adam-Smith-Forschung', inst:'Erfurt' },
+    { author:'Philipp Robinson Rössner', title:'Smith\'s Scotland. Contextualising the Wealth of Nations', inst:'Manchester' },
+    { author:'Sabine Föllinger', title:'Antike Philosophie im Denken von Adam Smith', inst:'Marburg' },
+    { author:'Reinhard Schumacher', title:'Die unterschiedlichen Ansichten Adam Smiths und David Humes über wirtschaftliche Entwicklung und zwischenstaatliche Kriege', inst:'Potsdam' },
+    { author:'Ludwig Nellinger', title:'Methodik und Erkenntnisfortschritt: Adam Smith und Johann Heinrich von Thünen', inst:'Bonn' },
+    { author:'Heinz D. Kurz', title:'Smith, Marx und Schumpeter über den Zivilisationsprozess. Ein Vergleich ihrer evolutorischen Ansätze', inst:'Graz' },
+    { author:'Reinhard Blomert', title:'Adam Smith über Gentlemen, Geschäftsleute und innere Richter. Eine Rekonfiguration', inst:'Berlin' }
   ] },
-  { nr:42, year:2022, loc_de:'Jena', loc_en:'Jena', theme:'Zur Geschichte des Vereins für Socialpolitik', theme_en:'On the History of the Verein für Socialpolitik', vol:'XLI', vol_label:'Band XLI', papers:[
-    { author:'Bertram Schefold', title:'Das sich wandelnde Selbstverständnis des VfS im Spiegel seiner Jahrestagungen, 1950–2000' },
-    { author:'Jan-Otmar Hesse', title:'Die wirtschaftshistorische Forschung im VfS' },
-    { author:'Elisabeth Allgoewer', title:'Frauen im Verein für Socialpolitik' },
-    { author:'Alexander Ebner', title:'Schmollers Rolle im VfS' },
-    { author:'Erwin Dekker · Stefan Kolev', title:'Sozialpolitik in der Moderne – zwischen historischem Kontext und überzeitlichem Fixpunkt' },
-    { author:'Uwe Dathe (Thüringer Univ.- u. Landesbibliothek)', title:'Eucken in Jena' },
-    { author:'Tetsushi Harada', title:'Die Selbstauflösung des Vereins für Socialpolitik und die Herausgabe der Werke Friedrich Lists' },
-    { author:'Volker Caspari', title:'Evidenz, »evidence« und evidenzbasierte Wirtschaftspolitik – der »empirical turn« in der VWL' }
+  { nr:42, year:2022, dates:'16.–18. Juni 2022', country:'DE', loc_de:'Jena', loc_en:'Jena', venue:'Universität Jena', theme:'Zur Geschichte des Vereins für Socialpolitik', theme_en:'On the History of the Verein für Socialpolitik', vol:'XLI', papers:[
+    { author:'Bertram Schefold', title:'Das sich wandelnde Selbstverständnis des VfS im Spiegel seiner Jahrestagungen, 1950–2000', inst:'Frankfurt' },
+    { author:'Jan-Otmar Hesse', title:'Die wirtschaftshistorische Forschung im VfS', inst:'Bayreuth' },
+    { author:'Elisabeth Allgoewer', title:'Frauen im Verein für Socialpolitik', inst:'Hamburg' },
+    { author:'Alexander Ebner', title:'Schmollers Rolle im VfS', inst:'Frankfurt' },
+    { author:'Erwin Dekker · Stefan Kolev', title:'Sozialpolitik in der Moderne – zwischen historischem Kontext und überzeitlichem Fixpunkt', inst:'Zwickau' },
+    { author:'Uwe Dathe', title:'Eucken in Jena', inst:'Thüringer Univ.- u. Landesbibliothek' },
+    { author:'Tetsushi Harada', title:'Die Selbstauflösung des Vereins für Socialpolitik und die Herausgabe der Werke Friedrich Lists', inst:'Nishinomiya' },
+    { author:'Volker Caspari', title:'Evidenz, evidence und evidenzbasierte Wirtschaftspolitik – der empirical turn in der VWL', inst:'Frankfurt' }
   ] },
-  { nr:41, year:2021, loc_de:'Online (Zoom)', loc_en:'Online (Zoom)', theme:'Entwicklung der Konjunkturforschung im frühen 20. Jahrhundert', theme_en:'Development of Business Cycle Research in the Early 20th Century', vol:'XL', vol_label:'Band XL', papers:[
-    { author:'Dirk Ehnts', title:'Frederick Lavington über den Konjunkturzyklus' },
-    { author:'Jan Greitens', title:'Die Rezeption der »Staatlichen Theorie des Geldes«' },
-    { author:'Stefan Kolev', title:'Das Sofioter Institut für Konjunkturforschung und sein Gründungsdirektor Oskar Anderson' },
-    { author:'Laetitia Lenel', title:'Der Harvard Index of General Business Conditions und seine Rezeption in Europa' },
-    { author:'Oliver Landmann', title:'Zur Rezeption von Keynes in Deutschland während der Weltwirtschaftskrise' },
-    { author:'Jochen Hartwig', title:'Die Genese von Patinkins Interpretation von Keynes\' Theorie der effektiven Nachfrage' },
-    { author:'Hansjörg Klausinger', title:'Das Österreichische Institut für Konjunkturforschung, 1927–1938' },
-    { author:'David Bieri (Virginia Tech)', title:'Zwischen »Anschaulichkeit« und »Beobachtbarkeit« – Der Streit um das Wesen der deutschsprachigen Konjunkturtheorie in der Zwischenkriegszeit' },
-    { author:'Harald Hagemann', title:'Wie ist Konjunkturtheorie überhaupt möglich? Zur (In-)Kompatibilität von zyklischen Schwankungen und Gleichgewichtstheorie' }
+  { nr:41, year:2021, dates:'4.–5. Juni 2021', country:'INT', loc_de:'Online (Zoom)', loc_en:'Online (Zoom)', venue:'Zoom · Host: Goethe-Universität Frankfurt', theme:'Entwicklung der Konjunkturforschung im frühen 20. Jahrhundert', theme_en:'Development of Business Cycle Research in the Early 20th Century', vol:'XL', papers:[
+    { author:'Dirk Ehnts', title:'Frederick Lavington über den Konjunkturzyklus', inst:'Chemnitz' },
+    { author:'Jan Greitens', title:'Die Rezeption der Staatlichen Theorie des Geldes', inst:'Mosbach' },
+    { author:'Stefan Kolev', title:'Ein Baltendeutscher bei den Preußen des Balkans – Oskar Anderson und das Sofioter Institut für Wirtschaftsforschung', inst:'Zwickau' },
+    { author:'Laetitia Lenel', title:'Der Harvard Index of General Business Conditions und seine Rezeption in Europa', inst:'' },
+    { author:'Oliver Landmann', title:'Zur Rezeption von Keynes in Deutschland während der Weltwirtschaftskrise', inst:'Freiburg' },
+    { author:'Jochen Hartwig', title:'Die Genese von Patinkins Interpretation von Keynes\' Theorie der effektiven Nachfrage', inst:'Chemnitz' },
+    { author:'Hansjörg Klausinger', title:'Das Österreichische Institut für Konjunkturforschung, 1927–1938', inst:'Wien' },
+    { author:'David Bieri', title:'Zwischen Anschaulichkeit und Beobachtbarkeit – Der Streit um das Wesen der deutschsprachigen Konjunkturtheorie in der Zwischenkriegszeit', inst:'Virginia Tech' },
+    { author:'Harald Hagemann', title:'Wie ist Konjunkturtheorie überhaupt möglich? Zur (In-)Kompatibilität von zyklischen Schwankungen und Gleichgewichtstheorie', inst:'Hohenheim' }
   ] },
-  { nr:40, year:2019, loc_de:'Hamburg', loc_en:'Hamburg', theme:'Ökonomie und Evolution', theme_en:'Economics and Evolution', vol:'XXXVI', vol_label:'Band XXXVI', papers:[
-    { author:'Kurt Dopfer', title:'Die Idee der Evolution in den Wirtschaftswissenschaften – Ein theoriegeschichtlicher Abriss' },
-    { author:'Hans-Walter Lorenz', title:'Darwinismus in der Ökonomie – Von Marx & Engels bis Nelson & Winter' },
-    { author:'Alexander Ebner', title:'Wirtschaftliche Entwicklung als evolutionärer Prozess? Kontinuität und Wandel des Evolutionsbegriffs bei Joseph Schumpeter' },
-    { author:'Arash Molavi', title:'Evolution und Wettbewerb – Marktselektionstheorie seit Alchain und Friedman' },
-    { author:'Helmut Wagner', title:'Evolution aus makroökonomischer Perspektive – Zur Erklärung von Übergangsprozessen' },
-    { author:'Gerhard Wegner', title:'Hayeks Theorie der Marktevolution als politische Theorie – eine kritische Würdigung' },
-    { author:'Birger Priddat', title:'Über den Einfluss der Institutionenökonomie auf die Evolution von Handlungsmodellen' },
-    { author:'Carl-Christian von Weizsäcker', title:'Hegels Begründung des Marktprinzips in evolutorischer Absicht' }
+  { nr:40, year:2019, dates:'6.–8. Juni 2019', country:'DE', loc_de:'Hamburg', loc_en:'Hamburg', venue:'Hamburg Center for Health Economics, Esplanade 36', theme:'Ökonomie und Evolution', theme_en:'Economics and Evolution', vol:'XXXVI', papers:[
+    { author:'Kurt Dopfer', title:'Die Idee der Evolution in den Wirtschaftswissenschaften – Ein theoriegeschichtlicher Abriss', inst:'St. Gallen' },
+    { author:'Hans-Walter Lorenz', title:'Darwinismus in der Ökonomie – Von Marx & Engels bis Nelson & Winter', inst:'' },
+    { author:'Alexander Ebner', title:'Wirtschaftliche Entwicklung als evolutionärer Prozess? Kontinuität und Wandel des Evolutionsbegriffs bei Joseph Schumpeter', inst:'Frankfurt' },
+    { author:'Arash Molavi', title:'Evolution und Wettbewerb – Marktselektionstheorie seit Alchian und Friedman', inst:'Berlin' },
+    { author:'Helmut Wagner', title:'Evolution aus makroökonomischer Perspektive – Zur Erklärung von Übergangsprozessen', inst:'Hagen' },
+    { author:'Gerhard Wegner', title:'Hayeks Theorie der Marktevolution als politische Theorie – eine kritische Würdigung', inst:'Erfurt' },
+    { author:'Birger Priddat', title:'Über den Einfluss der Institutionenökonomie auf die Evolution von Handlungsmodellen', inst:'Witten/Herdecke' },
+    { author:'Carl Christian von Weizsäcker', title:'Hegels Begründung des Marktprinzips in evolutorischer Absicht', inst:'Bonn' }
   ] },
-  { nr:39, year:2018, loc_de:'Darmstadt', loc_en:'Darmstadt', theme:'Kameralismus und Merkantilismus', theme_en:'Cameralism and Mercantilism', vol:'XXXIX', vol_label:'Band XXXIX', papers:[] },
-  { nr:38, year:2017, loc_de:'Siegen', loc_en:'Siegen', theme:'Einkommens- und Vermögensverteilung in historischer Perspektive', theme_en:'Income and Wealth Distribution in Historical Perspective', vol:'XXXVII', vol_label:'Band XXXVII', papers:[
-    { author:'Hagen Krämer', title:'Funktionale und normative Aspekte von individuellem Reichtum in ökonomischen Theorien von der Klassik bis zur Moderne' },
-    { author:'Bertram Schefold', title:'The Improbability of Reswitching, the Certainty of Wicksell-Effects and the Poverty of Productions Functions' },
-    { author:'Jan-Otmar Hesse', title:'Thomas Pikettys »Kapital im 21. Jahrhundert« aus Sicht der Wirtschaftsgeschichte' },
-    { author:'Fritz Helmedag', title:'Profitrate, Zinssatz, Gewinn: Irrungen und Wirrungen' },
-    { author:'Karen Horn', title:'Arm und Reich im Werk von Adam Smith' },
-    { author:'Stephan Thomsen', title:'Die Rolle von Computern und Informationstechnik für die Einkommens- und Vermögensverteilung' },
-    { author:'David Bieri (Virginia Tech)', title:'Raum und Geld: Eine Neubewertung von August Löschs »Theorie der Währung« und ihre Bedeutung für regionalökonomische Verteilungsfragen' }
+  { nr:39, year:2018, dates:'23.–25. Mai 2018', country:'DE', loc_de:'Darmstadt', loc_en:'Darmstadt', venue:'Technische Universität Darmstadt', theme:'Kameralismus und Merkantilismus', theme_en:'Cameralism and Mercantilism', vol:'XXXIX', papers:[
+    { author:'Peter Spahn', title:'Was war falsch am Merkantilismus?', inst:'Hohenheim' },
+    { author:'Birger Priddat', title:'Homo imperfectabilis und die Vervollkommnung des Menschen durch Ordnung', inst:'Witten/Herdecke' },
+    { author:'Toni Pierenkemper', title:'Frideridzianischer Kameralismus in Preußen 1740–1786', inst:'Köln' },
+    { author:'Tetsushi Harada', title:'Justus Mösers wirtschaftliche Ideen und ihre Einordnung bei Roscher und in der Geschichte der deutschen Volkswirtschaftslehre', inst:'Nishinomiya' },
+    { author:'Rainer Klump', title:'Von Seckendorff zu Moser: Finanz- und wirtschaftspolitische Herausforderungen und Reformpläne in Hessen-Darmstadt 1660–1780', inst:'Frankfurt' },
+    { author:'Günther Chaloupek', title:'Der Mann ohne Vorurteil: Die Bedeutung von Joseph von Sonnenfels für Wirtschaftswissenschaft und Wirtschaftspolitik', inst:'Wien' },
+    { author:'Erik S. Reinert', title:'Giovanni Botero (1540–1617) als gemeinsamer Ursprung von Kameralismus und Merkantilismus', inst:'Tallinn' },
+    { author:'Eduard Braun', title:'Die Rolle des Merkantilismus bei der Trennung von Staat und Gesellschaft', inst:'Clausthal' }
   ] },
-  { nr:37, year:2016, loc_de:'Karlsruhe', loc_en:'Karlsruhe', theme:'Stagnations- und Deflationstheorien', theme_en:'Theories of Stagnation and Deflation', vol:null, vol_label:null, papers:[] },
-  { nr:36, year:2015, loc_de:'Erfurt', loc_en:'Erfurt', theme:'Kontinuität und Wandel in der Institutionenökonomie', theme_en:'Continuity and Change in Institutional Economics', vol:null, vol_label:null, papers:[] },
-  { nr:35, year:2014, loc_de:'Wien', loc_en:'Vienna', theme:'Macht oder ökonomisches Gesetz?', theme_en:'Political Control or Economic Law?', vol:'XXXV', vol_label:'Band XXXV', papers:[] },
-  { nr:34, year:2013, loc_de:'Berlin', loc_en:'Berlin', theme:'Neue Perspektiven auf die Politische Ökonomie von Karl Marx und Friedrich Engels. Die Marx-Engels-Gesamtausgabe (MEGA)', theme_en:'New Perspectives on the Political Economy of Marx and Engels (MEGA)', vol:'XXXIV', vol_label:'Band XXXIV', papers:[] },
-  { nr:33, year:2012, loc_de:'Marbach', loc_en:'Marbach', theme:'Die Zeit um den Ersten Weltkrieg als Krisenzeit der Nationalökonomen', theme_en:'The Era of the First World War as a Crisis Period for Economists', vol:'XXX', vol_label:'Band XXX', papers:[] },
-  { nr:32, year:2011, loc_de:'Freiburg i. Br.', loc_en:'Freiburg im Breisgau', theme:'Die Entwicklung der Raumwirtschaftslehre von ihren Anfängen bis in die Gegenwart', theme_en:'The Development of Spatial Economics from Its Origins to the Present', vol:'XXIX', vol_label:'Band XXIX', papers:[] },
-  { nr:31, year:2010, loc_de:'Stuttgart-Hohenheim', loc_en:'Stuttgart-Hohenheim', theme:'Ökonomik im Spannungsfeld zwischen Natur- und Geisteswissenschaften. Alte und neue Perspektiven im Licht des jüngsten Methodenstreits', theme_en:'Economics between Natural and Humanistic Sciences', vol:'XXVIII', vol_label:'Band XXVIII', papers:[] },
-  { nr:30, year:2009, loc_de:'Wien', loc_en:'Vienna', theme:'Geschichte der Entwicklungstheorien', theme_en:'History of Development Theories', vol:'XXXI', vol_label:'Band XXXI', papers:[] },
-  { nr:29, year:2008, loc_de:'Berlin', loc_en:'Berlin', theme:'Der Einfluss deutschsprachigen wirtschaftswissenschaftlichen Denkens in Japan', theme_en:'The Influence of German-Language Economic Thought in Japan', vol:'XXVII', vol_label:'Band XXVII', papers:[] },
-  { nr:28, year:2007, loc_de:'Lüdinghausen/Nordkirchen', loc_en:'Lüdinghausen/Nordkirchen', theme:'Wechselseitige Einflüsse zwischen dem deutschen wirtschaftswissenschaftlichen Denken und dem anderer europäischer Sprachräume', theme_en:'Mutual Influences between German Economic Thought and That of Other European Language Areas', vol:'XXIV', vol_label:'Band XXIV', papers:[] },
-  { nr:27, year:2006, loc_de:'Graz', loc_en:'Graz', theme:'Wissen = The Knowledge Economy', theme_en:'Wissen = The Knowledge Economy', vol:'XXVI', vol_label:'Band XXVI', papers:[] },
-  { nr:26, year:2005, loc_de:'Berlin', loc_en:'Berlin', theme:'Deutsche Einflüsse auf amerikanisches wirtschaftswissenschaftliches Denken und amerikanische Einflüsse auf deutsches Wirtschaftsdenken', theme_en:'German Influences on American Economic Thought and American Influences on German Economic Thought', vol:'XXXII', vol_label:'Band XXXII', papers:[] },
-  { nr:25, year:2004, loc_de:'Bonn', loc_en:'Bonn', theme:'Wirtschaftswissenschaft und Technik', theme_en:'Economics and Technology', vol:'XXIII', vol_label:'Band XXIII', papers:[] },
-  { nr:24, year:2003, loc_de:'Oldenburg', loc_en:'Oldenburg', theme:'Ökonomie und Religion', theme_en:'Economics and Religion', vol:'XXI', vol_label:'Band XXI', papers:[] },
-  { nr:23, year:2002, loc_de:'Obermayerhofen bei Graz', loc_en:'Obermayerhofen near Graz', theme:'Die deutschsprachige Wirtschaftswissenschaft in den ersten Jahrzehnten nach 1945 (II)', theme_en:'German-Language Economics in the First Decades after 1945, Part II', vol:'XXV', vol_label:'Band XXV', papers:[] },
-  { nr:22, year:2001, loc_de:'Hamburg', loc_en:'Hamburg', theme:'Die deutschsprachige Wirtschaftswissenschaft in den ersten Jahrzehnten nach 1945 (I)', theme_en:'German-Language Economics in the First Decades after 1945, Part I', vol:'XXII', vol_label:'Band XXII', papers:[] },
-  { nr:21, year:2000, loc_de:'Wien', loc_en:'Vienna', theme:'Ideen, Methoden und Entwicklungen der Geschichte des ökonomischen Denkens', theme_en:'Ideas, Methods and Developments in the History of Economic Thought', vol:null, vol_label:null, papers:[] },
-  { nr:20, year:1999, loc_de:'Ulm', loc_en:'Ulm', theme:'Die Ältere Historische Schule: Wirtschaftstheoretische Beiträge und wirtschaftspolitische Vorstellungen', theme_en:'The Older Historical School: Contributions to Economic Theory and Economic Policy', vol:'XX', vol_label:'Band XX', papers:[] },
-  { nr:19, year:1998, loc_de:'Würzburg', loc_en:'Würzburg', theme:'John Stuart Mill', theme_en:'John Stuart Mill', vol:'XIX', vol_label:'Band XIX', papers:[] },
-  { nr:18, year:1997, loc_de:'Stuttgart-Hohenheim', loc_en:'Stuttgart-Hohenheim', theme:'Knut Wicksell', theme_en:'Knut Wicksell', vol:'XVIII', vol_label:'Band XVIII', papers:[] },
-  { nr:17, year:1996, loc_de:'Maastricht', loc_en:'Maastricht', theme:'Die Umsetzung wirtschaftspolitischer Grundkonzeptionen in die kontinentaleuropäische Praxis des 19. und 20. Jahrhunderts (II)', theme_en:'The Implementation of Economic Policy Principles in Continental European Practice, 19th–20th Century, Part II', vol:'XVII', vol_label:'Band XVII', papers:[] },
-  { nr:16, year:1995, loc_de:'Salzburg', loc_en:'Salzburg', theme:'Die Umsetzung wirtschaftspolitischer Grundkonzeptionen in die kontinentaleuropäische Praxis des 19. und 20. Jahrhunderts (I)', theme_en:'The Implementation of Economic Policy Principles in Continental European Practice, 19th–20th Century, Part I', vol:'XVI', vol_label:'Band XVI', papers:[] },
-  { nr:15, year:1994, loc_de:'Weimar', loc_en:'Weimar', theme:'Revolution und Evolution in der Wirtschaftstheorie', theme_en:'Revolution and Evolution in Economic Theory', vol:null, vol_label:null, papers:[] },
-  { nr:14, year:1993, loc_de:'Tellow', loc_en:'Tellow', theme:'Johann Heinrich von Thünen als Wirtschaftstheoretiker', theme_en:'Johann Heinrich von Thünen as Economic Theorist', vol:'XIV', vol_label:'Band XIV', papers:[] },
-  { nr:13, year:1992, loc_de:'Augsburg', loc_en:'Augsburg', theme:'Deutsche Finanzwissenschaft zwischen 1918 und 1939', theme_en:'German Public Finance between 1918 and 1939', vol:'XIII', vol_label:'Band XIII', papers:[] },
-  { nr:12, year:1991, loc_de:'Ittingen (Schweiz)', loc_en:'Ittingen (Switzerland)', theme:'Osteuropäische Dogmengeschichte', theme_en:'Eastern European History of Economic Doctrines', vol:'XII', vol_label:'Band XII', papers:[] },
-  { nr:11, year:1990, loc_de:'Frankfurt am Main', loc_en:'Frankfurt am Main', theme:'Darstellung der Wirtschaft und Wirtschaftswissenschaften in der Belletristik', theme_en:'The Representation of Economics and Economists in Literature', vol:'XI', vol_label:'Band XI', papers:[] },
-  { nr:10, year:1989, loc_de:'Tübingen', loc_en:'Tübingen', theme:'Friedrich List; Carl Menger; Lorenz von Stein', theme_en:'Friedrich List; Carl Menger; Lorenz von Stein', vol:'X', vol_label:'Band X', papers:[] },
-  { nr:9, year:1988, loc_de:'Berlin', loc_en:'Berlin', theme:'Deutschsprachige Wirtschafts-, Konjunktur- und Geldtheorie in der ersten Hälfte des 20. Jahrhunderts', theme_en:'German-Language Economic, Business Cycle, and Monetary Theory in the First Half of the 20th Century', vol:'IX', vol_label:'Band IX', papers:[] },
-  { nr:8, year:1987, loc_de:'Würzburg', loc_en:'Würzburg', theme:'Konjunkturtheorie im ausgehenden 19. Jahrhundert', theme_en:'Business Cycle Theory in the Late 19th Century', vol:'VII', vol_label:'Band VII', papers:[] },
-  { nr:7, year:1986, loc_de:'Stuttgart', loc_en:'Stuttgart', theme:'Allgemeine Gleichgewichtsanalyse', theme_en:'General Equilibrium Analysis', vol:null, vol_label:null, papers:[] },
-  { nr:6, year:1985, loc_de:'Münster', loc_en:'Münster', theme:'Entwicklungen der deutschsprachigen Nationalökonomie im 19. Jahrhundert', theme_en:'Developments in German Political Economy in the 19th Century', vol:'VI', vol_label:'Band VI', papers:[] },
-  { nr:5, year:1984, loc_de:'Salzburg', loc_en:'Salzburg', theme:'Deutsche Nationalökonomie Ende des 18. und in der ersten Hälfte des 19. Jahrhunderts', theme_en:'German Political Economy at the End of the 18th and in the First Half of the 19th Century', vol:'V', vol_label:'Band V', papers:[] },
-  { nr:4, year:1983, loc_de:'Göttingen', loc_en:'Göttingen', theme:'Marx, Keynes, Schumpeter', theme_en:'Marx, Keynes, Schumpeter', vol:'IV', vol_label:'Band IV', papers:[] },
-  { nr:3, year:1982, loc_de:'Basel', loc_en:'Basel', theme:'Theoriegeschichte – wozu?', theme_en:'History of Economic Thought – What For?', vol:'III', vol_label:'Band III', papers:[] },
-  { nr:2, year:1981, loc_de:'Salzburg', loc_en:'Salzburg', theme:'Merkantilismus und Kameralismus', theme_en:'Mercantilism and Cameralism', vol:'II', vol_label:'Band II', papers:[] },
-  { nr:1, year:1980, loc_de:'Gießen', loc_en:'Giessen', theme:'Klassische Nationalökonomie', theme_en:'Classical Political Economy', vol:'I', vol_label:'Band I', papers:[] },
+  { nr:38, year:2017, dates:'9.–11. Juni 2017', country:'DE', loc_de:'Siegen', loc_en:'Siegen', venue:'Campus Unteres Schloss, Universität Siegen', theme:'Einkommens- und Vermögensverteilung in historischer Perspektive', theme_en:'Income and Wealth Distribution in Historical Perspective', vol:'XXXVII', papers:[
+    { author:'Hagen Krämer', title:'Funktionale und normative Aspekte von individuellem Reichtum in ökonomischen Theorien von der Klassik bis zur Moderne', inst:'Karlsruhe' },
+    { author:'Bertram Schefold', title:'The Improbability of Reswitching, the Certainty of Wicksell-Effects and the Poverty of Production Functions', inst:'Frankfurt' },
+    { author:'Jan-Otmar Hesse', title:'Thomas Pikettys Kapital im 21. Jahrhundert aus Sicht der Wirtschaftsgeschichte', inst:'Bayreuth' },
+    { author:'Fritz Helmedag', title:'Profitrate, Zinssatz, Gewinn: Irrungen und Wirrungen', inst:'Chemnitz' },
+    { author:'Karen Horn', title:'Arm und Reich im Werk von Adam Smith', inst:'Erfurt' },
+    { author:'Stephan Thomsen', title:'Die Rolle von Computern und Informationstechnik für die Einkommens- und Vermögensverteilung', inst:'Hannover' },
+    { author:'David Bieri', title:'Raum und Geld: Eine Neubewertung von August Löschs Theorie der Währung und ihre Bedeutung für regionalökonomische Verteilungsfragen', inst:'Virginia Tech' }
+  ] },
+  { nr:37, year:2016, dates:'9.–11. Juni 2016', country:'DE', loc_de:'Karlsruhe', loc_en:'Karlsruhe', venue:'Prinz-Max-Palais, Karlsruhe', theme:'Deflations- und Stagnationstheorien', theme_en:'Theories of Deflation and Stagnation', vol:null, papers:[
+    { author:'Heinz D. Kurz', title:'Ein Gespenst geht um in Europa – das Gespenst säkularer Stagnation', inst:'Graz' },
+    { author:'Peter Spahn', title:'Bevölkerungswachstum, Ersparnis, Zins und Stagnation', inst:'Hohenheim' },
+    { author:'Harald Hagemann', title:'Die neue säkulare Stagnations-Hypothese: Summers after Hansen', inst:'Hohenheim' },
+    { author:'Günther Chaloupek', title:'Spätkapitalismus als Stagnationstheorie – die deutsche Diskussion in den 1920er Jahren', inst:'Wien' },
+    { author:'Hansjörg Klausinger', title:'Woher kommt und wie schädlich ist Deflation? Die österreichische Konjunkturtheorie zur Großen Depression', inst:'Wien' },
+    { author:'Hans-Michael Trautwein', title:'Hans Neisser über strukturelle Deflation und persistente Arbeitslosigkeit', inst:'Oldenburg' },
+    { author:'Ingo Barens', title:'Nicht-positive Zinsen – ein theoriegeschichtlicher Rückblick', inst:'Darmstadt' }
+  ] },
+  { nr:36, year:2015, dates:'4.–6. Juni 2015', country:'DE', loc_de:'Erfurt', loc_en:'Erfurt', venue:'Augustiner Kloster, Erfurt', theme:'Kontinuität und Wandel in der Institutionenökonomik', theme_en:'Continuity and Change in Institutional Economics', vol:null, papers:[
+    { author:'Birger Priddat', title:'Taugt die Institutionenökonomik als moderne historische Methode?', inst:'Witten/Herdecke' },
+    { author:'Rudolf Richter', title:'Ungewissheit der Zukunft in der Wirtschaftstheorie – Aus Sicht der Neuen Institutionenökonomik', inst:'Saarbrücken' },
+    { author:'Joachim Zweynert', title:'Neueste Institutionenökonomik und neue Brücken zwischen Wirtschafts- und Sozialwissenschaften', inst:'Witten/Herdecke' },
+    { author:'Gerhard Wegner', title:'Institutionenökonomische Narrative für die Entstehung des modernen Kapitalismus', inst:'Erfurt' },
+    { author:'Alexander Ebner', title:'Out-Schmollering Schmoller? Die Renaissance kultureller Perspektiven in der Institutionenökonomik', inst:'Frankfurt' },
+    { author:'Toni Pierenkemper', title:'Gregory King (1648–1712) als Pionier der empirischen Sozialwissenschaft', inst:'Münster' },
+    { author:'Volker Caspari', title:'Warum Nationen scheitern: Daron Acemoglus Anwendung der Institutionenökonomik auf die Wachstums- und Entwicklungsforschung', inst:'Darmstadt' }
+  ] },
+  { nr:35, year:2014, dates:'15.–17. Mai 2014', country:'AT', loc_de:'Wien', loc_en:'Vienna', venue:'Diplomatische Akademie Wien', theme:'Macht oder ökonomisches Gesetz?', theme_en:'Political Control or Economic Law?', vol:'XXXV', papers:[
+    { author:'Carl Christian von Weizsäcker', title:'Böhm-Bawerks temporale Kapitaltheorie: Ihre Modernisierung und Aktualität', inst:'Köln' },
+    { author:'Bertram Schefold', title:'Korreferat zu Weizsäcker', inst:'Frankfurt' },
+    { author:'Fritz Helmedag', title:'Böhm-Bawerks Kapitaltheorie im Lichte des Waldproblems: Eine Neubewertung', inst:'Chemnitz' },
+    { author:'Jan-Otmar Hesse', title:'Die Debatte über die Produktionsumwege', inst:'Bielefeld' },
+    { author:'Johannes Schmidt', title:'Böhm-Bawerk nach Stützel: Was bleibt von der Zinstheorie?', inst:'Karlsruhe' },
+    { author:'Manfred Holler', title:'Zur Geschichte der Machtindizes in der Ökonomie', inst:'Hamburg' },
+    { author:'Monika Poettinger', title:'Between History and Theory: Otto Neurath 1906–17', inst:'Mailand' },
+    { author:'Christian Gehrke · Florian Brugger', title:'Preisinduzierter technischer Fortschritt in der ökonomischen Theoriengeschichte', inst:'Graz' },
+    { author:'Peter Spahn', title:'Böhm-Bawerk und die Entstehung der Zinspolitik', inst:'Hohenheim' },
+    { author:'Hauke Janssen', title:'Max Weber über Macht und ökonomisches Gesetz', inst:'Hamburg' },
+    { author:'Gilles Campagnolo', title:'The Foundations of the Theory of Entrepreneurship in Austrian Economics? Menger and Böhm-Bawerk on the Entrepreneur', inst:'Aix-en-Provence' }
+  ] },
+  { nr:34, year:2013, dates:'7.–8. Juni 2013', country:'DE', loc_de:'Berlin', loc_en:'Berlin', venue:'Berlin-Brandenburgische Akademie der Wissenschaften', theme:'Neue Perspektiven auf die Politische Ökonomie von Karl Marx und Friedrich Engels / Die Marx-Engels-Gesamtausgabe (MEGA)', theme_en:'New Perspectives on the Political Economy of Marx and Engels: The Marx-Engels-Gesamtausgabe (MEGA)', vol:'XXXIV', papers:[
+    { author:'Kiichiro Yagi', title:'The International Network around the MEGA project: from the 1920s to the 2010s', inst:'Osaka' },
+    { author:'Regina Roth', title:'Über Differenzen zwischen den Engels\'schen Druckfassungen und den Marx\'schen Manuskripten des Kapital', inst:'Berlin-Brandenburgische Akademie' },
+    { author:'Bertram Schefold', title:'Zwei maximale Profitraten, die Durchschnittsbildung und weitere Unterschiede zwischen Marx und Sraffa', inst:'Frankfurt' },
+    { author:'Fritz Helmedag', title:'Über Kapital im Kapital: Einige elementare Überlegungen', inst:'Chemnitz' },
+    { author:'Kenji Mori', title:'Karl Marx Krisenhefte von 1857-58 und die Produktionstheorie der Krise', inst:'Sendai' },
+    { author:'Peter Rosner', title:'Über die Schwierigkeiten Ausbeutung in der Wirtschaftstheorie zu erfassen – von Rodbertus zu Marx', inst:'Wien' },
+    { author:'Hagen Krämer', title:'Das klassische Konzept der unproduktiven Arbeit und seine Folgen für das moderne Verständnis von Dienstleistungen', inst:'Karlsruhe' },
+    { author:'Birger Priddat', title:'Marx\' sparsames Konzept des Kommunismus', inst:'Witten/Herdecke' },
+    { author:'Irwin Collier', title:'Marx in the Economics Curriculum: Harvard, Chicago and Columbia, 1900–1950', inst:'Berlin' }
+  ] },
+  { nr:33, year:2012, dates:'14.–16. Juni 2012', country:'DE', loc_de:'Marbach am Neckar', loc_en:'Marbach am Neckar', venue:'Deutsches Literaturarchiv Marbach', theme:'Die Zeit um den Ersten Weltkrieg als Krisenzeit der Nationalökonomen', theme_en:'The Era of the First World War as a Crisis Period for Economists', vol:'XXX', papers:[
+    { author:'Bertram Schefold', title:'Goethe und die Anschauliche Theorie', inst:'Frankfurt' },
+    { author:'Hauke Janssen', title:'Sozialpolitik, Wertlehre, Konjunkturforschung – Die Krise in der deutschen Nationalökonomie zur Zeit um den Ersten Weltkrieg', inst:'Hamburg' },
+    { author:'Erik Grimmer-Solem', title:'Geopolitik und Staatswissenschaft im Ersten Weltkrieg', inst:'Middletown' },
+    { author:'Hansjörg Klausinger', title:'Die Krise der Nationalökonomie an der Universität Wien nach 1917', inst:'Wien' },
+    { author:'Caroline Gerschlager', title:'Joseph A. Schumpeter: Über Innovationen in der Politik', inst:'Wien' },
+    { author:'Jürgen Backhaus', title:'Oswald Spengler', inst:'Erfurt' },
+    { author:'Christian Gehrke', title:'Spuren einer Lebensreise: Georg von Charasoff (1877–1931)', inst:'Graz' },
+    { author:'Toni Pierenkemper', title:'Ein wahrer Außenseiter unter Außenseitern: Oskar Stillich', inst:'Köln' },
+    { author:'Günther Chaloupek', title:'Die neue Wirtschaft und Von kommenden Dingen – Walther Rathenau als Ökonom und Sozialphilosoph', inst:'Wien' }
+  ] },
+  { nr:32, year:2011, dates:'5.–7. Mai 2011', country:'DE', loc_de:'Freiburg im Breisgau', loc_en:'Freiburg im Breisgau', venue:'Liefmann-Haus, Goethestraße 33–35, Freiburg', theme:'Die Entwicklung der Raumwirtschaftslehre von ihren Anfängen bis in die Gegenwart', theme_en:'The Development of Spatial Economics from Its Origins to the Present', vol:'XXIX', papers:[
+    { author:'Heinz D. Kurz', title:'Raum in der Ökonomik', inst:'Graz' },
+    { author:'Ludwig Nellinger', title:'Thünens umfassendes Raumwirtschaftsmodell', inst:'' },
+    { author:'Günther Chaloupek', title:'Stadt und Land – zur Regionalökonomik der Historischen Schule', inst:'Wien' },
+    { author:'Karl-Heinz Schmidt', title:'Raumforschung 1930–50: Von der Standorttheorie zu einer Theorie der wirtschaftlichen Raumordnung?', inst:'' },
+    { author:'Horst Todt', title:'Christaller und Lösch', inst:'Hamburg' },
+    { author:'Johannes Bröcker', title:'Raumforschung im Dritten Reich', inst:'' },
+    { author:'Heinz Rieter', title:'Die Beteiligung Friedrich Bülows und Karl C. Thalheims an der NS-Raumforschung (Korreferat)', inst:'Hamburg' },
+    { author:'Martin Beckmann', title:'Leonard Mikschs Beitrag zur Theorie der räumlichen Märkte', inst:'' },
+    { author:'Hans-Michael Trautwein', title:'Von der Neuen Handelstheorie zur Neuen Wirtschaftsgeographie', inst:'Oldenburg' }
+  ] },
+  { nr:31, year:2010, dates:'27.–29. Mai 2010', country:'DE', loc_de:'Stuttgart-Hohenheim', loc_en:'Stuttgart-Hohenheim', venue:'Universität Hohenheim', theme:'Die Ökonomik im Spannungsfeld zwischen Natur- und Geisteswissenschaften. Alte und neue Perspektiven im Licht des jüngsten Methodenstreits', theme_en:'Economics between Natural and Humanistic Sciences', vol:'XXVIII', papers:[
+    { author:'Karl Milford', title:'Die Methode der Naturwissenschaften im Lichte sozialwissenschaftlicher Methodenlehren des 19. und 20. Jahrhunderts', inst:'Wien' },
+    { author:'Elke Muchlinski', title:'Wie zweckmäßig ist das Vorbild der physikalischen Wissenschaft für ökonomische Metaphern?', inst:'' },
+    { author:'Alexander Ebner', title:'Ökonomie als Geisteswissenschaft? Grundzüge der Erklären-Verstehen-Kontroverse', inst:'Frankfurt' },
+    { author:'Michael Wohlgemuth', title:'Die Kalkulationsdebatte als Methodenstreit', inst:'Witten/Herdecke' },
+    { author:'Jürgen Kromphardt', title:'Der jüngste Methodenstreit: Alter Streit in neuem Gewande?', inst:'' },
+    { author:'Bertram Schefold', title:'Der Ökonom Max Weber zwischen der Soziologie der Wirtschaftsethik und der rationalen Theorie rationalen Handelns', inst:'Frankfurt' },
+    { author:'Volker Caspari', title:'Keynes\' Kritik an der Tinbergenschen Ökonometrie', inst:'Darmstadt' },
+    { author:'Ingo Barens', title:'Animal Spirits und John Maynard Keynes', inst:'Darmstadt' },
+    { author:'Peter Rosner', title:'Die einfache Welt der Quantitätsgleichung und die komplizierte Welt der Finanz', inst:'Wien' }
+  ] },
+  { nr:30, year:2009, dates:'15.–16. Mai 2009', country:'AT', loc_de:'Wien', loc_en:'Vienna', venue:'Wien', theme:'Geschichte der Entwicklungstheorien', theme_en:'History of Development Theories', vol:'XXXI', papers:[] },
+  { nr:29, year:2008, dates:'21.–22. Mai 2008', country:'DE', loc_de:'Berlin', loc_en:'Berlin', venue:'Berlin', theme:'Der Einfluss deutschsprachigen wirtschaftswissenschaftlichen Denkens in Japan', theme_en:'The Influence of German-Language Economic Thought in Japan', vol:'XXVII', papers:[] },
+  { nr:28, year:2007, dates:'31. Mai – 2. Juni 2007', country:'DE', loc_de:'Lüdinghausen / Nordkirchen', loc_en:'Lüdinghausen / Nordkirchen', venue:'Schloss Nordkirchen', theme:'Wechselseitige Einflüsse zwischen dem deutschen wirtschaftswissenschaftlichen Denken und dem anderer europäischer Sprachräume', theme_en:'Mutual Influences between German Economic Thought and That of Other European Language Areas', vol:'XXIV', papers:[
+    { author:'Christian Gehrke · Heinz D. Kurz', title:'Die Debatte um die Ertrags- und Kostentheorie und ihre Reflektion im deutschen Schrifttum', inst:'Graz' },
+    { author:'Vitantonio Gioia', title:'The German Historical School of Economics in the Italian Debate (1870–1890)', inst:'Macerata' },
+    { author:'Hauke Janssen', title:'Alexander W. Tschajanow (1888–1937) und die russische Emigration in Deutschland', inst:'Hamburg' },
+    { author:'Elke Muchlinski', title:'Die Maynard Keynes-Manuskripte von 1904 bis 1911 und ihre Rezeption im englisch/versus deutschsprachigen Raum', inst:'FU Berlin' },
+    { author:'Peter Rosner', title:'Die Theorie von Karl Marx als Antwort auf die von Pierre-Joseph Proudhon gestellten Fragen', inst:'Wien' },
+    { author:'Hans-Michael Trautwein · Bo Sandelin', title:'Mutual influences of economists in the German and Swedish language areas', inst:'Oldenburg · Göteborg' },
+    { author:'Keith Tribe', title:'Das Adam Smith Problem und die deutsche Rezeption', inst:'Sussex' },
+    { author:'Joachim Zweynert', title:'Deutsche Einflüsse auf das russische ökonomische Denken in der ersten Hälfte des 19. Jahrhunderts', inst:'HWWA Hamburg' }
+  ] },
+  { nr:27, year:2006, dates:'18.–20. Mai 2006', country:'AT', loc_de:'Graz', loc_en:'Graz', venue:'Karl-Franzens-Universität Graz', theme:'Wissen = The Knowledge Economy', theme_en:'Wissen = The Knowledge Economy', vol:'XXVI', papers:[
+    { author:'Dieter Schneider', title:'Auf der Suche nach den Anfängen einer Wissensökonomie', inst:'Bochum' },
+    { author:'Ernst Helmstädter', title:'Das gesellschaftliche Wissen als Reichtumsquelle – Seine Bedeutungsschwankungen von Adam Smith bis heute', inst:'Münster' },
+    { author:'Tetsushi Harada', title:'Die Verortung der öffentlichen Meinung in der Wertbestimmung bei der älteren deutschen Gebrauchswertschule', inst:'Yokkaichi' },
+    { author:'Yuichi Shionoya', title:'Knowledge about the Knowledge Economy in the Schumpeterian Perspective', inst:'Tokio' },
+    { author:'Kurt Dopfer', title:'Reading Schumpeter as if Knowledge Mattered', inst:'St. Gallen' }
+  ] },
+  { nr:26, year:2005, dates:'2005', country:'DE', loc_de:'Berlin', loc_en:'Berlin', venue:'Berlin', theme:'Deutsche Einflüsse auf amerikanisches wirtschaftswissenschaftliches Denken und amerikanische Einflüsse auf deutsches Wirtschaftsdenken', theme_en:'German Influences on American Economic Thought and American Influences on German Economic Thought', vol:'XXXII', papers:[] },
+  { nr:25, year:2004, dates:'2004', country:'DE', loc_de:'Bonn', loc_en:'Bonn', venue:'Bonn', theme:'Wirtschaftswissenschaft und Technik', theme_en:'Economics and Technology', vol:'XXIII', papers:[] },
+  { nr:24, year:2003, dates:'2003', country:'DE', loc_de:'Oldenburg', loc_en:'Oldenburg', venue:'Oldenburg', theme:'Ökonomie und Religion', theme_en:'Economics and Religion', vol:'XXI', papers:[] },
+  { nr:23, year:2002, dates:'2002', country:'AT', loc_de:'Obermayerhofen bei Graz', loc_en:'Obermayerhofen near Graz', venue:'Obermayerhofen', theme:'Die deutschsprachige Wirtschaftswissenschaft in den ersten Jahrzehnten nach 1945 (II)', theme_en:'German-Language Economics in the First Decades after 1945, Part II', vol:'XXV', papers:[] },
+  { nr:22, year:2001, dates:'2001', country:'DE', loc_de:'Hamburg', loc_en:'Hamburg', venue:'Hamburg', theme:'Die deutschsprachige Wirtschaftswissenschaft in den ersten Jahrzehnten nach 1945 (I)', theme_en:'German-Language Economics in the First Decades after 1945, Part I', vol:'XXII', papers:[] },
+  { nr:21, year:2000, dates:'2000', country:'AT', loc_de:'Wien', loc_en:'Vienna', venue:'Wien', theme:'Ideen, Methoden und Entwicklungen der Geschichte des ökonomischen Denkens', theme_en:'Ideas, Methods and Developments in the History of Economic Thought', vol:null, papers:[] },
+  { nr:20, year:1999, dates:'1999', country:'DE', loc_de:'Ulm', loc_en:'Ulm', venue:'Ulm', theme:'Die Ältere Historische Schule: Wirtschaftstheoretische Beiträge und wirtschaftspolitische Vorstellungen', theme_en:'The Older Historical School: Contributions to Economic Theory and Economic Policy', vol:'XX', papers:[] },
+  { nr:19, year:1998, dates:'1998', country:'DE', loc_de:'Würzburg', loc_en:'Würzburg', venue:'Würzburg', theme:'John Stuart Mill', theme_en:'John Stuart Mill', vol:'XIX', papers:[] },
+  { nr:18, year:1997, dates:'1997', country:'DE', loc_de:'Stuttgart-Hohenheim', loc_en:'Stuttgart-Hohenheim', venue:'Universität Hohenheim', theme:'Knut Wicksell', theme_en:'Knut Wicksell', vol:'XVIII', papers:[] },
+  { nr:17, year:1996, dates:'1996', country:'NL', loc_de:'Maastricht', loc_en:'Maastricht', venue:'Maastricht', theme:'Die Umsetzung wirtschaftspolitischer Grundkonzeptionen in die kontinentaleuropäische Praxis des 19. und 20. Jahrhunderts (II)', theme_en:'The Implementation of Economic Policy Principles in Continental European Practice, 19th–20th Century, Part II', vol:'XVII', papers:[] },
+  { nr:16, year:1995, dates:'1995', country:'AT', loc_de:'Salzburg', loc_en:'Salzburg', venue:'Salzburg', theme:'Die Umsetzung wirtschaftspolitischer Grundkonzeptionen in die kontinentaleuropäische Praxis des 19. und 20. Jahrhunderts (I)', theme_en:'The Implementation of Economic Policy Principles in Continental European Practice, 19th–20th Century, Part I', vol:'XVI', papers:[] },
+  { nr:15, year:1994, dates:'1994', country:'DE', loc_de:'Weimar', loc_en:'Weimar', venue:'Weimar', theme:'Revolution und Evolution in der Wirtschaftstheorie', theme_en:'Revolution and Evolution in Economic Theory', vol:null, papers:[] },
+  { nr:14, year:1993, dates:'1993', country:'DE', loc_de:'Tellow', loc_en:'Tellow', venue:'Tellow', theme:'Johann Heinrich von Thünen als Wirtschaftstheoretiker', theme_en:'Johann Heinrich von Thünen as Economic Theorist', vol:'XIV', papers:[] },
+  { nr:13, year:1992, dates:'1992', country:'DE', loc_de:'Augsburg', loc_en:'Augsburg', venue:'Augsburg', theme:'Deutsche Finanzwissenschaft zwischen 1918 und 1939', theme_en:'German Public Finance between 1918 and 1939', vol:'XIII', papers:[] },
+  { nr:12, year:1991, dates:'1991', country:'CH', loc_de:'Ittingen (Schweiz)', loc_en:'Ittingen (Switzerland)', venue:'Kartause Ittingen, Thurgau', theme:'Osteuropäische Dogmengeschichte', theme_en:'Eastern European History of Economic Doctrines', vol:'XII', papers:[] },
+  { nr:11, year:1990, dates:'1990', country:'DE', loc_de:'Frankfurt am Main', loc_en:'Frankfurt am Main', venue:'Frankfurt am Main', theme:'Darstellung der Wirtschaft und Wirtschaftswissenschaften in der Belletristik', theme_en:'The Representation of Economics and Economists in Literature', vol:'XI', papers:[] },
+  { nr:10, year:1989, dates:'1989', country:'DE', loc_de:'Tübingen', loc_en:'Tübingen', venue:'Tübingen', theme:'Friedrich List; Carl Menger; Lorenz von Stein', theme_en:'Friedrich List; Carl Menger; Lorenz von Stein', vol:'X', papers:[] },
+  { nr:9, year:1988, dates:'1988', country:'DE', loc_de:'Berlin', loc_en:'Berlin', venue:'Berlin', theme:'Deutschsprachige Wirtschafts-, Konjunktur- und Geldtheorie in der ersten Hälfte des 20. Jahrhunderts', theme_en:'German-Language Economic, Business Cycle, and Monetary Theory in the First Half of the 20th Century', vol:'IX', papers:[] },
+  { nr:8, year:1987, dates:'1987', country:'DE', loc_de:'Würzburg', loc_en:'Würzburg', venue:'Würzburg', theme:'Konjunkturtheorie im ausgehenden 19. Jahrhundert', theme_en:'Business Cycle Theory in the Late 19th Century', vol:'VII', papers:[] },
+  { nr:7, year:1986, dates:'1986', country:'DE', loc_de:'Stuttgart', loc_en:'Stuttgart', venue:'Stuttgart', theme:'Allgemeine Gleichgewichtsanalyse', theme_en:'General Equilibrium Analysis', vol:null, papers:[] },
+  { nr:6, year:1985, dates:'1985', country:'DE', loc_de:'Münster', loc_en:'Münster', venue:'Münster', theme:'Entwicklungen der deutschsprachigen Nationalökonomie im 19. Jahrhundert', theme_en:'Developments in German Political Economy in the 19th Century', vol:'VI', papers:[] },
+  { nr:5, year:1984, dates:'1984', country:'AT', loc_de:'Salzburg', loc_en:'Salzburg', venue:'Salzburg', theme:'Deutsche Nationalökonomie Ende des 18. und in der ersten Hälfte des 19. Jahrhunderts', theme_en:'German Political Economy at the End of the 18th and in the First Half of the 19th Century', vol:'V', papers:[] },
+  { nr:4, year:1983, dates:'1983', country:'DE', loc_de:'Göttingen', loc_en:'Göttingen', venue:'Göttingen', theme:'Marx, Keynes, Schumpeter', theme_en:'Marx, Keynes, Schumpeter', vol:'IV', papers:[] },
+  { nr:3, year:1982, dates:'1982', country:'CH', loc_de:'Basel', loc_en:'Basel', venue:'Basel', theme:'Theoriegeschichte – wozu?', theme_en:'History of Economic Thought – What For?', vol:'III', papers:[] },
+  { nr:2, year:1981, dates:'1981', country:'AT', loc_de:'Salzburg', loc_en:'Salzburg', venue:'Salzburg', theme:'Merkantilismus und Kameralismus', theme_en:'Mercantilism and Cameralism', vol:'II', papers:[] },
+  { nr:1, year:1980, dates:'1980', country:'DE', loc_de:'Gießen', loc_en:'Giessen', venue:'Justus-Liebig-Universität Gießen', theme:'Klassische Nationalökonomie', theme_en:'Classical Political Economy', vol:'I', papers:[] },
 ];
 
-let archiveDecadeFilter = 'all';
+
+/* ── Archive filters ── */
+let archiveDecadeFilter  = 'all';
+let archiveCountryFilter = 'all';
+
 function setArchiveDecade(decade, btn) {
   archiveDecadeFilter = decade;
   document.querySelectorAll('.arch-decade').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   renderArchive();
 }
+function setArchiveCountry(cc, btn) {
+  archiveCountryFilter = cc;
+  document.querySelectorAll('.arch-country').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderArchive();
+}
 
 function renderArchive() {
-  const list  = document.getElementById('archive-list');
-  const cnt   = document.getElementById('arch-count');
-  const q     = ((document.getElementById('archive-search') || {}).value || '').toLowerCase();
-  const view_lbl   = lang === 'en' ? (EN.arch_view   || 'View Programme') : 'Programm ansehen';
-  const papers_lbl = lang === 'en' ? (EN.arch_papers  || 'Selected Papers') : 'Beiträge';
-  const upload_lbl = lang === 'en' ? (EN.arch_upload  || 'Submit Paper')   : 'Beitrag einreichen';
-  const note_lbl   = lang === 'en' ? (EN.arch_upload_note || 'Papers are added following consultation with the chair.') : 'Beiträge werden nach Rücksprache mit dem Vorsitzenden aufgenommen.';
-  const nr_lbl     = lang === 'en' ? 'Annual Conference' : 'Jahrestagung';
-  const no_covid   = lang === 'en' ? '(No conference in 2020 due to COVID-19)' : '(2020 entfällt aufgrund von COVID-19)';
-  const pending    = lang === 'en' ? 'Forthcoming' : 'Angekündigt';
-
+  const list   = document.getElementById('archive-list');
+  const cnt    = document.getElementById('arch-count');
+  const q      = ((document.getElementById('archive-search') || {}).value || '').toLowerCase().trim();
   const decadeOf = y => y >= 2020 ? '2020s' : y >= 2010 ? '2010s' : y >= 2000 ? '2000s' : y >= 1990 ? '1990s' : '1980s';
+  const nr_lbl   = lang === 'en' ? 'Annual Conference' : 'Jahrestagung';
+  const papers_lbl = lang === 'en' ? 'Selected Papers' : 'Beitr\u00e4ge';
+  const venue_lbl  = lang === 'en' ? 'Venue' : 'Tagungsort';
+  const pending    = lang === 'en' ? 'Forthcoming' : 'Angek\u00fcndigt';
+  const no_papers  = lang === 'en' ? 'Programme details to be added.' : 'Programm wird erg\u00e4nzt.';
+  const no_covid   = lang === 'en' ? '(No conference in 2020 due to COVID-19)' : '(2020 entf\u00e4llt aufgrund von COVID-19)';
+  const speaker_match_lbl = lang === 'en' ? 'Speaker match' : 'Referent';
 
   const filtered = ARCHIVE.filter(c => {
     if (archiveDecadeFilter !== 'all' && decadeOf(c.year) !== archiveDecadeFilter) return false;
+    if (archiveCountryFilter !== 'all' && c.country !== archiveCountryFilter) return false;
     if (q) {
-      const theme = (lang === 'en' ? c.theme_en : c.theme).toLowerCase();
-      const loc   = (lang === 'en' ? c.loc_en   : c.loc_de).toLowerCase();
-      const papers_txt = (c.papers || []).map(p => p.author + ' ' + p.title).join(' ').toLowerCase();
-      if (!theme.includes(q) && !loc.includes(q) && !papers_txt.includes(q) && !String(c.year).includes(q)) return false;
+      const theme    = (lang === 'en' ? c.theme_en : c.theme).toLowerCase();
+      const loc      = (lang === 'en' ? c.loc_en   : c.loc_de).toLowerCase();
+      const venue_s  = (c.venue || '').toLowerCase();
+      const paper_tx = (c.papers || []).map(p => p.author + ' ' + p.title + ' ' + (p.inst||'')).join(' ').toLowerCase();
+      if (!theme.includes(q) && !loc.includes(q) && !venue_s.includes(q) &&
+          !String(c.year).includes(q) && !paper_tx.includes(q)) return false;
     }
     return true;
   });
@@ -1610,49 +1721,66 @@ function renderArchive() {
   if (cnt) cnt.textContent = filtered.length + ' / ' + ARCHIVE.length;
   if (!filtered.length) { list.innerHTML = '<div class="pub-no-results">Keine Tagungen gefunden / No conferences found</div>'; return; }
 
-  // Insert 2020 gap marker if both sides are in view
   const years = filtered.map(c => c.year);
-  const show2020gap = (!q && archiveDecadeFilter === 'all' || archiveDecadeFilter === '2020s')
-                      && years.includes(2021) && years.includes(2019);
+  const show2020 = (!q || q === '') && archiveDecadeFilter !== '1980s' && archiveDecadeFilter !== '1990s' && archiveDecadeFilter !== '2000s' && years.includes(2021);
 
-  let html = '<div class="archive-grid">';
+  let html = '';
   filtered.forEach((c, i) => {
-    const theme = lang === 'en' ? c.theme_en : c.theme;
-    const loc   = lang === 'en' ? c.loc_en   : c.loc_de;
-    const papers = c.papers || [];
-    const volBadge = c.vol ? '<span class="badge badge-blue" style="font-size:10px;margin-left:8px;">→ ' + (c.vol_label || c.vol) + '</span>' : (c.vol_label ? '<span class="badge" style="background:var(--gold-light);color:#7A6000;font-size:10px;margin-left:8px;">' + (lang==='en'?pending:'Angekündigt') + '</span>' : '');
-    const papersHtml = papers.length
-      ? papers.map(p => '<div class="archive-paper"><div>' + p.title + '</div><div class="archive-paper-author">' + p.author + '</div></div>').join('')
-      : '<div style="font-size:13px;color:var(--text-faint);font-style:italic;padding:8px 0;">' + (lang==='en'?'Programme details to be added.':'Programm wird ergänzt.') + '</div>';
+    const theme   = lang === 'en' ? c.theme_en : c.theme;
+    const loc     = lang === 'en' ? c.loc_en   : c.loc_de;
+    const papers  = c.papers || [];
+    const volBadge = c.vol
+      ? '<span class="badge badge-blue" style="font-size:10px;margin-left:8px;">\u2192 Band ' + c.vol + '</span>'
+      : (c.vol === null && c.nr >= 43 ? '<span class="badge" style="background:var(--gold-light);color:#7A6000;font-size:10px;margin-left:8px;">' + pending + '</span>' : '');
+    const countryFlag = { DE:'\uD83C\uDDE9\uD83C\uDDEA', AT:'\uD83C\uDDE6\uD83C\uDDF9', CH:'\uD83C\uDDE8\uD83C\uDDED', UK:'\uD83C\uDDEC\uD83C\uDDE7', NL:'\uD83C\uDDF3\uD83C\uDDF1', INT:'\uD83C\uDF10' }[c.country] || '';
+    const hasVenue = c.venue && c.venue !== c.loc_de && c.venue !== c.loc_en;
 
-    html += '<div class="archive-item"><div class="archive-head" onclick="toggleArchive(' + i + ')">'
+    // Highlight matching papers when searching
+    let papersHtml;
+    if (!papers.length) {
+      papersHtml = '<div style="font-size:13px;color:var(--text-faint);font-style:italic;padding:8px 0;">' + no_papers + '</div>';
+    } else {
+      const matchingOnly = q && papers.some(p =>
+        (p.author + ' ' + p.title + ' ' + (p.inst||'')).toLowerCase().includes(q));
+      papersHtml = papers
+        .filter(p => !matchingOnly || (p.author + ' ' + p.title + ' ' + (p.inst||'')).toLowerCase().includes(q))
+        .map(p => {
+          const matchNote = matchingOnly ? '<span style="font-size:10px;background:var(--gold-light);color:var(--gold);padding:1px 5px;border-radius:3px;margin-left:4px;">' + speaker_match_lbl + '</span>' : '';
+          const instNote  = p.inst ? '<span style="color:var(--text-faint);font-size:11px;"> · ' + p.inst + '</span>' : '';
+          return '<div class="archive-paper"><div>' + p.title + '</div><div class="archive-paper-author">' + p.author + instNote + matchNote + '</div></div>';
+        }).join('');
+    }
+
+    html += '<div class="archive-item">'
+      + '<div class="archive-head" onclick="toggleArchive(' + i + ')">'
       + '<div class="archive-year">' + c.year + '</div>'
-      + '<div>'
-      + '<div style="font-size:11px;font-weight:600;color:var(--text-faint);letter-spacing:0.05em;margin-bottom:2px;">' + c.nr + '. ' + nr_lbl + '</div>'
+      + '<div style="flex:1;min-width:0;">'
+      + '<div style="font-size:11px;font-weight:600;color:var(--text-faint);letter-spacing:.06em;margin-bottom:2px;">'
+      + c.nr + '. ' + nr_lbl + (c.dates && c.dates !== String(c.year) ? ' &nbsp;\u00b7&nbsp; <span style="font-weight:400;">' + c.dates + '</span>' : '')
+      + '</div>'
       + '<div class="archive-theme">' + theme + volBadge + '</div>'
-      + '<div class="archive-location">' + loc + '</div>'
-      + '</div>'
-      + '<button class="archive-toggle" id="archive-toggle-' + i + '" aria-label="expand">▾</button>'
-      + '</div>'
+      + '<div class="archive-location">' + countryFlag + ' ' + loc
+      + (hasVenue ? '<span style="font-size:11px;color:var(--text-faint);"> &nbsp;&middot; ' + c.venue + '</span>' : '')
+      + '</div></div>'
+      + '<button class="archive-toggle" id="archive-toggle-' + i + '">▾</button></div>'
       + '<div class="archive-body" id="archive-body-' + i + '">'
       + '<div class="archive-body-inner">'
-      + '<div><div style="font-size:12px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px;">' + papers_lbl + '</div><div class="archive-papers-list">' + papersHtml + '</div></div>'
-      + '<div class="archive-actions"><button class="btn btn-outline btn-sm">' + view_lbl + '</button><button class="btn btn-primary btn-sm">' + upload_lbl + '</button><div style="font-size:11px;color:var(--text-faint);line-height:1.4;margin-top:4px;">' + note_lbl + '</div></div>'
+      + '<div><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px;">' + papers_lbl + (papers.length ? ' (' + papers.length + ')' : '') + '</div>'
+      + '<div class="archive-papers-list">' + papersHtml + '</div></div>'
       + '</div></div></div>';
 
-    // 2020 gap marker
-    if (show2020gap && c.year === 2021) {
-      html += '<div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--gold-light);border:1px dashed #DDD0A0;border-radius:8px;font-size:13px;color:#7A5800;">'
-        + '<span style="font-size:18px;">⚠️</span><span>' + no_covid + '</span></div>';
+    if (show2020 && c.year === 2021) {
+      html += '<div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--gold-light);border:1px dashed #DDD0A0;border-radius:8px;font-size:13px;color:#7A5800;margin:4px 0;">'
+        + '<span style="font-size:16px;">⚠\uFE0F</span><span>' + no_covid + '</span></div>';
     }
   });
-  html += '</div>';
   list.innerHTML = html;
 }
 
 function toggleArchive(i) {
   const body = document.getElementById('archive-body-' + i);
   const btn  = document.getElementById('archive-toggle-' + i);
+  if (!body) return;
   const open = body.classList.toggle('open');
   btn.classList.toggle('open', open);
 }
@@ -1950,6 +2078,87 @@ renderMembers(MEMBERS);
 renderArchive();
 renderPubs();
 initLang(); // Apply saved/auto-detected language preference
+/* ── Logistik map (Leaflet.js, no API key) ── */
+var _mapInitialised = false;
+function initLogistikMap() {
+  if (_mapInitialised) return;
+  var el = document.getElementById('logistik-map');
+  if (!el) return;
+  _mapInitialised = true;
+
+  var map = L.map('logistik-map', { scrollWheelZoom: false });
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '\u00a9 <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 18
+  }).addTo(map);
+
+  function mkIcon(bg, emoji) {
+    return L.divIcon({
+      html: '<div style="width:30px;height:30px;background:'+bg+';border-radius:50%;border:2.5px solid #fff;'
+          + 'box-shadow:0 2px 6px rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center;'
+          + 'font-size:13px;line-height:1;">'+emoji+'</div>',
+      iconSize:[30,30], iconAnchor:[15,15], popupAnchor:[0,-18], className:''
+    });
+  }
+
+  var G='#B8860B', B='#3A6BAF', R='#C0392B', GR='#27AE60', P='#8E44AD';
+
+  var pts = [
+    [45.9040, 8.9703, G,  '\uD83C\uDF93',
+      '<strong>Steger Center (Tagungsort)</strong><br>Villa Maderni, Via Settala 8<br>'
+     +'Riva San Vitale<br><small>10\u201312 Min. Fussweg vom Bahnhof Capolago</small>'],
+    [46.0051, 8.9500, R,  '\uD83C\uDF7D',
+      '<strong>Ristorante Cantinone</strong><br>Piazza Cioccaro 8, Lugano<br>'
+     +'<small>Willkommensnachtessen, Do 25. Juni, 19:30</small>'],
+    [46.0044, 8.9497, B,  '\uD83C\uDFE8',
+      '<strong>Hotel Dante</strong><br>Piazza Cioccaro 5, Lugano<br>'
+     +'<small>30\u00a0m vom Cantinone \u00b7 Funicolare direkt vor der T\u00fcr</small>'],
+    [46.0028, 8.9504, B,  '\uD83C\uDFE8',
+      '<strong>Hotel Walter au Lac</strong><br>Riva Caccia 1, Lugano<br>'
+     +'<small>Seelage, 10\u00a0Min. Fussweg zum HB Lugano</small>'],
+    [46.0003, 8.9491, B,  '\uD83C\uDFE8',
+      '<strong>Hotel Internationale</strong><br>Via Nassa 68, Lugano<br>'
+     +'<small>Fussg\u00e4ngerzone, 10\u00a0Min. zum HB Lugano</small>'],
+    [45.9043, 8.9794, B,  '\uD83C\uDFE8',
+      '<strong>Hotel Svizzero</strong><br>Capolago<br>'
+     +'<small>Direkt am Bahnhof \u00b7 kein Zug zur Tagung n\u00f6tig</small>'],
+    [45.9055, 8.9796, GR, '\uD83D\uDE89',
+      '<strong>Bahnhof Capolago-Riva San Vitale</strong><br>'
+     +'<small>TILO S10: alle 30\u00a0Min. ab HB Lugano (\u223015\u00a0Min.)<br>'
+     +'Fr Abfahrt 08:12 \u00b7 Sa Abfahrt 07:42</small>'],
+    [45.9035, 8.9778, P,  '\uD83D\uDE9F',
+      '<strong>Ferrovia Monte Generoso</strong><br>Capolago<br>'
+     +'<small>Zahnradbahn zum Gipfel (1704\u00a0m), seit 1890<br>'
+     +'Gruppenausflug Sa 27.\u00a0Juni, ab 13:00</small>'],
+    [45.9830, 8.9189, P,  '\uD83C\uDFD4',
+      '<strong>Museo Hermann Hesse</strong><br>Torre Camuzzi, Montagnola<br>'
+     +'<small>Partnerprogramm \u00b7 Mit Ticino Ticket gratis</small>'],
+    [46.0092, 8.9862, P,  '\uD83D\uDE9F',
+      '<strong>Funicolare Monte Br\u00e8</strong><br>Cassarate, Lugano<br>'
+     +'<small>Partnerprogramm \u00b7 Bus 12 ab HB Lugano</small>'],
+  ];
+
+  var bounds = [];
+  pts.forEach(function(p) {
+    L.marker([p[0],p[1]], {icon: mkIcon(p[2],p[3])})
+      .addTo(map).bindPopup(p[4], {maxWidth:230});
+    bounds.push([p[0],p[1]]);
+  });
+  map.fitBounds(bounds, {padding:[36,36]});
+}
+
+// Lazy-init: trigger when map div enters viewport
+(function() {
+  var el = document.getElementById('logistik-map');
+  if (!el) return;
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function(entries, obs) {
+      if (entries[0].isIntersecting) { initLogistikMap(); obs.disconnect(); }
+    }, {threshold: 0.1}).observe(el);
+  } else {
+    initLogistikMap();
+  }
+})();
 </script>
 </body>
 </html>
