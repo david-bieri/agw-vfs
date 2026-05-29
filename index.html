@@ -102,8 +102,8 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
 .gold-rule{width:32px;height:2px;background:var(--gold);margin:0 0 12px;}
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
 .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-@media(max-width:900px){.two-col{grid-template-columns:1fr;gap:28px;}.three-col{grid-template-columns:1fr 1fr;}}
-@media(max-width:600px){.three-col{grid-template-columns:1fr;}.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-brand-sub{display:none;}}
+}
+.nav-hamburger{display:flex;}.nav-brand-sub{display:none;}}
 
 /* ── Programme tabs ── */
 .prog-tabs{display:flex;border-bottom:1.5px solid var(--border);margin-bottom:36px;}
@@ -246,7 +246,7 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
 /* ── Footer ── */
 .footer{background:var(--navy-dark);color:rgba(255,255,255,0.55);padding:48px 1.5rem 28px;}
 .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px;}
-@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr;}.footer-brand-col{grid-column:1/-1;}}
+}
 .footer-brand-name{font-family:'EB Garamond',serif;font-size:17px;color:rgba(255,255,255,0.9);margin-bottom:8px;}
 .footer-text{font-size:12.5px;line-height:1.6;}
 .footer-text a{color:rgba(255,255,255,0.5);text-decoration:none;}
@@ -278,7 +278,7 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
 .pub-detail{display:none;background:var(--cream);}
 .pub-detail.open{display:block;}
 .pub-detail-inner{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:200px;}
-@media(max-width:720px){.pub-detail-inner{grid-template-columns:1fr;}}
+
 .pub-detail-left{padding:20px 22px;border-right:1px solid var(--border);}
 .pub-detail-right{padding:20px 22px;}
 .pub-detail-sec-lbl{font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:14px;}
@@ -322,6 +322,88 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
 .chair-inst{font-size:12px;color:var(--text-muted);}
 .chair-years{font-size:13px;font-weight:500;color:var(--navy);text-align:right;}
 .chair-dur{font-size:11px;color:var(--text-faint);text-align:right;}
+
+/* ── Speaker links ─────────────────────────────────────────────── */
+a.speaker-link {
+  color: inherit;
+  text-decoration: underline dotted;
+  text-decoration-color: rgba(107,114,128,.35);
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  transition: text-decoration-color .15s;
+}
+a.speaker-link:hover {
+  text-decoration-color: var(--accent);
+  text-decoration-style: solid;
+}
+
+/* ── Mobile ≤900px ──────────────────────────────────────────────── */
+@media(max-width:900px) {
+  .two-col{grid-template-columns:1fr;gap:28px;}
+  .three-col{grid-template-columns:1fr 1fr;}
+  .section{padding:52px 1.5rem;}
+}
+
+/* ── Mobile ≤720px ──────────────────────────────────────────────── */
+@media(max-width:720px) {
+  .pub-detail-inner{grid-template-columns:1fr;}
+}
+
+/* ── Mobile ≤600px ──────────────────────────────────────────────── */
+@media(max-width:600px) {
+  /* Layout */
+  .section{padding:40px 1rem;}
+  .hero{padding:52px 1rem 60px;}
+  .three-col{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .nav-hamburger{display:flex;}
+  .nav-brand-sub{display:none;}
+  /* Programme tabs */
+  .prog-tabs{gap:4px;margin-bottom:24px;}
+  .prog-tab{padding:8px 10px;font-size:12px;letter-spacing:0;}
+  /* Timeline */
+  .tl-item{grid-template-columns:64px 1fr;gap:0 12px;padding:0 0 18px;}
+  .tl-time{font-size:11px;}
+  /* Archive */
+  .archive-head{gap:8px;}
+  .archive-year{font-size:1.1rem;min-width:38px;}
+  /* Member grid */
+  .members-grid{grid-template-columns:1fr 1fr;}
+  #member-search{max-width:100%!important;width:100%;}
+  /* Map */
+  #logistik-map{height:300px!important;}
+  /* Info rows */
+  .info-row{flex-wrap:wrap;gap:2px;}
+  /* Pub filters */
+  .pub-filter-btn{padding:5px 9px;font-size:11.5px;}
+  /* Chair timeline */
+  .chair-item{grid-template-columns:28px 1fr auto;gap:0 10px;padding:10px 12px;}
+  .chair-years{font-size:12px;}
+  /* Callouts */
+  .callout{padding:14px;}
+  /* Hero pills */
+  .hero-pills{flex-wrap:wrap;gap:6px;}
+}
+
+/* ── Mobile ≤420px (iPhone SE, narrow) ────────────────────────── */
+@media(max-width:420px) {
+  .section{padding:32px 14px;}
+  .hero{padding:40px 14px 48px;}
+  .prog-tab{padding:7px 7px;font-size:11px;}
+  .tl-item{grid-template-columns:56px 1fr;gap:0 10px;}
+  .members-grid{grid-template-columns:1fr;}
+  .arch-decade,.arch-country{padding:4px 7px;font-size:11px;}
+  .section-title{font-size:clamp(1.4rem,5vw,1.9rem);}
+  .section-label{font-size:10px;}
+  .card-grid{grid-template-columns:1fr;}
+}
+
+/* ── Footer ─────────────────────────────────────────────────────── */
+@media(max-width:900px){
+  .footer-inner{grid-template-columns:1fr 1fr;}
+  .footer-brand-col{grid-column:1/-1;}
+}
+
 </style>
 </head>
 <body>
@@ -369,7 +451,8 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
           <a href="#ueber"><span data-i18n="nav_about">Über den Ausschuss</span></a>
           <a href="#geschichte"><span data-i18n="nav_history">Geschichte des AGW</span></a>
           <div class="dropdown-sep"></div>
-          <a href="#mitglieder"><span data-i18n="nav_members">Mitgliederliste</span></a>
+          <a href="#mitglieder"><span data-i18n="nav_members">Mitgliederliste</span>
+          <span class="dropdown-item"><a href="#satzung" data-i18n="nav_satzung">Satzung</a></span></a>
         </div>
       </li>
     </ul>
@@ -400,6 +483,7 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
   <a href="#ueber" onclick="toggleMobileMenu()"><span data-i18n="nav_about">Über den Ausschuss</span></a>
   <a href="#geschichte" onclick="toggleMobileMenu()"><span data-i18n="nav_history">Geschichte des AGW</span></a>
   <a href="#mitglieder" onclick="toggleMobileMenu()"><span data-i18n="nav_members">Mitgliederliste</span></a>
+  <a href="#satzung" onclick="toggleMobileMenu()"><span data-i18n="nav_satzung">Satzung</span></a>
 </div>
 
 <!-- ── Hero ── -->
@@ -474,7 +558,7 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
           <div class="tl-time">09:00–09:15</div><div class="tl-dot"></div>
           <div class="tl-content">
             <div class="tl-title" data-i18n="prog_opening">Begrüßung</div>
-            <div class="tl-speaker">David Bieri (Virginia Tech) · Rainer Klump (AGW)</div>
+            <div class="tl-speaker"><a href="https://liberalarts.vt.edu/departments-and-schools/school-of-public-and-international-affairs/faculty/david-bieri.html" target="_blank" rel="noopener" class="speaker-link">David Bieri</a> (Virginia Tech) · <a href="https://www.wiwi.uni-frankfurt.de/en/departments/eq/professoren/translate-to-english-ls-klump/team/prof-dr-rainer-klump.html" target="_blank" rel="noopener" class="speaker-link">Rainer Klump</a> (AGW)</div>
           </div>
         </div>
         <div class="tl-item memorial">
@@ -488,7 +572,7 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
           <div class="tl-time">09:45–10:45</div><div class="tl-dot"></div>
           <div class="tl-content">
             <div class="tl-title"><em>Der Stand und die Zukunft der theoriegeschichtlichen Forschung</em></div>
-            <div class="tl-speaker">Hans-Michael Trautwein (Oldenburg) · Richard Sturn (Graz)</div>
+            <div class="tl-speaker"><a href="https://uol.de/en/vwl/international-economics-iw/prof-dr-trautwein" target="_blank" rel="noopener" class="speaker-link">Hans-Michael Trautwein</a> (Oldenburg) · <a href="https://finanzwissenschaft.uni-graz.at/en/institute/academic-staff/richard-sturn/" target="_blank" rel="noopener" class="speaker-link">Richard Sturn</a> (Graz)</div>
           </div>
         </div>
         <div class="tl-item"><div class="tl-time">10:45–11:15</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-break" data-i18n="prog_coffee">Kaffeepause</div></div></div>
@@ -496,14 +580,14 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
           <div class="tl-time">11:15–12:00</div><div class="tl-dot"></div>
           <div class="tl-content">
             <div class="tl-title"><em>Theoriegeschichte und Wissenschaftsphilosophie: Gedanken zum schlummernden Potenzial einer prekären Kooperation</em></div>
-            <div class="tl-speaker">Alexander Linsbichler (Linz)</div>
+            <div class="tl-speaker"><a href="https://www.jku.at/en/institute-of-philosophy-and-scientific-method/about-us/dr-alexander-linsbichler/" target="_blank" rel="noopener" class="speaker-link">Alexander Linsbichler</a> (Linz)</div>
           </div>
         </div>
         <div class="tl-item highlight">
           <div class="tl-time">12:00–12:45</div><div class="tl-dot"></div>
           <div class="tl-content">
             <div class="tl-title"><em>Inhalt und Grenzen der «philosophie économique»</em></div>
-            <div class="tl-speaker">Gilles Campagnolo (Paris)</div>
+            <div class="tl-speaker"><a href="https://www.researchgate.net/profile/Gilles-Campagnolo" target="_blank" rel="noopener" class="speaker-link">Gilles Campagnolo</a> (Paris)</div>
           </div>
         </div>
         <div class="tl-item"><div class="tl-time">12:45–14:00</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-break" data-i18n="prog_lunch">Mittagspause</div></div></div>
@@ -511,7 +595,7 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
           <div class="tl-time">14:00–14:45</div><div class="tl-dot"></div>
           <div class="tl-content">
             <div class="tl-title"><em>Worum geht es eigentlich? Zentrale Einsichten aus Gesprächen über die Theorie rationalen Entscheidens</em></div>
-            <div class="tl-speaker">Catherine Herfeld (Hannover)</div>
+            <div class="tl-speaker"><a href="https://www.philos.uni-hannover.de/en/about-us/people/herfeld" target="_blank" rel="noopener" class="speaker-link">Catherine Herfeld</a> (Hannover)</div>
           </div>
         </div>
         <div class="tl-item highlight">
@@ -526,7 +610,7 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
           <div class="tl-time">16:00–16:45</div><div class="tl-dot"></div>
           <div class="tl-content">
             <div class="tl-title"><em>Zwischen Freiburg und Michigan: Quantitative Textanalyse transnationaler Verbindungen in der ordoliberalen Tradition</em></div>
-            <div class="tl-speaker">Anselm Küsters (Berlin / Stuttgart)</div>
+            <div class="tl-speaker"><a href="https://www.lhlt.mpg.de/kuesters/en" target="_blank" rel="noopener" class="speaker-link">Anselm Küsters</a> (Berlin / Stuttgart)</div>
           </div>
         </div>
         <div class="tl-item social">
@@ -539,7 +623,7 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
         <div class="tl-item social">
           <div class="tl-time">ab 18:30</div><div class="tl-dot"></div>
           <div class="tl-content">
-            <div class="tl-title" data-i18n="prog_apericena">Apericena im Garten der Villa Maderni</div>
+            <div class="tl-title" data-i18n="prog_apericena">Apericena im Garten der Villa Maderni <a href="#logistik" style="color:inherit;text-decoration:underline dotted;text-underline-offset:2px;text-decoration-thickness:1px;font-size:11.5px;opacity:.75;">📍 Karte</a></div>
             <div class="tl-speaker" data-i18n="prog_apericena_venue">Palazzo des 18. Jh. · Steger Center</div>
             <div class="tl-note" data-i18n="prog_apericena_note">Regionale Tessiner Küche · ca. CHF 40 p.P. (Getränke exkl.)</div>
           </div>
@@ -554,7 +638,7 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
           <div class="tl-time">08:30–09:15</div><div class="tl-dot"></div>
           <div class="tl-content">
             <div class="tl-title"><em>Theorien des wissenschaftlichen Fortschritts und Geschichtsschreibung der Wirtschaftswissenschaften</em></div>
-            <div class="tl-speaker">Karl Milford (Wien)</div>
+            <div class="tl-speaker"><a href="https://homepage.univie.ac.at/karl.milford/" target="_blank" rel="noopener" class="speaker-link">Karl Milford</a> (Wien)</div>
           </div>
         </div>
         <div class="tl-item highlight">
@@ -591,7 +675,7 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
           <div class="tl-time">ab ca. 14:35</div><div class="tl-dot"></div>
           <div class="tl-content">
             <div class="tl-title" data-i18n="prog_excursion">Gruppenausflug Monte Generoso</div>
-            <div class="tl-speaker" data-i18n="prog_excursion_detail">Zahnradbahn ab Bahnhof Capolago (seit 1890) · Panorama auf vier Länder</div>
+            <div class="tl-speaker" data-i18n="prog_excursion_detail">Zahnradbahn ab Bahnhof Capolago <a href="https://www.google.com/maps/search/?api=1&query=Ferrovia+Monte+Generoso,+Capolago,+Switzerland" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline dotted;text-underline-offset:2px;text-decoration-thickness:1px;font-size:11.5px;opacity:.75;">📍 Karte ↗</a> (seit 1890) · Panorama auf vier Länder</div>
           </div>
         </div>
       </div>
@@ -609,7 +693,7 @@ body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:va
         <div class="card-header"><span data-i18n="tab_thu">Donnerstag, 25. Juni</span><span class="card-header-sub">19:30</span></div>
         <div class="card-body">
           <div class="card-title" data-i18n="prog_welcome_dinner">Willkommensabendessen</div>
-          <div class="card-text"><strong>Ristorante Cantinone</strong>, Piazza Cioccaro 8, Lugano.<br><br><span data-i18n="card_thu_note">Das Restaurant liegt direkt in der historischen Altstadt, an der Funicolare-Station, in unmittelbarer Nähe des empfohlenen Tagungshotels.</span></div>
+          <div class="card-text"><strong>Ristorante Cantinone</strong>, Piazza Cioccaro 8, Lugano. &nbsp;<a href="https://www.google.com/maps/search/?api=1&query=Ristorante+Cantinone,+Piazza+Cioccaro+8,+Lugano,+Switzerland" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline dotted;text-underline-offset:2px;text-decoration-thickness:1px;font-size:11.5px;opacity:.75;">📍 Karte ↗</a><br><br><span data-i18n="card_thu_note">Das Restaurant liegt direkt in der historischen Altstadt, an der Funicolare-Station, in unmittelbarer Nähe des empfohlenen Tagungshotels.</span></div>
         </div>
       </div>
       <div class="card">
