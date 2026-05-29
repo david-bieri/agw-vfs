@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Local dev notes (don't commit personal notes)
+NOTES.md
+TODO.md
+scratch/
+
+# If a Node build step is ever added (Phase 3 / SSG migration)
+node_modules/
+.env
+.env.local
+dist/
+.cache/

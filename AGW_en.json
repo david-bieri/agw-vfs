@@ -1,0 +1,843 @@
+{
+  "_meta": {
+    "document": "AGW Website — English Translation File",
+    "version": "1.0-draft",
+    "status": "DRAFT — awaiting editorial review",
+    "last_reviewed": null,
+    "reviewer": null,
+    "contact": "David Bieri <dbieri@vt.edu>",
+    "instructions": "Please review all entries marked review_status: REVIEW or FLAG. Preferred alternatives are listed in the 'alt' field. Add your choice to 'chosen' and sign off with your initials in 'reviewer'. Return to David Bieri when complete.",
+    "review_statuses": {
+      "SETTLED": "Translation agreed — no further review needed",
+      "REVIEW": "Requires domain-expert input before publication",
+      "DRAFT": "Preliminary translation, plausible but unverified",
+      "FLAG": "Known issue — specific guidance needed"
+    },
+    "publications_note": "PUBLICATIONS array: 40 confirmed volumes (I–XLII, missing XXXIII and XXXVIII). Editors now complete for 37/40 volumes based on catalog note: v. 5-6,9 Scherf; v. 7-8,10-11 Schefold; v. 12-15 Rieter; v. 16-19 Streissler; v. 20,22,25 C. Scheer; v. 21,23,26 Hagemann; v. 24,27-28,31-32 H.D. Kurz (v.32 co-ed. Caspari); v. 29-30 Trautwein; v. 36,41 Spahn; v. 37,39 Caspari. Volumes I, XL, XLII: editor not yet confirmed. Year confirmed: IV=1983, IX=1990, X=1991, XI=1992, XIII=1993, XIV=1995, XV=1996, XVI=1997, XXVIII=2014, XXXIX=2022."
+  },
+  "_glossary": {
+    "note": "Core terminology decisions. Each choice propagates to all strings using that term.",
+    "terms": {
+      "Dogmengeschichte": {
+        "chosen": null,
+        "review_status": "REVIEW",
+        "alt": [
+          "history of economic doctrines",
+          "doctrinal history of economics",
+          "history of economic thought"
+        ],
+        "note": "When contrasted with Theoriegeschichte, the term carries a more specific sense (analytical reconstruction of theoretical schools). ESHET uses 'history of economic thought' as umbrella; 'history of economic doctrines' distinguishes the doctrinal strand. Please advise on preferred scope."
+      },
+      "Theoriegeschichte": {
+        "chosen": null,
+        "review_status": "REVIEW",
+        "alt": [
+          "history of economic theories",
+          "history of economic thought",
+          "history of theoretical economics"
+        ],
+        "note": "Used in the AGW name and throughout. Narrower than Dogmengeschichte in German HET tradition. Does 'history of economic thought' adequately translate both, or should the pair be rendered distinctly?"
+      },
+      "Wirtschaftswissenschaften": {
+        "chosen": "economics",
+        "review_status": "REVIEW",
+        "alt": [
+          "economic science",
+          "economics and economic science",
+          "the economics discipline"
+        ],
+        "note": "The German term connotes a broader disciplinary scope than Anglo-American 'economics'. In the AGW committee name, the scope is explicitly historical. Please confirm whether 'economics' is sufficient or whether a qualifier is needed."
+      },
+      "Ausschuss": {
+        "chosen": "Committee",
+        "review_status": "REVIEW",
+        "alt": [
+          "Standing Committee",
+          "Working Group",
+          "Section"
+        ],
+        "note": "VfS website uses 'committee' on its own English pages. 'Standing committee' is more formal and accurate (ständiger Ausschuss). Recommend 'Committee' short form, 'Standing Committee' on first full reference."
+      },
+      "Jahrestagung": {
+        "chosen": "Annual Conference",
+        "review_status": "SETTLED",
+        "alt": [
+          "Annual Meeting",
+          "Annual Convention"
+        ],
+        "note": "Standard in anglophone academic economics societies."
+      },
+      "Schriften_des_VfS": {
+        "chosen": "Schriften des Vereins für Socialpolitik",
+        "review_status": "SETTLED",
+        "note": "Proper institutional name — retained in German. English subtitle added in parentheses where needed: '(Publications of the Verein für Socialpolitik)'."
+      },
+      "Studien_series": {
+        "chosen": "Studien zur Entwicklung der ökonomischen Theorie",
+        "review_status": "SETTLED",
+        "note": "Series title retained in German as proper name. English gloss: 'Studies in the Development of Economic Theory'."
+      },
+      "committee_full_name": {
+        "chosen": null,
+        "review_status": "FLAG",
+        "alt": [
+          "Committee for the History of Economics",
+          "Committee for the History of Economic Thought",
+          "Standing Committee on the History of Economics",
+          "Committee for the History of Economic Science"
+        ],
+        "note": "CRITICAL: This is the committee's official English name. Current site uses 'Committee for the History of Economics'. Please confirm whether this is the established VfS/AGW English self-designation or whether an alternative is preferred. This choice propagates to the hero eyebrow, about section, footer, and all citations."
+      }
+    }
+  },
+  "strings": {
+    "_nav": "── Navigation ─────────────────────────────────────────────",
+    "nav_brand_sub": {
+      "de": "Verein für Socialpolitik",
+      "en": "Verein für Socialpolitik",
+      "review_status": "SETTLED",
+      "note": "Institutional name retained in German."
+    },
+    "nav_conference": {
+      "de": "Jahrestagung 2026",
+      "en": "Annual Conference 2026",
+      "review_status": "SETTLED"
+    },
+    "nav_programme": {
+      "de": "Tagungsprogramm",
+      "en": "Academic Programme",
+      "review_status": "REVIEW",
+      "alt": [
+        "Scientific Programme",
+        "Conference Programme"
+      ],
+      "note": "Tagungsprogramm is the full academic schedule. 'Academic Programme' is standard in European conferences; 'Scientific Programme' also used in German academic context."
+    },
+    "nav_social": {
+      "de": "Rahmenprogramm",
+      "en": "Social Programme",
+      "review_status": "DRAFT",
+      "alt": [
+        "Accompanying Programme",
+        "Social Events"
+      ],
+      "note": "Rahmenprogramm literally 'framing programme'. 'Social Programme' is most natural in EN academic conference usage."
+    },
+    "nav_travel": {
+      "de": "Anreise & Logistik",
+      "en": "Travel & Logistics",
+      "review_status": "SETTLED"
+    },
+    "nav_archive": {
+      "de": "Archiv",
+      "en": "Archive",
+      "review_status": "SETTLED"
+    },
+    "nav_publications": {
+      "de": "Publikationen",
+      "en": "Publications",
+      "review_status": "SETTLED"
+    },
+    "nav_about_group": {
+      "de": "Über den AGW",
+      "en": "About AGW",
+      "review_status": "REVIEW",
+      "alt": [
+        "About the AGW",
+        "About the Committee"
+      ]
+    },
+    "nav_about": {
+      "de": "Über den Ausschuss",
+      "en": "About the Committee",
+      "review_status": "REVIEW",
+      "note": "See glossary: Ausschuss."
+    },
+    "nav_history": {
+      "de": "Geschichte des AGW",
+      "en": "History of the AGW",
+      "review_status": "SETTLED"
+    },
+    "nav_members": {
+      "de": "Mitgliederliste",
+      "en": "Members",
+      "review_status": "SETTLED"
+    },
+    "_hero": "── Hero section ───────────────────────────────────────────",
+    "hero_eyebrow": {
+      "de": "Ausschuss für die Geschichte der Wirtschaftswissenschaften · Jahrestagung 2026",
+      "en": "Committee for the History of Economics · Annual Conference 2026",
+      "review_status": "FLAG",
+      "note": "See glossary: committee_full_name and Wirtschaftswissenschaften."
+    },
+    "hero_pill_venue": {
+      "de": "Virginia Tech Steger Center · Riva San Vitale, Tessin",
+      "en": "Virginia Tech Steger Center · Riva San Vitale, Ticino",
+      "review_status": "SETTLED",
+      "note": "Tessin → Ticino (standard EN canton name)."
+    },
+    "hero_pill_days": {
+      "de": "Do–Sa · 3 Tage",
+      "en": "Thu–Sat · 3 Days",
+      "review_status": "SETTLED"
+    },
+    "hero_org_by": {
+      "de": "Veranstaltet vom",
+      "en": "Organised by",
+      "review_status": "SETTLED",
+      "alt": [
+        "Organized by"
+      ]
+    },
+    "hero_hosted_by": {
+      "de": "Ausgerichtet von",
+      "en": "Hosted by",
+      "review_status": "SETTLED"
+    },
+    "_subnav": "── Sub-navigation strip ────────────────────────────────",
+    "sub_programme": {
+      "de": "Tagungsprogramm",
+      "en": "Academic Programme",
+      "review_status": "REVIEW",
+      "note": "Same as nav_programme."
+    },
+    "sub_social": {
+      "de": "Rahmenprogramm",
+      "en": "Social Programme",
+      "review_status": "DRAFT"
+    },
+    "sub_travel": {
+      "de": "Anreise & Logistik",
+      "en": "Travel & Logistics",
+      "review_status": "SETTLED"
+    },
+    "_programme": "── Academic programme section ─────────────────────",
+    "sec_lbl_programme": {
+      "de": "Wissenschaftliches Programm",
+      "en": "Academic Programme",
+      "review_status": "REVIEW",
+      "alt": [
+        "Scientific Programme"
+      ]
+    },
+    "sec_ttl_programme": {
+      "de": "Tagungsprogramm",
+      "en": "Conference Programme",
+      "review_status": "SETTLED"
+    },
+    "tab_thu": {
+      "de": "Donnerstag, 25. Juni",
+      "en": "Thursday, 25 June",
+      "review_status": "SETTLED"
+    },
+    "tab_fri": {
+      "de": "Freitag, 26. Juni",
+      "en": "Friday, 26 June",
+      "review_status": "SETTLED"
+    },
+    "tab_sat": {
+      "de": "Samstag, 27. Juni",
+      "en": "Saturday, 27 June",
+      "review_status": "SETTLED"
+    },
+    "prog_welcome_dinner": {
+      "de": "Willkommensabendessen",
+      "en": "Welcome Dinner",
+      "review_status": "SETTLED"
+    },
+    "prog_welcome_note": {
+      "de": "Historische Altstadt · direkt an der Funicolare-Station",
+      "en": "Historic old town · next to the funicular station",
+      "review_status": "SETTLED"
+    },
+    "prog_opening": {
+      "de": "Begrüßung",
+      "en": "Opening / Welcome",
+      "review_status": "REVIEW",
+      "alt": [
+        "Welcome and Opening Remarks",
+        "Opening Session"
+      ]
+    },
+    "prog_memorial": {
+      "de": "Erinnerungen an drei verstorbene Ausschussmitglieder",
+      "en": "In Memoriam: Three Departed Members",
+      "review_status": "REVIEW",
+      "alt": [
+        "Remembrance of Three Deceased Members"
+      ]
+    },
+    "prog_coffee": {
+      "de": "Kaffeepause",
+      "en": "Coffee Break",
+      "review_status": "SETTLED"
+    },
+    "prog_lunch": {
+      "de": "Mittagspause",
+      "en": "Lunch Break",
+      "review_status": "SETTLED"
+    },
+    "prog_tour": {
+      "de": "Historischer Rundgang in Riva San Vitale (geführt, Deutsch)",
+      "en": "Historical Walking Tour of Riva San Vitale (guided, German)",
+      "review_status": "SETTLED"
+    },
+    "prog_tour_note": {
+      "de": "Täuferkapelle (9. Jh.) · Battistero San Giovanni (4./5. Jh.) · Santa Croce · Casa Bianchi (Mario Botta)",
+      "en": "Anabaptist Chapel (9th c.) · Battistero San Giovanni (4th/5th c.) · Santa Croce · Casa Bianchi (Mario Botta)",
+      "review_status": "SETTLED"
+    },
+    "prog_apericena": {
+      "de": "Apericena im Garten der Villa Maderni",
+      "en": "Apericena in the Gardens of Villa Maderni",
+      "review_status": "SETTLED",
+      "note": "'Apericena' retained as Italian term (aperitivo + cena), widely understood."
+    },
+    "prog_apericena_venue": {
+      "de": "Palazzo des 18. Jh. · Steger Center",
+      "en": "18th-century palazzo · Steger Center",
+      "review_status": "SETTLED"
+    },
+    "prog_apericena_note": {
+      "de": "Regionale Tessiner Küche · ca. CHF 40 p.P. (Getränke exkl.)",
+      "en": "Regional Ticino cuisine · approx. CHF 40 p.p. (drinks excl.)",
+      "review_status": "SETTLED"
+    },
+    "prog_assembly": {
+      "de": "Mitgliederversammlung",
+      "en": "Members' Assembly",
+      "review_status": "REVIEW",
+      "alt": [
+        "General Assembly",
+        "Members' Meeting",
+        "Business Meeting"
+      ]
+    },
+    "prog_assembly_note": {
+      "de": "Nur für Mitglieder des Ausschusses",
+      "en": "Members of the committee only",
+      "review_status": "SETTLED"
+    },
+    "prog_excursion": {
+      "de": "Gruppenausflug Monte Generoso",
+      "en": "Group Excursion: Monte Generoso",
+      "review_status": "SETTLED"
+    },
+    "prog_excursion_detail": {
+      "de": "Zahnradbahn ab Bahnhof Capolago (seit 1890) · Panorama auf vier Länder",
+      "en": "Rack railway from Capolago station (since 1890) · Panoramic view over four countries",
+      "review_status": "SETTLED"
+    },
+    "_social": "── Social programme section ──────────────────────────",
+    "sec_lbl_social": {
+      "de": "Rahmenprogramm",
+      "en": "Social Programme",
+      "review_status": "DRAFT"
+    },
+    "sec_ttl_social": {
+      "de": "Gesellschaftliches Programm",
+      "en": "Social Events",
+      "review_status": "REVIEW",
+      "alt": [
+        "Social Programme",
+        "Accompanying Programme"
+      ]
+    },
+    "card_thu_day": {
+      "de": "Donnerstag, 25. Juni",
+      "en": "Thursday, 25 June",
+      "review_status": "SETTLED"
+    },
+    "card_thu_title": {
+      "de": "Willkommensabendessen",
+      "en": "Welcome Dinner",
+      "review_status": "SETTLED"
+    },
+    "card_thu_note": {
+      "de": "Das Restaurant liegt direkt in der historischen Altstadt, an der Funicolare-Station, in unmittelbarer Nähe des empfohlenen Tagungshotels.",
+      "en": "The restaurant is located in the historic old town, adjacent to the funicular station, steps from the recommended conference hotel.",
+      "review_status": "SETTLED"
+    },
+    "card_fri_day": {
+      "de": "Freitag, 26. Juni",
+      "en": "Friday, 26 June",
+      "review_status": "SETTLED"
+    },
+    "card_fri1_title": {
+      "de": "Historischer Rundgang Riva San Vitale",
+      "en": "Historical Walking Tour",
+      "review_status": "SETTLED"
+    },
+    "card_fri1_note": {
+      "de": "Anschluss: Apericena ab 18:30 in der Villa Maderni",
+      "en": "Followed by: Apericena from 18:30 at Villa Maderni",
+      "review_status": "SETTLED"
+    },
+    "card_fri2_title": {
+      "de": "Apericena in der Villa Maderni",
+      "en": "Apericena at Villa Maderni",
+      "review_status": "SETTLED"
+    },
+    "card_sat_day": {
+      "de": "Samstag, 27. Juni",
+      "en": "Saturday, 27 June",
+      "review_status": "SETTLED"
+    },
+    "card_sat_title": {
+      "de": "Gruppenausflug Monte Generoso",
+      "en": "Group Excursion: Monte Generoso",
+      "review_status": "SETTLED"
+    },
+    "card_sat_note": {
+      "de": "Abfahrt nach Mitgliederversammlung · festes Schuhwerk empfohlen",
+      "en": "After Members' Assembly · sturdy footwear recommended",
+      "review_status": "SETTLED"
+    },
+    "lbl_partner": {
+      "de": "Partnerprogramm",
+      "en": "Partner Programme",
+      "review_status": "REVIEW",
+      "alt": [
+        "Accompanying Persons' Programme",
+        "Partner Activities"
+      ]
+    },
+    "ttl_partner": {
+      "de": "Ausflugsmöglichkeiten für Begleitpersonen",
+      "en": "Activities for Accompanying Guests",
+      "review_status": "REVIEW",
+      "alt": [
+        "Excursions for Accompanying Persons"
+      ]
+    },
+    "partner_hesse": {
+      "de": "Montagnola · tägl. 10:30–17:30 · mit Ticino Ticket freier Eintritt.",
+      "en": "Montagnola · daily 10:30–17:30 · free entry with Ticino Ticket.",
+      "review_status": "SETTLED"
+    },
+    "partner_lugano_ttl": {
+      "de": "Schifffahrt Luganersee",
+      "en": "Lake Lugano Boat Trips",
+      "review_status": "SETTLED"
+    },
+    "partner_lugano": {
+      "de": "Navigazione del Lago di Lugano. Rundfahrten auf dem Luganersee.",
+      "en": "Navigazione del Lago di Lugano. Cruises on Lake Lugano.",
+      "review_status": "SETTLED"
+    },
+    "partner_bre": {
+      "de": "Aussichtsberg über Lugano mit weitem Panorama.",
+      "en": "Viewpoint hill above Lugano with sweeping panorama.",
+      "review_status": "SETTLED"
+    },
+    "partner_verita": {
+      "de": "Museum Casa Anatta · Zentrum der deutschen Lebensreformbewegung.",
+      "en": "Museum Casa Anatta · historic centre of the German life-reform movement.",
+      "review_status": "DRAFT",
+      "note": "Lebensreformbewegung: 'life-reform movement' is established EN term for this phenomenon."
+    },
+    "_travel": "── Travel & Logistics section ────────────────────────",
+    "sec_lbl_travel": {
+      "de": "Anreise & Logistik vor Ort",
+      "en": "Travel & Local Logistics",
+      "review_status": "SETTLED"
+    },
+    "sec_ttl_travel": {
+      "de": "Anreise & Aufenthalt",
+      "en": "Travel & Accommodation",
+      "review_status": "SETTLED"
+    },
+    "ticino_title": {
+      "de": "Ticino Ticket",
+      "en": "Ticino Ticket",
+      "review_status": "SETTLED",
+      "note": "Proper name retained."
+    },
+    "ticino_text": {
+      "de": "Alle Hotelgäste im Tessin erhalten beim Check-in automatisch und kostenlos das Ticino Ticket: gültig für TILO, PostAuto und Stadtbusse — inklusive der Strecke Lugano–Capolago. Auch: freier Eintritt ins Museo Hermann Hesse, Vergünstigungen bei weiteren Attraktionen.",
+      "en": "All hotel guests in Ticino receive the Ticino Ticket free of charge at check-in: valid for TILO, PostAuto, and city buses — including the Lugano–Capolago route. Also: free entry to the Hermann Hesse Museum and discounts at other attractions.",
+      "review_status": "SETTLED"
+    },
+    "ttl_accommodation": {
+      "de": "Unterkunft in Lugano",
+      "en": "Accommodation in Lugano",
+      "review_status": "SETTLED"
+    },
+    "badge_recommended": {
+      "de": "Empfohlen",
+      "en": "Recommended",
+      "review_status": "SETTLED"
+    },
+    "badge_dinner_near": {
+      "de": "Willkommensessen nebenan",
+      "en": "Dinner venue nearby",
+      "review_status": "SETTLED"
+    },
+    "badge_no_train": {
+      "de": "Kein Zug nötig",
+      "en": "No train needed",
+      "review_status": "SETTLED"
+    },
+    "hotel_svizzero_addr": {
+      "de": "Capolago · ~10 Min. zu Fuß zur Villa",
+      "en": "Capolago · ~10 min walk to venue",
+      "review_status": "SETTLED"
+    },
+    "ticino_box_note": {
+      "de": "Alle Gäste erhalten das Ticino Ticket beim Hotel-Check-in — die Bahnfahrt Lugano ↔ Capolago ist damit kostenlos.",
+      "en": "All guests receive the Ticino Ticket at hotel check-in — the Lugano ↔ Capolago train journey is therefore free of charge.",
+      "review_status": "SETTLED"
+    },
+    "ttl_train": {
+      "de": "Anreise per Bahn",
+      "en": "Getting There by Train",
+      "review_status": "SETTLED"
+    },
+    "ts1_label": {
+      "de": "TILO S10: Bahnhof Lugano → Capolago-Riva San Vitale",
+      "en": "TILO S10: Lugano HB → Capolago-Riva San Vitale",
+      "review_status": "SETTLED"
+    },
+    "ts1_detail": {
+      "de": "Alle 30 Min. · Fahrtdauer ca. 15 Min.",
+      "en": "Every 30 min · Journey time approx. 15 min.",
+      "review_status": "SETTLED"
+    },
+    "ts2_label": {
+      "de": "Fußweg zum Steger Center",
+      "en": "Walk to Steger Center",
+      "review_status": "SETTLED"
+    },
+    "ts2_detail": {
+      "de": "ca. 750 m · 10–12 Minuten ab Bahnhof Capolago",
+      "en": "approx. 750 m · 10–12 min from Capolago station",
+      "review_status": "SETTLED"
+    },
+    "train_times_hdr": {
+      "de": "Empfohlene Abfahrzeiten",
+      "en": "Recommended Departure Times",
+      "review_status": "SETTLED"
+    },
+    "train_fri": {
+      "de": "Abfahrt HB Lugano 08:12 (Beginn 09:00)",
+      "en": "Depart Lugano HB 08:12 (9:00 start)",
+      "review_status": "SETTLED"
+    },
+    "train_sat": {
+      "de": "Abfahrt HB Lugano 07:42 (Beginn 08:30)",
+      "en": "Depart Lugano HB 07:42 (8:30 start)",
+      "review_status": "SETTLED"
+    },
+    "train_timetable": {
+      "de": "Fahrplan",
+      "en": "Timetable",
+      "review_status": "SETTLED"
+    },
+    "train_free_note": {
+      "de": "Ticino Ticket: Die Bahnfahrt Lugano ↔ Capolago ist mit dem Ticino Ticket kostenlos — kein separates Ticket nötig.",
+      "en": "Ticino Ticket: the Lugano ↔ Capolago train journey is free of charge — no separate ticket needed.",
+      "review_status": "SETTLED"
+    },
+    "venue_address_lbl": {
+      "de": "Adresse",
+      "en": "Address",
+      "review_status": "SETTLED"
+    },
+    "venue_building_lbl": {
+      "de": "Gebäude",
+      "en": "Building",
+      "review_status": "SETTLED"
+    },
+    "venue_building_val": {
+      "de": "Villa Maderni, Palazzo des 18. Jahrhunderts",
+      "en": "Villa Maderni, 18th-century palazzo",
+      "review_status": "SETTLED"
+    },
+    "_archive": "── Archive section ───────────────────────────────────",
+    "sec_lbl_archive": {
+      "de": "Konferenzarchiv",
+      "en": "Conference Archive",
+      "review_status": "SETTLED"
+    },
+    "sec_ttl_archive": {
+      "de": "Frühere Jahrestagungen",
+      "en": "Previous Annual Conferences",
+      "review_status": "SETTLED"
+    },
+    "sec_intro_archive": {
+      "de": "Der AGW trifft sich jährlich zu seiner Jahrestagung. Nachfolgend ein Überblick über zurückliegende Konferenzen mit Programmen und ausgewählten Beiträgen.",
+      "en": "The AGW holds an annual conference. Below is an overview of past conferences with programmes and selected contributions.",
+      "review_status": "DRAFT"
+    },
+    "arch_view": {
+      "de": "Programm ansehen",
+      "en": "View Programme",
+      "review_status": "SETTLED"
+    },
+    "arch_papers": {
+      "de": "Ausgewählte Beiträge",
+      "en": "Selected Papers",
+      "review_status": "SETTLED"
+    },
+    "arch_upload": {
+      "de": "Beitrag einreichen",
+      "en": "Submit Paper",
+      "review_status": "SETTLED"
+    },
+    "arch_upload_note": {
+      "de": "Beiträge werden nach Rücksprache mit dem Vorsitzenden aufgenommen.",
+      "en": "Papers are added following consultation with the chair.",
+      "review_status": "SETTLED"
+    },
+    "_publications": "── Publications section ──────────────────────────",
+    "sec_lbl_pub": {
+      "de": "Publikationen",
+      "en": "Publications",
+      "review_status": "SETTLED"
+    },
+    "sec_ttl_pub": {
+      "de": "Konferenzbände",
+      "en": "Conference Volumes",
+      "review_status": "REVIEW",
+      "alt": [
+        "Edited Volumes",
+        "Conference Publications"
+      ]
+    },
+    "pub_series_lbl": {
+      "de": "Reiheninformation",
+      "en": "Series Information",
+      "review_status": "SETTLED"
+    },
+    "pub_all_link": {
+      "de": "Alle Bände beim Verlag ↗",
+      "en": "All volumes at publisher ↗",
+      "review_status": "SETTLED"
+    },
+    "pub_filter_all": {
+      "de": "Alle",
+      "en": "All",
+      "review_status": "SETTLED"
+    },
+    "pub_toc_placeholder": {
+      "de": "Inhaltsverzeichnis wird ergänzt.",
+      "en": "Table of contents to be added.",
+      "review_status": "SETTLED"
+    },
+    "pub_no_results": {
+      "de": "Keine Bände gefunden",
+      "en": "No volumes found",
+      "review_status": "SETTLED"
+    },
+    "pub_cite_lbl": {
+      "de": "Zitieren",
+      "en": "Cite",
+      "review_status": "SETTLED"
+    },
+    "pub_toc_lbl": {
+      "de": "Inhalt",
+      "en": "Contents",
+      "review_status": "SETTLED"
+    },
+    "pub_download": {
+      "de": "Herunterladen",
+      "en": "Download",
+      "review_status": "SETTLED"
+    },
+    "pub_copy": {
+      "de": "Kopieren",
+      "en": "Copy",
+      "review_status": "SETTLED"
+    },
+    "pub_copied": {
+      "de": "Kopiert",
+      "en": "Copied",
+      "review_status": "SETTLED"
+    },
+    "pub_publisher_lbl": {
+      "de": "Verlag ↗",
+      "en": "Publisher ↗",
+      "review_status": "SETTLED"
+    },
+    "pub_band_lbl": {
+      "de": "Band 115/",
+      "en": "Vol. 115/",
+      "review_status": "SETTLED"
+    },
+    "_about": "── About the Committee ── [EDITORIAL PRIORITY] ─────────",
+    "sec_lbl_about": {
+      "de": "Über den Ausschuss",
+      "en": "About the Committee",
+      "review_status": "REVIEW"
+    },
+    "sec_ttl_about": {
+      "de": "Über den Ausschuss",
+      "en": "About the Committee",
+      "review_status": "REVIEW",
+      "note": "See glossary: Ausschuss."
+    },
+    "about_p1": {
+      "de": "Der Ausschuss für die Geschichte der Wirtschaftswissenschaften (AGW) ist der ständige Ausschuss für Theoriegeschichte und Dogmengeschichte im Rahmen des Vereins für Socialpolitik (VfS), der größten deutschsprachigen Gesellschaft für Wirtschaftswissenschaften.",
+      "en": "The <strong>Committee for the History of Economics (AGW)</strong> is the standing committee for the history of economic thought and the history of doctrines within the Verein für Socialpolitik (VfS), the largest German-language economics association.",
+      "review_status": "FLAG",
+      "note": "Uses committee_full_name and Wirtschaftswissenschaften — both flagged in glossary. Also: 'Dogmengeschichte' rendered as 'history of doctrines' here; review against glossary decision."
+    },
+    "about_p2": {
+      "de": "Der Ausschuss versteht sich als wissenschaftliche Plattform, die Ökonominnen und Ökonomen aus dem deutschen, österreichischen und schweizerischen Hochschulraum sowie aus benachbarten Ländern zusammenführt, die sich mit den methodischen, philosophischen, ideengeschichtlichen und historischen Dimensionen der Wirtschaftswissenschaften befassen.",
+      "en": "The committee serves as a scholarly platform bringing together economists from German, Austrian, and Swiss higher education institutions — as well as neighbouring countries — who work on the methodological, philosophical, intellectual-historical, and historical dimensions of economics.",
+      "review_status": "REVIEW",
+      "note": "Note: 'ideengeschichtlichen' rendered as 'intellectual-historical'. Alternative: 'history-of-ideas'. Please confirm."
+    },
+    "about_p3": {
+      "de": "Die jährliche Tagung bildet das Herzstück der Ausschusstätigkeit. Sie bietet ein Forum für Forschungsdiskussionen, für die Begegnung zwischen Nachwuchs und erfahrenen Forscherinnen sowie für den internationalen Austausch über die Theoriegeschichte als Disziplin.",
+      "en": "The annual conference is the centrepiece of the committee's activity. It provides a forum for research discussions, for dialogue between emerging and established scholars, and for international exchange on the history of economic thought as a discipline.",
+      "review_status": "REVIEW",
+      "note": "Theoriegeschichte rendered as 'history of economic thought' here. See glossary."
+    },
+    "about_p4": {
+      "de": "Der AGW ist Mitglied im internationalen Netzwerk historisch-ökonomischer Gesellschaften, darunter die European Society for the History of Economic Thought (ESHET) und die History of Economics Society (HES).",
+      "en": "The AGW is part of the international network of history-of-economics societies, including the <strong>European Society for the History of Economic Thought (ESHET)</strong> and the <strong>History of Economics Society (HES)</strong>.",
+      "review_status": "SETTLED"
+    },
+    "about_pullquote": {
+      "de": "Die Geschichte ökonomischer Ideen ist kein Selbstzweck — sie öffnet den Blick für das, was Ökonomie sein könnte.",
+      "en": "The history of economic ideas is not an end in itself — it opens our eyes to what economics could be.",
+      "review_status": "REVIEW",
+      "note": "Pull quote — high visibility. Please review translation of the aphoristic register."
+    },
+    "contact_title": {
+      "de": "Kontakt & Organisation",
+      "en": "Contact & Organisation",
+      "review_status": "SETTLED"
+    },
+    "contact_chair_lbl": {
+      "de": "Vorsitzender",
+      "en": "Chair",
+      "review_status": "SETTLED"
+    },
+    "contact_parent_lbl": {
+      "de": "Dachorganisation",
+      "en": "Parent body",
+      "review_status": "SETTLED",
+      "alt": [
+        "Parent organisation"
+      ]
+    },
+    "contact_page_lbl": {
+      "de": "Ausschuss-Seite",
+      "en": "Committee page",
+      "review_status": "SETTLED"
+    },
+    "membership_title": {
+      "de": "Mitgliedschaft",
+      "en": "Membership",
+      "review_status": "SETTLED"
+    },
+    "membership_text": {
+      "de": "Interessierte Wissenschaftlerinnen und Wissenschaftler wenden sich bitte an den Vorsitzenden oder an die VfS-Geschäftsstelle.",
+      "en": "Researchers interested in joining the committee should contact the chair or the VfS office directly.",
+      "review_status": "SETTLED"
+    },
+    "_history": "── History section ── [EDITORIAL PRIORITY] ───────────",
+    "sec_lbl_history": {
+      "de": "Geschichte",
+      "en": "History",
+      "review_status": "SETTLED"
+    },
+    "sec_ttl_history": {
+      "de": "Zur Geschichte des AGW",
+      "en": "History of the AGW",
+      "review_status": "SETTLED"
+    },
+    "hist_p1": {
+      "de": "Der Ausschuss für die Geschichte der Wirtschaftswissenschaften (AGW) entstand als institutionelle Heimat für Forscherinnen und Forscher, die innerhalb des Vereins für Socialpolitik die Beschäftigung mit der Geschichte des ökonomischen Denkens als eigenständige wissenschaftliche Praxis verankern wollten.",
+      "en": "The Committee for the History of Economics (AGW) was established as an institutional home for researchers within the Verein für Socialpolitik who wished to anchor the history of economic thought as a recognised scholarly practice.",
+      "review_status": "FLAG",
+      "note": "Uses committee_full_name — see glossary."
+    },
+    "hist_p2": {
+      "de": "Die Jahrestagungen des AGW haben sich im Laufe der Zeit zu einem wichtigen Forum für die deutsch- und europäischsprachige Forschung zur Theoriegeschichte, Dogmengeschichte und Wissenschaftsphilosophie der Ökonomik entwickelt.",
+      "en": "Over the years, the AGW's annual conferences have become an important forum for German- and European-language research in the history of theories, the history of doctrines, and the philosophy of economics.",
+      "review_status": "FLAG",
+      "note": "Renders Theoriegeschichte and Dogmengeschichte as distinct terms — see glossary for whether this distinction should be maintained in English."
+    },
+    "hist_p3": {
+      "de": "Zu den Gründungsanliegen des Ausschusses zählt die Pflege des Dialogs zwischen einer auf Ideengeschichte ausgerichteten Ökonomik und benachbarten Disziplinen wie der Wissenschaftsphilosophie, der Ideengeschichte und der Wirtschaftsgeschichte.",
+      "en": "Among the committee's founding concerns is the cultivation of dialogue between an economics oriented toward the history of ideas and neighbouring disciplines such as philosophy of science, intellectual history, and economic history.",
+      "review_status": "REVIEW"
+    },
+    "hist_p4": {
+      "de": "Der AGW pflegt enge Beziehungen zu den internationalen Schwestergesellschaften ESHET und HES sowie zu weiteren nationalen Vereinigungen im deutsch- und europäischsprachigen Raum.",
+      "en": "The AGW maintains close ties with the international sister societies ESHET and HES, as well as with other national associations in the German- and European-language scholarly community.",
+      "review_status": "SETTLED"
+    },
+    "hist_note_title": {
+      "de": "Hinweis zur Geschichte",
+      "en": "Note on History",
+      "review_status": "SETTLED"
+    },
+    "hist_note_text": {
+      "de": "Dieser Abschnitt wird laufend ergänzt. Mitglieder, die zur Geschichte des Ausschusses beitragen möchten, wenden sich bitte an den Vorsitzenden.",
+      "en": "This section is being updated continuously. Members wishing to contribute to the history of the committee should contact the chair.",
+      "review_status": "SETTLED"
+    },
+    "_members": "── Members section ───────────────────────────────────",
+    "sec_lbl_members": {
+      "de": "Mitglieder",
+      "en": "Members",
+      "review_status": "SETTLED"
+    },
+    "sec_ttl_members": {
+      "de": "Mitgliederliste",
+      "en": "Members of the AGW",
+      "review_status": "SETTLED"
+    },
+    "mbr_chair": {
+      "de": "Vorsitzender",
+      "en": "Chair",
+      "review_status": "SETTLED"
+    },
+    "mbr_host2026": {
+      "de": "Gastgeber 2026",
+      "en": "2026 Host",
+      "review_status": "SETTLED"
+    },
+    "mbr_search": {
+      "de": "Mitglieder suchen…",
+      "en": "Search members…",
+      "review_status": "SETTLED"
+    },
+    "_footer": "── Footer ────────────────────────────────────────────",
+    "footer_desc": {
+      "de": "Ständiger Ausschuss für Theoriegeschichte und Dogmengeschichte im",
+      "en": "Standing committee for the history of economic thought within the",
+      "review_status": "FLAG",
+      "note": "Uses Theoriegeschichte and Dogmengeschichte — see glossary."
+    },
+    "footer_hosted": {
+      "de": "Jahrestagung 2026 ausgerichtet von Dr. David Bieri,",
+      "en": "Annual Conference 2026 hosted by Dr. David Bieri,",
+      "review_status": "SETTLED"
+    },
+    "footer_col_conf": {
+      "de": "Jahrestagung 2026",
+      "en": "Annual Conference 2026",
+      "review_status": "SETTLED"
+    },
+    "footer_col_about": {
+      "de": "Über den AGW",
+      "en": "About AGW",
+      "review_status": "REVIEW"
+    },
+    "footer_updated": {
+      "de": "Stand: Mai 2026 · Änderungen vorbehalten",
+      "en": "Updated: May 2026 · Subject to change",
+      "review_status": "SETTLED"
+    },
+    "pub_bib_download": {
+      "de": "Gesamtbibliographie (.bib) ↓",
+      "en": "Complete Bibliography (.bib) ↓",
+      "review_status": "SETTLED"
+    }
+  }
+}

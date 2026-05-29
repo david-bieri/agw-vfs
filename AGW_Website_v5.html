@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGW – Ausschuss für die Geschichte der Wirtschaftswissenschaften</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1B3A6B;--navy-dark:#122852;--navy-mid:#24477F;--accent:#3A6BAF;--accent-pale:#EAF0F8;--gold:#B8860B;--gold-light:#F5EED0;--cream:#FAFAF7;--white:#FFFFFF;--text-dark:#1C1C1E;--text-body:#2C2C30;--text-muted:#6B7280;--text-faint:#9CA3AF;--border:#DDE2EA;--border-light:#EEF1F5;--green:#4A7C59;--green-pale:#EAF2EC;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:'Source Sans 3',sans-serif;color:var(--text-body);background:var(--cream);line-height:1.65;}
+
+/* ── Nav ── */
+.nav{position:sticky;top:0;z-index:200;background:var(--navy-dark);border-bottom:1px solid rgba(255,255,255,0.07);}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;height:56px;padding:0 1.5rem;gap:0;}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:8px;flex-shrink:0;}
+.nav-brand-primary{font-family:'EB Garamond',serif;font-size:15px;font-weight:500;color:rgba(255,255,255,0.92);letter-spacing:0.02em;}
+.nav-brand-sep{width:1px;height:18px;background:rgba(255,255,255,0.18);}
+.nav-brand-sub{font-size:11px;color:rgba(255,255,255,0.45);letter-spacing:0.07em;text-transform:uppercase;}
+.nav-links{display:flex;list-style:none;flex:1;}
+.nav-item{position:relative;}
+.nav-item>a{display:flex;align-items:center;gap:4px;padding:0 14px;height:56px;font-size:13px;font-weight:500;color:rgba(255,255,255,0.65);text-decoration:none;letter-spacing:0.02em;transition:color .2s,background .2s;white-space:nowrap;border-bottom:2px solid transparent;}
+.nav-item>a:hover,.nav-item.active>a{color:#fff;background:rgba(255,255,255,0.05);}
+.nav-item>a .caret{font-size:9px;opacity:.6;transition:transform .2s;}
+.nav-item:hover>a .caret{transform:rotate(180deg);}
+/* Dropdown */
+.dropdown{position:absolute;top:56px;left:0;background:var(--navy-dark);border:1px solid rgba(255,255,255,0.12);border-top:2px solid var(--accent);border-radius:0 0 8px 8px;min-width:200px;padding:6px 0;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .2s,transform .2s,visibility .2s;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,0.3);}
+.nav-item:hover .dropdown{opacity:1;visibility:visible;transform:translateY(0);}
+.dropdown a{display:block;padding:9px 18px;font-size:13px;color:rgba(255,255,255,0.65);text-decoration:none;transition:color .15s,background .15s;}
+.dropdown a:hover{color:#fff;background:rgba(255,255,255,0.06);}
+.dropdown-sep{height:1px;background:rgba(255,255,255,0.08);margin:4px 0;}
+/* Nav right actions */
+.nav-actions{display:flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0;}
+.lang-toggle{display:flex;align-items:center;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:4px 2px;gap:0;cursor:pointer;font-family:'Source Sans 3',sans-serif;}
+.lang-btn{padding:3px 9px;font-size:11px;font-weight:600;letter-spacing:0.06em;color:rgba(255,255,255,0.45);border-radius:100px;transition:background .15s,color .15s;border:none;background:none;cursor:pointer;font-family:inherit;}
+.lang-btn.active{background:rgba(255,255,255,0.18);color:#fff;}
+.nav-vfs{display:flex;align-items:center;gap:4px;padding:5px 12px;background:var(--accent);border-radius:100px;font-size:12px;font-weight:600;color:#fff;text-decoration:none;letter-spacing:0.04em;transition:background .2s;margin-left:4px;}
+.nav-vfs:hover{background:var(--navy-mid);}
+/* Hamburger */
+.nav-hamburger{display:none;flex-direction:column;gap:4px;background:none;border:none;cursor:pointer;padding:8px;margin-left:8px;}
+.nav-hamburger span{display:block;width:20px;height:1.5px;background:rgba(255,255,255,0.7);transition:all .2s;}
+.mobile-menu{display:none;position:fixed;inset:56px 0 0;background:var(--navy-dark);z-index:190;overflow-y:auto;padding:16px 0;}
+.mobile-menu.open{display:block;}
+.mobile-menu a{display:block;padding:11px 24px;font-size:14px;color:rgba(255,255,255,0.7);text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.06);}
+.mobile-menu a:hover{color:#fff;background:rgba(255,255,255,0.05);}
+.mobile-menu-group{padding:8px 24px 4px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);}
+
+/* ── Hero ── */
+.hero{background:var(--navy);color:#fff;padding:76px 1.5rem 84px;overflow:hidden;position:relative;}
+.hero::after{content:'';position:absolute;right:-100px;top:-100px;width:500px;height:500px;border-radius:50%;background:rgba(58,107,175,0.12);pointer-events:none;}
+.hero-inner{max-width:1200px;margin:0 auto;position:relative;}
+.hero-rule{width:40px;height:2px;background:var(--gold);margin-bottom:24px;}
+.hero-eyebrow{font-size:12px;font-weight:600;letter-spacing:0.13em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:14px;}
+.hero-title{font-family:'EB Garamond',serif;font-size:clamp(1.9rem,3.8vw,3rem);font-weight:500;line-height:1.2;color:#fff;max-width:800px;margin-bottom:28px;}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px;}
+.pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);border-radius:100px;padding:6px 14px;font-size:13px;color:rgba(255,255,255,0.88);}
+.hero-orgs{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-top:32px;border-top:1px solid rgba(255,255,255,0.12);font-size:12px;color:rgba(255,255,255,0.38);letter-spacing:0.05em;text-transform:uppercase;}
+.hero-orgs a{color:rgba(255,255,255,0.6);text-decoration:none;transition:color .2s;}
+.hero-orgs a:hover{color:#fff;}
+.hero-orgs-sep{width:1px;height:12px;background:rgba(255,255,255,0.15);}
+
+/* ── Shared sections ── */
+.section{padding:68px 1.5rem;}
+.section-alt{background:var(--white);}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-label{font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.section-title{font-family:'EB Garamond',serif;font-size:clamp(1.65rem,2.8vw,2.4rem);font-weight:500;color:var(--navy);line-height:1.25;margin-bottom:36px;}
+.section-intro{font-size:16px;color:var(--text-muted);max-width:620px;line-height:1.7;margin-bottom:36px;}
+.gold-rule{width:32px;height:2px;background:var(--gold);margin:0 0 12px;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+@media(max-width:900px){.two-col{grid-template-columns:1fr;gap:28px;}.three-col{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.three-col{grid-template-columns:1fr;}.nav-links{display:none;}.nav-hamburger{display:flex;}.nav-brand-sub{display:none;}}
+
+/* ── Programme tabs ── */
+.prog-tabs{display:flex;border-bottom:1.5px solid var(--border);margin-bottom:36px;}
+.prog-tab{padding:10px 22px 12px;font-size:14px;font-weight:500;color:var(--text-muted);cursor:pointer;border:none;background:none;border-bottom:2.5px solid transparent;margin-bottom:-1.5px;transition:color .2s,border-color .2s;font-family:'Source Sans 3',sans-serif;}
+.prog-tab:hover{color:var(--navy);}
+.prog-tab.active{color:var(--navy);border-bottom-color:var(--navy);}
+.prog-day{display:none;}
+.prog-day.active{display:block;}
+
+/* ── Timeline ── */
+.timeline{display:flex;flex-direction:column;}
+.tl-item{display:grid;grid-template-columns:88px 1fr;gap:0 22px;padding:0 0 22px;position:relative;}
+.tl-item:not(:last-child)::before{content:'';position:absolute;left:calc(88px + 22px - 5px);top:10px;bottom:0;width:1px;background:var(--border-light);}
+.tl-time{font-size:12px;font-weight:500;color:var(--text-faint);text-align:right;padding-top:2px;white-space:nowrap;}
+.tl-dot{position:absolute;left:calc(88px + 22px - 9px);top:5px;width:9px;height:9px;border-radius:50%;background:var(--border);border:1.5px solid var(--cream);}
+.tl-item.highlight .tl-dot{background:var(--accent);}
+.tl-item.social .tl-dot{background:var(--green);}
+.tl-content{padding-left:16px;}
+.tl-title{font-size:14.5px;font-weight:500;color:var(--text-dark);line-height:1.4;margin-bottom:2px;}
+.tl-title em{font-family:'EB Garamond',serif;font-style:italic;font-weight:400;font-size:15.5px;}
+.tl-speaker{font-size:13px;color:var(--text-muted);}
+.tl-note{font-size:12.5px;color:var(--text-faint);margin-top:3px;font-style:italic;}
+.tl-break{font-size:13px;color:var(--text-faint);font-style:italic;}
+.tl-item.memorial .tl-content{background:#FEF9EF;border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:9px 14px;margin-left:-4px;}
+.tl-item.opening .tl-content{background:var(--accent-pale);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:9px 14px;margin-left:-4px;}
+.tl-item.social .tl-content{background:#EDF4EF;border-left:3px solid var(--green);border-radius:0 6px 6px 0;padding:9px 14px;margin-left:-4px;}
+.tl-item.assembly .tl-content{background:#F4F2FB;border-left:3px solid #7B68C8;border-radius:0 6px 6px 0;padding:9px 14px;margin-left:-4px;}
+
+/* ── Cards ── */
+.card{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.card-header{background:var(--navy);color:rgba(255,255,255,0.92);font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;}
+.card-header-sub{color:rgba(255,255,255,0.45);font-weight:400;}
+.card-body{padding:16px;}
+.card-title{font-family:'EB Garamond',serif;font-size:17px;font-weight:500;color:var(--navy);line-height:1.3;margin-bottom:6px;}
+.card-text{font-size:13.5px;color:var(--text-muted);line-height:1.55;}
+.card-text a{color:var(--accent);text-decoration:none;}
+.card-text a:hover{text-decoration:underline;}
+.card-note{margin-top:10px;padding-top:10px;border-top:1px solid var(--border-light);font-size:12.5px;color:var(--text-faint);font-style:italic;}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;}
+
+/* ── Info rows ── */
+.info-card{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.info-header{background:var(--navy);color:#fff;padding:12px 18px;font-size:12px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;}
+.info-body{padding:14px 18px;}
+.info-row{display:flex;gap:12px;padding:7px 0;border-bottom:1px solid var(--border-light);font-size:13.5px;align-items:flex-start;}
+.info-row:last-child{border-bottom:none;}
+.info-label{color:var(--text-muted);font-weight:500;min-width:120px;flex-shrink:0;}
+.info-val{color:var(--text-dark);}
+.info-val a{color:var(--accent);text-decoration:none;}
+.info-val a:hover{text-decoration:underline;}
+
+/* ── Hotel list ── */
+.hotel-list{display:flex;flex-direction:column;gap:10px;}
+.hotel-item{background:var(--white);border:1px solid var(--border);border-radius:8px;padding:12px 16px;display:grid;grid-template-columns:1fr auto;align-items:center;gap:10px;}
+.hotel-name{font-size:14px;font-weight:600;color:var(--text-dark);}
+.hotel-addr{font-size:12.5px;color:var(--text-muted);margin-top:1px;}
+.badge{font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;padding:3px 8px;border-radius:100px;white-space:nowrap;}
+.badge-blue{background:var(--accent-pale);color:var(--accent);}
+.badge-green{background:var(--green-pale);color:var(--green);}
+.badge-gold{background:var(--gold-light);color:#7A6000;}
+
+/* ── Callout box ── */
+.callout{border-radius:10px;padding:18px 22px;display:flex;gap:16px;align-items:flex-start;margin-bottom:28px;}
+.callout-gold{background:var(--gold-light);border:1px solid #DDD0A0;}
+.callout-blue{background:var(--accent-pale);border:1px solid #C5D8EE;}
+.callout-icon{width:36px;height:36px;flex-shrink:0;border-radius:7px;display:flex;align-items:center;justify-content:center;}
+.callout-gold .callout-icon{background:var(--gold);color:#fff;}
+.callout-blue .callout-icon{background:var(--accent);color:#fff;}
+.callout-title{font-size:13.5px;font-weight:600;margin-bottom:3px;}
+.callout-gold .callout-title{color:#6B4F00;}
+.callout-blue .callout-title{color:#1A3D70;}
+.callout-text{font-size:13px;line-height:1.55;}
+.callout-gold .callout-text{color:#7A5800;}
+.callout-blue .callout-text{color:#2A4E7A;}
+
+/* ── Transport steps ── */
+.transport-steps{display:flex;flex-direction:column;gap:0;}
+.ts{display:flex;gap:14px;padding:0 0 18px;position:relative;}
+.ts:not(:last-child)::before{content:'';position:absolute;left:14px;top:30px;bottom:0;width:1px;background:var(--border);}
+.ts-num{width:28px;height:28px;flex-shrink:0;border-radius:50%;background:var(--accent-pale);border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--accent);}
+.ts-body{padding-top:4px;}
+.ts-label{font-size:13.5px;font-weight:500;color:var(--text-dark);margin-bottom:1px;}
+.ts-detail{font-size:12.5px;color:var(--text-muted);}
+.ts-detail a{color:var(--accent);}
+
+/* ── Archive ── */
+.archive-grid{display:flex;flex-direction:column;gap:14px;}
+.archive-item{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color .2s;}
+.archive-item:hover{border-color:var(--accent);}
+.archive-head{display:grid;grid-template-columns:80px 1fr auto;gap:16px;align-items:center;padding:16px 20px;cursor:pointer;}
+.archive-year{font-family:'EB Garamond',serif;font-size:2rem;font-weight:500;color:var(--navy);line-height:1;}
+.archive-theme{font-family:'EB Garamond',serif;font-size:15.5px;font-weight:500;color:var(--text-dark);line-height:1.35;margin-bottom:3px;}
+.archive-location{font-size:12.5px;color:var(--text-muted);}
+.archive-toggle{width:28px;height:28px;border-radius:50%;background:var(--border-light);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text-muted);transition:background .2s,transform .2s;flex-shrink:0;}
+.archive-toggle.open{transform:rotate(180deg);background:var(--accent-pale);color:var(--accent);}
+.archive-body{display:none;padding:0 20px 18px;border-top:1px solid var(--border-light);}
+.archive-body.open{display:block;}
+.archive-body-inner{display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;padding-top:16px;}
+.archive-papers-list{display:flex;flex-direction:column;gap:8px;}
+.archive-paper{font-size:13.5px;color:var(--text-dark);padding:8px 12px;background:var(--cream);border-radius:6px;border-left:2px solid var(--border);}
+.archive-paper-author{font-size:12px;color:var(--text-muted);margin-top:2px;}
+.archive-actions{display:flex;flex-direction:column;gap:8px;min-width:140px;}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:7px;font-size:13px;font-weight:500;font-family:'Source Sans 3',sans-serif;cursor:pointer;text-decoration:none;transition:all .2s;border:1.5px solid transparent;}
+.btn-primary{background:var(--navy);color:#fff;border-color:var(--navy);}
+.btn-primary:hover{background:var(--navy-mid);}
+.btn-outline{background:var(--white);color:var(--accent);border-color:var(--accent);}
+.btn-outline:hover{background:var(--accent-pale);}
+.btn-sm{padding:6px 12px;font-size:12px;}
+.btn svg{flex-shrink:0;}
+
+/* ── Members ── */
+.members-search{width:100%;max-width:420px;padding:10px 16px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;font-family:'Source Sans 3',sans-serif;color:var(--text-dark);background:var(--white);margin-bottom:28px;transition:border-color .2s;}
+.members-search:focus{outline:none;border-color:var(--accent);}
+.members-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;}
+.member-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:16px;transition:border-color .2s,transform .2s;}
+.member-card:hover{border-color:var(--accent);transform:translateY(-1px);}
+.member-card.chair{border-color:var(--gold);border-width:2px;}
+.member-initial{width:42px;height:42px;border-radius:50%;background:var(--accent-pale);display:flex;align-items:center;justify-content:center;font-family:'EB Garamond',serif;font-size:16px;font-weight:500;color:var(--accent);margin-bottom:10px;}
+.member-card.chair .member-initial{background:var(--gold-light);color:#7A5800;}
+.member-name{font-size:14.5px;font-weight:600;color:var(--text-dark);margin-bottom:2px;}
+.member-inst{font-size:12.5px;color:var(--text-muted);margin-bottom:6px;}
+.member-focus{font-size:12px;color:var(--text-faint);line-height:1.5;}
+.member-badges{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px;}
+.no-results{padding:32px;text-align:center;color:var(--text-faint);font-style:italic;font-size:14px;}
+
+/* ── Partner programme ── */
+.partner-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;}
+.partner-card{background:var(--cream);border:1px solid var(--border);border-radius:8px;padding:14px 16px;}
+.partner-title{font-size:13.5px;font-weight:600;color:var(--navy);margin-bottom:5px;}
+.partner-text{font-size:12.5px;color:var(--text-muted);line-height:1.5;margin-bottom:7px;}
+.partner-link{font-size:12px;color:var(--accent);text-decoration:none;font-weight:500;}
+.partner-link:hover{text-decoration:underline;}
+
+/* ── About / History prose ── */
+.prose{font-size:15.5px;line-height:1.75;color:var(--text-body);max-width:720px;}
+.prose p{margin-bottom:1.1em;}
+.prose strong{font-weight:600;color:var(--text-dark);}
+.pullquote{border-left:3px solid var(--gold);padding:12px 0 12px 20px;margin:28px 0;font-family:'EB Garamond',serif;font-size:1.25rem;font-style:italic;color:var(--navy);line-height:1.5;}
+
+/* ── Footer ── */
+.footer{background:var(--navy-dark);color:rgba(255,255,255,0.55);padding:48px 1.5rem 28px;}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px;}
+@media(max-width:900px){.footer-inner{grid-template-columns:1fr 1fr;}.footer-brand-col{grid-column:1/-1;}}
+.footer-brand-name{font-family:'EB Garamond',serif;font-size:17px;color:rgba(255,255,255,0.9);margin-bottom:8px;}
+.footer-text{font-size:12.5px;line-height:1.6;}
+.footer-text a{color:rgba(255,255,255,0.5);text-decoration:none;}
+.footer-text a:hover{color:rgba(255,255,255,0.85);}
+.footer-col-label{font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:10px;}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:7px;}
+.footer-links a{font-size:12.5px;color:rgba(255,255,255,0.5);text-decoration:none;}
+.footer-links a:hover{color:rgba(255,255,255,0.88);}
+.footer-divider{max-width:1200px;margin:0 auto 20px;border:none;border-top:1px solid rgba(255,255,255,0.08);}
+.footer-bottom{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:11.5px;color:rgba(255,255,255,0.28);}
+
+/* ── Publication list ── */
+.pub-list-inner{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.pub-item-wrap:not(:last-child){border-bottom:1px solid var(--border-light);}
+.pub-item{display:grid;grid-template-columns:60px 1fr auto;gap:0 18px;align-items:center;padding:13px 16px;background:var(--white);cursor:pointer;transition:background .15s;user-select:none;}
+.pub-item:hover{background:var(--accent-pale);}
+.pub-item-wrap.open .pub-item{background:var(--accent-pale);border-bottom:1px solid var(--border-light);}
+.pub-vol{font-family:'EB Garamond',serif;font-size:1.1rem;font-weight:500;color:var(--navy);text-align:center;line-height:1;}
+.pub-vol-sub{font-size:10px;color:var(--text-faint);text-align:center;letter-spacing:0.04em;margin-top:2px;}
+.pub-title{font-size:14px;font-weight:500;color:var(--text-dark);line-height:1.35;margin-bottom:2px;}
+.pub-meta{font-size:12.5px;color:var(--text-muted);}
+.pub-meta em{font-style:italic;}
+.pub-actions{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.pub-link{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:600;color:var(--accent);text-decoration:none;white-space:nowrap;padding:5px 10px;border:1px solid var(--accent);border-radius:6px;transition:background .15s,color .15s;}
+.pub-link:hover{background:var(--accent);color:#fff;}
+.pub-expand-btn{width:28px;height:28px;border-radius:50%;background:var(--border-light);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text-muted);transition:all .2s;flex-shrink:0;}
+.pub-expand-btn.open{background:var(--navy);color:#fff;transform:rotate(180deg);}
+/* ── Expanded detail panel ── */
+.pub-detail{display:none;background:var(--cream);}
+.pub-detail.open{display:block;}
+.pub-detail-inner{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:200px;}
+@media(max-width:720px){.pub-detail-inner{grid-template-columns:1fr;}}
+.pub-detail-left{padding:20px 22px;border-right:1px solid var(--border);}
+.pub-detail-right{padding:20px 22px;}
+.pub-detail-sec-lbl{font-size:10.5px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:14px;}
+/* Chapter list */
+.pub-chapter-list{display:flex;flex-direction:column;gap:0;}
+.pub-chapter{padding:8px 0;border-bottom:1px solid var(--border-light);display:flex;flex-direction:column;gap:2px;}
+.pub-chapter:last-child{border-bottom:none;}
+.pub-chapter-author{font-size:12px;font-weight:600;color:var(--accent);}
+.pub-chapter-title{font-size:13px;color:var(--text-dark);line-height:1.4;}
+.pub-chapter-pages{font-size:11.5px;color:var(--text-faint);}
+.pub-toc-placeholder{font-size:13px;color:var(--text-faint);font-style:italic;padding:8px 0;}
+/* Citation panel */
+.cite-tabs{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:12px;}
+.cite-tab{padding:5px 12px;font-size:12px;font-weight:600;border:1.5px solid var(--border);border-radius:100px;background:var(--white);cursor:pointer;color:var(--text-muted);transition:all .15s;font-family:'Source Sans 3',sans-serif;}
+.cite-tab:hover{border-color:var(--accent);color:var(--accent);}
+.cite-tab.active{background:var(--navy);border-color:var(--navy);color:#fff;}
+.cite-preview{width:100%;height:120px;padding:10px 12px;font-size:11.5px;font-family:'Courier New',monospace;line-height:1.5;color:var(--text-dark);background:var(--white);border:1px solid var(--border);border-radius:8px;resize:none;margin-bottom:10px;white-space:pre;}
+.cite-preview:focus{outline:none;border-color:var(--accent);}
+.cite-actions{display:flex;gap:8px;align-items:center;}
+.copy-confirm{font-size:12px;color:var(--green);font-weight:600;opacity:0;transition:opacity .3s;}
+.copy-confirm.show{opacity:1;}
+/* Filter */
+.pub-filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.pub-no-results{padding:32px;text-align:center;color:var(--text-faint);font-style:italic;}
+
+/* ── Misc ── */
+.highlight-box{background:var(--accent-pale);border:1px solid #C5D8EE;border-radius:8px;padding:12px 16px;font-size:13px;color:var(--accent);margin-top:12px;}
+.section-nav-strip{background:var(--navy);display:flex;gap:0;overflow-x:auto;scrollbar-width:none;}
+.section-nav-strip a{padding:10px 20px;font-size:12.5px;font-weight:500;color:rgba(255,255,255,0.6);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;}
+.section-nav-strip a:hover{color:#fff;border-bottom-color:rgba(255,255,255,0.3);}
+
+/* ── Chairs timeline ── */
+.chairs-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.chair-item{display:grid;grid-template-columns:36px 1fr auto;gap:0 16px;align-items:center;padding:11px 16px;border-bottom:1px solid var(--border-light);background:var(--white);transition:background .15s;}
+.chair-item:last-child{border-bottom:none;}
+.chair-item:hover{background:var(--accent-pale);}
+.chair-item.chair-current{background:var(--gold-light);border-left:3px solid var(--gold);}
+.chair-item.chair-current:hover{background:#F0E9C4;}
+.chair-num{font-family:'EB Garamond',serif;font-size:1.1rem;font-weight:500;color:var(--text-faint);text-align:center;}
+.chair-name{font-size:14px;font-weight:600;color:var(--text-dark);margin-bottom:2px;}
+.chair-inst{font-size:12px;color:var(--text-muted);}
+.chair-years{font-size:13px;font-weight:500;color:var(--navy);text-align:right;}
+.chair-dur{font-size:11px;color:var(--text-faint);text-align:right;}
+</style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav class="nav" role="navigation">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#top">
+      <span class="nav-brand-primary">AGW</span>
+      <span class="nav-brand-sep"></span>
+      <span class="nav-brand-sub" data-i18n="nav_brand_sub">Verein für Socialpolitik</span>
+    </a>
+    <ul class="nav-links">
+      <li class="nav-item">
+        <a href="#tagungsprogramm">
+          <span data-i18n="nav_conference">Jahrestagung 2026</span>
+          <span class="caret">▾</span>
+        </a>
+        <div class="dropdown">
+          <a href="#tagungsprogramm"><span data-i18n="nav_programme">Tagungsprogramm</span></a>
+          <a href="#rahmenprogramm"><span data-i18n="nav_social">Rahmenprogramm</span></a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a href="#logistik">
+          <span data-i18n="nav_travel">Anreise &amp; Logistik</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#archiv">
+          <span data-i18n="nav_archive">Archiv</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#publikationen">
+          <span data-i18n="nav_publications">Publikationen</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#ueber">
+          <span data-i18n="nav_about_group">Über den AGW</span>
+          <span class="caret">▾</span>
+        </a>
+        <div class="dropdown">
+          <a href="#ueber"><span data-i18n="nav_about">Über den Ausschuss</span></a>
+          <a href="#geschichte"><span data-i18n="nav_history">Geschichte des AGW</span></a>
+          <div class="dropdown-sep"></div>
+          <a href="#mitglieder"><span data-i18n="nav_members">Mitgliederliste</span></a>
+        </div>
+      </li>
+    </ul>
+    <div class="nav-actions">
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+        <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      </div>
+      <a href="https://www.socialpolitik.de/de" target="_blank" rel="noopener" class="nav-vfs">VfS ↗</a>
+      <button class="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-menu-group" data-i18n="nav_conference">Jahrestagung 2026</div>
+  
+  <a href="#tagungsprogramm" onclick="toggleMobileMenu()"><span data-i18n="nav_programme">Tagungsprogramm</span></a>
+  <a href="#rahmenprogramm" onclick="toggleMobileMenu()"><span data-i18n="nav_social">Rahmenprogramm</span></a>
+  <a href="#logistik" onclick="toggleMobileMenu()"><span data-i18n="nav_travel">Anreise &amp; Logistik</span></a>
+  <a href="#archiv" onclick="toggleMobileMenu()"><span data-i18n="nav_archive">Archiv</span></a>
+  <a href="#publikationen" onclick="toggleMobileMenu()"><span data-i18n="nav_publications">Publikationen</span></a>
+  <div class="mobile-menu-group" data-i18n="nav_about_group">Über den AGW</div>
+  
+  <a href="#ueber" onclick="toggleMobileMenu()"><span data-i18n="nav_about">Über den Ausschuss</span></a>
+  <a href="#geschichte" onclick="toggleMobileMenu()"><span data-i18n="nav_history">Geschichte des AGW</span></a>
+  <a href="#mitglieder" onclick="toggleMobileMenu()"><span data-i18n="nav_members">Mitgliederliste</span></a>
+</div>
+
+<!-- ── Hero ── -->
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-eyebrow" data-i18n="hero_eyebrow">Ausschuss für die Geschichte der Wirtschaftswissenschaften · Jahrestagung 2026</div>
+    <div class="hero-rule"></div>
+    <h1 class="hero-title">Zukunftsperspektiven der Theoriegeschichte: Methoden, Themen, Kontroversen</h1>
+    <div class="hero-meta">
+      <span class="pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        25.–27. Juni 2026
+      </span>
+      <span class="pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span data-i18n="hero_pill_venue">Virginia Tech Steger Center · Riva San Vitale, Tessin</span>
+      </span>
+      <span class="pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span data-i18n="hero_pill_days">Do–Sa · 3 Tage</span>
+      </span>
+    </div>
+    <div class="hero-orgs">
+      <span data-i18n="hero_org_by">Veranstaltet vom</span>
+      <a href="https://history-economicthought.committee.socialpolitik.de/" target="_blank">AGW / VfS</a>
+      <span class="hero-orgs-sep"></span>
+      <span data-i18n="hero_hosted_by">Ausgerichtet von</span>
+      <a href="https://liberalarts.vt.edu/departments-and-schools/school-of-public-and-international-affairs.html" target="_blank">Virginia Tech · SPIA</a>
+      <span class="hero-orgs-sep"></span>
+      <a href="https://stegercenter.vt.edu" target="_blank">Steger Center for International Scholarship</a>
+    </div>
+  </div>
+</header>
+
+<!-- Sub-nav strip for Jahrestagung sections -->
+<div class="section-nav-strip">
+  <a href="#tagungsprogramm"><span data-i18n="nav_programme">Tagungsprogramm</span></a>
+  <a href="#rahmenprogramm"><span data-i18n="nav_social">Rahmenprogramm</span></a>
+  <a href="#logistik"><span data-i18n="nav_travel">Anreise &amp; Logistik</span></a>
+</div>
+
+<!-- ── Tagungsprogramm ── -->
+<section class="section" id="tagungsprogramm">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="sec_lbl_programme">Wissenschaftliches Programm</div>
+    <h2 class="section-title" data-i18n="sec_ttl_programme">Tagungsprogramm</h2>
+    <div class="prog-tabs" role="tablist">
+      <button class="prog-tab active" onclick="showDay('do')" data-i18n="tab_thu">Donnerstag, 25. Juni</button>
+      <button class="prog-tab" onclick="showDay('fr')" data-i18n="tab_fri">Freitag, 26. Juni</button>
+      <button class="prog-tab" onclick="showDay('sa')" data-i18n="tab_sat">Samstag, 27. Juni</button>
+    </div>
+
+    <!-- Donnerstag -->
+    <div class="prog-day active" id="day-do">
+      <div class="timeline">
+        <div class="tl-item social">
+          <div class="tl-time">ab 19:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title" data-i18n="prog_welcome_dinner">Willkommensabendessen</div>
+            <div class="tl-speaker">Ristorante Cantinone · Piazza Cioccaro 8, Lugano</div>
+            <div class="tl-note" data-i18n="prog_welcome_note">Historische Altstadt · direkt an der Funicolare-Station</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Freitag -->
+    <div class="prog-day" id="day-fr">
+      <div class="timeline">
+        <div class="tl-item opening">
+          <div class="tl-time">09:00–09:15</div><div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title" data-i18n="prog_opening">Begrüßung</div>
+            <div class="tl-speaker">David Bieri (Virginia Tech) · Rainer Klump (AGW)</div>
+          </div>
+        </div>
+        <div class="tl-item memorial">
+          <div class="tl-time">09:15–09:45</div><div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title" data-i18n="prog_memorial">Erinnerungen an drei verstorbene Ausschussmitglieder</div>
+            <div class="tl-note">Erich Streissler · Fritz Helmedag · Jürgen Kromhardt</div>
+          </div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">09:45–10:45</div><div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title"><em>Der Stand und die Zukunft der theoriegeschichtlichen Forschung</em></div>
+            <div class="tl-speaker">Hans-Michael Trautwein (Oldenburg) · Richard Sturn (Graz)</div>
+          </div>
+        </div>
+        <div class="tl-item"><div class="tl-time">10:45–11:15</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-break" data-i18n="prog_coffee">Kaffeepause</div></div></div>
+        <div class="tl-item highlight">
+          <div class="tl-time">11:15–12:00</div><div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title"><em>Theoriegeschichte und Wissenschaftsphilosophie: Gedanken zum schlummernden Potenzial einer prekären Kooperation</em></div>
+            <div class="tl-speaker">Alexander Linsbichler (Linz)</div>
+          </div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">12:00–12:45</div><div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title"><em>Inhalt und Grenzen der «philosophie économique»</em></div>
+            <div class="tl-speaker">Gilles Campagnolo (Paris)</div>
+          </div>
+        </div>
+        <div class="tl-item"><div class="tl-time">12:45–14:00</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-break" data-i18n="prog_lunch">Mittagspause</div></div></div>
+        <div class="tl-item highlight">
+          <div class="tl-time">14:00–14:45</div><div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title"><em>Worum geht es eigentlich? Zentrale Einsichten aus Gesprächen über die Theorie rationalen Entscheidens</em></div>
+            <div class="tl-speaker">Catherine Herfeld (Hannover)</div>
+          </div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">14:45–15:30</div><div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title"><em>Wirtschaft und Leben: Zu Friedrich von Gottl-Ottlilienfelds Ökonomik</em></div>
+            <div class="tl-speaker">Hermann Rauchenschwandtner (Salzburg)</div>
+          </div>
+        </div>
+        <div class="tl-item"><div class="tl-time">15:30–16:00</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-break" data-i18n="prog_coffee">Kaffeepause</div></div></div>
+        <div class="tl-item highlight">
+          <div class="tl-time">16:00–16:45</div><div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title"><em>Zwischen Freiburg und Michigan: Quantitative Textanalyse transnationaler Verbindungen in der ordoliberalen Tradition</em></div>
+            <div class="tl-speaker">Anselm Küsters (Berlin / Stuttgart)</div>
+          </div>
+        </div>
+        <div class="tl-item social">
+          <div class="tl-time">ab 17:00</div><div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title" data-i18n="prog_tour">Historischer Rundgang in Riva San Vitale (geführt, Deutsch)</div>
+            <div class="tl-note">Täuferkapelle (9. Jh.) · Battistero San Giovanni (4./5. Jh.) · Santa Croce · Casa Bianchi (Mario Botta)</div>
+          </div>
+        </div>
+        <div class="tl-item social">
+          <div class="tl-time">ab 18:30</div><div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title" data-i18n="prog_apericena">Apericena im Garten der Villa Maderni</div>
+            <div class="tl-speaker" data-i18n="prog_apericena_venue">Palazzo des 18. Jh. · Steger Center</div>
+            <div class="tl-note" data-i18n="prog_apericena_note">Regionale Tessiner Küche · ca. CHF 40 p.P. (Getränke exkl.)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Samstag -->
+    <div class="prog-day" id="day-sa">
+      <div class="timeline">
+        <div class="tl-item highlight">
+          <div class="tl-time">08:30–09:15</div><div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title"><em>Theorien des wissenschaftlichen Fortschritts und Geschichtsschreibung der Wirtschaftswissenschaften</em></div>
+            <div class="tl-speaker">Karl Milford (Wien)</div>
+          </div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">09:15–10:00</div><div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title"><em>Geschichte schreiben. Die Vergangenheit der ökonomischen Moderne</em></div>
+            <div class="tl-speaker">Andreas Lingg (Witten/Herdecke)</div>
+          </div>
+        </div>
+        <div class="tl-item"><div class="tl-time">10:00–10:30</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-break" data-i18n="prog_coffee">Kaffeepause</div></div></div>
+        <div class="tl-item highlight">
+          <div class="tl-time">10:30–11:15</div><div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title"><em>Wie Geschichte des ökonomischen Denkens unterrichten?</em></div>
+            <div class="tl-speaker">Andrea Franc (Luzern)</div>
+          </div>
+        </div>
+        <div class="tl-item highlight">
+          <div class="tl-time">11:15–12:00</div><div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title"><em>Geschichte der ökonomischen Analyse – wozu? Eine kritische Auseinandersetzung mit dem Geschichtsverständnis der heutigen Ökonomen</em></div>
+            <div class="tl-speaker">Lachezar Grudev (Chemnitz)</div>
+          </div>
+        </div>
+        <div class="tl-item"><div class="tl-time">12:00–12:45</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-break" data-i18n="prog_lunch">Mittagspause</div></div></div>
+        <div class="tl-item assembly">
+          <div class="tl-time">12:45–14:00</div><div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title" data-i18n="prog_assembly">Mitgliederversammlung</div>
+            <div class="tl-note" data-i18n="prog_assembly_note">Nur für Mitglieder des Ausschusses</div>
+          </div>
+        </div>
+        <div class="tl-item social">
+          <div class="tl-time">ab ca. 14:35</div><div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title" data-i18n="prog_excursion">Gruppenausflug Monte Generoso</div>
+            <div class="tl-speaker" data-i18n="prog_excursion_detail">Zahnradbahn ab Bahnhof Capolago (seit 1890) · Panorama auf vier Länder</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Rahmenprogramm ── -->
+<section class="section section-alt" id="rahmenprogramm">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="nav_social">Rahmenprogramm</div>
+    <h2 class="section-title" data-i18n="sec_ttl_social">Gesellschaftliches Programm</h2>
+    <div class="card-grid" style="margin-bottom:40px;">
+      <div class="card">
+        <div class="card-header"><span data-i18n="tab_thu">Donnerstag, 25. Juni</span><span class="card-header-sub">19:30</span></div>
+        <div class="card-body">
+          <div class="card-title" data-i18n="prog_welcome_dinner">Willkommensabendessen</div>
+          <div class="card-text"><strong>Ristorante Cantinone</strong>, Piazza Cioccaro 8, Lugano.<br><br><span data-i18n="card_thu_note">Das Restaurant liegt direkt in der historischen Altstadt, an der Funicolare-Station, in unmittelbarer Nähe des empfohlenen Tagungshotels.</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span data-i18n="tab_fri">Freitag, 26. Juni</span><span class="card-header-sub">17:00</span></div>
+        <div class="card-body">
+          <div class="card-title" data-i18n="card_fri1_title">Historischer Rundgang Riva San Vitale</div>
+          <div class="card-text"><span>Geführte Ortsbegehung (Deutsch): <strong>Täuferkapelle</strong> (9. Jh.) · <strong>Battistero San Giovanni</strong> (4./5. Jh., ältestes christliches Bauwerk der Schweiz) · <strong>Kirche Santa Croce</strong> · <strong>Casa Bianchi</strong> (Mario Botta).</span></div>
+          <div class="card-note" data-i18n="card_fri1_note">Anschluss: Apericena ab 18:30 in der Villa Maderni</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span data-i18n="tab_fri">Freitag, 26. Juni</span><span class="card-header-sub">18:30</span></div>
+        <div class="card-body">
+          <div class="card-title" data-i18n="card_fri2_title">Apericena in der Villa Maderni</div>
+          <div class="card-text"><span>Gesellschaftlicher Abend im Garten der <strong>Villa Maderni</strong> (Palazzo, 18. Jh.). Regionale Tessiner Küche.</span><br><br><strong>ca. CHF 40 p.P.</strong> <span>(Getränke exkl.)</span></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span data-i18n="tab_sat">Samstag, 27. Juni</span><span class="card-header-sub">ca. 14:35</span></div>
+        <div class="card-body">
+          <div class="card-title" data-i18n="prog_excursion">Gruppenausflug Monte Generoso</div>
+          <div class="card-text"><span>Fahrt mit der historischen <strong>Zahnradbahn</strong> (seit 1890) ab Bahnhof Capolago. Gipfelpanorama auf vier Länder (1.704 m ü.M.).</span></div>
+          <div class="card-note" data-i18n="card_sat_note">Abfahrt nach Mitgliederversammlung · festes Schuhwerk empfohlen</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partner programme -->
+    <div class="section-label" style="margin-top:20px;" data-i18n="lbl_partner">Partnerprogramm</div>
+    <h3 style="font-family:'EB Garamond',serif;font-size:1.5rem;font-weight:500;color:var(--navy);margin-bottom:18px;" data-i18n="ttl_partner">Ausflugsmöglichkeiten für Begleitpersonen</h3>
+    <div class="partner-grid">
+      <div class="partner-card">
+        <div class="partner-title">Museo Hermann Hesse</div>
+        <div class="partner-text" data-i18n="partner_hesse">Montagnola · tägl. 10:30–17:30 · mit Ticino Ticket freier Eintritt.</div>
+        <a href="https://www.hessemontagnola.ch" target="_blank" class="partner-link">hessemontagnola.ch ↗</a>
+      </div>
+      <div class="partner-card">
+        <div class="partner-title" data-i18n="partner_lugano_ttl">Schifffahrt Luganersee</div>
+        <div class="partner-text" data-i18n="partner_lugano">Navigazione del Lago di Lugano. Rundfahrten auf dem Luganersee.</div>
+        <a href="https://www.lakelugano.ch" target="_blank" class="partner-link">lakelugano.ch ↗</a>
+      </div>
+      <div class="partner-card">
+        <div class="partner-title">Funicolare Monte Brè</div>
+        <div class="partner-text" data-i18n="partner_bre">Aussichtsberg über Lugano mit weitem Panorama.</div>
+        <a href="https://www.montebre.ch" target="_blank" class="partner-link">montebre.ch ↗</a>
+      </div>
+      <div class="partner-card">
+        <div class="partner-title">Monte Verità, Ascona</div>
+        <div class="partner-text" data-i18n="partner_verita">Museum Casa Anatta · Zentrum der deutschen Lebensreformbewegung.</div>
+        <a href="https://www.monteverita.org" target="_blank" class="partner-link">monteverita.org ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Anreise & Logistik ── -->
+<section class="section" id="logistik">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="sec_lbl_travel">Anreise &amp; Logistik vor Ort</div>
+    <h2 class="section-title" data-i18n="sec_ttl_travel">Anreise &amp; Aufenthalt</h2>
+
+    <div class="callout callout-gold">
+      <div class="callout-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+      <div>
+        <div class="callout-title">Ticino Ticket</div>
+        <div class="callout-text" data-i18n="ticino_text">Alle Hotelgäste im Tessin erhalten beim Check-in automatisch und kostenlos das Ticino Ticket: gültig für TILO, PostAuto und Stadtbusse — inklusive der Strecke Lugano–Capolago. Auch: freier Eintritt ins Museo Hermann Hesse, Vergünstigungen bei weiteren Attraktionen.</div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <h3 style="font-family:'EB Garamond',serif;font-size:1.3rem;font-weight:500;color:var(--navy);margin-bottom:14px;" data-i18n="ttl_accommodation">Unterkunft in Lugano</h3>
+        <div class="hotel-list">
+          <div class="hotel-item">
+            <div><div class="hotel-name">Hotel Dante</div><div class="hotel-addr">Piazza Cioccaro 5, Lugano</div></div>
+            <span class="badge badge-blue"><span data-i18n="badge_recommended">Empfohlen</span></span>
+          </div>
+          <div class="hotel-item">
+            <div><div class="hotel-name">Hotel Walter au Lac</div><div class="hotel-addr">Piazza Rezzonico 7, Lugano</div></div>
+          </div>
+          <div class="hotel-item">
+            <div><div class="hotel-name">Hotel Internationale</div><div class="hotel-addr">Via Nassa 68, Lugano</div></div>
+          </div>
+          <div class="hotel-item">
+            <div><div class="hotel-name">Hotel Svizzero</div><div class="hotel-addr">Capolago · <span>~10 Min. zu Fuß zur Villa</span></div></div>
+            <span class="badge badge-green"><span data-i18n="badge_no_train">Kein Zug nötig</span></span>
+          </div>
+        </div>
+
+        <div class="highlight-box" style="margin-top:18px;" data-i18n="ticino_box_note">Alle Gäste erhalten das Ticino Ticket beim Hotel-Check-in — die Bahnfahrt Lugano ↔ Capolago ist damit kostenlos.</div>
+      </div>
+
+      <div>
+        <h3 style="font-family:'EB Garamond',serif;font-size:1.3rem;font-weight:500;color:var(--navy);margin-bottom:14px;" data-i18n="ttl_train">Anreise per Bahn</h3>
+        <div class="transport-steps">
+          <div class="ts"><div class="ts-num">1</div><div class="ts-body"><div class="ts-label">TILO S10: <span>Bahnhof Lugano → Capolago-Riva San Vitale</span></div><div class="ts-detail" data-i18n="ts1_detail">Alle 30 Min. · Fahrtdauer ca. 15 Min.</div></div></div>
+          <div class="ts"><div class="ts-num">2</div><div class="ts-body"><div class="ts-label" data-i18n="ts2_label">Fußweg zum Steger Center</div><div class="ts-detail" data-i18n="ts2_detail">ca. 750 m · 10–12 Minuten ab Bahnhof Capolago</div></div></div>
+        </div>
+        <div class="info-card">
+          <div class="info-header" data-i18n="train_times_hdr">Empfohlene Abfahrzeiten</div>
+          <div class="info-body">
+            <div class="info-row"><span class="info-label">Freitag</span><span class="info-val" style="color:var(--accent);font-weight:500;"><span data-i18n="train_fri">Abfahrt HB Lugano 08:12 (Beginn 09:00)</span></span></div>
+            <div class="info-row"><span class="info-label">Samstag</span><span class="info-val" style="color:var(--accent);font-weight:500;"><span data-i18n="train_sat">Abfahrt HB Lugano 07:42 (Beginn 08:30)</span></span></div>
+            <div class="info-row"><span class="info-label"><span data-i18n="train_timetable">Fahrplan</span></span><span class="info-val"><a href="https://www.sbb.ch" target="_blank">sbb.ch</a></span></div>
+          </div>
+        </div>
+
+        <h3 style="font-family:'EB Garamond',serif;font-size:1.3rem;font-weight:500;color:var(--navy);margin:28px 0 14px;">Tagungsort</h3>
+        <div class="info-card">
+          <div class="info-body">
+            <div class="info-row"><span class="info-label"><span data-i18n="venue_address_lbl">Adresse</span></span><span class="info-val">Via Settala 8, CH-6826 Riva San Vitale, Tessin</span></div>
+            <div class="info-row"><span class="info-label">Website</span><span class="info-val"><a href="https://stegercenter.vt.edu" target="_blank">stegercenter.vt.edu</a></span></div>
+            <div class="info-row"><span class="info-label"><span data-i18n="venue_building_lbl">Gebäude</span></span><span class="info-val"><span data-i18n="venue_building_val">Villa Maderni, Palazzo des 18. Jahrhunderts</span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Archiv ── -->
+<section class="section section-alt" id="archiv">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="sec_lbl_archive">Konferenzarchiv</div>
+    <h2 class="section-title" data-i18n="sec_ttl_archive">Frühere Jahrestagungen</h2>
+    <p class="section-intro" data-i18n="sec_intro_archive">Der AGW trifft sich jährlich zu seiner Jahrestagung. Nachfolgend ein Überblick über zurückliegende Konferenzen mit Programmen und ausgewählten Beiträgen.</p>
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:24px;">
+      <input type="text" class="members-search" id="archive-search" style="margin-bottom:0;max-width:300px;"
+        oninput="renderArchive()" placeholder="Thema, Ort oder Referent suchen… / Search…">
+      <div style="display:flex;gap:4px;" id="arch-decade-btns">
+        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade active" onclick="setArchiveDecade('all',this)"><span data-i18n="pub_filter_all">Alle</span></button>
+        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('2020s',this)">2020–</button>
+        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('2010s',this)">2010–19</button>
+        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('2000s',this)">2000–09</button>
+        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('1990s',this)">1990–99</button>
+        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('1980s',this)">1980–89</button>
+      </div>
+      <span style="font-size:12px;color:var(--text-faint);" id="arch-count"></span>
+    </div>
+    <div class="archive-grid" id="archive-list"></div>
+  </div>
+</section>
+
+<!-- ── Publikationen ── -->
+<section class="section section-alt" id="publikationen">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="nav_publications">Publikationen</div>
+    <h2 class="section-title" data-i18n="sec_ttl_pub">Konferenzbände</h2>
+
+    <div class="two-col" style="margin-bottom:32px; align-items:start;">
+      <div class="prose">
+        <p data-i18n-html="hist_p2">Die Jahrestagungen des AGW münden in der Regel in begutachtete Sammelbände, die als Subserie <em>Studien zur Entwicklung der ökonomischen Theorie</em> innerhalb der <em>Schriften des Vereins für Socialpolitik</em> (Band 115) beim Verlag Duncker &amp; Humblot erscheinen. Seit dem ersten Band zu Beginn der 1980er Jahre ist die Reihe mit inzwischen über 40 Bänden das zentrale Publikationsorgan der deutschsprachigen Theoriegeschichte und Dogmengeschichte.</p>
+      </div>
+      
+    </div>
+
+    <div class="callout callout-blue" style="margin-bottom:28px;">
+      <div class="callout-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+      </div>
+      <div>
+        <div class="callout-title" data-i18n="pub_series_lbl">Reiheninformation</div>
+        <div class="callout-text">
+          <span><strong>Schriften des Vereins für Socialpolitik</strong>, Neue Folge Band 115 &mdash; Subserie: <em>Studien zur Entwicklung der ökonomischen Theorie</em> &mdash; Verlag: <a href="https://www.duncker-humblot.de" target="_blank" style="color:inherit;font-weight:600;">Duncker &amp; Humblot GmbH</a>, Berlin &mdash; <a href="https://www.duncker-humblot.de/search/result?schnellsuche=Studien%20zur%20Entwicklung%20der%20%C3%B6konomischen%20Theorie&sort=datum_erscheinung_jahr%20desc%2Cdatum_erscheinung%20desc&page=1&type=titel&nav_id=1" target="_blank" style="color:inherit;font-weight:600;">Alle Bände beim Verlag ↗</a></span>&emsp;<a href="AGW_SVfS_Band115.bib" download style="color:inherit;font-weight:600;" data-i18n="pub_bib_download">Gesamtbibliographie (.bib) ↓</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:12px; margin-bottom:24px; flex-wrap:wrap; align-items:center;">
+      <input type="text" class="members-search" id="pub-search" style="margin-bottom:0; max-width:320px;"
+        placeholder="Titel oder Herausgeber suchen… / Search…"
+        oninput="filterPubs(this.value)">
+      <div style="display:flex; gap:6px;" id="pub-filter-btns">
+        <button class="btn btn-sm btn-outline pub-filter-btn active" onclick="filterPubDecade('all', this)" data-decade="all" data-i18n="pub_filter_all">Alle</button>
+        <button class="btn btn-sm btn-outline pub-filter-btn" onclick="filterPubDecade('2010s', this)" data-decade="2010s">2010–</button>
+        <button class="btn btn-sm btn-outline pub-filter-btn" onclick="filterPubDecade('2000s', this)" data-decade="2000s">2000–09</button>
+        <button class="btn btn-sm btn-outline pub-filter-btn" onclick="filterPubDecade('1990s', this)" data-decade="1990s">1990–99</button>
+        <button class="btn btn-sm btn-outline pub-filter-btn" onclick="filterPubDecade('1980s', this)" data-decade="1980s">1980–89</button>
+      </div>
+    </div>
+
+    <div id="pub-list"></div>
+    <div style="margin-top:20px; font-size:12.5px; color:var(--text-faint); font-style:italic;" id="pub-count-note"></div>
+  </div>
+</section>
+
+<!-- ── Über den Ausschuss ── -->
+<section class="section" id="ueber">
+  <div class="section-inner">
+    <div class="two-col">
+      <div>
+        <div class="section-label" data-i18n="nav_about">Über den Ausschuss</div>
+        <h2 class="section-title" data-i18n="sec_ttl_about">Über den Ausschuss</h2>
+        <div class="prose">
+          <p data-i18n-html="about_p1">Der <strong>Ausschuss für die Geschichte der Wirtschaftswissenschaften (AGW)</strong> ist der ständige Ausschuss für Theoriegeschichte und Dogmengeschichte im Rahmen des Vereins für Socialpolitik (VfS), der größten deutschsprachigen Gesellschaft für Wirtschaftswissenschaften.</p>
+          <p data-i18n-html="about_p2">Der Ausschuss versteht sich als wissenschaftliche Plattform, die Ökonominnen und Ökonomen aus dem deutschen, österreichischen und schweizerischen Hochschulraum sowie aus benachbarten Ländern zusammenführt, die sich mit den methodischen, philosophischen, ideengeschichtlichen und historischen Dimensionen der Wirtschaftswissenschaften befassen.</p>
+          <div class="pullquote" data-i18n-html="about_pullquote">Die Geschichte ökonomischer Ideen ist kein Selbstzweck — sie öffnet den Blick für das, was Ökonomie sein könnte.</div>
+          <p data-i18n-html="about_p3">Die jährliche Tagung bildet das Herzstück der Ausschusstätigkeit. Sie bietet ein Forum für Forschungsdiskussionen, für die Begegnung zwischen Nachwuchs und erfahrenen Forscherinnen sowie für den internationalen Austausch über die Theoriegeschichte als Disziplin.</p>
+          <p data-i18n-html="about_p4">Der AGW ist Mitglied im internationalen Netzwerk historisch-ökonomischer Gesellschaften, darunter die <strong>European Society for the History of Economic Thought (ESHET)</strong> und die <strong>History of Economics Society (HES)</strong>.</p>
+        </div>
+        
+          <p>The annual conference is the centrepiece of the committee's activity. It provides a forum for research discussions, for dialogue between emerging and established scholars, and for international exchange on the history of economic thought as a discipline.</p>
+          <p>The AGW is part of the international network of history-of-economics societies, including the <strong>European Society for the History of Economic Thought (ESHET)</strong> and the <strong>History of Economics Society (HES)</strong>.</p>
+        </div>
+      </div>
+      <div>
+        <div class="info-card" style="margin-bottom:20px;">
+          <div class="info-header" data-i18n="contact_title">Kontakt &amp; Organisation</div>
+          <div class="info-body">
+            <div class="info-row"><span class="info-label"><span data-i18n="contact_chair_lbl">Vorsitzender</span></span><span class="info-val">Prof. Rainer Klump</span></div>
+            <div class="info-row"><span class="info-label"><span data-i18n="contact_host_lbl">Gastgeber 2026</span></span><span class="info-val"><a href="mailto:bieri@vt.edu">Dr. David Bieri</a> · <a href="mailto:bieri@vt.edu">bieri@vt.edu</a></span></div>
+            <div class="info-row"><span class="info-label"><span data-i18n="contact_parent_lbl">Dachorganisation</span></span><span class="info-val"><a href="https://www.socialpolitik.de/de" target="_blank">Verein für Socialpolitik (VfS)</a></span></div>
+            <div class="info-row"><span class="info-label"><span data-i18n="contact_page_lbl">Ausschuss-Seite</span></span><span class="info-val"><a href="https://history-economicthought.committee.socialpolitik.de/" target="_blank">VfS AGW Seite</a></span></div>
+            <div class="info-row"><span class="info-label">ESHET</span><span class="info-val"><a href="https://www.eshet.net" target="_blank">eshet.net</a></span></div>
+            <div class="info-row"><span class="info-label">HES</span><span class="info-val"><a href="https://historyofeconomics.org" target="_blank">historyofeconomics.org</a></span></div>
+          </div>
+        </div>
+        <div class="callout callout-blue">
+          <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg></div>
+          <div>
+            <div class="callout-title" data-i18n="membership_title">Mitgliedschaft</div>
+            <div class="callout-text" data-i18n="membership_text">Interessierte Wissenschaftlerinnen und Wissenschaftler wenden sich bitte an den Vorsitzenden oder an die VfS-Geschäftsstelle.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Geschichte des AGW ── -->
+<section class="section section-alt" id="geschichte">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="sec_lbl_history">Geschichte</div>
+    <h2 class="section-title" data-i18n="sec_ttl_history">Zur Geschichte des AGW</h2>
+    <div class="two-col">
+      <div class="prose">
+        <p data-i18n-html="hist_p1">Der <strong>Ausschuss für die Geschichte der Wirtschaftswissenschaften (AGW)</strong> ist einer der ständigen Fachausschüsse des Vereins für Socialpolitik (VfS), der ältesten wirtschaftswissenschaftlichen Berufsorganisation der Welt (gegründet 1873). Der AGW wurde 1980 gegründet; die 1.&nbsp;Jahrestagung fand in Gießen statt. Als eigenständiger Ausschuss bündelt der AGW die Forschung zur Theoriegeschichte und Dogmengeschichte der Wirtschaftswissenschaften im deutschsprachigen Raum.</p>
+        <p>Die Jahrestagungen des AGW haben sich im Laufe der Zeit zu einem wichtigen Forum für die deutsch- und europäischsprachige Forschung zur Theoriegeschichte, Dogmengeschichte und Wissenschaftsphilosophie der Ökonomik entwickelt. Die Tagungen finden an wechselnden Standorten in Deutschland, Österreich und der Schweiz sowie gelegentlich im internationalen Ausland statt.</p>
+        <p data-i18n-html="hist_p3">Der AGW trifft sich jährlich zu seiner Jahrestagung an wechselnden Standorten in Deutschland, Österreich und der Schweiz sowie gelegentlich im Ausland. Auf der Tagung werden aktuelle Forschungsarbeiten zur Theoriegeschichte, Dogmengeschichte und Wissenschaftsphilosophie der Ökonomik vorgestellt und diskutiert. Die Jahrestagung 2022 in Jena war dem 150-jährigen Bestehen des VfS gewidmet (Band XLI der Reihe, hrsg. v. Peter Spahn).</p>
+        <p data-i18n-html="hist_p4">Der AGW pflegt enge Beziehungen zu den internationalen Schwestergesellschaften ESHET (European Society for the History of Economic Thought) und HES (History of Economics Society) sowie zu weiteren nationalen Vereinigungen im deutsch- und europäischsprachigen Raum.</p>
+      </div>
+      
+      <div style="margin-top:0;">
+        <div class="callout callout-gold" style="margin-bottom:0;">
+          <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+          <div>
+            <div class="callout-title" data-i18n="hist_note_title">Hinweis zur Geschichte</div>
+            <div class="callout-text" data-i18n="hist_note_text">Dieser Abschnitt wird laufend ergänzt. Mitglieder, die zur Geschichte des Ausschusses beitragen möchten, wenden sich bitte an den Vorsitzenden.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;">
+    <!-- Chair succession timeline -->
+    <div style="margin-top:48px;">
+      <div class="section-label" data-i18n="sec_lbl_chairs">Ausschussvorsitzende</div>
+      <h3 style="font-family:'EB Garamond',serif;font-size:1.5rem;font-weight:500;color:var(--navy);margin-bottom:8px;" data-i18n="sec_ttl_chairs">Liste der bisherigen Vorsitzenden</h3>
+      <p style="font-size:13px;color:var(--text-faint);font-style:italic;margin-bottom:20px;" data-i18n="chairs_note">Amtszeiten ab ca. 1990 aus Tagungsbänden erschlossen; Angaben vor 1990 approximativ.</p>
+      <div id="chairs-timeline"></div>
+    </div></div>
+
+<!-- ── Mitgliederliste ── -->
+<section class="section section-alt" id="mitglieder">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="sec_lbl_members">Mitglieder</div>
+    <h2 class="section-title" data-i18n="sec_ttl_members">Mitgliederliste</h2>
+
+    <!-- Data protection notice -->
+    <div class="callout callout-blue" style="margin-bottom:24px;">
+      <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div>
+        <div class="callout-title" data-i18n="mbr_privacy_title">Datenschutzhinweis</div>
+        <div class="callout-text" data-i18n="mbr_privacy_text">Es werden ausschließlich Namen und Institutionen veröffentlicht. Für Kontaktaufnahme wenden Sie sich an den Vorsitzenden: <a href="mailto:klump@wiwi.uni-frankfurt.de" style="color:inherit;font-weight:600;">klump@wiwi.uni-frankfurt.de</a></div>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:16px;">
+      <input type="text" class="members-search" id="member-search" style="margin-bottom:0;max-width:280px;" oninput="filterMembers()">
+      <div style="display:flex;gap:4px;">
+        <button class="btn btn-sm btn-outline pub-filter-btn mbr-filter-status active" onclick="setMemberFilter('status','all',this)" data-i18n="pub_filter_all">Alle</button>
+        <button class="btn btn-sm btn-outline pub-filter-btn mbr-filter-status" onclick="setMemberFilter('status','active',this)" data-i18n="mbr_active">Aktiv</button>
+        <button class="btn btn-sm btn-outline pub-filter-btn mbr-filter-status" onclick="setMemberFilter('status','emeriti',this)" data-i18n="mbr_emeriti">Emeriti</button>
+      </div>
+      <div style="display:flex;gap:4px;">
+        <button class="btn btn-sm btn-outline pub-filter-btn mbr-filter-country active" onclick="setMemberFilter('country','all',this)" data-i18n="pub_filter_all">Alle</button>
+        <button class="btn btn-sm btn-outline pub-filter-btn mbr-filter-country" onclick="setMemberFilter('country','DACH',this)">DACH</button>
+        <button class="btn btn-sm btn-outline pub-filter-btn mbr-filter-country" onclick="setMemberFilter('country','INTL',this)" data-i18n="mbr_intl">Intl.</button>
+      </div>
+      <span style="font-size:12px;color:var(--text-faint);" id="mbr-count"></span>
+    </div>
+
+    <div class="members-grid" id="members-grid"></div>
+    <div style="margin-top:16px;font-size:12px;color:var(--text-faint);">Stand: 2026</div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+
+<!-- ── Satzung ── -->
+<section class="section" id="satzung">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="nav_satzung">Satzung</div>
+    <h2 class="section-title">Satzung des Ausschusses</h2>
+    <div class="two-col" style="align-items:start;">
+      <div class="prose">
+        <p><strong>§ 1 Zweck</strong> — Der Ausschuss dient der Förderung der Forschung und des wissenschaftlichen Austausches auf dem Gebiet der Geschichte der Wirtschaftswissenschaften. Er unterstützt den wissenschaftlichen Nachwuchs und fördert die Exzellenz auf seinem Fachgebiet.</p>
+        <p><strong>§ 2 Mitgliedschaft</strong> — Mitglieder müssen wissenschaftlich auf dem Gebiet der Geschichte der Wirtschaftswissenschaften ausgewiesen sein und die Mitgliedschaft im Verein für Socialpolitik besitzen. Die Kooptation neuer Mitglieder erfordert eine Zweidrittelmehrheit der Mitgliederversammlung. Langjährig aktive Mitglieder im Ruhestand können den Status eines Senior-Mitglieds einnehmen (entbunden von der Anwesenheitspflicht, ohne Stimmrecht).</p>
+        <p><strong>§ 3 Vorsitz</strong> — Die/der Vorsitzende wird von der Mitgliederversammlung in geheimer Wahl mit einfacher Mehrheit für eine Amtszeit von zwei Jahren gewählt. Einmalige Wiederwahl ist zulässig. Die/der Vorsitzende nimmt alle laufenden Geschäfte wahr und vertritt den Ausschuss im Erweiterten Vorstand des VfS.</p>
+        <p><strong>§ 4 Mitgliederversammlung</strong> — Die Mitgliederversammlung tagt mindestens einmal jährlich im Rahmen der Tagung. Beschlüsse werden mit einfacher Mehrheit gefasst; Satzungsänderungen erfordern eine Zweidrittelmehrheit. Die Versammlung ist beschlussfähig bei Anwesenheit von mindestens einem Viertel der stimmberechtigten Mitglieder.</p>
+        <p><strong>§ 7 Formelles</strong> — Satzung, Mitgliederverzeichnis und Tagungsprogramme des Ausschusses sind öffentlich zugänglich (§ 7 Abs. 2).</p>
+      </div>
+      <div>
+        <div class="callout callout-gold">
+          <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+          <div>
+            <div class="callout-title">Vollständige Satzung</div>
+            <div class="callout-text">Die vollständige Satzung steht als PDF zur Verfügung.<br><br>
+              <a href="AGW_Satzung.pdf" download style="color:inherit;font-weight:600;">Satzung herunterladen (PDF) ↓</a>
+            </div>
+          </div>
+        </div>
+        <div class="info-card" style="margin-top:16px;">
+          <div class="info-header">Gründung &amp; Geschichte</div>
+          <div class="info-body">
+            <div class="info-row"><span class="info-label">Gründung</span><span class="info-val">1980 (1. Jahrestagung in Gießen)</span></div>
+            <div class="info-row"><span class="info-label">Tagungen</span><span class="info-val">46 Jahrestagungen (Stand 2026)</span></div>
+            <div class="info-row"><span class="info-label">Mitglieder</span><span class="info-val">48 (Stand 2026)</span></div>
+            <div class="info-row"><span class="info-label">Publikationen</span><span class="info-val">42 Bände (Stand 2026)</span></div>
+            <div class="info-row"><span class="info-label">Vorsitzender</span><span class="info-val">Prof. Dr. Rainer Klump</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand-col">
+      <div class="footer-brand-name">Ausschuss für die Geschichte der Wirtschaftswissenschaften</div>
+      <div class="footer-text" style="margin-bottom:10px;">
+        <span data-i18n="footer_desc">Ständiger Ausschuss für Theoriegeschichte und Dogmengeschichte im</span>
+        <a href="https://www.socialpolitik.de/de" target="_blank"> Verein für Socialpolitik (VfS)</a>.
+      </div>
+      <div class="footer-text">
+        <span data-i18n="footer_hosted">Jahrestagung 2026 ausgerichtet von Dr. David Bieri,</span>
+        <a href="mailto:bieri@vt.edu">bieri@vt.edu</a> ·
+        <a href="https://liberalarts.vt.edu/departments-and-schools/school-of-public-and-international-affairs.html" target="_blank"> Virginia Tech · SPIA</a> ·
+        <a href="https://stegercenter.vt.edu" target="_blank">Steger Center</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-label" data-i18n="nav_conference">Jahrestagung 2026</div>
+      <ul class="footer-links">
+        <li><a href="#tagungsprogramm"><span data-i18n="nav_programme">Tagungsprogramm</span></a></li>
+        <li><a href="#rahmenprogramm"><span data-i18n="nav_social">Rahmenprogramm</span></a></li>
+        <li><a href="#logistik"><span data-i18n="nav_travel">Anreise &amp; Logistik</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-label" data-i18n="nav_about_group">Über den AGW</div>
+      <ul class="footer-links">
+        <li><a href="#ueber"><span data-i18n="nav_about">Über den Ausschuss</span></a></li>
+        <li><a href="#geschichte"><span data-i18n="nav_history">Geschichte des AGW</span></a></li>
+        <li><a href="#mitglieder"><span data-i18n="nav_members">Mitgliederliste</span></a></li>
+        <li><a href="#archiv"><span data-i18n="nav_archive">Archiv</span></a></li>
+        <li><a href="#publikationen"><span data-i18n="nav_publications">Publikationen</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-label">Links</div>
+      <ul class="footer-links">
+        <li><a href="https://www.socialpolitik.de/de" target="_blank">Verein für Socialpolitik</a></li>
+        <li><a href="https://history-economicthought.committee.socialpolitik.de/" target="_blank">AGW / VfS</a></li>
+        <li><a href="https://stegercenter.vt.edu" target="_blank">Virginia Tech Steger Center</a></li>
+        <li><a href="https://www.eshet.net" target="_blank">ESHET</a></li>
+        <li><a href="https://www.sbb.ch" target="_blank">SBB <span data-i18n="train_timetable">Fahrplan</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">
+    <span>AGW / Verein für Socialpolitik · Jahrestagung 2026 · Riva San Vitale</span>
+    <span><span data-i18n="footer_updated">Stand: Mai 2026 · Änderungen vorbehalten</span></span>
+  </div>
+</footer>
+
+<script>
+/* ── Language toggle ── */
+// ════════════════════════════════════════════════════════════════════════
+//  ENGLISH TRANSLATIONS — AGW Website v5
+//  Companion file for editorial review: AGW_en.json
+//
+//  EDITORIAL STATUS:
+//    [FLAG]   Critical — must be resolved before publication
+//    [REVIEW] Requires domain-expert sign-off
+//    // alt:  Alternative(s) — choose one and remove the comment
+//
+//  CRITICAL TERMINOLOGY (see AGW_en.json _glossary for full notes):
+//    Dogmengeschichte       → "history of economic doctrines"   [FLAG]
+//    Theoriegeschichte      → "history of economic thought"     [FLAG]
+//    Wirtschaftswissenschaften → "economics"                    [REVIEW]
+//    Ausschuss (full name)  → "Committee for the History of Economics" [FLAG]
+//
+//  To update: edit values in this object, then sync back to AGW_en.json.
+//  To hand off for editorial review: share AGW_en.json (same data + notes).
+// ════════════════════════════════════════════════════════════════════════
+
+const EN = {
+
+  // ── Navigation ─────────────────────────────────────────────
+  nav_brand_sub:             'Verein für Socialpolitik',
+  nav_conference:            'Annual Conference 2026',
+  nav_programme:             'Academic Programme',  // [REVIEW] · alt: Scientific Programme / Conference Programme
+  nav_social:                'Social Programme',  // alt: Accompanying Programme / Social Events
+  nav_travel:                'Travel & Logistics',
+  nav_archive:               'Archive',
+  nav_publications:          'Publications',
+  nav_about_group:           'About AGW',  // [REVIEW] · alt: About the AGW / About the Committee
+  nav_about:                 'About the Committee',  // [REVIEW] · See glossary: Ausschuss.
+  nav_history:               'History of the AGW',
+  nav_members:               'Members',
+
+  // ── Hero section ───────────────────────────────────────────
+  hero_eyebrow:              'Committee for the History of Economics · Annual Conference 2026',  // [FLAG] · See glossary: committee_full_name and Wirtschaftswissenschaften.
+  hero_pill_venue:           'Virginia Tech Steger Center · Riva San Vitale, Ticino',
+  hero_pill_days:            'Thu–Sat · 3 Days',
+  hero_org_by:               'Organised by',  // alt: Organized by
+  hero_hosted_by:            'Hosted by',
+
+  // ── Sub-navigation strip ────────────────────────────────
+  sub_programme:             'Academic Programme',  // [REVIEW] · Same as nav_programme.
+  sub_social:                'Social Programme',
+  sub_travel:                'Travel & Logistics',
+
+  // ── Academic programme section ─────────────────────
+  sec_lbl_programme:         'Academic Programme',  // [REVIEW] · alt: Scientific Programme
+  sec_ttl_programme:         'Conference Programme',
+  tab_thu:                   'Thursday, 25 June',
+  tab_fri:                   'Friday, 26 June',
+  tab_sat:                   'Saturday, 27 June',
+  prog_welcome_dinner:       'Welcome Dinner',
+  prog_welcome_note:         'Historic old town · next to the funicular station',
+  prog_opening:              'Opening / Welcome',  // [REVIEW] · alt: Welcome and Opening Remarks / Opening Session
+  prog_memorial:             'In Memoriam: Three Departed Members',  // [REVIEW] · alt: Remembrance of Three Deceased Members
+  prog_coffee:               'Coffee Break',
+  prog_lunch:                'Lunch Break',
+  prog_tour:                 'Historical Walking Tour of Riva San Vitale (guided, German)',
+  prog_tour_note:            'Anabaptist Chapel (9th c.) · Battistero San Giovanni (4th/5th c.) · Santa Croce · Casa Bianchi (Mario Botta)',
+  prog_apericena:            'Apericena in the Gardens of Villa Maderni',
+  prog_apericena_venue:      '18th-century palazzo · Steger Center',
+  prog_apericena_note:       'Regional Ticino cuisine · approx. CHF 40 p.p. (drinks excl.)',
+  prog_assembly:             'Members\' Assembly',  // [REVIEW] · alt: General Assembly / Members' Meeting
+  prog_assembly_note:        'Members of the committee only',
+  prog_excursion:            'Group Excursion: Monte Generoso',
+  prog_excursion_detail:     'Rack railway from Capolago station (since 1890) · Panoramic view over four countries',
+
+  // ── Social programme section ──────────────────────────
+  sec_lbl_social:            'Social Programme',
+  sec_ttl_social:            'Social Events',  // [REVIEW] · alt: Social Programme / Accompanying Programme
+  card_thu_day:              'Thursday, 25 June',
+  card_thu_title:            'Welcome Dinner',
+  card_thu_note:             'The restaurant is located in the historic old town, adjacent to the funicular station, steps from the recommended conference hotel.',
+  card_fri_day:              'Friday, 26 June',
+  card_fri1_title:           'Historical Walking Tour',
+  card_fri1_note:            'Followed by: Apericena from 18:30 at Villa Maderni',
+  card_fri2_title:           'Apericena at Villa Maderni',
+  card_sat_day:              'Saturday, 27 June',
+  card_sat_title:            'Group Excursion: Monte Generoso',
+  card_sat_note:             'After Members\' Assembly · sturdy footwear recommended',
+  lbl_partner:               'Partner Programme',  // [REVIEW] · alt: Accompanying Persons' Programme / Partner Activities
+  ttl_partner:               'Activities for Accompanying Guests',  // [REVIEW] · alt: Excursions for Accompanying Persons
+  partner_hesse:             'Montagnola · daily 10:30–17:30 · free entry with Ticino Ticket.',
+  partner_lugano_ttl:        'Lake Lugano Boat Trips',
+  partner_lugano:            'Navigazione del Lago di Lugano. Cruises on Lake Lugano.',
+  partner_bre:               'Viewpoint hill above Lugano with sweeping panorama.',
+  partner_verita:            'Museum Casa Anatta · historic centre of the German life-reform movement.',
+
+  // ── Travel & Logistics section ────────────────────────
+  sec_lbl_travel:            'Travel & Local Logistics',
+  sec_ttl_travel:            'Travel & Accommodation',
+  ticino_title:              'Ticino Ticket',
+  ticino_text:               'All hotel guests in Ticino receive the Ticino Ticket free of charge at check-in: valid for TILO, PostAuto, and city buses — including the Lugano–Capolago route. Also: free entry to the Hermann Hesse Museum and discounts at other attractions.',
+  ttl_accommodation:         'Accommodation in Lugano',
+  badge_recommended:         'Recommended',
+  badge_dinner_near:         'Dinner venue nearby',
+  badge_no_train:            'No train needed',
+  hotel_svizzero_addr:       'Capolago · ~10 min walk to venue',
+  ticino_box_note:           'All guests receive the Ticino Ticket at hotel check-in — the Lugano ↔ Capolago train journey is therefore free of charge.',
+  ttl_train:                 'Getting There by Train',
+  ts1_label:                 'TILO S10: Lugano HB → Capolago-Riva San Vitale',
+  ts1_detail:                'Every 30 min · Journey time approx. 15 min.',
+  ts2_label:                 'Walk to Steger Center',
+  ts2_detail:                'approx. 750 m · 10–12 min from Capolago station',
+  train_times_hdr:           'Recommended Departure Times',
+  train_fri:                 'Depart Lugano HB 08:12 (9:00 start)',
+  train_sat:                 'Depart Lugano HB 07:42 (8:30 start)',
+  train_timetable:           'Timetable',
+  train_free_note:           'Ticino Ticket: the Lugano ↔ Capolago train journey is free of charge — no separate ticket needed.',
+  venue_address_lbl:         'Address',
+  venue_building_lbl:        'Building',
+  venue_building_val:        'Villa Maderni, 18th-century palazzo',
+
+  // ── Archive section ───────────────────────────────────
+  sec_lbl_archive:           'Conference Archive',
+  sec_ttl_archive:           'Previous Annual Conferences',
+  sec_intro_archive:         'The AGW holds an annual conference. Below is an overview of past conferences with programmes and selected contributions.',
+  arch_view:                 'View Programme',
+  arch_papers:               'Selected Papers',
+  arch_upload:               'Submit Paper',
+  arch_upload_note:          'Papers are added following consultation with the chair.',
+
+  // ── Publications section ──────────────────────────
+  sec_lbl_pub:               'Publications',
+  sec_ttl_pub:               'Conference Volumes',  // [REVIEW] · alt: Edited Volumes / Conference Publications
+  pub_series_lbl:            'Series Information',
+  pub_all_link:              'All volumes at publisher ↗',
+  pub_filter_all:            'All',
+  pub_toc_placeholder:       'Table of contents to be added.',
+  pub_no_results:            'No volumes found',
+  pub_cite_lbl:              'Cite',
+  pub_toc_lbl:               'Contents',
+  pub_download:              'Download',
+  pub_copy:                  'Copy',
+  pub_copied:                'Copied',
+  pub_publisher_lbl:         'Publisher ↗',
+  pub_band_lbl:              'Vol. 115/',
+
+  // ── About the Committee ── [EDITORIAL PRIORITY] ─────────
+  sec_lbl_about:             'About the Committee',  // [REVIEW]
+  sec_ttl_about:             'About the Committee',  // [REVIEW] · See glossary: Ausschuss.
+  about_p1:                  'The <strong>Committee for the History of Economics (AGW)</strong> is the standing committee for the history of economic thought and the history of doctrines within the Verein für Socialpolitik (VfS), the largest German-language economics association.',  // [FLAG]
+  about_p2:                  'The committee serves as a scholarly platform bringing together economists from German, Austrian, and Swiss higher education institutions — as well as neighbouring countries — who work on the methodological, philosophical, intellectual-historical, and historical dimensions of economics.',  // [REVIEW]
+  about_p3:                  'The annual conference is the centrepiece of the committee\'s activity. It provides a forum for research discussions, for dialogue between emerging and established scholars, and for international exchange on the history of economic thought as a discipline.',  // [REVIEW]
+  about_p4:                  'The AGW is part of the international network of history-of-economics societies, including the <strong>European Society for the History of Economic Thought (ESHET)</strong> and the <strong>History of Economics Society (HES)</strong>.',
+  about_pullquote:           'The history of economic ideas is not an end in itself — it opens our eyes to what economics could be.',  // [REVIEW]
+  contact_title:             'Contact & Organisation',
+  contact_chair_lbl:         'Chair',
+  contact_host_lbl:          '2026 Host',
+  contact_parent_lbl:        'Parent body',  // alt: Parent organisation
+  contact_page_lbl:          'Committee page',
+  membership_title:          'Membership',
+  membership_text:           'Researchers interested in joining the committee should contact the chair or the VfS office directly.',
+
+  // ── History section ── [EDITORIAL PRIORITY] ───────────
+  sec_lbl_history:           'History',
+  sec_ttl_history:           'History of the AGW',
+  hist_p1:                   'The <strong>Committee for the History of Economics (AGW)</strong> is one of the standing specialist committees of the Verein für Socialpolitik (VfS), the oldest professional association of economists in the world (founded 1873). The AGW was founded in 1980; its inaugural conference was held in Giessen. As an independent committee, the AGW brings together research on the history of economic theories and doctrines in the German-language academic tradition.',  // [FLAG] see glossary: committee_full_name  // [FLAG] · Uses committee_full_name — see glossary.
+  hist_p2:                   'The AGW\'s annual conferences regularly result in peer-reviewed collected volumes published as the subseries <em>Studien zur Entwicklung der ökonomischen Theorie</em> within the <em>Schriften des Vereins für Socialpolitik</em> (vol. 115) by Duncker &amp; Humblot, Berlin. Since the first volume in the early 1980s, the series — now numbering more than 40 volumes — has been the principal publication outlet for the German-language history of economic thought.',  // [FLAG]
+  hist_p3:                   'The AGW meets annually at rotating locations in Germany, Austria, and Switzerland, and occasionally abroad. Papers presented cover the history of economic theories, the history of doctrines, and the philosophy of economics. The 2022 Jahrestagung in Jena was dedicated to the 150th anniversary of the VfS (volume XLI of the series, ed. Peter Spahn).',  // [REVIEW]
+  hist_p4:                   'The AGW maintains close ties with the international sister societies ESHET (European Society for the History of Economic Thought) and HES (History of Economics Society), as well as with other national associations in the German- and European-language scholarly community.',
+  hist_note_title:           'Note on History',
+  hist_note_text:            'This section is being updated continuously. Members wishing to contribute to the history of the committee should contact the chair.',
+
+  // ── Members section ───────────────────────────────────
+  sec_lbl_members:           'Members',
+  sec_ttl_members:           'Members of the AGW',
+  mbr_chair:                 'Chair',
+  mbr_host2026:              '2026 Host',
+  mbr_search:                'Search members…',
+
+  // ── Footer ────────────────────────────────────────────
+  footer_desc:               'Standing committee for the history of economic thought within the',  // [FLAG] · Uses Theoriegeschichte and Dogmengeschichte — see glossary.
+  footer_hosted:             'Annual Conference 2026 hosted by Dr. David Bieri,',
+  footer_col_conf:           'Annual Conference 2026',
+  footer_col_about:          'About AGW',  // [REVIEW]
+  footer_updated:            'Updated: May 2026 · Subject to change',
+};
+
+let lang = 'de';
+/* ── Language state ─────────────────────────────────────────────────────────
+ * Approach: data-i18n attributes hold the key; DE is the HTML default.
+ * On first switch to EN, current textContent is saved as data-de.
+ * On return to DE, data-de is restored. data-i18n-html for markup elements.
+ * Persistence: localStorage 'agw-lang'. Init: saved → navigator.language → 'de'.
+ * ─────────────────────────────────────────────────────────────────────────── */
+let lang = 'de';
+
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+
+  // Text-content elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (l === 'en') {
+      if (el.dataset.de === undefined) el.dataset.de = el.textContent;
+      if (EN[key] !== undefined) el.textContent = EN[key];
+    } else {
+      if (el.dataset.de !== undefined) el.textContent = el.dataset.de;
+    }
+  });
+
+  // HTML-content elements (contain markup — paragraphs with <strong> etc.)
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.dataset.i18nHtml;
+    if (l === 'en') {
+      if (el.dataset.deHtml === undefined) el.dataset.deHtml = el.innerHTML;
+      if (EN[key] !== undefined) el.innerHTML = EN[key];
+    } else {
+      if (el.dataset.deHtml !== undefined) el.innerHTML = el.dataset.deHtml;
+    }
+  });
+
+  // Update search placeholders
+  const ms = document.getElementById('member-search');
+  if (ms) ms.placeholder = l === 'en' ? EN.mbr_search : 'Mitglieder suchen…';
+  const ps = document.getElementById('pub-search');
+  if (ps) ps.placeholder = l === 'en' ? 'Search by title or editor…' : 'Titel oder Herausgeber suchen…';
+
+  // Re-render JS-driven sections (they read the `lang` variable)
+  renderChairs();
+  renderMembers(getMemberList());
+  renderArchive();
+  renderPubs();
+
+  // Update toggle button state
+  document.getElementById('btn-de').classList.toggle('active', l === 'de');
+  document.getElementById('btn-en').classList.toggle('active', l === 'en');
+
+  // Persist choice across sessions
+  try { localStorage.setItem('agw-lang', l); } catch(e) {}
+}
+
+function initLang() {
+  // Priority: 1) saved preference, 2) browser language, 3) German default
+  let saved = null;
+  try { saved = localStorage.getItem('agw-lang'); } catch(e) {}
+  if (saved === 'en') { setLang('en'); return; }
+  if (saved === 'de') return; // HTML default, no action needed
+
+  // No saved preference — check browser language
+  const bl = (navigator.language || '').toLowerCase();
+  if (!bl.startsWith('de') && /^(en|fr|it|nl|es|pt|pl|cs|sv|no|fi)/.test(bl)) {
+    setLang('en');
+  }
+  // else stay in German (HTML default)
+}
+
+/* ── Programme tabs ── */
+function showDay(id) {
+  document.querySelectorAll('.prog-day').forEach(d => d.classList.remove('active'));
+  document.querySelectorAll('.prog-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('day-' + id).classList.add('active');
+  const map = { do: 0, fr: 1, sa: 2 };
+  document.querySelectorAll('.prog-tab')[map[id]].classList.add('active');
+}
+
+/* ── Mobile menu ── */
+function toggleMobileMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+
+/* ── Members data ── */
+const CHAIRS = [
+  { name:'Fritz Neumark', inst:'Goethe-Universität Frankfurt', start:1980, end:1982, past:true },
+  { name:'Harald Scherf', inst:'Universität Hamburg', start:1982, end:1990, past:true },
+  { name:'Bertram Schefold', inst:'Goethe-Universität Frankfurt', start:1990, end:1992, past:true },
+  { name:'Heinz Rieter', inst:'Universität Hamburg', start:1992, end:1996, past:true },
+  { name:'Erich Streißler', inst:'Universität Wien', start:1996, end:2000, past:true },
+  { name:'Christian Scheer', inst:'Universität Hamburg', start:2000, end:2004, past:true },
+  { name:'Harald Hagemann', inst:'Universität Hohenheim', start:2004, end:2008, past:true },
+  { name:'Heinz D. Kurz', inst:'Karl-Franzens-Universität Graz', start:2008, end:2012, past:true },
+  { name:'Hans-Michael Trautwein', inst:'Carl von Ossietzky Universität Oldenburg', start:2012, end:2016, past:true },
+  { name:'Volker Caspari', inst:'Goethe-Universität Frankfurt', start:2016, end:2019, past:true },
+  { name:'Peter Spahn', inst:'Universität Hohenheim', start:2019, end:2022, past:true },
+  { name:'Rainer Klump', inst:'Goethe-Universität Frankfurt', start:2023, end:null, past:false },
+];
+
+const MEMBERS = [
+  { name:'Elisabeth Allgoewer', title:'Prof. Dr.', inst:'Universität Hamburg', city:'Hamburg', country:'DE', emeritus:false, role:'', focus_de:'Geldtheorie, Makroökonomik, Geschichte der Ökonomik', focus_en:'Monetary theory, macroeconomics, history of economics' },
+  { name:'Ingo Barens', title:'Prof. em. Dr.', inst:'TU Darmstadt', city:'Darmstadt', country:'DE', emeritus:true, role:'', focus_de:'Keynesianismus, Beschäftigungstheorie', focus_en:'Keynesianism, employment theory' },
+  { name:'Reinhard Blomert', title:'Dr. habil.', inst:'Wissenschaftszentrum Berlin (WZB)', city:'Berlin', country:'DE', emeritus:false, role:'', focus_de:'Wissenssoziologie, Geschichte der Wirtschaftswissenschaften', focus_en:'Sociology of knowledge, history of economics' },
+  { name:'David Bieri', title:'Prof. Dr.', inst:'Virginia Tech, Blacksburg', city:'Blacksburg', country:'US', emeritus:false, role:'host2026', focus_de:'Geschichte der Finanzmarkttheorie, Urban Economics', focus_en:'History of financial theory, urban economics' },
+  { name:'Eduard Braun', title:'PD Dr.', inst:'TU Clausthal', city:'Clausthal', country:'DE', emeritus:false, role:'', focus_de:'Österreichische Schule, Kapitaltheorie', focus_en:'Austrian School, capital theory' },
+  { name:'Volker Caspari', title:'Prof. em. Dr.', inst:'Goethe-Universität Frankfurt/Main', city:'Frankfurt', country:'DE', emeritus:true, role:'', focus_de:'Sraffa, Verteilungstheorie, Geschichte der ökonomischen Analyse', focus_en:'Sraffa, distribution theory, history of economic analysis' },
+  { name:'Günther Chaloupek', title:'Dr.', inst:'Kammer für Arbeiter und Angestellte, Wien', city:'Wien', country:'AT', emeritus:false, role:'', focus_de:'Österreichische Wirtschaftsgeschichte, Arbeiterbewegung', focus_en:'Austrian economic history, labour movement' },
+  { name:'Kurt Dopfer', title:'Prof. em. Dr.', inst:'Universität St. Gallen', city:'St. Gallen', country:'CH', emeritus:true, role:'', focus_de:'Evolutionäre Ökonomik, Rationalität', focus_en:'Evolutionary economics, rationality' },
+  { name:'Alexander Ebner', title:'Prof. Dr.', inst:'Goethe-Universität Frankfurt a. M.', city:'Frankfurt', country:'DE', emeritus:false, role:'', focus_de:'Schumpeter, Evolutionsökonomik, Institutionenökonomik', focus_en:'Schumpeter, evolutionary economics, institutional economics' },
+  { name:'Dirk Ehnts', title:'Dr.', inst:'TU Chemnitz', city:'Chemnitz', country:'DE', emeritus:false, role:'', focus_de:'Moderne Geldtheorie (MMT), Post-Keynesianismus', focus_en:'Modern Monetary Theory (MMT), Post-Keynesianism' },
+  { name:'Svenja Flechtner', title:'Prof. Dr.', inst:'Universität Siegen', city:'Siegen', country:'DE', emeritus:false, role:'', focus_de:'Feministische Ökonomik, Heterodoxe Ökonomik', focus_en:'Feminist economics, heterodox economics' },
+  { name:'Hans Frambach', title:'Prof. Dr.', inst:'Bergische Universität Wuppertal', city:'Wuppertal', country:'DE', emeritus:false, role:'', focus_de:'Geschichte des ökonomischen Denkens, Wohlfahrtstheorie', focus_en:'History of economic thought, welfare theory' },
+  { name:'Christian Gehrke', title:'Prof. Dr.', inst:'Karl-Franzens-Universität Graz', city:'Graz', country:'AT', emeritus:false, role:'', focus_de:'Sraffa, klassische politische Ökonomie', focus_en:'Sraffa, classical political economy' },
+  { name:'Nils Goldschmidt', title:'Prof. Dr.', inst:'Universität Siegen', city:'Siegen', country:'DE', emeritus:false, role:'', focus_de:'Ordoliberalismus, soziale Marktwirtschaft', focus_en:'Ordoliberalism, social market economy' },
+  { name:'Jan Greitens', title:'Prof. Dr.', inst:'DHBW Mosbach', city:'Mosbach', country:'DE', emeritus:false, role:'', focus_de:'Geschichte der Geldtheorie', focus_en:'History of monetary theory' },
+  { name:'Harald Hagemann', title:'Prof. em. Dr.', inst:'Universität Hohenheim', city:'Hohenheim', country:'DE', emeritus:true, role:'', focus_de:'Konjunkturtheorie, Geschichte der Makroökonomik', focus_en:'Business cycle theory, history of macroeconomics' },
+  { name:'Tetsushi Harada', title:'Prof. Dr.', inst:'Kwansei Gakuin University', city:'Nishinomiya', country:'JP', emeritus:false, role:'', focus_de:'Rezeption deutschsprachiger Ökonomik in Japan', focus_en:'Reception of German-language economics in Japan' },
+  { name:'Jochen Hartwig', title:'Prof. Dr.', inst:'TU Chemnitz', city:'Chemnitz', country:'DE', emeritus:false, role:'', focus_de:'Post-Keynesianismus, Verteilungstheorie', focus_en:'Post-Keynesianism, distribution theory' },
+  { name:'Jan-Otmar Hesse', title:'Prof. Dr.', inst:'Universität Bayreuth', city:'Bayreuth', country:'DE', emeritus:false, role:'', focus_de:'Wirtschaftsgeschichte, Geschichte des Vereins für Socialpolitik', focus_en:'Economic history, history of the VfS' },
+  { name:'Karen Horn', title:'Prof. Dr.', inst:'Universität Erfurt', city:'Erfurt', country:'DE', emeritus:false, role:'', focus_de:'Adam Smith, Geschichte des Liberalismus', focus_en:'Adam Smith, history of liberalism' },
+  { name:'Hauke Janssen', title:'Dr.', inst:'(unabhängig)', city:'–', country:'DE', emeritus:false, role:'', focus_de:'Geschichte der Wirtschaftswissenschaften im Nationalsozialismus', focus_en:'History of economics under National Socialism' },
+  { name:'Hansjörg Klausinger', title:'Prof. em. Dr.', inst:'Wirtschaftsuniversität Wien', city:'Wien', country:'AT', emeritus:true, role:'', focus_de:'Österreichische Schule, Hayek, Konjunkturtheorie', focus_en:'Austrian School, Hayek, business cycle theory' },
+  { name:'Rainer Klump', title:'Prof. Dr.', inst:'Goethe-Universität Frankfurt', city:'Frankfurt', country:'DE', emeritus:false, role:'chair', focus_de:'Wachstumstheorie, Institutionenökonomik, Dogmengeschichte', focus_en:'Growth theory, institutional economics, history of doctrines' },
+  { name:'Stefan Kolev', title:'Prof. Dr.', inst:'Westfälische Hochschule Zwickau', city:'Zwickau', country:'DE', emeritus:false, role:'', focus_de:'Ordoliberalismus, Hayek, Mont Pèlerin Society', focus_en:'Ordoliberalism, Hayek, Mont Pèlerin Society' },
+  { name:'Hagen Krämer', title:'Prof. Dr.', inst:'Hochschule Karlsruhe', city:'Karlsruhe', country:'DE', emeritus:false, role:'', focus_de:'Einkommensverteilung, Post-Keynesianismus', focus_en:'Income distribution, Post-Keynesianism' },
+  { name:'Heinz D. Kurz', title:'Prof. em. Dr.', inst:'Karl-Franzens-Universität Graz', city:'Graz', country:'AT', emeritus:true, role:'', focus_de:'Sraffa, klassische politische Ökonomie, Kapitaltheorie', focus_en:'Sraffa, classical political economy, capital theory' },
+  { name:'Oliver Landmann', title:'Prof. em. Dr.', inst:'Universität Freiburg', city:'Freiburg', country:'DE', emeritus:true, role:'', focus_de:'Wachstumstheorie, internationale Makroökonomik', focus_en:'Growth theory, international macroeconomics' },
+  { name:'Hans-Walter Lorenz', title:'Prof. Dr. em.', inst:'Wirtschaftswissenschaftliche Fakultät', city:'–', country:'DE', emeritus:true, role:'', focus_de:'Nichtlineare Dynamik, Konjunkturtheorie', focus_en:'Nonlinear dynamics, business cycle theory' },
+  { name:'Karl Milford', title:'Prof. Dr.', inst:'Universität Wien', city:'Wien', country:'AT', emeritus:false, role:'', focus_de:'Wissenschaftstheorie, Popper, Geschichte der Methodologie', focus_en:'Philosophy of science, Popper, history of methodology' },
+  { name:'Arash Molavi', title:'Dr.', inst:'Finanzministerium Berlin', city:'Berlin', country:'DE', emeritus:false, role:'', focus_de:'Evolutionsökonomik, Wettbewerbstheorie', focus_en:'Evolutionary economics, competition theory' },
+  { name:'Helge Peukert', title:'Prof. Dr. Dr.', inst:'Universität Siegen', city:'Siegen', country:'DE', emeritus:false, role:'', focus_de:'Schumpeter, Geschichte der Konjunkturtheorie', focus_en:'Schumpeter, history of business cycle theory' },
+  { name:'Birger Priddat', title:'Prof. em. Dr.', inst:'Universität Witten/Herdecke', city:'Witten', country:'DE', emeritus:true, role:'', focus_de:'Institutionenökonomik, Rhetorik der Ökonomik', focus_en:'Institutional economics, rhetoric of economics' },
+  { name:'Heinz Rieter', title:'Prof. em. Dr.', inst:'Universität Hamburg', city:'Hamburg', country:'DE', emeritus:true, role:'', focus_de:'Geschichte der Wirtschaftswissenschaften, Methodologie', focus_en:'History of economics, methodology' },
+  { name:'Philipp Robinson Rössner', title:'Prof. Dr.', inst:'University of Manchester', city:'Manchester', country:'UK', emeritus:false, role:'', focus_de:'Frühneuzeitliche Wirtschaftsgeschichte, monetäre Geschichte', focus_en:'Early modern economic history, monetary history' },
+  { name:'Peter Rosner', title:'Prof. Dr.', inst:'Universität Wien', city:'Wien', country:'AT', emeritus:false, role:'', focus_de:'Geschichte der Beschäftigungstheorie', focus_en:'History of employment theory' },
+  { name:'Christian Scheer', title:'Prof. em. Dr.', inst:'Universität Hamburg', city:'Hamburg', country:'DE', emeritus:true, role:'', focus_de:'Deutsche Finanzwissenschaft, Geschichte der Wirtschaftspolitik', focus_en:'German public finance, history of economic policy' },
+  { name:'Bertram Schefold', title:'Prof. Dr. Drs. h.c.', inst:'Goethe-Universität Frankfurt', city:'Frankfurt', country:'DE', emeritus:false, role:'', focus_de:'Sraffa, klassische politische Ökonomie, Geschichte der VWL', focus_en:'Sraffa, classical political economy, history of economics' },
+  { name:'Johannes Schmidt', title:'Prof. Dr.', inst:'Hochschule Karlsruhe', city:'Karlsruhe', country:'DE', emeritus:false, role:'', focus_de:'Beschäftigungstheorie, monetäre Ökonomik', focus_en:'Employment theory, monetary economics' },
+  { name:'Peter Spahn', title:'Prof. em. Dr.', inst:'Universität Hohenheim', city:'Hohenheim', country:'DE', emeritus:true, role:'', focus_de:'Geschichte der Makroökonomik, monetäre Ökonomik', focus_en:'History of macroeconomics, monetary economics' },
+  { name:'Richard Sturn', title:'Prof. Dr.', inst:'Universität Graz', city:'Graz', country:'AT', emeritus:false, role:'', focus_de:'Klassische politische Ökonomie, Wohlfahrtstheorie', focus_en:'Classical political economy, welfare theory' },
+  { name:'Stephan Thomsen', title:'Prof. Dr.', inst:'Leibniz Universität Hannover', city:'Hannover', country:'DE', emeritus:false, role:'', focus_de:'Arbeitsmarktökonomik, politische Ökonomie', focus_en:'Labour economics, political economy' },
+  { name:'Horst Todt', title:'Prof. em. Dr.', inst:'Universität Hamburg', city:'Hamburg', country:'DE', emeritus:true, role:'', focus_de:'Geschichte der Volkswirtschaftslehre', focus_en:'History of economics' },
+  { name:'Hans-Michael Trautwein', title:'Prof. Dr.', inst:'Carl von Ossietzky Universität Oldenburg', city:'Oldenburg', country:'DE', emeritus:false, role:'', focus_de:'Makroökonomik, Geldtheorie, Geschichte der Makroökonomik', focus_en:'Macroeconomics, monetary theory, history of macroeconomics' },
+  { name:'Helmut Wagner', title:'Prof. Dr.', inst:'FernUniversität Hagen', city:'Hagen', country:'DE', emeritus:false, role:'', focus_de:'Internationale Währungsökonomik, Makroökonomik', focus_en:'International monetary economics, macroeconomics' },
+  { name:'Gerhard Wegner', title:'Prof. Dr.', inst:'Universität Erfurt', city:'Erfurt', country:'DE', emeritus:false, role:'', focus_de:'Hayeksche Evolutionstheorie, Ordnungsökonomik', focus_en:'Hayekian evolutionary theory, constitutional economics' },
+  { name:'Carl Christian von Weizsäcker', title:'Prof. em. Dr.', inst:'Max-Planck-Institut, Bonn', city:'Bonn', country:'DE', emeritus:true, role:'', focus_de:'Kapitaltheorie, allgemeine Gleichgewichtstheorie', focus_en:'Capital theory, general equilibrium theory' },
+  { name:'Michael Wohlgemuth', title:'Prof. Dr.', inst:'Universität Witten/Herdecke', city:'Witten', country:'DE', emeritus:false, role:'', focus_de:'Evolutionäre Ökonomik, Ordoliberalismus', focus_en:'Evolutionary economics, ordoliberalism' },
+  { name:'Joachim Zweynert', title:'Prof. Dr.', inst:'Universität Witten/Herdecke', city:'Witten', country:'DE', emeritus:false, role:'', focus_de:'Geschichte der Wirtschaftswissenschaften in Osteuropa', focus_en:'History of economics in Eastern Europe' },
+];
+
+function getInitials(name) {
+  const p = name.trim().split(/\s+/);
+  return (p[0][0] + p[p.length-1][0]).toUpperCase();
+}
+
+
+/* ── Chairs timeline ── */
+function renderChairs() {
+  const el = document.getElementById('chairs-timeline');
+  if (!el) return;
+  const current_lbl = lang === 'en' ? (EN.chairs_current || 'Current Chair') : 'Aktueller Vorsitzender';
+  const past_lbl    = lang === 'en' ? (EN.chairs_past    || 'Past Chair')    : 'Ehemaliger Vorsitzender';
+
+  el.innerHTML = '<div class="chairs-list">'
+    + CHAIRS.map((c, i) => {
+      const period = c.end ? (c.start + '\u2013' + c.end) : (c.start + '\u2013heute');
+      const yrs    = c.end ? (c.end - c.start) : (2026 - c.start);
+      const isCurrent = !c.past;
+      return '<div class="chair-item' + (isCurrent ? ' chair-current' : '') + '">'
+        + '<div class="chair-num">' + (i + 1) + '</div>'
+        + '<div class="chair-body">'
+        + '<div class="chair-name">' + c.name
+        + (isCurrent ? ' <span class="badge badge-gold" style="font-size:10px;vertical-align:middle;">' + current_lbl + '</span>' : '')
+        + '</div>'
+        + '<div class="chair-inst">' + c.inst + '</div>'
+        + '</div>'
+        + '<div class="chair-period">'
+        + '<div class="chair-years">' + period + '</div>'
+        + '<div class="chair-dur">' + yrs + (lang === 'en' ? ' yr' : ' J.') + (yrs > 1 ? (lang === 'en' ? 's' : '') : '') + '</div>'
+        + '</div>'
+        + '</div>';
+    }).join('')
+    + '</div>';
+}
+
+/* ── Member filters ── */
+let memberStatusFilter  = 'all';
+let memberCountryFilter = 'all';
+
+function setMemberFilter(type, val, btn) {
+  if (type === 'status') memberStatusFilter = val;
+  else memberCountryFilter = val;
+  document.querySelectorAll('.mbr-filter-' + type).forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderMembers(getMemberList());
+}
+
+function getMemberList() {
+  const q = (document.getElementById('member-search') || {value:''}).value.toLowerCase();
+  return MEMBERS.filter(m => {
+    if (memberStatusFilter === 'active'  &&  m.emeritus) return false;
+    if (memberStatusFilter === 'emeriti' && !m.emeritus) return false;
+    if (memberCountryFilter === 'DACH' && !['DE','AT','CH'].includes(m.country)) return false;
+    if (memberCountryFilter === 'INTL' &&  ['DE','AT','CH'].includes(m.country)) return false;
+    if (q) {
+      const txt = (m.name + ' ' + m.inst + ' ' + m.city + ' ' +
+                   (lang === 'de' ? m.focus_de : m.focus_en)).toLowerCase();
+      if (!txt.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+function filterMembers() { renderMembers(getMemberList()); }
+
+function renderMembers(list) {
+  const grid = document.getElementById('members-grid');
+  const cnt  = document.getElementById('mbr-count');
+  if (cnt) cnt.textContent = list.length + ' / ' + MEMBERS.length;
+  if (!list.length) {
+    grid.innerHTML = '<div style="padding:32px;text-align:center;color:var(--text-faint);font-style:italic;">Keine Mitglieder gefunden / No members found</div>';
+    return;
+  }
+  const chair_lbl = lang === 'en' ? (EN.mbr_chair    || 'Chair')     : 'Vorsitzender';
+  const host_lbl  = lang === 'en' ? (EN.mbr_host2026 || '2026 Host') : 'Gastgeber 2026';
+  const em_lbl    = lang === 'en' ? 'Emeritus/a' : 'Emeritus/a';
+  const FLAG = { DE:'\u{1f1e9}\u{1f1ea}', AT:'\u{1f1e6}\u{1f1f9}', CH:'\u{1f1e8}\u{1f1ed}',
+                 US:'\u{1f1fa}\u{1f1f8}', UK:'\u{1f1ec}\u{1f1e7}', JP:'\u{1f1ef}\u{1f1f5}' };
+  grid.innerHTML = list.map(m => {
+    const focus  = lang === 'de' ? m.focus_de : m.focus_en;
+    const flag   = FLAG[m.country] || '';
+    const badges = [];
+    if (m.role === 'chair')    badges.push('<span class="badge badge-gold">'  + chair_lbl + '</span>');
+    if (m.role === 'host2026') badges.push('<span class="badge badge-blue">'  + host_lbl  + '</span>');
+    if (m.emeritus)            badges.push('<span class="badge" style="background:var(--border-light);color:var(--text-muted);">' + em_lbl + '</span>');
+    return '<div class="member-card' + (m.role === 'chair' ? ' chair' : '') + '">'
+      + '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">'
+      + '<div class="member-initial">' + getInitials(m.name) + '</div>'
+      + '<span style="font-size:18px;" title="' + m.country + '">' + flag + '</span></div>'
+      + '<div class="member-name">' + m.name + '</div>'
+      + '<div style="font-size:11px;color:var(--text-faint);font-weight:600;margin-bottom:2px;">' + m.title + '</div>'
+      + '<div class="member-inst">' + m.inst + (m.city && m.city !== '–' ? ' · ' + m.city : '') + '</div>'
+      + (focus ? '<div class="member-focus">' + focus + '</div>' : '')
+      + (badges.length ? '<div class="member-badges">' + badges.join('') + '</div>' : '')
+      + '</div>';
+  }).join('');
+}
+
+/* ── Archive data ── */
+const ARCHIVE = [
+  { nr:46, year:2026, loc_de:'Riva San Vitale, Tessin', loc_en:'Riva San Vitale, Ticino', theme:'Zukunftsperspektiven der Theoriegeschichte: Methoden, Themen, Kontroversen', theme_en:'Future Perspectives in the History of Economic Thought: Methods, Topics, Controversies', vol:null, vol_label:'Band XLIII (angekündigt)', papers:[
+    { author:'Hans-Michael Trautwein (Oldenburg) · Richard Sturn (Graz)', title:'Der Stand und die Zukunft der theoriegeschichtlichen Forschung' },
+    { author:'Alexander Linsbichler (Linz)', title:'Theoriegeschichte und Wissenschaftsphilosophie: Gedanken zum schlummernden Potenzial einer prekären Kooperation' },
+    { author:'Gilles Campagnolo (Paris)', title:'Inhalt und Grenzen der «philosophie économique»' },
+    { author:'Catherine Herfeld (Hannover)', title:'Worum geht es eigentlich? Zentrale Einsichten aus Gesprächen über die Theorie rationalen Entscheidens' },
+    { author:'Hermann Rauchenschwandtner (Salzburg)', title:'Wirtschaft und Leben: Zu Friedrich von Gottl-Ottlilienfelds Ökonomik' },
+    { author:'Anselm Küsters (Berlin/Stuttgart)', title:'Zwischen Freiburg und Michigan: Quantitative Textanalyse transnationaler Verbindungen in der ordoliberalen Tradition' },
+    { author:'Karl Milford (Wien)', title:'Theorien des wissenschaftlichen Fortschritts und Geschichtsschreibung der Wirtschaftswissenschaften' },
+    { author:'Andreas Lingg (Witten/Herdecke)', title:'Geschichte schreiben. Die Vergangenheit der ökonomischen Moderne' },
+    { author:'Andrea Franc (Luzern)', title:'Wie Geschichte des ökonomischen Denkens unterrichten?' },
+    { author:'Lachezar Grudev (Chemnitz)', title:'Geschichte der ökonomischen Analyse – wozu? Eine kritische Auseinandersetzung mit dem Geschichtsverständnis der heutigen Ökonomen' }
+  ] },
+  { nr:45, year:2025, loc_de:'Bayreuth', loc_en:'Bayreuth', theme:'Theoriegeschichte der Geoökonomik', theme_en:'History of Economic Thought on Geo-economics', vol:null, vol_label:null, papers:[
+    { author:'Julius Nipperdey (Saarbrücken)', title:'Kameralismus und die globale Wirtschaft' },
+    { author:'Richard Sturn (Graz)', title:'Adam Smiths Geoökonomik: Zwischen Freihandelsideal und geopolitischem Realismus' },
+    { author:'Birger Priddat (Witten/Herdecke)', title:'Über den Handel. Kant und Fichte. Pro und Contra.' },
+    { author:'Werner Plumpe (Frankfurt am Main)', title:'Friedrich List' },
+    { author:'Kiichiro Yagi (Osaka)', title:'Colonialism Studies in the Age of Japanese Empire: Inazo Nitobe, Tadao Yanaihara, and Marxists' },
+    { author:'Jan-Otmar Hesse (Bayreuth)', title:'Herbert Giersch und die Kieler Schule der Standorttheorie' },
+    { author:'Reinhard Schumacher, Svenja Flechtner, Matthias Störring', title:'Charlotte Leubuscher (1888–1961): Von der Sozialen Frage zur Pionierin der Entwicklungsökonomik' },
+    { author:'Daniel Nientiedt (Freiburg)', title:'Hayek zu Internationalem Föderalismus' }
+  ] },
+  { nr:44, year:2024, loc_de:'Fulda', loc_en:'Fulda', theme:'Frauen in der Geschichte der Wirtschaftswissenschaften', theme_en:'Women in the History of Economics', vol:null, vol_label:null, papers:[
+    { author:'Kerstin Dross-Krüpe', title:'Frauen und Wirtschaft in der römischen Antike' },
+    { author:'Charlotte Backerra', title:'Regierende Frauen in der frühen Neuzeit und ihre Wirtschaftskompetenz' },
+    { author:'Elisabeth Allgoewer', title:'Frauen im Verein für Socialpolitik' },
+    { author:'Christian Kremser', title:'Beatrice Webb (1858–1943) als Ökonomin – Schlaglichter auf Leben, Werk und Wirkung' },
+    { author:'Günther Chaloupek', title:'Helene Bauer (1871–1942) – »bürgerliche und sozialistische Ökonomie«' },
+    { author:'Reinhard Schumacher, Svenja Flechtner, Matthias Störring', title:'Charlotte Leubuscher (1888–1961): Von der Sozialen Frage zur Pionierin der Entwicklungsökonomik' },
+    { author:'Uwe Dathe / Daniel Nientiedt', title:'Edith Eucken (1896–1985)' },
+    { author:'Hans Frambach', title:'Cläre Tisch (1907–1941) – Leben und Werk' },
+    { author:'Harald Hagemann', title:'Fanny Ginor (1911–2007): »Die Basler Nationalökonomie nach Israel getragen«' },
+    { author:'Lachezar Grudev', title:'Vera Smith (1912–1976). Eine mutige Ökonomin im Spannungsfeld dreier Welten' },
+    { author:'Bertram Schefold', title:'Joan Robinson (1903–1983) – eine persönliche Charakterisierung (»Kamingespräch«)' }
+  ] },
+  { nr:43, year:2023, loc_de:'Edinburgh', loc_en:'Edinburgh', theme:'Adam Smith @ 300', theme_en:'Adam Smith @ 300', vol:'XLII', vol_label:'Band XLII', papers:[
+    { author:'Karen Horn (Erfurt)', title:'Geschichte der Wirtschaftswissenschaften als interdisziplinäre Aufgabe: Ein Überblick über die jüngere Adam-Smith-Forschung' },
+    { author:'Philipp Robinson Rössner (Manchester)', title:'Smith\'s Scotland. Contextualising the Wealth of Nations from a not primarily intellectual or ideas-based approach' },
+    { author:'Sabine Föllinger (Marburg)', title:'Antike Philosophie im Denken von Adam Smith' },
+    { author:'Reinhard Schumacher (Potsdam)', title:'Die unterschiedlichen Ansichten Adam Smiths und David Humes über das Verhältnis von wirtschaftlicher Entwicklung und zwischenstaatlichen Kriegen' },
+    { author:'Ludwig Nellinger (Bonn)', title:'Methodik und Erkenntnisfortschritt: Adam Smith und Johann Heinrich von Thünen' },
+    { author:'Heinz D. Kurz (Graz)', title:'Smith, Marx und Schumpeter über den Zivilisationsprozess. Ein Vergleich ihrer evolutorischen Ansätze' },
+    { author:'Reinhard Blomert (Berlin)', title:'Adam Smith über Gentlemen, Geschäftsleute und innere Richter. Eine Rekonfiguration' }
+  ] },
+  { nr:42, year:2022, loc_de:'Jena', loc_en:'Jena', theme:'Zur Geschichte des Vereins für Socialpolitik', theme_en:'On the History of the Verein für Socialpolitik', vol:'XLI', vol_label:'Band XLI', papers:[
+    { author:'Bertram Schefold', title:'Das sich wandelnde Selbstverständnis des VfS im Spiegel seiner Jahrestagungen, 1950–2000' },
+    { author:'Jan-Otmar Hesse', title:'Die wirtschaftshistorische Forschung im VfS' },
+    { author:'Elisabeth Allgoewer', title:'Frauen im Verein für Socialpolitik' },
+    { author:'Alexander Ebner', title:'Schmollers Rolle im VfS' },
+    { author:'Erwin Dekker · Stefan Kolev', title:'Sozialpolitik in der Moderne – zwischen historischem Kontext und überzeitlichem Fixpunkt' },
+    { author:'Uwe Dathe (Thüringer Univ.- u. Landesbibliothek)', title:'Eucken in Jena' },
+    { author:'Tetsushi Harada', title:'Die Selbstauflösung des Vereins für Socialpolitik und die Herausgabe der Werke Friedrich Lists' },
+    { author:'Volker Caspari', title:'Evidenz, »evidence« und evidenzbasierte Wirtschaftspolitik – der »empirical turn« in der VWL' }
+  ] },
+  { nr:41, year:2021, loc_de:'Online (Zoom)', loc_en:'Online (Zoom)', theme:'Entwicklung der Konjunkturforschung im frühen 20. Jahrhundert', theme_en:'Development of Business Cycle Research in the Early 20th Century', vol:'XL', vol_label:'Band XL', papers:[
+    { author:'Dirk Ehnts', title:'Frederick Lavington über den Konjunkturzyklus' },
+    { author:'Jan Greitens', title:'Die Rezeption der »Staatlichen Theorie des Geldes«' },
+    { author:'Stefan Kolev', title:'Das Sofioter Institut für Konjunkturforschung und sein Gründungsdirektor Oskar Anderson' },
+    { author:'Laetitia Lenel', title:'Der Harvard Index of General Business Conditions und seine Rezeption in Europa' },
+    { author:'Oliver Landmann', title:'Zur Rezeption von Keynes in Deutschland während der Weltwirtschaftskrise' },
+    { author:'Jochen Hartwig', title:'Die Genese von Patinkins Interpretation von Keynes\' Theorie der effektiven Nachfrage' },
+    { author:'Hansjörg Klausinger', title:'Das Österreichische Institut für Konjunkturforschung, 1927–1938' },
+    { author:'David Bieri (Virginia Tech)', title:'Zwischen »Anschaulichkeit« und »Beobachtbarkeit« – Der Streit um das Wesen der deutschsprachigen Konjunkturtheorie in der Zwischenkriegszeit' },
+    { author:'Harald Hagemann', title:'Wie ist Konjunkturtheorie überhaupt möglich? Zur (In-)Kompatibilität von zyklischen Schwankungen und Gleichgewichtstheorie' }
+  ] },
+  { nr:40, year:2019, loc_de:'Hamburg', loc_en:'Hamburg', theme:'Ökonomie und Evolution', theme_en:'Economics and Evolution', vol:'XXXVI', vol_label:'Band XXXVI', papers:[
+    { author:'Kurt Dopfer', title:'Die Idee der Evolution in den Wirtschaftswissenschaften – Ein theoriegeschichtlicher Abriss' },
+    { author:'Hans-Walter Lorenz', title:'Darwinismus in der Ökonomie – Von Marx & Engels bis Nelson & Winter' },
+    { author:'Alexander Ebner', title:'Wirtschaftliche Entwicklung als evolutionärer Prozess? Kontinuität und Wandel des Evolutionsbegriffs bei Joseph Schumpeter' },
+    { author:'Arash Molavi', title:'Evolution und Wettbewerb – Marktselektionstheorie seit Alchain und Friedman' },
+    { author:'Helmut Wagner', title:'Evolution aus makroökonomischer Perspektive – Zur Erklärung von Übergangsprozessen' },
+    { author:'Gerhard Wegner', title:'Hayeks Theorie der Marktevolution als politische Theorie – eine kritische Würdigung' },
+    { author:'Birger Priddat', title:'Über den Einfluss der Institutionenökonomie auf die Evolution von Handlungsmodellen' },
+    { author:'Carl-Christian von Weizsäcker', title:'Hegels Begründung des Marktprinzips in evolutorischer Absicht' }
+  ] },
+  { nr:39, year:2018, loc_de:'Darmstadt', loc_en:'Darmstadt', theme:'Kameralismus und Merkantilismus', theme_en:'Cameralism and Mercantilism', vol:'XXXIX', vol_label:'Band XXXIX', papers:[] },
+  { nr:38, year:2017, loc_de:'Siegen', loc_en:'Siegen', theme:'Einkommens- und Vermögensverteilung in historischer Perspektive', theme_en:'Income and Wealth Distribution in Historical Perspective', vol:'XXXVII', vol_label:'Band XXXVII', papers:[
+    { author:'Hagen Krämer', title:'Funktionale und normative Aspekte von individuellem Reichtum in ökonomischen Theorien von der Klassik bis zur Moderne' },
+    { author:'Bertram Schefold', title:'The Improbability of Reswitching, the Certainty of Wicksell-Effects and the Poverty of Productions Functions' },
+    { author:'Jan-Otmar Hesse', title:'Thomas Pikettys »Kapital im 21. Jahrhundert« aus Sicht der Wirtschaftsgeschichte' },
+    { author:'Fritz Helmedag', title:'Profitrate, Zinssatz, Gewinn: Irrungen und Wirrungen' },
+    { author:'Karen Horn', title:'Arm und Reich im Werk von Adam Smith' },
+    { author:'Stephan Thomsen', title:'Die Rolle von Computern und Informationstechnik für die Einkommens- und Vermögensverteilung' },
+    { author:'David Bieri (Virginia Tech)', title:'Raum und Geld: Eine Neubewertung von August Löschs »Theorie der Währung« und ihre Bedeutung für regionalökonomische Verteilungsfragen' }
+  ] },
+  { nr:37, year:2016, loc_de:'Karlsruhe', loc_en:'Karlsruhe', theme:'Stagnations- und Deflationstheorien', theme_en:'Theories of Stagnation and Deflation', vol:null, vol_label:null, papers:[] },
+  { nr:36, year:2015, loc_de:'Erfurt', loc_en:'Erfurt', theme:'Kontinuität und Wandel in der Institutionenökonomie', theme_en:'Continuity and Change in Institutional Economics', vol:null, vol_label:null, papers:[] },
+  { nr:35, year:2014, loc_de:'Wien', loc_en:'Vienna', theme:'Macht oder ökonomisches Gesetz?', theme_en:'Political Control or Economic Law?', vol:'XXXV', vol_label:'Band XXXV', papers:[] },
+  { nr:34, year:2013, loc_de:'Berlin', loc_en:'Berlin', theme:'Neue Perspektiven auf die Politische Ökonomie von Karl Marx und Friedrich Engels. Die Marx-Engels-Gesamtausgabe (MEGA)', theme_en:'New Perspectives on the Political Economy of Marx and Engels (MEGA)', vol:'XXXIV', vol_label:'Band XXXIV', papers:[] },
+  { nr:33, year:2012, loc_de:'Marbach', loc_en:'Marbach', theme:'Die Zeit um den Ersten Weltkrieg als Krisenzeit der Nationalökonomen', theme_en:'The Era of the First World War as a Crisis Period for Economists', vol:'XXX', vol_label:'Band XXX', papers:[] },
+  { nr:32, year:2011, loc_de:'Freiburg i. Br.', loc_en:'Freiburg im Breisgau', theme:'Die Entwicklung der Raumwirtschaftslehre von ihren Anfängen bis in die Gegenwart', theme_en:'The Development of Spatial Economics from Its Origins to the Present', vol:'XXIX', vol_label:'Band XXIX', papers:[] },
+  { nr:31, year:2010, loc_de:'Stuttgart-Hohenheim', loc_en:'Stuttgart-Hohenheim', theme:'Ökonomik im Spannungsfeld zwischen Natur- und Geisteswissenschaften. Alte und neue Perspektiven im Licht des jüngsten Methodenstreits', theme_en:'Economics between Natural and Humanistic Sciences', vol:'XXVIII', vol_label:'Band XXVIII', papers:[] },
+  { nr:30, year:2009, loc_de:'Wien', loc_en:'Vienna', theme:'Geschichte der Entwicklungstheorien', theme_en:'History of Development Theories', vol:'XXXI', vol_label:'Band XXXI', papers:[] },
+  { nr:29, year:2008, loc_de:'Berlin', loc_en:'Berlin', theme:'Der Einfluss deutschsprachigen wirtschaftswissenschaftlichen Denkens in Japan', theme_en:'The Influence of German-Language Economic Thought in Japan', vol:'XXVII', vol_label:'Band XXVII', papers:[] },
+  { nr:28, year:2007, loc_de:'Lüdinghausen/Nordkirchen', loc_en:'Lüdinghausen/Nordkirchen', theme:'Wechselseitige Einflüsse zwischen dem deutschen wirtschaftswissenschaftlichen Denken und dem anderer europäischer Sprachräume', theme_en:'Mutual Influences between German Economic Thought and That of Other European Language Areas', vol:'XXIV', vol_label:'Band XXIV', papers:[] },
+  { nr:27, year:2006, loc_de:'Graz', loc_en:'Graz', theme:'Wissen = The Knowledge Economy', theme_en:'Wissen = The Knowledge Economy', vol:'XXVI', vol_label:'Band XXVI', papers:[] },
+  { nr:26, year:2005, loc_de:'Berlin', loc_en:'Berlin', theme:'Deutsche Einflüsse auf amerikanisches wirtschaftswissenschaftliches Denken und amerikanische Einflüsse auf deutsches Wirtschaftsdenken', theme_en:'German Influences on American Economic Thought and American Influences on German Economic Thought', vol:'XXXII', vol_label:'Band XXXII', papers:[] },
+  { nr:25, year:2004, loc_de:'Bonn', loc_en:'Bonn', theme:'Wirtschaftswissenschaft und Technik', theme_en:'Economics and Technology', vol:'XXIII', vol_label:'Band XXIII', papers:[] },
+  { nr:24, year:2003, loc_de:'Oldenburg', loc_en:'Oldenburg', theme:'Ökonomie und Religion', theme_en:'Economics and Religion', vol:'XXI', vol_label:'Band XXI', papers:[] },
+  { nr:23, year:2002, loc_de:'Obermayerhofen bei Graz', loc_en:'Obermayerhofen near Graz', theme:'Die deutschsprachige Wirtschaftswissenschaft in den ersten Jahrzehnten nach 1945 (II)', theme_en:'German-Language Economics in the First Decades after 1945, Part II', vol:'XXV', vol_label:'Band XXV', papers:[] },
+  { nr:22, year:2001, loc_de:'Hamburg', loc_en:'Hamburg', theme:'Die deutschsprachige Wirtschaftswissenschaft in den ersten Jahrzehnten nach 1945 (I)', theme_en:'German-Language Economics in the First Decades after 1945, Part I', vol:'XXII', vol_label:'Band XXII', papers:[] },
+  { nr:21, year:2000, loc_de:'Wien', loc_en:'Vienna', theme:'Ideen, Methoden und Entwicklungen der Geschichte des ökonomischen Denkens', theme_en:'Ideas, Methods and Developments in the History of Economic Thought', vol:null, vol_label:null, papers:[] },
+  { nr:20, year:1999, loc_de:'Ulm', loc_en:'Ulm', theme:'Die Ältere Historische Schule: Wirtschaftstheoretische Beiträge und wirtschaftspolitische Vorstellungen', theme_en:'The Older Historical School: Contributions to Economic Theory and Economic Policy', vol:'XX', vol_label:'Band XX', papers:[] },
+  { nr:19, year:1998, loc_de:'Würzburg', loc_en:'Würzburg', theme:'John Stuart Mill', theme_en:'John Stuart Mill', vol:'XIX', vol_label:'Band XIX', papers:[] },
+  { nr:18, year:1997, loc_de:'Stuttgart-Hohenheim', loc_en:'Stuttgart-Hohenheim', theme:'Knut Wicksell', theme_en:'Knut Wicksell', vol:'XVIII', vol_label:'Band XVIII', papers:[] },
+  { nr:17, year:1996, loc_de:'Maastricht', loc_en:'Maastricht', theme:'Die Umsetzung wirtschaftspolitischer Grundkonzeptionen in die kontinentaleuropäische Praxis des 19. und 20. Jahrhunderts (II)', theme_en:'The Implementation of Economic Policy Principles in Continental European Practice, 19th–20th Century, Part II', vol:'XVII', vol_label:'Band XVII', papers:[] },
+  { nr:16, year:1995, loc_de:'Salzburg', loc_en:'Salzburg', theme:'Die Umsetzung wirtschaftspolitischer Grundkonzeptionen in die kontinentaleuropäische Praxis des 19. und 20. Jahrhunderts (I)', theme_en:'The Implementation of Economic Policy Principles in Continental European Practice, 19th–20th Century, Part I', vol:'XVI', vol_label:'Band XVI', papers:[] },
+  { nr:15, year:1994, loc_de:'Weimar', loc_en:'Weimar', theme:'Revolution und Evolution in der Wirtschaftstheorie', theme_en:'Revolution and Evolution in Economic Theory', vol:null, vol_label:null, papers:[] },
+  { nr:14, year:1993, loc_de:'Tellow', loc_en:'Tellow', theme:'Johann Heinrich von Thünen als Wirtschaftstheoretiker', theme_en:'Johann Heinrich von Thünen as Economic Theorist', vol:'XIV', vol_label:'Band XIV', papers:[] },
+  { nr:13, year:1992, loc_de:'Augsburg', loc_en:'Augsburg', theme:'Deutsche Finanzwissenschaft zwischen 1918 und 1939', theme_en:'German Public Finance between 1918 and 1939', vol:'XIII', vol_label:'Band XIII', papers:[] },
+  { nr:12, year:1991, loc_de:'Ittingen (Schweiz)', loc_en:'Ittingen (Switzerland)', theme:'Osteuropäische Dogmengeschichte', theme_en:'Eastern European History of Economic Doctrines', vol:'XII', vol_label:'Band XII', papers:[] },
+  { nr:11, year:1990, loc_de:'Frankfurt am Main', loc_en:'Frankfurt am Main', theme:'Darstellung der Wirtschaft und Wirtschaftswissenschaften in der Belletristik', theme_en:'The Representation of Economics and Economists in Literature', vol:'XI', vol_label:'Band XI', papers:[] },
+  { nr:10, year:1989, loc_de:'Tübingen', loc_en:'Tübingen', theme:'Friedrich List; Carl Menger; Lorenz von Stein', theme_en:'Friedrich List; Carl Menger; Lorenz von Stein', vol:'X', vol_label:'Band X', papers:[] },
+  { nr:9, year:1988, loc_de:'Berlin', loc_en:'Berlin', theme:'Deutschsprachige Wirtschafts-, Konjunktur- und Geldtheorie in der ersten Hälfte des 20. Jahrhunderts', theme_en:'German-Language Economic, Business Cycle, and Monetary Theory in the First Half of the 20th Century', vol:'IX', vol_label:'Band IX', papers:[] },
+  { nr:8, year:1987, loc_de:'Würzburg', loc_en:'Würzburg', theme:'Konjunkturtheorie im ausgehenden 19. Jahrhundert', theme_en:'Business Cycle Theory in the Late 19th Century', vol:'VII', vol_label:'Band VII', papers:[] },
+  { nr:7, year:1986, loc_de:'Stuttgart', loc_en:'Stuttgart', theme:'Allgemeine Gleichgewichtsanalyse', theme_en:'General Equilibrium Analysis', vol:null, vol_label:null, papers:[] },
+  { nr:6, year:1985, loc_de:'Münster', loc_en:'Münster', theme:'Entwicklungen der deutschsprachigen Nationalökonomie im 19. Jahrhundert', theme_en:'Developments in German Political Economy in the 19th Century', vol:'VI', vol_label:'Band VI', papers:[] },
+  { nr:5, year:1984, loc_de:'Salzburg', loc_en:'Salzburg', theme:'Deutsche Nationalökonomie Ende des 18. und in der ersten Hälfte des 19. Jahrhunderts', theme_en:'German Political Economy at the End of the 18th and in the First Half of the 19th Century', vol:'V', vol_label:'Band V', papers:[] },
+  { nr:4, year:1983, loc_de:'Göttingen', loc_en:'Göttingen', theme:'Marx, Keynes, Schumpeter', theme_en:'Marx, Keynes, Schumpeter', vol:'IV', vol_label:'Band IV', papers:[] },
+  { nr:3, year:1982, loc_de:'Basel', loc_en:'Basel', theme:'Theoriegeschichte – wozu?', theme_en:'History of Economic Thought – What For?', vol:'III', vol_label:'Band III', papers:[] },
+  { nr:2, year:1981, loc_de:'Salzburg', loc_en:'Salzburg', theme:'Merkantilismus und Kameralismus', theme_en:'Mercantilism and Cameralism', vol:'II', vol_label:'Band II', papers:[] },
+  { nr:1, year:1980, loc_de:'Gießen', loc_en:'Giessen', theme:'Klassische Nationalökonomie', theme_en:'Classical Political Economy', vol:'I', vol_label:'Band I', papers:[] },
+];
+
+let archiveDecadeFilter = 'all';
+function setArchiveDecade(decade, btn) {
+  archiveDecadeFilter = decade;
+  document.querySelectorAll('.arch-decade').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderArchive();
+}
+
+function renderArchive() {
+  const list  = document.getElementById('archive-list');
+  const cnt   = document.getElementById('arch-count');
+  const q     = ((document.getElementById('archive-search') || {}).value || '').toLowerCase();
+  const view_lbl   = lang === 'en' ? (EN.arch_view   || 'View Programme') : 'Programm ansehen';
+  const papers_lbl = lang === 'en' ? (EN.arch_papers  || 'Selected Papers') : 'Beiträge';
+  const upload_lbl = lang === 'en' ? (EN.arch_upload  || 'Submit Paper')   : 'Beitrag einreichen';
+  const note_lbl   = lang === 'en' ? (EN.arch_upload_note || 'Papers are added following consultation with the chair.') : 'Beiträge werden nach Rücksprache mit dem Vorsitzenden aufgenommen.';
+  const nr_lbl     = lang === 'en' ? 'Annual Conference' : 'Jahrestagung';
+  const no_covid   = lang === 'en' ? '(No conference in 2020 due to COVID-19)' : '(2020 entfällt aufgrund von COVID-19)';
+  const pending    = lang === 'en' ? 'Forthcoming' : 'Angekündigt';
+
+  const decadeOf = y => y >= 2020 ? '2020s' : y >= 2010 ? '2010s' : y >= 2000 ? '2000s' : y >= 1990 ? '1990s' : '1980s';
+
+  const filtered = ARCHIVE.filter(c => {
+    if (archiveDecadeFilter !== 'all' && decadeOf(c.year) !== archiveDecadeFilter) return false;
+    if (q) {
+      const theme = (lang === 'en' ? c.theme_en : c.theme).toLowerCase();
+      const loc   = (lang === 'en' ? c.loc_en   : c.loc_de).toLowerCase();
+      const papers_txt = (c.papers || []).map(p => p.author + ' ' + p.title).join(' ').toLowerCase();
+      if (!theme.includes(q) && !loc.includes(q) && !papers_txt.includes(q) && !String(c.year).includes(q)) return false;
+    }
+    return true;
+  });
+
+  if (cnt) cnt.textContent = filtered.length + ' / ' + ARCHIVE.length;
+  if (!filtered.length) { list.innerHTML = '<div class="pub-no-results">Keine Tagungen gefunden / No conferences found</div>'; return; }
+
+  // Insert 2020 gap marker if both sides are in view
+  const years = filtered.map(c => c.year);
+  const show2020gap = (!q && archiveDecadeFilter === 'all' || archiveDecadeFilter === '2020s')
+                      && years.includes(2021) && years.includes(2019);
+
+  let html = '<div class="archive-grid">';
+  filtered.forEach((c, i) => {
+    const theme = lang === 'en' ? c.theme_en : c.theme;
+    const loc   = lang === 'en' ? c.loc_en   : c.loc_de;
+    const papers = c.papers || [];
+    const volBadge = c.vol ? '<span class="badge badge-blue" style="font-size:10px;margin-left:8px;">→ ' + (c.vol_label || c.vol) + '</span>' : (c.vol_label ? '<span class="badge" style="background:var(--gold-light);color:#7A6000;font-size:10px;margin-left:8px;">' + (lang==='en'?pending:'Angekündigt') + '</span>' : '');
+    const papersHtml = papers.length
+      ? papers.map(p => '<div class="archive-paper"><div>' + p.title + '</div><div class="archive-paper-author">' + p.author + '</div></div>').join('')
+      : '<div style="font-size:13px;color:var(--text-faint);font-style:italic;padding:8px 0;">' + (lang==='en'?'Programme details to be added.':'Programm wird ergänzt.') + '</div>';
+
+    html += '<div class="archive-item"><div class="archive-head" onclick="toggleArchive(' + i + ')">'
+      + '<div class="archive-year">' + c.year + '</div>'
+      + '<div>'
+      + '<div style="font-size:11px;font-weight:600;color:var(--text-faint);letter-spacing:0.05em;margin-bottom:2px;">' + c.nr + '. ' + nr_lbl + '</div>'
+      + '<div class="archive-theme">' + theme + volBadge + '</div>'
+      + '<div class="archive-location">' + loc + '</div>'
+      + '</div>'
+      + '<button class="archive-toggle" id="archive-toggle-' + i + '" aria-label="expand">▾</button>'
+      + '</div>'
+      + '<div class="archive-body" id="archive-body-' + i + '">'
+      + '<div class="archive-body-inner">'
+      + '<div><div style="font-size:12px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px;">' + papers_lbl + '</div><div class="archive-papers-list">' + papersHtml + '</div></div>'
+      + '<div class="archive-actions"><button class="btn btn-outline btn-sm">' + view_lbl + '</button><button class="btn btn-primary btn-sm">' + upload_lbl + '</button><div style="font-size:11px;color:var(--text-faint);line-height:1.4;margin-top:4px;">' + note_lbl + '</div></div>'
+      + '</div></div></div>';
+
+    // 2020 gap marker
+    if (show2020gap && c.year === 2021) {
+      html += '<div style="display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--gold-light);border:1px dashed #DDD0A0;border-radius:8px;font-size:13px;color:#7A5800;">'
+        + '<span style="font-size:18px;">⚠️</span><span>' + no_covid + '</span></div>';
+    }
+  });
+  html += '</div>';
+  list.innerHTML = html;
+}
+
+function toggleArchive(i) {
+  const body = document.getElementById('archive-body-' + i);
+  const btn  = document.getElementById('archive-toggle-' + i);
+  const open = body.classList.toggle('open');
+  btn.classList.toggle('open', open);
+}
+
+/* ── Publications data ── */
+const DH_SEARCH = 'https://www.duncker-humblot.de/search/result?schnellsuche=Studien%20zur%20Entwicklung%20der%20%C3%B6konomischen%20Theorie&sort=datum_erscheinung_jahr%20desc%2Cdatum_erscheinung%20desc&page=1&type=titel&nav_id=1';
+
+const PUBLICATIONS = [
+  { num:'I', numN:1, year:null, decade:'1980s', title_de:'Klassische Themen der Dogmengeschichte', title_en:'Classical Themes in the History of Economic Doctrines', editor:'', url:DH_SEARCH },
+  { num:'II', numN:2, year:null, decade:'1980s', title_de:'Geschichte merkantilistischer Ideen und Praktiken', title_en:'History of Mercantilist Ideas and Practices', editor:'hrsg. v. Fritz Neumark', url:DH_SEARCH },
+  { num:'III', numN:3, year:null, decade:'1980s', title_de:'Bedeutung und Fortwirkung der Physiokraten', title_en:'The Significance and Continuing Influence of the Physiocrats', editor:'hrsg. v. Harald Scherf', url:DH_SEARCH },
+  { num:'IV', numN:4, year:1983, decade:'1980s', title_de:'Drei Jubiäen (1983): Karl Marx – Joseph Schumpeter – John Maynard Keynes', title_en:'Three Anniversaries (1983): Karl Marx -- Joseph Schumpeter -- John Maynard Keynes', editor:'hrsg. v. Harald Scherf', url:DH_SEARCH },
+  { num:'V', numN:5, year:null, decade:'1980s', title_de:'Deutsche Nationalökonomie zu Beginn des 19. Jahrhunderts', title_en:'German Political Economy at the Beginning of the 19th Century', editor:'hrsg. v. Harald Scherf', url:DH_SEARCH },
+  { num:'VI', numN:6, year:null, decade:'1980s', title_de:'Deutsche Nationalökonomie im 19. Jahrhundert', title_en:'German Political Economy in the 19th Century', editor:'hrsg. v. Harald Scherf', url:DH_SEARCH },
+  { num:'VII', numN:7, year:null, decade:'1980s', title_de:'Konjunkturtheorie im ausgehenden 19. Jahrhundert', title_en:'Business Cycle Theory in the Late 19th Century', editor:'hrsg. v. Bertram Schefold', url:DH_SEARCH },
+  { num:'VIII', numN:8, year:null, decade:'1980s', title_de:'Deutsche Nationalökonomie in der Zwischenkriegszeit', title_en:'German Political Economy in the Interwar Period', editor:'hrsg. v. Bertram Schefold', url:DH_SEARCH },
+  { num:'IX', numN:9, year:1990, decade:'1990s', title_de:'Untersuchungen zu Quesnay, Stein, Jevons und zur allgemeinen Gleichgewichtstheorie', title_en:'Studies on Quesnay, Stein, Jevons and General Equilibrium Theory', editor:'hrsg. v. Harald Scherf', url:DH_SEARCH },
+  { num:'X', numN:10, year:1991, decade:'1990s', title_de:'Friedrich List: Voraussetzungen und Folgen', title_en:'Friedrich List: Premises and Consequences', editor:'hrsg. v. Bertram Schefold', url:DH_SEARCH },
+  { num:'XI', numN:11, year:1992, decade:'1990s', title_de:'Die Darstellung der Wirtschaft und der Wirtschaftswissenschaften in der Belletristik', title_en:'The Representation of Economics and Economists in Literature', editor:'hrsg. v. Bertram Schefold', url:DH_SEARCH },
+  { num:'XII', numN:12, year:null, decade:'1990s', title_de:'Osteuropäische Dogmengeschichte', title_en:'Eastern European History of Economic Doctrines', editor:'hrsg. v. Heinz Rieter', url:DH_SEARCH },
+  { num:'XIII', numN:13, year:1993, decade:'1990s', title_de:'Deutsche Finanzwissenschaft zwischen 1918 und 1939', title_en:'German Public Finance between 1918 and 1939', editor:'hrsg. v. Christian Scheer', url:'https://www.duncker-humblot.de/buch/studien-zur-entwicklung-der-oekonomischen-theorie-xiii-9783428078615/' },
+  { num:'XIV', numN:14, year:1995, decade:'1990s', title_de:'Johann Heinrich von Thünen als Wirtschaftstheoretiker', title_en:'Johann Heinrich von Th\"unen as Economic Theorist', editor:'hrsg. v. Heinz Rieter', url:'https://www.duncker-humblot.de/buch/johann-heinrich-von-th%C3%BCnen-als-wirtschaftstheoretiker-9783428484584/' },
+  { num:'XV', numN:15, year:1996, decade:'1990s', title_de:'Wege und Ziele der Forschung', title_en:'Paths and Goals of Research', editor:'hrsg. v. Heinz Rieter', url:'https://www.duncker-humblot.de/buch/studien-zur-entwicklung-der-oekonomischen-theorie-xv-9783428484928/' },
+  { num:'XVI', numN:16, year:1997, decade:'1990s', title_de:'Die Umsetzung wirtschaftspolitischer Grundkonzeptionen in die kontinentaleuropäische Praxis des 19. und 20. Jahrhunderts, I. Teil', title_en:'The Implementation of Economic Policy Principles in Continental European Practice, 19th--20th Century, Part~I', editor:'hrsg. v. Erich W. Streissler', url:DH_SEARCH },
+  { num:'XVII', numN:17, year:null, decade:'1990s', title_de:'Die Umsetzung wirtschaftspolitischer Grundkonzeptionen in die kontinentaleuropäische Praxis des 19. und 20. Jahrhunderts, II. Teil', title_en:'The Implementation of Economic Policy Principles in Continental European Practice, 19th--20th Century, Part~II', editor:'hrsg. v. Erich W. Streissler', url:DH_SEARCH },
+  { num:'XVIII', numN:18, year:null, decade:'1990s', title_de:'Knut Wicksell als Ökonom', title_en:'Knut Wicksell as Economist', editor:'hrsg. v. Erich W. Streissler', url:DH_SEARCH },
+  { num:'XIX', numN:19, year:null, decade:'1990s', title_de:'John Stuart Mill', title_en:'John Stuart Mill', editor:'hrsg. v. Erich W. Streissler', url:DH_SEARCH },
+  { num:'XX', numN:20, year:null, decade:'2000s', title_de:'Die Ältere Historische Schule: Wirtschaftstheoretische Beiträge und wirtschaftspolitische Vorstellungen', title_en:'The Older Historical School: Contributions to Economic Theory and Economic Policy', editor:'hrsg. v. Christian Scheer', url:DH_SEARCH },
+  { num:'XXI', numN:21, year:null, decade:'2000s', title_de:'Ökonomie und Religion', title_en:'Economics and Religion', editor:'hrsg. v. Harald Hagemann', url:DH_SEARCH },
+  { num:'XXII', numN:22, year:null, decade:'2000s', title_de:'Ideen, Methoden und Entwicklungen der Geschichte des ökonomischen Denkens', title_en:'Ideas, Methods and Developments in the History of Economic Thought', editor:'hrsg. v. Christian Scheer', url:DH_SEARCH },
+  { num:'XXIII', numN:23, year:null, decade:'2000s', title_de:'Ökonomie und Technik', title_en:'Economics and Technology', editor:'hrsg. v. Harald Hagemann', url:DH_SEARCH },
+  { num:'XXIV', numN:24, year:null, decade:'2000s', title_de:'Wechselseitige Einflüsse zwischen dem deutschen wirtschaftswissenschaftlichen Denken und dem anderer europäischer Sprachräume', title_en:'Mutual Influences between German Economic Thought and That of Other European Language Areas', editor:'hrsg. v. Heinz D. Kurz', url:DH_SEARCH },
+  { num:'XXV', numN:25, year:null, decade:'2000s', title_de:'Die deutschsprachige Wirtschaftswissenschaft in den ersten Jahrzehnten nach 1945', title_en:'German-Language Economics in the First Decades after 1945', editor:'hrsg. v. Christian Scheer', url:DH_SEARCH },
+  { num:'XXVI', numN:26, year:null, decade:'2000s', title_de:'Wissen = The Knowledge Economy', title_en:'Wissen = The Knowledge Economy', editor:'hrsg. v. Harald Hagemann', url:DH_SEARCH },
+  { num:'XXVII', numN:27, year:null, decade:'2000s', title_de:'Der Einfluss deutschsprachigen wirtschaftswissenschaftlichen Denkens in Japan', title_en:'The Influence of German-Language Economic Thought in Japan', editor:'hrsg. v. Heinz D. Kurz', url:DH_SEARCH },
+  { num:'XXVIII', numN:28, year:2014, decade:'2000s', title_de:'Die Ökonomik im Spannungsfeld zwischen Natur- und Geisteswissenschaften: Alte und neue Perspektiven im Licht des jüngsten Methodenstreits', title_en:'Economics between Natural and Humanistic Sciences', editor:'hrsg. v. Heinz D. Kurz', url:DH_SEARCH },
+  { num:'XXIX', numN:29, year:null, decade:'2000s', title_de:'Die Entwicklung der Raumwirtschaftslehre von ihren Anfängen bis in die Gegenwart', title_en:'The Development of Spatial Economics from Its Origins to the Present', editor:'hrsg. v. Hans-Michael Trautwein', url:DH_SEARCH },
+  { num:'XXX', numN:30, year:null, decade:'2000s', title_de:'Die Zeit um den Ersten Weltkrieg als Krisenzeit der Ökonomen', title_en:'The Era of the First World War as a Crisis Period for Economists', editor:'hrsg. v. Hans-Michael Trautwein', url:DH_SEARCH },
+  { num:'XXXI', numN:31, year:null, decade:'2010s', title_de:'Geschichte der Entwicklungstheorien', title_en:'History of Development Theories', editor:'hrsg. v. Heinz D. Kurz', url:DH_SEARCH },
+  { num:'XXXII', numN:32, year:null, decade:'2010s', title_de:'Deutsche Einflüsse auf amerikanisches wirtschaftswissenschaftliches Denken und amerikanische Einflüsse auf deutsches Wirtschaftsdenken', title_en:'German Influences on American Economic Thought and American Influences on German Economic Thought', editor:'hrsg. v. Heinz D. Kurz und Volker Caspari', url:DH_SEARCH },
+  { num:'XXXIV', numN:34, year:null, decade:'2010s', title_de:'Neue Perspektiven auf die Politische Ökonomie von Karl Marx und Friedrich Engels: Die Marx-Engels-Gesamtausgabe (MEGA)', title_en:'New Perspectives on the Political Economy of Marx and Engels: The Marx-Engels-Gesamtausgabe (MEGA)', editor:'hrsg. v. Hans-Michael Trautwein', url:DH_SEARCH },
+  { num:'XXXV', numN:35, year:null, decade:'2010s', title_de:'Macht oder ökonomisches Gesetz?', title_en:'Political Control or Economic Law?', editor:'hrsg. v. Hans-Michael Trautwein', url:DH_SEARCH },
+  { num:'XXXVI', numN:36, year:null, decade:'2010s', title_de:'Ökonomie und Evolution', title_en:'Economics and Evolution', editor:'hrsg. v. Peter Spahn', url:DH_SEARCH },
+  { num:'XXXVII', numN:37, year:null, decade:'2010s', title_de:'Einkommens- und Vermögensverteilung in historischer Sicht', title_en:'Income and Wealth Distribution in Historical Perspective', editor:'hrsg. v. Volker Caspari', url:DH_SEARCH },
+  { num:'XXXIX', numN:39, year:2022, decade:'2010s', title_de:'Kameralismus und Merkantilismus', title_en:'Cameralism and Mercantilism', editor:'hrsg. v. Volker Caspari', url:DH_SEARCH },
+  { num:'XL', numN:40, year:null, decade:'2010s', title_de:'Entwicklung der Konjunkturforschung im frühen 20. Jahrhundert', title_en:'Development of Business Cycle Research in the Early 20th Century', editor:'', url:DH_SEARCH },
+  { num:'XLI', numN:41, year:null, decade:'2010s', title_de:'Zur Geschichte des Vereins für Socialpolitik', title_en:'Zur Geschichte des Vereins f{\"u}r Socialpolitik', editor:'hrsg. v. Peter Spahn', url:DH_SEARCH },
+  { num:'XLII', numN:42, year:null, decade:'2010s', title_de:'Adam Smith @ 300', title_en:'Adam Smith @ 300', editor:'', url:DH_SEARCH },
+];
+
+let pubDecadeFilter = 'all';
+let pubSearchQ = '';
+
+/* ── Chapter data (populated entries; others show placeholder) ── */
+const PUB_CHAPTERS = {
+  'XLI': [
+    { author: 'Elisabeth Allgoewer', title: 'Zur Gründungsgeschichte des Vereins für Socialpolitik' },
+    { author: 'Volker Caspari', title: 'Methodenstreit und Werturteilsdebatte' },
+    { author: 'Alexander Ebner', title: 'Schumpeter und der Verein für Socialpolitik' },
+    { author: 'Tetsushi Harada', title: 'Rezeption der deutschen Sozialwissenschaften in Japan' },
+    { author: 'Jan-Otmar Hesse', title: 'Wirtschaftswissenschaft in der Weimarer Republik' },
+    { author: 'Hauke Janssen', title: 'Die Nationalökonomie im Nationalsozialismus' },
+    { author: 'Bertram Schefold', title: 'Kontinuitäten und Brüche in der Theoriegeschichte des VfS' },
+  ],
+  'XXXI': [
+    { author: 'Heinz D. Kurz', title: 'Geschichte der Entwicklungstheorien: Einleitung' },
+    { author: 'N.N.', title: 'Friedrich List und die Historische Schule' },
+    { author: 'N.N.', title: 'Werner Sombart und der technische Fortschritt' },
+    { author: 'N.N.', title: 'Kumulatives Wachstum bei Myrdal und Krugman' },
+  ],
+  'XXIII': [
+    { author: 'Elisabeth Allgoewer', title: 'Ökonomik und Technik: Einleitung' },
+    { author: 'Christian Gehrke', title: 'Bortkiewicz und die Produktionstheorie' },
+    { author: 'Harald Hagemann', title: 'Technischer Wandel in der ökonomischen Theorie' },
+    { author: 'Heinz D. Kurz', title: 'Sraffa und die Produktion von Waren durch Waren' },
+    { author: 'Helge Peukert', title: 'Schumpeter über Innovation und Konjunktur' },
+    { author: 'Dieter Schneider', title: 'Investitionstheorie und technischer Fortschritt' },
+  ],
+  'IV': [
+    { author: 'Harald Scherf (Hrsg.)', title: 'Drei Jubiläen (1983): Einleitung' },
+    { author: 'N.N.', title: 'Karl Marx: 100 Jahre Kapital-Vollendung' },
+    { author: 'N.N.', title: 'Joseph Schumpeter: Theorien und Erbe' },
+    { author: 'N.N.', title: 'John Maynard Keynes: Allgemeine Theorie revisited' },
+  ],
+};
+
+/* ── Citation state ── */
+const pubCiteFormat = {};
+
+function filterPubDecade(decade, btn) {
+  pubDecadeFilter = decade;
+  document.querySelectorAll('.pub-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPubs();
+}
+
+function filterPubs(q) { pubSearchQ = q.toLowerCase(); renderPubs(); }
+
+/* ── Citation generation ── */
+function parseEditorBibtex(edStr) {
+  const clean = edStr.replace(/^hrsg\. v\. /i, '').trim();
+  return clean.split(/\s+und\s+/i).map(e => {
+    const pts = e.trim().split(/\s+/);
+    if (pts.length < 2) return e.trim();
+    return pts[pts.length - 1] + ', ' + pts.slice(0, -1).join(' ');
+  }).join(' and ');
+}
+
+function generateCitation(pub, fmt) {
+  const edRaw = pub.editor.replace(/^hrsg\. v\. /i, '').trim();
+  const edBib = edRaw ? parseEditorBibtex(pub.editor) : '';
+  const title = pub.title_de;
+  const year = pub.year ? String(pub.year) : 'o.J.';
+  const vol = pub.num;
+  const key = `SVfS_115_${vol}`;
+  const series = 'Schriften des Vereins für Socialpolitik';
+  const fullTitle = `Studien zur Entwicklung der ökonomischen Theorie ${vol}`;
+
+  if (fmt === 'bibtex') {
+    const edLine = edBib ? `  editor    = {${edBib}},\n` : '';
+    return `@book{${key},\n${edLine}  title     = {${title}},\n  booktitle = {${fullTitle}},\n  series    = {${series}},\n  volume    = {115/${vol}},\n  publisher = {Duncker {\\&} Humblot},\n  address   = {Berlin},\n  year      = {${year}},\n}`;
+  }
+  if (fmt === 'endnote') {
+    const edLine = edRaw ? `%E ${edRaw}\n` : '';
+    return `%0 Edited Book\n%T ${title}\n${edLine}%D ${year}\n%I Duncker & Humblot\n%C Berlin\n%S ${series}\n%V 115/${vol}\n%! ${fullTitle}`;
+  }
+  if (fmt === 'ris') {
+    const edLines = edRaw ? edRaw.split(/ und /i).map(e => `ED  - ${e.trim()}`).join('\n') + '\n' : '';
+    return `TY  - BOOK\nTI  - ${title}\n${edLines}PY  - ${year}\nPB  - Duncker & Humblot\nCY  - Berlin\nT3  - ${series}\nVL  - 115/${vol}\nER  - `;
+  }
+  if (fmt === 'chicago') {
+    const edChicago = edRaw || '[Hrsg.]';
+    return `${edChicago}, Hrsg. ${title}. ${fullTitle}. ${series} 115/${vol}. Berlin: Duncker & Humblot, ${year}.`;
+  }
+  return '';
+}
+
+function switchCiteTab(num, fmt) {
+  pubCiteFormat[num] = fmt;
+  document.querySelectorAll(`.cite-tab-${CSS.escape(num)}`).forEach(t =>
+    t.classList.toggle('active', t.dataset.fmt === fmt));
+  const pub = PUBLICATIONS.find(p => p.num === num);
+  const el = document.getElementById(`cite-preview-${num}`);
+  if (el && pub) el.value = generateCitation(pub, fmt);
+}
+
+function downloadCite(num) {
+  const fmt = pubCiteFormat[num] || 'bibtex';
+  const pub = PUBLICATIONS.find(p => p.num === num);
+  if (!pub) return;
+  const text = generateCitation(pub, fmt);
+  const ext = { bibtex: 'bib', endnote: 'enw', ris: 'ris', chicago: 'txt' }[fmt] || 'txt';
+  const fname = `AGW_SVfS_115_${num}.${ext}`;
+  const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = fname; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function copyCite(num) {
+  const fmt = pubCiteFormat[num] || 'bibtex';
+  const pub = PUBLICATIONS.find(p => p.num === num);
+  if (!pub) return;
+  const text = generateCitation(pub, fmt);
+  navigator.clipboard.writeText(text).then(() => {
+    const conf = document.getElementById(`copy-conf-${num}`);
+    if (conf) { conf.classList.add('show'); setTimeout(() => conf.classList.remove('show'), 1800); }
+  });
+}
+
+function togglePub(num) {
+  const wrap = document.getElementById(`pub-wrap-${num}`);
+  const detail = document.getElementById(`pub-detail-${num}`);
+  const btn = document.getElementById(`pub-expand-${num}`);
+  if (!wrap || !detail || !btn) return;
+  const isOpen = detail.classList.contains('open');
+  detail.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+  wrap.classList.toggle('open', !isOpen);
+}
+
+function renderPubs() {
+  const list = document.getElementById('pub-list');
+  const note = document.getElementById('pub-count-note');
+  const band_lbl = lang === 'de' ? 'Band 115/' : 'Vol. 115/';
+  const view_lbl = lang === 'de' ? 'Verlag ↗' : 'Publisher ↗';
+  const cite_lbl = lang === 'de' ? 'Zitieren' : 'Cite';
+  const toc_lbl = lang === 'de' ? 'Inhalt' : 'Contents';
+  const no_toc = lang === 'de'
+    ? 'Inhaltsverzeichnis wird ergänzt.'
+    : 'Table of contents to be added.';
+  const FMTS = [
+    { id: 'bibtex',  label: 'BibTeX',      ext: 'bib' },
+    { id: 'endnote', label: 'EndNote',      ext: 'enw' },
+    { id: 'ris',     label: 'RIS / Zotero', ext: 'ris' },
+    { id: 'chicago', label: 'Chicago',      ext: 'txt' },
+  ];
+
+  const filtered = PUBLICATIONS.filter(p => {
+    if (pubDecadeFilter !== 'all' && p.decade !== pubDecadeFilter) return false;
+    if (pubSearchQ) {
+      const t = (lang === 'de' ? p.title_de : p.title_en).toLowerCase();
+      if (!t.includes(pubSearchQ) && !p.editor.toLowerCase().includes(pubSearchQ)
+          && !p.num.toLowerCase().includes(pubSearchQ)) return false;
+    }
+    return true;
+  });
+
+  if (!filtered.length) {
+    list.innerHTML = '<div class="pub-no-results">Keine Bände gefunden / No volumes found</div>';
+    note.textContent = ''; return;
+  }
+
+  const total_note = lang === 'de'
+    ? `${filtered.length} von ${PUBLICATIONS.length} Bänden · Vollständige Liste beim Verlag Duncker & Humblot. Bände ohne Jahreszahl: Erscheinungsjahr wird ergänzt.`
+    : `${filtered.length} of ${PUBLICATIONS.length} volumes · Full list at Duncker & Humblot. Volumes without year: publication date to be confirmed.`;
+  note.textContent = total_note;
+
+  list.innerHTML = '<div class="pub-list-inner">' + filtered.map(p => {
+    const title  = lang === 'de' ? p.title_de : p.title_en;
+    const yr     = p.year ? ` · ${p.year}` : '';
+    const edHtml = p.editor ? ` · <em>${p.editor}</em>` : '';
+    const num    = p.num;
+    const activeFmt = pubCiteFormat[num] || 'bibtex';
+
+    /* — Chapter list — */
+    const chaps = PUB_CHAPTERS[num];
+    const chapHtml = chaps
+      ? chaps.map(c => `<div class="pub-chapter">
+          <span class="pub-chapter-author">${c.author}</span>
+          <span class="pub-chapter-title">${c.title}</span>
+          ${c.pages ? `<span class="pub-chapter-pages">S. ${c.pages}</span>` : ''}
+        </div>`).join('')
+      : `<div class="pub-toc-placeholder">${no_toc}</div>`;
+
+    /* — Citation tabs — */
+    const tabsHtml = FMTS.map(f =>
+      `<button class="cite-tab cite-tab-${num}${f.id === activeFmt ? ' active' : ''}"
+        data-fmt="${f.id}"
+        onclick="event.stopPropagation();switchCiteTab('${num}','${f.id}')">${f.label}</button>`
+    ).join('');
+
+    const prevVal = generateCitation(p, activeFmt).replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const dl_lbl  = lang === 'de' ? 'Herunterladen' : 'Download';
+    const cp_lbl  = lang === 'de' ? 'Kopieren' : 'Copy';
+
+    return `
+<div class="pub-item-wrap" id="pub-wrap-${num}">
+  <div class="pub-item" onclick="togglePub('${num}')">
+    <div>
+      <div class="pub-vol">${num}</div>
+      <div class="pub-vol-sub">${band_lbl}${num}</div>
+    </div>
+    <div>
+      <div class="pub-title">${title}</div>
+      <div class="pub-meta"><em>Schriften des Vereins für Socialpolitik</em>${edHtml}${yr} · Duncker &amp; Humblot, Berlin</div>
+    </div>
+    <div class="pub-actions" onclick="event.stopPropagation()">
+      <a href="${p.url}" target="_blank" rel="noopener" class="pub-link">${view_lbl}</a>
+      <button class="pub-expand-btn" id="pub-expand-${num}"
+        onclick="event.stopPropagation();togglePub('${num}')" aria-label="expand">▾</button>
+    </div>
+  </div>
+  <div class="pub-detail" id="pub-detail-${num}">
+    <div class="pub-detail-inner">
+      <div class="pub-detail-left">
+        <div class="pub-detail-sec-lbl">${toc_lbl}</div>
+        <div class="pub-chapter-list">${chapHtml}</div>
+      </div>
+      <div class="pub-detail-right">
+        <div class="pub-detail-sec-lbl">${cite_lbl}</div>
+        <div class="cite-tabs">${tabsHtml}</div>
+        <textarea class="cite-preview" id="cite-preview-${num}"
+          readonly onclick="event.stopPropagation()">${generateCitation(p, activeFmt)}</textarea>
+        <div class="cite-actions">
+          <button class="btn btn-sm btn-primary" onclick="event.stopPropagation();downloadCite('${num}')">
+            ↓ ${dl_lbl}
+          </button>
+          <button class="btn btn-sm btn-outline" onclick="event.stopPropagation();copyCite('${num}')">
+            ${cp_lbl}
+          </button>
+          <span class="copy-confirm" id="copy-conf-${num}">✓ ${lang === 'de' ? 'Kopiert' : 'Copied'}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`;
+  }).join('') + '</div>';
+}
+
+/* ── Init ── */
+renderChairs();
+renderMembers(MEMBERS);
+renderArchive();
+renderPubs();
+initLang(); // Apply saved/auto-detected language preference
+</script>
+</body>
+</html>
