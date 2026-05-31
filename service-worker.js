@@ -1,0 +1,76 @@
+/* AGW Jahrestagung 2026 — Service Worker
+ * Strategy: Cache-first for shell + static assets; network-first for tiles
+ */
+const CACHE = 'agw-2026-v1';
+
+const PRECACHE = [
+  '/agw-vfs/',
+  '/agw-vfs/index.html',
+  '/agw-vfs/manifest.json',
+  'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap',
+  'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css',
+  'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js',
+  'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js',
+];
+
+// Install — pre-cache shell
+self.addEventListener('install', function(e) {
+  e.waitUntil(
+    caches.open(CACHE)
+      .then(function(c) { return c.addAll(PRECACHE); })
+      .then(function() { return self.skipWaiting(); })
+  );
+});
+
+// Activate — delete old caches
+self.addEventListener('activate', function(e) {
+  e.waitUntil(
+    caches.keys().then(function(keys) {
+      return Promise.all(
+        keys.filter(function(k) { return k !== CACHE; })
+            .map(function(k) { return caches.delete(k); })
+      );
+    }).then(function() { return self.clients.claim(); })
+  );
+});
+
+// Fetch — cache-first for shell/static, network-first for tiles
+self.addEventListener('fetch', function(e) {
+  var url = e.request.url;
+
+  // Network-first for OSM tiles (cache as they load)
+  if (url.includes('tile.openstreetmap.org')) {
+    e.respondWith(
+      fetch(e.request)
+        .then(function(resp) {
+          var clone = resp.clone();
+          caches.open(CACHE).then(function(c) { c.put(e.request, clone); });
+          return resp;
+        })
+        .catch(function() { return caches.match(e.request); })
+    );
+    return;
+  }
+
+  // Cache-first for everything else
+  e.respondWith(
+    caches.match(e.request).then(function(cached) {
+      if (cached) return cached;
+      return fetch(e.request).then(function(resp) {
+        // Cache Google Fonts and cdnjs resources
+        if (url.includes('fonts.googleapis.com') ||
+            url.includes('fonts.gstatic.com') ||
+            url.includes('cdnjs.cloudflare.com')) {
+          var clone = resp.clone();
+          caches.open(CACHE).then(function(c) { c.put(e.request, clone); });
+        }
+        return resp;
+      }).catch(function() {
+        // Offline fallback — return cached index
+        if (e.request.destination === 'document') {
+          return caches.match('/agw-vfs/index.html');
+        }
+      });
+    })
+  );
+});
