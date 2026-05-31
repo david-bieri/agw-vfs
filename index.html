@@ -364,6 +364,12 @@ a.speaker-link:hover {
   /* Timeline */
   .tl-item{grid-template-columns:64px 1fr;gap:0 12px;padding:0 0 18px;}
   .tl-time{font-size:11px;}
+  .tl-dot{left:calc(64px + 12px - 9px);}
+  .tl-item:not(:last-child)::before{left:calc(64px + 12px - 5px);}
+  .tl-item.opening .tl-content,
+  .tl-item.memorial .tl-content,
+  .tl-item.social .tl-content,
+  .tl-item.assembly .tl-content{margin-left:-2px;padding:8px 12px;}
   /* Archive */
   .archive-head{gap:8px;}
   .archive-year{font-size:1.1rem;min-width:38px;}
@@ -391,6 +397,8 @@ a.speaker-link:hover {
   .hero{padding:40px 14px 48px;}
   .prog-tab{padding:7px 7px;font-size:11px;}
   .tl-item{grid-template-columns:56px 1fr;gap:0 10px;}
+  .tl-dot{left:calc(56px + 10px - 9px);}
+  .tl-item:not(:last-child)::before{left:calc(56px + 10px - 5px);}
   .members-grid{grid-template-columns:1fr;}
   .arch-decade,.arch-country{padding:4px 7px;font-size:11px;}
   .section-title{font-size:clamp(1.4rem,5vw,1.9rem);}
