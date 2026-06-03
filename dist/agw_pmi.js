@@ -158,7 +158,7 @@ function HeatView({ lang }) {
       )
     ] }),
     /* @__PURE__ */ jsx("p", { style: { margin: "4px 16px 2px", fontSize: 11, color: "#5060a0", fontStyle: "italic" }, children: lang.de ? D.ui_de.desc_heat : "Cell color = PPMI score. Darker = stronger association. Hover for details." }),
-    /* @__PURE__ */ jsx("div", { style: { overflowX: "auto", overflowY: "auto", maxHeight: "calc(100vh - 200px)" }, children: /* @__PURE__ */ jsxs("svg", { width: W, height: H, style: { display: "block" }, children: [
+    /* @__PURE__ */ jsx("div", { style: { overflowX: "auto", overflowY: "auto", maxHeight: "calc(100vh - 200px)" }, children: /* @__PURE__ */ jsxs("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "xMidYMid meet", style: { display: "block", width: "100%", height: "auto", maxWidth: W + "px" }, children: [
       D.cat_spans.map((cs) => /* @__PURE__ */ jsxs("g", { children: [
         /* @__PURE__ */ jsx(
           "rect",
@@ -456,7 +456,7 @@ function DriftView({ lang }) {
       marginBottom: 12,
       cursor: "pointer"
     }, children: figNames.map((f) => /* @__PURE__ */ jsx("option", { value: f, style: { background: "#0a0e1a" }, children: f }, f)) }),
-    /* @__PURE__ */ jsx("div", { style: { overflowY: "auto", maxHeight: "calc(100vh - 200px)" }, children: /* @__PURE__ */ jsxs("svg", { width: W, height: H, style: { display: "block" }, children: [
+    /* @__PURE__ */ jsx("div", { style: { overflowY: "auto", maxHeight: "calc(100vh - 200px)" }, children: /* @__PURE__ */ jsxs("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "xMidYMid meet", style: { display: "block", width: "100%", height: "auto", maxWidth: W + "px" }, children: [
       DECS.map((d, di) => /* @__PURE__ */ jsx(
         "text",
         {
@@ -574,7 +574,7 @@ function BridgeView({ lang }) {
       " ",
       lang.tu("schools")
     ] }),
-    /* @__PURE__ */ jsxs("svg", { width: W, height: H, style: { display: "block" }, children: [
+    /* @__PURE__ */ jsxs("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "xMidYMid meet", style: { display: "block", width: "100%", height: "auto", maxWidth: W + "px" }, children: [
       /* @__PURE__ */ jsx("text", { x: LEFT, y: 34, fontSize: 8, fill: "#4a5080", children: "PPMI \u2192" }),
       schools.map((school, si) => {
         const figs = bridge.schools[school];
@@ -683,7 +683,7 @@ function ClusterView({ lang }) {
       )
     ] }),
     /* @__PURE__ */ jsx("p", { style: { margin: "4px 16px 4px", fontSize: 11, color: "#5060a0", fontStyle: "italic" }, children: lang.de ? D.ui_de.desc_cluster : `PCA projection of ${D.cluster.length} figures in topic space. PC1 ${(D.pca_var[0] * 100).toFixed(1)}% \xB7 PC2 ${(D.pca_var[1] * 100).toFixed(1)}% variance. Hover for details.` }),
-    /* @__PURE__ */ jsxs("svg", { width: W, height: H, style: { display: "block" }, children: [
+    /* @__PURE__ */ jsxs("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "xMidYMid meet", style: { display: "block", width: "100%", height: "auto", maxWidth: W + "px" }, children: [
       [-0.5, 0, 0.5].map((v) => /* @__PURE__ */ jsxs("g", { children: [
         /* @__PURE__ */ jsx(
           "line",
@@ -854,8 +854,11 @@ function BipNetView({ lang }) {
   const maxScore = Math.max(...D.bip_edges.map((e) => e.score), 1);
   return /* @__PURE__ */ jsxs("div", { style: { padding: "10px 0" }, children: [
     /* @__PURE__ */ jsx("p", { style: { margin: "4px 16px 6px", fontSize: 11, color: "#5060a0", fontStyle: "italic" }, children: lang.de ? D.ui_de.desc_bipnet : "Figures (left) and topics (right) as nodes. Edge width = PPMI. Hover to explore." }),
-    /* @__PURE__ */ jsxs("svg", { width: W, height: H, style: {
+    /* @__PURE__ */ jsxs("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "xMidYMid meet", style: {
       display: "block",
+      width: "100%",
+      height: "auto",
+      maxWidth: W + "px",
       background: "rgba(0,0,0,0.15)"
     }, children: [
       /* @__PURE__ */ jsx(

@@ -46,9 +46,16 @@
     return el;
   }
   function svg(w, h) {
-    const el = svgEl('svg', { width: w, height: h });
+    // Responsive: keeps internal coordinate system at (w,h) but scales to container
+    const el = svgEl('svg', {
+      viewBox: '0 0 ' + w + ' ' + h,
+      preserveAspectRatio: 'xMidYMid meet',
+    });
     el.style.display = 'block';
     el.style.overflow = 'visible';
+    el.style.width = '100%';
+    el.style.height = 'auto';
+    el.style.maxWidth = w + 'px';   // never larger than design size on desktop
     return el;
   }
   function line(x1, y1, x2, y2, color, width, dash) {
@@ -118,7 +125,7 @@
         accent: '#B45309' },
     ];
     const grid = document.createElement('div');
-    grid.style.cssText = 'display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:32px;';
+    grid.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:2px;margin-bottom:32px;';
     cards.forEach(c => {
       const card = document.createElement('div');
       card.style.cssText = `background:#F9FAFB;border:1px solid #E5E7EB;
@@ -239,7 +246,7 @@
   /* ── Two-column row: Entropy + School shares ────────────── */
   function renderTwoCol(container) {
     const row=document.createElement('div');
-    row.style.cssText='display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px;';
+    row.style.cssText='display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:8px;';
     const left=document.createElement('div');
     const right=document.createElement('div');
     row.appendChild(left); row.appendChild(right);
@@ -445,7 +452,7 @@
     const link=document.createElement('div');
     link.style.cssText='margin-top:20px;padding:14px 18px;'+
       'background:#EFF6FF;border:1px solid #BFDBFE;border-radius:4px;'+
-      'display:flex;justify-content:space-between;align-items:center;';
+      'display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;';
     link.innerHTML=`
       <span style="font-size:13px;color:#1E40AF;">
         ${t(

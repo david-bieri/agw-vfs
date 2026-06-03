@@ -301,7 +301,7 @@ function SlopeView({ lang }) {
       /* @__PURE__ */ jsx("span", { children: "\u25C0 1980\u20132001" }),
       /* @__PURE__ */ jsx("span", { children: "2002\u20132023 \u25B6" })
     ] }),
-    /* @__PURE__ */ jsxs("svg", { width: W, height: H, style: { display: "block", margin: "0 auto" }, children: [
+    /* @__PURE__ */ jsxs("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "xMidYMid meet", style: { display: "block", width: "100%", height: "auto", maxWidth: W + "px", margin: "0 auto" }, children: [
       /* @__PURE__ */ jsx(
         "line",
         {
@@ -400,7 +400,7 @@ function LagView({ lang }) {
   const hovItem = hov ? data.find((d) => d.n === hov) : null;
   return /* @__PURE__ */ jsxs("div", { style: { position: "relative", overflowX: "auto", padding: "8px 0" }, children: [
     /* @__PURE__ */ jsx("p", { style: { margin: "8px 0 4px 16px", fontSize: 12, color: "#6070a0", fontStyle: "italic" }, children: lang.t("X = birth year \xB7 Y = first AGW citation \xB7 Points high-and-left = long discovery lag", "X = Geburtsjahr \xB7 Y = erste AGW-Zitation \xB7 Hoch-und-links = lange Entdeckungsverz\xF6gerung") }),
-    /* @__PURE__ */ jsxs("svg", { width: W, height: H, style: { display: "block" }, children: [
+    /* @__PURE__ */ jsxs("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "xMidYMid meet", style: { display: "block", width: "100%", height: "auto", maxWidth: W + "px" }, children: [
       [
         [1550, 1650, "rgba(255,193,7,0.04)"],
         [1650, 1750, "rgba(33,150,243,0.05)"],
@@ -528,7 +528,7 @@ function DedView({ lang }) {
       lang.t("% of total citations from single peak year. Low % = pillar (cited every year).", "% aller Zitate aus einem Spitzenjahr. Niedrig = S\xE4ule (jedes Jahr zitiert)."),
       "High % = guest (dedicated conference only)."
     ] }),
-    /* @__PURE__ */ jsxs("svg", { width: W, height: H, style: { display: "block" }, children: [
+    /* @__PURE__ */ jsxs("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "xMidYMid meet", style: { display: "block", width: "100%", height: "auto", maxWidth: W + "px" }, children: [
       [0, 25, 50, 75, 100].map((v) => /* @__PURE__ */ jsxs("g", { children: [
         /* @__PURE__ */ jsx(
           "line",

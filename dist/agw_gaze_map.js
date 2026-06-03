@@ -207,185 +207,177 @@ function GazeMapView({ hovFig, setHovFig, hovConf, setHovConf, selSchool }) {
     maxHeight: "calc(100vh - 160px)",
     padding: "0 0 0 0"
   }, children: [
-    /* @__PURE__ */ jsxs(
-      "svg",
-      {
-        width: svgW,
-        height: svgH,
-        style: { display: "block", fontFamily: "'Georgia',serif" },
-        children: [
-          ERAS.map((era) => {
-            const figI0 = FIGS.findIndex((f) => f.b >= era.lo);
-            const figI1 = FIGS.findLastIndex((f) => era.hi ? f.b < era.hi : true);
-            if (figI0 < 0 || figI1 < figI0) return null;
-            const y0 = TOP + figI0 * ROW_H;
-            const y1 = TOP + (figI1 + 1) * ROW_H;
-            return /* @__PURE__ */ jsxs("g", { children: [
-              /* @__PURE__ */ jsx(
-                "rect",
-                {
-                  x: 0,
-                  y: y0,
-                  width: svgW,
-                  height: y1 - y0,
-                  fill: era.bg
-                }
-              ),
-              /* @__PURE__ */ jsx(
-                "text",
-                {
-                  x: 4,
-                  y: y0 + 10,
-                  fontSize: 8,
-                  fill: "rgba(200,200,216,0.25)",
-                  fontStyle: "italic",
-                  children: era.label
-                }
-              )
-            ] }, era.label);
-          }),
-          ALL_YEARS.map((yr, i) => /* @__PURE__ */ jsx(
-            "line",
+    /* @__PURE__ */ jsxs("svg", { viewBox: `0 0 ${svgW} ${svgH}`, preserveAspectRatio: "xMidYMid meet", style: { display: "block", width: "100%", height: "auto", maxWidth: svgW + "px", fontFamily: "'Georgia',serif" }, children: [
+      ERAS.map((era) => {
+        const figI0 = FIGS.findIndex((f) => f.b >= era.lo);
+        const figI1 = FIGS.findLastIndex((f) => era.hi ? f.b < era.hi : true);
+        if (figI0 < 0 || figI1 < figI0) return null;
+        const y0 = TOP + figI0 * ROW_H;
+        const y1 = TOP + (figI1 + 1) * ROW_H;
+        return /* @__PURE__ */ jsxs("g", { children: [
+          /* @__PURE__ */ jsx(
+            "rect",
             {
-              x1: xOf(yr),
-              y1: TOP,
-              x2: xOf(yr),
-              y2: TOP + FIGS.length * ROW_H,
-              stroke: hovConf === yr ? "rgba(144,202,249,0.4)" : "rgba(200,200,216,0.07)",
-              strokeWidth: hovConf === yr ? 2 : 0.5
+              x: 0,
+              y: y0,
+              width: svgW,
+              height: y1 - y0,
+              fill: era.bg
+            }
+          ),
+          /* @__PURE__ */ jsx(
+            "text",
+            {
+              x: 4,
+              y: y0 + 10,
+              fontSize: 8,
+              fill: "rgba(200,200,216,0.25)",
+              fontStyle: "italic",
+              children: era.label
+            }
+          )
+        ] }, era.label);
+      }),
+      ALL_YEARS.map((yr, i) => /* @__PURE__ */ jsx(
+        "line",
+        {
+          x1: xOf(yr),
+          y1: TOP,
+          x2: xOf(yr),
+          y2: TOP + FIGS.length * ROW_H,
+          stroke: hovConf === yr ? "rgba(144,202,249,0.4)" : "rgba(200,200,216,0.07)",
+          strokeWidth: hovConf === yr ? 2 : 0.5
+        },
+        yr
+      )),
+      FIGS.map((fig, i) => /* @__PURE__ */ jsx(
+        "line",
+        {
+          x1: LEFT,
+          y1: yOf(i),
+          x2: LEFT + ALL_YEARS.length * COL_W,
+          y2: yOf(i),
+          stroke: hovFig === fig.n ? "rgba(144,202,249,0.25)" : "rgba(200,200,216,0.04)",
+          strokeWidth: hovFig === fig.n ? 1.5 : 0.5
+        },
+        fig.n
+      )),
+      FIGS.map((fig, i) => {
+        const active = !selSchool || selSchool === fig.s;
+        const col = SC[fig.s] || "#888";
+        return /* @__PURE__ */ jsx("g", { children: Object.entries(fig.y).map(([yr_s, score]) => {
+          const yr = parseInt(yr_s);
+          const x = xOf(yr), y = yOf(i);
+          const r = rOf(score);
+          const hilite = hovFig === fig.n || hovConf === yr;
+          return /* @__PURE__ */ jsx(
+            "circle",
+            {
+              cx: x,
+              cy: y,
+              r,
+              fill: col,
+              opacity: active ? hilite ? 0.95 : 0.65 : 0.07,
+              onMouseEnter: (e) => onDot(e, fig, yr, score),
+              onMouseLeave: onLeave,
+              style: { cursor: "pointer", transition: "opacity 0.1s" }
             },
             yr
-          )),
-          FIGS.map((fig, i) => /* @__PURE__ */ jsx(
-            "line",
-            {
-              x1: LEFT,
-              y1: yOf(i),
-              x2: LEFT + ALL_YEARS.length * COL_W,
-              y2: yOf(i),
-              stroke: hovFig === fig.n ? "rgba(144,202,249,0.25)" : "rgba(200,200,216,0.04)",
-              strokeWidth: hovFig === fig.n ? 1.5 : 0.5
-            },
-            fig.n
-          )),
-          FIGS.map((fig, i) => {
-            const active = !selSchool || selSchool === fig.s;
-            const col = SC[fig.s] || "#888";
-            return /* @__PURE__ */ jsx("g", { children: Object.entries(fig.y).map(([yr_s, score]) => {
-              const yr = parseInt(yr_s);
-              const x = xOf(yr), y = yOf(i);
-              const r = rOf(score);
-              const hilite = hovFig === fig.n || hovConf === yr;
-              return /* @__PURE__ */ jsx(
-                "circle",
+          );
+        }) }, fig.n);
+      }),
+      FIGS.map((fig, i) => {
+        const active = !selSchool || selSchool === fig.s;
+        const hilite = hovFig === fig.n;
+        return /* @__PURE__ */ jsx(
+          "text",
+          {
+            x: LEFT - 5,
+            y: yOf(i) + 2.5,
+            textAnchor: "end",
+            fontSize: hilite ? 7.5 : 6.5,
+            fill: active ? hilite ? "#e8e8f0" : SC[fig.s] || "#888" : "rgba(200,200,216,0.15)",
+            fontWeight: hilite ? "bold" : "normal",
+            style: { cursor: "default", transition: "all 0.1s" },
+            onMouseEnter: () => setHovFig(fig.n),
+            onMouseLeave: () => setHovFig(null),
+            children: shortName(fig.n)
+          },
+          fig.n
+        );
+      }),
+      ALL_YEARS.map((yr, i) => {
+        const show5 = yr % 5 === 0;
+        const conf = CONF_BY_YEAR[yr] || {};
+        return /* @__PURE__ */ jsxs(
+          "g",
+          {
+            onMouseEnter: () => setHovConf(yr),
+            onMouseLeave: () => setHovConf(null),
+            style: { cursor: "default" },
+            children: [
+              /* @__PURE__ */ jsx(
+                "line",
                 {
-                  cx: x,
-                  cy: y,
-                  r,
-                  fill: col,
-                  opacity: active ? hilite ? 0.95 : 0.65 : 0.07,
-                  onMouseEnter: (e) => onDot(e, fig, yr, score),
-                  onMouseLeave: onLeave,
-                  style: { cursor: "pointer", transition: "opacity 0.1s" }
-                },
-                yr
-              );
-            }) }, fig.n);
-          }),
-          FIGS.map((fig, i) => {
-            const active = !selSchool || selSchool === fig.s;
-            const hilite = hovFig === fig.n;
-            return /* @__PURE__ */ jsx(
-              "text",
-              {
-                x: LEFT - 5,
-                y: yOf(i) + 2.5,
-                textAnchor: "end",
-                fontSize: hilite ? 7.5 : 6.5,
-                fill: active ? hilite ? "#e8e8f0" : SC[fig.s] || "#888" : "rgba(200,200,216,0.15)",
-                fontWeight: hilite ? "bold" : "normal",
-                style: { cursor: "default", transition: "all 0.1s" },
-                onMouseEnter: () => setHovFig(fig.n),
-                onMouseLeave: () => setHovFig(null),
-                children: shortName(fig.n)
-              },
-              fig.n
-            );
-          }),
-          ALL_YEARS.map((yr, i) => {
-            const show5 = yr % 5 === 0;
-            const conf = CONF_BY_YEAR[yr] || {};
-            return /* @__PURE__ */ jsxs(
-              "g",
-              {
-                onMouseEnter: () => setHovConf(yr),
-                onMouseLeave: () => setHovConf(null),
-                style: { cursor: "default" },
-                children: [
-                  /* @__PURE__ */ jsx(
-                    "line",
-                    {
-                      x1: xOf(yr),
-                      y1: TOP + FIGS.length * ROW_H,
-                      x2: xOf(yr),
-                      y2: TOP + FIGS.length * ROW_H + 4,
-                      stroke: "rgba(200,200,216,0.3)",
-                      strokeWidth: 0.5
-                    }
-                  ),
-                  show5 && /* @__PURE__ */ jsx(
-                    "text",
-                    {
-                      x: xOf(yr),
-                      y: TOP + FIGS.length * ROW_H + 12,
-                      textAnchor: "middle",
-                      fontSize: 7,
-                      fill: hovConf === yr ? "#90CAF9" : "rgba(200,200,216,0.5)",
-                      fontWeight: hovConf === yr ? "bold" : "normal",
-                      children: yr
-                    }
-                  ),
-                  hovConf === yr && /* @__PURE__ */ jsx(
-                    "text",
-                    {
-                      x: xOf(yr),
-                      y: TOP + FIGS.length * ROW_H + 26,
-                      textAnchor: "middle",
-                      fontSize: 6.5,
-                      fill: "#90CAF9",
-                      fontStyle: "italic",
-                      style: { pointerEvents: "none" },
-                      children: (conf.theme || "").length > 30 ? conf.theme.slice(0, 28) + "\u2026" : conf.theme
-                    }
-                  )
-                ]
-              },
+                  x1: xOf(yr),
+                  y1: TOP + FIGS.length * ROW_H,
+                  x2: xOf(yr),
+                  y2: TOP + FIGS.length * ROW_H + 4,
+                  stroke: "rgba(200,200,216,0.3)",
+                  strokeWidth: 0.5
+                }
+              ),
+              show5 && /* @__PURE__ */ jsx(
+                "text",
+                {
+                  x: xOf(yr),
+                  y: TOP + FIGS.length * ROW_H + 12,
+                  textAnchor: "middle",
+                  fontSize: 7,
+                  fill: hovConf === yr ? "#90CAF9" : "rgba(200,200,216,0.5)",
+                  fontWeight: hovConf === yr ? "bold" : "normal",
+                  children: yr
+                }
+              ),
+              hovConf === yr && /* @__PURE__ */ jsx(
+                "text",
+                {
+                  x: xOf(yr),
+                  y: TOP + FIGS.length * ROW_H + 26,
+                  textAnchor: "middle",
+                  fontSize: 6.5,
+                  fill: "#90CAF9",
+                  fontStyle: "italic",
+                  style: { pointerEvents: "none" },
+                  children: (conf.theme || "").length > 30 ? conf.theme.slice(0, 28) + "\u2026" : conf.theme
+                }
+              )
+            ]
+          },
+          yr
+        );
+      }),
+      [1600, 1650, 1700, 1750, 1800, 1850, 1900, 1950].map((yr) => {
+        const i = FIGS.findIndex((f) => f.b >= yr);
+        if (i < 0) return null;
+        return /* @__PURE__ */ jsxs(
+          "text",
+          {
+            x: LEFT - 58,
+            y: yOf(i) + 2,
+            textAnchor: "end",
+            fontSize: 6.5,
+            fill: "rgba(200,200,216,0.3)",
+            fontStyle: "italic",
+            children: [
+              "b.",
               yr
-            );
-          }),
-          [1600, 1650, 1700, 1750, 1800, 1850, 1900, 1950].map((yr) => {
-            const i = FIGS.findIndex((f) => f.b >= yr);
-            if (i < 0) return null;
-            return /* @__PURE__ */ jsxs(
-              "text",
-              {
-                x: LEFT - 58,
-                y: yOf(i) + 2,
-                textAnchor: "end",
-                fontSize: 6.5,
-                fill: "rgba(200,200,216,0.3)",
-                fontStyle: "italic",
-                children: [
-                  "b.",
-                  yr
-                ]
-              },
-              yr
-            );
-          })
-        ]
-      }
-    ),
+            ]
+          },
+          yr
+        );
+      })
+    ] }),
     tooltip && /* @__PURE__ */ jsxs("div", { style: {
       position: "fixed",
       left: tooltip.x + 12,
@@ -445,101 +437,93 @@ function EraView({ selSchool }) {
   const svgH = TOP + eraData.length * ROW_H + BOTTOM;
   const xOf = (yr) => LEFT + ALL_YEARS.indexOf(yr) * COL_W;
   return /* @__PURE__ */ jsxs("div", { style: { overflowX: "auto", padding: "16px 0" }, children: [
-    /* @__PURE__ */ jsxs(
-      "svg",
-      {
-        width: svgW,
-        height: svgH,
-        style: { display: "block", fontFamily: "'Georgia',serif" },
-        children: [
-          eraData.map((era, ei) => {
-            const y0 = TOP + ei * ROW_H;
-            return /* @__PURE__ */ jsxs("g", { children: [
-              /* @__PURE__ */ jsx(
-                "rect",
-                {
-                  x: LEFT,
-                  y: y0,
-                  width: ALL_YEARS.length * COL_W,
-                  height: ROW_H - 2,
-                  fill: era.bg,
-                  rx: 1
-                }
-              ),
-              /* @__PURE__ */ jsx(
-                "text",
-                {
-                  x: LEFT - 6,
-                  y: y0 + ROW_H / 2 + 4,
-                  textAnchor: "end",
-                  fontSize: 9.5,
-                  fill: "rgba(200,200,216,0.8)",
-                  fontStyle: "italic",
-                  children: era.label
-                }
-              ),
-              /* @__PURE__ */ jsxs(
-                "text",
-                {
-                  x: LEFT - 6,
-                  y: y0 + ROW_H / 2 + 15,
-                  textAnchor: "end",
-                  fontSize: 8,
-                  fill: "rgba(200,200,216,0.35)",
-                  children: [
-                    era.members.length,
-                    " figures"
-                  ]
-                }
-              ),
-              ALL_YEARS.map((yr) => {
-                const sc = era.yearScores[yr] || 0;
-                const pct = sc / era.maxSc;
-                const col = `rgba(144,202,249,${pct * 0.85})`;
-                return /* @__PURE__ */ jsx(
-                  "rect",
-                  {
-                    x: xOf(yr) + 1,
-                    y: y0 + 2,
-                    width: COL_W - 2,
-                    height: ROW_H - 6,
-                    fill: col,
-                    rx: 1,
-                    onMouseEnter: (e) => {
-                      const conf = CONF_BY_YEAR[yr] || {};
-                      setTooltip({
-                        x: e.clientX,
-                        y: e.clientY,
-                        era: era.label,
-                        year: yr,
-                        score: sc,
-                        n: era.members.filter((f) => f.y[yr]).length,
-                        theme: conf.theme || ""
-                      });
-                    },
-                    onMouseLeave: () => setTooltip(null),
-                    style: { cursor: "pointer" }
-                  },
-                  yr
-                );
-              })
-            ] }, era.label);
-          }),
-          ALL_YEARS.map((yr) => yr % 5 === 0 && /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsxs("svg", { viewBox: `0 0 ${svgW} ${svgH}`, preserveAspectRatio: "xMidYMid meet", style: { display: "block", width: "100%", height: "auto", maxWidth: svgW + "px", fontFamily: "'Georgia',serif" }, children: [
+      eraData.map((era, ei) => {
+        const y0 = TOP + ei * ROW_H;
+        return /* @__PURE__ */ jsxs("g", { children: [
+          /* @__PURE__ */ jsx(
+            "rect",
+            {
+              x: LEFT,
+              y: y0,
+              width: ALL_YEARS.length * COL_W,
+              height: ROW_H - 2,
+              fill: era.bg,
+              rx: 1
+            }
+          ),
+          /* @__PURE__ */ jsx(
             "text",
             {
-              x: xOf(yr) + COL_W / 2,
-              y: TOP + eraData.length * ROW_H + 14,
-              textAnchor: "middle",
+              x: LEFT - 6,
+              y: y0 + ROW_H / 2 + 4,
+              textAnchor: "end",
+              fontSize: 9.5,
+              fill: "rgba(200,200,216,0.8)",
+              fontStyle: "italic",
+              children: era.label
+            }
+          ),
+          /* @__PURE__ */ jsxs(
+            "text",
+            {
+              x: LEFT - 6,
+              y: y0 + ROW_H / 2 + 15,
+              textAnchor: "end",
               fontSize: 8,
-              fill: "rgba(200,200,216,0.45)",
-              children: yr
-            },
-            yr
-          ))
-        ]
-      }
-    ),
+              fill: "rgba(200,200,216,0.35)",
+              children: [
+                era.members.length,
+                " figures"
+              ]
+            }
+          ),
+          ALL_YEARS.map((yr) => {
+            const sc = era.yearScores[yr] || 0;
+            const pct = sc / era.maxSc;
+            const col = `rgba(144,202,249,${pct * 0.85})`;
+            return /* @__PURE__ */ jsx(
+              "rect",
+              {
+                x: xOf(yr) + 1,
+                y: y0 + 2,
+                width: COL_W - 2,
+                height: ROW_H - 6,
+                fill: col,
+                rx: 1,
+                onMouseEnter: (e) => {
+                  const conf = CONF_BY_YEAR[yr] || {};
+                  setTooltip({
+                    x: e.clientX,
+                    y: e.clientY,
+                    era: era.label,
+                    year: yr,
+                    score: sc,
+                    n: era.members.filter((f) => f.y[yr]).length,
+                    theme: conf.theme || ""
+                  });
+                },
+                onMouseLeave: () => setTooltip(null),
+                style: { cursor: "pointer" }
+              },
+              yr
+            );
+          })
+        ] }, era.label);
+      }),
+      ALL_YEARS.map((yr) => yr % 5 === 0 && /* @__PURE__ */ jsx(
+        "text",
+        {
+          x: xOf(yr) + COL_W / 2,
+          y: TOP + eraData.length * ROW_H + 14,
+          textAnchor: "middle",
+          fontSize: 8,
+          fill: "rgba(200,200,216,0.45)",
+          children: yr
+        },
+        yr
+      ))
+    ] }),
     tooltip && /* @__PURE__ */ jsxs("div", { style: {
       position: "fixed",
       left: tooltip.x + 10,
@@ -580,127 +564,119 @@ function TopFigView({ selSchool }) {
     [figs]
   );
   return /* @__PURE__ */ jsxs("div", { style: { overflowX: "auto", padding: "8px 0" }, children: [
-    /* @__PURE__ */ jsxs(
-      "svg",
-      {
-        width: svgW,
-        height: svgH,
-        style: { display: "block", fontFamily: "'Georgia',serif" },
-        children: [
-          figs.map((_, i) => /* @__PURE__ */ jsx(
-            "rect",
-            {
-              x: LEFT,
-              y: TOP + i * ROW_H,
-              width: ALL_YEARS.length * 14,
-              height: ROW_H,
-              fill: i % 2 === 0 ? "rgba(255,255,255,0.02)" : "transparent"
-            },
-            i
-          )),
-          ALL_YEARS.map((yr) => /* @__PURE__ */ jsx(
+    /* @__PURE__ */ jsxs("svg", { viewBox: `0 0 ${svgW} ${svgH}`, preserveAspectRatio: "xMidYMid meet", style: { display: "block", width: "100%", height: "auto", maxWidth: svgW + "px", fontFamily: "'Georgia',serif" }, children: [
+      figs.map((_, i) => /* @__PURE__ */ jsx(
+        "rect",
+        {
+          x: LEFT,
+          y: TOP + i * ROW_H,
+          width: ALL_YEARS.length * 14,
+          height: ROW_H,
+          fill: i % 2 === 0 ? "rgba(255,255,255,0.02)" : "transparent"
+        },
+        i
+      )),
+      ALL_YEARS.map((yr) => /* @__PURE__ */ jsx(
+        "line",
+        {
+          x1: xOf(yr),
+          y1: TOP,
+          x2: xOf(yr),
+          y2: TOP + figs.length * ROW_H,
+          stroke: "rgba(200,200,216,0.06)",
+          strokeWidth: 0.5
+        },
+        yr
+      )),
+      figs.map((fig, i) => {
+        const col = SC[fig.s] || "#888";
+        const ys = Object.keys(fig.y).map(Number).sort((a, b) => a - b);
+        return /* @__PURE__ */ jsxs("g", { children: [
+          ys.length >= 2 && /* @__PURE__ */ jsx(
             "line",
             {
-              x1: xOf(yr),
-              y1: TOP,
-              x2: xOf(yr),
-              y2: TOP + figs.length * ROW_H,
-              stroke: "rgba(200,200,216,0.06)",
-              strokeWidth: 0.5
-            },
-            yr
-          )),
-          figs.map((fig, i) => {
-            const col = SC[fig.s] || "#888";
-            const ys = Object.keys(fig.y).map(Number).sort((a, b) => a - b);
-            return /* @__PURE__ */ jsxs("g", { children: [
-              ys.length >= 2 && /* @__PURE__ */ jsx(
-                "line",
-                {
-                  x1: xOf(ys[0]),
-                  y1: yOf(i),
-                  x2: xOf(ys[ys.length - 1]),
-                  y2: yOf(i),
-                  stroke: col,
-                  strokeWidth: 0.8,
-                  opacity: 0.25,
-                  strokeDasharray: "2,3"
-                }
-              ),
-              ys.map((yr) => {
-                const sc = fig.y[yr];
-                const r = Math.max(2.5, Math.sqrt(sc / maxScore) * 7.5);
-                return /* @__PURE__ */ jsx(
-                  "circle",
-                  {
-                    cx: xOf(yr),
-                    cy: yOf(i),
-                    r,
-                    fill: col,
-                    opacity: 0.75,
-                    onMouseEnter: (e) => {
-                      const conf = CONF_BY_YEAR[yr] || {};
-                      setTooltip({
-                        x: e.clientX,
-                        y: e.clientY,
-                        fig: fig.n,
-                        school: fig.s,
-                        birth: fig.b,
-                        year: yr,
-                        score: sc,
-                        theme: conf.theme || ""
-                      });
-                    },
-                    onMouseLeave: () => setTooltip(null),
-                    style: { cursor: "pointer" }
-                  },
-                  yr
-                );
-              }),
-              /* @__PURE__ */ jsx(
-                "text",
-                {
-                  x: LEFT - 5,
-                  y: yOf(i) + 3.5,
-                  textAnchor: "end",
-                  fontSize: 9.5,
-                  fill: col,
-                  opacity: 0.9,
-                  children: shortName(fig.n)
-                }
-              ),
-              /* @__PURE__ */ jsxs(
-                "text",
-                {
-                  x: LEFT - 5,
-                  y: yOf(i) + 3.5,
-                  textAnchor: "end",
-                  dx: -70,
-                  fontSize: 7.5,
-                  fill: "rgba(200,200,216,0.3)",
-                  children: [
-                    fig.df,
-                    "\xD7"
-                  ]
-                }
-              )
-            ] }, fig.n);
+              x1: xOf(ys[0]),
+              y1: yOf(i),
+              x2: xOf(ys[ys.length - 1]),
+              y2: yOf(i),
+              stroke: col,
+              strokeWidth: 0.8,
+              opacity: 0.25,
+              strokeDasharray: "2,3"
+            }
+          ),
+          ys.map((yr) => {
+            const sc = fig.y[yr];
+            const r = Math.max(2.5, Math.sqrt(sc / maxScore) * 7.5);
+            return /* @__PURE__ */ jsx(
+              "circle",
+              {
+                cx: xOf(yr),
+                cy: yOf(i),
+                r,
+                fill: col,
+                opacity: 0.75,
+                onMouseEnter: (e) => {
+                  const conf = CONF_BY_YEAR[yr] || {};
+                  setTooltip({
+                    x: e.clientX,
+                    y: e.clientY,
+                    fig: fig.n,
+                    school: fig.s,
+                    birth: fig.b,
+                    year: yr,
+                    score: sc,
+                    theme: conf.theme || ""
+                  });
+                },
+                onMouseLeave: () => setTooltip(null),
+                style: { cursor: "pointer" }
+              },
+              yr
+            );
           }),
-          ALL_YEARS.map((yr) => yr % 5 === 0 && /* @__PURE__ */ jsx(
+          /* @__PURE__ */ jsx(
             "text",
             {
-              x: xOf(yr),
-              y: TOP + figs.length * ROW_H + 14,
-              textAnchor: "middle",
+              x: LEFT - 5,
+              y: yOf(i) + 3.5,
+              textAnchor: "end",
+              fontSize: 9.5,
+              fill: col,
+              opacity: 0.9,
+              children: shortName(fig.n)
+            }
+          ),
+          /* @__PURE__ */ jsxs(
+            "text",
+            {
+              x: LEFT - 5,
+              y: yOf(i) + 3.5,
+              textAnchor: "end",
+              dx: -70,
               fontSize: 7.5,
-              fill: "rgba(200,200,216,0.4)",
-              children: yr
-            },
-            yr
-          ))
-        ]
-      }
-    ),
+              fill: "rgba(200,200,216,0.3)",
+              children: [
+                fig.df,
+                "\xD7"
+              ]
+            }
+          )
+        ] }, fig.n);
+      }),
+      ALL_YEARS.map((yr) => yr % 5 === 0 && /* @__PURE__ */ jsx(
+        "text",
+        {
+          x: xOf(yr),
+          y: TOP + figs.length * ROW_H + 14,
+          textAnchor: "middle",
+          fontSize: 7.5,
+          fill: "rgba(200,200,216,0.4)",
+          children: yr
+        },
+        yr
+      ))
+    ] }),
     tooltip && /* @__PURE__ */ jsxs("div", { style: {
       position: "fixed",
       left: tooltip.x + 12,
