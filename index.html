@@ -888,6 +888,7 @@ a.speaker-link:hover {
       <button class="arch-view-btn active" onclick="setArchiveView('list',this)" style="background:none;border:none;padding:9px 18px;cursor:pointer;font-size:13.5px;font-family:inherit;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1.5px;" data-i18n="arch_view_list">☰ Liste</button>
       <button class="arch-view-btn" onclick="setArchiveView('map',this)" style="background:none;border:none;padding:9px 18px;cursor:pointer;font-size:13.5px;font-family:inherit;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1.5px;" data-i18n="arch_view_map">🗺 Karte</button>
       <button class="arch-view-btn" onclick="setArchiveView('speakers',this)" style="background:none;border:none;padding:9px 18px;cursor:pointer;font-size:13.5px;font-family:inherit;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1.5px;" data-i18n="arch_view_speakers">👤 Referenten</button>
+      <button class="arch-view-btn" onclick="setArchiveView('chronik',this)" style="background:none;border:none;padding:9px 18px;cursor:pointer;font-size:13.5px;font-family:inherit;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1.5px;" data-i18n="arch_view_chronik">📈 Chronik</button>
     </div>
     <div id="arch-view-list">
       <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px;">
@@ -915,6 +916,9 @@ a.speaker-link:hover {
       <div style="border-radius:10px;overflow:hidden;border:1px solid var(--border);"><div id="archive-location-map" style="height:460px;"></div></div>
     </div>
     <div id="arch-view-speakers" style="display:none;"><div id="speaker-freq-table"></div></div>
+    <div id="arch-view-chronik" style="display:none;">
+      <!-- Rendered by agw_chronik.js when tab first opens -->
+    </div>
   </div>
 </section>
 
@@ -1301,6 +1305,7 @@ const EN = {
   arch_papers:               'Selected Papers',
   arch_upload:               'Submit Paper',
   arch_upload_note:          'Papers are added following consultation with the chair.',
+  arch_view_chronik:         'Chronicle',
 
   // ── Publications section ──────────────────────────
   sec_lbl_pub:               'Publications',
@@ -2391,14 +2396,16 @@ window.addEventListener('scroll',function(){
 
 /* ── Archive view tabs ── */
 var _archMapDone=false;
+var _chronikDone=false;
 function setArchiveView(view,btn){
-  ['list','map','speakers'].forEach(function(v){
+  ['list','map','speakers','chronik'].forEach(function(v){
     document.getElementById('arch-view-'+v).style.display=v===view?'':'none';
   });
   document.querySelectorAll('.arch-view-btn').forEach(function(b){b.classList.remove('active');});
   btn.classList.add('active');
   if(view==='map'&&!_archMapDone){initArchiveMap();_archMapDone=true;}
   if(view==='speakers'){buildSpeakerStats();}
+  if(view==='chronik'&&!_chronikDone){initChronik('arch-view-chronik');_chronikDone=true;}
 }
 
 /* ── Archive location map ── */
@@ -2591,5 +2598,6 @@ function addSessionIcalBtns() {
 </script>
 <div id="search-overlay" onclick="if(event.target===this)closeSearch()"><div id="search-box"><div id="search-input-row"><span style="font-size:18px;margin-right:10px;color:var(--text-faint);">🔍</span><input id="search-input" type="text" autocomplete="off" oninput="runSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()" placeholder="Suchen… / Search…"><button id="search-close" onclick="closeSearch()">✕</button></div><div id="search-results"><div class="srch-empty">Suchbegriff eingeben…</div></div><div id="search-hint">↵ öffnet &nbsp;·&nbsp; Esc schließt &nbsp;·&nbsp; Ctrl+K</div></div></div>
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Zurück nach oben">↑</button>
+<script src="agw_chronik.js"></script>
 </body>
 </html>
