@@ -27,11 +27,16 @@
   const ACC="#1B3A6B", GOLD="#B45309", GRN="#2D6A4F", RED="#991B1B";
   const MUTED="#6B7280";
 
-  /* ── Language helper ────────────────────────────────────── */
-  function lang() {
+  /* ── Language helper — delegates to agw_strings.js ─────── */
+  function getLang() {
+    if (window.AGW && window.AGW.getLang) return window.AGW.getLang();
     try { return localStorage.getItem('agw-lang') || 'de'; } catch(e) { return 'de'; }
   }
-  function t(de, en) { return lang() === 'de' ? de : en; }
+  function t(key, fallbackDE, fallbackEN) {
+    if (window.AGW && window.AGW.t) return window.AGW.t(key, getLang());
+    /* Fallback if agw_strings.js not yet loaded */
+    return getLang() === 'de' ? (fallbackDE || key) : (fallbackEN || fallbackDE || key);
+  }
 
   /* ── SVG helpers ────────────────────────────────────────── */
   function svgEl(tag, attrs, text) {
@@ -91,24 +96,24 @@
     const kn = D.key_numbers;
     const cards = [
       { num: kn.n_conf,
-        label: t('Jahrestagungen', 'Annual Conferences'),
+        label: t('stat_conferences', 'Jahrestagungen', 'Annual Conferences'),
         note: '1980 – 2025', accent: '#1B3A6B' },
       { num: kn.n_figs,
-        label: t('Intellektuelle Figuren', 'Intellectual Figures'),
+        label: t('stat_figures', 'Intellektuelle Figuren', 'Intellectual Figures'),
         note: `${kn.birth_span_lo}–${kn.birth_span_hi}`, accent: GOLD },
       { num: kn.n_links,
-        label: t('Figur × Konferenz-Engagements', 'Figure × Conference Engagements'),
-        note: `${kn.pillars} ${t('im Kernkanon','in core canon')} (df ≥ 10)`,
+        label: t('stat_engagements', 'Figur × Konferenz-Engagements', 'Figure × Conference Engagements'),
+        note: `${kn.pillars} ${t('stat_core_note', 'im Kernkanon', 'in core canon')} (df ≥ 10)`,
         accent: GRN },
       { num: `${kn.birth_span_hi - kn.birth_span_lo}yr`,
-        label: t('Geburtsjahr-Spanne', 'Birth-Year Span'),
+        label: t('stat_span', 'Geburtsjahr-Spanne', 'Birth-Year Span'),
         note: `${kn.oldest.name.split(' ').pop()} → ${kn.youngest.name.split(' ').pop()}`,
         accent: '#6D28D9' },
       { num: `${kn.top_figure.pct}%`,
-        label: t('aller Konferenzen', 'of all conferences'),
+        label: t('stat_top_pct', 'aller Konferenzen', 'of all conferences'),
         note: kn.top_figure.name, accent: RED },
       { num: `${kn.max_lag.lag}yr`,
-        label: t('längste Entdeckungsverzögerung', 'longest discovery lag'),
+        label: t('stat_lag', 'längste Entdeckungsverzögerung', 'longest discovery lag'),
         note: `${kn.max_lag.name.split(' ').pop()} (b.${kn.max_lag.birth})`,
         accent: '#B45309' },
     ];
@@ -224,7 +229,7 @@
       el.appendChild(text(xOf(yr),H-4,String(yr),
         {size:8,color:MUTED,anchor:'middle'})));
     el.appendChild(text(PAD.l-5,PAD.t+IH/2,
-      t('Geburtsjahr','Birth year'),
+      t('birthyear','Geburtsjahr','Birth year'),
       {size:8,color:MUTED,anchor:'middle',
        transform:`rotate(-90,${PAD.l-5},${PAD.t+IH/2})`}));
 
@@ -348,7 +353,7 @@
       el.appendChild(line(xOf(m.i),PAD.t,xOf(m.i),PAD.t+IH,
         m.color,0.8,'3,2'));
       el.appendChild(text(xOf(m.i)+2,PAD.t+10,
-        `${m.pct}% ${t('Abdeckung','coverage')}`,
+        `${m.pct}% ${t('coverage','Abdeckung','coverage')}`,
         {size:7.5,color:m.color}));
     });
 
@@ -364,7 +369,7 @@
     // X-axis
     el.appendChild(text(PAD.l,H-4,'1',{size:8,color:MUTED}));
     el.appendChild(text(xOf(N/2),H-4,
-      `${t('Rang','Rank')} ${Math.round(N/2)}`,
+      `${t('rank','Rang','Rank')} ${Math.round(N/2)}`,
       {size:8,color:MUTED,anchor:'middle'}));
     el.appendChild(text(xOf(N),H-4,String(N),
       {size:8,color:MUTED,anchor:'end'}));
@@ -400,7 +405,7 @@
     hdr.innerHTML=`
       <div style="font-size:11px;letter-spacing:.15em;color:${MUTED};
         text-transform:uppercase;margin-bottom:6px;">
-        ${t('Quantitatives Porträt','Quantitative Portrait')} · 1980–2025</div>
+        ${t('chronik_heading', 'Der AGW in Zahlen', 'The AGW in Numbers')} · 1980–2025</div>
       <p style="margin:0;font-size:13px;color:${MUTED};font-style:italic;">
         ${t(
           'Der AGW hat seit seiner Gründung 1980 ein einzigartiges intellektuelles Kanon aufgebaut.',
@@ -413,26 +418,25 @@
 
     // Charts
     const s1=chartSection(_container,
-      'Das wachsende Kanon','The Expanding Canon',
+      t('panel_canon','Das wachsende Kanon','The Expanding Canon'),
       'Kumulierte neue Figuren im AGW-Kanon nach Konferenzjahr. Goldene Spitzen = stärkste Zuwachsjahre.',
       'Cumulative unique figures entering the corpus per year. Gold spikes = strongest intake years.');
     renderCanonGrowth(s1);
 
     const s2=chartSection(_container,
-      'Die Tiefe der Zeit','The Depth of Time',
+      t('panel_time','Die Tiefe der Zeit','The Depth of Time'),
       'Geburtsjahr-Verteilung der zitierten Figuren pro Konferenz. Box = IQR, Punkt = Median.',
       'Birth-year distribution of cited figures per conference. Box = IQR, dot = median.');
     renderTemporalReach(s2);
 
     const s3=chartSection(_container,
-      'Intellektuelle Vielfalt & Schulanteile',
-      'Intellectual Diversity & School Shares',
+      t('panel_diversity','Intellektuelle Vielfalt & Schulanteile','Intellectual Diversity & School Shares'),
       'Links: Shannon-Entropie pro Konferenz (höher = breiter Fokus). Rechts: Gesamtkorpus-Anteil nach Denkschule.',
       'Left: Shannon entropy per conference (higher = broader focus). Right: Overall corpus share by school.');
     renderTwoCol(s3);
 
     const s4=chartSection(_container,
-      'Die Kanonpyramide','The Canon Pyramid',
+      t('panel_pyramid','Die Kanonpyramide','The Canon Pyramid'),
       'Konferenzauftritte pro Figur. Gold = Kern (df≥10), Blau = Regulär (df 5–9). Grüne Linie = kumulative Abdeckung.',
       'Conference appearances per figure. Gold = core (df≥10), blue = regular (df 5–9). Green line = cumulative coverage.');
     renderCanonPyramid(s4);
@@ -452,7 +456,7 @@
       <a href="analytics.html" target="_blank"
         style="font-size:13px;color:#1E40AF;font-weight:600;
           white-space:nowrap;margin-left:16px;">
-        ${t('Zur Analyse','Open Analytics')} ↗
+        ${t('chronik_cta_link','Zur Analyse','Open Analytics')} ↗
       </a>`;
     _container.appendChild(link);
   }

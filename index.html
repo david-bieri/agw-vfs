@@ -1178,191 +1178,10 @@ a.speaker-link:hover {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" crossorigin=""></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin=""></script>
+<script src="agw_strings.js"></script>
 <script>
 /* ── Language toggle ── */
-// ════════════════════════════════════════════════════════════════════════
-//  ENGLISH TRANSLATIONS — AGW Website v5
-//  Companion file for editorial review: AGW_en.json
-//
-//  EDITORIAL STATUS:
-//    [FLAG]   Critical — must be resolved before publication
-//    [REVIEW] Requires domain-expert sign-off
-//    // alt:  Alternative(s) — choose one and remove the comment
-//
-//  CRITICAL TERMINOLOGY (see AGW_en.json _glossary for full notes):
-//    Dogmengeschichte       → "history of economic doctrines"   [FLAG]
-//    Theoriegeschichte      → "history of economic thought"     [FLAG]
-//    Wirtschaftswissenschaften → "economics"                    [REVIEW]
-//    Ausschuss (full name)  → "Committee for the History of Economics" [FLAG]
-//
-//  To update: edit values in this object, then sync back to AGW_en.json.
-//  To hand off for editorial review: share AGW_en.json (same data + notes).
-// ════════════════════════════════════════════════════════════════════════
-
-const EN = {
-
-  // ── Navigation ─────────────────────────────────────────────
-  nav_brand_sub:             'Verein für Socialpolitik',
-  nav_conference:            'Annual Conference 2026',
-  nav_programme:             'Academic Programme',  // [REVIEW] · alt: Scientific Programme / Conference Programme
-  nav_social:                'Social Programme',  // alt: Accompanying Programme / Social Events
-  nav_travel:                'Travel & Logistics',
-  nav_archive:               'Archive',
-  nav_publications:          'Publications',
-  nav_about_group:           'About AGW',  // [REVIEW] · alt: About the AGW / About the Committee
-  nav_about:                 'About the Committee',  // [REVIEW] · See glossary: Ausschuss.
-  nav_history:               'History of the AGW',
-  nav_members:               'Members',
-
-  // ── Hero section ───────────────────────────────────────────
-  hero_eyebrow:              'Committee for the History of Economics · Annual Conference 2026',  // [FLAG] · See glossary: committee_full_name and Wirtschaftswissenschaften.
-  hero_pill_venue:           'Virginia Tech Steger Center · Riva San Vitale, Ticino',
-  hero_pill_days:            'Thu–Sat · 3 Days',
-  hero_org_by:               'Organised by',  // alt: Organized by
-  hero_hosted_by:            'Hosted by',
-
-  // ── Sub-navigation strip ────────────────────────────────
-  sub_programme:             'Academic Programme',  // [REVIEW] · Same as nav_programme.
-  sub_social:                'Social Programme',
-  sub_travel:                'Travel & Logistics',
-
-  // ── Academic programme section ─────────────────────
-  sec_lbl_programme:         'Academic Programme',  // [REVIEW] · alt: Scientific Programme
-  sec_ttl_programme:         'Conference Programme',
-  tab_thu:                   'Thursday, 25 June',
-  tab_fri:                   'Friday, 26 June',
-  tab_sat:                   'Saturday, 27 June',
-  prog_welcome_dinner:       'Welcome Dinner',
-  prog_welcome_note:         'Historic old town · next to the funicular station',
-  prog_opening:              'Opening / Welcome',  // [REVIEW] · alt: Welcome and Opening Remarks / Opening Session
-  prog_memorial:             'In Memoriam: Three Departed Members',  // [REVIEW] · alt: Remembrance of Three Deceased Members
-  prog_coffee:               'Coffee Break',
-  prog_lunch:                'Lunch Break',
-  prog_tour:                 'Historical Walking Tour of Riva San Vitale (guided, German)',
-  prog_tour_note:            'Anabaptist Chapel (9th c.) · Battistero San Giovanni (4th/5th c.) · Santa Croce · Casa Bianchi (Mario Botta)',
-  prog_apericena:            'Apericena in the Gardens of Villa Maderni',
-  prog_apericena_venue:      '18th-century palazzo · Steger Center',
-  prog_apericena_note:       'Regional Ticino cuisine · approx. CHF 40 p.p. (drinks excl.)',
-  prog_assembly:             'Members\' Assembly',  // [REVIEW] · alt: General Assembly / Members' Meeting
-  prog_assembly_note:        'Members of the committee only',
-  prog_lunch_sa:             'Lunch',
-  prog_lunch_sa_loc:         'Steger Center · Villa Maderni',
-  prog_excursion:            'Group Excursion: Monte Generoso',
-  prog_excursion_detail:     'Rack railway from Capolago station (since 1890) · Panoramic view over four countries',
-
-  // ── Social programme section ──────────────────────────
-  sec_lbl_social:            'Social Programme',
-  sec_ttl_social:            'Social Events',  // [REVIEW] · alt: Social Programme / Accompanying Programme
-  card_thu_day:              'Thursday, 25 June',
-  card_thu_title:            'Welcome Dinner',
-  card_thu_note:             'The restaurant is located in the historic old town, adjacent to the funicular station, steps from the recommended conference hotel.',
-  card_fri_day:              'Friday, 26 June',
-  card_fri1_title:           'Historical Walking Tour',
-  card_fri1_note:            'Followed by: Apericena from 18:30 at Villa Maderni',
-  card_fri2_title:           'Apericena at Villa Maderni',
-  card_sat_day:              'Saturday, 27 June',
-  card_sat_title:            'Group Excursion: Monte Generoso',
-  card_sat_note:             'After Members\' Assembly · sturdy footwear recommended',
-  lbl_partner:               'Partner Programme',  // [REVIEW] · alt: Accompanying Persons' Programme / Partner Activities
-  ttl_partner:               'Activities for Accompanying Guests',  // [REVIEW] · alt: Excursions for Accompanying Persons
-  partner_hesse:             'Montagnola · daily 10:30–17:30 · free entry with Ticino Ticket.',
-  partner_lugano_ttl:        'Lake Lugano Boat Trips',
-  partner_lugano:            'Navigazione del Lago di Lugano. Cruises on Lake Lugano.',
-  partner_bre:               'Viewpoint hill above Lugano with sweeping panorama.',
-  partner_verita:            'Museum Casa Anatta · historic centre of the German life-reform movement.',
-
-  // ── Travel & Logistics section ────────────────────────
-  sec_lbl_travel:            'Travel & Local Logistics',
-  sec_ttl_travel:            'Travel & Accommodation',
-  ticino_title:              'Ticino Ticket',
-  ticino_text:               'All hotel guests in Ticino receive the Ticino Ticket free of charge at check-in: valid for TILO, PostAuto, and city buses — including the Lugano–Capolago route. Also: free entry to the Hermann Hesse Museum and discounts at other attractions.',
-  ttl_accommodation:         'Accommodation in Lugano',
-  badge_recommended:         'Recommended',
-  badge_dinner_near:         'Dinner venue nearby',
-  badge_no_train:            'No train needed',
-  hotel_svizzero_addr:       'Capolago · ~10 min walk to venue',
-  ticino_box_note:           'All guests receive the Ticino Ticket at hotel check-in — the Lugano ↔ Capolago train journey is therefore free of charge.',
-  ttl_train:                 'Getting There by Train',
-  ts1_label:                 'TILO S10: Lugano HB → Capolago-Riva San Vitale',
-  ts1_detail:                'Every 30 min · Journey time approx. 15 min.',
-  ts2_label:                 'Walk to Steger Center',
-  ts2_detail:                'approx. 750 m · 10–12 min from Capolago station',
-  train_times_hdr:           'Recommended Departure Times',
-  train_fri:                 'Depart Lugano HB 08:12 (9:00 start)',
-  train_sat:                 'Depart Lugano HB 07:42 (8:30 start)',
-  train_timetable:           'Timetable',
-  train_free_note:           'Ticino Ticket: the Lugano ↔ Capolago train journey is free of charge — no separate ticket needed.',
-  venue_address_lbl:         'Address',
-  venue_building_lbl:        'Building',
-  venue_building_val:        'Villa Maderni, 18th-century palazzo',
-  sec_ttl_venue:             'Venue',
-
-  // ── Archive section ───────────────────────────────────
-  sec_lbl_archive:           'Conference Archive',
-  sec_ttl_archive:           'Previous Annual Conferences',
-  sec_intro_archive:         'The AGW holds an annual conference. Below is an overview of past conferences with programmes and selected contributions.',
-  arch_view:                 'View Programme',
-  arch_papers:               'Selected Papers',
-  arch_upload:               'Submit Paper',
-  arch_upload_note:          'Papers are added following consultation with the chair.',
-  arch_view_chronik:         'Chronicle',
-
-  // ── Publications section ──────────────────────────
-  sec_lbl_pub:               'Publications',
-  sec_ttl_pub:               'Conference Volumes',  // [REVIEW] · alt: Edited Volumes / Conference Publications
-  pub_series_lbl:            'Series Information',
-  pub_all_link:              'All volumes at publisher ↗',
-  pub_filter_all:            'All',
-  pub_toc_placeholder:       'Table of contents to be added.',
-  pub_no_results:            'No volumes found',
-  pub_cite_lbl:              'Cite',
-  pub_toc_lbl:               'Contents',
-  pub_download:              'Download',
-  pub_copy:                  'Copy',
-  pub_copied:                'Copied',
-  pub_publisher_lbl:         'Publisher ↗',
-  pub_band_lbl:              'Vol. 115/',
-
-  // ── About the Committee ── [EDITORIAL PRIORITY] ─────────
-  sec_lbl_about:             'About the Committee',  // [REVIEW]
-  sec_ttl_about:             'About the Committee',  // [REVIEW] · See glossary: Ausschuss.
-  about_p1:                  'The <strong>Committee for the History of Economics (AGW)</strong> is the standing committee for the history of economic thought and the history of doctrines within the Verein für Socialpolitik (VfS), the largest German-language economics association.',  // [FLAG]
-  about_p2:                  'The committee serves as a scholarly platform bringing together economists from German, Austrian, and Swiss higher education institutions — as well as neighbouring countries — who work on the methodological, philosophical, intellectual-historical, and historical dimensions of economics.',  // [REVIEW]
-  about_p3:                  'The annual conference is the centrepiece of the committee\'s activity. It provides a forum for research discussions, for dialogue between emerging and established scholars, and for international exchange on the history of economic thought as a discipline.',  // [REVIEW]
-  about_p4:                  'The AGW is part of the international network of history-of-economics societies, including the <strong>European Society for the History of Economic Thought (ESHET)</strong> and the <strong>History of Economics Society (HES)</strong>.',
-  about_pullquote:           'The history of economic ideas is not an end in itself — it opens our eyes to what economics could be.',  // [REVIEW]
-  contact_title:             'Contact & Organisation',
-  contact_chair_lbl:         'Chair',
-  contact_host_lbl:          '2026 Host',
-  contact_parent_lbl:        'Parent body',  // alt: Parent organisation
-  contact_page_lbl:          'Committee page',
-  membership_title:          'Membership',
-  membership_text:           'Researchers interested in joining the committee should contact the chair or the VfS office directly.',
-
-  // ── History section ── [EDITORIAL PRIORITY] ───────────
-  sec_lbl_history:           'History',
-  sec_ttl_history:           'History of the AGW',
-  hist_p1:                   'The <strong>Committee for the History of Economics (AGW)</strong> is one of the standing specialist committees of the Verein für Socialpolitik (VfS), the oldest professional association of economists in the world (founded 1873). The AGW was founded in 1980; its inaugural conference was held in Giessen. As an independent committee, the AGW brings together research on the history of economic theories and doctrines in the German-language academic tradition.',  // [FLAG] see glossary: committee_full_name  // [FLAG] · Uses committee_full_name — see glossary.
-  hist_p2:                   'The AGW\'s annual conferences regularly result in peer-reviewed collected volumes published as the subseries <em>Studien zur Entwicklung der ökonomischen Theorie</em> within the <em>Schriften des Vereins für Socialpolitik</em> (vol. 115) by Duncker &amp; Humblot, Berlin. Since the first volume in the early 1980s, the series — now numbering more than 40 volumes — has been the principal publication outlet for the German-language history of economic thought.',  // [FLAG]
-  hist_p3:                   'The AGW meets annually at rotating locations in Germany, Austria, and Switzerland, and occasionally abroad. Papers presented cover the history of economic theories, the history of doctrines, and the philosophy of economics. The 2022 Jahrestagung in Jena was dedicated to the 150th anniversary of the VfS (volume XLI of the series, ed. Peter Spahn).',  // [REVIEW]
-  hist_p4:                   'The AGW maintains close ties with the international sister societies ESHET (European Society for the History of Economic Thought) and HES (History of Economics Society), as well as with other national associations in the German- and European-language scholarly community.',
-  hist_note_title:           'Note on History',
-  hist_note_text:            'This section is being updated continuously. Members wishing to contribute to the history of the committee should contact the chair.',
-
-  // ── Members section ───────────────────────────────────
-  sec_lbl_members:           'Members',
-  sec_ttl_members:           'Members of the AGW',
-  mbr_chair:                 'Chair',
-  mbr_host2026:              '2026 Host',
-  mbr_search:                'Search members…',
-
-  // ── Footer ────────────────────────────────────────────
-  footer_desc:               'Standing committee for the history of economic thought within the',  // [FLAG] · Uses Theoriegeschichte and Dogmengeschichte — see glossary.
-  footer_hosted:             'Annual Conference 2026 hosted by Dr. David Bieri,',
-  footer_col_conf:           'Annual Conference 2026',
-  footer_col_about:          'About AGW',  // [REVIEW]
-  footer_updated:            'Updated: May 2026 · Subject to change',
-};
+/* Translations now live in agw_strings.js — edit that file to update all labels. */
 
 /* ── Language state ─────────────────────────────────────────────────────────
  * Approach: data-i18n attributes hold the key; DE is the HTML default.
@@ -1376,31 +1195,12 @@ function setLang(l) {
   lang = l;
   document.documentElement.lang = l;
 
-  // Text-content elements
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n;
-    if (l === 'en') {
-      if (el.dataset.de === undefined) el.dataset.de = el.textContent;
-      if (EN[key] !== undefined) el.textContent = EN[key];
-    } else {
-      if (el.dataset.de !== undefined) el.textContent = el.dataset.de;
-    }
-  });
+  // All translation delegated to agw_strings.js
+  AGW.applyLang(l);
 
-  // HTML-content elements (contain markup — paragraphs with <strong> etc.)
-  document.querySelectorAll('[data-i18n-html]').forEach(el => {
-    const key = el.dataset.i18nHtml;
-    if (l === 'en') {
-      if (el.dataset.deHtml === undefined) el.dataset.deHtml = el.innerHTML;
-      if (EN[key] !== undefined) el.innerHTML = EN[key];
-    } else {
-      if (el.dataset.deHtml !== undefined) el.innerHTML = el.dataset.deHtml;
-    }
-  });
-
-  // Update search placeholders
+  // Search-field placeholders (not tagged with data-i18n)
   const ms = document.getElementById('member-search');
-  if (ms) ms.placeholder = l === 'en' ? EN.mbr_search : 'Mitglieder suchen…';
+  if (ms) ms.placeholder = l === 'en' ? AGW.t('mbr_search','en') : 'Mitglieder suchen…';
   const ps = document.getElementById('pub-search');
   if (ps) ps.placeholder = l === 'en' ? 'Search by title or editor…' : 'Titel oder Herausgeber suchen…';
 
@@ -1410,12 +1210,12 @@ function setLang(l) {
   renderArchive();
   renderPubs();
 
-  // Update toggle button state
+  // Toggle button active state
   document.getElementById('btn-de').classList.toggle('active', l === 'de');
   document.getElementById('btn-en').classList.toggle('active', l === 'en');
 
-  // Persist choice across sessions
-  try { localStorage.setItem('agw-lang', l); } catch(e) {}
+  // Persist across sessions
+  AGW.setLang(l);
 }
 
 function initLang() {
@@ -1545,8 +1345,8 @@ function getInitials(name) {
 function renderChairs() {
   const el = document.getElementById('chairs-timeline');
   if (!el) return;
-  const current_lbl = lang === 'en' ? (EN.chairs_current || 'Current Chair') : 'Aktueller Vorsitzender';
-  const past_lbl    = lang === 'en' ? (EN.chairs_past    || 'Past Chair')    : 'Ehemaliger Vorsitzender';
+  const current_lbl = lang === 'en' ? ((AGW.S.chairs_current && AGW.S.chairs_current.en) || 'Current Chair') : 'Aktueller Vorsitzender';
+  const past_lbl    = lang === 'en' ? ((AGW.S.chairs_past && AGW.S.chairs_past.en)    || 'Past Chair')    : 'Ehemaliger Vorsitzender';
 
   el.innerHTML = '<div class="chairs-list">'
     + CHAIRS.map((c, i) => {
@@ -1608,8 +1408,8 @@ function renderMembers(list) {
     grid.innerHTML = '<div style="padding:32px;text-align:center;color:var(--text-faint);font-style:italic;">Keine Mitglieder gefunden / No members found</div>';
     return;
   }
-  const chair_lbl = lang === 'en' ? (EN.mbr_chair    || 'Chair')     : 'Vorsitzender';
-  const host_lbl  = lang === 'en' ? (EN.mbr_host2026 || '2026 Host') : 'Gastgeber 2026';
+  const chair_lbl = lang === 'en' ? ((AGW.S.mbr_chair && AGW.S.mbr_chair.en)    || 'Chair')     : 'Vorsitzender';
+  const host_lbl  = lang === 'en' ? ((AGW.S.mbr_host2026 && AGW.S.mbr_host2026.en) || '2026 Host') : 'Gastgeber 2026';
   const em_lbl    = lang === 'en' ? 'Emeritus/a' : 'Emeritus/a';
   const FLAG = { DE:'\u{1f1e9}\u{1f1ea}', AT:'\u{1f1e6}\u{1f1f9}', CH:'\u{1f1e8}\u{1f1ed}',
                  US:'\u{1f1fa}\u{1f1f8}', UK:'\u{1f1ec}\u{1f1e7}', JP:'\u{1f1ef}\u{1f1f5}' };

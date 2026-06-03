@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>AGW — Intellektuelle Geschichte · Analytics</title>
   <meta name="description" content="Quantitative analysis of 43 AGW conference volumes, 1980–2025">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- ── ES Module import map — resolves bare specifiers to CDN ── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- ES module import map — resolves bare specifiers to CDN -->
   <script type="importmap">
   {
     "imports": {
@@ -24,69 +26,129 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    /* ── CSS variables — identical to index.html ── */
     :root {
-      --navy:   #1B3A6B;
-      --navy2:  #152D54;
-      --gold:   #B45309;
-      --border: #E5E7EB;
-      --bg:     #F9FAFB;
-      --text:   #111827;
-      --muted:  #6B7280;
-      --radius: 3px;
-      --font-serif: 'EB Garamond', Georgia, serif;
-      --font-sans:  'Source Sans 3', system-ui, sans-serif;
+      --navy:         #1B3A6B;
+      --navy-dark:    #122852;
+      --navy-mid:     #24477F;
+      --accent:       #3A6BAF;
+      --accent-pale:  #EAF0F8;
+      --gold:         #B8860B;
+      --gold-light:   #F5EED0;
+      --cream:        #FAFAF7;
+      --white:        #FFFFFF;
+      --text-dark:    #1C1C1E;
+      --text-body:    #2C2C30;
+      --text-muted:   #6B7280;
+      --text-faint:   #9CA3AF;
+      --border:       #DDE2EA;
+      --border-light: #EEF1F5;
+      --green:        #4A7C59;
+      --green-pale:   #EAF2EC;
     }
 
-    html { font-family: var(--font-sans); color: var(--text); background: var(--bg); }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--text-body);
+      background: var(--cream);
+      line-height: 1.65;
+    }
 
-    /* ── Top bar ── */
-    .topbar {
-      background: var(--navy);
-      color: #fff;
-      padding: 0 24px;
-      height: 52px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    /* ── Nav — exact match to index.html ── */
+    .nav {
       position: sticky;
       top: 0;
-      z-index: 100;
-      box-shadow: 0 1px 4px rgba(0,0,0,.25);
+      z-index: 200;
+      background: var(--navy-dark);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
-    .topbar-brand {
-      font-family: var(--font-serif);
-      font-size: 17px;
-      letter-spacing: .04em;
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      height: 56px;
+      padding: 0 1.5rem;
+      gap: 0;
+    }
+    .nav-brand {
       display: flex;
       align-items: center;
       gap: 10px;
-    }
-    .topbar-back {
-      font-size: 12px;
-      color: rgba(255,255,255,.65);
       text-decoration: none;
-      letter-spacing: .05em;
+      color: #fff;
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
     }
-    .topbar-back:hover { color: #fff; }
-    .topbar-actions { display: flex; align-items: center; gap: 12px; }
+    .nav-brand-sep {
+      width: 1px;
+      height: 18px;
+      background: rgba(255,255,255,0.25);
+    }
+    .nav-brand-sub {
+      font-size: 12px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.6);
+      text-transform: uppercase;
+    }
+    .nav-back {
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      margin-left: 24px;
+      transition: color .15s;
+    }
+    .nav-back:hover { color: rgba(255,255,255,0.9); }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    /* ── Language toggle — exact match to index.html ── */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 100px;
+      padding: 4px 2px;
+      gap: 0;
+      cursor: pointer;
+      font-family: 'Source Sans 3', sans-serif;
+    }
     .lang-btn {
+      padding: 3px 9px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.45);
+      border-radius: 100px;
+      transition: background .15s, color .15s;
+      border: none;
       background: none;
-      border: 1px solid rgba(255,255,255,.3);
-      color: rgba(255,255,255,.7);
-      padding: 3px 10px;
-      border-radius: 2px;
       cursor: pointer;
       font-family: inherit;
-      font-size: 11px;
-      letter-spacing: .1em;
     }
-    .lang-btn.active { background: rgba(255,255,255,.15); color: #fff; }
+    .lang-btn.active {
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+    }
 
     /* ── Tool tabs ── */
     .tool-tabs {
-      background: #fff;
+      background: var(--white);
       border-bottom: 2px solid var(--border);
-      padding: 0 24px;
+      padding: 0 1.5rem;
       display: flex;
       gap: 0;
       overflow-x: auto;
@@ -96,236 +158,210 @@
       border: none;
       border-bottom: 2px solid transparent;
       margin-bottom: -2px;
-      padding: 12px 20px;
+      padding: 13px 20px;
       cursor: pointer;
-      font-family: var(--font-sans);
-      font-size: 13px;
-      color: var(--muted);
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 13.5px;
+      font-weight: 400;
+      color: var(--text-muted);
       white-space: nowrap;
-      letter-spacing: .03em;
+      letter-spacing: 0.02em;
+      transition: color .15s;
     }
-    .tool-tab:hover { color: var(--text); }
-    .tool-tab.active { color: var(--navy); border-bottom-color: var(--navy);
-      font-weight: 600; }
+    .tool-tab:hover { color: var(--text-dark); }
+    .tool-tab.active {
+      color: var(--navy);
+      border-bottom-color: var(--navy);
+      font-weight: 600;
+    }
 
-    /* ── Content panels ── */
+    /* ── Panel wrapper ── */
     .tool-panel { display: none; }
     .tool-panel.active { display: block; }
 
     /* ── Loading state ── */
     .loading {
-      padding: 60px 24px;
+      padding: 64px 1.5rem;
       text-align: center;
-      color: var(--muted);
-      font-family: var(--font-serif);
-      font-size: 15px;
+      color: var(--text-muted);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 16px;
       font-style: italic;
     }
     .loading::before {
       content: '';
       display: block;
-      width: 32px;
-      height: 32px;
+      width: 28px;
+      height: 28px;
       border: 2px solid var(--border);
       border-top-color: var(--navy);
       border-radius: 50%;
-      animation: spin .8s linear infinite;
+      animation: spin .7s linear infinite;
       margin: 0 auto 16px;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── Error state ── */
+    /* ── Bundle-missing error ── */
     .bundle-error {
-      margin: 32px 24px;
+      margin: 32px auto;
+      max-width: 560px;
       padding: 20px 24px;
       background: #FEF2F2;
       border: 1px solid #FECACA;
-      border-radius: var(--radius);
-      font-size: 13px;
+      border-radius: 4px;
+      font-size: 13.5px;
       color: #991B1B;
-      line-height: 1.6;
+      line-height: 1.65;
     }
     .bundle-error code {
       display: block;
       margin: 10px 0;
       padding: 10px 14px;
-      background: #FFF;
+      background: var(--white);
       border: 1px solid #FECACA;
-      border-radius: 2px;
-      font-family: monospace;
+      border-radius: 3px;
+      font-family: 'SFMono-Regular', Consolas, monospace;
       font-size: 12px;
-      color: #374151;
+      color: var(--text-dark);
       white-space: pre;
     }
 
     /* ── Footer ── */
     .page-footer {
-      margin-top: 40px;
-      padding: 20px 24px;
+      max-width: 1200px;
+      margin: 40px auto 0;
+      padding: 18px 1.5rem;
       border-top: 1px solid var(--border);
-      font-size: 11px;
-      color: var(--muted);
+      font-size: 12px;
+      color: var(--text-faint);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 16px;
     }
+    .page-footer a { color: var(--text-muted); text-decoration: none; }
+    .page-footer a:hover { color: var(--text-body); }
   </style>
 </head>
 <body>
 
-  <!-- ── Top bar ── -->
-  <header class="topbar">
-    <div class="topbar-brand">
-      <span style="font-weight:600;">AGW</span>
-      <span style="opacity:.4">·</span>
-      <span id="topbar-title" style="opacity:.85;">Analytics</span>
+  <!-- ── Nav — identical structure to index.html ── -->
+  <nav class="nav" role="navigation">
+    <div class="nav-inner">
+      <a class="nav-brand" href="index.html">
+        <span>AGW</span>
+        <span class="nav-brand-sep"></span>
+        <span class="nav-brand-sub">Verein für Socialpolitik</span>
+      </a>
+      <a class="nav-back" href="index.html">← <span data-str="nav_back_main">Zur Tagungsseite</span></a>
+      <div class="nav-actions">
+        <div class="lang-toggle" role="group" aria-label="Language">
+          <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
+          <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+        </div>
+      </div>
     </div>
-    <div class="topbar-actions">
-      <a class="topbar-back" href="index.html">← <span data-i18n="back">Zurück zur Tagungsseite</span></a>
-      <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
-      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-    </div>
-  </header>
-
-  <!-- ── Tab bar ── -->
-  <nav class="tool-tabs" role="tablist">
-    <button class="tool-tab active" onclick="showTool('gaze',this)"
-      id="tab-gaze" data-i18n-tab="tab_gaze">🗺 Gaze Map</button>
-    <button class="tool-tab" onclick="showTool('analysis',this)"
-      id="tab-analysis" data-i18n-tab="tab_analysis">📊 Analysen A–E</button>
-    <button class="tool-tab" onclick="showTool('pmi',this)"
-      id="tab-pmi" data-i18n-tab="tab_pmi">🔬 Themenanalyse</button>
   </nav>
 
-  <!-- ── Tool panels ── -->
+  <!-- ── Tab bar — same style as archive tabs in index.html ── -->
+  <div class="tool-tabs" role="tablist">
+    <button class="tool-tab active" id="tab-gaze"
+      onclick="showTool('gaze',this)" data-str="tab_gaze">🗺 Gaze Map</button>
+    <button class="tool-tab" id="tab-analysis"
+      onclick="showTool('analysis',this)" data-str="tab_analysis">📊 Analysen A–E</button>
+    <button class="tool-tab" id="tab-pmi"
+      onclick="showTool('pmi',this)" data-str="tab_pmi">🔬 Themenanalyse</button>
+  </div>
+
+  <!-- ── Panels ── -->
   <main>
     <div class="tool-panel active" id="panel-gaze">
-      <div class="loading" id="loading-gaze" data-i18n="loading">Lade Gaze Map…</div>
+      <div class="loading" id="loading-gaze" data-str="loading">Lade Gaze Map…</div>
       <div id="mount-gaze"></div>
     </div>
-
     <div class="tool-panel" id="panel-analysis">
-      <div class="loading" id="loading-analysis" data-i18n="loading">Lade Analysen…</div>
+      <div class="loading" id="loading-analysis" data-str="loading">Lade Analysen…</div>
       <div id="mount-analysis"></div>
     </div>
-
     <div class="tool-panel" id="panel-pmi">
-      <div class="loading" id="loading-pmi" data-i18n="loading">Lade Themenanalyse…</div>
+      <div class="loading" id="loading-pmi" data-str="loading">Lade Themenanalyse…</div>
       <div id="mount-pmi"></div>
     </div>
   </main>
 
   <footer class="page-footer">
     <span>AGW · Ausschuss für die Geschichte der Wirtschaftswissenschaften · Verein für Socialpolitik</span>
-    <span>© 2025 · <a href="mailto:bieri@vt.edu" style="color:var(--muted);">bieri@vt.edu</a></span>
+    <span>© 2025 · <a href="mailto:bieri@vt.edu">bieri@vt.edu</a></span>
   </footer>
 
-  <!-- ── Language & tabs ── -->
+  <script src="agw_strings.js"></script>
+  <!-- ── Language + tab logic ── -->
   <script>
-    const EN_ANA = {
-      back:          'Back to Conference Site',
-      loading:       'Loading…',
-      tab_gaze:      '🗺 Gaze Map',
-      tab_analysis:  '📊 Analytics A–E',
-      tab_pmi:       '🔬 Topic Analysis',
-      bundle_title:  'Bundle not found',
-      bundle_body:   'Run the build script in WSL first:',
-      bundle_hint:   'Then commit the dist/ folder and reload.',
-    };
-    const DE_ANA = {
-      back:          'Zurück zur Tagungsseite',
-      loading:       'Lade…',
-      tab_gaze:      '🗺 Gaze Map',
-      tab_analysis:  '📊 Analysen A–E',
-      tab_pmi:       '🔬 Themenanalyse',
-      bundle_title:  'Bundle nicht gefunden',
-      bundle_body:   'Build-Skript in WSL ausführen:',
-      bundle_hint:   'Dann dist/ committen und neu laden.',
-    };
-
-    let _lang = localStorage.getItem('agw-lang') || 'de';
+    /* Language — delegates to agw_strings.js (AGW global) */
+    let lang = AGW.getLang();
 
     function setLang(l) {
-      _lang = l;
-      localStorage.setItem('agw-lang', l);
-      document.getElementById('btn-de').classList.toggle('active', l==='de');
-      document.getElementById('btn-en').classList.toggle('active', l==='en');
-      const strings = l==='de' ? DE_ANA : EN_ANA;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const k = el.getAttribute('data-i18n');
-        if (strings[k]) el.textContent = strings[k];
-      });
-      document.querySelectorAll('[data-i18n-tab]').forEach(el => {
-        const k = el.getAttribute('data-i18n-tab');
-        if (strings[k]) el.textContent = strings[k];
-      });
+      lang = l;
+      document.documentElement.lang = l;
+      AGW.setLang(l);
+      document.getElementById('btn-de').classList.toggle('active', l === 'de');
+      document.getElementById('btn-en').classList.toggle('active', l === 'en');
+      AGW.applyLang(l);
     }
 
-    // Active tab
-    let _activePanel = 'gaze';
     function showTool(name, btn) {
       document.querySelectorAll('.tool-panel').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.tool-tab').forEach(b => b.classList.remove('active'));
-      document.getElementById('panel-'+name).classList.add('active');
+      document.getElementById('panel-' + name).classList.add('active');
       btn.classList.add('active');
-      _activePanel = name;
     }
 
     function showBundleError(mountId, loadingId, filename) {
-      const strings = _lang==='de' ? DE_ANA : EN_ANA;
       document.getElementById(loadingId).style.display = 'none';
-      document.getElementById(mountId).innerHTML = `
-        <div class="bundle-error">
-          <strong>${strings.bundle_title}: dist/${filename}</strong><br>
-          ${strings.bundle_body}
-          <code>bash build_analytics.sh</code>
-          ${strings.bundle_hint}
-        </div>`;
+      document.getElementById(mountId).innerHTML =
+        '<div class="bundle-error">' +
+        '<strong>' + AGW.t('bundle_title', lang) + ': dist/' + filename + '</strong><br>' +
+        AGW.t('bundle_body', lang) +
+        '<code>bash build_analytics.sh</code>' +
+        AGW.t('bundle_hint', lang) + '</div>';
     }
 
-    // Apply initial language
-    setLang(_lang);
+    setLang(lang);
   </script>
 
-  <!-- ── Mount React components via compiled ESM bundles ── -->
-  <!-- Each import() is lazy — only loads when first needed    -->
+  <!-- ── Mount React components from esbuild bundles ── -->
   <script type="module">
-    import { createElement } from 'react';
-    import { createRoot }    from 'react-dom/client';
+    import { createElement }  from 'react';
+    import { createRoot }     from 'react-dom/client';
 
-    function mountWhenVisible(panelId, mountId, loadingId, bundlePath, rootRef) {
-      if (rootRef.root) return;  // already mounted
-
+    function mount(panelId, mountId, loadingId, bundlePath, state) {
+      if (state.done) return;
+      state.done = true;
       import(bundlePath).then(mod => {
         document.getElementById(loadingId).style.display = 'none';
-        const Component = mod.default;
-        rootRef.root = createRoot(document.getElementById(mountId));
-        rootRef.root.render(createElement(Component, null));
-      }).catch(err => {
-        const fname = bundlePath.replace('./dist/','');
-        showBundleError(mountId, loadingId, fname);
-        console.warn('Bundle load failed:', bundlePath, err);
+        createRoot(document.getElementById(mountId))
+          .render(createElement(mod.default, null));
+      }).catch(() => {
+        showBundleError(mountId, loadingId,
+          bundlePath.replace('./dist/', ''));
       });
     }
 
-    // Roots (lazy)
-    const roots = { gaze:{}, analysis:{}, pmi:{} };
+    const s = { gaze:{}, analysis:{}, pmi:{} };
 
-    // Mount gaze map immediately (first visible tab)
-    mountWhenVisible(
-      'panel-gaze', 'mount-gaze', 'loading-gaze',
-      './dist/agw_gaze_map.js', roots.gaze);
+    /* Gaze Map loads immediately — first visible tab */
+    mount('panel-gaze', 'mount-gaze', 'loading-gaze',
+          './dist/agw_gaze_map.js', s.gaze);
 
-    // Mount others on first tab click
-    document.getElementById('tab-analysis').addEventListener('click', () => {
-      mountWhenVisible('panel-analysis','mount-analysis','loading-analysis',
-        './dist/agw_analysis.js', roots.analysis);
-    }, {once:false});
+    document.getElementById('tab-analysis')
+      .addEventListener('click', () =>
+        mount('panel-analysis', 'mount-analysis', 'loading-analysis',
+              './dist/agw_analysis.js', s.analysis));
 
-    document.getElementById('tab-pmi').addEventListener('click', () => {
-      mountWhenVisible('panel-pmi','mount-pmi','loading-pmi',
-        './dist/agw_pmi.js', roots.pmi);
-    }, {once:false});
+    document.getElementById('tab-pmi')
+      .addEventListener('click', () =>
+        mount('panel-pmi', 'mount-pmi', 'loading-pmi',
+              './dist/agw_pmi.js', s.pmi));
   </script>
 
 </body>
