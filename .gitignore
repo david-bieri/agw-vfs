@@ -15,9 +15,12 @@ NOTES.md
 TODO.md
 scratch/
 
-# If a Node build step is ever added (Phase 3 / SSG migration)
+# Node tooling (if we ever migrate to SSG)
 node_modules/
 .env
 .env.local
-dist/
 .cache/
+
+# JSX sources — compiled via build_analytics.sh into dist/, not deployed directly
+src-jsx/
+*.jsx
