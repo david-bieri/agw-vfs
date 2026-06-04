@@ -35,6 +35,8 @@ function setLang(l) {
   renderMembers(getMemberList());
   renderArchive();
   renderPubs();
+  renderAnnouncements();
+  updateCountdown();
 
   // Toggle button active state
   document.getElementById('btn-de').classList.toggle('active', l === 'de');
@@ -556,6 +558,8 @@ renderChairs();
 renderMembers(MEMBERS);
 renderArchive();
 renderPubs();
+renderAnnouncements();
+updateCountdown();
 initLang();
   addSessionIcalBtns(); // Apply saved/auto-detected language preference
 /* ── Logistik map (Leaflet.js, no API key) ── */
@@ -661,23 +665,70 @@ function downloadIcal(){
   URL.revokeObjectURL(url);
 }
 
-/* ── Countdown ── */
+/* ── Countdown card ── */
 function updateCountdown(){
-  var el=document.getElementById('hero-countdown');
-  if(!el)return;
-  var target=new Date('2026-06-25T09:00:00+02:00');
-  var end=new Date('2026-06-27T18:00:00+02:00');
-  var now=new Date();
-  var isDE=lang==='de';
-  if(now>=end){el.style.display='none';return;}
-  if(now>=target){el.textContent=isDE?'\u2726 Tagung l\u00e4uft gerade':'\u2726 Conference in progress';return;}
-  var days=Math.floor((target-now)/86400000);
-  var hours=Math.floor(((target-now)%86400000)/3600000);
-  if(days>1) el.textContent=(isDE?'\u2726 Noch ':'\u2726 ')+days+(isDE?' Tage bis zur Tagung':' days to go');
-  else if(days===1) el.textContent=isDE?'\u2726 Morgen beginnt die Tagung':'\u2726 Conference starts tomorrow';
-  else el.textContent=(isDE?'\u2726 Heute \u00b7 noch ':'\u2726 Today \u00b7 ')+hours+(isDE?' Stunden':' hours');
+  var el = document.getElementById('countdown-card');
+  if (!el) return;
+
+  var target = new Date('2026-06-25T09:00:00+02:00');
+  var endDt  = new Date('2026-06-27T18:00:00+02:00');
+  var now    = new Date();
+  var isDE   = lang === 'de';
+
+  // After conference: hide entirely
+  if (now >= endDt) { el.style.display = 'none'; return; }
+  el.style.display = '';
+
+  var eyebrow = isDE
+    ? '46. Jahrestagung · Riva San Vitale'
+    : '46th Annual Meeting · Riva San Vitale';
+  var footer  = isDE ? '25.–27. Juni 2026' : '25–27 June 2026';
+
+  // During conference: pulsing live indicator
+  if (now >= target) {
+    var inProgress = isDE ? 'Tagung läuft gerade' : 'Conference in progress';
+    el.innerHTML =
+      '<div class="countdown-eyebrow">' + eyebrow + '</div>' +
+      '<div class="countdown-live">' +
+        '<span class="countdown-live-dot"></span>' +
+        '<span class="countdown-live-text">' + inProgress + '</span>' +
+      '</div>' +
+      '<div class="countdown-footer">' + footer + '</div>';
+    return;
+  }
+
+  // Before conference: D : H : M
+  var ms = target - now;
+  var days    = Math.floor(ms / 86400000);
+  var hours   = Math.floor((ms % 86400000) / 3600000);
+  var minutes = Math.floor((ms % 3600000) / 60000);
+  var pad = function(n) { return n < 10 ? '0' + n : String(n); };
+
+  var lbl_d = isDE ? (days    === 1 ? 'Tag'    : 'Tage') : (days    === 1 ? 'Day'  : 'Days');
+  var lbl_h = isDE ? 'Std.' : (hours   === 1 ? 'Hour' : 'Hrs');
+  var lbl_m = isDE ? 'Min.' : 'Min';
+
+  el.innerHTML =
+    '<div class="countdown-eyebrow">' + eyebrow + '</div>' +
+    '<div class="countdown-numbers">' +
+      '<div class="countdown-unit-block">' +
+        '<div class="countdown-num">' + days + '</div>' +
+        '<div class="countdown-label">' + lbl_d + '</div>' +
+      '</div>' +
+      '<div class="countdown-sep">:</div>' +
+      '<div class="countdown-unit-block">' +
+        '<div class="countdown-num">' + pad(hours) + '</div>' +
+        '<div class="countdown-label">' + lbl_h + '</div>' +
+      '</div>' +
+      '<div class="countdown-sep">:</div>' +
+      '<div class="countdown-unit-block">' +
+        '<div class="countdown-num">' + pad(minutes) + '</div>' +
+        '<div class="countdown-label">' + lbl_m + '</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="countdown-footer">' + footer + '</div>';
 }
-setInterval(updateCountdown,60000);
+setInterval(updateCountdown, 30000);
 
 /* ── Back to top ── */
 window.addEventListener('scroll',function(){
