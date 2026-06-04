@@ -457,7 +457,7 @@
       <span style="font-size:13px;color:#1E40AF;">
         ${t(
           'Detaillierte Analyse: Intellektueller Blick, Themenassoziationen, Autorencluster',
-          'Detailed Analysis: Intellectual Gaze Map, Topic Associations, Author Clusters'
+          'Detailed Analysis: Reception Atlas, Topic Associations, Author Clusters'
         )}
       </span>
       <a href="analytics.html" target="_blank"

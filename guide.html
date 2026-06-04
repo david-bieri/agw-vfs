@@ -125,7 +125,27 @@
       font-size:12px;color:var(--text-faint);
       display:flex;justify-content:space-between; }
     .page-footer a { color:var(--text-muted);text-decoration:none; }
-  </style>
+  
+    /* ── Mobile responsiveness ───────────────────────────────── */
+    @media (max-width: 640px) {
+      .nav-inner    { padding: 0 0.875rem; }
+      .nav-brand    { font-size: 16px; gap: 8px; }
+      .nav-brand-sub{ font-size: 10px; letter-spacing: 0.04em; }
+      .nav-back     { margin-left: 14px; font-size: 11px; }
+      .lang-btn     { padding: 3px 8px; font-size: 10px; }
+      .guide-wrap   { padding: 28px 0.875rem 64px; }
+      .guide-intro h1 { font-size: 22px; }
+    }
+    @media (max-width: 480px) {
+      .nav-brand-sub, .nav-brand-sep { display: none; }
+      .tool-header  { gap: 10px; }
+      .tool-icon    { font-size: 17px; }
+      .tool-title   { font-size: 17px; }
+      .page-footer  { font-size: 10.5px; padding: 14px 0.875rem; flex-direction: column;
+                      align-items: flex-start; gap: 4px; }
+    }
+    body { overflow-x: hidden; }
+</style>
 </head>
 <body>
 
@@ -195,12 +215,12 @@
     </div>
   </section>
 
-  <!-- ── GAZE MAP ────────────────────────────────────────── -->
+  <!-- ── RECEPTION ATLAS ────────────────────────────────────────── -->
   <section class="tool-section">
     <div class="tool-header">
       <span class="tool-icon">🗺</span>
       <div>
-        <div class="tool-title" data-str="tool_gaze">Gaze Map — Intellektueller Blick</div>
+        <div class="tool-title" data-str="tool_gaze">Rezeptionsatlas</div>
         <div class="tool-subtitle" data-i18n="t2_sub">Erster Tab der Analysenseite · Wer wurde wann wie oft zitiert?</div>
       </div>
     </div>
@@ -233,12 +253,12 @@
     </div>
   </section>
 
-  <!-- ── ANALYTICS A–E ──────────────────────────────────── -->
+  <!-- ── HISTORICAL ANALYTICS ──────────────────────────────────── -->
   <section class="tool-section">
     <div class="tool-header">
       <span class="tool-icon">📊</span>
       <div>
-        <div class="tool-title" data-str="tool_analysis">Historische Analysen A–E</div>
+        <div class="tool-title" data-str="tool_analysis">Historische Analysen</div>
         <div class="tool-subtitle" data-i18n="t3_sub">Zweiter Tab · Fünf strukturelle Perspektiven</div>
       </div>
     </div>

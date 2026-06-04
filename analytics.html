@@ -241,7 +241,29 @@
     }
     .page-footer a { color: var(--text-muted); text-decoration: none; }
     .page-footer a:hover { color: var(--text-body); }
-  </style>
+  
+    /* ── Mobile responsiveness ───────────────────────────────── */
+    @media (max-width: 640px) {
+      .nav-inner    { padding: 0 0.875rem; }
+      .nav-brand    { font-size: 16px; gap: 8px; }
+      .nav-brand-sub{ font-size: 10px; letter-spacing: 0.04em; }
+      .nav-back     { margin-left: 14px; font-size: 11px; }
+      .lang-btn     { padding: 3px 8px; font-size: 10px; }
+      .tool-tab     { padding: 10px 14px; font-size: 12.5px; }
+    }
+    @media (max-width: 480px) {
+      .nav-brand-sub, .nav-brand-sep { display: none; }
+      .nav-back     { margin-left: 12px; }
+      .tool-tab     { padding: 9px 11px; font-size: 12px; letter-spacing: 0; }
+      .page-footer  { font-size: 10.5px; padding: 14px 0.875rem; flex-direction: column;
+                      align-items: flex-start; gap: 4px; }
+    }
+    @media (max-width: 380px) {
+      .nav-back span{ display: none; }
+      .nav-back::after { content: "←"; font-size: 14px; }
+    }
+    body { overflow-x: hidden; }
+</style>
 </head>
 <body>
 
@@ -253,7 +275,7 @@
         <span class="nav-brand-sep"></span>
         <span class="nav-brand-sub">Verein für Socialpolitik</span>
       </a>
-      <a class="nav-back" href="index.html">← <span data-str="nav_back_main">Zur Tagungsseite</span></a>
+      <a class="nav-back" href="index.html"><span class="back-arrow">←</span> <span class="back-text" data-str="nav_back_main">Zur Tagungsseite</span></a>
       <div class="nav-actions">
         <div class="lang-toggle" role="group" aria-label="Language">
           <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
@@ -266,9 +288,9 @@
   <!-- ── Tab bar — same style as archive tabs in index.html ── -->
   <div class="tool-tabs" role="tablist">
     <button class="tool-tab active" id="tab-gaze"
-      onclick="showTool('gaze',this)" data-str="tab_gaze">🗺 Gaze Map</button>
+      onclick="showTool('gaze',this)" data-str="tab_gaze">🗺 Rezeptionsatlas</button>
     <button class="tool-tab" id="tab-analysis"
-      onclick="showTool('analysis',this)" data-str="tab_analysis">📊 Analysen A–E</button>
+      onclick="showTool('analysis',this)" data-str="tab_analysis">📊 Analysen</button>
     <button class="tool-tab" id="tab-pmi"
       onclick="showTool('pmi',this)" data-str="tab_pmi">🔬 Themenanalyse</button>
   </div>
@@ -276,7 +298,7 @@
   <!-- ── Panels ── -->
   <main>
     <div class="tool-panel active" id="panel-gaze">
-      <div class="loading" id="loading-gaze" data-str="loading">Lade Gaze Map…</div>
+      <div class="loading" id="loading-gaze" data-str="loading">Lädt…</div>
       <div id="mount-gaze"></div>
     </div>
     <div class="tool-panel" id="panel-analysis">
@@ -349,7 +371,7 @@
 
     const s = { gaze:{}, analysis:{}, pmi:{} };
 
-    /* Gaze Map loads immediately — first visible tab */
+    /* Reception Atlas loads immediately — first visible tab */
     mount('panel-gaze', 'mount-gaze', 'loading-gaze',
           './dist/agw_gaze_map.js', s.gaze);
 

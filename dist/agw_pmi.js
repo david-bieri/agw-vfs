@@ -42,7 +42,16 @@ function useLang() {
   const tl = (term) => de ? D.labels_de[term.key] || term.label : term.label;
   const tc = (cat) => de ? D.cats_de[cat] || cat : cat;
   const tu = (key) => de ? D.ui_de[key] || key : key;
-  return { de, setDe, t, tl, tc, tu };
+  const agwT = (key, fallbackEN, fallbackDE) => {
+    try {
+      if (typeof window !== "undefined" && window.AGW && window.AGW.t) {
+        return window.AGW.t(key, de ? "de" : "en");
+      }
+    } catch (e) {
+    }
+    return de && fallbackDE ? fallbackDE : fallbackEN;
+  };
+  return { de, setDe, t, tl, tc, tu, agwT };
 }
 function pmiColor(v, maxV = 4.5) {
   const t = Math.min(v / maxV, 1);
@@ -83,7 +92,11 @@ function PMIViz() {
           lang.de ? "Textuelle Kookkurrenz-Analyse" : "Textual Co-occurrence Analysis",
           " \xB7 PPMI"
         ] }),
-        /* @__PURE__ */ jsx("h2", { style: { margin: "0 0 14px", fontSize: 18, fontWeight: "normal", color: "#e0e8ff" }, children: lang.de ? "Autoren \xD7 Themen Assoziationsanalyse" : "Intellectual Figure \xD7 Topic Associations" })
+        /* @__PURE__ */ jsx("h2", { style: { margin: "0 0 14px", fontSize: 18, fontWeight: "normal", color: "#e0e8ff" }, children: lang.agwT(
+          "pmi_page_title",
+          "Intellectual Figure \xD7 Topic Associations",
+          "Autoren \xD7 Themen Assoziationsanalyse"
+        ) })
       ] }) }),
       /* @__PURE__ */ jsx("div", { style: { display: "flex", gap: 0, flexWrap: "wrap" }, children: TAB_IDS.map((id, i) => /* @__PURE__ */ jsx("button", { onClick: () => setTab(id), style: {
         padding: "7px 14px",

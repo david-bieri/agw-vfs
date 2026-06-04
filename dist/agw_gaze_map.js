@@ -58,7 +58,16 @@ function useLang() {
     window.addEventListener("agw-lang-change", handler);
     return () => window.removeEventListener("agw-lang-change", handler);
   }, []);
-  return { de, t: (en, deStr) => de && deStr ? deStr : en };
+  const agwT = (key, fallbackEN, fallbackDE) => {
+    try {
+      if (typeof window !== "undefined" && window.AGW && window.AGW.t) {
+        return window.AGW.t(key, de ? "de" : "en");
+      }
+    } catch (e) {
+    }
+    return de && fallbackDE ? fallbackDE : fallbackEN;
+  };
+  return { de, t: (en, deStr) => de && deStr ? deStr : en, agwT };
 }
 function AGWGazeMap() {
   const lang = useLang();
@@ -96,9 +105,9 @@ function AGWGazeMap() {
         fontWeight: "normal",
         letterSpacing: "0.05em",
         color: "#e8e8f0"
-      }, children: lang.t("Intellectual Gaze", "Intellektueller Blick") }),
+      }, children: lang.agwT("tool_gaze", "Reception Atlas", "Rezeptionsatlas") }),
       /* @__PURE__ */ jsx("div", { style: { fontSize: 12, color: "#6a7090", marginBottom: 16 }, children: lang.t("Who did 43 conferences study? Dot size = citation intensity \xB7 Colour = school of thought", "Wen haben 43 Konferenzen studiert? Punktgr\xF6\xDFe = Zitierintensit\xE4t \xB7 Farbe = Denkschule") }),
-      /* @__PURE__ */ jsx("div", { style: { display: "flex", gap: 0 }, children: [["map", lang.t("Gaze Map", "Karte")], ["era", lang.t("By Era", "Nach Epoche")], ["top", lang.t("Top Figures", "Top-Figuren")]].map(([v, label]) => /* @__PURE__ */ jsx("button", { onClick: () => setView(v), style: {
+      /* @__PURE__ */ jsx("div", { style: { display: "flex", gap: 0 }, children: [["map", lang.t("Map", "Karte")], ["era", lang.t("By Era", "Nach Epoche")], ["top", lang.t("Top Figures", "Top-Figuren")]].map(([v, label]) => /* @__PURE__ */ jsx("button", { onClick: () => setView(v), style: {
         padding: "8px 20px",
         border: "none",
         cursor: "pointer",

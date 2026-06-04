@@ -39,7 +39,16 @@ function useLang() {
     window.addEventListener("agw-lang-change", handler);
     return () => window.removeEventListener("agw-lang-change", handler);
   }, []);
-  return { de, t: (en, deStr) => de && deStr ? deStr : en };
+  const agwT = (key, fallbackEN, fallbackDE) => {
+    try {
+      if (typeof window !== "undefined" && window.AGW && window.AGW.t) {
+        return window.AGW.t(key, de ? "de" : "en");
+      }
+    } catch (e) {
+    }
+    return de && fallbackDE ? fallbackDE : fallbackEN;
+  };
+  return { de, t: (en, deStr) => de && deStr ? deStr : en, agwT };
 }
 function AGWAnalysis() {
   const lang = useLang();
@@ -54,7 +63,7 @@ function AGWAnalysis() {
         textTransform: "uppercase",
         marginBottom: 4
       }, children: lang.t("AGW \xB7 43 Conferences \xB7 1980\u20132023", "AGW \xB7 43 Jahrestagungen \xB7 1980\u20132023") }),
-      /* @__PURE__ */ jsx("h2", { style: { margin: "0 0 14px", fontSize: 18, fontWeight: "normal", color: "#e0e8ff" }, children: lang.t("Historical Analytics", "Historische Analysen") }),
+      /* @__PURE__ */ jsx("h2", { style: { margin: "0 0 14px", fontSize: 18, fontWeight: "normal", color: "#e0e8ff" }, children: lang.agwT("tool_analysis", "Historical Analytics", "Historische Analysen") }),
       /* @__PURE__ */ jsx("div", { style: { display: "flex", gap: 0 }, children: TABS.map((t) => /* @__PURE__ */ jsx("button", { onClick: () => setTab(t.id), style: {
         padding: "7px 16px",
         border: "none",

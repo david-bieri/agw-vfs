@@ -30,6 +30,7 @@
 
     // ── Site-wide navigation ──────────────────────────────────────
     nav_back_main:       { de: 'Zur Tagungsseite',      en: 'Back to Conference Site' },
+    nav_back_short:      { de: 'Programm',              en: 'Programme' },
     nav_back_analytics:  { de: 'Zur Analyse',            en: 'Back to Analytics' },
     nav_back_guide:      { de: 'Zum Handbuch',           en: 'To User Guide' },
     nav_guide_link:      { de: 'Benutzerhandbuch',       en: 'User Guide' },
@@ -43,22 +44,23 @@
     arch_view_chronik:   { de: '📈 Chronik',             en: '📈 Chronicle' },
 
     // ── Analytics page — main tabs ───────────────────────────────
-    tab_gaze:            { de: '🗺 Gaze Map',             en: '🗺 Gaze Map' },
-    tab_analysis:        { de: '📊 Analysen A–E',         en: '📊 Analytics A–E' },
+    tab_gaze:            { de: '🗺 Rezeptionsatlas',      en: '🗺 Reception Atlas' },
+    tab_analysis:        { de: '📊 Analysen',             en: '📊 Analytics' },
     tab_pmi:             { de: '🔬 Themenanalyse',        en: '🔬 Topic Analysis' },
 
     // ── Tool display names (used in guide + page headings) ────────
     tool_chronik:        { de: 'Chronik',                 en: 'Chronicle' },
-    tool_gaze:           { de: 'Intellektueller Blick',   en: 'Intellectual Gaze' },
+    tool_gaze:           { de: 'Rezeptionsatlas',         en: 'Reception Atlas' },
     tool_analysis:       { de: 'Historische Analysen',    en: 'Historical Analytics' },
     tool_pmi:            { de: 'Diskurssignaturen',       en: 'Discourse Signatures' },
+    pmi_page_title:      { de: 'Autoren × Themen Assoziationsanalyse', en: 'Intellectual Figure × Topic Associations' },
 
-    // ── Gaze Map sub-views ────────────────────────────────────────
+    // ── Reception Atlas sub-views ─────────────────────────────────
     gaze_A:              { de: 'Präsenz-Streudiagramm',   en: 'Presence Scatter' },
     gaze_B:              { de: 'Epochen-Heatmap',         en: 'Era Heatmap' },
     gaze_C:              { de: 'Top-Figuren Zeitreihe',   en: 'Top Figures Timeline' },
 
-    // ── Historical Analytics A–E sub-views ────────────────────────
+    // ── Historical Analytics sub-views ───────────────────────────
     analysis_A:          { de: 'Intellektuelle Strömungen',     en: 'Intellectual Tides' },
     analysis_B:          { de: 'Intellektuelle Konstellation',  en: 'Intellectual Constellation' },
     analysis_C:          { de: 'Aufsteiger & Vergessene',       en: 'Rising & Fading' },
@@ -138,8 +140,8 @@
 
     // ── Analytics → Chronik CTA ───────────────────────────────────
     chronik_cta_text:    {
-      de: 'Detaillierte Analyse: Intellektueller Blick, Themenassoziationen, Autorencluster',
-      en: 'Detailed Analysis: Intellectual Gaze Map, Topic Associations, Author Clusters'
+      de: 'Detaillierte Analyse: Rezeptionsatlas, Themenassoziationen, Autorencluster',
+      en: 'Detailed Analysis: Reception Atlas, Topic Associations, Author Clusters'
     },
     chronik_cta_link:    { de: 'Zur Analyse',                   en: 'Open Analytics' },
 
@@ -171,6 +173,7 @@
     nav_archive            : { en: 'Archive' },
     nav_publications       : { en: 'Publications' },
     nav_about_group        : { en: 'About AGW' },
+    nav_analytics          : { de: 'Analyse', en: 'Analytics' },
     nav_about              : { en: 'About the Committee' },
     nav_history            : { en: 'History of the AGW' },
     nav_members            : { en: 'Members' },
@@ -318,10 +321,15 @@
     try { return localStorage.getItem('agw-lang') || 'de'; } catch (e) { return 'de'; }
   };
 
-  /** Set language and persist (mirrors index.html). */
+  /** Set language and persist (mirrors index.html).
+      Also broadcasts an 'agw-lang-change' event so React components
+      compiled by esbuild can react without their own toggles. */
   window.AGW.setLang = function (l) {
     window.AGW._lang = l;
     try { localStorage.setItem('agw-lang', l); } catch (e) {}
+    try {
+      window.dispatchEvent(new CustomEvent('agw-lang-change', { detail: l }));
+    } catch (e) {}
   };
 
   /**
