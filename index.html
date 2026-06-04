@@ -119,11 +119,13 @@
 
 <!-- Sub-nav strip for Jahrestagung sections -->
 <div class="section-nav-strip">
-  <a href="#tagungsprogramm"><span data-i18n="nav_programme">Tagungsprogramm</span></a>
-  <a href="#rahmenprogramm"><span data-i18n="nav_social">Rahmenprogramm</span></a>
-  <a href="#logistik"><span data-i18n="nav_travel">Anreise &amp; Logistik</span></a>
+  <div class="section-nav-inner">
+    <a href="#tagungsprogramm"><span data-i18n="nav_programme">Tagungsprogramm</span></a>
+    <a href="#rahmenprogramm"><span data-i18n="nav_social">Rahmenprogramm</span></a>
+    <a href="#logistik"><span data-i18n="nav_travel">Anreise &amp; Logistik</span></a>
 
-  <button onclick="downloadIcal()" style="background:none;border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.8);padding:7px 16px;border-radius:20px;cursor:pointer;font-size:13px;font-family:inherit;" data-i18n="btn_ical">📅 Kalender (.ics)</button>
+    <button onclick="downloadIcal()" style="margin-left:auto;background:none;border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.8);padding:7px 16px;border-radius:20px;cursor:pointer;font-size:13px;font-family:inherit;" data-i18n="btn_ical">📅 Kalender (.ics)</button>
+  </div>
 </div>
 
 <!-- ── Tagungsprogramm ── -->
