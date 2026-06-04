@@ -360,6 +360,16 @@
     prog_title_8        : { en: '<em>Geschichte schreiben. Die Vergangenheit der ökonomischen Moderne</em> <span class="title-trans">— Writing History: The Past of Economic Modernity</span>' },
     prog_title_9        : { en: '<em>Wie Geschichte des ökonomischen Denkens unterrichten?</em> <span class="title-trans">— How to Teach the History of Economic Thought?</span>' },
     prog_title_10       : { en: '<em>Geschichte der ökonomischen Analyse – wozu? Eine kritische Auseinandersetzung mit dem Geschichtsverständnis der heutigen Ökonomen</em> <span class="title-trans">— History of Economic Analysis — What For? A Critical Engagement with the Historical Self-Understanding of Today\'s Economists</span>' },
+    // ── Sister societies section (committee.html) ───────────
+    soc_grp_parent       : { de: 'Übergeordnete Gesellschaft', en: 'Parent Organisation' },
+    soc_grp_sisters      : { de: 'Internationale Schwestergesellschaften', en: 'International Sister Societies' },
+    soc_grp_journals     : { de: 'Wichtige Fachzeitschriften', en: 'Major Journals' },
+    soc_grp_more         : { de: 'Weitere internationale Gesellschaften', en: 'Further International Societies' },
+    soc_organ_lbl        : { de: 'Organ:', en: 'Journal:' },
+    soc_vfs_note         : { de: 'Trägerorganisation des AGW', en: 'Parent organisation of the AGW' },
+    soc_hope_meta        : { de: 'Duke University Press · seit 1969', en: 'Duke University Press · since 1969' },
+    soc_hei_meta         : { de: 'Fabrizio Serra Editore · seit 1993', en: 'Fabrizio Serra Editore · since 1993' },
+    soc_oec_meta         : { de: 'Association Œconomia · Frankreich · zweisprachig FR/EN · seit 2011', en: 'Association Œconomia · France · bilingual FR/EN · since 2011' },
 };
 
   /* ── Helpers ──────────────────────────────────────────────────── */

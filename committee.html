@@ -169,14 +169,109 @@
   <div class="section-inner">
     <div class="section-label" data-i18n="sec_lbl_societies">Schwestergesellschaften</div>
     <h2 class="section-title" data-i18n="sec_ttl_societies">Verwandte Gesellschaften &amp; Zeitschriften</h2>
-    <div style="display:flex;flex-direction:column;gap:8px;">
-          <a href="https://www.eshet.net" target="_blank" rel="noopener" style="display:block;padding:10px 14px;border:1px solid var(--border);border-radius:8px;text-decoration:none;color:inherit;" onmouseover="this.style.background='var(--accent-pale)'" onmouseout="this.style.background=''"><div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:2px;">ESHET</div><div style="font-size:13px;color:var(--text-muted);">European Society for the History of Economic Thought</div></a>
-          <a href="https://historyofeconomics.org" target="_blank" rel="noopener" style="display:block;padding:10px 14px;border:1px solid var(--border);border-radius:8px;text-decoration:none;color:inherit;" onmouseover="this.style.background='var(--accent-pale)'" onmouseout="this.style.background=''"><div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:2px;">HES</div><div style="font-size:13px;color:var(--text-muted);">History of Economics Society</div></a>
-          <a href="https://jshet.net" target="_blank" rel="noopener" style="display:block;padding:10px 14px;border:1px solid var(--border);border-radius:8px;text-decoration:none;color:inherit;" onmouseover="this.style.background='var(--accent-pale)'" onmouseout="this.style.background=''"><div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:2px;">JSHET</div><div style="font-size:13px;color:var(--text-muted);">Japanese Society for the History of Economic Thought</div></a>
-          <a href="https://www.socialpolitik.de" target="_blank" rel="noopener" style="display:block;padding:10px 14px;border:1px solid var(--border);border-radius:8px;text-decoration:none;color:inherit;" onmouseover="this.style.background='var(--accent-pale)'" onmouseout="this.style.background=''"><div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:2px;">VfS</div><div style="font-size:13px;color:var(--text-muted);">Verein für Socialpolitik</div></a>
-          <a href="https://hope.econ.duke.edu" target="_blank" rel="noopener" style="display:block;padding:10px 14px;border:1px solid var(--border);border-radius:8px;text-decoration:none;color:inherit;" onmouseover="this.style.background='var(--accent-pale)'" onmouseout="this.style.background=''"><div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:2px;">HOPE</div><div style="font-size:13px;color:var(--text-muted);">History of Political Economy (Duke University Press)</div></a>
-          <a href="https://www.tandfonline.com/journals/rejh20" target="_blank" rel="noopener" style="display:block;padding:10px 14px;border:1px solid var(--border);border-radius:8px;text-decoration:none;color:inherit;" onmouseover="this.style.background='var(--accent-pale)'" onmouseout="this.style.background=''"><div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:2px;">EJHET</div><div style="font-size:13px;color:var(--text-muted);">European Journal of the History of Economic Thought</div></a>
+
+    <!-- ── Group 1: Parent organisation ── -->
+    <div class="soc-group">
+      <h3 class="soc-group-title" data-i18n="soc_grp_parent">Übergeordnete Gesellschaft</h3>
+      <div class="soc-card soc-card-parent">
+        <a class="soc-link" href="https://www.socialpolitik.de" target="_blank" rel="noopener">
+          <div class="soc-acro">VfS</div>
+          <div class="soc-name">Verein für Socialpolitik</div>
+          <div class="soc-note" data-i18n="soc_vfs_note">Trägerorganisation des AGW</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── Group 2: International sister societies + their journals ── -->
+    <div class="soc-group">
+      <h3 class="soc-group-title" data-i18n="soc_grp_sisters">Internationale Schwestergesellschaften</h3>
+
+      <div class="soc-card">
+        <a class="soc-link" href="https://www.eshet.net" target="_blank" rel="noopener">
+          <div class="soc-acro">ESHET</div>
+          <div class="soc-name">European Society for the History of Economic Thought</div>
+        </a>
+        <div class="soc-journal">
+          <span class="soc-organ-lbl" data-i18n="soc_organ_lbl">Organ:</span>
+          <a class="soc-organ-link" href="https://www.tandfonline.com/journals/rejh20" target="_blank" rel="noopener">EJHET — European Journal of the History of Economic Thought</a>
         </div>
+      </div>
+
+      <div class="soc-card">
+        <a class="soc-link" href="https://historyofeconomics.org" target="_blank" rel="noopener">
+          <div class="soc-acro">HES</div>
+          <div class="soc-name">History of Economics Society</div>
+        </a>
+        <div class="soc-journal">
+          <span class="soc-organ-lbl" data-i18n="soc_organ_lbl">Organ:</span>
+          <a class="soc-organ-link" href="https://www.cambridge.org/core/journals/journal-of-the-history-of-economic-thought" target="_blank" rel="noopener">JHET — Journal of the History of Economic Thought</a>
+        </div>
+      </div>
+
+      <div class="soc-card">
+        <a class="soc-link" href="https://jshet.net/eng/" target="_blank" rel="noopener">
+          <div class="soc-acro">JSHET</div>
+          <div class="soc-name">Japanese Society for the History of Economic Thought</div>
+        </a>
+        <div class="soc-journal">
+          <span class="soc-organ-lbl" data-i18n="soc_organ_lbl">Organ:</span>
+          <a class="soc-organ-link" href="https://www.jstage.jst.go.jp/browse/jshet/list/-char/en" target="_blank" rel="noopener">The History of Economic Thought (HET)</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Group 3: Major independent journals ── -->
+    <div class="soc-group">
+      <h3 class="soc-group-title" data-i18n="soc_grp_journals">Wichtige Fachzeitschriften</h3>
+
+      <div class="soc-card">
+        <a class="soc-link" href="https://read.dukeupress.edu/hope" target="_blank" rel="noopener">
+          <div class="soc-acro">HOPE</div>
+          <div class="soc-name">History of Political Economy</div>
+          <div class="soc-meta" data-i18n-html="soc_hope_meta">Duke University Press · seit 1969</div>
+        </a>
+      </div>
+
+      <div class="soc-card">
+        <a class="soc-link" href="https://hei.scholasticahq.com/" target="_blank" rel="noopener">
+          <div class="soc-acro">HEI</div>
+          <div class="soc-name">History of Economic Ideas</div>
+          <div class="soc-meta" data-i18n-html="soc_hei_meta">Fabrizio Serra Editore · seit 1993</div>
+        </a>
+      </div>
+
+      <div class="soc-card">
+        <a class="soc-link" href="https://journals.openedition.org/oeconomia/" target="_blank" rel="noopener">
+          <div class="soc-acro">ŒCONOMIA</div>
+          <div class="soc-name">Œconomia — History · Methodology · Philosophy</div>
+          <div class="soc-meta" data-i18n-html="soc_oec_meta">Association Œconomia · Frankreich · zweisprachig FR/EN · seit 2011</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── Group 4: Further international societies (compact) ── -->
+    <div class="soc-group">
+      <h3 class="soc-group-title" data-i18n="soc_grp_more">Weitere internationale Gesellschaften</h3>
+      <div class="soc-more">
+        <a class="soc-more-item" href="https://hetsa.org.au" target="_blank" rel="noopener">
+          <span class="soc-more-acro">HETSA</span>
+          <span class="soc-more-name">History of Economic Thought Society of Australia</span>
+        </a>
+        <a class="soc-more-item" href="https://alahpe.org" target="_blank" rel="noopener">
+          <span class="soc-more-acro">ALAHPE</span>
+          <span class="soc-more-name">Asociación Latinoamericana de Historia del Pensamiento Económico</span>
+        </a>
+        <a class="soc-more-item" href="https://www.storep.org" target="_blank" rel="noopener">
+          <span class="soc-more-acro">STOREP</span>
+          <span class="soc-more-name">Italian Association for the History of Political Economy</span>
+        </a>
+        <a class="soc-more-item" href="https://www.aispe.eu" target="_blank" rel="noopener">
+          <span class="soc-more-acro">AISPE</span>
+          <span class="soc-more-name">Associazione Italiana per la Storia dell'Economia Politica</span>
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>
 
