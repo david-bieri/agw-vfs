@@ -338,6 +338,7 @@
     arch_view_speakers   : { en: '👤 Speakers' },
     arch_map_note        : { en: 'All 46 conference venues since 1980.' },
     btn_ical             : { en: '📅 Calendar (.ics)' },
+    print_prog           : { de: '⎙ Programm drucken', en: '⎙ Print programme' },
     footer_hosted_by_lbl : { en: 'Hosted by' },
     mbr_active           : { en: 'Active' },
     mbr_emeriti          : { en: 'Emeriti' },

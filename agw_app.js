@@ -113,12 +113,14 @@ function renderChairs() {
   const past_lbl    = lang === 'en' ? ((AGW.S.chairs_past && AGW.S.chairs_past.en)    || 'Past Chair')    : 'Ehemaliger Vorsitzender';
 
   el.innerHTML = '<div class="chairs-list">'
-    + CHAIRS.map((c, i) => {
-      const period = c.end ? (c.start + '\u2013' + c.end) : (c.start + '\u2013heute');
+    + CHAIRS.map((c, i) => ({ c, ord: i + 1 }))   // capture each chair's historical position
+      .reverse()                                   // display current first, then descending
+      .map(({ c, ord }) => {
+      const period = c.end ? (c.start + '\u2013' + c.end) : (c.start + '\u2013' + (lang === 'en' ? 'present' : 'heute'));
       const yrs    = c.end ? (c.end - c.start) : (2026 - c.start);
       const isCurrent = !c.past;
       return '<div class="chair-item' + (isCurrent ? ' chair-current' : '') + '">'
-        + '<div class="chair-num">' + (i + 1) + '</div>'
+        + '<div class="chair-num">' + ord + '</div>'
         + '<div class="chair-body">'
         + '<div class="chair-name">' + c.name
         + (isCurrent ? ' <span class="badge badge-gold" style="font-size:10px;vertical-align:middle;">' + current_lbl + '</span>' : '')
