@@ -163,6 +163,7 @@ function filterMembers() { renderMembers(getMemberList()); }
 
 function renderMembers(list) {
   const grid = document.getElementById('members-grid');
+  if (!grid) return;
   const cnt  = document.getElementById('mbr-count');
   if (cnt) cnt.textContent = list.length + ' / ' + MEMBERS.length;
   if (!list.length) {
@@ -216,6 +217,7 @@ function setArchiveCountry(cc, btn) {
 
 function renderArchive() {
   const list   = document.getElementById('archive-list');
+  if (!list) return;
   const cnt    = document.getElementById('arch-count');
   const q      = ((document.getElementById('archive-search') || {}).value || '').toLowerCase().trim();
   const decadeOf = y => y >= 2020 ? '2020s' : y >= 2010 ? '2010s' : y >= 2000 ? '2000s' : y >= 1990 ? '1990s' : '1980s';
@@ -447,6 +449,7 @@ function togglePub(num) {
 
 function renderPubs() {
   const list = document.getElementById('pub-list');
+  if (!list) return;
   const note = document.getElementById('pub-count-note');
   const band_lbl = lang === 'de' ? 'Band 115/' : 'Vol. 115/';
   const view_lbl = lang === 'de' ? 'Verlag ↗' : 'Publisher ↗';
