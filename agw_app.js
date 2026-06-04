@@ -38,9 +38,10 @@ function setLang(l) {
   renderAnnouncements();
   updateCountdown();
 
-  // Toggle button active state
-  document.getElementById('btn-de').classList.toggle('active', l === 'de');
-  document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  // Toggle button active state (nav is injected by renderNav, which runs after app init,
+  // so these may not exist yet on first call — guard like every other DOM access)
+  const bde = document.getElementById('btn-de'); if (bde) bde.classList.toggle('active', l === 'de');
+  const ben = document.getElementById('btn-en'); if (ben) ben.classList.toggle('active', l === 'en');
 
   // Persist across sessions
   AGW.setLang(l);
