@@ -1,118 +1,142 @@
 # AGW Website — Claude Session Context
 
-Read this file at the start of every session working on the AGW website.
-Full documentation: AGW_README.md · AGW_PROGRESS.md · AGW_DECISIONS.md
+This file is read at the start of every Claude session working on the AGW website.
+Keep it concise. Full detail lives in the files listed below.
 
 ---
 
-## Project in one sentence
+## What This Project Is
 
-Single-file website (index.html) for the AGW — the VfS standing committee for the history of economics — covering the 2026 Jahrestagung and the committee's permanent presence. Conference June 25–27, Riva San Vitale. Owner: David Bieri (bieri@vt.edu).
+Conference microsite and standing committee website for the
+**Ausschuss für die Geschichte der Wirtschaftswissenschaften (AGW)**,
+the standing committee for the history of economic thought within the
+Verein für Socialpolitik (VfS).
 
----
-
-## Current state
-
-| Item | Value |
-|---|---|
-| **Canonical file** | `index.html` (152 KB, 1955 lines) |
-| **Companion files** | `AGW_en.json`, `AGW_SVfS_Band115.bib`, `AGW_Satzung.pdf` |
-| **GitHub repo** | `david-bieri/agw-vfs` |
-| **Live URL** | `https://david-bieri.github.io/agw-vfs/` (after push) |
-| **Status** | Content complete — NOT YET PUSHED |
-| **Blocking task** | Push to GitHub + enable Pages |
+**Conference:** Jahrestagung 2026, June 25–27, Riva San Vitale, Switzerland
+**Owner:** David Bieri (bieri@vt.edu), Virginia Tech SPIA
 
 ---
 
-## Data arrays (in `<script>` block)
+## Read These Files First
 
-| Array | Count | Notes |
-|---|---|---|
-| `CHAIRS[12]` | 12 | Chair succession 1980–present; `end:null, past:false` = current |
-| `MEMBERS[48]` | 48 | No emails (data protection). Fields: name/title/inst/city/country/emeritus/role/focus_de/focus_en |
-| `ARCHIVE[46]` | 46 | All Jahrestagungen 1980–2026. Fields: nr/year/loc_de/loc_en/theme/theme_en/vol/vol_label/papers |
-| `PUBLICATIONS[40]` | 40 | Band I–XLII (gaps: XXXIII, XXXVIII). Fields: num/numN/year/decade/title_de/title_en/editor/url |
-| `PUB_CHAPTERS{}` | 4 | ToC data for vols. IV, XXIII, XXXI, XLI |
-| `const EN` | 133 | All EN strings. `// [FLAG]` = needs Klump sign-off before use |
+**At session start, always:**
+0. `AGW_SESSION_NOTES.md` — live in-flight state from the previous session (pending deploys, open questions, latent issues). **Read this BEFORE doing anything else, even before asking the user what they want.** If it's missing, fall through to file 1.
 
----
+**Project context (slow-changing reference):**
+1. `AGW_README.md` — architecture, site structure, content update guide
+2. `AGW_PROGRESS.md` — what's done, pre-conference checklist, backlog
+3. `AGW_DECISIONS.md` — only if facing a design/architecture question (15 ADRs as of v8)
 
-## Non-negotiable rules
-
-### Data protection
-- **NEVER add email addresses to the MEMBERS array** — MV 2024 decision (GDPR)
-- Chair email (klump@wiwi.uni-frankfurt.de) is public-role, appears in contact card
-- bieri@vt.edu appears in contact card and footer as 2026 host
-
-### Branding
-- Navy `#1B3A6B` (VfS primary), gold `#B8860B` (accent rule)
-- **No VT maroon** (`#861F41`) or **VT orange** (`#E87722`) anywhere
-- VT/SPIA credited only in footer + contact card as 2026 host
-
-### Language
-- Paper titles, speaker names: always German — never translated
-- `data-i18n="key"` for text; `data-i18n-html="key"` for markup elements
-- `const EN` is the single source of truth — sync to AGW_en.json after changes
-- `// [FLAG]` or `// [REVIEW]` strings need Klump sign-off before the EN toggle goes live
-
-### Architecture
-- No build step, no external JS, no CDN (except Google Fonts)
-- `setLang()` must call `renderChairs()`, `renderMembers()`, `renderArchive()`, `renderPubs()` — in that order
-- `initLang()` is called once on page load after all render functions
-- `data-de` attribute is auto-captured on first `setLang('en')` call — do not pre-populate it
+**Protocol for ending the session:**
+4. `AGW_HANDOVER.md` — the skill that defines how to write `AGW_SESSION_NOTES.md` at session end. Invoke when David says "handover", "wrap up", "switching chats", "compaction prep", or at any version milestone.
 
 ---
 
-## Sections and their IDs
+## Current Version: v8 (multi-page architecture)
+
+**Live site:** `https://david-bieri.github.io/agw-vfs/`
+**Repo:** `david-bieri/agw-vfs` (GitHub Pages)
+
+**Five pages:**
+- `index.html` (~151 KB) — Conference 2026: hero, programme, social, logistics, news
+- `archive.html` (~73 KB) — archive (4 tabs: List/Map/Speakers/Chronik) + publications
+- `committee.html` (~84 KB) — about, history, members, chairs, sister societies, statutes
+- `analytics.html` (~13 KB) — Reception Atlas + Historical Analytics + Topic Analysis
+- `guide.html` (~23 KB) — user manual
+
+**Six foundation files** shared across pages:
+- `agw_styles.css` — all CSS (31 KB)
+- `agw_strings.js` — translation registry (35 KB, 250 keys)
+- `agw_data.js` — CHAIRS, MEMBERS, ARCHIVE, PUBLICATIONS, FMTS, ANNOUNCEMENTS (60 KB)
+- `agw_app.js` — render functions, setLang, init* (46 KB)
+- `agw_nav.js` — shared header + mobile menu renderer (9 KB)
+- `agw_chronik.js` — vanilla-JS Chronik panel (29 KB)
+
+**Compiled bundles** (built via `build_analytics.sh`, sources in gitignored `src-jsx/`):
+- `dist/agw_gaze_map.js` — Reception Atlas
+- `dist/agw_analysis.js` — Historical Analytics A–E
+- `dist/agw_pmi.js` — Topic Analysis A–F
+
+**PWA:** service-worker.js with cache `agw-2026-v2-multipage`, precaches all 5 pages + 6 foundation files
+**Companion:** `AGW_en.json` (editorial review document for Rainer Klump, not loaded at runtime)
+**Status:** Live and functional. Pre-conference content tasks outstanding (see `AGW_PROGRESS.md` checklist).
+
+---
+
+## Architecture in One Paragraph
+
+Five static HTML pages served from GitHub Pages, sharing six foundation files (`agw_styles.css`, `agw_strings.js`, `agw_data.js`, `agw_app.js`, `agw_nav.js`, `agw_chronik.js`). Each page has `<div id="nav-mount"></div>`; `AGW.renderNav('pageId')` injects the shared header + mobile menu and highlights the active page. German is the default language in HTML; `agw_strings.js` exports `window.AGW.S = {key: {de, en}}` and `AGW.applyLang(lang)` swaps text by reading `data-i18n` / `data-i18n-html` / `data-str` attributes. The cascade for initial language is localStorage → `navigator.language` → German. Data arrays (`MEMBERS`, `ARCHIVE`, `PUBLICATIONS`, `CHAIRS`, `ANNOUNCEMENTS`) live in `agw_data.js` and feed `render*()` functions that early-return if their target DOM is missing (multi-page safety). React-based analytics live on `analytics.html` and subscribe to language via the `agw-lang-change` CustomEvent broadcast by `AGW.setLang()`.
+
+---
+
+## Non-Negotiable Rules
+
+**Branding**
+- Navy `#1B3A6B` (VfS primary), not VT maroon `#861F41`
+- VT appears only in footer/contact card as host institution credit for 2026 only
+- EB Garamond (headings/display) + Source Sans 3 (body/UI)
+
+**Language**
+- Paper titles use **Option 3 hybrid** (ADR-014): German original always shown; EN mode appends translated subtitle in `<span class="title-trans">`. Speaker names, addresses, and venue names remain German regardless of toggle.
+- Only UI chrome, section labels, prose, and paper-title English subtitles are translated
+- `agw_strings.js` (the `window.AGW.S` registry) is the single source of truth for EN translations
+- Every `data-i18n` / `data-i18n-html` / `data-str` key must have an entry in `agw_strings.js`; run the audit script in any session that adds keys
+- FLAG items in `AGW_en.json` require Rainer Klump sign-off before going live (file is review-only, not loaded at runtime)
+
+**Content**
+- `bieri@vt.edu` is the correct email — appears as `mailto:` in contact card and footer
+- Saturday lunch at Steger Center is unconfirmed — do not add to programme until confirmed
+- "Provisorische Version" watermark must be removed from PDFs before linking
+
+**Architecture**
+- No bundler for the 5 pages or 6 foundation files; static HTML + plain CSS + plain JS only. The React analytics components are the only exception: built via `build_analytics.sh` (esbuild) into `dist/`.
+- Foundation files MUST stay extracted — do not inline CSS/JS back into pages (ADR-015)
+- Every `render*()` / `init*()` function MUST early-return if its primary target DOM element is missing (`if (!el) return;` as the first line). This is non-negotiable: pages share `agw_app.js`, so a missing-element throw on one page cascades and breaks unrelated init on that page.
+- `setLang()` re-renders all JS-driven sections: `renderChairs()`, `renderMembers()`, `renderArchive()`, `renderPubs()`, `renderAnnouncements()`, `updateCountdown()`. Anything added to JS-driven render must be added to `setLang()` too.
+- Service worker cache version (`agw-2026-vN-...`) must be bumped on any change to precached assets, or clients will serve stale files
+
+---
+
+## File Map
 
 ```
-#tagungsprogramm  #rahmenprogramm  #logistik  #archiv
-#publikationen    #ueber           #geschichte  #mitglieder  #satzung
-```
+# Pages (5)
+index.html              Conference 2026 page
+archive.html            Scholarly archive + publications
+committee.html          About + history + members + chairs + societies + statutes
+analytics.html          React analytics (Reception Atlas + Analytics + Topic Analysis)
+guide.html              User manual
 
-All 9 sections are present. Nav dropdown "Über den AGW" covers: #ueber, #geschichte, #mitglieder, #satzung.
+# Foundation (6)
+agw_styles.css          All CSS
+agw_strings.js          Translation registry (window.AGW.S)
+agw_data.js             Shared data arrays
+agw_app.js              Render functions, setLang, init*
+agw_nav.js              Shared header + mobile menu
+agw_chronik.js          Vanilla-JS Chronik panel
+
+# Compiled bundles
+dist/agw_gaze_map.js    Reception Atlas (esbuild from src-jsx/, sources gitignored)
+dist/agw_analysis.js    Historical Analytics A–E
+dist/agw_pmi.js         Topic Analysis A–F
+build_analytics.sh      Rebuild dist/ from src-jsx/ (run in WSL on Windows)
+
+# PWA + companions
+service-worker.js       Cache v2-multipage, precaches all 5 pages + 6 foundation files
+manifest.json           PWA manifest
+AGW_en.json             Editorial review document for Klump — not loaded at runtime
+
+# Markdown / project memory
+AGW_README.md           Project overview + content update guide
+AGW_PROGRESS.md         Version milestones + checklists + backlog
+AGW_DECISIONS.md        Architecture decisions (ADRs)
+AGW_HANDOVER.md         Skill: how to produce/consume session handovers
+AGW_SESSION_NOTES.md    Live in-flight state — rewritten every session
+AGW_CLAUDE.md           This file
+```
 
 ---
 
-## Files in the repo (deploy these)
+## Immediate Next Tasks
 
-```
-index.html                     ← THE website
-AGW_en.json                    ← editorial translation document
-AGW_SVfS_Band115.bib           ← linked from Publications download button
-AGW_Satzung.pdf                ← linked from Satzung section download button
-AGW_Rahmenprogramm_2026.pdf    ← add after removing watermark
-AGW_Partnerprogramm_2026.pdf   ← add after removing watermark
-README.md                      ← GitHub display
-SETUP.md                       ← deployment instructions
-404.html                       ← custom redirect
-.gitignore
-CNAME                          ← set to agw-vfs.de or delete for github.io URL
-.github/workflows/pages.yml    ← auto-deploy on push to main
-```
-
-**Do NOT include:** AGW_Website_v2.html through v5.html (build artefacts).
-
----
-
-## Immediate next tasks (in order)
-
-1. Push to `david-bieri/agw-vfs` on GitHub (see SETUP.md)
-2. Decide on CNAME domain — update canonical URL in index.html
-3. Send AGW_en.json to Rainer Klump for EN review
-4. Confirm Saturday lunch with Steger Center → add to programme if confirmed
-5. Remove watermarks from LaTeX PDFs → add to repo + add download buttons
-6. Fetch VfS SVG logo → replace text nav brand
-7. Create og:image (1200×630) → add to repo → uncomment og:image meta tags
-8. Mobile + cross-browser testing
-9. Share live URL with conference participants
-
----
-
-## Known data gaps (post-conference)
-
-- Archive entries 2016 and 2018: no programme PDFs → paper lists missing
-- Volumes XXXIII and XXXVIII: still unlocated
-- Volume years: ~28 unconfirmed (only 10 known: IV/IX/X/XI/XIII/XIV/XV/XVI/XXVIII/XXXIX)
-- Editors: Vols. I, XL, XLII unknown
-- Chair years: pre-1996 approximate — needs verification against VfS records
+See `AGW_PROGRESS.md` → "Pre-Conference Checklist" and `AGW_SESSION_NOTES.md` → section 6 ("Suggested next session") for the current state. Items 1–6 from the v5 version of this file are all done.
