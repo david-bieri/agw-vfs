@@ -1,12 +1,24 @@
 /* AGW Jahrestagung 2026 — Service Worker
  * Strategy: Cache-first for shell + static assets; network-first for tiles
  */
-const CACHE = 'agw-2026-v1';
+const CACHE = 'agw-2026-v2-multipage';
 
 const PRECACHE = [
   '/agw-vfs/',
   '/agw-vfs/index.html',
+  '/agw-vfs/archive.html',
+  '/agw-vfs/committee.html',
+  '/agw-vfs/analytics.html',
+  '/agw-vfs/guide.html',
   '/agw-vfs/manifest.json',
+  // Foundation files (loaded by every page)
+  '/agw-vfs/agw_styles.css',
+  '/agw-vfs/agw_strings.js',
+  '/agw-vfs/agw_data.js',
+  '/agw-vfs/agw_app.js',
+  '/agw-vfs/agw_nav.js',
+  '/agw-vfs/agw_chronik.js',
+  // External resources
   'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap',
   'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css',
   'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js',

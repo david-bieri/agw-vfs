@@ -47,6 +47,23 @@
   <link rel="apple-touch-icon" href="/agw-vfs/icon-192.png">
 </head>
 <body>
+<script>
+// Anchor redirects for content that moved to other pages (multi-page migration)
+(function(){
+  var h = location.hash;
+  var redirects = {
+    '#archiv':       'archive.html#archiv',
+    '#publikationen':'archive.html#publikationen',
+    '#ueber':        'committee.html#ueber',
+    '#geschichte':   'committee.html#geschichte',
+    '#mitglieder':   'committee.html#mitglieder',
+    '#satzung':      'committee.html#satzung',
+    '#gesellschaften':'committee.html#gesellschaften'
+  };
+  if (redirects[h]) { location.replace(redirects[h]); }
+})();
+</script>
+
 
 <!-- ── Navigation ── -->
 <div id="nav-mount"></div>
@@ -418,269 +435,14 @@
 <section class="section" id="aktuelles">
   <div class="section-inner">
     <div class="section-label" data-i18n="sec_lbl_news">Aktuelles</div>
-    <h2 class="section-title" data-i18n="sec_ttl_news">Neuigkeiten &amp; Gesellschaften</h2>
-    <div class="two-col" style="align-items:start;gap:40px;">
-      <div>
-        <h3 style="font-family:'EB Garamond',serif;font-size:1.2rem;font-weight:500;color:var(--navy);margin-bottom:16px;" data-i18n="news_h3">News</h3>
-        <div id="news-list"></div>
-      </div>
-      <div>
-        <h3 style="font-family:'EB Garamond',serif;font-size:1.2rem;font-weight:500;color:var(--navy);margin-bottom:16px;" data-i18n="sec_ttl_societies">Verwandte Gesellschaften &amp; Zeitschriften</h3>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <a href="https://www.eshet.net" target="_blank" rel="noopener" style="display:block;padding:10px 14px;border:1px solid var(--border);border-radius:8px;text-decoration:none;color:inherit;" onmouseover="this.style.background='var(--accent-pale)'" onmouseout="this.style.background=''"><div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:2px;">ESHET</div><div style="font-size:13px;color:var(--text-muted);">European Society for the History of Economic Thought</div></a>
-          <a href="https://historyofeconomics.org" target="_blank" rel="noopener" style="display:block;padding:10px 14px;border:1px solid var(--border);border-radius:8px;text-decoration:none;color:inherit;" onmouseover="this.style.background='var(--accent-pale)'" onmouseout="this.style.background=''"><div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:2px;">HES</div><div style="font-size:13px;color:var(--text-muted);">History of Economics Society</div></a>
-          <a href="https://jshet.net" target="_blank" rel="noopener" style="display:block;padding:10px 14px;border:1px solid var(--border);border-radius:8px;text-decoration:none;color:inherit;" onmouseover="this.style.background='var(--accent-pale)'" onmouseout="this.style.background=''"><div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:2px;">JSHET</div><div style="font-size:13px;color:var(--text-muted);">Japanese Society for the History of Economic Thought</div></a>
-          <a href="https://www.socialpolitik.de" target="_blank" rel="noopener" style="display:block;padding:10px 14px;border:1px solid var(--border);border-radius:8px;text-decoration:none;color:inherit;" onmouseover="this.style.background='var(--accent-pale)'" onmouseout="this.style.background=''"><div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:2px;">VfS</div><div style="font-size:13px;color:var(--text-muted);">Verein für Socialpolitik</div></a>
-          <a href="https://hope.econ.duke.edu" target="_blank" rel="noopener" style="display:block;padding:10px 14px;border:1px solid var(--border);border-radius:8px;text-decoration:none;color:inherit;" onmouseover="this.style.background='var(--accent-pale)'" onmouseout="this.style.background=''"><div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:2px;">HOPE</div><div style="font-size:13px;color:var(--text-muted);">History of Political Economy (Duke University Press)</div></a>
-          <a href="https://www.tandfonline.com/journals/rejh20" target="_blank" rel="noopener" style="display:block;padding:10px 14px;border:1px solid var(--border);border-radius:8px;text-decoration:none;color:inherit;" onmouseover="this.style.background='var(--accent-pale)'" onmouseout="this.style.background=''"><div style="font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--accent);margin-bottom:2px;">EJHET</div><div style="font-size:13px;color:var(--text-muted);">European Journal of the History of Economic Thought</div></a>
-        </div>
-      </div>
+    <h2 class="section-title" data-i18n="sec_ttl_news_only">Neuigkeiten</h2>
+    <div id="news-list"></div>
+    <div style="margin-top:24px;font-size:13px;color:var(--text-faint);">
+      <a href="committee.html#gesellschaften" data-i18n="link_societies">Schwestergesellschaften &amp; Zeitschriften →</a>
     </div>
   </div>
-</section>
-
-<!-- ── Archiv ── -->
-<section class="section section-alt" id="archiv">
-  <div class="section-inner">
-    <div class="section-label" data-i18n="sec_lbl_archive">Konferenzarchiv</div>
-    <h2 class="section-title" data-i18n="sec_ttl_archive">Frühere Jahrestagungen</h2>
-    <p class="section-intro" data-i18n="sec_intro_archive">46 Jahrestagungen seit der Gründung 1980.</p>
-    <div style="display:flex;gap:4px;margin-bottom:20px;border-bottom:1.5px solid var(--border);">
-      <button class="arch-view-btn active" onclick="setArchiveView('list',this)" style="background:none;border:none;padding:9px 18px;cursor:pointer;font-size:13.5px;font-family:inherit;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1.5px;" data-i18n="arch_view_list">☰ Liste</button>
-      <button class="arch-view-btn" onclick="setArchiveView('map',this)" style="background:none;border:none;padding:9px 18px;cursor:pointer;font-size:13.5px;font-family:inherit;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1.5px;" data-i18n="arch_view_map">🗺 Karte</button>
-      <button class="arch-view-btn" onclick="setArchiveView('speakers',this)" style="background:none;border:none;padding:9px 18px;cursor:pointer;font-size:13.5px;font-family:inherit;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1.5px;" data-i18n="arch_view_speakers">👤 Referenten</button>
-      <button class="arch-view-btn" onclick="setArchiveView('chronik',this)" style="background:none;border:none;padding:9px 18px;cursor:pointer;font-size:13.5px;font-family:inherit;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1.5px;" data-i18n="arch_view_chronik">📈 Chronik</button>
-    </div>
-    <div id="arch-view-list">
-      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px;">
-        <input type="text" class="members-search" id="archive-search" style="margin-bottom:0;max-width:320px;" oninput="renderArchive()" placeholder="Thema, Ort, Referent… / theme, location, speaker…">
-        <span style="font-size:12px;color:var(--text-faint);" id="arch-count"></span>
-      </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
-        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade active" onclick="setArchiveDecade('all',this)" data-i18n="pub_filter_all">Alle</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('2020s',this)">2020–</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('2010s',this)">2010–19</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('2000s',this)">2000–09</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('1990s',this)">1990–99</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn arch-decade" onclick="setArchiveDecade('1980s',this)">1980–89</button>
-        <span style="color:var(--border);padding:0 4px;">|</span>
-        <button class="btn btn-sm btn-outline pub-filter-btn arch-country active" onclick="setArchiveCountry('all',this)" data-i18n="pub_filter_all">Alle</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn arch-country" onclick="setArchiveCountry('DE',this)">🇩🇪 DE</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn arch-country" onclick="setArchiveCountry('AT',this)">🇦🇹 AT</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn arch-country" onclick="setArchiveCountry('CH',this)">🇨🇭 CH</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn arch-country" onclick="setArchiveCountry('UK',this)">🇬🇧 UK</button>
-      </div>
-      <div id="archive-list"></div>
-    </div>
-    <div id="arch-view-map" style="display:none;">
-      <p style="font-size:13px;color:var(--text-muted);margin-bottom:14px;" data-i18n="arch_map_note">Alle 46 Tagungsorte seit 1980.</p>
-      <div style="border-radius:10px;overflow:hidden;border:1px solid var(--border);"><div id="archive-location-map" style="height:460px;"></div></div>
-    </div>
-    <div id="arch-view-speakers" style="display:none;"><div id="speaker-freq-table"></div></div>
-    <div id="arch-view-chronik" style="display:none;">
-      <!-- Rendered by agw_chronik.js when tab first opens -->
-    </div>
-  </div>
-</section>
-
-<!-- ── Publikationen ── -->
-<section class="section section-alt" id="publikationen">
-  <div class="section-inner">
-    <div class="section-label" data-i18n="nav_publications">Publikationen</div>
-    <h2 class="section-title" data-i18n="sec_ttl_pub">Konferenzbände</h2>
-
-    <div class="two-col" style="margin-bottom:32px; align-items:start;">
-      <div class="prose">
-        <p data-i18n-html="hist_p2">Die Jahrestagungen des AGW münden in der Regel in begutachtete Sammelbände, die als Subserie <em>Studien zur Entwicklung der ökonomischen Theorie</em> innerhalb der <em>Schriften des Vereins für Socialpolitik</em> (Band 115) beim Verlag Duncker &amp; Humblot erscheinen. Seit dem ersten Band zu Beginn der 1980er Jahre ist die Reihe mit inzwischen über 40 Bänden das zentrale Publikationsorgan der deutschsprachigen Theoriegeschichte und Dogmengeschichte.</p>
-      </div>
-      
-    </div>
-
-    <div class="callout callout-blue" style="margin-bottom:28px;">
-      <div class="callout-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
-      </div>
-      <div>
-        <div class="callout-title" data-i18n="pub_series_lbl">Reiheninformation</div>
-        <div class="callout-text">
-          <span><strong>Schriften des Vereins für Socialpolitik</strong>, Neue Folge Band 115 &mdash; Subserie: <em>Studien zur Entwicklung der ökonomischen Theorie</em> &mdash; Verlag: <a href="https://www.duncker-humblot.de" target="_blank" style="color:inherit;font-weight:600;">Duncker &amp; Humblot GmbH</a>, Berlin &mdash; <a href="https://www.duncker-humblot.de/search/result?schnellsuche=Studien%20zur%20Entwicklung%20der%20%C3%B6konomischen%20Theorie&sort=datum_erscheinung_jahr%20desc%2Cdatum_erscheinung%20desc&page=1&type=titel&nav_id=1" target="_blank" style="color:inherit;font-weight:600;">Alle Bände beim Verlag ↗</a></span>&emsp;<a href="AGW_SVfS_Band115.bib" download style="color:inherit;font-weight:600;" data-i18n="pub_bib_download">Gesamtbibliographie (.bib) ↓</a>
-        </div>
-      </div>
-    </div>
-
-    <div style="display:flex; gap:12px; margin-bottom:24px; flex-wrap:wrap; align-items:center;">
-      <input type="text" class="members-search" id="pub-search" style="margin-bottom:0; max-width:320px;"
-        placeholder="Titel oder Herausgeber suchen… / Search…"
-        oninput="filterPubs(this.value)">
-      <div style="display:flex; gap:6px;" id="pub-filter-btns">
-        <button class="btn btn-sm btn-outline pub-filter-btn active" onclick="filterPubDecade('all', this)" data-decade="all" data-i18n="pub_filter_all">Alle</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn" onclick="filterPubDecade('2010s', this)" data-decade="2010s">2010–</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn" onclick="filterPubDecade('2000s', this)" data-decade="2000s">2000–09</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn" onclick="filterPubDecade('1990s', this)" data-decade="1990s">1990–99</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn" onclick="filterPubDecade('1980s', this)" data-decade="1980s">1980–89</button>
-      </div>
-    </div>
-
-    <div id="pub-list"></div>
-    <div style="margin-top:20px; font-size:12.5px; color:var(--text-faint); font-style:italic;" id="pub-count-note"></div>
-  </div>
-</section>
-
-<!-- ── Über den Ausschuss ── -->
-<section class="section" id="ueber">
-  <div class="section-inner">
-    <div class="two-col">
-      <div>
-        <div class="section-label" data-i18n="nav_about">Über den Ausschuss</div>
-        <h2 class="section-title" data-i18n="sec_ttl_about">Über den Ausschuss</h2>
-        <div class="prose">
-          <p data-i18n-html="about_p1">Der <strong>Ausschuss für die Geschichte der Wirtschaftswissenschaften (AGW)</strong> ist der ständige Ausschuss für Theoriegeschichte und Dogmengeschichte im Rahmen des Vereins für Socialpolitik (VfS), der größten deutschsprachigen Gesellschaft für Wirtschaftswissenschaften.</p>
-          <p data-i18n-html="about_p2">Der Ausschuss versteht sich als wissenschaftliche Plattform, die Ökonominnen und Ökonomen aus dem deutschen, österreichischen und schweizerischen Hochschulraum sowie aus benachbarten Ländern zusammenführt, die sich mit den methodischen, philosophischen, ideengeschichtlichen und historischen Dimensionen der Wirtschaftswissenschaften befassen.</p>
-          <div class="pullquote" data-i18n-html="about_pullquote">Die Geschichte ökonomischer Ideen ist kein Selbstzweck — sie öffnet den Blick für das, was Ökonomie sein könnte.</div>
-          <p data-i18n-html="about_p3">Die jährliche Tagung bildet das Herzstück der Ausschusstätigkeit. Sie bietet ein Forum für Forschungsdiskussionen, für die Begegnung zwischen Nachwuchs und erfahrenen Forscherinnen sowie für den internationalen Austausch über die Theoriegeschichte als Disziplin.</p>
-          <p data-i18n-html="about_p4">Der AGW ist Mitglied im internationalen Netzwerk historisch-ökonomischer Gesellschaften, darunter die <strong>European Society for the History of Economic Thought (ESHET)</strong> und die <strong>History of Economics Society (HES)</strong>.</p>
-        </div>
-        
-          <p>The annual conference is the centrepiece of the committee's activity. It provides a forum for research discussions, for dialogue between emerging and established scholars, and for international exchange on the history of economic thought as a discipline.</p>
-          <p>The AGW is part of the international network of history-of-economics societies, including the <strong>European Society for the History of Economic Thought (ESHET)</strong> and the <strong>History of Economics Society (HES)</strong>.</p>
-        </div>
-      </div>
-      <div>
-        <div class="info-card" style="margin-bottom:20px;">
-          <div class="info-header" data-i18n="contact_title">Kontakt &amp; Organisation</div>
-          <div class="info-body">
-            <div class="info-row"><span class="info-label"><span data-i18n="contact_chair_lbl">Vorsitzender</span></span><span class="info-val">Prof. Rainer Klump</span></div>
-            <div class="info-row"><span class="info-label"><span data-i18n="contact_host_lbl">Gastgeber 2026</span></span><span class="info-val"><a href="mailto:bieri@vt.edu">Dr. David Bieri</a> · <a href="mailto:bieri@vt.edu">bieri@vt.edu</a></span><div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12);"><div style="font-size:10px;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:8px;text-transform:uppercase;">QR</div><div id="footer-qr" style="display:inline-block;background:#fff;padding:7px;border-radius:6px;"></div></div></div>
-            <div class="info-row"><span class="info-label"><span data-i18n="contact_parent_lbl">Dachorganisation</span></span><span class="info-val"><a href="https://www.socialpolitik.de/de" target="_blank">Verein für Socialpolitik (VfS)</a></span></div>
-            <div class="info-row"><span class="info-label"><span data-i18n="contact_page_lbl">Ausschuss-Seite</span></span><span class="info-val"><a href="https://history-economicthought.committee.socialpolitik.de/" target="_blank">VfS AGW Seite</a></span></div>
-            <div class="info-row"><span class="info-label">ESHET</span><span class="info-val"><a href="https://www.eshet.net" target="_blank">eshet.net</a></span></div>
-            <div class="info-row"><span class="info-label">HES</span><span class="info-val"><a href="https://historyofeconomics.org" target="_blank">historyofeconomics.org</a></span></div>
-          </div>
-        </div>
-        <div class="callout callout-blue">
-          <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg></div>
-          <div>
-            <div class="callout-title" data-i18n="membership_title">Mitgliedschaft</div>
-            <div class="callout-text" data-i18n="membership_text">Interessierte Wissenschaftlerinnen und Wissenschaftler wenden sich bitte an den Vorsitzenden oder an die VfS-Geschäftsstelle.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Geschichte des AGW ── -->
-<section class="section section-alt" id="geschichte">
-  <div class="section-inner">
-    <div class="section-label" data-i18n="sec_lbl_history">Geschichte</div>
-    <h2 class="section-title" data-i18n="sec_ttl_history">Zur Geschichte des AGW</h2>
-    <div class="two-col">
-      <div class="prose">
-        <p data-i18n-html="hist_p1">Der <strong>Ausschuss für die Geschichte der Wirtschaftswissenschaften (AGW)</strong> ist einer der ständigen Fachausschüsse des Vereins für Socialpolitik (VfS), der ältesten wirtschaftswissenschaftlichen Berufsorganisation der Welt (gegründet 1873). Der AGW wurde 1980 gegründet; die 1.&nbsp;Jahrestagung fand in Gießen statt. Als eigenständiger Ausschuss bündelt der AGW die Forschung zur Theoriegeschichte und Dogmengeschichte der Wirtschaftswissenschaften im deutschsprachigen Raum.</p>
-        <p>Die Jahrestagungen des AGW haben sich im Laufe der Zeit zu einem wichtigen Forum für die deutsch- und europäischsprachige Forschung zur Theoriegeschichte, Dogmengeschichte und Wissenschaftsphilosophie der Ökonomik entwickelt. Die Tagungen finden an wechselnden Standorten in Deutschland, Österreich und der Schweiz sowie gelegentlich im internationalen Ausland statt.</p>
-        <p data-i18n-html="hist_p3">Der AGW trifft sich jährlich zu seiner Jahrestagung an wechselnden Standorten in Deutschland, Österreich und der Schweiz sowie gelegentlich im Ausland. Auf der Tagung werden aktuelle Forschungsarbeiten zur Theoriegeschichte, Dogmengeschichte und Wissenschaftsphilosophie der Ökonomik vorgestellt und diskutiert. Die Jahrestagung 2022 in Jena war dem 150-jährigen Bestehen des VfS gewidmet (Band XLI der Reihe, hrsg. v. Peter Spahn).</p>
-        <p data-i18n-html="hist_p4">Der AGW pflegt enge Beziehungen zu den internationalen Schwestergesellschaften ESHET (European Society for the History of Economic Thought) und HES (History of Economics Society) sowie zu weiteren nationalen Vereinigungen im deutsch- und europäischsprachigen Raum.</p>
-      </div>
-      
-      <div style="margin-top:0;">
-        <div class="callout callout-gold" style="margin-bottom:0;">
-          <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-          <div>
-            <div class="callout-title" data-i18n="hist_note_title">Hinweis zur Geschichte</div>
-            <div class="callout-text" data-i18n="hist_note_text">Dieser Abschnitt wird laufend ergänzt. Mitglieder, die zur Geschichte des Ausschusses beitragen möchten, wenden sich bitte an den Vorsitzenden.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div style="max-width:1200px;margin:0 auto;padding:0 1.5rem;">
-    <!-- Chair succession timeline -->
-    <div style="margin-top:48px;">
-      <div class="section-label" data-i18n="sec_lbl_chairs">Ausschussvorsitzende</div>
-      <h3 style="font-family:'EB Garamond',serif;font-size:1.5rem;font-weight:500;color:var(--navy);margin-bottom:8px;" data-i18n="sec_ttl_chairs">Liste der bisherigen Vorsitzenden</h3>
-      <p style="font-size:13px;color:var(--text-faint);font-style:italic;margin-bottom:20px;" data-i18n="chairs_note">Amtszeiten ab ca. 1990 aus Tagungsbänden erschlossen; Angaben vor 1990 approximativ.</p>
-      <div id="chairs-timeline"></div>
-    </div></div>
-
-<!-- ── Mitgliederliste ── -->
-<section class="section section-alt" id="mitglieder">
-  <div class="section-inner">
-    <div class="section-label" data-i18n="sec_lbl_members">Mitglieder</div>
-    <h2 class="section-title" data-i18n="sec_ttl_members">Mitgliederliste</h2>
-
-    <!-- Data protection notice -->
-    <div class="callout callout-blue" style="margin-bottom:24px;">
-      <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-      <div>
-        <div class="callout-title" data-i18n="mbr_privacy_title">Datenschutzhinweis</div>
-        <div class="callout-text" data-i18n="mbr_privacy_text">Es werden ausschließlich Namen und Institutionen veröffentlicht. Für Kontaktaufnahme wenden Sie sich an den Vorsitzenden: <a href="mailto:klump@wiwi.uni-frankfurt.de" style="color:inherit;font-weight:600;">klump@wiwi.uni-frankfurt.de</a></div>
-      </div>
-    </div>
-
-    <!-- Filters -->
-    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:16px;">
-      <input type="text" class="members-search" id="member-search" style="margin-bottom:0;max-width:280px;" oninput="filterMembers()">
-      <div style="display:flex;gap:4px;">
-        <button class="btn btn-sm btn-outline pub-filter-btn mbr-filter-status active" onclick="setMemberFilter('status','all',this)" data-i18n="pub_filter_all">Alle</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn mbr-filter-status" onclick="setMemberFilter('status','active',this)" data-i18n="mbr_active">Aktiv</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn mbr-filter-status" onclick="setMemberFilter('status','emeriti',this)" data-i18n="mbr_emeriti">Emeriti</button>
-      </div>
-      <div style="display:flex;gap:4px;">
-        <button class="btn btn-sm btn-outline pub-filter-btn mbr-filter-country active" onclick="setMemberFilter('country','all',this)" data-i18n="pub_filter_all">Alle</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn mbr-filter-country" onclick="setMemberFilter('country','DACH',this)">DACH</button>
-        <button class="btn btn-sm btn-outline pub-filter-btn mbr-filter-country" onclick="setMemberFilter('country','INTL',this)" data-i18n="mbr_intl">Intl.</button>
-      </div>
-      <span style="font-size:12px;color:var(--text-faint);" id="mbr-count"></span>
-    </div>
-
-    <div class="members-grid" id="members-grid"></div>
-    <div style="margin-top:16px;font-size:12px;color:var(--text-faint);">Stand: 2026</div>
-  </div>
-</section>
-
-<!-- ── Footer ── -->
-
-<!-- ── Satzung ── -->
-<section class="section" id="satzung">
-  <div class="section-inner">
-    <div class="section-label" data-i18n="nav_satzung">Satzung</div>
-    <h2 class="section-title" data-i18n="satz_title">Satzung des Ausschusses</h2>
-    <div class="two-col" style="align-items:start;">
-      <div class="prose">
-        <p data-i18n-html="satz_p1"><strong>§ 1 Zweck</strong> — Der Ausschuss dient der Förderung der Forschung und des wissenschaftlichen Austausches auf dem Gebiet der Geschichte der Wirtschaftswissenschaften. Er unterstützt den wissenschaftlichen Nachwuchs und fördert die Exzellenz auf seinem Fachgebiet.</p>
-        <p data-i18n-html="satz_p2"><strong>§ 2 Mitgliedschaft</strong> — Mitglieder müssen wissenschaftlich auf dem Gebiet der Geschichte der Wirtschaftswissenschaften ausgewiesen sein und die Mitgliedschaft im Verein für Socialpolitik besitzen. Die Kooptation neuer Mitglieder erfordert eine Zweidrittelmehrheit der Mitgliederversammlung. Langjährig aktive Mitglieder im Ruhestand können den Status eines Senior-Mitglieds einnehmen (entbunden von der Anwesenheitspflicht, ohne Stimmrecht).</p>
-        <p data-i18n-html="satz_p3"><strong>§ 3 Vorsitz</strong> — Die/der Vorsitzende wird von der Mitgliederversammlung in geheimer Wahl mit einfacher Mehrheit für eine Amtszeit von zwei Jahren gewählt. Einmalige Wiederwahl ist zulässig. Die/der Vorsitzende nimmt alle laufenden Geschäfte wahr und vertritt den Ausschuss im Erweiterten Vorstand des VfS.</p>
-        <p data-i18n-html="satz_p4"><strong>§ 4 Mitgliederversammlung</strong> — Die Mitgliederversammlung tagt mindestens einmal jährlich im Rahmen der Tagung. Beschlüsse werden mit einfacher Mehrheit gefasst; Satzungsänderungen erfordern eine Zweidrittelmehrheit. Die Versammlung ist beschlussfähig bei Anwesenheit von mindestens einem Viertel der stimmberechtigten Mitglieder.</p>
-        <p data-i18n-html="satz_p7"><strong>§ 7 Formelles</strong> — Satzung, Mitgliederverzeichnis und Tagungsprogramme des Ausschusses sind öffentlich zugänglich (§ 7 Abs. 2).</p>
-      </div>
-      <div>
-        <div class="callout callout-gold">
-          <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-          <div>
-            <div class="callout-title" data-i18n="satz_pdf_title">Vollständige Satzung</div>
-            <div class="callout-text" data-i18n-html="satz_pdf_text">Die vollständige Satzung steht als PDF zur Verfügung.<br><br>
-              <a href="AGW_Satzung.pdf" download style="color:inherit;font-weight:600;">Satzung herunterladen (PDF) ↓</a>
-            </div>
-          </div>
-        </div>
-        <div class="info-card" style="margin-top:16px;">
-          <div class="info-header" data-i18n="satz_info_title">Gründung &amp; Geschichte</div>
-          <div class="info-body">
-            <div class="info-row"><span class="info-label" data-i18n="satz_lbl_grund">Gründung</span><span class="info-val" data-i18n="satz_val_grund">1980 (1. Jahrestagung in Gießen)</span></div>
-            <div class="info-row"><span class="info-label" data-i18n="satz_lbl_tag">Tagungen</span><span class="info-val" data-i18n="satz_val_tag">46 Jahrestagungen (Stand 2026)</span></div>
-            <div class="info-row"><span class="info-label" data-i18n="satz_lbl_mbr">Mitglieder</span><span class="info-val" data-i18n="satz_val_mbr">48 (Stand 2026)</span></div>
-            <div class="info-row"><span class="info-label" data-i18n="satz_lbl_pub">Publikationen</span><span class="info-val" data-i18n="satz_val_pub">42 Bände (Stand 2026)</span></div>
-            <div class="info-row"><span class="info-label" data-i18n="satz_lbl_chair">Vorsitzender</span><span class="info-val">Prof. Dr. Rainer Klump</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
+</section><!-- ── Publikationen ── --><!-- ── Geschichte des AGW ── -->
+<!-- ── Footer ── --><footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand-col">
       <div class="footer-brand-name">Ausschuss für die Geschichte der Wirtschaftswissenschaften</div>

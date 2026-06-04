@@ -326,7 +326,10 @@
     // ── Missing translations gap-fill (audit 2026-06-03) ─────────
     sec_lbl_news         : { en: 'News' },
     sec_ttl_news         : { en: 'News &amp; Societies' },
+    sec_ttl_news_only    : { de: 'Neuigkeiten', en: 'News' },
+    link_societies       : { de: 'Schwestergesellschaften &amp; Zeitschriften →', en: 'Sister Societies &amp; Journals →' },
     sec_ttl_societies    : { en: 'Related Societies &amp; Journals' },
+    sec_lbl_societies    : { de: 'Schwestergesellschaften', en: 'Sister Societies' },
     sec_lbl_chairs       : { en: 'Committee Chairs' },
     sec_ttl_chairs       : { en: 'Past Chairs of the Committee' },
     chairs_note          : { en: 'Tenure dates from c. 1990 reconstructed from conference proceedings; pre-1990 dates approximate.' },
