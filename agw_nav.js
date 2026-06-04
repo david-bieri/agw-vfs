@@ -90,7 +90,29 @@
             '</button>' +
           '</div>' +
         '</div>' +
-      '</nav>';
+      '</nav>' +
+
+      // Mobile menu — overlay panel toggled by hamburger button.
+      // Each link calls toggleMobileMenu() so the menu closes on navigation.
+      '<div class="mobile-menu" id="mobile-menu">' +
+        '<div class="mobile-menu-group" data-i18n="nav_conference">Jahrestagung 2026</div>' +
+        '<a href="index.html#tagungsprogramm" onclick="toggleMobileMenu()"><span data-i18n="nav_programme">Tagungsprogramm</span></a>' +
+        '<a href="index.html#rahmenprogramm" onclick="toggleMobileMenu()"><span data-i18n="nav_social">Rahmenprogramm</span></a>' +
+        '<a href="index.html#logistik" onclick="toggleMobileMenu()"><span data-i18n="nav_travel">Anreise &amp; Logistik</span></a>' +
+
+        '<div class="mobile-menu-group" data-i18n="nav_archive">Archiv</div>' +
+        '<a href="archive.html#archiv" onclick="toggleMobileMenu()"><span data-i18n="nav_archive">Archiv</span></a>' +
+        '<a href="archive.html#publikationen" onclick="toggleMobileMenu()"><span data-i18n="nav_publications">Publikationen</span></a>' +
+
+        '<div class="mobile-menu-group" data-i18n="nav_about_group">Über den AGW</div>' +
+        '<a href="committee.html#ueber" onclick="toggleMobileMenu()"><span data-i18n="nav_about">Über den Ausschuss</span></a>' +
+        '<a href="committee.html#geschichte" onclick="toggleMobileMenu()"><span data-i18n="nav_history">Geschichte des AGW</span></a>' +
+        '<a href="committee.html#mitglieder" onclick="toggleMobileMenu()"><span data-i18n="nav_members">Mitgliederliste</span></a>' +
+        '<a href="committee.html#satzung" onclick="toggleMobileMenu()"><span data-i18n="nav_satzung">Satzung</span></a>' +
+
+        '<div class="mobile-menu-group" data-i18n="nav_analytics">Analyse</div>' +
+        '<a href="analytics.html" onclick="toggleMobileMenu()"><span data-i18n="nav_analytics">Analyse</span></a>' +
+      '</div>';
 
     // Re-apply language to the freshly-injected nav
     if (window.AGW && window.AGW.applyLang) {
