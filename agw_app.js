@@ -314,9 +314,6 @@ function toggleArchive(i) {
   btn.classList.toggle('open', open);
 }
 
-/* ── Publications data ── */
-const DH_SEARCH = 'https://www.duncker-humblot.de/search/result?schnellsuche=Studien%20zur%20Entwicklung%20der%20%C3%B6konomischen%20Theorie&sort=datum_erscheinung_jahr%20desc%2Cdatum_erscheinung%20desc&page=1&type=titel&nav_id=1';
-
 let pubDecadeFilter = 'all';
 let pubSearchQ = '';
 

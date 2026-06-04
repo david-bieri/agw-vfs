@@ -288,6 +288,8 @@ const ARCHIVE = [
   { nr:1, year:1980, dates:'1980', country:'DE', loc_de:'Gießen', loc_en:'Giessen', venue:'Justus-Liebig-Universität Gießen', theme:'Klassische Nationalökonomie', theme_en:'Classical Political Economy', vol:'I', papers:[] },
 ];
 
+const DH_SEARCH = 'https://www.duncker-humblot.de/search/result?schnellsuche=Studien%20zur%20Entwicklung%20der%20%C3%B6konomischen%20Theorie&sort=datum_erscheinung_jahr%20desc%2Cdatum_erscheinung%20desc&page=1&type=titel&nav_id=1';
+
 const PUBLICATIONS = [
   { num:'I', numN:1, year:null, decade:'1980s', title_de:'Klassische Themen der Dogmengeschichte', title_en:'Classical Themes in the History of Economic Doctrines', editor:'', url:DH_SEARCH },
   { num:'II', numN:2, year:null, decade:'1980s', title_de:'Geschichte merkantilistischer Ideen und Praktiken', title_en:'History of Mercantilist Ideas and Practices', editor:'hrsg. v. Fritz Neumark', url:DH_SEARCH },
