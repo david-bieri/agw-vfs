@@ -20,7 +20,7 @@
     "terms": {
       "Dogmengeschichte": {
         "chosen": null,
-        "review_status": "REVIEW",
+        "review_status": "SETTLED",
         "alt": [
           "history of economic doctrines",
           "doctrinal history of economics",
@@ -30,7 +30,7 @@
       },
       "Theoriegeschichte": {
         "chosen": null,
-        "review_status": "REVIEW",
+        "review_status": "SETTLED",
         "alt": [
           "history of economic theories",
           "history of economic thought",
@@ -40,7 +40,7 @@
       },
       "Wirtschaftswissenschaften": {
         "chosen": "economics",
-        "review_status": "REVIEW",
+        "review_status": "SETTLED",
         "alt": [
           "economic science",
           "economics and economic science",
@@ -50,7 +50,7 @@
       },
       "Ausschuss": {
         "chosen": "Committee",
-        "review_status": "REVIEW",
+        "review_status": "SETTLED",
         "alt": [
           "Standing Committee",
           "Working Group",
@@ -106,7 +106,7 @@
     "nav_programme": {
       "de": "Tagungsprogramm",
       "en": "Academic Programme",
-      "review_status": "REVIEW",
+      "review_status": "SETTLED",
       "alt": [
         "Scientific Programme",
         "Conference Programme"
@@ -116,7 +116,7 @@
     "nav_social": {
       "de": "Rahmenprogramm",
       "en": "Social Programme",
-      "review_status": "DRAFT",
+      "review_status": "SETTLED",
       "alt": [
         "Accompanying Programme",
         "Social Events"
@@ -141,7 +141,7 @@
     "nav_about_group": {
       "de": "Über den AGW",
       "en": "About AGW",
-      "review_status": "REVIEW",
+      "review_status": "SETTLED",
       "alt": [
         "About the AGW",
         "About the Committee"
@@ -150,7 +150,7 @@
     "nav_about": {
       "de": "Über den Ausschuss",
       "en": "About the Committee",
-      "review_status": "REVIEW",
+      "review_status": "SETTLED",
       "note": "See glossary: Ausschuss."
     },
     "nav_history": {
@@ -198,7 +198,7 @@
     "sub_programme": {
       "de": "Tagungsprogramm",
       "en": "Academic Programme",
-      "review_status": "REVIEW",
+      "review_status": "SETTLED",
       "note": "Same as nav_programme."
     },
     "sub_social": {
@@ -215,7 +215,7 @@
     "sec_lbl_programme": {
       "de": "Wissenschaftliches Programm",
       "en": "Academic Programme",
-      "review_status": "REVIEW",
+      "review_status": "SETTLED",
       "alt": [
         "Scientific Programme"
       ]
@@ -253,7 +253,7 @@
     "prog_opening": {
       "de": "Begrüßung",
       "en": "Opening / Welcome",
-      "review_status": "REVIEW",
+      "review_status": "SETTLED",
       "alt": [
         "Welcome and Opening Remarks",
         "Opening Session"
@@ -262,7 +262,7 @@
     "prog_memorial": {
       "de": "Erinnerungen an drei verstorbene Ausschussmitglieder",
       "en": "In Memoriam: Three Departed Members",
-      "review_status": "REVIEW",
+      "review_status": "SETTLED",
       "alt": [
         "Remembrance of Three Deceased Members"
       ]
@@ -306,7 +306,7 @@
     "prog_assembly": {
       "de": "Mitgliederversammlung",
       "en": "Members' Assembly",
-      "review_status": "REVIEW",
+      "review_status": "SETTLED",
       "alt": [
         "General Assembly",
         "Members' Meeting",
@@ -337,7 +337,7 @@
     "sec_ttl_social": {
       "de": "Gesellschaftliches Programm",
       "en": "Social Events",
-      "review_status": "REVIEW",
+      "review_status": "SETTLED",
       "alt": [
         "Social Programme",
         "Accompanying Programme"
@@ -396,7 +396,7 @@
     "lbl_partner": {
       "de": "Partnerprogramm",
       "en": "Partner Programme",
-      "review_status": "REVIEW",
+      "review_status": "SETTLED",
       "alt": [
         "Accompanying Persons' Programme",
         "Partner Activities"
@@ -405,7 +405,7 @@
     "ttl_partner": {
       "de": "Ausflugsmöglichkeiten für Begleitpersonen",
       "en": "Activities for Accompanying Guests",
-      "review_status": "REVIEW",
+      "review_status": "SETTLED",
       "alt": [
         "Excursions for Accompanying Persons"
       ]
