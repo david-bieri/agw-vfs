@@ -1,8 +1,8 @@
 # AGW Website — Implementation Progress
 
-**Current version:** v8 (multi-page architecture)
-**Last updated:** 2026-06-03
-**Conference:** June 25–27, 2026 (T-22 days)
+**Current version:** v9 (analytics UX + repo tidy)
+**Last updated:** 2026-06-05
+**Conference:** June 25–27, 2026 (T-20 days)
 
 ---
 
@@ -17,6 +17,7 @@
 - [x] **v6** (2026-05-31, commit `547ec7e`) — Launch-ready: PWA service worker, og:image social preview card, SPIA logo (base64), archive map (Leaflet, 46 venues), global search overlay (Ctrl+K), news feed, sister societies, iCal download, countdown timer, mobile CSS (3 breakpoints), VT SPIA logo as base64 data URI.
 - [x] **v7** (2026-06-03, commit `7d0bbbf` + Phase 1) — Analytics integration: Chronik tab (vanilla-JS showcase) in Archive section, standalone `analytics.html` (Gaze Map + Analytics A–E + Topic Analysis A–F), `guide.html` (user manual), central `agw_strings.js` translation registry with extended `AGW.applyLang()` handling both legacy `data-i18n` and new `data-str` patterns.
 - [x] **v8** (2026-06-03, commits `61435b4` + `00856cc` + `67b5ab4` + `4335b8d` + multi-page push) — Multi-page architecture: monolithic `index.html` (310 KB) split into 5 pages with shared foundation files. New top-level routes: `archive.html` (scholarly archive + publications) and `committee.html` (about + history + members + chairs + sister societies + statutes). Foundation extracted: `agw_styles.css`, `agw_data.js`, `agw_app.js`, `agw_nav.js`. Cross-page hash redirects; service worker v2-multipage precaches all 5 pages + 6 foundation files. Reception Atlas renaming complete. Mobile responsive fixes across all JSX SVGs. 21 missing i18n keys gap-filled; 0 keys missing across pages. Hero conference theme + paper titles tagged for translation (Option 3 hybrid).
+- [x] **v9** (2026-06-05) — Analytics UX hardening + repo tidy: zoom+pan for all analytics tabs (CSS `zoom` on scroll container, not `transform:scale`); tooltips stay in viewport; BipNetView force simulation removed (clean static bipartite columns); gray text legibility across all 3 bundles; Receptionsatlas tooltips show birth–death years; Nach Epoche tooltip lists actual figure names. Orphan root-level bundles (`agw_gaze_map.js`, `agw_analysis.js`, `agw_pmi.js`) removed — `dist/` is canonical. SW cache v9-zoom-tooltips.
 
 ### Translation infrastructure (unified, Phase 1)
 - [x] `const EN` extracted from `index.html` → moved to `agw_strings.js` (250 keys total: 58 analytics + 192 main-site)
@@ -190,6 +191,10 @@
 | ADR-013 | **Multi-page architecture** (overrides ADR-001): monolithic `index.html` split into 5 pages (index/archive/committee/analytics/guide) with shared foundation files (`agw_styles.css`, `agw_data.js`, `agw_app.js`, `agw_nav.js`). Each page under 100 KB excluding hero/footer base64. Service worker precaches all 5 + foundation. | 2026-06-03 |
 | ADR-014 | **Paper titles: Option 3 hybrid** (supersedes ADR-003): DE original always shown; EN mode appends translated subtitle in `<span class="title-trans">` (lighter grey, smaller, wraps to new line on mobile). Preserves scholarly artifact while improving accessibility for international attendees. Applied to all 10 plenary/keynote titles in 2026 programme. | 2026-06-03 |
 | ADR-015 | **Foundation files extracted** from monolithic HTML: CSS via `<link>`, data via `<script>`, render functions via `<script>`, nav via shared renderer mounted into `#nav-mount`. Enables multi-page reuse without build step. | 2026-06-03 |
+| ADR-016 | **Render-guard pattern** — every `render*()`/`init*()` and every DOM access in shared init paths must early-return if its target is missing. Prevents cascade failures when pages share `agw_app.js`. | 2026-06-04 |
+| ADR-017 | **Data-file self-containment** — `agw_data.js` must never reference a constant declared in a later-loaded file at top level; doing so aborts the entire data file silently under script load order. | 2026-06-04 |
+| ADR-018 | **esm.sh React externalization** — any CDN module that depends on React must be loaded with `?external=react,react-dom`; otherwise it bundles a second React instance whose hook dispatcher is null, causing `useRef` etc. to throw. | 2026-06-05 |
+| ADR-019 | **CSS `zoom` over `transform:scale` for scrollable zoom** — `scale()` keeps the layout box at original size, so overflow:auto has nothing to scroll. `zoom` rescales the layout box too; applying it directly to the scroll container means no intermediate layer intercepts mouse events. | 2026-06-05 |
 
 ---
 
@@ -240,12 +245,12 @@ agw_pmi_matrix.json        PMI scores
 
 ---
 
-## What's next (after v8 deploy)
+## What's next (after v9 deploy)
 
-The architecture work is complete. Three things remain before June 25:
+Code work is done. Three content tasks remain before June 25:
 
-1. **Smoke test the multi-page deploy** — see Technical Pre-Conference Checklist above
-2. **Content** — confirm Saturday lunch; remove PDF watermarks; send `AGW_en.json` to Klump
-3. **Share** — send live URL to registered participants
+1. **Content** — confirm Saturday lunch; remove PDF watermarks; send `AGW_en.json` to Klump
+2. **Share** — send live URL to registered participants
+3. **Smoke test** — walk every page (DE+EN), confirm zoom+pan on analytics, Tab F bipartite net, gaze-map tooltips
 
-Post-conference, the substantive remaining technical work is Phase 2 i18n (extract remaining DE strings from HTML), cross-page search index, and GitHub Actions automation for JSX rebuilds. Everything else is content (publication ToCs, members list, archive enrichment) or analytics refinement (1991 gap, network viz decision).
+Post-conference: Phase 2 i18n (extract remaining DE strings), cross-page Ctrl+K search index, GitHub Actions for JSX rebuilds.

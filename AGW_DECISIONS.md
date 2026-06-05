@@ -290,3 +290,87 @@ Satzung §7.2 requires public accessibility of the charter — a download link s
 - If the Satzung is revised, the PDF must be replaced in the repo and the summary prose updated
 - The summary is in German only (appropriate for an institutional legal document)
 - The founding facts card (1980, 46 conferences, 48 members, 42 volumes) must be kept manually up to date after each Jahrestagung
+
+---
+
+## ADR-016: Render-Guard Pattern for All Shared Init Paths
+
+**Date:** 2026-06-04
+**Status:** Accepted
+
+**Decision:**
+Every `render*()` / `init*()` function in `agw_app.js` that touches page-specific DOM must early-return (`if (!el) return;`) as its first line. This rule extends beyond a function's primary target to *every* DOM access in the shared init path — including elements injected dynamically after init (e.g. `btn-de`/`btn-en` inside `setLang()`, which are mounted by `renderNav()` that runs *after* `agw_app.js` initialises).
+
+**Rationale:**
+All five pages share `agw_app.js`. A missing-element throw anywhere in the shared init block cascades and kills all subsequent initialisation on that page — unrelated features (countdown, news feed, Logistik map) all go dark from a single missing element. The pattern was discovered the hard way when the multi-page split caused the Logistik map `#map-logistik` to be absent on non-index pages, aborting the entire init chain.
+
+**Alternatives considered:**
+- Per-page `agw_app_index.js` / `agw_app_archive.js` etc.: avoids the guard requirement but multiplies the number of files and breaks the "one render function, used everywhere" maintenance model.
+- Try/catch around the full init block: hides bugs rather than preventing them; error messages become harder to locate.
+
+**Consequences:**
+- Every new `render*()` or `init*()` function must include the guard as its first line — this is a code-review checklist item
+- `setLang()` must null-guard any element it touches that might not exist on every page
+- Violations are easy to detect: a missing guard produces a cascade of unrelated failures rather than an isolated error
+
+---
+
+## ADR-017: Data-File Self-Containment
+
+**Date:** 2026-06-04
+**Status:** Accepted
+
+**Decision:**
+`agw_data.js` (and any future shared data file) must be entirely self-contained. It must never reference a `const`, `let`, or `var` that is declared in a *later-loaded* file (`agw_app.js`, `agw_strings.js`, etc.) at the top level of the module.
+
+**Rationale:**
+Script load order in the browser is sequential. A top-level reference to a name that sits in a later file hits the temporal dead zone and throws a `ReferenceError` before the data file finishes executing. Because `agw_data.js` is loaded first (it is a dependency of everything else), this silently leaves `PUBLICATIONS`, `FMTS`, `ANNOUNCEMENTS`, and any other data declared after the offending line as `undefined` site-wide. The root cause of the "DH_SEARCH already declared" bug in v8: `DH_SEARCH` lived in `agw_app.js` but was referenced at the top level of `agw_data.js`, aborting the data file mid-parse.
+
+**Consequences:**
+- Data-only constants (lookup tables, URL prefixes) belong in `agw_data.js`, not in `agw_app.js`
+- If `agw_app.js` needs a constant that is also needed by `agw_data.js`, it lives in `agw_data.js`
+- Any future data file added to the foundation set must follow the same rule
+
+---
+
+## ADR-018: esm.sh React Externalization
+
+**Date:** 2026-06-05
+**Status:** Accepted
+
+**Decision:**
+Any CDN module loaded via the importmap in `analytics.html` that has React as a peer dependency **must** be loaded with the `?external=react,react-dom` query parameter. Example: `"recharts": "https://esm.sh/recharts@2?external=react,react-dom"`.
+
+**Rationale:**
+Without the `?external` flag, esm.sh bundles its own copy of React inside the module. The page then has two React instances with separate internal state (hook dispatcher, context registry, etc.). The second instance has `currentDispatcher === null` because no React tree is rendering under it, so any hook call (`useRef`, `useState`, `useEffect`) throws `TypeError: Cannot read properties of null`. This manifested as `TypeError: Cannot read properties of null (reading 'useRef')` in `ResponsiveContainer.js:45:22` (recharts) after the analytics refactor.
+
+**Consequences:**
+- The importmap in `analytics.html` must be reviewed whenever a new React-dependent library is added
+- Libraries that are React-agnostic (d3, lodash, etc.) do not need the flag
+- The pattern applies to any future page that uses an importmap + CDN React
+
+---
+
+## ADR-019: CSS `zoom` over `transform: scale()` for Scrollable Zoom
+
+**Date:** 2026-06-05
+**Status:** Accepted
+
+**Decision:**
+When implementing user-adjustable zoom on visualisation panels that need to remain scrollable, apply the CSS `zoom` property directly to the scroll container element. Do not use `transform: scale()` for this purpose.
+
+**Rationale:**
+`transform: scale()` visually enlarges the element but does not change its layout box — the browser still allocates space as if the element were at its original size. `overflow: auto` on the parent therefore sees no overflow and shows no scrollbars, making zoomed-in content unreachable. A nested structure (zoom on inner div, overflow:auto on outer div) partially solves the scroll problem but creates an intermediate layer that intercepts pointer events, breaking React's synthetic event system — `onMouseEnter`/`onMouseLeave` on SVG children stop firing when zoom ≠ 1.
+
+CSS `zoom` rescales the element's layout box as well as its rendered output. Applying it directly to the scroll container means the container's own `overflow: auto` sees the correct enlarged dimensions and exposes scrollbars accordingly. No intermediate layer exists, so mouse events reach React components unimpeded.
+
+**Alternatives considered:**
+- `transform: scale()` + manual `width`/`height` override to force layout: brittle, breaks on dynamic content
+- Nested `.viz-zoom-inner` with `zoom`: partially worked for scrolling but broke mouse events (the regression that prompted this ADR)
+- `transform: scale()` + `transform-origin: top left` + synthetic scroll range via `padding-bottom`: complex and fragile
+
+**Consequences:**
+- Zoom is implemented as a single `.viz-zoom-wrap { zoom: N; overflow: auto; }` element — no nested inner div needed
+- `window.setZoom()` targets `.viz-zoom-wrap` directly
+- The CSS `zoom` property is not part of the CSS spec (it is a legacy property), but has universal browser support including Firefox as of 2024; it is safe to use here
+- If a future browser drops `zoom` support, the fallback is `transform: scale()` with the scroll limitation accepted, or a full reimplementation using a ResizeObserver to measure content and set explicit dimensions
