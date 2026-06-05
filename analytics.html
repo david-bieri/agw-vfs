@@ -267,7 +267,45 @@
       .nav-back::after { content: "←"; font-size: 14px; }
     }
     body { overflow-x: hidden; }
-</style>
+
+    /* ── Zoom control ── */
+    .zoom-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 20px;
+      background: rgba(0,0,0,0.15);
+      border-bottom: 1px solid rgba(200,200,216,0.08);
+      justify-content: flex-end;
+    }
+    .zoom-bar label {
+      font-size: 10px;
+      color: #6070a0;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .zoom-bar input[type=range] {
+      width: 100px;
+      accent-color: #90CAF9;
+      cursor: pointer;
+    }
+    .zoom-bar button {
+      background: transparent;
+      border: 1px solid rgba(200,200,216,0.2);
+      color: #90CAF9;
+      border-radius: 3px;
+      padding: 2px 8px;
+      font-size: 11px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .zoom-bar button:hover { background: rgba(144,202,249,0.1); }
+    .zoom-bar .zoom-pct { font-size: 10px; color: #6070a0; min-width: 34px; text-align: right; }
+    .viz-zoom-wrap {
+      transform-origin: top center;
+      transition: transform 0.15s;
+    }
+  </style>
 </head>
 <body>
 
@@ -299,19 +337,30 @@
       onclick="showTool('pmi',this)"><span class="ico ico-topic" aria-hidden="true"></span> <span data-str="tab_pmi">Themenanalyse</span></button>
   </div>
 
+
+  <!-- ── Zoom control bar ── -->
+  <div class="zoom-bar" id="zoom-bar">
+    <label>Zoom</label>
+    <button onclick="adjustZoom(-0.1)">−</button>
+    <input type="range" id="zoom-slider" min="0.5" max="2" step="0.05" value="1"
+      oninput="setZoom(parseFloat(this.value))" />
+    <button onclick="adjustZoom(0.1)">+</button>
+    <span class="zoom-pct" id="zoom-pct">100%</span>
+    <button onclick="setZoom(1)" style="margin-left:4px">Reset</button>
+  </div>
   <!-- ── Panels ── -->
   <main>
     <div class="tool-panel active" id="panel-gaze">
       <div class="loading" id="loading-gaze" data-str="loading">Lädt…</div>
-      <div id="mount-gaze"></div>
+      <div class="viz-zoom-wrap" id="wrap-mount-gaze"><div id="mount-gaze"></div></div>
     </div>
     <div class="tool-panel" id="panel-analysis">
       <div class="loading" id="loading-analysis" data-str="loading">Lade Analysen…</div>
-      <div id="mount-analysis"></div>
+      <div class="viz-zoom-wrap" id="wrap-mount-analysis"><div id="mount-analysis"></div></div>
     </div>
     <div class="tool-panel" id="panel-pmi">
       <div class="loading" id="loading-pmi" data-str="loading">Lade Themenanalyse…</div>
-      <div id="mount-pmi"></div>
+      <div class="viz-zoom-wrap" id="wrap-mount-pmi"><div id="mount-pmi"></div></div>
     </div>
   </main>
 
@@ -388,6 +437,19 @@
       .addEventListener('click', () =>
         mount('panel-pmi', 'mount-pmi', 'loading-pmi',
               './dist/agw_pmi.js', s.pmi));
+  
+    /* ── Zoom control ── */
+    var currentZoom = 1;
+    function setZoom(z) {
+      currentZoom = Math.min(2, Math.max(0.5, z));
+      document.querySelectorAll('.viz-zoom-wrap').forEach(function(el) {
+        el.style.transform = 'scale(' + currentZoom + ')';
+      });
+      document.getElementById('zoom-slider').value = currentZoom;
+      document.getElementById('zoom-pct').textContent = Math.round(currentZoom * 100) + '%';
+    }
+    function adjustZoom(delta) { setZoom(currentZoom + delta); }
+
   </script>
 
 </body>
