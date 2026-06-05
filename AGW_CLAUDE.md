@@ -25,7 +25,7 @@ Verein für Socialpolitik (VfS).
 **Project context (slow-changing reference):**
 1. `AGW_README.md` — architecture, site structure, content update guide
 2. `AGW_PROGRESS.md` — what's done, pre-conference checklist, backlog
-3. `AGW_DECISIONS.md` — only if facing a design/architecture question (15 ADRs as of v8)
+3. `AGW_DECISIONS.md` — only if facing a design/architecture question (15 promoted ADRs + 3 candidate ADRs as of v8: ADR-016 render guards, ADR-017 data-file self-containment, ADR-018 esm.sh React externalize)
 
 **Protocol for ending the session:**
 4. `AGW_HANDOVER.md` — the skill that defines how to write `AGW_SESSION_NOTES.md` at session end. Invoke when David says "handover", "wrap up", "switching chats", "compaction prep", or at any version milestone.
@@ -45,19 +45,19 @@ Verein für Socialpolitik (VfS).
 - `guide.html` (~23 KB) — user manual
 
 **Six foundation files** shared across pages:
-- `agw_styles.css` — all CSS (31 KB)
-- `agw_strings.js` — translation registry (35 KB, 250 keys)
+- `agw_styles.css` — all CSS (42 KB; grew from 31 KB after SVG-icon utilities + a11y batch in v3-ui-batch)
+- `agw_strings.js` — translation registry (~36 KB, ~251 keys; `lbl_map` added in v3-ui-batch)
 - `agw_data.js` — CHAIRS, MEMBERS, ARCHIVE, PUBLICATIONS, FMTS, ANNOUNCEMENTS (60 KB)
-- `agw_app.js` — render functions, setLang, init* (46 KB)
+- `agw_app.js` — render functions, setLang, init* (49 KB; grew from 46 KB after setLang null-guards + SVG-icon escape fixes)
 - `agw_nav.js` — shared header + mobile menu renderer (9 KB)
 - `agw_chronik.js` — vanilla-JS Chronik panel (29 KB)
 
 **Compiled bundles** (built via `build_analytics.sh`, sources in gitignored `src-jsx/`):
-- `dist/agw_gaze_map.js` — Reception Atlas
-- `dist/agw_analysis.js` — Historical Analytics A–E
-- `dist/agw_pmi.js` — Topic Analysis A–F
+- `dist/agw_gaze_map.js` — Reception Atlas (~101 KB)
+- `dist/agw_analysis.js` — Historical Analytics A–E (~106 KB)
+- `dist/agw_pmi.js` — Topic Analysis A–F (~303 KB)
 
-**PWA:** service-worker.js with cache `agw-2026-v2-multipage`, precaches all 5 pages + 6 foundation files
+**PWA:** service-worker.js with cache `agw-2026-v4-analytics-fix`, precaches all 5 pages + 6 foundation files. Bump pattern: v1 (initial) → v2-multipage → v3-ui-batch → v4-analytics-fix. Every change to a precached asset requires a cache-version bump.
 **Companion:** `AGW_en.json` (editorial review document for Rainer Klump, not loaded at runtime)
 **Status:** Live and functional. Pre-conference content tasks outstanding (see `AGW_PROGRESS.md` checklist).
 
@@ -91,7 +91,9 @@ Five static HTML pages served from GitHub Pages, sharing six foundation files (`
 **Architecture**
 - No bundler for the 5 pages or 6 foundation files; static HTML + plain CSS + plain JS only. The React analytics components are the only exception: built via `build_analytics.sh` (esbuild) into `dist/`.
 - Foundation files MUST stay extracted — do not inline CSS/JS back into pages (ADR-015)
-- Every `render*()` / `init*()` function MUST early-return if its primary target DOM element is missing (`if (!el) return;` as the first line). This is non-negotiable: pages share `agw_app.js`, so a missing-element throw on one page cascades and breaks unrelated init on that page.
+- Every `render*()` / `init*()` function MUST early-return if its primary target DOM element is missing (`if (!el) return;` as the first line). This is non-negotiable: pages share `agw_app.js`, so a missing-element throw on one page cascades and breaks unrelated init on that page. **This extends to every DOM access in shared init paths** — e.g. `setLang` must null-guard `btn-de`/`btn-en` because those are mounted by `renderNav`, which runs AFTER `agw_app.js` init. Candidate ADR-016.
+- Data files (`agw_data.js`) MUST be self-contained — never reference a constant declared in a later-loaded file at top level. The reference will hit the temporal dead zone, abort the entire data file silently, and leave everything below undefined site-wide. Candidate ADR-017.
+- **esm.sh modules in `analytics.html` that depend on React MUST use `?external=react,react-dom`** — otherwise the module bundles its own React, creating two instances with separate hook dispatchers; calls like `useRef` then throw on null. The recharts case was the manifestation: `"recharts": "https://esm.sh/recharts@2?external=react,react-dom"`. Pattern applies to any future React-dependent bundle. Candidate ADR-018.
 - `setLang()` re-renders all JS-driven sections: `renderChairs()`, `renderMembers()`, `renderArchive()`, `renderPubs()`, `renderAnnouncements()`, `updateCountdown()`. Anything added to JS-driven render must be added to `setLang()` too.
 - Service worker cache version (`agw-2026-vN-...`) must be bumped on any change to precached assets, or clients will serve stale files
 
@@ -139,4 +141,4 @@ AGW_CLAUDE.md           This file
 
 ## Immediate Next Tasks
 
-See `AGW_PROGRESS.md` → "Pre-Conference Checklist" and `AGW_SESSION_NOTES.md` → section 6 ("Suggested next session") for the current state. Items 1–6 from the v5 version of this file are all done.
+See `AGW_PROGRESS.md` → "Pre-Conference Checklist" and `AGW_SESSION_NOTES.md` → section 6 ("Suggested next session") for the current state. Phase 2 analytics feature work (mouseover content, centering, font/zoom, legibility) is queued — see session notes section 4 for the full backlog and section 5 for the two design-question prerequisites.
