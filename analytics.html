@@ -436,8 +436,6 @@
   </footer>
 
   <script src="agw_strings.js"></script>
-  <script src="agw_lineage_data.js"></script>
-  <script src="agw_lineage.js"></script>
   <!-- ── Language + tab logic ── -->
   <script>
     /* Language — delegates to agw_strings.js (AGW global) */
@@ -452,11 +450,20 @@
       AGW.applyLang(l);
     }
 
+    var lineageLoaded = false;
     function showTool(name, btn) {
       document.querySelectorAll('.tool-panel').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.tool-tab').forEach(b => b.classList.remove('active'));
       document.getElementById('panel-' + name).classList.add('active');
       btn.classList.add('active');
+      if (name === 'lineage' && !lineageLoaded) {
+        lineageLoaded = true;
+        ['agw_lineage_data.js', 'agw_lineage.js'].forEach(function(src) {
+          var s = document.createElement('script');
+          s.src = src;
+          document.body.appendChild(s);
+        });
+      }
     }
 
     function showBundleError(mountId, loadingId, filename) {
