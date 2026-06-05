@@ -1,7 +1,7 @@
 /* AGW Jahrestagung 2026 — Service Worker
  * Strategy: Cache-first for shell + static assets; network-first for tiles
  */
-const CACHE = 'agw-2026-v20-local-react';
+const CACHE = 'agw-2026-v21-vendor-react';
 
 const PRECACHE = [
   '/agw-vfs/',
