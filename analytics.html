@@ -477,24 +477,33 @@
     import { createElement }  from 'react';
     import { createRoot }     from 'react-dom/client';
 
-    function mount(panelId, mountId, loadingId, bundlePath, state) {
+    function mount(panelId, mountId, loadingId, bundlePath, state, retries) {
       if (state.done) return;
-      state.done = true;
-      import(bundlePath).then(mod => {
-        document.getElementById(loadingId).style.display = 'none';
-        createRoot(document.getElementById(mountId))
-          .render(createElement(mod.default, null));
-      }).catch(() => {
-        showBundleError(mountId, loadingId,
-          bundlePath.replace('./dist/', ''));
-      });
+      var attempts = retries || 1;
+      function attempt(n) {
+        import(bundlePath).then(mod => {
+          state.done = true;
+          document.getElementById(loadingId).style.display = 'none';
+          createRoot(document.getElementById(mountId))
+            .render(createElement(mod.default, null));
+        }).catch(() => {
+          if (n > 1) {
+            setTimeout(() => attempt(n - 1), 800);
+          } else {
+            state.done = true;
+            showBundleError(mountId, loadingId,
+              bundlePath.replace('./dist/', ''));
+          }
+        });
+      }
+      attempt(attempts);
     }
 
     const s = { gaze:{}, analysis:{}, pmi:{} };
 
-    /* Reception Atlas loads immediately — first visible tab */
+    /* Reception Atlas loads immediately — first visible tab; retries 3× on CDN hiccup */
     mount('panel-gaze', 'mount-gaze', 'loading-gaze',
-          './dist/agw_gaze_map.js', s.gaze);
+          './dist/agw_gaze_map.js', s.gaze, 3);
 
     document.getElementById('tab-analysis')
       .addEventListener('click', () =>
