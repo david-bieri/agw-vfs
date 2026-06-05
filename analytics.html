@@ -339,6 +339,8 @@
       onclick="showTool('analysis',this)"><span class="ico ico-chart" aria-hidden="true"></span> <span data-str="tab_analysis">Analysen</span></button>
     <button class="tool-tab" id="tab-pmi"
       onclick="showTool('pmi',this)"><span class="ico ico-topic" aria-hidden="true"></span> <span data-str="tab_pmi">Themenanalyse</span></button>
+    <button class="tool-tab" id="tab-lineage"
+      onclick="showTool('lineage',this)"><span class="ico ico-trend" aria-hidden="true"></span> <span data-str="tab_lineage">Stammbaum</span></button>
   </div>
 
 
@@ -366,6 +368,9 @@
       <div class="loading" id="loading-pmi" data-str="loading">Lade Themenanalyse…</div>
       <div class="viz-zoom-wrap" id="wrap-mount-pmi"><div id="mount-pmi"></div></div>
     </div>
+    <div class="tool-panel" id="panel-lineage">
+      <div class="viz-zoom-wrap" id="wrap-mount-lineage"><div id="hetl-mount"></div></div>
+    </div>
   </main>
 
   <footer class="page-footer">
@@ -374,6 +379,8 @@
   </footer>
 
   <script src="agw_strings.js"></script>
+  <script src="agw_lineage_data.js"></script>
+  <script src="agw_lineage.js"></script>
   <!-- ── Language + tab logic ── -->
   <script>
     /* Language — delegates to agw_strings.js (AGW global) */

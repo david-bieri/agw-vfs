@@ -47,6 +47,7 @@
     tab_gaze:            { de: 'Rezeptionsatlas',        en: 'Reception Atlas' },
     tab_analysis:        { de: 'Analysen',               en: 'Analytics' },
     tab_pmi:             { de: 'Themenanalyse',          en: 'Topic Analysis' },
+    tab_lineage:         { de: 'Stammbaum',              en: 'Lineages' },
 
     // ── Tool display names (used in guide + page headings) ────────
     tool_chronik:        { de: 'Chronik',                 en: 'Chronicle' },

@@ -1,7 +1,7 @@
 /* AGW Jahrestagung 2026 — Service Worker
  * Strategy: Cache-first for shell + static assets; network-first for tiles
  */
-const CACHE = 'agw-2026-v9-zoom-tooltips';
+const CACHE = 'agw-2026-v10-lineage';
 
 const PRECACHE = [
   '/agw-vfs/',
@@ -18,6 +18,8 @@ const PRECACHE = [
   '/agw-vfs/agw_app.js',
   '/agw-vfs/agw_nav.js',
   '/agw-vfs/agw_chronik.js',
+  '/agw-vfs/agw_lineage_data.js',
+  '/agw-vfs/agw_lineage.js',
   // External resources
   'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap',
   'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css',
