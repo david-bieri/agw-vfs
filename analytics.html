@@ -11,13 +11,17 @@
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <!-- ES module import map — resolves bare specifiers to CDN -->
+  <!-- recharts MUST use ?external=react,react-dom or it bundles its own       -->
+  <!-- React, causing "Cannot read properties of null (reading 'useRef')" in  -->
+  <!-- ResponsiveContainer (two React instances, no shared hook dispatcher). -->
   <script type="importmap">
   {
     "imports": {
       "react":             "https://esm.sh/react@18",
+      "react-dom":         "https://esm.sh/react-dom@18",
       "react-dom/client":  "https://esm.sh/react-dom@18/client",
       "react/jsx-runtime": "https://esm.sh/react@18/jsx-runtime",
-      "recharts":          "https://esm.sh/recharts@2",
+      "recharts":          "https://esm.sh/recharts@2?external=react,react-dom",
       "d3":                "https://esm.sh/d3@7"
     }
   }
@@ -313,7 +317,7 @@
 
   <footer class="page-footer">
     <span>AGW · Ausschuss für die Geschichte der Wirtschaftswissenschaften · Verein für Socialpolitik</span>
-    <span>© 2025 · <a href="mailto:bieri@vt.edu">bieri@vt.edu</a></span>
+    <span>© 2026 · <a href="mailto:bieri@vt.edu">David Bieri</a></span>
   </footer>
 
   <script src="agw_strings.js"></script>
