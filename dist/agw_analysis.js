@@ -59,7 +59,7 @@ function AGWAnalysis() {
       /* @__PURE__ */ jsx("div", { style: {
         fontSize: 10,
         letterSpacing: "0.2em",
-        color: "#6070a0",
+        color: "#9aa0c0",
         textTransform: "uppercase",
         marginBottom: 4
       }, children: lang.t("AGW \xB7 43 Conferences \xB7 1980\u20132023", "AGW \xB7 43 Jahrestagungen \xB7 1980\u20132023") }),
@@ -72,7 +72,7 @@ function AGWAnalysis() {
         fontSize: 11,
         letterSpacing: "0.06em",
         background: tab === t.id ? "rgba(144,202,249,0.12)" : "transparent",
-        color: tab === t.id ? ACC : "#6070a0",
+        color: tab === t.id ? ACC : "#9aa0c0",
         borderBottom: tab === t.id ? `2px solid ${ACC}` : "2px solid transparent"
       }, children: t.label }, t.id)) })
     ] }),
@@ -89,19 +89,19 @@ function FlowView({ lang }) {
   const schools = RAW.schools.filter((s) => RAW.flow.some((r) => r[s] > 0.5));
   const data = RAW.flow.filter((r) => r.year >= 1982);
   return /* @__PURE__ */ jsxs("div", { style: { padding: "16px 16px 0" }, children: [
-    /* @__PURE__ */ jsx("p", { style: { margin: "0 0 8px 4px", fontSize: 12, color: "#6070a0", fontStyle: "italic" }, children: lang.t("Proportional share of citations per school, per conference year. Hover for details.", "Anteil der Zitate pro Schule und Konferenzjahr. Hover f\xFCr Details.") }),
+    /* @__PURE__ */ jsx("p", { style: { margin: "0 0 8px 4px", fontSize: 12, color: "#9aa0c0", fontStyle: "italic" }, children: lang.t("Proportional share of citations per school, per conference year. Hover for details.", "Anteil der Zitate pro Schule und Konferenzjahr. Hover f\xFCr Details.") }),
     /* @__PURE__ */ jsx(ResponsiveContainer, { width: "100%", height: 370, children: /* @__PURE__ */ jsxs(AreaChart, { data, margin: { top: 10, right: 20, left: 0, bottom: 45 }, children: [
       /* @__PURE__ */ jsx(
         XAxis,
         {
           dataKey: "year",
-          tick: { fill: "#5a6080", fontSize: 9 },
+          tick: { fill: "#8898b8", fontSize: 9 },
           interval: 4,
           angle: -45,
           textAnchor: "end"
         }
       ),
-      /* @__PURE__ */ jsx(YAxis, { tick: { fill: "#5a6080", fontSize: 9 }, tickFormatter: (v) => `${v}%` }),
+      /* @__PURE__ */ jsx(YAxis, { tick: { fill: "#8898b8", fontSize: 9 }, tickFormatter: (v) => `${v}%` }),
       /* @__PURE__ */ jsx(Tooltip, { content: ({ active, payload, label }) => {
         if (!active || !payload) return null;
         const conf = RAW.flow.find((r) => r.year === label) || {};
@@ -121,7 +121,7 @@ function FlowView({ lang }) {
             fontStyle: "italic",
             fontSize: 9
           }, children: conf.theme }),
-          top.map((p) => /* @__PURE__ */ jsxs("div", { style: { color: SC[p.dataKey] || "#888", lineHeight: 1.7 }, children: [
+          top.map((p) => /* @__PURE__ */ jsxs("div", { style: { color: SC[p.dataKey] || "#aaa", lineHeight: 1.7 }, children: [
             p.value.toFixed(1),
             "% \xB7 ",
             p.dataKey
@@ -176,7 +176,7 @@ function NetView({ lang }) {
   const hovNode = hov ? nodes.find((n) => n.id === hov) : null;
   const hovEdges = hov ? RAW.edges.filter((e) => e.a === hov || e.b === hov).sort((a, b) => b.w - a.w).slice(0, 7) : [];
   return /* @__PURE__ */ jsxs("div", { style: { position: "relative" }, children: [
-    /* @__PURE__ */ jsxs("p", { style: { margin: "8px 0 4px 16px", fontSize: 12, color: "#6070a0", fontStyle: "italic" }, children: [
+    /* @__PURE__ */ jsxs("p", { style: { margin: "8px 0 4px 16px", fontSize: 12, color: "#9aa0c0", fontStyle: "italic" }, children: [
       lang.t("Figures co-cited across conferences. Node size = total conferences cited.", "Gemeinsam zitierte Figuren \xFCber Konferenzen hinweg. Knotengr\xF6\xDFe = Konferenzanzahl."),
       "Hover for details."
     ] }),
@@ -205,7 +205,7 @@ function NetView({ lang }) {
           )) }),
           /* @__PURE__ */ jsx("g", { children: nodes.map((n) => {
             const r = 5 + Math.sqrt(n.df) * 1.8;
-            const col = SC[n.s] || "#888";
+            const col = SC[n.s] || "#aaa";
             const isH = hov === n.id;
             return /* @__PURE__ */ jsxs(
               "g",
@@ -253,7 +253,7 @@ function NetView({ lang }) {
       zIndex: 20,
       background: "rgba(10,14,26,0.96)",
       border: `1px solid rgba(144,202,249,0.2)`,
-      borderLeft: `3px solid ${SC[hovNode.s] || "#888"}`,
+      borderLeft: `3px solid ${SC[hovNode.s] || "#aaa"}`,
       padding: "10px 14px",
       borderRadius: 3,
       fontSize: 10,
@@ -267,8 +267,8 @@ function NetView({ lang }) {
         fontSize: 11,
         marginBottom: 2
       }, children: hovNode.id }),
-      /* @__PURE__ */ jsx("div", { style: { color: SC[hovNode.s] || "#888" }, children: hovNode.s }),
-      /* @__PURE__ */ jsxs("div", { style: { color: "#6070a0", marginBottom: 6 }, children: [
+      /* @__PURE__ */ jsx("div", { style: { color: SC[hovNode.s] || "#aaa" }, children: hovNode.s }),
+      /* @__PURE__ */ jsxs("div", { style: { color: "#9aa0c0", marginBottom: 6 }, children: [
         "b.",
         hovNode.b,
         " \xB7 ",
@@ -298,14 +298,14 @@ function SlopeView({ lang }) {
   const xL = (v) => PAD + v / maxVal * half;
   const xR = (v) => W - PAD - v / maxVal * half;
   return /* @__PURE__ */ jsxs("div", { style: { overflowX: "auto", padding: "8px 0" }, children: [
-    /* @__PURE__ */ jsx("p", { style: { margin: "8px 0 4px 16px", fontSize: 12, color: "#6070a0", fontStyle: "italic" }, children: lang.t("1980\u20132001 (left) vs 2002\u20132023 (right). Hover for school and change ratio.", "1980\u20132001 (links) vs. 2002\u20132023 (rechts). Hover f\xFCr Schule und Ver\xE4nderungsrate.") }),
+    /* @__PURE__ */ jsx("p", { style: { margin: "8px 0 4px 16px", fontSize: 12, color: "#9aa0c0", fontStyle: "italic" }, children: lang.t("1980\u20132001 (left) vs 2002\u20132023 (right). Hover for school and change ratio.", "1980\u20132001 (links) vs. 2002\u20132023 (rechts). Hover f\xFCr Schule und Ver\xE4nderungsrate.") }),
     /* @__PURE__ */ jsxs("div", { style: {
       display: "flex",
       justifyContent: "center",
       gap: 60,
       marginBottom: 6,
       fontSize: 10,
-      color: "#6070a0"
+      color: "#9aa0c0"
     }, children: [
       /* @__PURE__ */ jsx("span", { children: "\u25C0 1980\u20132001" }),
       /* @__PURE__ */ jsx("span", { children: "2002\u20132023 \u25B6" })
@@ -325,7 +325,7 @@ function SlopeView({ lang }) {
       ),
       data.map((d, i) => {
         const y = TOP + i * H_ROW + H_ROW / 2;
-        const col = SC[d.s] || "#888";
+        const col = SC[d.s] || "#aaa";
         const isH = hov === d.n;
         const bH = H_ROW * 0.55;
         const rising = d.h2 > d.h1;
@@ -393,8 +393,8 @@ function SlopeView({ lang }) {
           d.n
         );
       }),
-      /* @__PURE__ */ jsx("text", { x: W / 2 - 8, y: H - 10, textAnchor: "end", fontSize: 8, fill: "#4a5070", children: "1980\u20132001" }),
-      /* @__PURE__ */ jsx("text", { x: W / 2 + 8, y: H - 10, textAnchor: "start", fontSize: 8, fill: "#4a5070", children: "2002\u20132023" })
+      /* @__PURE__ */ jsx("text", { x: W / 2 - 8, y: H - 10, textAnchor: "end", fontSize: 8, fill: "#8090b8", children: "1980\u20132001" }),
+      /* @__PURE__ */ jsx("text", { x: W / 2 + 8, y: H - 10, textAnchor: "start", fontSize: 8, fill: "#8090b8", children: "2002\u20132023" })
     ] })
   ] });
 }
@@ -408,7 +408,7 @@ function LagView({ lang }) {
   const yOf = (d) => P.t + IH - (d - minD) / (maxD - minD) * IH;
   const hovItem = hov ? data.find((d) => d.n === hov) : null;
   return /* @__PURE__ */ jsxs("div", { style: { position: "relative", overflowX: "auto", padding: "8px 0" }, children: [
-    /* @__PURE__ */ jsx("p", { style: { margin: "8px 0 4px 16px", fontSize: 12, color: "#6070a0", fontStyle: "italic" }, children: lang.t("X = birth year \xB7 Y = first AGW citation \xB7 Points high-and-left = long discovery lag", "X = Geburtsjahr \xB7 Y = erste AGW-Zitation \xB7 Hoch-und-links = lange Entdeckungsverz\xF6gerung") }),
+    /* @__PURE__ */ jsx("p", { style: { margin: "8px 0 4px 16px", fontSize: 12, color: "#9aa0c0", fontStyle: "italic" }, children: lang.t("X = birth year \xB7 Y = first AGW citation \xB7 Points high-and-left = long discovery lag", "X = Geburtsjahr \xB7 Y = erste AGW-Zitation \xB7 Hoch-und-links = lange Entdeckungsverz\xF6gerung") }),
     /* @__PURE__ */ jsxs("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "xMidYMid meet", style: { display: "block", width: "100%", height: "auto", maxWidth: W + "px" }, children: [
       [
         [1550, 1650, "rgba(255,193,7,0.04)"],
@@ -442,7 +442,7 @@ function LagView({ lang }) {
             strokeWidth: 0.5
           }
         ),
-        /* @__PURE__ */ jsx("text", { x: xOf(b), y: H - 8, textAnchor: "middle", fontSize: 8, fill: "#4a5070", children: b })
+        /* @__PURE__ */ jsx("text", { x: xOf(b), y: H - 8, textAnchor: "middle", fontSize: 8, fill: "#8090b8", children: b })
       ] }, b)),
       [1980, 1990, 2e3, 2010, 2020].map((y) => /* @__PURE__ */ jsxs("g", { children: [
         /* @__PURE__ */ jsx(
@@ -456,12 +456,12 @@ function LagView({ lang }) {
             strokeWidth: 0.5
           }
         ),
-        /* @__PURE__ */ jsx("text", { x: P.l - 4, y: yOf(y) + 3, textAnchor: "end", fontSize: 8, fill: "#4a5070", children: y })
+        /* @__PURE__ */ jsx("text", { x: P.l - 4, y: yOf(y) + 3, textAnchor: "end", fontSize: 8, fill: "#8090b8", children: y })
       ] }, y)),
       data.map((d) => {
         const r = Math.max(3, Math.sqrt(d.df) * 1.8);
         const isH = hov === d.n;
-        const col = SC[d.s] || "#888";
+        const col = SC[d.s] || "#aaa";
         return /* @__PURE__ */ jsx(
           "circle",
           {
@@ -479,7 +479,7 @@ function LagView({ lang }) {
           d.n
         );
       }),
-      /* @__PURE__ */ jsx("text", { x: P.l + IW / 2, y: H - 1, textAnchor: "middle", fontSize: 9, fill: "#5a6080", children: lang.t("Birth year", "Geburtsjahr") }),
+      /* @__PURE__ */ jsx("text", { x: P.l + IW / 2, y: H - 1, textAnchor: "middle", fontSize: 9, fill: "#8898b8", children: lang.t("Birth year", "Geburtsjahr") }),
       /* @__PURE__ */ jsx(
         "text",
         {
@@ -487,7 +487,7 @@ function LagView({ lang }) {
           y: P.t + IH / 2,
           textAnchor: "middle",
           fontSize: 9,
-          fill: "#5a6080",
+          fill: "#8898b8",
           transform: `rotate(-90,12,${P.t + IH / 2})`,
           children: lang.t("First AGW appearance", "Erster AGW-Auftritt")
         }
@@ -500,7 +500,7 @@ function LagView({ lang }) {
       zIndex: 10,
       background: "rgba(10,14,26,0.96)",
       border: `1px solid ${DIM}`,
-      borderLeft: `3px solid ${SC[hovItem.s] || "#888"}`,
+      borderLeft: `3px solid ${SC[hovItem.s] || "#aaa"}`,
       padding: "8px 12px",
       borderRadius: 3,
       fontSize: 10,
@@ -509,8 +509,8 @@ function LagView({ lang }) {
       pointerEvents: "none"
     }, children: [
       /* @__PURE__ */ jsx("div", { style: { fontWeight: "bold", color: "#e0e8ff" }, children: hovItem.n }),
-      /* @__PURE__ */ jsx("div", { style: { color: SC[hovItem.s] || "#888" }, children: hovItem.s }),
-      /* @__PURE__ */ jsxs("div", { style: { color: "#6070a0" }, children: [
+      /* @__PURE__ */ jsx("div", { style: { color: SC[hovItem.s] || "#aaa" }, children: hovItem.s }),
+      /* @__PURE__ */ jsxs("div", { style: { color: "#9aa0c0" }, children: [
         "b.",
         hovItem.b,
         " \xB7 debut ",
@@ -521,7 +521,7 @@ function LagView({ lang }) {
         hovItem.lag,
         " yr"
       ] }),
-      /* @__PURE__ */ jsxs("div", { style: { color: "#6070a0", fontSize: 9 }, children: [
+      /* @__PURE__ */ jsxs("div", { style: { color: "#9aa0c0", fontSize: 9 }, children: [
         hovItem.df,
         " conferences total"
       ] })
@@ -533,7 +533,7 @@ function DedView({ lang }) {
   const data = RAW.ded.slice(0, 52);
   const BH = 13, PAD = 190, W = 740, H = data.length * BH + 60;
   return /* @__PURE__ */ jsxs("div", { style: { overflowX: "auto", padding: "8px 0" }, children: [
-    /* @__PURE__ */ jsxs("p", { style: { margin: "8px 0 4px 16px", fontSize: 12, color: "#6070a0", fontStyle: "italic" }, children: [
+    /* @__PURE__ */ jsxs("p", { style: { margin: "8px 0 4px 16px", fontSize: 12, color: "#9aa0c0", fontStyle: "italic" }, children: [
       lang.t("% of total citations from single peak year. Low % = pillar (cited every year).", "% aller Zitate aus einem Spitzenjahr. Niedrig = S\xE4ule (jedes Jahr zitiert)."),
       "High % = guest (dedicated conference only)."
     ] }),
@@ -557,7 +557,7 @@ function DedView({ lang }) {
             y: H - 5,
             textAnchor: "middle",
             fontSize: 8,
-            fill: "#4a5070",
+            fill: "#8090b8",
             children: [
               v,
               "%"
@@ -580,7 +580,7 @@ function DedView({ lang }) {
       /* @__PURE__ */ jsx("text", { x: PAD + 0.25 * (W - PAD - 20) + 4, y: 13, fontSize: 8, fill: ACC, children: "pillar" }),
       data.map((d, i) => {
         const y = i * BH + 24;
-        const col = SC[d.s] || "#888";
+        const col = SC[d.s] || "#aaa";
         const isH = hov === d.n;
         const bW = d.pct / 100 * (W - PAD - 20);
         const isPillar = d.pct <= 25;

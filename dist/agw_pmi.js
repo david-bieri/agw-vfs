@@ -84,7 +84,7 @@ function PMIViz() {
         /* @__PURE__ */ jsxs("div", { style: {
           fontSize: 10,
           letterSpacing: "0.2em",
-          color: "#5060a0",
+          color: "#8090c0",
           textTransform: "uppercase",
           marginBottom: 4
         }, children: [
@@ -141,7 +141,7 @@ function HeatView({ lang }) {
           onClick: () => setSelSchool(selSchool === s ? null : s),
           style: {
             fontSize: 9,
-            color: SC[s] || "#888",
+            color: SC[s] || "#aaa",
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
@@ -170,7 +170,7 @@ function HeatView({ lang }) {
         }
       )
     ] }),
-    /* @__PURE__ */ jsx("p", { style: { margin: "4px 16px 2px", fontSize: 11, color: "#5060a0", fontStyle: "italic" }, children: lang.de ? D.ui_de.desc_heat : "Cell color = PPMI score. Darker = stronger association. Hover for details." }),
+    /* @__PURE__ */ jsx("p", { style: { margin: "4px 16px 2px", fontSize: 11, color: "#8090c0", fontStyle: "italic" }, children: lang.de ? D.ui_de.desc_heat : "Cell color = PPMI score. Darker = stronger association. Hover for details." }),
     /* @__PURE__ */ jsx("div", { style: { overflowX: "auto", overflowY: "auto", maxHeight: "calc(100vh - 200px)" }, children: /* @__PURE__ */ jsxs("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "xMidYMid meet", style: { display: "block", width: "100%", height: "auto", maxWidth: W + "px" }, children: [
       D.cat_spans.map((cs) => /* @__PURE__ */ jsxs("g", { children: [
         /* @__PURE__ */ jsx(
@@ -180,7 +180,7 @@ function HeatView({ lang }) {
             y: 0,
             width: (cs.end - cs.start) * CELL_W,
             height: TOP - 2,
-            fill: CAT_COLORS[cs.cat] || "#888",
+            fill: CAT_COLORS[cs.cat] || "#aaa",
             opacity: 0.15
           }
         ),
@@ -190,7 +190,7 @@ function HeatView({ lang }) {
             x: LEFT + cs.start * CELL_W + 2,
             y: 12,
             fontSize: 7,
-            fill: CAT_COLORS[cs.cat] || "#888",
+            fill: CAT_COLORS[cs.cat] || "#aaa",
             children: lang.tc(cs.cat)
           }
         )
@@ -201,7 +201,7 @@ function HeatView({ lang }) {
           x: LEFT + i * CELL_W + CELL_W / 2,
           y: TOP - 4,
           fontSize: 7,
-          fill: hov && hov.ti === i ? "#e0e8ff" : CAT_COLORS[t.cat] || "#888",
+          fill: hov && hov.ti === i ? "#e0e8ff" : CAT_COLORS[t.cat] || "#aaa",
           textAnchor: "end",
           transform: `rotate(-55,${LEFT + i * CELL_W + CELL_W / 2},${TOP - 4})`,
           children: lang.tl(t)
@@ -216,7 +216,7 @@ function HeatView({ lang }) {
             y: TOP + ri * CELL_H,
             width: 4,
             height: CELL_H - 1,
-            fill: SC[row.s] || "#888",
+            fill: SC[row.s] || "#aaa",
             opacity: 0.8
           }
         ),
@@ -227,7 +227,7 @@ function HeatView({ lang }) {
             y: TOP + ri * CELL_H + CELL_H - 3,
             textAnchor: "end",
             fontSize: 8,
-            fill: hov && hov.ri === ri ? "#e0e8ff" : SC[row.s] || "#888",
+            fill: hov && hov.ri === ri ? "#e0e8ff" : SC[row.s] || "#aaa",
             children: row.sn
           }
         ),
@@ -263,14 +263,14 @@ function HeatView({ lang }) {
       zIndex: 20,
       background: "rgba(10,14,26,0.97)",
       border: `1px solid rgba(144,202,249,0.2)`,
-      borderLeft: `3px solid ${SC[hov.school] || "#888"}`,
+      borderLeft: `3px solid ${SC[hov.school] || "#aaa"}`,
       padding: "8px 14px",
       borderRadius: 3,
       fontSize: 10,
       lineHeight: 1.8
     }, children: [
       /* @__PURE__ */ jsx("div", { style: { fontWeight: "bold", color: "#e0e8ff" }, children: hov.fig }),
-      /* @__PURE__ */ jsx("div", { style: { color: SC[hov.school] || "#888" }, children: hov.school }),
+      /* @__PURE__ */ jsx("div", { style: { color: SC[hov.school] || "#aaa" }, children: hov.school }),
       /* @__PURE__ */ jsxs("div", { children: [
         /* @__PURE__ */ jsx("span", { style: { color: CAT_COLORS[hov.cat] || ACC }, children: hov.term }),
         /* @__PURE__ */ jsxs("span", { style: { color: ACC, marginLeft: 8, fontWeight: "bold" }, children: [
@@ -293,7 +293,7 @@ function WheelView({ lang }) {
   const maxS = Math.max(...topics.map((t) => t.score), 1);
   const n = topics.length, aStep = 2 * Math.PI / n;
   return /* @__PURE__ */ jsxs("div", { style: { padding: "12px 16px" }, children: [
-    /* @__PURE__ */ jsx("p", { style: { margin: "0 0 8px", fontSize: 11, color: "#5060a0", fontStyle: "italic" }, children: lang.de ? D.ui_de.desc_wheel : "Topic signature for a selected figure. Bar length = PPMI score." }),
+    /* @__PURE__ */ jsx("p", { style: { margin: "0 0 8px", fontSize: 11, color: "#8090c0", fontStyle: "italic" }, children: lang.de ? D.ui_de.desc_wheel : "Topic signature for a selected figure. Bar length = PPMI score." }),
     /* @__PURE__ */ jsx("select", { value: sel, onChange: (e) => setSel(e.target.value), style: {
       background: "rgba(144,202,249,0.1)",
       border: `1px solid ${DIM}`,
@@ -338,7 +338,7 @@ function WheelView({ lang }) {
           const a0 = i * aStep - Math.PI / 2 - aStep * 0.4;
           const a1 = i * aStep - Math.PI / 2 + aStep * 0.4;
           const r = MIN_R + (MAX_R - MIN_R) * (t.score / maxS);
-          const col = CAT_COLORS[t.cat] || "#888";
+          const col = CAT_COLORS[t.cat] || "#aaa";
           const x0i = CX + Math.cos(a0) * MIN_R, y0i = CY + Math.sin(a0) * MIN_R;
           const x1i = CX + Math.cos(a1) * MIN_R, y1i = CY + Math.sin(a1) * MIN_R;
           const x0o = CX + Math.cos(a0) * r, y0o = CY + Math.sin(a0) * r;
@@ -366,7 +366,7 @@ function WheelView({ lang }) {
               y: ly + 3,
               textAnchor: anc,
               fontSize: 8,
-              fill: CAT_COLORS[t.cat] || "#888",
+              fill: CAT_COLORS[t.cat] || "#aaa",
               children: lang.tl(t)
             },
             i
@@ -391,7 +391,7 @@ function WheelView({ lang }) {
             y: CY + 8,
             textAnchor: "middle",
             fontSize: 8,
-            fill: SC[prof.school] || "#888",
+            fill: SC[prof.school] || "#aaa",
             children: prof.school
           }
         ),
@@ -402,7 +402,7 @@ function WheelView({ lang }) {
             y: CY + 20,
             textAnchor: "middle",
             fontSize: 7,
-            fill: "#5060a0",
+            fill: "#8090c0",
             children: [
               prof.windows.toLocaleString(),
               " ",
@@ -413,7 +413,7 @@ function WheelView({ lang }) {
       ] }),
       /* @__PURE__ */ jsxs("div", { style: { fontSize: 9, lineHeight: 2 }, children: [
         /* @__PURE__ */ jsx("div", { style: {
-          color: "#5060a0",
+          color: "#8090c0",
           marginBottom: 4,
           fontSize: 8,
           letterSpacing: "0.1em",
@@ -425,9 +425,9 @@ function WheelView({ lang }) {
             height: 8,
             borderRadius: 1,
             flexShrink: 0,
-            background: CAT_COLORS[t.cat] || "#888"
+            background: CAT_COLORS[t.cat] || "#aaa"
           } }),
-          /* @__PURE__ */ jsx("span", { style: { color: CAT_COLORS[t.cat] || "#888" }, children: lang.tl(t) }),
+          /* @__PURE__ */ jsx("span", { style: { color: CAT_COLORS[t.cat] || "#aaa" }, children: lang.tl(t) }),
           /* @__PURE__ */ jsx("span", { style: { color: ACC, marginLeft: "auto", paddingLeft: 12 }, children: t.score.toFixed(2) })
         ] }, t.key))
       ] })
@@ -457,7 +457,7 @@ function DriftView({ lang }) {
   const H = 60 + termList.length * (BAR_H * DECS.length + 8) + 40;
   const DC = { "1980s": "#90CAF9", "1990s": "#CE93D8", "2000s": "#80CBC4", "2010s": "#FF8A65" };
   return /* @__PURE__ */ jsxs("div", { style: { padding: "12px 16px" }, children: [
-    /* @__PURE__ */ jsx("p", { style: { margin: "0 0 8px", fontSize: 11, color: "#5060a0", fontStyle: "italic" }, children: lang.de ? D.ui_de.desc_drift : "How the intellectual discourse around a figure shifts across four decades." }),
+    /* @__PURE__ */ jsx("p", { style: { margin: "0 0 8px", fontSize: 11, color: "#8090c0", fontStyle: "italic" }, children: lang.de ? D.ui_de.desc_drift : "How the intellectual discourse around a figure shifts across four decades." }),
     /* @__PURE__ */ jsx("select", { value: sel, onChange: (e) => setSel(e.target.value), style: {
       background: "rgba(144,202,249,0.1)",
       border: `1px solid ${DIM}`,
@@ -493,7 +493,7 @@ function DriftView({ lang }) {
               y: bY + BAR_H * DECS.length / 2 + 4,
               textAnchor: "end",
               fontSize: 8.5,
-              fill: CAT_COLORS[term.cat] || "#888",
+              fill: CAT_COLORS[term.cat] || "#aaa",
               children: lang.tl(term)
             }
           ),
@@ -553,7 +553,7 @@ function BridgeView({ lang }) {
   const maxS = Math.max(...Object.values(bridge.schools).flat().map((x) => x.score), 1);
   const ROW_H = 22, LEFT = 180, W = 700, H = 60 + schools.length * (ROW_H + 6) + 20;
   return /* @__PURE__ */ jsxs("div", { style: { padding: "12px 16px" }, children: [
-    /* @__PURE__ */ jsx("p", { style: { margin: "0 0 8px", fontSize: 11, color: "#5060a0", fontStyle: "italic" }, children: lang.de ? D.ui_de.desc_bridge : "Which schools' figures are most associated with each topic?" }),
+    /* @__PURE__ */ jsx("p", { style: { margin: "0 0 8px", fontSize: 11, color: "#8090c0", fontStyle: "italic" }, children: lang.de ? D.ui_de.desc_bridge : "Which schools' figures are most associated with each topic?" }),
     /* @__PURE__ */ jsx("select", { value: sel, onChange: (e) => setSel(e.target.value), style: {
       background: "rgba(144,202,249,0.1)",
       border: `1px solid ${DIM}`,
@@ -588,10 +588,10 @@ function BridgeView({ lang }) {
       lang.tu("schools")
     ] }),
     /* @__PURE__ */ jsxs("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "xMidYMid meet", style: { display: "block", width: "100%", height: "auto", maxWidth: W + "px" }, children: [
-      /* @__PURE__ */ jsx("text", { x: LEFT, y: 34, fontSize: 8, fill: "#4a5080", children: "PPMI \u2192" }),
+      /* @__PURE__ */ jsx("text", { x: LEFT, y: 34, fontSize: 8, fill: "#8090b8", children: "PPMI \u2192" }),
       schools.map((school, si) => {
         const figs = bridge.schools[school];
-        const y = 50 + si * (ROW_H + 6), col = SC[school] || "#888";
+        const y = 50 + si * (ROW_H + 6), col = SC[school] || "#aaa";
         return /* @__PURE__ */ jsxs("g", { children: [
           /* @__PURE__ */ jsx(
             "text",
@@ -666,7 +666,7 @@ function ClusterView({ lang }) {
           onClick: () => setSelSchool(selSchool === s ? null : s),
           style: {
             fontSize: 9,
-            color: SC[s] || "#888",
+            color: SC[s] || "#aaa",
             cursor: "pointer",
             display: "flex",
             alignItems: "center",
@@ -695,7 +695,7 @@ function ClusterView({ lang }) {
         }
       )
     ] }),
-    /* @__PURE__ */ jsx("p", { style: { margin: "4px 16px 4px", fontSize: 11, color: "#5060a0", fontStyle: "italic" }, children: lang.de ? D.ui_de.desc_cluster : `PCA projection of ${D.cluster.length} figures in topic space. PC1 ${(D.pca_var[0] * 100).toFixed(1)}% \xB7 PC2 ${(D.pca_var[1] * 100).toFixed(1)}% variance. Hover for details.` }),
+    /* @__PURE__ */ jsx("p", { style: { margin: "4px 16px 4px", fontSize: 11, color: "#8090c0", fontStyle: "italic" }, children: lang.de ? D.ui_de.desc_cluster : `PCA projection of ${D.cluster.length} figures in topic space. PC1 ${(D.pca_var[0] * 100).toFixed(1)}% \xB7 PC2 ${(D.pca_var[1] * 100).toFixed(1)}% variance. Hover for details.` }),
     /* @__PURE__ */ jsxs("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "xMidYMid meet", style: { display: "block", width: "100%", height: "auto", maxWidth: W + "px" }, children: [
       [-0.5, 0, 0.5].map((v) => /* @__PURE__ */ jsxs("g", { children: [
         /* @__PURE__ */ jsx(
@@ -744,7 +744,7 @@ function ClusterView({ lang }) {
         }
       ),
       D.cluster.map((p) => {
-        const col = SC[p.school] || "#888";
+        const col = SC[p.school] || "#aaa";
         const active = !selSchool || selSchool === p.school;
         const isH = hov === p.fig;
         const r = isH ? 8 : Math.max(3.5, Math.sqrt(p.wins / 400));
@@ -783,7 +783,7 @@ function ClusterView({ lang }) {
           p.fig
         );
       }),
-      /* @__PURE__ */ jsxs("text", { x: W / 2, y: H - 4, textAnchor: "middle", fontSize: 9, fill: "#4a5080", children: [
+      /* @__PURE__ */ jsxs("text", { x: W / 2, y: H - 4, textAnchor: "middle", fontSize: 9, fill: "#8090b8", children: [
         "PC1 \u2014 ",
         lang.de ? "Methodologie/Wert" : "Methodology / Value"
       ] }),
@@ -794,7 +794,7 @@ function ClusterView({ lang }) {
           y: H / 2,
           textAnchor: "middle",
           fontSize: 9,
-          fill: "#4a5080",
+          fill: "#8090b8",
           transform: `rotate(-90,12,${H / 2})`,
           children: [
             "PC2 \u2014 ",
@@ -813,7 +813,7 @@ function ClusterView({ lang }) {
         zIndex: 20,
         background: "rgba(10,14,26,0.97)",
         border: `1px solid rgba(144,202,249,0.2)`,
-        borderLeft: `3px solid ${SC[p.school] || "#888"}`,
+        borderLeft: `3px solid ${SC[p.school] || "#aaa"}`,
         padding: "8px 14px",
         borderRadius: 3,
         fontSize: 10,
@@ -821,7 +821,7 @@ function ClusterView({ lang }) {
         maxWidth: 240
       }, children: [
         /* @__PURE__ */ jsx("div", { style: { fontWeight: "bold", color: "#e0e8ff" }, children: p.fig }),
-        /* @__PURE__ */ jsx("div", { style: { color: SC[p.school] || "#888", marginBottom: 4 }, children: p.school }),
+        /* @__PURE__ */ jsx("div", { style: { color: SC[p.school] || "#aaa", marginBottom: 4 }, children: p.school }),
         p.top.map((t) => /* @__PURE__ */ jsxs("div", { style: { color: CAT_COLORS[vocab_cat(t.key)] || ACC }, children: [
           lang.de ? t.label_de : t.label,
           " \xB7 ",
@@ -858,15 +858,16 @@ function BipNetView({ lang }) {
       target: byId[e.topic],
       score: e.score
     })).filter((e) => e.source && e.target);
-    const sim = d3.forceSimulation(allNodes).force("link", d3.forceLink(links2).id((n) => n.id).distance(300).strength(0.05)).force("y", d3.forceY((n) => n.y).strength(0.8)).force("x", d3.forceX((n) => n.x).strength(0.9)).force("collision", d3.forceCollide(0.04)).tick(120).stop();
+    // No force simulation — the static two-column layout is exactly what we want.
+    // Running the sim mutated x/y away from the clean ±0.75 column positions.
     return { nodes: allNodes, links: links2 };
   }, []);
-  const W = 800, H = 560, PAD = 24;
+  const W = 860, H = 940, PAD = 28;
   const xOf = (x) => PAD + (x + 1) / 2 * (W - PAD * 2);
   const yOf = (y) => PAD + (y + 1) / 2 * (H - PAD * 2);
   const maxScore = Math.max(...D.bip_edges.map((e) => e.score), 1);
   return /* @__PURE__ */ jsxs("div", { style: { padding: "10px 0" }, children: [
-    /* @__PURE__ */ jsx("p", { style: { margin: "4px 16px 6px", fontSize: 11, color: "#5060a0", fontStyle: "italic" }, children: lang.de ? D.ui_de.desc_bipnet : "Figures (left) and topics (right) as nodes. Edge width = PPMI. Hover to explore." }),
+    /* @__PURE__ */ jsx("p", { style: { margin: "4px 16px 6px", fontSize: 11, color: "#8090c0", fontStyle: "italic" }, children: lang.de ? D.ui_de.desc_bipnet : "Figures (left) and topics (right) as nodes. Edge width = PPMI. Hover to explore." }),
     /* @__PURE__ */ jsxs("svg", { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: "xMidYMid meet", style: {
       display: "block",
       width: "100%",
@@ -881,7 +882,7 @@ function BipNetView({ lang }) {
           y: 16,
           textAnchor: "middle",
           fontSize: 9,
-          fill: "#5060a0",
+          fill: "#8090c0",
           letterSpacing: "0.1em",
           children: lang.de ? "AUTOREN" : "FIGURES"
         }
@@ -893,7 +894,7 @@ function BipNetView({ lang }) {
           y: 16,
           textAnchor: "middle",
           fontSize: 9,
-          fill: "#5060a0",
+          fill: "#8090c0",
           letterSpacing: "0.1em",
           children: lang.de ? "THEMEN" : "TOPICS"
         }
@@ -916,7 +917,7 @@ function BipNetView({ lang }) {
       }),
       nodes.map((n) => {
         const isH = hov === n.id;
-        const col = n.type === "fig" ? SC[n.school] || "#888" : CAT_COLORS[n.cat] || ACC;
+        const col = n.type === "fig" ? SC[n.school] || "#aaa" : CAT_COLORS[n.cat] || ACC;
         const r = n.type === "fig" ? Math.max(3, Math.sqrt((n.wins || 0) / 400)) : 5;
         return /* @__PURE__ */ jsxs(
           "g",
