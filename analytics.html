@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="mobile-web-app-capable" content="yes">
   <title>AGW — Intellektuelle Geschichte · Analytics</title>
   <meta name="description" content="Quantitative analysis of 43 AGW conference volumes, 1980–2025">
 
@@ -289,11 +288,11 @@
   <!-- ── Tab bar — same style as archive tabs in index.html ── -->
   <div class="tool-tabs" role="tablist">
     <button class="tool-tab active" id="tab-gaze"
-      onclick="showTool('gaze',this)" data-str="tab_gaze">🗺 Rezeptionsatlas</button>
+      onclick="showTool('gaze',this)"><span class="ico ico-map" aria-hidden="true"></span> <span data-str="tab_gaze">Rezeptionsatlas</span></button>
     <button class="tool-tab" id="tab-analysis"
-      onclick="showTool('analysis',this)" data-str="tab_analysis">📊 Analysen</button>
+      onclick="showTool('analysis',this)"><span class="ico ico-chart" aria-hidden="true"></span> <span data-str="tab_analysis">Analysen</span></button>
     <button class="tool-tab" id="tab-pmi"
-      onclick="showTool('pmi',this)" data-str="tab_pmi">🔬 Themenanalyse</button>
+      onclick="showTool('pmi',this)"><span class="ico ico-topic" aria-hidden="true"></span> <span data-str="tab_pmi">Themenanalyse</span></button>
   </div>
 
   <!-- ── Panels ── -->

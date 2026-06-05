@@ -24,3 +24,5 @@ node_modules/
 # JSX sources — compiled via build_analytics.sh into dist/, not deployed directly
 src-jsx/
 *.jsx
+# Claude Code local tooling
+.claude/

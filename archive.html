@@ -42,7 +42,6 @@
   <link rel="manifest" href="/agw-vfs/manifest.json">
   <meta name="theme-color" content="#1B3A6B">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="AGW 2026">
   <link rel="apple-touch-icon" href="/agw-vfs/icon-192.png">
@@ -57,10 +56,10 @@
     <h2 class="section-title" data-i18n="sec_ttl_archive">Frühere Jahrestagungen</h2>
     <p class="section-intro" data-i18n="sec_intro_archive">46 Jahrestagungen seit der Gründung 1980.</p>
     <div style="display:flex;gap:4px;margin-bottom:20px;border-bottom:1.5px solid var(--border);">
-      <button class="arch-view-btn active" onclick="setArchiveView('list',this)" style="background:none;border:none;padding:9px 18px;cursor:pointer;font-size:13.5px;font-family:inherit;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1.5px;" data-i18n="arch_view_list">☰ Liste</button>
-      <button class="arch-view-btn" onclick="setArchiveView('map',this)" style="background:none;border:none;padding:9px 18px;cursor:pointer;font-size:13.5px;font-family:inherit;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1.5px;" data-i18n="arch_view_map">🗺 Karte</button>
-      <button class="arch-view-btn" onclick="setArchiveView('speakers',this)" style="background:none;border:none;padding:9px 18px;cursor:pointer;font-size:13.5px;font-family:inherit;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1.5px;" data-i18n="arch_view_speakers">👤 Referenten</button>
-      <button class="arch-view-btn" onclick="setArchiveView('chronik',this)" style="background:none;border:none;padding:9px 18px;cursor:pointer;font-size:13.5px;font-family:inherit;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1.5px;" data-i18n="arch_view_chronik">📈 Chronik</button>
+      <button class="arch-view-btn active" onclick="setArchiveView('list',this)" style="background:none;border:none;padding:9px 18px;cursor:pointer;font-size:13.5px;font-family:inherit;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1.5px;"><span class="ico ico-list" aria-hidden="true"></span> <span data-i18n="arch_view_list">Liste</span></button>
+      <button class="arch-view-btn" onclick="setArchiveView('map',this)" style="background:none;border:none;padding:9px 18px;cursor:pointer;font-size:13.5px;font-family:inherit;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1.5px;"><span class="ico ico-map" aria-hidden="true"></span> <span data-i18n="arch_view_map">Karte</span></button>
+      <button class="arch-view-btn" onclick="setArchiveView('speakers',this)" style="background:none;border:none;padding:9px 18px;cursor:pointer;font-size:13.5px;font-family:inherit;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1.5px;"><span class="ico ico-user" aria-hidden="true"></span> <span data-i18n="arch_view_speakers">Referenten</span></button>
+      <button class="arch-view-btn" onclick="setArchiveView('chronik',this)" style="background:none;border:none;padding:9px 18px;cursor:pointer;font-size:13.5px;font-family:inherit;color:var(--text-muted);border-bottom:2px solid transparent;margin-bottom:-1.5px;"><span class="ico ico-trend" aria-hidden="true"></span> <span data-i18n="arch_view_chronik">Chronik</span></button>
     </div>
     <div id="arch-view-list">
       <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px;">
@@ -193,7 +192,7 @@
   </div>
 </footer>
 
-<div id="search-overlay" onclick="if(event.target===this)closeSearch()"><div id="search-box"><div id="search-input-row"><span style="font-size:18px;margin-right:10px;color:var(--text-faint);">🔍</span><input id="search-input" type="text" autocomplete="off" oninput="runSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()" placeholder="Suchen… / Search…"><button id="search-close" onclick="closeSearch()">✕</button></div><div id="search-results"><div class="srch-empty">Suchbegriff eingeben…</div></div><div id="search-hint">↵ öffnet &nbsp;·&nbsp; Esc schließt &nbsp;·&nbsp; Ctrl+K</div></div></div>
+<div id="search-overlay" onclick="if(event.target===this)closeSearch()"><div id="search-box"><div id="search-input-row"><span style="font-size:18px;margin-right:10px;color:var(--text-faint);"><span class="ico ico-search" aria-hidden="true"></span></span><input id="search-input" type="text" autocomplete="off" oninput="runSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()" placeholder="Suchen… / Search…"><button id="search-close" onclick="closeSearch()">✕</button></div><div id="search-results"><div class="srch-empty">Suchbegriff eingeben…</div></div><div id="search-hint">↵ öffnet &nbsp;·&nbsp; Esc schließt &nbsp;·&nbsp; Ctrl+K</div></div></div>
 
 <script src="agw_strings.js"></script>
 <script src="agw_data.js"></script>

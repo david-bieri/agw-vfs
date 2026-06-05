@@ -41,12 +41,12 @@
     lang_en:             { de: 'EN', en: 'EN' },
 
     // ── Archive tab label (index.html) ────────────────────────────
-    arch_view_chronik:   { de: '📈 Chronik',             en: '📈 Chronicle' },
+    arch_view_chronik:   { de: 'Chronik',                en: 'Chronicle' },
 
     // ── Analytics page — main tabs ───────────────────────────────
-    tab_gaze:            { de: '🗺 Rezeptionsatlas',      en: '🗺 Reception Atlas' },
-    tab_analysis:        { de: '📊 Analysen',             en: '📊 Analytics' },
-    tab_pmi:             { de: '🔬 Themenanalyse',        en: '🔬 Topic Analysis' },
+    tab_gaze:            { de: 'Rezeptionsatlas',        en: 'Reception Atlas' },
+    tab_analysis:        { de: 'Analysen',               en: 'Analytics' },
+    tab_pmi:             { de: 'Themenanalyse',          en: 'Topic Analysis' },
 
     // ── Tool display names (used in guide + page headings) ────────
     tool_chronik:        { de: 'Chronik',                 en: 'Chronicle' },
@@ -333,12 +333,12 @@
     sec_lbl_chairs       : { en: 'Committee Chairs' },
     sec_ttl_chairs       : { en: 'Past Chairs of the Committee' },
     chairs_note          : { en: 'Tenure dates from c. 1990 reconstructed from conference proceedings; pre-1990 dates approximate.' },
-    arch_view_list       : { en: '☰ List' },
-    arch_view_map        : { en: '🗺 Map' },
-    arch_view_speakers   : { en: '👤 Speakers' },
+    arch_view_list       : { en: 'List' },
+    arch_view_map        : { en: 'Map' },
+    arch_view_speakers   : { en: 'Speakers' },
     arch_map_note        : { en: 'All 46 conference venues since 1980.' },
-    btn_ical             : { en: '📅 Calendar (.ics)' },
-    print_prog           : { de: '⎙ Programm drucken', en: '⎙ Print programme' },
+    btn_ical             : { en: 'Calendar (.ics)' },
+    lbl_map              : { en: 'Map' },
     footer_hosted_by_lbl : { en: 'Hosted by' },
     mbr_active           : { en: 'Active' },
     mbr_emeriti          : { en: 'Emeriti' },

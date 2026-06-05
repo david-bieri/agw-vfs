@@ -1,7 +1,7 @@
 /* AGW Jahrestagung 2026 — Service Worker
  * Strategy: Cache-first for shell + static assets; network-first for tiles
  */
-const CACHE = 'agw-2026-v7-multipage';
+const CACHE = 'agw-2026-v3-ui-batch';
 
 const PRECACHE = [
   '/agw-vfs/',
@@ -27,18 +27,10 @@ const PRECACHE = [
 
 // Install — pre-cache shell
 self.addEventListener('install', function(e) {
-  var isCross = function(u){ return /^https?:\/\//.test(u); };
-  var shell   = PRECACHE.filter(function(u){ return !isCross(u); }); // same-origin: must cache
-  var extern  = PRECACHE.filter(isCross);                            // CDN/fonts: best-effort
   e.waitUntil(
-    caches.open(CACHE).then(function(c) {
-      // Cross-origin assets are best-effort: a CDN/CORS failure must NOT fail the install
-      // (an atomic addAll over all assets would, leaving the cache empty).
-      var external = Promise.all(extern.map(function(u){
-        return c.add(u).catch(function(){ /* non-fatal: skip uncacheable CDN asset */ });
-      }));
-      return Promise.all([ c.addAll(shell), external ]);
-    }).then(function() { return self.skipWaiting(); })
+    caches.open(CACHE)
+      .then(function(c) { return c.addAll(PRECACHE); })
+      .then(function() { return self.skipWaiting(); })
   );
 });
 

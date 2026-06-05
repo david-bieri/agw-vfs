@@ -38,10 +38,9 @@ function setLang(l) {
   renderAnnouncements();
   updateCountdown();
 
-  // Toggle button active state (nav is injected by renderNav, which runs after app init,
-  // so these may not exist yet on first call — guard like every other DOM access)
-  const bde = document.getElementById('btn-de'); if (bde) bde.classList.toggle('active', l === 'de');
-  const ben = document.getElementById('btn-en'); if (ben) ben.classList.toggle('active', l === 'en');
+  // Toggle button active state
+  document.getElementById('btn-de').classList.toggle('active', l === 'de');
+  document.getElementById('btn-en').classList.toggle('active', l === 'en');
 
   // Persist across sessions
   AGW.setLang(l);
@@ -113,14 +112,12 @@ function renderChairs() {
   const past_lbl    = lang === 'en' ? ((AGW.S.chairs_past && AGW.S.chairs_past.en)    || 'Past Chair')    : 'Ehemaliger Vorsitzender';
 
   el.innerHTML = '<div class="chairs-list">'
-    + CHAIRS.map((c, i) => ({ c, ord: i + 1 }))   // capture each chair's historical position
-      .reverse()                                   // display current first, then descending
-      .map(({ c, ord }) => {
-      const period = c.end ? (c.start + '\u2013' + c.end) : (c.start + '\u2013' + (lang === 'en' ? 'present' : 'heute'));
+    + CHAIRS.map((c, i) => {
+      const period = c.end ? (c.start + '\u2013' + c.end) : (c.start + '\u2013heute');
       const yrs    = c.end ? (c.end - c.start) : (2026 - c.start);
       const isCurrent = !c.past;
       return '<div class="chair-item' + (isCurrent ? ' chair-current' : '') + '">'
-        + '<div class="chair-num">' + ord + '</div>'
+        + '<div class="chair-num">' + (i + 1) + '</div>'
         + '<div class="chair-body">'
         + '<div class="chair-name">' + c.name
         + (isCurrent ? ' <span class="badge badge-gold" style="font-size:10px;vertical-align:middle;">' + current_lbl + '</span>' : '')
@@ -317,6 +314,9 @@ function toggleArchive(i) {
   btn.classList.toggle('open', open);
 }
 
+/* ── Publications data ── */
+const DH_SEARCH = 'https://www.duncker-humblot.de/search/result?schnellsuche=Studien%20zur%20Entwicklung%20der%20%C3%B6konomischen%20Theorie&sort=datum_erscheinung_jahr%20desc%2Cdatum_erscheinung%20desc&page=1&type=titel&nav_id=1';
+
 let pubDecadeFilter = 'all';
 let pubSearchQ = '';
 
@@ -454,7 +454,7 @@ function renderPubs() {
   if (!list) return;
   const note = document.getElementById('pub-count-note');
   const band_lbl = lang === 'de' ? 'Band 115/' : 'Vol. 115/';
-  const view_lbl = lang === 'de' ? 'Verlag ↗' : 'Publisher ↗';
+  const view_lbl = lang === 'de' ? 'Verlag <span class="ico ico-ext" aria-hidden="true"></span>' : 'Publisher <span class="ico ico-ext" aria-hidden="true"></span>';
   const cite_lbl = lang === 'de' ? 'Zitieren' : 'Cite';
   const toc_lbl = lang === 'de' ? 'Inhalt' : 'Contents';
   const no_toc = lang === 'de'
@@ -521,7 +521,7 @@ function renderPubs() {
       <div class="pub-meta"><em>Schriften des Vereins für Socialpolitik</em>${edHtml}${yr} · Duncker &amp; Humblot, Berlin</div>
     </div>
     <div class="pub-actions" onclick="event.stopPropagation()">
-      ${p.econstor ? `<a href="${p.econstor}" target="_blank" rel="noopener" style="background:#2E7D32;color:#fff;font-size:11px;padding:4px 10px;border-radius:4px;text-decoration:none;font-weight:600;margin-right:6px;">🔓 Open Access ↗</a> ` : ""}      <a href="${p.url}" target="_blank" rel="noopener" class="pub-link">${view_lbl}</a>
+      ${p.econstor ? `<a href="${p.econstor}" target="_blank" rel="noopener" style="background:#2E7D32;color:#fff;font-size:11px;padding:4px 10px;border-radius:4px;text-decoration:none;font-weight:600;margin-right:6px;"><span class="ico ico-oa" aria-hidden="true"></span> Open Access <span class="ico ico-ext" aria-hidden="true"></span></a> ` : ""}      <a href="${p.url}" target="_blank" rel="noopener" class="pub-link">${view_lbl}</a>
       <button class="pub-expand-btn" id="pub-expand-${num}"
         onclick="event.stopPropagation();togglePub('${num}')" aria-label="expand">▾</button>
     </div>
@@ -544,7 +544,7 @@ function renderPubs() {
           <button class="btn btn-sm btn-outline" onclick="event.stopPropagation();copyCite('${num}')">
             ${cp_lbl}
           </button>
-          <span class="copy-confirm" id="copy-conf-${num}">✓ ${lang === 'de' ? 'Kopiert' : 'Copied'}</span>
+          <span class="copy-confirm" id="copy-conf-${num}"><span class="ico ico-check" aria-hidden="true"></span> ${lang === 'de' ? 'Kopiert' : 'Copied'}</span>
         </div>
       </div>
     </div>
@@ -845,15 +845,15 @@ function runSearch(q){
   if(q.length<2){el.innerHTML='<div class="srch-empty">'+(lang==='de'?'Mind. 2 Zeichen\u2026':'Min. 2 characters\u2026')+'</div>';return;}
   var results=[];
   MEMBERS.filter(function(m){return(m.name+' '+m.inst+' '+(lang==='de'?m.focus_de:m.focus_en)).toLowerCase().includes(q);}).slice(0,4).forEach(function(m){
-    results.push({sec:'mitglieder',icon:'\U0001F464',title:m.name,sub:m.title+' \u00b7 '+m.inst,href:'#mitglieder'});
+    results.push({sec:'mitglieder',icon:'<span class="ico ico-user" aria-hidden="true"></span>',title:m.name,sub:m.title+' \u00b7 '+m.inst,href:'#mitglieder'});
   });
   ARCHIVE.filter(function(c){
     return(lang==='de'?c.theme:c.theme_en).toLowerCase().includes(q)||(lang==='de'?c.loc_de:c.loc_en).toLowerCase().includes(q)||(c.papers||[]).map(function(p){return p.author+' '+p.title;}).join(' ').toLowerCase().includes(q)||String(c.year).includes(q);
   }).slice(0,5).forEach(function(c){
-    results.push({sec:'archiv',icon:'\U0001F4C5',title:c.year+' \u2014 '+(lang==='de'?c.loc_de:c.loc_en),sub:(lang==='de'?c.theme:c.theme_en).substring(0,60),href:'#archiv'});
+    results.push({sec:'archiv',icon:'<span class="ico ico-cal" aria-hidden="true"></span>',title:c.year+' \u2014 '+(lang==='de'?c.loc_de:c.loc_en),sub:(lang==='de'?c.theme:c.theme_en).substring(0,60),href:'#archiv'});
   });
   PUBLICATIONS.filter(function(p){return(p.title_de+' '+p.title_en+' '+p.editor+' '+p.num).toLowerCase().includes(q);}).slice(0,4).forEach(function(p){
-    results.push({sec:'publikationen',icon:'\U0001F4DA',title:'Band '+p.num+' \u00b7 '+(lang==='de'?p.title_de:p.title_en).substring(0,50),sub:p.editor||'',href:'#publikationen'});
+    results.push({sec:'publikationen',icon:'<span class="ico ico-book" aria-hidden="true"></span>',title:'Band '+p.num+' \u00b7 '+(lang==='de'?p.title_de:p.title_en).substring(0,50),sub:p.editor||'',href:'#publikationen'});
   });
   if(!results.length){el.innerHTML='<div class="srch-empty">'+(lang==='de'?'Keine Ergebnisse.':'No results.')+'</div>';return;}
   var labs={mitglieder:lang==='de'?'Mitglieder':'Members',archiv:lang==='de'?'Archiv':'Archive',publikationen:lang==='de'?'Publikationen':'Publications'};
@@ -921,7 +921,7 @@ function addSessionIcalBtns() {
       var title=titleEl.textContent.trim();
       var speaker=spEl?spEl.textContent.trim():'';
       var btn=document.createElement('button');
-      btn.textContent='\U0001F4C5';
+      btn.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>';
       btn.title='Termin herunterladen (.ics)';
       btn.style.cssText='background:none;border:none;cursor:pointer;font-size:11px;padding:1px 4px;opacity:0.4;margin-left:6px;vertical-align:middle;';
       btn.addEventListener('mouseover',function(){this.style.opacity='1';});

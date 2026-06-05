@@ -78,7 +78,7 @@
           '</ul>' +
           '<div class="nav-actions">' +
             '<button onclick="openSearch()" class="nav-search-btn" ' +
-              'title="Suchen (Ctrl+K)" aria-label="Search">🔍</button>' +
+              'title="Suchen (Ctrl+K)" aria-label="Search"><span class="ico ico-search" aria-hidden="true"></span></button>' +
             '<div class="lang-toggle" role="group" aria-label="Language">' +
               '<button class="lang-btn active" id="btn-de" onclick="setLang(\'de\')">DE</button>' +
               '<button class="lang-btn" id="btn-en" onclick="setLang(\'en\')">EN</button>' +

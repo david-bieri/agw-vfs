@@ -42,7 +42,6 @@
   <link rel="manifest" href="/agw-vfs/manifest.json">
   <meta name="theme-color" content="#1B3A6B">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="AGW 2026">
   <link rel="apple-touch-icon" href="/agw-vfs/icon-192.png">
@@ -125,7 +124,7 @@
     <a href="#rahmenprogramm"><span data-i18n="nav_social">Rahmenprogramm</span></a>
     <a href="#logistik"><span data-i18n="nav_travel">Anreise &amp; Logistik</span></a>
 
-    <button onclick="downloadIcal()" style="margin-left:auto;background:none;border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.8);padding:7px 16px;border-radius:20px;cursor:pointer;font-size:13px;font-family:inherit;" data-i18n="btn_ical">📅 Kalender (.ics)</button>
+    <button onclick="downloadIcal()" class="btn-cal" style="margin-left:auto;background:none;border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.8);padding:7px 16px;border-radius:20px;cursor:pointer;font-size:13px;font-family:inherit;" data-i18n="btn_ical">Kalender (.ics)</button>
   </div>
 </div>
 
@@ -134,7 +133,6 @@
   <div class="section-inner">
     <div class="section-label" data-i18n="sec_lbl_programme">Wissenschaftliches Programm</div>
     <h2 class="section-title" data-i18n="sec_ttl_programme">Tagungsprogramm</h2>
-    <button class="print-btn" onclick="window.print()" data-i18n="print_prog" title="Programm, Rahmen- und Tourismusprogramm drucken">⎙ Programm drucken</button>
     <div class="prog-tabs" role="tablist">
       <button class="prog-tab active" onclick="showDay('do')" data-i18n="tab_thu">Donnerstag, 25. Juni</button>
       <button class="prog-tab" onclick="showDay('fr')" data-i18n="tab_fri">Freitag, 26. Juni</button>
@@ -228,7 +226,7 @@
         <div class="tl-item social">
           <div class="tl-time">ab 18:30</div><div class="tl-dot"></div>
           <div class="tl-content">
-            <div class="tl-title" data-i18n="prog_apericena">Apericena im Garten der Villa Maderni <a href="#logistik" style="color:inherit;text-decoration:underline dotted;text-underline-offset:2px;text-decoration-thickness:1px;font-size:11.5px;opacity:.75;">📍 Karte</a></div>
+            <div class="tl-title"><span data-i18n="prog_apericena">Apericena im Garten der Villa Maderni</span> <a href="#logistik" style="color:inherit;text-decoration:underline dotted;text-underline-offset:2px;text-decoration-thickness:1px;font-size:11.5px;opacity:.75;"><span class="ico ico-pin" aria-hidden="true"></span> <span data-i18n="lbl_map">Karte</span></a></div>
             <div class="tl-speaker" data-i18n="prog_apericena_venue">Palazzo des 18. Jh. · Steger Center</div>
             <div class="tl-note" data-i18n="prog_apericena_note">Regionale Tessiner Küche · ca. CHF 40 p.P. (Getränke exkl.)</div>
           </div>
@@ -272,7 +270,7 @@
           <div class="tl-time">12:00–12:45</div><div class="tl-dot"></div>
           <div class="tl-content">
             <div class="tl-title" data-i18n="prog_lunch_sa">Mittagessen</div>
-            <div class="tl-speaker" data-i18n="prog_lunch_sa_loc">Steger Center · Villa Maderni <a href="#logistik" style="color:inherit;text-decoration:underline dotted;text-underline-offset:2px;font-size:11.5px;opacity:.75;">📍 Karte</a></div>
+            <div class="tl-speaker"><span data-i18n="prog_lunch_sa_loc">Steger Center · Villa Maderni</span> <a href="#logistik" style="color:inherit;text-decoration:underline dotted;text-underline-offset:2px;font-size:11.5px;opacity:.75;"><span class="ico ico-pin" aria-hidden="true"></span> <span data-i18n="lbl_map">Karte</span></a></div>
           </div>
         </div>
         <div class="tl-item assembly">
@@ -286,7 +284,7 @@
           <div class="tl-time">ab ca. 14:35</div><div class="tl-dot"></div>
           <div class="tl-content">
             <div class="tl-title" data-i18n="prog_excursion">Gruppenausflug Monte Generoso</div>
-            <div class="tl-speaker" data-i18n="prog_excursion_detail">Zahnradbahn ab Bahnhof Capolago <a href="https://www.google.com/maps/search/?api=1&query=Ferrovia+Monte+Generoso,+Capolago,+Switzerland" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline dotted;text-underline-offset:2px;text-decoration-thickness:1px;font-size:11.5px;opacity:.75;">📍 Karte ↗</a> (seit 1890) · Panorama auf vier Länder</div>
+            <div class="tl-speaker"><span data-i18n="prog_excursion_detail">Zahnradbahn ab Bahnhof Capolago (seit 1890) · Panorama auf vier Länder</span> <a href="https://www.google.com/maps/search/?api=1&query=Ferrovia+Monte+Generoso,+Capolago,+Switzerland" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline dotted;text-underline-offset:2px;text-decoration-thickness:1px;font-size:11.5px;opacity:.75;"><span class="ico ico-pin" aria-hidden="true"></span> <span data-i18n="lbl_map">Karte</span> <span class="ico ico-ext" aria-hidden="true"></span></a></div>
           </div>
         </div>
       </div>
@@ -304,7 +302,7 @@
         <div class="card-header"><span data-i18n="tab_thu">Donnerstag, 25. Juni</span><span class="card-header-sub">19:30</span></div>
         <div class="card-body">
           <div class="card-title" data-i18n="prog_welcome_dinner">Willkommensabendessen</div>
-          <div class="card-text"><strong>Ristorante Cantinone</strong>, Piazza Cioccaro 8, Lugano. &nbsp;<a href="https://www.google.com/maps/search/?api=1&query=Ristorante+Cantinone,+Piazza+Cioccaro+8,+Lugano,+Switzerland" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline dotted;text-underline-offset:2px;text-decoration-thickness:1px;font-size:11.5px;opacity:.75;">📍 Karte ↗</a><br><br><span data-i18n="card_thu_note">Das Restaurant liegt direkt in der historischen Altstadt, an der Funicolare-Station, in unmittelbarer Nähe des empfohlenen Tagungshotels.</span></div>
+          <div class="card-text"><strong>Ristorante Cantinone</strong>, Piazza Cioccaro 8, Lugano. &nbsp;<a href="https://www.google.com/maps/search/?api=1&query=Ristorante+Cantinone,+Piazza+Cioccaro+8,+Lugano,+Switzerland" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline dotted;text-underline-offset:2px;text-decoration-thickness:1px;font-size:11.5px;opacity:.75;"><span class="ico ico-pin" aria-hidden="true"></span> <span data-i18n="lbl_map">Karte</span> <span class="ico ico-ext" aria-hidden="true"></span></a><br><br><span data-i18n="card_thu_note">Das Restaurant liegt direkt in der historischen Altstadt, an der Funicolare-Station, in unmittelbarer Nähe des empfohlenen Tagungshotels.</span></div>
         </div>
       </div>
       <div class="card">
@@ -319,14 +317,14 @@
         <div class="card-header"><span data-i18n="tab_fri">Freitag, 26. Juni</span><span class="card-header-sub">18:30</span></div>
         <div class="card-body">
           <div class="card-title" data-i18n="card_fri2_title">Apericena in der Villa Maderni</div>
-          <div class="card-text"><span>Gesellschaftlicher Abend im Garten der <a href="#logistik" style="color:inherit;text-decoration:underline dotted;text-underline-offset:2px;text-decoration-thickness:1px;font-size:11.5px;opacity:.75;" title="Auf Karte anzeigen"><strong>Villa Maderni</strong> 📍</a> (Palazzo, 18. Jh.). Regionale Tessiner Küche.</span><br><br><strong>ca. CHF 40 p.P.</strong> <span>(Getränke exkl.)</span></div>
+          <div class="card-text"><span>Gesellschaftlicher Abend im Garten der <a href="#logistik" style="color:inherit;text-decoration:underline dotted;text-underline-offset:2px;text-decoration-thickness:1px;font-size:11.5px;opacity:.75;" title="Auf Karte anzeigen"><strong>Villa Maderni</strong> <span class="ico ico-pin" aria-hidden="true"></span></a> (Palazzo, 18. Jh.). Regionale Tessiner Küche.</span><br><br><strong>ca. CHF 40 p.P.</strong> <span>(Getränke exkl.)</span></div>
         </div>
       </div>
       <div class="card">
         <div class="card-header"><span data-i18n="tab_sat">Samstag, 27. Juni</span><span class="card-header-sub">ca. 14:35</span></div>
         <div class="card-body">
           <div class="card-title" data-i18n="prog_excursion">Gruppenausflug Monte Generoso</div>
-          <div class="card-text"><span>Fahrt mit der historischen <a href="https://www.google.com/maps/search/?api=1&query=Ferrovia+Monte+Generoso,+Capolago,+Switzerland" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline dotted;text-underline-offset:2px;text-decoration-thickness:1px;font-size:11.5px;opacity:.75;" title="Auf Karte anzeigen"><strong>Zahnradbahn Monte Generoso</strong> 📍</a> (seit 1890) ab Bahnhof Capolago. Gipfelpanorama auf vier Länder (1.704 m ü.M.).</span></div>
+          <div class="card-text"><span>Fahrt mit der historischen <a href="https://www.google.com/maps/search/?api=1&query=Ferrovia+Monte+Generoso,+Capolago,+Switzerland" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline dotted;text-underline-offset:2px;text-decoration-thickness:1px;font-size:11.5px;opacity:.75;" title="Auf Karte anzeigen"><strong>Zahnradbahn Monte Generoso</strong> <span class="ico ico-pin" aria-hidden="true"></span></a> (seit 1890) ab Bahnhof Capolago. Gipfelpanorama auf vier Länder (1.704 m ü.M.).</span></div>
           <div class="card-note" data-i18n="card_sat_note">Abfahrt nach Mitgliederversammlung · festes Schuhwerk empfohlen</div>
         </div>
       </div>
@@ -339,22 +337,22 @@
       <div class="partner-card">
         <div class="partner-title">Museo Hermann Hesse</div>
         <div class="partner-text" data-i18n="partner_hesse">Montagnola · tägl. 10:30–17:30 · mit Ticino Ticket freier Eintritt.</div>
-        <a href="https://www.hessemontagnola.ch" target="_blank" class="partner-link">hessemontagnola.ch ↗</a>
+        <a href="https://www.hessemontagnola.ch" target="_blank" class="partner-link">hessemontagnola.ch <span class="ico ico-ext" aria-hidden="true"></span></a>
       </div>
       <div class="partner-card">
         <div class="partner-title" data-i18n="partner_lugano_ttl">Schifffahrt Luganersee</div>
         <div class="partner-text" data-i18n="partner_lugano">Navigazione del Lago di Lugano. Rundfahrten auf dem Luganersee.</div>
-        <a href="https://www.lakelugano.ch" target="_blank" class="partner-link">lakelugano.ch ↗</a>
+        <a href="https://www.lakelugano.ch" target="_blank" class="partner-link">lakelugano.ch <span class="ico ico-ext" aria-hidden="true"></span></a>
       </div>
       <div class="partner-card">
         <div class="partner-title">Funicolare Monte Brè</div>
         <div class="partner-text" data-i18n="partner_bre">Aussichtsberg über Lugano mit weitem Panorama.</div>
-        <a href="https://www.montebre.ch" target="_blank" class="partner-link">montebre.ch ↗</a>
+        <a href="https://www.montebre.ch" target="_blank" class="partner-link">montebre.ch <span class="ico ico-ext" aria-hidden="true"></span></a>
       </div>
       <div class="partner-card">
         <div class="partner-title">Monte Verità, Ascona</div>
         <div class="partner-text" data-i18n="partner_verita">Museum Casa Anatta · Zentrum der deutschen Lebensreformbewegung.</div>
-        <a href="https://www.monteverita.org" target="_blank" class="partner-link">monteverita.org ↗</a>
+        <a href="https://www.monteverita.org" target="_blank" class="partner-link">monteverita.org <span class="ico ico-ext" aria-hidden="true"></span></a>
       </div>
     </div>
   </div>
@@ -511,7 +509,7 @@
 <script src="agw_app.js"></script>
 <script src="agw_nav.js"></script>
 <script>AGW.renderNav('conference');</script>
-<div id="search-overlay" onclick="if(event.target===this)closeSearch()"><div id="search-box"><div id="search-input-row"><span style="font-size:18px;margin-right:10px;color:var(--text-faint);">🔍</span><input id="search-input" type="text" autocomplete="off" oninput="runSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()" placeholder="Suchen… / Search…"><button id="search-close" onclick="closeSearch()">✕</button></div><div id="search-results"><div class="srch-empty">Suchbegriff eingeben…</div></div><div id="search-hint">↵ öffnet &nbsp;·&nbsp; Esc schließt &nbsp;·&nbsp; Ctrl+K</div></div></div>
+<div id="search-overlay" onclick="if(event.target===this)closeSearch()"><div id="search-box"><div id="search-input-row"><span style="font-size:18px;margin-right:10px;color:var(--text-faint);"><span class="ico ico-search" aria-hidden="true"></span></span><input id="search-input" type="text" autocomplete="off" oninput="runSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()" placeholder="Suchen… / Search…"><button id="search-close" onclick="closeSearch()">✕</button></div><div id="search-results"><div class="srch-empty">Suchbegriff eingeben…</div></div><div id="search-hint">↵ öffnet &nbsp;·&nbsp; Esc schließt &nbsp;·&nbsp; Ctrl+K</div></div></div>
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Zurück nach oben">↑</button>
 <script src="agw_chronik.js"></script>
 </body>
