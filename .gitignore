@@ -26,3 +26,6 @@ src-jsx/
 *.jsx
 # Claude Code local tooling
 .claude/
+
+# Claude Code local tooling
+.claude/

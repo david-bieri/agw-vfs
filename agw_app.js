@@ -38,9 +38,14 @@ function setLang(l) {
   renderAnnouncements();
   updateCountdown();
 
-  // Toggle button active state
-  document.getElementById('btn-de').classList.toggle('active', l === 'de');
-  document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  // Toggle button active state (guarded — nav buttons are injected by
+  // agw_nav.js AFTER agw_app.js loads, so they're null during init.
+  // Without these guards setLang('en') in initLang() throws, aborting
+  // the whole init block including the Logistik-map IIFE further down.)
+  const btnDe = document.getElementById('btn-de');
+  const btnEn = document.getElementById('btn-en');
+  if (btnDe) btnDe.classList.toggle('active', l === 'de');
+  if (btnEn) btnEn.classList.toggle('active', l === 'en');
 
   // Persist across sessions
   AGW.setLang(l);
