@@ -92,7 +92,7 @@ function AGWGazeMap() {
       /* @__PURE__ */ jsxs("div", { style: {
         fontSize: 11,
         letterSpacing: "0.2em",
-        color: "#6a7090",
+        color: "#9aa0c0",
         textTransform: "uppercase",
         marginBottom: 4
       }, children: [
@@ -106,7 +106,7 @@ function AGWGazeMap() {
         letterSpacing: "0.05em",
         color: "#e8e8f0"
       }, children: lang.agwT("tool_gaze", "Reception Atlas", "Rezeptionsatlas") }),
-      /* @__PURE__ */ jsx("div", { style: { fontSize: 12, color: "#6a7090", marginBottom: 16 }, children: lang.t("Who did 43 conferences study? Dot size = citation intensity \xB7 Colour = school of thought", "Wen haben 43 Konferenzen studiert? Punktgr\xF6\xDFe = Zitierintensit\xE4t \xB7 Farbe = Denkschule") }),
+      /* @__PURE__ */ jsx("div", { style: { fontSize: 12, color: "#9aa0c0", marginBottom: 16 }, children: lang.t("Who did 43 conferences study? Dot size = citation intensity \xB7 Colour = school of thought", "Wen haben 43 Konferenzen studiert? Punktgr\xF6\xDFe = Zitierintensit\xE4t \xB7 Farbe = Denkschule") }),
       /* @__PURE__ */ jsx("div", { style: { display: "flex", gap: 0 }, children: [["map", lang.t("Map", "Karte")], ["era", lang.t("By Era", "Nach Epoche")], ["top", lang.t("Top Figures", "Top-Figuren")]].map(([v, label]) => /* @__PURE__ */ jsx("button", { onClick: () => setView(v), style: {
         padding: "8px 20px",
         border: "none",
@@ -115,7 +115,7 @@ function AGWGazeMap() {
         fontSize: 12,
         letterSpacing: "0.08em",
         background: view === v ? "rgba(200,200,216,0.12)" : "transparent",
-        color: view === v ? "#e8e8f0" : "#6a7090",
+        color: view === v ? "#e8e8f0" : "#9aa0c0",
         borderBottom: view === v ? "2px solid #90CAF9" : "2px solid transparent",
         transition: "all 0.15s"
       }, children: label }, v)) })
@@ -146,7 +146,7 @@ function AGWGazeMap() {
               width: 8,
               height: 8,
               borderRadius: "50%",
-              background: SC[s] || "#888",
+              background: SC[s] || "#aaa",
               flexShrink: 0
             } }),
             s
@@ -197,6 +197,7 @@ function GazeMapView({ hovFig, setHovFig, hovConf, setHovConf, selSchool }) {
       y: e.clientY,
       fig: fig.n,
       birth: fig.b,
+      death: fig.d,
       school: fig.s,
       year: yr,
       score,
@@ -273,7 +274,7 @@ function GazeMapView({ hovFig, setHovFig, hovConf, setHovConf, selSchool }) {
       )),
       FIGS.map((fig, i) => {
         const active = !selSchool || selSchool === fig.s;
-        const col = SC[fig.s] || "#888";
+        const col = SC[fig.s] || "#aaa";
         return /* @__PURE__ */ jsx("g", { children: Object.entries(fig.y).map(([yr_s, score]) => {
           const yr = parseInt(yr_s);
           const x = xOf(yr), y = yOf(i);
@@ -305,7 +306,7 @@ function GazeMapView({ hovFig, setHovFig, hovConf, setHovConf, selSchool }) {
             y: yOf(i) + 2.5,
             textAnchor: "end",
             fontSize: hilite ? 7.5 : 6.5,
-            fill: active ? hilite ? "#e8e8f0" : SC[fig.s] || "#888" : "rgba(200,200,216,0.15)",
+            fill: active ? hilite ? "#e8e8f0" : SC[fig.s] || "#aaa" : "rgba(200,200,216,0.15)",
             fontWeight: hilite ? "bold" : "normal",
             style: { cursor: "default", transition: "all 0.1s" },
             onMouseEnter: () => setHovFig(fig.n),
@@ -389,11 +390,11 @@ function GazeMapView({ hovFig, setHovFig, hovConf, setHovConf, selSchool }) {
     ] }),
     tooltip && /* @__PURE__ */ jsxs("div", { style: {
       position: "fixed",
-      left: tooltip.x + 12,
-      top: tooltip.y - 10,
+      left: Math.min(tooltip.x + 12, window.innerWidth - 280),,
+      top: tooltip.y - Math.max(8, Math.min(tooltip.y - 10, window.innerHeight - 140)),
       background: "rgba(10,14,26,0.95)",
       border: "1px solid rgba(200,200,216,0.2)",
-      borderLeft: `3px solid ${SC[tooltip.school] || "#888"}`,
+      borderLeft: `3px solid ${SC[tooltip.school] || "#aaa"}`,
       padding: "8px 12px",
       borderRadius: 3,
       pointerEvents: "none",
@@ -403,9 +404,10 @@ function GazeMapView({ hovFig, setHovFig, hovConf, setHovConf, selSchool }) {
       lineHeight: 1.6
     }, children: [
       /* @__PURE__ */ jsx("div", { style: { fontWeight: "bold", color: "#e8e8f0", marginBottom: 2 }, children: tooltip.fig }),
-      /* @__PURE__ */ jsxs("div", { style: { color: "#6a7090" }, children: [
-        "b.",
+      /* @__PURE__ */ jsxs("div", { style: { color: "#9aa0c0" }, children: [
         tooltip.birth,
+        "\u2013",
+        tooltip.death ?? "present",
         " \xB7 ",
         tooltip.school
       ] }),
@@ -508,7 +510,7 @@ function EraView({ selSchool }) {
                     era: era.label,
                     year: yr,
                     score: sc,
-                    n: era.members.filter((f) => f.y[yr]).length,
+                    figs: era.members.filter((f) => f.y[yr]).map((f) => ({ n: f.n, b: f.b, d: f.d })),
                     theme: conf.theme || ""
                   });
                 },
@@ -535,25 +537,31 @@ function EraView({ selSchool }) {
     ] }),
     tooltip && /* @__PURE__ */ jsxs("div", { style: {
       position: "fixed",
-      left: tooltip.x + 10,
-      top: tooltip.y - 8,
+      left: Math.min(tooltip.x + 10, window.innerWidth - 280),,
+      top: tooltip.y - Math.max(8, Math.min(tooltip.y - 8, window.innerHeight - 140)),
       background: "rgba(10,14,26,0.95)",
       border: "1px solid rgba(144,202,249,0.3)",
       padding: "8px 12px",
       borderRadius: 3,
       pointerEvents: "none",
       zIndex: 9999,
+      maxWidth: 380,
       fontSize: 11,
       lineHeight: 1.6
     }, children: [
       /* @__PURE__ */ jsx("div", { style: { color: "#90CAF9", fontWeight: "bold" }, children: tooltip.year }),
       /* @__PURE__ */ jsx("div", { style: { color: "#e8e8f0" }, children: tooltip.era }),
-      /* @__PURE__ */ jsxs("div", { style: { color: "rgba(200,200,216,0.6)" }, children: [
-        tooltip.n,
+      /* @__PURE__ */ jsx("div", { style: { color: "rgba(200,200,216,0.5)", fontSize: 9.5, marginTop: 3, lineHeight: 1.7 }, children:
+        tooltip.figs && tooltip.figs.length > 0
+          ? tooltip.figs.map((f) => f.n + " (" + f.b + "\u2013" + (f.d ?? "present") + ")").join(", ")
+          : "no figures"
+      }),
+      /* @__PURE__ */ jsxs("div", { style: { color: "rgba(200,200,216,0.45)", fontSize: 9.5, marginTop: 2 }, children: [
+        tooltip.figs ? tooltip.figs.length : 0,
         " figures \xB7 score ",
         tooltip.score
       ] }),
-      /* @__PURE__ */ jsx("div", { style: { color: "rgba(200,200,216,0.4)", fontStyle: "italic", fontSize: 10 }, children: tooltip.theme })
+      /* @__PURE__ */ jsx("div", { style: { color: "rgba(200,200,216,0.7)", fontStyle: "italic", fontSize: 10 }, children: tooltip.theme })
     ] })
   ] });
 }
@@ -598,7 +606,7 @@ function TopFigView({ selSchool }) {
         yr
       )),
       figs.map((fig, i) => {
-        const col = SC[fig.s] || "#888";
+        const col = SC[fig.s] || "#aaa";
         const ys = Object.keys(fig.y).map(Number).sort((a, b) => a - b);
         return /* @__PURE__ */ jsxs("g", { children: [
           ys.length >= 2 && /* @__PURE__ */ jsx(
@@ -633,6 +641,7 @@ function TopFigView({ selSchool }) {
                     fig: fig.n,
                     school: fig.s,
                     birth: fig.b,
+                    death: fig.d,
                     year: yr,
                     score: sc,
                     theme: conf.theme || ""
@@ -680,7 +689,7 @@ function TopFigView({ selSchool }) {
           y: TOP + figs.length * ROW_H + 14,
           textAnchor: "middle",
           fontSize: 7.5,
-          fill: "rgba(200,200,216,0.4)",
+          fill: "rgba(200,200,216,0.7)",
           children: yr
         },
         yr
@@ -688,11 +697,11 @@ function TopFigView({ selSchool }) {
     ] }),
     tooltip && /* @__PURE__ */ jsxs("div", { style: {
       position: "fixed",
-      left: tooltip.x + 12,
-      top: tooltip.y - 8,
+      left: Math.min(tooltip.x + 12, window.innerWidth - 280),,
+      top: tooltip.y - Math.max(8, Math.min(tooltip.y - 8, window.innerHeight - 140)),
       background: "rgba(10,14,26,0.95)",
       border: "1px solid rgba(200,200,216,0.2)",
-      borderLeft: `3px solid ${SC[tooltip.school] || "#888"}`,
+      borderLeft: `3px solid ${SC[tooltip.school] || "#aaa"}`,
       padding: "8px 12px",
       borderRadius: 3,
       pointerEvents: "none",
@@ -701,9 +710,10 @@ function TopFigView({ selSchool }) {
       lineHeight: 1.6
     }, children: [
       /* @__PURE__ */ jsx("div", { style: { fontWeight: "bold", color: "#e8e8f0" }, children: tooltip.fig }),
-      /* @__PURE__ */ jsxs("div", { style: { color: "#6a7090" }, children: [
-        "b.",
+      /* @__PURE__ */ jsxs("div", { style: { color: "#9aa0c0" }, children: [
         tooltip.birth,
+        "\u2013",
+        tooltip.death ?? "present",
         " \xB7 ",
         tooltip.school
       ] }),
@@ -713,7 +723,7 @@ function TopFigView({ selSchool }) {
         "\xB7 score ",
         tooltip.score
       ] }),
-      /* @__PURE__ */ jsx("div", { style: { color: "rgba(200,200,216,0.4)", fontStyle: "italic", fontSize: 10 }, children: tooltip.theme })
+      /* @__PURE__ */ jsx("div", { style: { color: "rgba(200,200,216,0.7)", fontStyle: "italic", fontSize: 10 }, children: tooltip.theme })
     ] })
   ] });
 }
