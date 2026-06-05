@@ -438,17 +438,20 @@
         mount('panel-pmi', 'mount-pmi', 'loading-pmi',
               './dist/agw_pmi.js', s.pmi));
   
-    /* ── Zoom control ── */
-    var currentZoom = 1;
-    function setZoom(z) {
-      currentZoom = Math.min(2, Math.max(0.5, z));
+    /* ── Zoom control — exposed on window so onclick="" attrs can reach them ── */
+    window._zoomLevel = 1;
+    window.setZoom = function(z) {
+      window._zoomLevel = Math.min(2, Math.max(0.5, z));
       document.querySelectorAll('.viz-zoom-wrap').forEach(function(el) {
-        el.style.transform = 'scale(' + currentZoom + ')';
+        el.style.transform = 'scale(' + window._zoomLevel + ')';
+        el.style.transformOrigin = 'top center';
       });
-      document.getElementById('zoom-slider').value = currentZoom;
-      document.getElementById('zoom-pct').textContent = Math.round(currentZoom * 100) + '%';
-    }
-    function adjustZoom(delta) { setZoom(currentZoom + delta); }
+      var sl = document.getElementById('zoom-slider');
+      var pct = document.getElementById('zoom-pct');
+      if (sl) sl.value = window._zoomLevel;
+      if (pct) pct.textContent = Math.round(window._zoomLevel * 100) + '%';
+    };
+    window.adjustZoom = function(delta) { window.setZoom(window._zoomLevel + delta); };
 
   </script>
 
