@@ -390,8 +390,8 @@ function GazeMapView({ hovFig, setHovFig, hovConf, setHovConf, selSchool }) {
     ] }),
     tooltip && /* @__PURE__ */ jsxs("div", { style: {
       position: "fixed",
-      left: Math.min(tooltip.x + 12, window.innerWidth - 280),,
-      top: tooltip.y - Math.max(8, Math.min(tooltip.y - 10, window.innerHeight - 140)),
+      left: Math.min(tooltip.x + 12, window.innerWidth - 280),
+      top: Math.max(8, Math.min(tooltip.y - 10, window.innerHeight - 140)),
       background: "rgba(10,14,26,0.95)",
       border: "1px solid rgba(200,200,216,0.2)",
       borderLeft: `3px solid ${SC[tooltip.school] || "#aaa"}`,
@@ -537,8 +537,8 @@ function EraView({ selSchool }) {
     ] }),
     tooltip && /* @__PURE__ */ jsxs("div", { style: {
       position: "fixed",
-      left: Math.min(tooltip.x + 10, window.innerWidth - 280),,
-      top: tooltip.y - Math.max(8, Math.min(tooltip.y - 8, window.innerHeight - 140)),
+      left: Math.min(tooltip.x + 10, window.innerWidth - 280),
+      top: Math.max(8, Math.min(tooltip.y - 8, window.innerHeight - 140)),
       background: "rgba(10,14,26,0.95)",
       border: "1px solid rgba(144,202,249,0.3)",
       padding: "8px 12px",
@@ -697,8 +697,8 @@ function TopFigView({ selSchool }) {
     ] }),
     tooltip && /* @__PURE__ */ jsxs("div", { style: {
       position: "fixed",
-      left: Math.min(tooltip.x + 12, window.innerWidth - 280),,
-      top: tooltip.y - Math.max(8, Math.min(tooltip.y - 8, window.innerHeight - 140)),
+      left: Math.min(tooltip.x + 12, window.innerWidth - 280),
+      top: Math.max(8, Math.min(tooltip.y - 8, window.innerHeight - 140)),
       background: "rgba(10,14,26,0.95)",
       border: "1px solid rgba(200,200,216,0.2)",
       borderLeft: `3px solid ${SC[tooltip.school] || "#aaa"}`,
