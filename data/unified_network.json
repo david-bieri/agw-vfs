@@ -11,7 +11,14 @@
       "lane": "aut",
       "lineageId": "schumpeter",
       "descDe": "Innovation; Konjunktur; Bonner Mentor Löschs",
-      "descEn": "Innovation; cycles; Lösch's Bonn mentor"
+      "descEn": "Innovation; cycles; Lösch's Bonn mentor",
+      "bioSummaryDe": "Österreichisch-amerikanischer Ökonom, Begründer der Theorie der schöpferischen Zerstörung und unternehmerischen Innovation.",
+      "bioSummaryEn": "Austrian-born economist who pioneered the theory of creative destruction and entrepreneurial innovation.",
+      "hetSchool": "Evolutionary economics",
+      "keyWorks": "Theory of Economic Development (1911); Business Cycles (1939); Capitalism, Socialism and Democracy (1942)",
+      "keyContribution": "Creative destruction and entrepreneurial innovation",
+      "teacherStudent": "Teacher of: Samuelson, Tobin, Tsuru, Heilbroner, Bergson, Metzler; Student of: Bhm-Bawerk, Wieser, Philippovich",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/schumpeter.htm"
     },
     {
       "id": "Friedrich August von Hayek",
@@ -24,7 +31,14 @@
       "lane": "aut",
       "lineageId": "hayek",
       "descDe": "Österr. Schule; Wissensordnung",
-      "descEn": "Austrian School; knowledge & order"
+      "descEn": "Austrian School; knowledge & order",
+      "bioSummaryDe": "Österreichischer Ökonom mit grundlegenden Beiträgen zur monetären Konjunkturtheorie, der Debatte über sozialistische Wirtschaftsrechnung und der Theorie spontaner Ordnung.",
+      "bioSummaryEn": "Austrian economist who made fundamental contributions to monetary cycle theory, the socialist calculation debate, and the theory of spontaneous order.",
+      "hetSchool": "Austrian School",
+      "keyWorks": "Prices and Production (1931); The Road to Serfdom (1944); The Constitution of Liberty (1960)",
+      "keyContribution": "Spontaneous order and the price system as an information mechanism",
+      "teacherStudent": "Teacher of: Hicks, Lerner, Kaldor, Friedrich Lutz, Vera Lutz; Student of: Wieser, Böhm-Bawerk",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/hayek.htm"
     },
     {
       "id": "Paul Anthony Samuelson",
@@ -37,7 +51,14 @@
       "lane": "anglo",
       "lineageId": "samuelson",
       "descDe": "Neoklassische Synthese; Schumpeter-Schüler",
-      "descEn": "Neoclassical synthesis; Schumpeter's student"
+      "descEn": "Neoclassical synthesis; Schumpeter's student",
+      "bioSummaryDe": "Amerikanischer Ökonom, der die Mathematisierung der Wirtschaftswissenschaft vorantrieb und das erfolgreichste Lehrbuch der Volkswirtschaftslehre verfasste.",
+      "bioSummaryEn": "American economist who personified mainstream economics in the 20th century, launching the mathematization of economics and writing the most successful principles textbook.",
+      "hetSchool": "Neo-Keynesian Synthesis",
+      "keyWorks": "Foundations of Economic Analysis (1947); Economics: An introductory analysis (1948); Linear Programming and Economic Analysis (1958)",
+      "keyContribution": "Mathematization of economics and Neoclassical-Keynesian Synthesis",
+      "teacherStudent": "Teacher of: Robert M. Solow; Student of: Joseph Schumpeter, Wassily Leontief, Gottfried Haberler, Alvin Hansen, Edwin Bidwell Wilson",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/samuelson.htm"
     },
     {
       "id": "Alfred Marshall",
@@ -50,7 +71,14 @@
       "lane": "camb",
       "lineageId": "marshall",
       "descDe": "Neoklassik; Cambridge",
-      "descEn": "Neoclassical; Cambridge"
+      "descEn": "Neoclassical; Cambridge",
+      "bioSummaryDe": "Führender englischer Ökonom, einer der Hauptvertreter der Neoklassik und Autor der einflussreichen „Principles of Economics\".",
+      "bioSummaryEn": "Prominent English economist, one of the leading propagators of Neoclassical economics, and author of the successful textbook Principles of Economics.",
+      "hetSchool": "Cambridge Neoclassicals",
+      "keyWorks": "Principles of Economics (1890); Industry and Trade (1919); Money, Credit and Commerce (1923)",
+      "keyContribution": "Neoclassical theory of value and supply-and-demand diagram",
+      "teacherStudent": "Teacher of: Herbert S Foxwell, John Neville Keynes, William Cunningham, John Shield Nicholson, L.L. Price; Student of: None found",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/marshall.htm"
     },
     {
       "id": "Adam Smith",
@@ -63,7 +91,14 @@
       "lane": "klassik",
       "lineageId": "smith",
       "descDe": "Klassische Nationalökonomie",
-      "descEn": "Classical political economy"
+      "descEn": "Classical political economy",
+      "bioSummaryDe": "Schottischer Philosoph und Ökonom der Aufklärung, weithin als „Vater der Nationalökonomie\" anerkannt.",
+      "bioSummaryEn": "Scottish philosopher and economist, leading figure of the Scottish Enlightenment, widely regarded as the 'father of economics'.",
+      "hetSchool": "Classical School",
+      "keyWorks": "The Theory of Moral Sentiments (1759); An Inquiry into the Nature and Causes of the Wealth of Nations (1776)",
+      "keyContribution": "Classical political economy and the Wealth of Nations",
+      "teacherStudent": "Student of: Francis Hutcheson; Teacher of: John Millar",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/smith.htm"
     },
     {
       "id": "Mark Blaug",
@@ -71,7 +106,14 @@
       "birth": 1927,
       "conferenceAppearances": 17,
       "inCoCitation": true,
-      "inLineage": false
+      "inLineage": false,
+      "bioSummaryDe": "Britisch-niederländischer Wirtschaftswissenschaftler, führender Methodologe und Historiker des ökonomischen Denkens.",
+      "bioSummaryEn": "Dutch-born British economist known for his extensive work in the history of economic thought and the methodology of economics.",
+      "hetSchool": "Not found",
+      "keyWorks": "Ricardian Economics (1958); Economic Theory in Retrospect (1962); The Methodology of Economics (1980)",
+      "keyContribution": "History of economic thought and methodology of economics",
+      "teacherStudent": "Student of: George Stigler",
+      "hetUrl": null
     },
     {
       "id": "John Maynard Keynes",
@@ -84,7 +126,14 @@
       "lane": "camb",
       "lineageId": "keynes",
       "descDe": "Allgemeine Theorie",
-      "descEn": "General Theory"
+      "descEn": "General Theory",
+      "bioSummaryDe": "Britischer Ökonom, dessen „General Theory\" die Makroökonomik revolutionierte und die Wirtschaftspolitik des 20. Jahrhunderts prägte.",
+      "bioSummaryEn": "British economist who revolutionized macroeconomics by demonstrating that aggregate demand determines overall economic activity and employment.",
+      "hetSchool": "Cambridge Keynesians",
+      "keyWorks": "The Economic Consequences of the Peace (1919); A Treatise on Money (1930); The General Theory of Employment, Interest and Money (1936)",
+      "keyContribution": "Aggregate demand determines output and employment",
+      "teacherStudent": "Teacher of: Richard Kahn, Joan Robinson, Austin Robinson, James Meade, Piero Sraffa; Student of: Alfred Marshall",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/keynes.htm"
     },
     {
       "id": "Max Weber",
@@ -97,7 +146,14 @@
       "lane": "hist",
       "lineageId": "mweber",
       "descDe": "Verstehende Soziologie; Methodenlehre",
-      "descEn": "Interpretive sociology; methodology"
+      "descEn": "Interpretive sociology; methodology",
+      "bioSummaryDe": "Deutscher Soziologe und Nationalökonom, bekannt für die These vom Zusammenhang zwischen protestantischer Ethik und Kapitalismus.",
+      "bioSummaryEn": "German sociologist and political economist who founded modern sociology and analyzed the relationship between the Protestant ethic and capitalism.",
+      "hetSchool": "German Historical School",
+      "keyWorks": "The Protestant Ethic and the Spirit of Capitalism (1905); Economy and Society (1914); General Economic History (1923)",
+      "keyContribution": "Protestant ethic's role in capitalism and the theory of Verstehen",
+      "teacherStudent": "Teacher of: Else von Richthofen; Student of: None found",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/weber.htm"
     },
     {
       "id": "Piero Sraffa",
@@ -105,7 +161,14 @@
       "birth": 1898,
       "conferenceAppearances": 14,
       "inCoCitation": true,
-      "inLineage": false
+      "inLineage": false,
+      "bioSummaryDe": "Italienisch-britischer Ökonom, der Ricardos Theorie neu formulierte und die Cambridge-Kapitalkontroverse auslöste.",
+      "bioSummaryEn": "Italian-born economist who highlighted inconsistencies in Marshallian theory and solved Ricardo's theory for the moderns, inspiring the Classical Revival.",
+      "hetSchool": "Neo-Ricardian",
+      "keyWorks": "The Laws of Returns under Competitive Conditions (1926); Works and Correspondence of David Ricardo (1951); Production of Commodities by Means of Commodities (1960)",
+      "keyContribution": "Solving Ricardo's theory and depicting the reswitching problem in capital theory",
+      "teacherStudent": "None found",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/sraffa.htm"
     },
     {
       "id": "Werner Sombart",
@@ -118,7 +181,14 @@
       "lane": "hist",
       "lineageId": "sombart",
       "descDe": "Jüngste Hist. Schule; Kapitalismusanalyse",
-      "descEn": "Youngest Historical School; capitalism"
+      "descEn": "Youngest Historical School; capitalism",
+      "bioSummaryDe": "Deutscher Nationalökonom und Soziologe, Hauptvertreter der jüngeren Historischen Schule und Autor von „Der moderne Kapitalismus\".",
+      "bioSummaryEn": "A leading member of the last generation of the German Historical School, known for his work on modern capitalism and controversial political shifts.",
+      "hetSchool": "German Historical School",
+      "keyWorks": "Modern Capitalism (1902); The Jews and Modern Capitalism (1911); German Economy in the 19th Century (1903)",
+      "keyContribution": "Modern Capitalism and the origins of capitalist acquisitiveness",
+      "teacherStudent": "Student of: Schmoller, Wagner",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/sombart.htm"
     },
     {
       "id": "Carl Menger",
@@ -131,7 +201,14 @@
       "lane": "aut",
       "lineageId": "menger",
       "descDe": "Begründer der Österr. Schule",
-      "descEn": "Founder of the Austrian School"
+      "descEn": "Founder of the Austrian School",
+      "bioSummaryDe": "Österreichischer Ökonom, Begründer der Österreichischen Schule und der subjektiven Werttheorie.",
+      "bioSummaryEn": "Austrian economist who founded the Austrian School of thought and was one of the three leaders of the Marginalist Revolution of the 1870s.",
+      "hetSchool": "Austrian School",
+      "keyWorks": "Die Grundsätze der Volkswirthschaftslehre (1871); Untersuchungen über die Methode der Socialwissenschaften (1883); On the Origins of Money (1892)",
+      "keyContribution": "Subjective theory of value and marginalist value theory",
+      "teacherStudent": "Teacher of: Eugen von Böhm-Bawerk, Friedrich von Wieser, Crown Prince Rudolf, Karl Menger; Student of: None found",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/menger.htm"
     },
     {
       "id": "John Stuart Mill",
@@ -144,7 +221,14 @@
       "lane": "klassik",
       "lineageId": "mill",
       "descDe": "Klassische Synthese",
-      "descEn": "Classical synthesis"
+      "descEn": "Classical synthesis",
+      "bioSummaryDe": "Britischer Philosoph und Ökonom, dessen „Principles of Political Economy\" die klassische Theorie systematisch zusammenfassten.",
+      "bioSummaryEn": "British philosopher, Classical economist, prophet of liberalism and public intellectual who restated Classical Ricardian theory.",
+      "hetSchool": "Classical",
+      "keyWorks": "Essays on Some Unsettled Questions of Political Economy (1844); Principles of Political Economy (1848); On Liberty (1859)",
+      "keyContribution": "Restatement of the Classical Ricardian theory",
+      "teacherStudent": "Student of: James Mill, Jeremy Bentham",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/mill.htm"
     },
     {
       "id": "John Richard Hicks",
@@ -157,7 +241,14 @@
       "lane": "anglo",
       "lineageId": "hicks",
       "descDe": "LSE/Oxford; Value and Capital",
-      "descEn": "LSE/Oxford; Value and Capital"
+      "descEn": "LSE/Oxford; Value and Capital",
+      "bioSummaryDe": "Britischer Ökonom, Schöpfer des IS-LM-Modells und Wegbereiter der neoklassisch-keynesianischen Synthese.",
+      "bioSummaryEn": "One of the most important and influential economists of the twentieth century, known for his eclectic contributions to economic theory including the IS-LM model and Value and Capital.",
+      "hetSchool": "Neo-Walrasian",
+      "keyWorks": "Value and Capital (1939); Theory of Wages (1932); Capital and Growth (1965)",
+      "keyContribution": "IS-LM model and Neo-Keynesian synthesis",
+      "teacherStudent": "Student of: Lionel Robbins; Teacher of: None found",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/hicks.htm"
     },
     {
       "id": "Knut Wicksell",
@@ -170,7 +261,14 @@
       "lane": "stockholm",
       "lineageId": "wicksell",
       "descDe": "Kumulativer Prozess; Geldtheorie",
-      "descEn": "Cumulative process; monetary theory"
+      "descEn": "Cumulative process; monetary theory",
+      "bioSummaryDe": "Schwedischer Ökonom, Begründer der Theorie des natürlichen Zinssatzes und des kumulativen Prozesses.",
+      "bioSummaryEn": "Swedish Neoclassical economist who pioneered the theory of the natural rate of interest and the cumulative process.",
+      "hetSchool": "Swedish Neoclassical",
+      "keyWorks": "Value, Capital and Rent (1893); Interest and Prices (1898); Lectures on Political Economy (1901)",
+      "keyContribution": "Natural rate of interest and the cumulative process",
+      "teacherStudent": "None found",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/wicksell.htm"
     },
     {
       "id": "Karl Marx",
@@ -183,7 +281,14 @@
       "lane": "klassik",
       "lineageId": "marx",
       "descDe": "Kritik der politischen Ökonomie",
-      "descEn": "Critique of political economy"
+      "descEn": "Critique of political economy",
+      "bioSummaryDe": "Deutscher Philosoph und Ökonom, dessen „Kapital\" die Grundlage der marxistischen Wirtschaftstheorie bildet.",
+      "bioSummaryEn": "German economist, philosopher and socialist revolutionary, founder of Marxian economics.",
+      "hetSchool": "Marxian",
+      "keyWorks": "Communist Manifesto (1848); Das Kapital (1867)",
+      "keyContribution": "Marxian economics and the theory of alienation",
+      "teacherStudent": "Teacher of: None found; Student of: Bruno Bauer",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/marx.htm"
     },
     {
       "id": "Wilhelm Georg Friedrich Roscher",
@@ -196,7 +301,14 @@
       "lane": "hist",
       "lineageId": "roscher",
       "descDe": "Ältere Historische Schule",
-      "descEn": "Older Historical School"
+      "descEn": "Older Historical School",
+      "bioSummaryDe": "Deutscher Nationalökonom, Begründer der älteren Historischen Schule der Nationalökonomie.",
+      "bioSummaryEn": "German economist and historian who founded the older German Historical School and advocated for the historical method as a positive science.",
+      "hetSchool": "German Historical School",
+      "keyWorks": "Grundriss zu Vorlesungen über die Staatswirtschaft nach geschichtlichen Methode (1843); System der Volkswirtschaft (1854-94); Geschichte der National-oekonomik in Deutschland (1874)",
+      "keyContribution": "Historical method as a positive science and cyclical stages theory of evolution",
+      "teacherStudent": "None found",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/roscher.htm"
     },
     {
       "id": "Erich Wolfgang Streissler",
@@ -217,7 +329,14 @@
       "lane": "stockholm",
       "lineageId": "cassel",
       "descDe": "Preistheorie; Stockholm",
-      "descEn": "Price theory; Stockholm"
+      "descEn": "Price theory; Stockholm",
+      "bioSummaryDe": "Schwedischer Ökonom, bekannt für seine Formalisierung der allgemeinen Gleichgewichtstheorie und die Kaufkraftparitätentheorie.",
+      "bioSummaryEn": "Swedish Neoclassical economist who formalized general equilibrium theory and introduced the purchasing power parity theory of exchange rates.",
+      "hetSchool": "Swedish Neoclassical",
+      "keyWorks": "Theory of Social Economy (1918); The Nature and Necessity of Interest (1903); Money and Foreign Exchange after 1914 (1922)",
+      "keyContribution": "Formalization of general equilibrium theory and purchasing power parity",
+      "teacherStudent": "None found",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/cassel.htm"
     },
     {
       "id": "David Ricardo",
@@ -230,7 +349,14 @@
       "lane": "klassik",
       "lineageId": "ricardo",
       "descDe": "Klassik; Werttheorie",
-      "descEn": "Classical; value theory"
+      "descEn": "Classical; value theory",
+      "bioSummaryDe": "Britischer Ökonom, Begründer der Theorie der komparativen Kostenvorteile und der klassischen Rententheorie.",
+      "bioSummaryEn": "British economist who articulated the Classical system of political economy and developed the theory of comparative advantage.",
+      "hetSchool": "Classical or Ricardian School",
+      "keyWorks": "The High Price of Bullion (1810); An Essay on the Influence of a Low Price of Corn on the Profits of Stock (1815); On the Principles of Political Economy and Taxation (1817)",
+      "keyContribution": "Classical system of political economy and comparative advantage",
+      "teacherStudent": "None found",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/ricardo.htm"
     },
     {
       "id": "Milton Friedman",
@@ -243,7 +369,14 @@
       "lane": "anglo",
       "lineageId": "friedman",
       "descDe": "Chicago; Monetarismus",
-      "descEn": "Chicago; monetarism"
+      "descEn": "Chicago; monetarism",
+      "bioSummaryDe": "Amerikanischer Ökonom, Hauptvertreter des Monetarismus und der Chicagoer Schule.",
+      "bioSummaryEn": "American economist who led the Monetarist incarnation of the Chicago School and advocated for free markets and laissez-faire economic policies.",
+      "hetSchool": "Chicago School",
+      "keyWorks": "A Theory of the Consumption Function (1957); A Monetary History of the United States, 1867-1960 (1963); Capitalism and Freedom (1962)",
+      "keyContribution": "Monetarism and the Permanent Income Hypothesis",
+      "teacherStudent": "Student of: Henry Schultz, Harold Hotelling, James Angell, Wesley Mitchell",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/friedman.htm"
     },
     {
       "id": "Walter Eucken",
@@ -256,7 +389,14 @@
       "lane": "ordo",
       "lineageId": "eucken",
       "descDe": "Freiburger Schule; erster Mentor Löschs",
-      "descEn": "Freiburg School; Lösch's first mentor"
+      "descEn": "Freiburg School; Lösch's first mentor",
+      "bioSummaryDe": "Deutscher Ökonom, Begründer des Ordoliberalismus und der Freiburger Schule, intellektueller Architekt der Sozialen Marktwirtschaft.",
+      "bioSummaryEn": "German comparative economist trained in the tradition of the German Historical School who tried to synthesize their corporatist approach with Neoclassical theory.",
+      "hetSchool": "Mandarins",
+      "keyWorks": "Kapitaltheoretische Untersuchungen (1934); The Foundations of Economics (1940)",
+      "keyContribution": "Synthesizing corporatist approach with Neoclassical theory and laissez-faire",
+      "teacherStudent": "Student of: Heinrich Dietzel; Teacher of: Friedrich A. Lutz",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/eucken.htm"
     },
     {
       "id": "Eugen von Böhm-Bawerk",
@@ -269,7 +409,14 @@
       "lane": "aut",
       "lineageId": "boehm",
       "descDe": "Österr. Schule; Kapitaltheorie",
-      "descEn": "Austrian School; capital theory"
+      "descEn": "Austrian School; capital theory",
+      "bioSummaryDe": "Österreichischer Ökonom, Begründer der österreichischen Kapitaltheorie und Lehrer einer ganzen Generation von Ökonomen.",
+      "bioSummaryEn": "Austrian economist, statesman, leading member of the Austrian School and creator of the Austrian theory of capital.",
+      "hetSchool": "Austrian School",
+      "keyWorks": "Capital und Capitalzins: Erste Abteilung, Geschichte und Kritik der Capitalstheorien (1884); Capital und Capitalzins: Zweite Abteilung, Positive Theorie des Capitals (1889)",
+      "keyContribution": "Austrian theory of capital",
+      "teacherStudent": "Teacher of: Ludwig von Mises, Friedrich von Hayek, Joseph Schumpeter; Student of: Carl Menger",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/bawerk.htm"
     },
     {
       "id": "Jürg Niehans",
@@ -322,7 +469,14 @@
       "lane": "camb",
       "lineageId": "pigou",
       "descDe": "Wohlfahrtsökonomik",
-      "descEn": "Welfare economics"
+      "descEn": "Welfare economics",
+      "bioSummaryDe": "Britischer Ökonom, Begründer der Wohlfahrtsökonomik und des Konzepts externer Effekte.",
+      "bioSummaryEn": "Cambridge Neoclassical economist who brought social welfare into economic analysis and pioneered the distinction between private and social costs.",
+      "hetSchool": "Cambridge Neoclassicals",
+      "keyWorks": "Wealth and Welfare (1912); Economics of Welfare (1920); Theory of Unemployment (1933)",
+      "keyContribution": "Brought social welfare into economic analysis and internalized externalities",
+      "teacherStudent": "Teacher of: None found; Student of: Alfred Marshall",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/pigou.htm"
     },
     {
       "id": "Gustav von Schmoller",
@@ -335,7 +489,14 @@
       "lane": "hist",
       "lineageId": "schmoller",
       "descDe": "Jüngere Hist. Schule; VfS-Mitbegründer",
-      "descEn": "Younger Historical School; VfS co-founder"
+      "descEn": "Younger Historical School; VfS co-founder",
+      "bioSummaryDe": "Deutscher Nationalökonom, Hauptvertreter der jüngeren Historischen Schule und Protagonist im Methodenstreit gegen Menger.",
+      "bioSummaryEn": "German economist at the University of Berlin and paramount leader of the Younger German Historical School.",
+      "hetSchool": "Younger German Historical School",
+      "keyWorks": "Zur Geschichte der deutschen Kleingewerbe im 19. Jahrhundert (1870); Umrisse (1898); Grundriss der allgemeinen Volkswirtschaftslehre (1900-04)",
+      "keyContribution": "Methodenstreit and advocacy for historical/empirical analysis over abstract theory",
+      "teacherStudent": "Teacher of: his own students (via Staats- und Sozialwissenschaftliche Forschungen); Student of: None found",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/schmoller.htm"
     },
     {
       "id": "William Stanley Jevons",
@@ -348,7 +509,14 @@
       "lane": "aut",
       "lineageId": "jevons",
       "descDe": "Grenznutzenrevolution",
-      "descEn": "Marginal revolution"
+      "descEn": "Marginal revolution",
+      "bioSummaryDe": "Britischer Ökonom und Logiker, Mitbegründer der Marginalrevolution und der Grenznutzentheorie.",
+      "bioSummaryEn": "English economist and logician who, simultaneously with Carl Menger and Léon Walras, launched the Marginalist Revolution of 1871-4.",
+      "hetSchool": "Anglo-American Marginalists",
+      "keyWorks": "The Coal Question (1865); The Theory of Political Economy (1871); Principles of Science (1874)",
+      "keyContribution": "Marginalist Revolution and utility theory",
+      "teacherStudent": "Student of: Augustus De Morgan",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/jevons.htm"
     },
     {
       "id": "John Locke",
@@ -409,7 +577,14 @@
       "lane": "aut",
       "lineageId": "haberler",
       "descDe": "Wiener Kreis; Außenhandel",
-      "descEn": "Vienna circle; international trade"
+      "descEn": "Vienna circle; international trade",
+      "bioSummaryDe": "Österreichisch-amerikanischer Ökonom, der die Theorie der komparativen Kosten in Opportunitätskosten reformulierte.",
+      "bioSummaryEn": "Austrian economic theorist who taught at Harvard and synthesized international trade and business cycle theories into rigorous encyclopaedic treatments.",
+      "hetSchool": "Austrian School",
+      "keyWorks": "Theory of International Trade (1936); Prosperity and Depression (1937)",
+      "keyContribution": "Rewriting comparative advantage in terms of opportunity cost",
+      "teacherStudent": "Teacher of: None found; Student of: Wieser, von Mises",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/haberler.htm"
     },
     {
       "id": "Ludwig von Mises",
@@ -422,7 +597,14 @@
       "lane": "aut",
       "lineageId": "mises",
       "descDe": "Österr. Schule; Praxeologie",
-      "descEn": "Austrian School; praxeology"
+      "descEn": "Austrian School; praxeology",
+      "bioSummaryDe": "Österreichisch-amerikanischer Ökonom, Begründer der Praxeologie und radikaler Verfechter des Liberalismus.",
+      "bioSummaryEn": "Eminence grise of the Austrian School who pioneered praxeology and the theory of human action.",
+      "hetSchool": "Austrian School",
+      "keyWorks": "The Theory of Money and Credit (1912); Socialism: An economic and sociological analysis (1922); Human Action: A treatise on economics (1949)",
+      "keyContribution": "Praxeology and the theory of human action",
+      "teacherStudent": "None found",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/mises.htm"
     },
     {
       "id": "Bruno Hildebrand",
@@ -483,7 +665,14 @@
       "birth": 1903,
       "conferenceAppearances": 8,
       "inCoCitation": true,
-      "inLineage": false
+      "inLineage": false,
+      "bioSummaryDe": "Britische Ökonomin der Cambridge-Schule, Pionierin der Theorie der unvollkommenen Konkurrenz.",
+      "bioSummaryEn": "English economist who made fundamental contributions to the theory of imperfect competition, Keynesian economics, and the Cambridge Capital Controversy.",
+      "hetSchool": "Cambridge School",
+      "keyWorks": "The Economics of Imperfect Competition (1933); An Essay on Marxian Economics (1942); The Accumulation of Capital (1956)",
+      "keyContribution": "Theory of imperfect competition and capital aggregation in growth theory",
+      "teacherStudent": "Student of: Pigou, Keynes; Teacher of: None found",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/robinson.htm"
     },
     {
       "id": "Wilhelm Röpke",
@@ -496,7 +685,14 @@
       "lane": "ordo",
       "lineageId": "roepke",
       "descDe": "Ordoliberalismus; Sozialökonomie",
-      "descEn": "Ordoliberalism; social economy"
+      "descEn": "Ordoliberalism; social economy",
+      "bioSummaryDe": "Deutscher Ökonom, intellektueller Wegbereiter der Sozialen Marktwirtschaft und des Ordoliberalismus.",
+      "bioSummaryEn": "German economist and Ordo-liberal who helped establish the intellectual foundations for the post-war German social-market economy.",
+      "hetSchool": "Ordo-liberal",
+      "keyWorks": "Economics in a Free Society (1937); The Social Crisis of our Time (1942); A Humane Economy (1958)",
+      "keyContribution": "Intellectual foundations for the post-war German social-market economy",
+      "teacherStudent": "Teacher of: Ludwig Erhard; Student of: None found",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/ropke.htm"
     },
     {
       "id": "Allan George Barnard Fisher",
@@ -609,7 +805,14 @@
       "descDe": "Allg. Gleichgewicht; Lausanne",
       "descEn": "General equilibrium; Lausanne",
       "inCoCitation": false,
-      "inLineage": true
+      "inLineage": true,
+      "bioSummaryDe": "Französisch-schweizerischer Ökonom, Begründer der allgemeinen Gleichgewichtstheorie und der Lausanner Schule.",
+      "bioSummaryEn": "French economist and father of general equilibrium theory who was one of the three leaders of the Marginalist Revolution.",
+      "hetSchool": "Lausanne School",
+      "keyWorks": "Elements of Pure Economics (1874); Studies in Social Economics (1896); Studies in Applied Economics (1898)",
+      "keyContribution": "General equilibrium theory",
+      "teacherStudent": "Teacher of: Vilfredo Pareto; Student of: Auguste Walras",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/walras.htm"
     },
     {
       "id": "Vilfredo Pareto",
@@ -729,7 +932,14 @@
       "descDe": "Institutionalismus",
       "descEn": "Institutionalism",
       "inCoCitation": false,
-      "inLineage": true
+      "inLineage": true,
+      "bioSummaryDe": "Amerikanischer Ökonom und Soziologe, Begründer des Institutionalismus und Kritiker des „demonstrativen Konsums\".",
+      "bioSummaryEn": "American economist and sociologist who founded the institutional economics movement and coined the term \"conspicuous consumption.\"",
+      "hetSchool": "Institutionalist",
+      "keyWorks": "The Theory of the Leisure Class (1899); Theory of Business Enterprise (1904); The Instinct of Workmanship and the State of the Industrial Arts (1914)",
+      "keyContribution": "Conspicuous consumption and institutional economics",
+      "teacherStudent": "Student of: John Bates Clark, J. Laurence Laughlin",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/veblen.htm"
     },
     {
       "id": "John Bates Clark",
@@ -789,7 +999,14 @@
       "descDe": "Ordoliberalismus; Wettbewerbsordnung",
       "descEn": "Ordoliberalism; competitive order",
       "inCoCitation": false,
-      "inLineage": true
+      "inLineage": true,
+      "bioSummaryDe": "Austrian economist, statesman, leading member of the Austrian School and creator of the Austrian theory of capital.",
+      "bioSummaryEn": "Austrian economist, statesman, leading member of the Austrian School and creator of the Austrian theory of capital.",
+      "hetSchool": "Austrian School",
+      "keyWorks": "Capital und Capitalzins: Erste Abteilung, Geschichte und Kritik der Capitalstheorien (1884); Capital und Capitalzins: Zweite Abteilung, Positive Theorie des Capitals (1889)",
+      "keyContribution": "Austrian theory of capital",
+      "teacherStudent": "Teacher of: Ludwig von Mises, Friedrich von Hayek, Joseph Schumpeter; Student of: Carl Menger",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/bawerk.htm"
     },
     {
       "id": "Alexander Rüstow",
@@ -825,7 +1042,14 @@
       "descDe": "Industriestandortlehre",
       "descEn": "Theory of industrial location",
       "inCoCitation": false,
-      "inLineage": true
+      "inLineage": true,
+      "bioSummaryDe": "German sociologist and political economist who founded modern sociology and analyzed the relationship between the Protestant ethic and capitalism.",
+      "bioSummaryEn": "German sociologist and political economist who founded modern sociology and analyzed the relationship between the Protestant ethic and capitalism.",
+      "hetSchool": "German Historical School",
+      "keyWorks": "The Protestant Ethic and the Spirit of Capitalism (1905); Economy and Society (1914); General Economic History (1923)",
+      "keyContribution": "Protestant ethic's role in capitalism and the theory of Verstehen",
+      "teacherStudent": "Teacher of: Else von Richthofen; Student of: None found",
+      "hetUrl": "https://www.hetwebsite.net/het/profiles/weber.htm"
     },
     {
       "id": "Walter Christaller",

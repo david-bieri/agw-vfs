@@ -321,13 +321,32 @@ export default async function AGWEgoNetwork(container) {
       );
     });
 
+    const lang = document.documentElement.lang || "de";
+    const hasHetData = !!egoNode.bioSummaryDe;
+    
     let html = `<div style="margin-bottom:10px;border-bottom:1px solid #444;padding-bottom:8px;">
-      <strong style="font-size:14px;color:#fff;">${egoNode.id}</strong><br>
-      <span style="color:${nodeColor(egoNode)};font-size:11px;">● ${egoNode.school || egoNode.lane || "—"}</span><br>`;
-    if (egoNode.birth) html += `<span style="color:#888;">*${egoNode.birth}${egoNode.death ? " †" + egoNode.death : ""}</span><br>`;
-    if (egoNode.conferenceAppearances) html += `<span style="color:#888;">${egoNode.conferenceAppearances} Konferenzbände</span><br>`;
-    if (egoNode.descDe) html += `<span style="color:#aaa;font-style:italic;">${egoNode.descDe}</span>`;
-    html += `</div>`;
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <strong style="font-size:15px;color:#fff;font-family:'EB Garamond',serif;">${egoNode.id}</strong>
+        ${egoNode.hetUrl ? `<a href="${egoNode.hetUrl}" target="_blank" title="HET Website Profil" style="color:#4a90e2;font-size:10px;text-decoration:none;background:#223;padding:2px 4px;border-radius:3px;">HET</a>` : ""}
+      </div>
+      <span style="color:${nodeColor(egoNode)};font-size:11px;">● ${egoNode.hetSchool || egoNode.school || egoNode.lane || "—"}</span><br>`;
+    
+    if (egoNode.birth) html += `<span style="color:#888;font-size:11px;">*${egoNode.birth}${egoNode.death ? " †" + egoNode.death : ""}</span><br>`;
+    if (egoNode.conferenceAppearances) html += `<span style="color:#888;font-size:11px;">${egoNode.conferenceAppearances} ${lang === 'en' ? 'Conferences' : 'Konferenzbände'}</span><br>`;
+    
+    html += `<div style="margin-top:8px;font-size:11.5px;color:#ddd;line-height:1.4;">`;
+    if (hasHetData) {
+      html += lang === 'en' ? egoNode.bioSummaryEn : egoNode.bioSummaryDe;
+      if (egoNode.keyWorks) {
+        html += `<div style="margin-top:6px;padding:6px;background:#1a1a2e;border-radius:4px;color:#aaa;font-size:10.5px;">
+          <strong style="color:#ccc;">${lang === 'en' ? 'Key Works:' : 'Hauptwerke:'}</strong><br>
+          ${egoNode.keyWorks.replace(/;/g, '<br>')}
+        </div>`;
+      }
+    } else if (egoNode.descDe) {
+      html += `<span style="font-style:italic;">${lang === 'en' ? (egoNode.descEn || egoNode.descDe) : egoNode.descDe}</span>`;
+    }
+    html += `</div></div>`;
 
     if (coCitNeighbors.length > 0) {
       html += `<div style="margin-bottom:8px;"><strong style="color:#aaa;font-size:11px;">Co-Zitation (${coCitNeighbors.length}):</strong><br>`;

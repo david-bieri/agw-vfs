@@ -12,56 +12,56 @@ const SCENES_DE = [
   {
     id: "intro",
     title: "43 Konferenzen, eine Geschichte",
-    body: "Seit 1980 hat der Ausschuss für die Geschichte der Wirtschaftswissenschaften (AGW) im Verein für Socialpolitik jährlich Konferenzen veranstaltet. Über vier Jahrzehnte entstand ein einzigartiges Archiv intellektueller Rezeption — wer wurde studiert, wer vergessen, welche Denkschulen dominierten?",
+    body: "Seit 1980 hat der Ausschuss für die Geschichte der Wirtschaftswissenschaften (AGW) im Verein für Socialpolitik jährlich Konferenzen veranstaltet. Über vier Jahrzehnte entstand ein einzigartiges Archiv intellektueller Rezeption — es kartiert nicht nur die Ideengeschichte, sondern die Geschichte der Historiker selbst. Wer wurde studiert, wer vergessen, und welche Denkschulen dominierten den deutschsprachigen Diskurs?",
     viz: "overview",
     highlight: null
   },
   {
     id: "classical-dominance",
     title: "Die Klassiker dominieren die Anfangsjahre",
-    body: "In den 1980er Jahren standen die Klassiker im Mittelpunkt: Adam Smith, David Ricardo, Karl Marx. Die ersten Konferenzen widmeten sich der Nationalökonomie und ihren Wurzeln. Über 40% der Aufmerksamkeit galt der klassischen und neoklassischen Schule.",
+    body: "In den 1980er Jahren standen die Gründungsfiguren der politischen Ökonomie im Mittelpunkt: Adam Smith, David Ricardo und Karl Marx. Die frühen AGW-Konferenzen widmeten sich stark der Dogmengeschichte und den Wurzeln der Werttheorie. In diesem ersten Jahrzehnt galt über 40% der Aufmerksamkeit der klassischen und neoklassischen Schule — ein Ausdruck des traditionellen Kanonverständnisses.",
     viz: "flow",
     highlight: { schools: ["Classical", "Neoclassical"], yearRange: [1980, 1990] }
   },
   {
     id: "austrian-rise",
     title: "Der Aufstieg der Österreichischen Schule",
-    body: "Ab 1985 rückte die Österreichische Schule ins Zentrum: Menger, Böhm-Bawerk, Mises, Hayek und vor allem Schumpeter. Die Wiederentdeckung der österreichischen Tradition spiegelt den breiteren 'Austrian Revival' der 1980er Jahre wider.",
+    body: "Ab 1985 rückte die Österreichische Schule dramatisch ins Zentrum des Diskurses: Carl Menger, Eugen von Böhm-Bawerk, Ludwig von Mises und Friedrich von Hayek. Dieser Anstieg der AGW-Aufmerksamkeit spiegelt exakt den breiteren internationalen 'Austrian Revival' der 1980er Jahre wider, als Forscher die subjektive Werttheorie und die Debatte um die sozialistische Wirtschaftsrechnung neu bewerteten.",
     viz: "flow",
     highlight: { schools: ["Austrian School"], yearRange: [1985, 2000] }
   },
   {
     id: "schumpeter-hub",
-    title: "Schumpeter — der vernetzteste Denker",
-    body: "Joseph Alois Schumpeter erscheint in 28 von 43 Konferenzbänden — ein Rekord. Sein Ego-Netzwerk verbindet 38 andere Figuren über Co-Zitation und Lehrer-Schüler-Beziehungen. Er ist die zentrale Brückenfigur zwischen österreichischer, evolutionärer und neoklassischer Tradition.",
+    title: "Schumpeter — Die ultimative Brückenfigur",
+    body: "Joseph Alois Schumpeter erscheint in 28 der 43 Konferenzbände — ein absoluter Rekord. Wie die Visualisierung zeigt, verbindet sein Ego-Netzwerk 38 andere Figuren über Co-Zitationen und Lehrer-Schüler-Beziehungen. Schumpeter fungiert als zentrale intellektuelle Brücke zwischen der österreichischen Tradition (seine Lehrer Böhm-Bawerk und Wieser), der Evolutionsökonomik und der neoklassischen Synthese (sein Schüler Paul Samuelson).",
     viz: "ego",
     highlight: { ego: "Joseph Alois Schumpeter" }
   },
   {
     id: "diversification",
     title: "Pluralisierung nach 2000",
-    body: "Nach der Jahrtausendwende diversifiziert sich das Feld dramatisch. Institutionalismus, Evolutionsökonomik, Philosophie und Raumwirtschaftslehre gewinnen an Bedeutung. Die Konferenzen werden thematisch breiter — von der reinen Dogmengeschichte zur interdisziplinären Ideengeschichte.",
+    body: "Nach der Jahrtausendwende diversifiziert sich das Feld signifikant. Institutionalismus (Thorstein Veblen, John R. Commons), Evolutionsökonomik, Philosophie und Raumwirtschaftslehre gewinnen an Bedeutung. Die AGW-Konferenzen werden thematisch breiter und verlagern sich von der reinen Dogmengeschichte hin zu einer interdisziplinären Ideengeschichte und Methodologie.",
     viz: "flow",
     highlight: { schools: ["Institutional", "Evolutionary", "Philosophy", "Raumwirtschaftslehre"], yearRange: [2000, 2023] }
   },
   {
     id: "forgotten-figures",
-    title: "Aufsteiger und Vergessene",
-    body: "Manche Figuren erleben eine Renaissance: Walter Eucken, einst vergessen, wird ab 2000 zum meistzitierten Ordoliberalen. Andere verschwinden: Werner Sombart, in den 1980ern noch präsent, findet nach 2005 kaum Erwähnung. Die Daten offenbaren die Konjunkturen intellektueller Reputation.",
+    title: "Die Konjunktur der Reputation",
+    body: "Intellektuelle Reputation unterliegt Zyklen. Manche Figuren erleben eine Renaissance: Walter Eucken, der Architekt des Ordoliberalismus, wird nach 2000 hochgradig zitiert, als Forscher die Grundlagen der Sozialen Marktwirtschaft neu untersuchen. Andere verblassen: Werner Sombart, ein Gigant der Historischen Schule, der in den 1980er Jahren noch häufig diskutiert wurde, taucht nach 2005 kaum noch auf.",
     viz: "slope",
     highlight: { risers: ["Walter Eucken"], fallers: ["Werner Sombart"] }
   },
   {
     id: "lineage-networks",
-    title: "Lehrer und Schüler — intellektuelle Stammbäume",
-    body: "Die Stammbaum-Daten zeigen, wie Wissen über Generationen weitergegeben wurde. Von Böhm-Bawerk zu Schumpeter, von Schumpeter zu Samuelson — die Lehrer-Schüler-Ketten verbinden Wien, Harvard und Cambridge über ein Jahrhundert.",
+    title: "Intellektuelle Stammbäume",
+    body: "Die Stammbaum-Daten zeigen, wie Wissen über Generationen weitergegeben wird. Am Beispiel von Eugen von Böhm-Bawerk sehen wir die enorme Reichweite seiner Lehre. In seinen berühmten Wiener Seminaren unterrichtete er Schumpeter, Mises und den Marxisten Rudolf Hilferding. Diese Lehrer-Schüler-Ketten zeichnen die Migration des ökonomischen Denkens vom Wien des Fin de Siècle ins Nachkriegs-Harvard und Cambridge nach.",
     viz: "ego",
     highlight: { ego: "Eugen von Böhm-Bawerk" }
   },
   {
     id: "conclusion",
     title: "Ein lebendiges Archiv",
-    body: "Die AGW-Konferenzen sind mehr als eine Tagungsreihe — sie sind ein Spiegel der sich wandelnden Selbstwahrnehmung der Ökonomik. Die Daten zeigen: Welche Denker wir studieren, sagt ebenso viel über uns wie über sie.",
+    body: "Die AGW-Konferenzen sind mehr als eine Tagungsreihe — sie sind ein Spiegel der sich wandelnden Selbstwahrnehmung der Wirtschaftswissenschaften. Die quantitativen Daten bestätigen, was Ideenhistoriker qualitativ längst wissen: Die Denker, die wir zu studieren wählen, verraten ebenso viel über die Anliegen unserer eigenen Zeit wie über die Vergangenheit.",
     viz: "overview",
     highlight: null
   }
@@ -71,56 +71,56 @@ const SCENES_EN = [
   {
     id: "intro",
     title: "43 Conferences, One Story",
-    body: "Since 1980, the Committee for the History of Economics (AGW) within the Verein für Socialpolitik has held annual conferences. Over four decades, a unique archive of intellectual reception emerged — who was studied, who forgotten, which schools of thought dominated?",
+    body: "Since 1980, the Committee for the History of Economics (AGW) within the Verein für Socialpolitik has held annual conferences. Over four decades, a unique archive of intellectual reception emerged — mapping not just the history of economic thought, but the history of the historians themselves. Who was studied, who was forgotten, and which schools of thought dominated the German-speaking academic discourse?",
     viz: "overview",
     highlight: null
   },
   {
     id: "classical-dominance",
     title: "The Classics Dominate the Early Years",
-    body: "In the 1980s, the classics took center stage: Adam Smith, David Ricardo, Karl Marx. The first conferences focused on political economy and its roots. Over 40% of attention went to the classical and neoclassical schools.",
+    body: "In the 1980s, the foundational figures of political economy took center stage: Adam Smith, David Ricardo, and Karl Marx. The early AGW conferences focused heavily on doctrinal history and the roots of value theory. During this first decade, over 40% of scholarly attention was devoted to the Classical and Neoclassical schools, reflecting a traditional approach to the canon.",
     viz: "flow",
     highlight: { schools: ["Classical", "Neoclassical"], yearRange: [1980, 1990] }
   },
   {
     id: "austrian-rise",
     title: "The Rise of the Austrian School",
-    body: "From 1985 onward, the Austrian School moved to center stage: Menger, Böhm-Bawerk, Mises, Hayek, and above all Schumpeter. The rediscovery of the Austrian tradition mirrors the broader 'Austrian Revival' of the 1980s.",
+    body: "From 1985 onward, the Austrian School moved dramatically to the center of the discourse: Carl Menger, Eugen von Böhm-Bawerk, Ludwig von Mises, and Friedrich von Hayek. This surge in AGW attention perfectly mirrors the broader international 'Austrian Revival' of the 1980s, as scholars re-examined subjective value theory and the socialist calculation debate.",
     viz: "flow",
     highlight: { schools: ["Austrian School"], yearRange: [1985, 2000] }
   },
   {
     id: "schumpeter-hub",
-    title: "Schumpeter — The Most Connected Thinker",
-    body: "Joseph Alois Schumpeter appears in 28 of 43 conference volumes — a record. His ego network connects 38 other figures through co-citation and teacher-student relationships. He is the central bridge figure between Austrian, evolutionary, and neoclassical traditions.",
+    title: "Schumpeter — The Ultimate Bridge Figure",
+    body: "Joseph Alois Schumpeter appears in 28 of the 43 conference volumes — an absolute record. As the visualization shows, his ego network connects 38 other figures through co-citation and teacher-student relationships. Schumpeter serves as the central intellectual bridge connecting the Austrian tradition (his teachers Böhm-Bawerk and Wieser) with Evolutionary economics and the Neoclassical synthesis (his student Paul Samuelson).",
     viz: "ego",
     highlight: { ego: "Joseph Alois Schumpeter" }
   },
   {
     id: "diversification",
     title: "Pluralization After 2000",
-    body: "After the millennium, the field diversifies dramatically. Institutionalism, evolutionary economics, philosophy, and spatial economics gain prominence. Conferences become thematically broader — from pure doctrinal history to interdisciplinary history of ideas.",
+    body: "Following the millennium, the field diversified significantly. Institutionalism (Thorstein Veblen, John R. Commons), Evolutionary economics, Philosophy, and Spatial Economics (Raumwirtschaftslehre) gained prominence. The AGW conferences became thematically broader, shifting from pure doctrinal history toward an interdisciplinary history of ideas and methodology.",
     viz: "flow",
     highlight: { schools: ["Institutional", "Evolutionary", "Philosophy", "Raumwirtschaftslehre"], yearRange: [2000, 2023] }
   },
   {
     id: "forgotten-figures",
-    title: "Risers and the Forgotten",
-    body: "Some figures experience a renaissance: Walter Eucken, once forgotten, becomes the most cited ordoliberal after 2000. Others disappear: Werner Sombart, still present in the 1980s, barely appears after 2005. The data reveals the business cycles of intellectual reputation.",
+    title: "The Business Cycle of Reputation",
+    body: "Intellectual reputation is subject to cycles. Some figures experience a renaissance: Walter Eucken, the architect of Ordoliberalism, became highly cited after 2000 as scholars revisited the foundations of the Social Market Economy. Others fade: Werner Sombart, a giant of the German Historical School who was frequently discussed in the 1980s, barely appears after 2005.",
     viz: "slope",
     highlight: { risers: ["Walter Eucken"], fallers: ["Werner Sombart"] }
   },
   {
     id: "lineage-networks",
-    title: "Teachers and Students — Intellectual Family Trees",
-    body: "The lineage data shows how knowledge was transmitted across generations. From Böhm-Bawerk to Schumpeter, from Schumpeter to Samuelson — the teacher-student chains connect Vienna, Harvard, and Cambridge across a century.",
+    title: "Intellectual Family Trees",
+    body: "The lineage data reveals how knowledge is transmitted across generations. Centering on Eugen von Böhm-Bawerk, we see the remarkable reach of his teaching. Through his famous Vienna seminars, he taught Schumpeter, Mises, and Marxist Rudolf Hilferding. These teacher-student chains trace the migration of economic thought from fin-de-siècle Vienna to post-war Harvard and Cambridge.",
     viz: "ego",
     highlight: { ego: "Eugen von Böhm-Bawerk" }
   },
   {
     id: "conclusion",
     title: "A Living Archive",
-    body: "The AGW conferences are more than a series of meetings — they are a mirror of economics' changing self-perception. The data shows: which thinkers we study says as much about us as about them.",
+    body: "The AGW conferences are more than a series of meetings — they are a mirror of the economics profession's changing self-perception. The quantitative data confirms what historians of thought have long known qualitatively: the thinkers we choose to study say as much about our own era's concerns as they do about the past.",
     viz: "overview",
     highlight: null
   }
