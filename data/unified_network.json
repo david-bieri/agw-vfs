@@ -1,0 +1,3031 @@
+{
+  "nodes": [
+    {
+      "id": "Joseph Alois Schumpeter",
+      "school": "Evolutionary",
+      "birth": 1883,
+      "conferenceAppearances": 28,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1950,
+      "lane": "aut",
+      "lineageId": "schumpeter",
+      "descDe": "Innovation; Konjunktur; Bonner Mentor Löschs",
+      "descEn": "Innovation; cycles; Lösch's Bonn mentor"
+    },
+    {
+      "id": "Friedrich August von Hayek",
+      "school": "Austrian School",
+      "birth": 1899,
+      "conferenceAppearances": 20,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1992,
+      "lane": "aut",
+      "lineageId": "hayek",
+      "descDe": "Österr. Schule; Wissensordnung",
+      "descEn": "Austrian School; knowledge & order"
+    },
+    {
+      "id": "Paul Anthony Samuelson",
+      "school": "Neoclassical",
+      "birth": 1915,
+      "conferenceAppearances": 18,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 2009,
+      "lane": "anglo",
+      "lineageId": "samuelson",
+      "descDe": "Neoklassische Synthese; Schumpeter-Schüler",
+      "descEn": "Neoclassical synthesis; Schumpeter's student"
+    },
+    {
+      "id": "Alfred Marshall",
+      "school": "Neoclassical",
+      "birth": 1842,
+      "conferenceAppearances": 18,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1924,
+      "lane": "camb",
+      "lineageId": "marshall",
+      "descDe": "Neoklassik; Cambridge",
+      "descEn": "Neoclassical; Cambridge"
+    },
+    {
+      "id": "Adam Smith",
+      "school": "Classical",
+      "birth": 1723,
+      "conferenceAppearances": 18,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1790,
+      "lane": "klassik",
+      "lineageId": "smith",
+      "descDe": "Klassische Nationalökonomie",
+      "descEn": "Classical political economy"
+    },
+    {
+      "id": "Mark Blaug",
+      "school": "Contemporary",
+      "birth": 1927,
+      "conferenceAppearances": 17,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "John Maynard Keynes",
+      "school": "Keynesian",
+      "birth": 1883,
+      "conferenceAppearances": 17,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1946,
+      "lane": "camb",
+      "lineageId": "keynes",
+      "descDe": "Allgemeine Theorie",
+      "descEn": "General Theory"
+    },
+    {
+      "id": "Max Weber",
+      "school": "Historical School",
+      "birth": 1864,
+      "conferenceAppearances": 15,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1920,
+      "lane": "hist",
+      "lineageId": "mweber",
+      "descDe": "Verstehende Soziologie; Methodenlehre",
+      "descEn": "Interpretive sociology; methodology"
+    },
+    {
+      "id": "Piero Sraffa",
+      "school": "Post-Keynesian/Sraffian",
+      "birth": 1898,
+      "conferenceAppearances": 14,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Werner Sombart",
+      "school": "Historical School",
+      "birth": 1863,
+      "conferenceAppearances": 14,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1941,
+      "lane": "hist",
+      "lineageId": "sombart",
+      "descDe": "Jüngste Hist. Schule; Kapitalismusanalyse",
+      "descEn": "Youngest Historical School; capitalism"
+    },
+    {
+      "id": "Carl Menger",
+      "school": "Austrian School",
+      "birth": 1840,
+      "conferenceAppearances": 14,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1921,
+      "lane": "aut",
+      "lineageId": "menger",
+      "descDe": "Begründer der Österr. Schule",
+      "descEn": "Founder of the Austrian School"
+    },
+    {
+      "id": "John Stuart Mill",
+      "school": "Classical",
+      "birth": 1806,
+      "conferenceAppearances": 14,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1873,
+      "lane": "klassik",
+      "lineageId": "mill",
+      "descDe": "Klassische Synthese",
+      "descEn": "Classical synthesis"
+    },
+    {
+      "id": "John Richard Hicks",
+      "school": "Neoclassical",
+      "birth": 1904,
+      "conferenceAppearances": 13,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1989,
+      "lane": "anglo",
+      "lineageId": "hicks",
+      "descDe": "LSE/Oxford; Value and Capital",
+      "descEn": "LSE/Oxford; Value and Capital"
+    },
+    {
+      "id": "Knut Wicksell",
+      "school": "Neoclassical",
+      "birth": 1851,
+      "conferenceAppearances": 13,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1926,
+      "lane": "stockholm",
+      "lineageId": "wicksell",
+      "descDe": "Kumulativer Prozess; Geldtheorie",
+      "descEn": "Cumulative process; monetary theory"
+    },
+    {
+      "id": "Karl Marx",
+      "school": "Marxist",
+      "birth": 1818,
+      "conferenceAppearances": 13,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1883,
+      "lane": "klassik",
+      "lineageId": "marx",
+      "descDe": "Kritik der politischen Ökonomie",
+      "descEn": "Critique of political economy"
+    },
+    {
+      "id": "Wilhelm Georg Friedrich Roscher",
+      "school": "Historical School",
+      "birth": 1817,
+      "conferenceAppearances": 13,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1894,
+      "lane": "hist",
+      "lineageId": "roscher",
+      "descDe": "Ältere Historische Schule",
+      "descEn": "Older Historical School"
+    },
+    {
+      "id": "Erich Wolfgang Streissler",
+      "school": "Austrian School",
+      "birth": 1933,
+      "conferenceAppearances": 12,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Karl Gustav Cassel",
+      "school": "Neoclassical",
+      "birth": 1866,
+      "conferenceAppearances": 12,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1945,
+      "lane": "stockholm",
+      "lineageId": "cassel",
+      "descDe": "Preistheorie; Stockholm",
+      "descEn": "Price theory; Stockholm"
+    },
+    {
+      "id": "David Ricardo",
+      "school": "Classical",
+      "birth": 1772,
+      "conferenceAppearances": 12,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1823,
+      "lane": "klassik",
+      "lineageId": "ricardo",
+      "descDe": "Klassik; Werttheorie",
+      "descEn": "Classical; value theory"
+    },
+    {
+      "id": "Milton Friedman",
+      "school": "Neoclassical",
+      "birth": 1912,
+      "conferenceAppearances": 11,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 2006,
+      "lane": "anglo",
+      "lineageId": "friedman",
+      "descDe": "Chicago; Monetarismus",
+      "descEn": "Chicago; monetarism"
+    },
+    {
+      "id": "Walter Eucken",
+      "school": "Ordoliberalismus",
+      "birth": 1891,
+      "conferenceAppearances": 11,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1950,
+      "lane": "ordo",
+      "lineageId": "eucken",
+      "descDe": "Freiburger Schule; erster Mentor Löschs",
+      "descEn": "Freiburg School; Lösch's first mentor"
+    },
+    {
+      "id": "Eugen von Böhm-Bawerk",
+      "school": "Austrian School",
+      "birth": 1851,
+      "conferenceAppearances": 11,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1914,
+      "lane": "aut",
+      "lineageId": "boehm",
+      "descDe": "Österr. Schule; Kapitaltheorie",
+      "descEn": "Austrian School; capital theory"
+    },
+    {
+      "id": "Jürg Niehans",
+      "school": "Neoclassical",
+      "birth": 1919,
+      "conferenceAppearances": 10,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Colin Clark",
+      "school": "Development Economics",
+      "birth": 1905,
+      "conferenceAppearances": 10,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Erich Schneider",
+      "school": "Neoclassical",
+      "birth": 1900,
+      "conferenceAppearances": 10,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Karl Brandt",
+      "school": "Development Economics",
+      "birth": 1899,
+      "conferenceAppearances": 10,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Edgar Salin",
+      "school": "Historical School",
+      "birth": 1892,
+      "conferenceAppearances": 10,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Arthur Cecil Pigou",
+      "school": "Neoclassical",
+      "birth": 1877,
+      "conferenceAppearances": 10,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1959,
+      "lane": "camb",
+      "lineageId": "pigou",
+      "descDe": "Wohlfahrtsökonomik",
+      "descEn": "Welfare economics"
+    },
+    {
+      "id": "Gustav von Schmoller",
+      "school": "Historical School",
+      "birth": 1838,
+      "conferenceAppearances": 10,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1917,
+      "lane": "hist",
+      "lineageId": "schmoller",
+      "descDe": "Jüngere Hist. Schule; VfS-Mitbegründer",
+      "descEn": "Younger Historical School; VfS co-founder"
+    },
+    {
+      "id": "William Stanley Jevons",
+      "school": "Neoclassical",
+      "birth": 1835,
+      "conferenceAppearances": 10,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1882,
+      "lane": "aut",
+      "lineageId": "jevons",
+      "descDe": "Grenznutzenrevolution",
+      "descEn": "Marginal revolution"
+    },
+    {
+      "id": "John Locke",
+      "school": "Philosophy",
+      "birth": 1632,
+      "conferenceAppearances": 10,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Keith Tribe",
+      "school": "Historical School",
+      "birth": 1949,
+      "conferenceAppearances": 9,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Robert Merton Solow",
+      "school": "Neoclassical",
+      "birth": 1924,
+      "conferenceAppearances": 9,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Ernst Helmstädter",
+      "school": "Contemporary",
+      "birth": 1924,
+      "conferenceAppearances": 9,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "William Jack Baumol",
+      "school": "Neoclassical",
+      "birth": 1922,
+      "conferenceAppearances": 9,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "James McGill Buchanan",
+      "school": "Institutional",
+      "birth": 1919,
+      "conferenceAppearances": 9,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Gottfried von Haberler",
+      "school": "Austrian School",
+      "birth": 1900,
+      "conferenceAppearances": 9,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1995,
+      "lane": "aut",
+      "lineageId": "haberler",
+      "descDe": "Wiener Kreis; Außenhandel",
+      "descEn": "Vienna circle; international trade"
+    },
+    {
+      "id": "Ludwig von Mises",
+      "school": "Austrian School",
+      "birth": 1881,
+      "conferenceAppearances": 9,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1973,
+      "lane": "aut",
+      "lineageId": "mises",
+      "descDe": "Österr. Schule; Praxeologie",
+      "descEn": "Austrian School; praxeology"
+    },
+    {
+      "id": "Bruno Hildebrand",
+      "school": "Historical School",
+      "birth": 1812,
+      "conferenceAppearances": 9,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1878,
+      "lane": "hist",
+      "lineageId": "hildebrand",
+      "descDe": "Ältere Hist. Schule; Stufenlehre",
+      "descEn": "Older Historical School; stage theory"
+    },
+    {
+      "id": "Paul Robin Krugman",
+      "school": "Raumwirtschaftslehre",
+      "birth": 1953,
+      "conferenceAppearances": 8,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Joseph Eugene Stiglitz",
+      "school": "Contemporary",
+      "birth": 1943,
+      "conferenceAppearances": 8,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Axel Leijonhufvud",
+      "school": "Keynesian",
+      "birth": 1933,
+      "conferenceAppearances": 8,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Harald Winkel",
+      "school": "Historical School",
+      "birth": 1928,
+      "conferenceAppearances": 8,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Karl Häuser",
+      "school": "Contemporary",
+      "birth": 1920,
+      "conferenceAppearances": 8,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Joan Violet Robinson",
+      "school": "Post-Keynesian/Sraffian",
+      "birth": 1903,
+      "conferenceAppearances": 8,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Wilhelm Röpke",
+      "school": "Ordoliberalismus",
+      "birth": 1899,
+      "conferenceAppearances": 8,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1966,
+      "lane": "ordo",
+      "lineageId": "roepke",
+      "descDe": "Ordoliberalismus; Sozialökonomie",
+      "descEn": "Ordoliberalism; social economy"
+    },
+    {
+      "id": "Allan George Barnard Fisher",
+      "school": "Development Economics",
+      "birth": 1895,
+      "conferenceAppearances": 8,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Karl Diehl",
+      "school": "Historical School",
+      "birth": 1864,
+      "conferenceAppearances": 8,
+      "inCoCitation": true,
+      "inLineage": false
+    },
+    {
+      "id": "Lujo Brentano",
+      "school": "Historical School",
+      "birth": 1844,
+      "conferenceAppearances": 8,
+      "inCoCitation": true,
+      "inLineage": true,
+      "death": 1931,
+      "lane": "hist",
+      "lineageId": "brentano",
+      "descDe": "Jüngere Hist. Schule; Sozialpolitik",
+      "descEn": "Younger Historical School; social policy"
+    },
+    {
+      "id": "Thomas R. Malthus",
+      "school": "klassik",
+      "birth": 1766,
+      "death": 1834,
+      "lane": "klassik",
+      "lineageId": "malthus",
+      "descDe": "Bevölkerungslehre",
+      "descEn": "Population theory",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Friedrich List",
+      "school": "klassik",
+      "birth": 1789,
+      "death": 1846,
+      "lane": "klassik",
+      "lineageId": "list",
+      "descDe": "Nationales System; Vorläufer der Hist. Schule",
+      "descEn": "National system; forerunner of the Historical School",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Karl Knies",
+      "school": "hist",
+      "birth": 1821,
+      "death": 1898,
+      "lane": "hist",
+      "lineageId": "knies",
+      "descDe": "Ältere Historische Schule",
+      "descEn": "Older Historical School",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Karl Bücher",
+      "school": "hist",
+      "birth": 1847,
+      "death": 1930,
+      "lane": "hist",
+      "lineageId": "buecher",
+      "descDe": "Stufentheorie der Volkswirtschaft",
+      "descEn": "Stage theory of the economy",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Adolph Wagner",
+      "school": "hist",
+      "birth": 1835,
+      "death": 1917,
+      "lane": "hist",
+      "lineageId": "wagner",
+      "descDe": "Staatssozialismus; Finanzwissenschaft",
+      "descEn": "State socialism; public finance",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Arthur Spiethoff",
+      "school": "hist",
+      "birth": 1873,
+      "death": 1957,
+      "lane": "hist",
+      "lineageId": "spiethoff",
+      "descDe": "Konjunkturtheorie; Habil.-Vater Löschs",
+      "descEn": "Business cycles; Lösch's Habilitation supervisor",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Léon Walras",
+      "school": "aut",
+      "birth": 1834,
+      "death": 1910,
+      "lane": "aut",
+      "lineageId": "walras",
+      "descDe": "Allg. Gleichgewicht; Lausanne",
+      "descEn": "General equilibrium; Lausanne",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Vilfredo Pareto",
+      "school": "aut",
+      "birth": 1848,
+      "death": 1923,
+      "lane": "aut",
+      "lineageId": "pareto",
+      "descDe": "Lausanner Schule; Wohlfahrt",
+      "descEn": "Lausanne School; welfare",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Friedrich von Wieser",
+      "school": "aut",
+      "birth": 1851,
+      "death": 1926,
+      "lane": "aut",
+      "lineageId": "wieser",
+      "descDe": "Österr. Schule; Grenznutzen",
+      "descEn": "Austrian School; marginal utility",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Irving Fisher",
+      "school": "anglo",
+      "birth": 1867,
+      "death": 1947,
+      "lane": "anglo",
+      "lineageId": "fisher",
+      "descDe": "Neoklassik; Geldtheorie",
+      "descEn": "Neoclassical; monetary theory",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Frank H. Knight",
+      "school": "anglo",
+      "birth": 1885,
+      "death": 1972,
+      "lane": "anglo",
+      "lineageId": "knight",
+      "descDe": "Chicago; Unsicherheit; Weber-Übersetzer",
+      "descEn": "Chicago; uncertainty; Weber's translator",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Lionel Robbins",
+      "school": "anglo",
+      "birth": 1898,
+      "death": 1984,
+      "lane": "anglo",
+      "lineageId": "robbins",
+      "descDe": "LSE; holte Hayek nach England",
+      "descEn": "LSE; brought Hayek to England",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Wassily Leontief",
+      "school": "anglo",
+      "birth": 1905,
+      "death": 1999,
+      "lane": "anglo",
+      "lineageId": "leontief",
+      "descDe": "Input-Output; Ausbildung in Berlin/Kiel",
+      "descEn": "Input–output; trained in Berlin/Kiel",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Jacob Viner",
+      "school": "anglo",
+      "birth": 1892,
+      "death": 1970,
+      "lane": "anglo",
+      "lineageId": "viner",
+      "descDe": "Chicago/Princeton; Außenhandelstheorie",
+      "descEn": "Chicago/Princeton; trade theory",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Bertil Ohlin",
+      "school": "stockholm",
+      "birth": 1899,
+      "death": 1979,
+      "lane": "stockholm",
+      "lineageId": "ohlin",
+      "descDe": "Heckscher-Ohlin; Außenhandel",
+      "descEn": "Heckscher–Ohlin; trade",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Gunnar Myrdal",
+      "school": "stockholm",
+      "birth": 1898,
+      "death": 1987,
+      "lane": "stockholm",
+      "lineageId": "myrdal",
+      "descDe": "Stockholmer Schule; Kumulation",
+      "descEn": "Stockholm School; circular causation",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Thorstein Veblen",
+      "school": "inst",
+      "birth": 1857,
+      "death": 1929,
+      "lane": "inst",
+      "lineageId": "veblen",
+      "descDe": "Institutionalismus",
+      "descEn": "Institutionalism",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "John Bates Clark",
+      "school": "inst",
+      "birth": 1847,
+      "death": 1938,
+      "lane": "inst",
+      "lineageId": "jbclark",
+      "descDe": "Grenzproduktivität; Knies-Schüler",
+      "descEn": "Marginal productivity; Knies's student",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "John R. Commons",
+      "school": "inst",
+      "birth": 1862,
+      "death": 1945,
+      "lane": "inst",
+      "lineageId": "commons",
+      "descDe": "Institutionenökonomik",
+      "descEn": "Institutional economics",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Wesley C. Mitchell",
+      "school": "inst",
+      "birth": 1874,
+      "death": 1948,
+      "lane": "inst",
+      "lineageId": "mitchell",
+      "descDe": "Konjunkturforschung; NBER",
+      "descEn": "Business-cycle research; NBER",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Frank W. Taussig",
+      "school": "inst",
+      "birth": 1859,
+      "death": 1940,
+      "lane": "inst",
+      "lineageId": "taussig",
+      "descDe": "Harvard; Löschs Gastgeber 1934/35",
+      "descEn": "Harvard; Lösch's host 1934/35",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Franz Böhm",
+      "school": "ordo",
+      "birth": 1895,
+      "death": 1977,
+      "lane": "ordo",
+      "lineageId": "fboehm",
+      "descDe": "Ordoliberalismus; Wettbewerbsordnung",
+      "descEn": "Ordoliberalism; competitive order",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Alexander Rüstow",
+      "school": "ordo",
+      "birth": 1885,
+      "death": 1963,
+      "lane": "ordo",
+      "lineageId": "ruestow",
+      "descDe": "Ordoliberalismus; Soziologie",
+      "descEn": "Ordoliberalism; sociology",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Johann H. von Thünen",
+      "school": "raum",
+      "birth": 1783,
+      "death": 1850,
+      "lane": "raum",
+      "lineageId": "thuenen",
+      "descDe": "Der isolierte Staat; Standortlehre",
+      "descEn": "The Isolated State; location theory",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Alfred Weber",
+      "school": "raum",
+      "birth": 1868,
+      "death": 1958,
+      "lane": "raum",
+      "lineageId": "aweber",
+      "descDe": "Industriestandortlehre",
+      "descEn": "Theory of industrial location",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Walter Christaller",
+      "school": "raum",
+      "birth": 1893,
+      "death": 1969,
+      "lane": "raum",
+      "lineageId": "christaller",
+      "descDe": "Zentrale Orte",
+      "descEn": "Central place theory",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "August Lösch",
+      "school": "raum",
+      "birth": 1906,
+      "death": 1945,
+      "lane": "raum",
+      "lineageId": "loesch",
+      "descDe": "Die räumliche Ordnung der Wirtschaft",
+      "descEn": "The Economics of Location",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Andreas Predöhl",
+      "school": "raum",
+      "birth": 1893,
+      "death": 1974,
+      "lane": "raum",
+      "lineageId": "predoehl",
+      "descDe": "IfW Kiel; Standorttheorie",
+      "descEn": "IfW Kiel; location theory",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Tord Palander",
+      "school": "raum",
+      "birth": 1902,
+      "death": 1972,
+      "lane": "raum",
+      "lineageId": "palander",
+      "descDe": "Standorttheorie; Schweden",
+      "descEn": "Location theory; Sweden",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Edgar M. Hoover",
+      "school": "raum",
+      "birth": 1907,
+      "death": 1992,
+      "lane": "raum",
+      "lineageId": "hoover",
+      "descDe": "Standort- u. Regionalökonomik",
+      "descEn": "Location & regional economics",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Walter Isard",
+      "school": "raum",
+      "birth": 1919,
+      "death": 2010,
+      "lane": "raum",
+      "lineageId": "isard",
+      "descDe": "Regional Science",
+      "descEn": "Regional science",
+      "inCoCitation": false,
+      "inLineage": true
+    },
+    {
+      "id": "Wolfgang F. Stolper",
+      "school": "raum",
+      "birth": 1912,
+      "death": 2002,
+      "lane": "raum",
+      "lineageId": "stolper",
+      "descDe": "Übersetzer der Räumlichen Ordnung",
+      "descEn": "Translator of Lösch's magnum opus",
+      "inCoCitation": false,
+      "inLineage": true
+    }
+  ],
+  "edges": [
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 17,
+      "type": "co-citation"
+    },
+    {
+      "source": "John Maynard Keynes",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 15,
+      "type": "co-citation"
+    },
+    {
+      "source": "Adam Smith",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 14,
+      "type": "co-citation"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "Paul Anthony Samuelson",
+      "weight": 14,
+      "type": "co-citation"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 13,
+      "type": "co-citation"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Paul Anthony Samuelson",
+      "weight": 13,
+      "type": "co-citation"
+    },
+    {
+      "source": "Adam Smith",
+      "target": "Friedrich August von Hayek",
+      "weight": 13,
+      "type": "co-citation"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Mark Blaug",
+      "weight": 13,
+      "type": "co-citation"
+    },
+    {
+      "source": "Adam Smith",
+      "target": "John Stuart Mill",
+      "weight": 12,
+      "type": "co-citation"
+    },
+    {
+      "source": "Adam Smith",
+      "target": "Alfred Marshall",
+      "weight": 12,
+      "type": "co-citation"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Werner Sombart",
+      "weight": 12,
+      "type": "co-citation"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Knut Wicksell",
+      "weight": 12,
+      "type": "co-citation"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Piero Sraffa",
+      "weight": 12,
+      "type": "co-citation"
+    },
+    {
+      "source": "Mark Blaug",
+      "target": "Paul Anthony Samuelson",
+      "weight": 12,
+      "type": "co-citation"
+    },
+    {
+      "source": "Carl Menger",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 12,
+      "type": "co-citation"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "Mark Blaug",
+      "weight": 12,
+      "type": "co-citation"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "John Maynard Keynes",
+      "weight": 12,
+      "type": "co-citation"
+    },
+    {
+      "source": "Carl Menger",
+      "target": "Friedrich August von Hayek",
+      "weight": 12,
+      "type": "co-citation"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Max Weber",
+      "weight": 12,
+      "type": "co-citation"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Wilhelm Georg Friedrich Roscher",
+      "weight": 11,
+      "type": "co-citation"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Karl Marx",
+      "weight": 11,
+      "type": "co-citation"
+    },
+    {
+      "source": "Mark Blaug",
+      "target": "Piero Sraffa",
+      "weight": 11,
+      "type": "co-citation"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "Friedrich August von Hayek",
+      "weight": 11,
+      "type": "co-citation"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "Piero Sraffa",
+      "weight": 11,
+      "type": "co-citation"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "Karl Marx",
+      "weight": 11,
+      "type": "co-citation"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Milton Friedman",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Erich Schneider",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Gustav von Schmoller",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Adam Smith",
+      "target": "Paul Anthony Samuelson",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "John Richard Hicks",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "John Stuart Mill",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "John Richard Hicks",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Karl Gustav Cassel",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Edgar Salin",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Karl Gustav Cassel",
+      "target": "Knut Wicksell",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "Karl Marx",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "Wilhelm Georg Friedrich Roscher",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Knut Wicksell",
+      "target": "Piero Sraffa",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Eugen von Böhm-Bawerk",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "John Maynard Keynes",
+      "target": "Paul Anthony Samuelson",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Paul Anthony Samuelson",
+      "target": "Piero Sraffa",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "John Richard Hicks",
+      "target": "Paul Anthony Samuelson",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Knut Wicksell",
+      "target": "Paul Anthony Samuelson",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "John Maynard Keynes",
+      "target": "Mark Blaug",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "John Richard Hicks",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "Mark Blaug",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Adam Smith",
+      "target": "John Maynard Keynes",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Adam Smith",
+      "target": "Karl Marx",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "Max Weber",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "Milton Friedman",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "Paul Anthony Samuelson",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Carl Menger",
+      "target": "Paul Anthony Samuelson",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "Werner Sombart",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Walter Eucken",
+      "weight": 10,
+      "type": "co-citation"
+    },
+    {
+      "source": "John Stuart Mill",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "David Ricardo",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "Wilhelm Georg Friedrich Roscher",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "James McGill Buchanan",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Karl Brandt",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "Piero Sraffa",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "Knut Wicksell",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "Karl Gustav Cassel",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Karl Gustav Cassel",
+      "target": "Piero Sraffa",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Eugen von Böhm-Bawerk",
+      "target": "John Maynard Keynes",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "John Maynard Keynes",
+      "target": "John Richard Hicks",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "John Richard Hicks",
+      "target": "Piero Sraffa",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "John Richard Hicks",
+      "target": "Knut Wicksell",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "Robert Merton Solow",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Bruno Hildebrand",
+      "target": "Friedrich August von Hayek",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "Carl Menger",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Adam Smith",
+      "target": "Mark Blaug",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Adam Smith",
+      "target": "Carl Menger",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Karl Marx",
+      "target": "Mark Blaug",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Carl Menger",
+      "target": "Karl Marx",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "Knut Wicksell",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Milton Friedman",
+      "target": "Paul Anthony Samuelson",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "Walter Eucken",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Max Weber",
+      "target": "Werner Sombart",
+      "weight": 9,
+      "type": "co-citation"
+    },
+    {
+      "source": "Gottfried von Haberler",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Axel Leijonhufvud",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "John Maynard Keynes",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "John Maynard Keynes",
+      "target": "Milton Friedman",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "John Stuart Mill",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "John Stuart Mill",
+      "target": "Paul Anthony Samuelson",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Adam Smith",
+      "target": "Wilhelm Georg Friedrich Roscher",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Adam Smith",
+      "target": "David Ricardo",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "David Ricardo",
+      "target": "John Stuart Mill",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "William Stanley Jevons",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Adam Smith",
+      "target": "John Richard Hicks",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Wilhelm Röpke",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Mark Blaug",
+      "target": "Werner Sombart",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Knut Wicksell",
+      "target": "Mark Blaug",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Karl Gustav Cassel",
+      "target": "Mark Blaug",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Arthur Cecil Pigou",
+      "target": "Mark Blaug",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Mark Blaug",
+      "target": "William Jack Baumol",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Erich Wolfgang Streissler",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Jürg Niehans",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Colin Clark",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Ernst Helmstädter",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "Erich Wolfgang Streissler",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Ernst Helmstädter",
+      "target": "Jürg Niehans",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Ludwig von Mises",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Karl Gustav Cassel",
+      "target": "Paul Anthony Samuelson",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "John Richard Hicks",
+      "target": "Mark Blaug",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "John Maynard Keynes",
+      "target": "Piero Sraffa",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Robert Merton Solow",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Eugen von Böhm-Bawerk",
+      "target": "Friedrich August von Hayek",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "Ludwig von Mises",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "Arthur Cecil Pigou",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Carl Menger",
+      "target": "Mark Blaug",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Carl Menger",
+      "target": "John Maynard Keynes",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "John Maynard Keynes",
+      "target": "Karl Marx",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Carl Menger",
+      "target": "Piero Sraffa",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Carl Menger",
+      "target": "John Richard Hicks",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "John Stuart Mill",
+      "target": "Karl Marx",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "John Locke",
+      "target": "Joseph Alois Schumpeter",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Colin Clark",
+      "target": "Friedrich August von Hayek",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Karl Marx",
+      "target": "Paul Anthony Samuelson",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "Max Weber",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Adam Smith",
+      "target": "Max Weber",
+      "weight": 8,
+      "type": "co-citation"
+    },
+    {
+      "source": "Friedrich List",
+      "target": "Wilhelm Georg Friedrich Roscher",
+      "type": "influence"
+    },
+    {
+      "source": "Friedrich List",
+      "target": "Bruno Hildebrand",
+      "type": "influence"
+    },
+    {
+      "source": "Wilhelm Georg Friedrich Roscher",
+      "target": "Gustav von Schmoller",
+      "type": "influence"
+    },
+    {
+      "source": "Karl Knies",
+      "target": "Gustav von Schmoller",
+      "type": "influence"
+    },
+    {
+      "source": "Karl Knies",
+      "target": "Max Weber",
+      "type": "influence"
+    },
+    {
+      "source": "Wilhelm Georg Friedrich Roscher",
+      "target": "Adolph Wagner",
+      "type": "influence"
+    },
+    {
+      "source": "Wilhelm Georg Friedrich Roscher",
+      "target": "Lujo Brentano",
+      "type": "influence"
+    },
+    {
+      "source": "Bruno Hildebrand",
+      "target": "Karl Bücher",
+      "type": "influence"
+    },
+    {
+      "source": "Gustav von Schmoller",
+      "target": "Werner Sombart",
+      "type": "strong"
+    },
+    {
+      "source": "Werner Sombart",
+      "target": "Max Weber",
+      "type": "influence"
+    },
+    {
+      "source": "Gustav von Schmoller",
+      "target": "Arthur Spiethoff",
+      "type": "strong"
+    },
+    {
+      "source": "Gustav von Schmoller",
+      "target": "Carl Menger",
+      "type": "methodenstreit"
+    },
+    {
+      "source": "Gustav von Schmoller",
+      "target": "John R. Commons",
+      "type": "influence"
+    },
+    {
+      "source": "Adam Smith",
+      "target": "David Ricardo",
+      "type": "influence"
+    },
+    {
+      "source": "Adam Smith",
+      "target": "Friedrich List",
+      "type": "influence"
+    },
+    {
+      "source": "David Ricardo",
+      "target": "Karl Marx",
+      "type": "influence"
+    },
+    {
+      "source": "David Ricardo",
+      "target": "Alfred Marshall",
+      "type": "influence"
+    },
+    {
+      "source": "John Stuart Mill",
+      "target": "Alfred Marshall",
+      "type": "influence"
+    },
+    {
+      "source": "Karl Marx",
+      "target": "Werner Sombart",
+      "type": "influence"
+    },
+    {
+      "source": "William Stanley Jevons",
+      "target": "Carl Menger",
+      "type": "parallel"
+    },
+    {
+      "source": "William Stanley Jevons",
+      "target": "Léon Walras",
+      "type": "parallel"
+    },
+    {
+      "source": "Carl Menger",
+      "target": "Léon Walras",
+      "type": "parallel"
+    },
+    {
+      "source": "Léon Walras",
+      "target": "Vilfredo Pareto",
+      "type": "strong"
+    },
+    {
+      "source": "William Stanley Jevons",
+      "target": "Alfred Marshall",
+      "type": "influence"
+    },
+    {
+      "source": "Carl Menger",
+      "target": "Eugen von Böhm-Bawerk",
+      "type": "influence"
+    },
+    {
+      "source": "Carl Menger",
+      "target": "Friedrich von Wieser",
+      "type": "influence"
+    },
+    {
+      "source": "Eugen von Böhm-Bawerk",
+      "target": "Ludwig von Mises",
+      "type": "strong"
+    },
+    {
+      "source": "Eugen von Böhm-Bawerk",
+      "target": "Joseph Alois Schumpeter",
+      "type": "strong"
+    },
+    {
+      "source": "Friedrich von Wieser",
+      "target": "Friedrich August von Hayek",
+      "type": "strong"
+    },
+    {
+      "source": "Ludwig von Mises",
+      "target": "Friedrich August von Hayek",
+      "type": "strong"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Gottfried von Haberler",
+      "type": "strong"
+    },
+    {
+      "source": "Ludwig von Mises",
+      "target": "Gottfried von Haberler",
+      "type": "influence"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "Arthur Cecil Pigou",
+      "type": "strong"
+    },
+    {
+      "source": "Alfred Marshall",
+      "target": "John Maynard Keynes",
+      "type": "strong"
+    },
+    {
+      "source": "Max Weber",
+      "target": "Frank H. Knight",
+      "type": "influence"
+    },
+    {
+      "source": "Carl Menger",
+      "target": "Frank H. Knight",
+      "type": "influence"
+    },
+    {
+      "source": "Frank H. Knight",
+      "target": "Milton Friedman",
+      "type": "strong"
+    },
+    {
+      "source": "Irving Fisher",
+      "target": "Milton Friedman",
+      "type": "influence"
+    },
+    {
+      "source": "William Stanley Jevons",
+      "target": "Irving Fisher",
+      "type": "influence"
+    },
+    {
+      "source": "Ludwig von Mises",
+      "target": "Lionel Robbins",
+      "type": "influence"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "Lionel Robbins",
+      "type": "influence"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "John Richard Hicks",
+      "type": "influence"
+    },
+    {
+      "source": "Léon Walras",
+      "target": "John Richard Hicks",
+      "type": "influence"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Paul Anthony Samuelson",
+      "type": "strong"
+    },
+    {
+      "source": "Wassily Leontief",
+      "target": "Paul Anthony Samuelson",
+      "type": "strong"
+    },
+    {
+      "source": "John Maynard Keynes",
+      "target": "Paul Anthony Samuelson",
+      "type": "influence"
+    },
+    {
+      "source": "Werner Sombart",
+      "target": "Wassily Leontief",
+      "type": "influence"
+    },
+    {
+      "source": "Léon Walras",
+      "target": "Wassily Leontief",
+      "type": "influence"
+    },
+    {
+      "source": "Frank W. Taussig",
+      "target": "Jacob Viner",
+      "type": "strong"
+    },
+    {
+      "source": "Jacob Viner",
+      "target": "Milton Friedman",
+      "type": "influence"
+    },
+    {
+      "source": "Gottfried von Haberler",
+      "target": "Jacob Viner",
+      "type": "influence"
+    },
+    {
+      "source": "Léon Walras",
+      "target": "Knut Wicksell",
+      "type": "influence"
+    },
+    {
+      "source": "Eugen von Böhm-Bawerk",
+      "target": "Knut Wicksell",
+      "type": "influence"
+    },
+    {
+      "source": "Knut Wicksell",
+      "target": "Bertil Ohlin",
+      "type": "strong"
+    },
+    {
+      "source": "Knut Wicksell",
+      "target": "Gunnar Myrdal",
+      "type": "strong"
+    },
+    {
+      "source": "Knut Wicksell",
+      "target": "Karl Gustav Cassel",
+      "type": "influence"
+    },
+    {
+      "source": "Karl Gustav Cassel",
+      "target": "Bertil Ohlin",
+      "type": "influence"
+    },
+    {
+      "source": "Karl Knies",
+      "target": "John Bates Clark",
+      "type": "strong"
+    },
+    {
+      "source": "Thorstein Veblen",
+      "target": "Wesley C. Mitchell",
+      "type": "strong"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "Frank W. Taussig",
+      "type": "influence"
+    },
+    {
+      "source": "Walter Eucken",
+      "target": "Franz Böhm",
+      "type": "strong"
+    },
+    {
+      "source": "Walter Eucken",
+      "target": "Wilhelm Röpke",
+      "type": "influence"
+    },
+    {
+      "source": "Walter Eucken",
+      "target": "Alexander Rüstow",
+      "type": "influence"
+    },
+    {
+      "source": "Ludwig von Mises",
+      "target": "Wilhelm Röpke",
+      "type": "influence"
+    },
+    {
+      "source": "Friedrich August von Hayek",
+      "target": "Walter Eucken",
+      "type": "influence"
+    },
+    {
+      "source": "Walter Eucken",
+      "target": "August Lösch",
+      "type": "strong"
+    },
+    {
+      "source": "Arthur Spiethoff",
+      "target": "August Lösch",
+      "type": "strong"
+    },
+    {
+      "source": "Joseph Alois Schumpeter",
+      "target": "August Lösch",
+      "type": "strong"
+    },
+    {
+      "source": "Frank W. Taussig",
+      "target": "August Lösch",
+      "type": "strong"
+    },
+    {
+      "source": "Johann H. von Thünen",
+      "target": "Alfred Weber",
+      "type": "influence"
+    },
+    {
+      "source": "Alfred Weber",
+      "target": "Walter Christaller",
+      "type": "influence"
+    },
+    {
+      "source": "Johann H. von Thünen",
+      "target": "August Lösch",
+      "type": "influence"
+    },
+    {
+      "source": "Alfred Weber",
+      "target": "August Lösch",
+      "type": "influence"
+    },
+    {
+      "source": "Walter Christaller",
+      "target": "August Lösch",
+      "type": "influence"
+    },
+    {
+      "source": "August Lösch",
+      "target": "Wolfgang F. Stolper",
+      "type": "influence"
+    },
+    {
+      "source": "August Lösch",
+      "target": "Edgar M. Hoover",
+      "type": "influence"
+    },
+    {
+      "source": "August Lösch",
+      "target": "Walter Isard",
+      "type": "influence"
+    },
+    {
+      "source": "Tord Palander",
+      "target": "August Lösch",
+      "type": "influence"
+    },
+    {
+      "source": "Andreas Predöhl",
+      "target": "August Lösch",
+      "type": "strong"
+    }
+  ],
+  "schools": [
+    "Classical",
+    "Historical School",
+    "National Economy",
+    "Marxist",
+    "Austrian School",
+    "Keynesian",
+    "Post-Keynesian/Sraffian",
+    "Evolutionary",
+    "Ordoliberalismus",
+    "Raumwirtschaftslehre",
+    "Neoclassical",
+    "Mathematical Economics",
+    "Institutional",
+    "Development Economics",
+    "Contemporary",
+    "Philosophy",
+    "Other"
+  ],
+  "schoolColors": {
+    "Classical": "#2196F3",
+    "Historical School": "#FF9800",
+    "National Economy": "#795548",
+    "Marxist": "#F44336",
+    "Austrian School": "#CE93D8",
+    "Keynesian": "#4CAF50",
+    "Post-Keynesian/Sraffian": "#00BCD4",
+    "Evolutionary": "#E91E63",
+    "Ordoliberalismus": "#80CBC4",
+    "Raumwirtschaftslehre": "#B39DDB",
+    "Neoclassical": "#90CAF9",
+    "Mathematical Economics": "#B0BEC5",
+    "Institutional": "#FF8A65",
+    "Development Economics": "#D4E157",
+    "Contemporary": "#78909C",
+    "Philosophy": "#EEEEEE",
+    "Other": "#757575"
+  },
+  "lanes": [
+    {
+      "id": "klassik",
+      "color": "#6b5b4f",
+      "de": "Klassik & Vorläufer",
+      "en": "Classical & forerunners"
+    },
+    {
+      "id": "hist",
+      "color": "#1B3A6B",
+      "de": "Historische Schule",
+      "en": "Historical School"
+    },
+    {
+      "id": "aut",
+      "color": "#2C6E72",
+      "de": "Grenznutzen & Österreichische Schule",
+      "en": "Marginalist & Austrian School"
+    },
+    {
+      "id": "camb",
+      "color": "#5a6b8c",
+      "de": "Neoklassik & Cambridge",
+      "en": "Neoclassical & Cambridge"
+    },
+    {
+      "id": "anglo",
+      "color": "#4b4e58",
+      "de": "Angloamerikanische Moderne",
+      "en": "Anglo-American mainstream"
+    },
+    {
+      "id": "stockholm",
+      "color": "#4A7C59",
+      "de": "Stockholmer Schule",
+      "en": "Stockholm School"
+    },
+    {
+      "id": "inst",
+      "color": "#6a6fa8",
+      "de": "Amerik. Institutionalismus",
+      "en": "American Institutionalism"
+    },
+    {
+      "id": "ordo",
+      "color": "#A67C2E",
+      "de": "Ordoliberalismus / Freiburg",
+      "en": "Ordoliberalism / Freiburg"
+    },
+    {
+      "id": "raum",
+      "color": "#B5651D",
+      "de": "Raumwirtschaft & Standorttheorie",
+      "en": "Spatial Economics & Location Theory"
+    }
+  ],
+  "flow": [
+    {
+      "year": 1980,
+      "theme": "Klassische Nationalökonomie",
+      "Classical": 34.9,
+      "Historical School": 0,
+      "National Economy": 0,
+      "Marxist": 11.6,
+      "Austrian School": 0,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 0,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 41.9,
+      "Mathematical Economics": 0,
+      "Institutional": 0,
+      "Development Economics": 0,
+      "Contemporary": 11.6,
+      "Philosophy": 0,
+      "Other": 0
+    },
+    {
+      "year": 1981,
+      "theme": "Merkantilismus und Kameralismus",
+      "Classical": 0,
+      "Historical School": 0,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 0,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 0,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 0,
+      "Mathematical Economics": 0,
+      "Institutional": 0,
+      "Development Economics": 0,
+      "Contemporary": 0,
+      "Philosophy": 0,
+      "Other": 0
+    },
+    {
+      "year": 1982,
+      "theme": "Theoriegeschichte - wozu?",
+      "Classical": 0,
+      "Historical School": 83.3,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 0,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 16.7,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 0,
+      "Mathematical Economics": 0,
+      "Institutional": 0,
+      "Development Economics": 0,
+      "Contemporary": 0,
+      "Philosophy": 0,
+      "Other": 0
+    },
+    {
+      "year": 1983,
+      "theme": "Marx, Keynes, Schumpeter",
+      "Classical": 0,
+      "Historical School": 0,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 5,
+      "Keynesian": 52.5,
+      "Post-Keynesian/Sraffian": 3,
+      "Evolutionary": 5.9,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 17.8,
+      "Mathematical Economics": 0,
+      "Institutional": 0,
+      "Development Economics": 0,
+      "Contemporary": 7.9,
+      "Philosophy": 7.9,
+      "Other": 0
+    },
+    {
+      "year": 1984,
+      "theme": "Deutsche Nationalökonomie Ende des 18. Jh.",
+      "Classical": 0,
+      "Historical School": 100,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 0,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 0,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 0,
+      "Mathematical Economics": 0,
+      "Institutional": 0,
+      "Development Economics": 0,
+      "Contemporary": 0,
+      "Philosophy": 0,
+      "Other": 0
+    },
+    {
+      "year": 1985,
+      "theme": "Entwicklungen der deutschsprachigen Nationalökonomie im 19. Jh.",
+      "Classical": 33.8,
+      "Historical School": 24.6,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 10.8,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 10.8,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 1.5,
+      "Neoclassical": 15.4,
+      "Mathematical Economics": 0,
+      "Institutional": 0,
+      "Development Economics": 0,
+      "Contemporary": 1.5,
+      "Philosophy": 0,
+      "Other": 1.5
+    },
+    {
+      "year": 1986,
+      "theme": "Allgemeine Gleichgewichtsanalyse",
+      "Classical": 100,
+      "Historical School": 0,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 0,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 0,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 0,
+      "Mathematical Economics": 0,
+      "Institutional": 0,
+      "Development Economics": 0,
+      "Contemporary": 0,
+      "Philosophy": 0,
+      "Other": 0
+    },
+    {
+      "year": 1987,
+      "theme": "Konjunkturtheorie im ausgehenden 19. Jahrhundert",
+      "Classical": 0,
+      "Historical School": 16.7,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 0,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 16.7,
+      "Evolutionary": 0,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 66.7,
+      "Neoclassical": 0,
+      "Mathematical Economics": 0,
+      "Institutional": 0,
+      "Development Economics": 0,
+      "Contemporary": 0,
+      "Philosophy": 0,
+      "Other": 0
+    },
+    {
+      "year": 1988,
+      "theme": "Deutschsprachige Wirtschafts-, Konjunktur- und Geldtheorie",
+      "Classical": 100,
+      "Historical School": 0,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 0,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 0,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 0,
+      "Mathematical Economics": 0,
+      "Institutional": 0,
+      "Development Economics": 0,
+      "Contemporary": 0,
+      "Philosophy": 0,
+      "Other": 0
+    },
+    {
+      "year": 1989,
+      "theme": "Friedrich List; Carl Menger; Lorenz von Stein",
+      "Classical": 15.1,
+      "Historical School": 0,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 0,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 9.4,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 47.2,
+      "Mathematical Economics": 0,
+      "Institutional": 0,
+      "Development Economics": 0,
+      "Contemporary": 28.3,
+      "Philosophy": 0,
+      "Other": 0
+    },
+    {
+      "year": 1990,
+      "theme": "Wirtschaft und Wirtschaftswissenschaften in der Belletristik",
+      "Classical": 0,
+      "Historical School": 25,
+      "National Economy": 0,
+      "Marxist": 25,
+      "Austrian School": 0,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 0,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 25,
+      "Mathematical Economics": 0,
+      "Institutional": 0,
+      "Development Economics": 0,
+      "Contemporary": 25,
+      "Philosophy": 0,
+      "Other": 0
+    },
+    {
+      "year": 1991,
+      "theme": "Osteuropäische Dogmengeschichte",
+      "Classical": 0,
+      "Historical School": 0,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 0,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 0,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 0,
+      "Mathematical Economics": 0,
+      "Institutional": 0,
+      "Development Economics": 0,
+      "Contemporary": 0,
+      "Philosophy": 0,
+      "Other": 0
+    },
+    {
+      "year": 1992,
+      "theme": "Deutsche Finanzwissenschaft zwischen 1918 und 1939",
+      "Classical": 6.1,
+      "Historical School": 18.2,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 22.3,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 0.7,
+      "Evolutionary": 4.7,
+      "Ordoliberalismus": 16.2,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 18.9,
+      "Mathematical Economics": 0,
+      "Institutional": 1.4,
+      "Development Economics": 0,
+      "Contemporary": 0.7,
+      "Philosophy": 5.4,
+      "Other": 5.4
+    },
+    {
+      "year": 1993,
+      "theme": "Johann Heinrich von Thünen als Wirtschaftstheoretiker",
+      "Classical": 7.9,
+      "Historical School": 11.1,
+      "National Economy": 0,
+      "Marxist": 4.8,
+      "Austrian School": 4.8,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 7.9,
+      "Evolutionary": 7.1,
+      "Ordoliberalismus": 4.8,
+      "Raumwirtschaftslehre": 4.8,
+      "Neoclassical": 17.5,
+      "Mathematical Economics": 6.3,
+      "Institutional": 0,
+      "Development Economics": 15.1,
+      "Contemporary": 7.9,
+      "Philosophy": 0,
+      "Other": 0
+    },
+    {
+      "year": 1994,
+      "theme": "Revolution und Evolution in der Wirtschaftstheorie",
+      "Classical": 0,
+      "Historical School": 25.9,
+      "National Economy": 0,
+      "Marxist": 4.3,
+      "Austrian School": 0,
+      "Keynesian": 12.1,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 0,
+      "Ordoliberalismus": 4.3,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 25,
+      "Mathematical Economics": 9.5,
+      "Institutional": 4.3,
+      "Development Economics": 6.9,
+      "Contemporary": 5.2,
+      "Philosophy": 2.6,
+      "Other": 0
+    },
+    {
+      "year": 1995,
+      "theme": "Umsetzung wirtschaftspolitischer Grundkonzeptionen I",
+      "Classical": 32.7,
+      "Historical School": 14.3,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 46.9,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 0,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 4.1,
+      "Mathematical Economics": 0,
+      "Institutional": 0,
+      "Development Economics": 0,
+      "Contemporary": 0,
+      "Philosophy": 2,
+      "Other": 0
+    },
+    {
+      "year": 1996,
+      "theme": "Umsetzung wirtschaftspolitischer Grundkonzeptionen II",
+      "Classical": 0,
+      "Historical School": 0,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 16.1,
+      "Keynesian": 12.9,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 8.1,
+      "Ordoliberalismus": 21,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 8.1,
+      "Mathematical Economics": 12.9,
+      "Institutional": 8.1,
+      "Development Economics": 0,
+      "Contemporary": 12.9,
+      "Philosophy": 0,
+      "Other": 0
+    },
+    {
+      "year": 1997,
+      "theme": "Knut Wicksell",
+      "Classical": 6.9,
+      "Historical School": 0,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 5.5,
+      "Keynesian": 13.5,
+      "Post-Keynesian/Sraffian": 9.4,
+      "Evolutionary": 2.2,
+      "Ordoliberalismus": 3.6,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 33.7,
+      "Mathematical Economics": 0.8,
+      "Institutional": 4.4,
+      "Development Economics": 5.2,
+      "Contemporary": 13.3,
+      "Philosophy": 0,
+      "Other": 1.4
+    },
+    {
+      "year": 1998,
+      "theme": "John Stuart Mill",
+      "Classical": 57.7,
+      "Historical School": 3,
+      "National Economy": 0,
+      "Marxist": 1.3,
+      "Austrian School": 4.3,
+      "Keynesian": 2.2,
+      "Post-Keynesian/Sraffian": 3.3,
+      "Evolutionary": 0.9,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 9.9,
+      "Mathematical Economics": 2,
+      "Institutional": 4.7,
+      "Development Economics": 0,
+      "Contemporary": 4.3,
+      "Philosophy": 3.9,
+      "Other": 2.5
+    },
+    {
+      "year": 1999,
+      "theme": "Die Ältere Historische Schule",
+      "Classical": 9.2,
+      "Historical School": 38.5,
+      "National Economy": 0.6,
+      "Marxist": 5.2,
+      "Austrian School": 15.5,
+      "Keynesian": 2.3,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 1.7,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 12.3,
+      "Mathematical Economics": 1.7,
+      "Institutional": 0,
+      "Development Economics": 3.8,
+      "Contemporary": 5.9,
+      "Philosophy": 1.7,
+      "Other": 1.7
+    },
+    {
+      "year": 2000,
+      "theme": "Ideen, Methoden und Entwicklungen",
+      "Classical": 18,
+      "Historical School": 29.4,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 18.6,
+      "Keynesian": 3,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 0,
+      "Ordoliberalismus": 4.5,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 6,
+      "Mathematical Economics": 2.4,
+      "Institutional": 1.5,
+      "Development Economics": 0,
+      "Contemporary": 3,
+      "Philosophy": 13.5,
+      "Other": 0
+    },
+    {
+      "year": 2001,
+      "theme": "Deutschsprachige Wirtschaftswissenschaft nach 1945 I",
+      "Classical": 4.3,
+      "Historical School": 25.3,
+      "National Economy": 1.5,
+      "Marxist": 4.5,
+      "Austrian School": 6.2,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 2.3,
+      "Ordoliberalismus": 0.6,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 8.7,
+      "Mathematical Economics": 3.4,
+      "Institutional": 11.7,
+      "Development Economics": 6,
+      "Contemporary": 15.7,
+      "Philosophy": 5.1,
+      "Other": 4.5
+    },
+    {
+      "year": 2002,
+      "theme": "Deutschsprachige Wirtschaftswissenschaft nach 1945 II",
+      "Classical": 5.6,
+      "Historical School": 6.5,
+      "National Economy": 2.2,
+      "Marxist": 9.6,
+      "Austrian School": 7.6,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 6.5,
+      "Evolutionary": 4,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 0.7,
+      "Neoclassical": 30.9,
+      "Mathematical Economics": 9.2,
+      "Institutional": 0.7,
+      "Development Economics": 2.2,
+      "Contemporary": 4.7,
+      "Philosophy": 0.7,
+      "Other": 8.7
+    },
+    {
+      "year": 2003,
+      "theme": "Ökonomie und Religion",
+      "Classical": 6.6,
+      "Historical School": 18.3,
+      "National Economy": 0,
+      "Marxist": 6.1,
+      "Austrian School": 10.6,
+      "Keynesian": 1.2,
+      "Post-Keynesian/Sraffian": 6,
+      "Evolutionary": 3.8,
+      "Ordoliberalismus": 1.5,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 22,
+      "Mathematical Economics": 12.2,
+      "Institutional": 1.7,
+      "Development Economics": 1.2,
+      "Contemporary": 5.2,
+      "Philosophy": 1.7,
+      "Other": 1.8
+    },
+    {
+      "year": 2004,
+      "theme": "Wirtschaftswissenschaft und Technik",
+      "Classical": 0.3,
+      "Historical School": 11.6,
+      "National Economy": 0,
+      "Marxist": 0.3,
+      "Austrian School": 4.7,
+      "Keynesian": 4.8,
+      "Post-Keynesian/Sraffian": 8.2,
+      "Evolutionary": 0.3,
+      "Ordoliberalismus": 23.9,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 19.6,
+      "Mathematical Economics": 2.8,
+      "Institutional": 3.7,
+      "Development Economics": 0,
+      "Contemporary": 5.2,
+      "Philosophy": 1.4,
+      "Other": 13.4
+    },
+    {
+      "year": 2005,
+      "theme": "German–American Economic Thought",
+      "Classical": 8.9,
+      "Historical School": 14.4,
+      "National Economy": 0,
+      "Marxist": 0.8,
+      "Austrian School": 17.9,
+      "Keynesian": 0.8,
+      "Post-Keynesian/Sraffian": 0.8,
+      "Evolutionary": 6.6,
+      "Ordoliberalismus": 0.8,
+      "Raumwirtschaftslehre": 0.8,
+      "Neoclassical": 9,
+      "Mathematical Economics": 13.5,
+      "Institutional": 3.2,
+      "Development Economics": 1.5,
+      "Contemporary": 6.6,
+      "Philosophy": 13.7,
+      "Other": 0.8
+    },
+    {
+      "year": 2006,
+      "theme": "Wissen / The Knowledge Economy",
+      "Classical": 0,
+      "Historical School": 57.4,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 13.9,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 2.8,
+      "Ordoliberalismus": 4.6,
+      "Raumwirtschaftslehre": 4.6,
+      "Neoclassical": 4.6,
+      "Mathematical Economics": 4.6,
+      "Institutional": 0,
+      "Development Economics": 4.6,
+      "Contemporary": 0,
+      "Philosophy": 2.8,
+      "Other": 0
+    },
+    {
+      "year": 2007,
+      "theme": "Wechselseitige Einflüsse",
+      "Classical": 12.8,
+      "Historical School": 2.7,
+      "National Economy": 0,
+      "Marxist": 1.7,
+      "Austrian School": 25.9,
+      "Keynesian": 11.3,
+      "Post-Keynesian/Sraffian": 1.7,
+      "Evolutionary": 6.1,
+      "Ordoliberalismus": 1,
+      "Raumwirtschaftslehre": 2.3,
+      "Neoclassical": 9.4,
+      "Mathematical Economics": 11.9,
+      "Institutional": 3.1,
+      "Development Economics": 1,
+      "Contemporary": 3.8,
+      "Philosophy": 3.1,
+      "Other": 2.1
+    },
+    {
+      "year": 2008,
+      "theme": "Einfluss deutschsprachigen Denkens in Japan",
+      "Classical": 5.9,
+      "Historical School": 20,
+      "National Economy": 0.8,
+      "Marxist": 0.8,
+      "Austrian School": 1.2,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 1.7,
+      "Evolutionary": 1.5,
+      "Ordoliberalismus": 2.7,
+      "Raumwirtschaftslehre": 40.9,
+      "Neoclassical": 11.7,
+      "Mathematical Economics": 2.9,
+      "Institutional": 2.1,
+      "Development Economics": 0,
+      "Contemporary": 4.4,
+      "Philosophy": 2,
+      "Other": 1.5
+    },
+    {
+      "year": 2009,
+      "theme": "Geschichte der Entwicklungstheorien",
+      "Classical": 5.5,
+      "Historical School": 30.4,
+      "National Economy": 0,
+      "Marxist": 10.6,
+      "Austrian School": 27.3,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 1.7,
+      "Evolutionary": 5.1,
+      "Ordoliberalismus": 4.4,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 1.7,
+      "Mathematical Economics": 4.4,
+      "Institutional": 0,
+      "Development Economics": 1.7,
+      "Contemporary": 0,
+      "Philosophy": 7.2,
+      "Other": 0
+    },
+    {
+      "year": 2010,
+      "theme": "Ökonomik zwischen Natur- und Geisteswissenschaften",
+      "Classical": 0.8,
+      "Historical School": 8.7,
+      "National Economy": 1.5,
+      "Marxist": 1.2,
+      "Austrian School": 1.5,
+      "Keynesian": 0.8,
+      "Post-Keynesian/Sraffian": 9.5,
+      "Evolutionary": 0,
+      "Ordoliberalismus": 18.1,
+      "Raumwirtschaftslehre": 16.7,
+      "Neoclassical": 18.2,
+      "Mathematical Economics": 1.2,
+      "Institutional": 15.8,
+      "Development Economics": 4.3,
+      "Contemporary": 1.7,
+      "Philosophy": 0,
+      "Other": 0
+    },
+    {
+      "year": 2011,
+      "theme": "Entwicklung der Raumwirtschaftslehre",
+      "Classical": 2.4,
+      "Historical School": 10.8,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 16.8,
+      "Keynesian": 3.2,
+      "Post-Keynesian/Sraffian": 3.5,
+      "Evolutionary": 3.2,
+      "Ordoliberalismus": 5,
+      "Raumwirtschaftslehre": 0.8,
+      "Neoclassical": 27.4,
+      "Mathematical Economics": 6.2,
+      "Institutional": 5.9,
+      "Development Economics": 7.6,
+      "Contemporary": 3,
+      "Philosophy": 1.1,
+      "Other": 3
+    },
+    {
+      "year": 2012,
+      "theme": "Zeit um den Ersten Weltkrieg",
+      "Classical": 1.3,
+      "Historical School": 20.6,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 4.3,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 5.2,
+      "Evolutionary": 16.7,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 11.2,
+      "Mathematical Economics": 10.3,
+      "Institutional": 12,
+      "Development Economics": 6.4,
+      "Contemporary": 4.3,
+      "Philosophy": 7.7,
+      "Other": 0
+    },
+    {
+      "year": 2013,
+      "theme": "Marx und Engels — Neue Perspektiven",
+      "Classical": 7.6,
+      "Historical School": 5.8,
+      "National Economy": 2.9,
+      "Marxist": 19.1,
+      "Austrian School": 12.2,
+      "Keynesian": 3.6,
+      "Post-Keynesian/Sraffian": 5.4,
+      "Evolutionary": 0,
+      "Ordoliberalismus": 1.8,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 21.9,
+      "Mathematical Economics": 0,
+      "Institutional": 0,
+      "Development Economics": 9.7,
+      "Contemporary": 4.7,
+      "Philosophy": 5.4,
+      "Other": 0
+    },
+    {
+      "year": 2014,
+      "theme": "Macht oder ökonomisches Gesetz?",
+      "Classical": 14,
+      "Historical School": 3.2,
+      "National Economy": 0,
+      "Marxist": 3.9,
+      "Austrian School": 5,
+      "Keynesian": 5.4,
+      "Post-Keynesian/Sraffian": 9.7,
+      "Evolutionary": 5.4,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 16.8,
+      "Neoclassical": 9.7,
+      "Mathematical Economics": 1.8,
+      "Institutional": 8.2,
+      "Development Economics": 0,
+      "Contemporary": 12.2,
+      "Philosophy": 4.7,
+      "Other": 0
+    },
+    {
+      "year": 2015,
+      "theme": "Kontinuität und Wandel in der Institutionenökonomie",
+      "Classical": 3.1,
+      "Historical School": 6.7,
+      "National Economy": 0,
+      "Marxist": 3.1,
+      "Austrian School": 22.1,
+      "Keynesian": 3.1,
+      "Post-Keynesian/Sraffian": 9.5,
+      "Evolutionary": 4.8,
+      "Ordoliberalismus": 10.5,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 21.1,
+      "Mathematical Economics": 3.1,
+      "Institutional": 2.6,
+      "Development Economics": 3.1,
+      "Contemporary": 4.3,
+      "Philosophy": 3.1,
+      "Other": 0
+    },
+    {
+      "year": 2016,
+      "theme": "Stagnations- und Deflationstheorien",
+      "Classical": 5.6,
+      "Historical School": 4.1,
+      "National Economy": 0,
+      "Marxist": 2.4,
+      "Austrian School": 12.2,
+      "Keynesian": 2.4,
+      "Post-Keynesian/Sraffian": 1.1,
+      "Evolutionary": 14.1,
+      "Ordoliberalismus": 3.5,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 7,
+      "Mathematical Economics": 7.2,
+      "Institutional": 16.1,
+      "Development Economics": 7.4,
+      "Contemporary": 2.1,
+      "Philosophy": 8.2,
+      "Other": 6.5
+    },
+    {
+      "year": 2017,
+      "theme": "Einkommens- und Vermögensverteilung",
+      "Classical": 1.9,
+      "Historical School": 0.6,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 34.1,
+      "Keynesian": 21.7,
+      "Post-Keynesian/Sraffian": 7.3,
+      "Evolutionary": 8.9,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 6.2,
+      "Neoclassical": 13.4,
+      "Mathematical Economics": 0.6,
+      "Institutional": 0.6,
+      "Development Economics": 1.5,
+      "Contemporary": 3.4,
+      "Philosophy": 0,
+      "Other": 0
+    },
+    {
+      "year": 2018,
+      "theme": "Kameralismus und Merkantilismus",
+      "Classical": 13.5,
+      "Historical School": 26.6,
+      "National Economy": 1.5,
+      "Marxist": 1.5,
+      "Austrian School": 0.9,
+      "Keynesian": 3.1,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 8.9,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 1.5,
+      "Neoclassical": 9.8,
+      "Mathematical Economics": 0,
+      "Institutional": 0.9,
+      "Development Economics": 9.5,
+      "Contemporary": 2.4,
+      "Philosophy": 10.7,
+      "Other": 9.2
+    },
+    {
+      "year": 2019,
+      "theme": "Ökonomie und Evolution",
+      "Classical": 0.8,
+      "Historical School": 7.4,
+      "National Economy": 0,
+      "Marxist": 3.2,
+      "Austrian School": 33.3,
+      "Keynesian": 22.2,
+      "Post-Keynesian/Sraffian": 1,
+      "Evolutionary": 2.7,
+      "Ordoliberalismus": 5.6,
+      "Raumwirtschaftslehre": 3.1,
+      "Neoclassical": 11.8,
+      "Mathematical Economics": 1.8,
+      "Institutional": 1.4,
+      "Development Economics": 3.3,
+      "Contemporary": 1.8,
+      "Philosophy": 0,
+      "Other": 0.7
+    },
+    {
+      "year": 2021,
+      "theme": "Entwicklung der Konjunkturforschung",
+      "Classical": 0,
+      "Historical School": 54.3,
+      "National Economy": 0,
+      "Marxist": 2.2,
+      "Austrian School": 2.2,
+      "Keynesian": 3.5,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 0.8,
+      "Ordoliberalismus": 4.9,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 4.3,
+      "Mathematical Economics": 2.2,
+      "Institutional": 8.4,
+      "Development Economics": 6.2,
+      "Contemporary": 3.5,
+      "Philosophy": 6.8,
+      "Other": 0.8
+    },
+    {
+      "year": 2022,
+      "theme": "Geschichte des Vereins für Socialpolitik",
+      "Classical": 0,
+      "Historical School": 0,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 0,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 0,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 0,
+      "Mathematical Economics": 0,
+      "Institutional": 0,
+      "Development Economics": 0,
+      "Contemporary": 0,
+      "Philosophy": 0,
+      "Other": 0
+    },
+    {
+      "year": 2023,
+      "theme": "Adam Smith@300",
+      "Classical": 0,
+      "Historical School": 0,
+      "National Economy": 0,
+      "Marxist": 0,
+      "Austrian School": 0,
+      "Keynesian": 0,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 0,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 0,
+      "Mathematical Economics": 0,
+      "Institutional": 0,
+      "Development Economics": 0,
+      "Contemporary": 0,
+      "Philosophy": 0,
+      "Other": 0
+    }
+  ]
+}

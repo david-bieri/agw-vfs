@@ -48,6 +48,9 @@
     tab_analysis:        { de: 'Analysen',               en: 'Analytics' },
     tab_pmi:             { de: 'Themenanalyse',          en: 'Topic Analysis' },
     tab_lineage:         { de: 'Stammbaum',              en: 'Lineages' },
+    tab_ego:             { de: 'Ego-Netzwerk',           en: 'Ego Network' },
+    tab_alluvial:        { de: 'Themenfluss',             en: 'Topic Flow' },
+    tab_story:           { de: 'Erzählung',              en: 'Narrative' },
 
     // ── Tool display names (used in guide + page headings) ────────
     tool_chronik:        { de: 'Chronik',                 en: 'Chronicle' },
