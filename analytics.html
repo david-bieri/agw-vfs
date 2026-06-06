@@ -402,6 +402,8 @@
       onclick="showTool('ego',this)"><span class="ico ico-net" aria-hidden="true"></span> <span data-str="tab_ego">Ego-Netzwerk</span></button>
     <button class="tool-tab" id="tab-alluvial"
       onclick="showTool('alluvial',this)"><span class="ico ico-flow" aria-hidden="true"></span> <span data-str="tab_alluvial">Themenfluss</span></button>
+    <button class="tool-tab" id="tab-sankey"
+      onclick="showTool('sankey',this)"><span class="ico ico-flow" aria-hidden="true"></span> <span data-str="tab_sankey">Sankey</span></button>
     <button class="tool-tab" id="tab-story"
       onclick="showTool('story',this)"><span class="ico ico-story" aria-hidden="true"></span> <span data-str="tab_story">Erzählung</span></button>
   </div>
@@ -442,6 +444,10 @@
       <div class="loading" id="loading-alluvial" data-str="loading">Lade Themenfluss…</div>
       <div id="mount-alluvial" style="width:100%;height:600px;"></div>
     </div>
+    <div class="tool-panel" id="panel-sankey">
+      <div class="loading" id="loading-sankey" data-str="loading">Lade Sankey…</div>
+      <div id="mount-sankey" style="width:100%;height:600px;"></div>
+    </div>
     <div class="tool-panel" id="panel-story">
       <div class="loading" id="loading-story" data-str="loading">Lade Erzählung…</div>
       <div id="mount-story" style="width:100%;height:600px;"></div>
@@ -471,6 +477,7 @@
     var lineageLoaded = false;
     var egoLoaded = false;
     var alluvialLoaded = false;
+    var sankeyLoaded = false;
     var storyLoaded = false;
     function showTool(name, btn) {
       document.querySelectorAll('.tool-panel').forEach(p => p.classList.remove('active'));
@@ -502,6 +509,15 @@
           mod.default('#mount-alluvial');
         }).catch(err => {
           document.getElementById('loading-alluvial').textContent = 'Fehler beim Laden: ' + err.message;
+        });
+      }
+      if (name === 'sankey' && !sankeyLoaded) {
+        sankeyLoaded = true;
+        import('./dist/agw_sankey.js').then(mod => {
+          document.getElementById('loading-sankey').style.display = 'none';
+          mod.default('#mount-sankey');
+        }).catch(err => {
+          document.getElementById('loading-sankey').textContent = 'Fehler beim Laden des Sankey: ' + err.message;
         });
       }
       if (name === 'lineage' && !lineageLoaded) {

@@ -50,6 +50,7 @@
     tab_lineage:         { de: 'Stammbaum',              en: 'Lineages' },
     tab_ego:             { de: 'Ego-Netzwerk',           en: 'Ego Network' },
     tab_alluvial:        { de: 'Themenfluss',             en: 'Topic Flow' },
+    tab_sankey:          { de: 'Sankey',                  en: 'Sankey' },
     tab_story:           { de: 'Erzählung',              en: 'Narrative' },
 
     // ── Tool display names (used in guide + page headings) ────────
