@@ -1,0 +1,158 @@
+\documentclass[11pt,a4paper,twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman,english]{babel}
+\usepackage{geometry}
+\geometry{a4paper, margin=2.5cm}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{microtype}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{parskip}
+
+% Colors
+\definecolor{navy}{HTML}{1B3A6B}
+\definecolor{accent}{HTML}{3A6BAF}
+\definecolor{gold}{HTML}{B8860B}
+\definecolor{green}{HTML}{4A7C59}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=navy,
+    filecolor=magenta,      
+    urlcolor=accent,
+    pdftitle={AGW Analytics - User Guide},
+    pdfauthor={David Bieri},
+}
+
+% Title format
+\titleformat{\section}{\Large\bfseries\color{navy}}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries\color{accent}}{\thesubsection}{1em}{}
+
+\title{\Huge \textbf{AGW Analytics}\\ \Large Wissenschaftliches Handbuch / Academic Manual}
+\author{Ausschuss für die Geschichte der Wirtschaftswissenschaften\\ Verein für Socialpolitik}
+\date{2026}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\selectlanguage{ngerman}
+\section{Einführung}
+Dieses Handbuch dient als wissenschaftliche Begleitdokumentation zu den AGW Analytics-Werkzeugen. Die Plattform visualisiert und analysiert die intellektuelle Rezeptionsgeschichte innerhalb des Ausschusses für die Geschichte der Wirtschaftswissenschaften (AGW) im Verein für Socialpolitik über einen Zeitraum von 43 Jahren (1980--2023).
+
+Die zugrundeliegenden Daten basieren auf den Konferenzbänden des AGW und wurden durch Text-Mining, Netzwerkanalyse und manuelle Kuration aufbereitet. Die Plattform bietet fünf Hauptperspektiven auf diese Daten: den \textit{Atlas}, \textit{Analysen}, \textit{Netzwerke}, den \textit{Zeitverlauf} und eine geführte \textit{Erzählung}.
+
+\section{Methodik und Datengrundlage}
+\subsection{Korpus und Entitätenerkennung}
+Der Korpus umfasst die veröffentlichten Bände der AGW-Jahrestagungen. Mittels Named Entity Recognition (NER) wurden 81 intellektuelle Schlüsselfiguren identifiziert und disambiguiert (z.\,B. Unterscheidung zwischen Max und Alfred Weber).
+
+\subsection{Kookkurrenz und PPMI}
+Die thematische Analyse (Tab \textit{Zeitverlauf} $\rightarrow$ \textit{Themenanalyse}) basiert auf Positive Pointwise Mutual Information (PPMI). PPMI misst die Assoziationsstärke zwischen einer Figur und einem von 53 identifizierten Themen innerhalb eines Textfensters von $\pm 400$ Zeichen.
+\begin{equation}
+    PPMI(x,y) = \max\left(0, \log_2 \frac{P(x,y)}{P(x)P(y)}\right)
+\end{equation}
+Dieser Ansatz filtert allgemeine Begriffe heraus und hebt charakteristische, spezifische Assoziationen hervor \cite{jurafsky2000}.
+
+\subsection{Netzwerkkonstruktion}
+Die \textit{Ego-Netzwerke} (Tab \textit{Netzwerke}) kombinieren zwei Kantenarten:
+\begin{enumerate}
+    \item \textbf{Ko-Zitationen:} Figuren, die signifikant oft im selben Konferenzband zitiert werden.
+    \item \textbf{Stammbaum (Lineage):} Historisch belegte Lehrer-Schüler-Beziehungen, extrahiert aus ideengeschichtlichen Standardwerken und der HET Website \cite{hetwebsite}.
+\end{enumerate}
+
+\section{Die Analysewerkzeuge}
+
+\subsection{Atlas (Rezeptionsatlas)}
+Der Atlas bietet eine makroskopische Sicht auf die Präsenz von Figuren über die Zeit. Das \textit{Präsenz-Streudiagramm} zeigt punktgenau, in welchem Jahr eine Figur wie intensiv diskutiert wurde. Die \textit{Epochen-Heatmap} aggregiert diese Daten auf Jahrzehnte-Ebene, um strukturelle Verschiebungen sichtbar zu machen.
+
+\subsection{Analysen (Strukturelle Perspektiven)}
+Dieser Bereich zerlegt den Korpus in fünf analytische Dimensionen:
+\begin{itemize}
+    \item \textbf{Intellektuelle Strömungen:} Zeigt die Dominanz von Denkschulen als gestapelte Flächendiagramme.
+    \item \textbf{Aufsteiger \& Vergessene:} Vergleicht die Zitationshäufigkeit der ersten Hälfte des Korpus (1980--2000) mit der zweiten (2001--2023).
+    \item \textbf{Der lange Griff:} Visualisiert den zeitlichen Abstand zwischen dem Wirken einer Figur (Geburtsjahr) und ihrer Rezeption im AGW.
+\end{itemize}
+
+\subsection{Netzwerke (Relationalität)}
+\begin{itemize}
+    \item \textbf{Interaktiver Ego-Explorer:} Ein Force-directed Graph, der die Vernetzung der 81 Schlüsselfiguren zeigt. Durch Klicken auf einen Knoten ("Ego") werden direkte Nachbarn hervorgehoben. Das Detail-Panel reichert die quantitative Ansicht mit qualitativen biografischen Daten an.
+    \item \textbf{Sankey (Ideenfluss):} Ein Alluvial-Diagramm, das die Verschiebung von Aufmerksamkeit zwischen Denkschulen über fünf Jahrzehnte modelliert. Die Kantenstärken basieren auf einer Kombination aus Aufmerksamkeitsmigration, Ko-Zitationen und intellektuellen Stammbäumen.
+\end{itemize}
+
+\subsection{Zeitverlauf (Thematische Evolution)}
+Der \textit{Streamgraph} (Themenfluss) visualisiert die relative und absolute Präsenz von 16 Denkschulen. Die \textit{PPMI-Assoziationen} bieten tiefe Einblicke in den semantischen Kontext, in dem Figuren diskutiert wurden.
+
+\subsection{Erzählung (Scrollytelling)}
+Eine kuratierte Datenreise, die quantitative Befunde dogmenhistorisch einordnet. Sie behandelt die Dominanz der Klassik in den 1980ern, das "Austrian Revival" \cite{vaughn1994}, Schumpeters Rolle als Brückenfigur und die Pluralisierung des Diskurses nach der Jahrtausendwende.
+
+\newpage
+\selectlanguage{english}
+\section{Introduction}
+This manual serves as the academic companion documentation for the AGW Analytics tools. The platform visualizes and analyzes the history of intellectual reception within the Committee for the History of Economics (AGW) of the Verein für Socialpolitik over a 43-year period (1980--2023).
+
+The underlying data is based on the published conference proceedings of the AGW, processed through text mining, network analysis, and manual curation. The platform offers five main perspectives on this data: the \textit{Atlas}, \textit{Analytics}, \textit{Networks}, \textit{Timeline}, and a guided \textit{Narrative}.
+
+\section{Methodology and Data}
+\subsection{Corpus and Entity Recognition}
+The corpus comprises the published volumes of the AGW annual conferences. Using Named Entity Recognition (NER), 81 key intellectual figures were identified and disambiguated.
+
+\subsection{Co-occurrence and PPMI}
+The thematic analysis (Tab \textit{Timeline} $\rightarrow$ \textit{Topic Analysis}) is based on Positive Pointwise Mutual Information (PPMI). PPMI measures the strength of association between a figure and one of 53 identified topics within a text window of $\pm 400$ characters. This approach filters out generic terms and highlights characteristic, specific associations \cite{jurafsky2000}.
+
+\subsection{Network Construction}
+The \textit{Ego Networks} (Tab \textit{Networks}) combine two types of edges:
+\begin{enumerate}
+    \item \textbf{Co-citations:} Figures that are significantly often cited in the same conference volume.
+    \item \textbf{Lineage:} Historically documented teacher-student relationships, extracted from standard works in the history of economic thought and the HET Website \cite{hetwebsite}.
+\end{enumerate}
+
+\section{The Analytical Tools}
+
+\subsection{Atlas (Reception Atlas)}
+The Atlas provides a macroscopic view of the presence of figures over time. The \textit{Presence Scatter} shows exactly in which year a figure was discussed and how intensely. The \textit{Era Heatmap} aggregates this data at the decadal level to reveal structural shifts.
+
+\subsection{Networks (Relationality)}
+\begin{itemize}
+    \item \textbf{Interactive Ego Explorer:} A force-directed graph showing the interconnectedness of the 81 key figures. Clicking on a node ("Ego") highlights direct neighbors. The detail panel enriches the quantitative view with qualitative biographical data.
+    \item \textbf{Sankey (Idea Flow):} An alluvial diagram modeling the shift of attention between schools of thought over five decades. Edge weights are based on a combination of attention migration, co-citations, and intellectual lineages.
+\end{itemize}
+
+\subsection{Narrative (Scrollytelling)}
+A curated data journey that contextualizes quantitative findings within the history of economic thought. It covers the dominance of the Classics in the 1980s, the "Austrian Revival" \cite{vaughn1994}, Schumpeter's role as a bridge figure, and the pluralization of discourse after the millennium.
+
+\newpage
+\selectlanguage{ngerman}
+\begin{thebibliography}{9}
+\bibitem{jurafsky2000}
+Jurafsky, D., \& Martin, J. H. (2000). \textit{Speech and Language Processing}. Prentice Hall.
+
+\bibitem{hetwebsite}
+Fonseca, G. L., \& Ussher, L. (Eds.). \textit{The History of Economic Thought Website}. \url{https://www.hetwebsite.net/het/}
+
+\bibitem{vaughn1994}
+Vaughn, K. I. (1994). \textit{Austrian Economics in America: The Migration of a Tradition}. Cambridge University Press.
+
+\bibitem{schumpeter1954}
+Schumpeter, J. A. (1954). \textit{History of Economic Analysis}. Oxford University Press.
+
+\bibitem{blaug1997}
+Blaug, M. (1997). \textit{Economic Theory in Retrospect} (5th ed.). Cambridge University Press.
+\end{thebibliography}
+
+\section*{Weiterführende Literatur / Further Reading}
+\begin{itemize}
+    \item Kurz, H. D. (2013). \textit{Geschichte des ökonomischen Denkens}. C.H. Beck.
+    \item Tribe, K. (1995). \textit{Strategies of Economic Order: German Economic Discourse, 1750-1950}. Cambridge University Press.
+    \item Hagemann, H. (Ed.). (2010). \textit{Studien zur Entwicklung der ökonomischen Theorie}. Duncker \& Humblot.
+\end{itemize}
+
+\end{document}
