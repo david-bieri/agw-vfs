@@ -458,9 +458,14 @@
       btn.classList.add('active');
       if (name === 'lineage' && !lineageLoaded) {
         lineageLoaded = true;
-        ['agw_lineage_data.js', 'agw_lineage.js'].forEach(function(src) {
-          var s = document.createElement('script'); s.src = src; document.body.appendChild(s);
-        });
+        var dataScript = document.createElement('script');
+        dataScript.src = 'agw_lineage_data.js';
+        dataScript.onload = function() {
+          var renderScript = document.createElement('script');
+          renderScript.src = 'agw_lineage.js';
+          document.body.appendChild(renderScript);
+        };
+        document.body.appendChild(dataScript);
       }
     }
 

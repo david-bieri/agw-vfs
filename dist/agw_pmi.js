@@ -909,8 +909,9 @@ function BipNetView({ lang }) {
             x2: xOf(l.target.x),
             y2: yOf(l.target.y),
             stroke: isH ? SC[l.source.school] || CAT_COLORS[l.target.cat] || ACC : "rgba(144,202,249,0.12)",
-            strokeWidth: Math.max(0.5, l.score / maxScore * 3.5),
-            opacity: isH ? 0.9 : 0.5
+            strokeWidth: isH ? Math.max(1.5, l.score / maxScore * 5) : Math.max(0.5, l.score / maxScore * 3.5),
+            opacity: isH ? 0.9 : (hov ? 0.04 : 0.5),
+            style: { transition: "opacity 0.2s, stroke-width 0.2s" }
           },
           i
         );
@@ -933,8 +934,9 @@ function BipNetView({ lang }) {
                   cy: yOf(n.y),
                   r: isH ? r + 4 : r,
                   fill: col,
-                  opacity: isH ? 1 : 0.8,
+                  opacity: isH ? 1 : (hov ? 0.25 : 0.8),
                   stroke: isH ? "rgba(255,255,255,0.5)" : "none",
+                  style: { transition: "opacity 0.2s" },
                   strokeWidth: 1.5
                 }
               ),
@@ -946,7 +948,8 @@ function BipNetView({ lang }) {
                   textAnchor: n.type === "fig" ? "end" : "start",
                   fontSize: isH ? 9 : 7.5,
                   fill: col,
-                  opacity: isH ? 1 : 0.8,
+                  opacity: isH ? 1 : (hov ? 0.2 : 0.8),
+                  style: { transition: "opacity 0.2s" },
                   children: n.type === "fig" ? n.sn : lang.de ? n.label_de || n.label : n.label
                 }
               )

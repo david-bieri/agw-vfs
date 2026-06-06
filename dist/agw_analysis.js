@@ -191,18 +191,23 @@ function NetView({ lang }) {
           borderBottom: `1px solid ${DIM}`
         },
         children: [
-          /* @__PURE__ */ jsx("g", { children: links.map((l, i) => /* @__PURE__ */ jsx(
+          /* @__PURE__ */ jsx("g", { children: links.map((l, i) => {
+            const isConn = hov && (l.source.id === hov || l.target.id === hov);
+            const dimmed = hov && !isConn;
+            return /* @__PURE__ */ jsx(
             "line",
             {
               x1: l.source.x,
               y1: l.source.y,
               x2: l.target.x,
               y2: l.target.y,
-              stroke: `rgba(144,202,249,${0.08 + l.w / maxW * 0.25})`,
-              strokeWidth: Math.max(0.5, l.w / maxW * 3.5)
+              stroke: isConn ? (SC[nodes.find(n=>n.id===hov)?.s] || `rgba(144,202,249,0.8)`) : `rgba(144,202,249,${0.08 + l.w / maxW * 0.25})`,
+              strokeWidth: isConn ? Math.max(1.5, l.w / maxW * 4.5) : Math.max(0.5, l.w / maxW * 3.5),
+              opacity: dimmed ? 0.08 : 1,
+              style: { transition: "opacity 0.2s, stroke-width 0.2s" }
             },
             i
-          )) }),
+          );}) }),
           /* @__PURE__ */ jsx("g", { children: nodes.map((n) => {
             const r = 5 + Math.sqrt(n.df) * 1.8;
             const col = SC[n.s] || "#aaa";
@@ -225,7 +230,7 @@ function NetView({ lang }) {
                       opacity: 0.5
                     }
                   ),
-                  /* @__PURE__ */ jsx("circle", { r, fill: col, opacity: isH ? 1 : 0.82 }),
+                  /* @__PURE__ */ jsx("circle", { r, fill: col, opacity: isH ? 1 : (hov && !RAW.edges.some(e => (e.a === hov && e.b === n.id) || (e.b === hov && e.a === n.id)) ? 0.2 : 0.82), style: { transition: "opacity 0.2s" } }),
                   /* @__PURE__ */ jsx(
                     "text",
                     {
@@ -233,8 +238,8 @@ function NetView({ lang }) {
                       dy: -(r + 4),
                       fontSize: isH ? 9 : 7.5,
                       fill: col,
-                      opacity: isH ? 1 : 0.85,
-                      style: { pointerEvents: "none", fontWeight: isH ? "bold" : "normal" },
+                      opacity: isH ? 1 : (hov && !RAW.edges.some(e => (e.a === hov && e.b === n.id) || (e.b === hov && e.a === n.id)) ? 0.15 : 0.85),
+                      style: { pointerEvents: "none", fontWeight: isH ? "bold" : "normal", transition: "opacity 0.2s" },
                       children: sn(n.id)
                     }
                   )
