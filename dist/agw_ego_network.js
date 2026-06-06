@@ -1,6 +1,7 @@
 // agw_ego_network.js — Interactive Ego-Network Explorer (Feature C)
 // Pure D3 + vanilla JS, no React dependency. Mounts into a container element.
 import * as d3 from "d3";
+import { schoolLabel, getLang, uiText } from "./school_labels.js";
 
 const DATA_URL = "./data/unified_network.json";
 
@@ -27,16 +28,16 @@ export default async function AGWEgoNetwork(container) {
   controls.className = "ego-controls";
   controls.innerHTML = `
     <div style="display:flex;align-items:center;gap:12px;padding:8px 12px;background:#1a1a2e;border-bottom:1px solid #333;flex-wrap:wrap;">
-      <label style="color:#aaa;font-size:12px;font-family:'Source Sans 3',sans-serif;">Kanten:</label>
+      <label style="color:#aaa;font-size:12px;font-family:'Source Sans 3',sans-serif;">${uiText('edges')}</label>
       <select id="ego-edge-filter" style="background:#2a2a3e;color:#eee;border:1px solid #555;border-radius:4px;padding:2px 8px;font-size:12px;">
-        <option value="all">Alle (Co-Zitation + Stammbaum)</option>
-        <option value="co-citation">Nur Co-Zitation</option>
-        <option value="lineage">Nur Stammbaum (Lehrer/Schüler)</option>
+        <option value="all">${uiText('edge_all')}</option>
+        <option value="co-citation">${uiText('edge_cocit')}</option>
+        <option value="lineage">${uiText('edge_lineage')}</option>
       </select>
-      <label style="color:#aaa;font-size:12px;font-family:'Source Sans 3',sans-serif;">Suche:</label>
-      <input id="ego-search" type="text" placeholder="Name eingeben…" style="background:#2a2a3e;color:#eee;border:1px solid #555;border-radius:4px;padding:2px 8px;font-size:12px;width:160px;">
-      <button id="ego-reset" style="background:#444;color:#eee;border:none;border-radius:4px;padding:4px 10px;font-size:11px;cursor:pointer;">⟵ Übersicht</button>
-      <span id="ego-info" style="color:#888;font-size:11px;margin-left:auto;font-family:'Source Sans 3',sans-serif;">Klicken Sie auf eine Figur, um ihr Ego-Netzwerk zu erkunden.</span>
+      <label style="color:#aaa;font-size:12px;font-family:'Source Sans 3',sans-serif;">${uiText('search')}</label>
+      <input id="ego-search" type="text" placeholder="${uiText('search_placeholder')}" style="background:#2a2a3e;color:#eee;border:1px solid #555;border-radius:4px;padding:2px 8px;font-size:12px;width:160px;">
+      <button id="ego-reset" style="background:#444;color:#eee;border:none;border-radius:4px;padding:4px 10px;font-size:11px;cursor:pointer;">${uiText('overview')}</button>
+      <span id="ego-info" style="color:#888;font-size:11px;margin-left:auto;font-family:'Source Sans 3',sans-serif;">${uiText('ego_hint')}</span>
     </div>
   `;
   el.appendChild(controls);

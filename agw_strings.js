@@ -43,7 +43,21 @@
     // ── Archive tab label (index.html) ────────────────────────────
     arch_view_chronik:   { de: 'Chronik',                en: 'Chronicle' },
 
-    // ── Analytics page — main tabs ───────────────────────────────
+    // ── Analytics page — main tabs (consolidated 5-tab layout) ────
+    tab_atlas:           { de: 'Atlas',                  en: 'Atlas' },
+    tab_analysen:        { de: 'Analysen',               en: 'Analytics' },
+    tab_netzwerke:       { de: 'Netzwerke',              en: 'Networks' },
+    tab_zeitverlauf:     { de: 'Zeitverlauf',            en: 'Timeline' },
+    tab_story:           { de: 'Erzählung',              en: 'Narrative' },
+
+    // ── Analytics page — sub-tabs ────────────────────────────────
+    sub_ego:             { de: 'Ego-Netzwerk',           en: 'Ego Network' },
+    sub_lineage:         { de: 'Stammbaum',              en: 'Lineages' },
+    sub_sankey:          { de: 'Sankey',                  en: 'Sankey' },
+    sub_stream:          { de: 'Streamgraph',            en: 'Streamgraph' },
+    sub_themen:          { de: 'Themenanalyse',          en: 'Topic Analysis' },
+
+    // ── Legacy tab keys (kept for guide.html compatibility) ──────
     tab_gaze:            { de: 'Rezeptionsatlas',        en: 'Reception Atlas' },
     tab_analysis:        { de: 'Analysen',               en: 'Analytics' },
     tab_pmi:             { de: 'Themenanalyse',          en: 'Topic Analysis' },
@@ -51,7 +65,6 @@
     tab_ego:             { de: 'Ego-Netzwerk',           en: 'Ego Network' },
     tab_alluvial:        { de: 'Themenfluss',             en: 'Topic Flow' },
     tab_sankey:          { de: 'Sankey',                  en: 'Sankey' },
-    tab_story:           { de: 'Erzählung',              en: 'Narrative' },
 
     // ── Tool display names (used in guide + page headings) ────────
     tool_chronik:        { de: 'Chronik',                 en: 'Chronicle' },

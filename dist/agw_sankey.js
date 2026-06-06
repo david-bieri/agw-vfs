@@ -1,6 +1,7 @@
 // agw_sankey.js — True Sankey/Alluvial diagram showing inter-school attention flows
 // Uses d3-sankey layout to show how intellectual attention migrates between schools across decades
 import * as d3 from "d3";
+import { schoolLabel, getLang, uiText } from "./school_labels.js";
 
 const SANKEY_DATA_URL = "./data/sankey_flows.json";
 
@@ -25,12 +26,12 @@ export default async function AGWSankey(container) {
   controls.innerHTML = `
     <div style="display:flex;align-items:center;gap:12px;padding:8px 12px;background:#1a1a2e;border-bottom:1px solid #333;flex-wrap:wrap;">
       <span style="color:#ccc;font-size:13px;font-family:'EB Garamond',serif;font-weight:600;">
-        Intellektuelle Aufmerksamkeitsströme zwischen Denkschulen
+        ${uiText('sankey_title')}
       </span>
       <span style="color:#888;font-size:11px;font-family:'Source Sans 3',sans-serif;margin-left:auto;">
-        Klicken Sie auf eine Schule, um ihre Ströme hervorzuheben
+        ${uiText('sankey_hint')}
       </span>
-      <button id="sankey-reset" style="background:#444;color:#eee;border:none;border-radius:4px;padding:4px 10px;font-size:11px;cursor:pointer;">Alle zeigen</button>
+      <button id="sankey-reset" style="background:#444;color:#eee;border:none;border-radius:4px;padding:4px 10px;font-size:11px;cursor:pointer;">${uiText('show_all')}</button>
     </div>
   `;
   el.appendChild(controls);
@@ -152,7 +153,7 @@ export default async function AGWSankey(container) {
     .attr("fill", d => schoolColors[d.school] || "#888")
     .attr("font-size", d => d.height > 12 ? 10 : 8)
     .attr("font-family", "'Source Sans 3', sans-serif")
-    .text(d => d.height > 6 ? d.school : "");
+    .text(d => d.height > 6 ? schoolLabel(d.school) : "");
 
   // Right labels (last column)
   g.selectAll(".label-right")
@@ -166,7 +167,7 @@ export default async function AGWSankey(container) {
     .attr("fill", d => schoolColors[d.school] || "#888")
     .attr("font-size", d => d.height > 12 ? 10 : 8)
     .attr("font-family", "'Source Sans 3', sans-serif")
-    .text(d => d.height > 6 ? d.school : "");
+    .text(d => d.height > 6 ? schoolLabel(d.school) : "");
 
   // === Draw links (flows between decades) ===
   // For each link, compute source and target y positions within the node
@@ -253,14 +254,14 @@ export default async function AGWSankey(container) {
   linkPaths
     .on("mouseenter", function(event, d) {
       d3.select(this).attr("stroke-opacity", 0.9).attr("stroke-width", d.thickness + 1);
-      const direction = d.isSameSchool ? "Persistenz" : "Aufmerksamkeitsstrom";
+      const direction = d.isSameSchool ? uiText('persistence') : uiText('flow_label');
       tooltip.innerHTML = `
         <strong>${direction}</strong><br>
-        <span style="color:${schoolColors[d.sourceSchool] || '#888'};">\u25cf ${d.sourceSchool}</span>
+        <span style="color:${schoolColors[d.sourceSchool] || '#888'};">● ${schoolLabel(d.sourceSchool)}</span>
         (${d.sourceDec})<br>
-        \u2192 <span style="color:${schoolColors[d.targetSchool] || '#888'};">\u25cf ${d.targetSchool}</span>
+        → <span style="color:${schoolColors[d.targetSchool] || '#888'};">● ${schoolLabel(d.targetSchool)}</span>
         (${d.targetDec})<br>
-        <span style="color:#aaa;">Stärke: ${d.value.toFixed(1)}</span>
+        <span style="color:#aaa;">${uiText('strength')}: ${d.value.toFixed(1)}</span>
       `;
       tooltip.style.display = "block";
       tooltip.style.left = (event.offsetX + 15) + "px";
@@ -342,5 +343,5 @@ export default async function AGWSankey(container) {
     .attr("fill", "#666")
     .attr("font-size", 10)
     .attr("font-family", "'Source Sans 3', sans-serif")
-    .text("Breite Bänder = Persistenz innerhalb einer Schule · Schmale Bänder = Aufmerksamkeitsmigration zwischen Schulen");
+    .text(uiText('legend_note'));
 }

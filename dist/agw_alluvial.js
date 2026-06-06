@@ -2,6 +2,7 @@
 // Visualizes how intellectual school shares flow and shift across 43 conferences (1980–2023)
 // Uses D3 for rendering. No React dependency.
 import * as d3 from "d3";
+import { schoolLabel, getLang, uiText } from "./school_labels.js";
 
 const DATA_URL = "./data/unified_network.json";
 
@@ -26,21 +27,21 @@ export default async function AGWAlluvial(container) {
   const controls = document.createElement("div");
   controls.innerHTML = `
     <div style="display:flex;align-items:center;gap:12px;padding:8px 12px;background:#1a1a2e;border-bottom:1px solid #333;flex-wrap:wrap;">
-      <label style="color:#aaa;font-size:12px;font-family:'Source Sans 3',sans-serif;">Glättung:</label>
+      <label style="color:#aaa;font-size:12px;font-family:'Source Sans 3',sans-serif;">${uiText('smoothing')}</label>
       <select id="alluv-window" style="background:#2a2a3e;color:#eee;border:1px solid #555;border-radius:4px;padding:2px 8px;font-size:12px;">
-        <option value="1">Keine (Einzeljahr)</option>
-        <option value="3">3-Jahres-Fenster</option>
-        <option value="5" selected>5-Jahres-Fenster</option>
-        <option value="10">Dekade</option>
+        <option value="1">${uiText('no_smooth')}</option>
+        <option value="3">${uiText('window_3')}</option>
+        <option value="5" selected>${uiText('window_5')}</option>
+        <option value="10">${uiText('window_10')}</option>
       </select>
-      <label style="color:#aaa;font-size:12px;font-family:'Source Sans 3',sans-serif;">Modus:</label>
+      <label style="color:#aaa;font-size:12px;font-family:'Source Sans 3',sans-serif;">${uiText('mode')}</label>
       <select id="alluv-mode" style="background:#2a2a3e;color:#eee;border:1px solid #555;border-radius:4px;padding:2px 8px;font-size:12px;">
-        <option value="stream">Streamgraph</option>
-        <option value="stacked">Gestapelt (100%)</option>
-        <option value="alluvial">Alluvial-Fluss</option>
+        <option value="stream">${uiText('mode_stream')}</option>
+        <option value="stacked">${uiText('mode_stacked')}</option>
+        <option value="alluvial">${uiText('mode_alluvial')}</option>
       </select>
-      <button id="alluv-reset" style="background:#444;color:#eee;border:none;border-radius:4px;padding:4px 10px;font-size:11px;cursor:pointer;">Alle Schulen</button>
-      <span id="alluv-info" style="color:#888;font-size:11px;margin-left:auto;font-family:'Source Sans 3',sans-serif;">Klicken Sie auf eine Schule, um sie hervorzuheben.</span>
+      <button id="alluv-reset" style="background:#444;color:#eee;border:none;border-radius:4px;padding:4px 10px;font-size:11px;cursor:pointer;">${uiText('all_schools')}</button>
+      <span id="alluv-info" style="color:#888;font-size:11px;margin-left:auto;font-family:'Source Sans 3',sans-serif;">${uiText('click_hint')}</span>
     </div>
   `;
   el.appendChild(controls);
@@ -211,7 +212,7 @@ export default async function AGWAlluvial(container) {
         g.append("text")
           .attr("x", 16)
           .attr("y", 10)
-          .text(s)
+          .text(schoolLabel(s))
           .attr("fill", highlightedSchool ? (s === highlightedSchool ? "#fff" : "#555") : "#aaa")
           .attr("font-size", 10)
           .attr("font-family", "'Source Sans 3', sans-serif");
@@ -258,9 +259,9 @@ export default async function AGWAlluvial(container) {
     const entry = smoothed.find(d => d.year === year) || smoothed[0];
 
     tooltip.innerHTML = `
-      <strong style="color:${schoolColors[schoolKey]}">${schoolKey}</strong><br>
+      <strong style="color:${schoolColors[schoolKey]}">${schoolLabel(schoolKey)}</strong><br>
       <span style="color:#888;">${entry.year}: ${entry.theme || ""}</span><br>
-      <span>Anteil: ${entry[schoolKey]?.toFixed(1) || 0}%</span>
+      <span>${uiText('share')}: ${entry[schoolKey]?.toFixed(1) || 0}%</span>
     `;
     tooltip.style.display = "block";
     tooltip.style.left = (event.offsetX + 15) + "px";
@@ -270,10 +271,10 @@ export default async function AGWAlluvial(container) {
   function toggleSchool(schoolKey, paths) {
     if (highlightedSchool === schoolKey) {
       highlightedSchool = null;
-      document.getElementById("alluv-info").textContent = "Klicken Sie auf eine Schule, um sie hervorzuheben.";
+      document.getElementById("alluv-info").textContent = uiText('click_hint');
     } else {
       highlightedSchool = schoolKey;
-      document.getElementById("alluv-info").textContent = `Hervorgehoben: ${schoolKey}`;
+      document.getElementById("alluv-info").textContent = `${uiText('highlighted')} ${schoolLabel(schoolKey)}`;
     }
     // Re-render to update highlighting
     render(document.getElementById("alluv-mode").value);
