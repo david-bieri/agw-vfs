@@ -219,10 +219,6 @@ Three sub-views illuminate the relational structures of the intellectual field:
 
 **Sankey (Idea Flow):** An alluvial diagram modeling the shift of attention between 16 schools of thought over five decades. Click a school to highlight its path through the decades. Particularly revealing: the persistence of the Historical School, the rise of Evolutionary Economics, and the bridge flows between Neoclassical and Austrian schools.
 
-### Narrative (Scrollytelling)
-
-A curated data journey through 43 years of intellectual history. The narrative mode uses a split-panel layout: the reader scrolls through academically grounded text on the left, triggering synchronized visualizations on the right. Eight scenes cover the dominance of the Classics in the 1980s, the "Austrian Revival" [3], Schumpeter's role as a bridge figure, and the pluralization of discourse after the millennium.
-
 ---
 
 ## Literaturverzeichnis / References

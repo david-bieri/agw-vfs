@@ -49,7 +49,7 @@
 \section{Einführung}
 Dieses Handbuch dient als wissenschaftliche Begleitdokumentation zu den AGW Analytics-Werkzeugen. Die Plattform visualisiert und analysiert die intellektuelle Rezeptionsgeschichte innerhalb des Ausschusses für die Geschichte der Wirtschaftswissenschaften (AGW) im Verein für Socialpolitik über einen Zeitraum von 43 Jahren (1980--2023).
 
-Die zugrundeliegenden Daten basieren auf den Konferenzbänden des AGW und wurden durch Text-Mining, Netzwerkanalyse und manuelle Kuration aufbereitet. Die Plattform bietet fünf Hauptperspektiven auf diese Daten: den \textit{Atlas}, \textit{Analysen}, \textit{Netzwerke}, den \textit{Zeitverlauf} und eine geführte \textit{Erzählung}.
+Die zugrundeliegenden Daten basieren auf den Konferenzbänden des AGW und wurden durch Text-Mining, Netzwerkanalyse und manuelle Kuration aufbereitet. Die Plattform bietet fünf Hauptperspektiven auf diese Daten: einen geführten \textit{Rundgang}, den \textit{Atlas}, \textit{Analysen}, \textit{Netzwerke} und den \textit{Zeitverlauf}. Zusätzlich bietet die Startseite dynamische Visualisierungen als Einstieg.
 
 \section{Methodik und Datengrundlage}
 \subsection{Korpus und Entitätenerkennung}
@@ -71,6 +71,19 @@ Die \textit{Ego-Netzwerke} (Tab \textit{Netzwerke}) kombinieren zwei Kantenarten
 
 \section{Die Analysewerkzeuge}
 
+\subsection{Startseite (Landing Page)}
+Die Startseite (\texttt{index.html}) wählt bei jedem Aufruf zufällig einen von fünf visuellen Modi als animierten Hintergrund (Hero-Visualisierung). Jeder Modus beleuchtet einen anderen Aspekt des Datensatzes und lädt zur weiteren Exploration ein:
+\begin{itemize}
+    \item \textbf{Animierte Zeitleiste:} Ein horizontales Band (1980--2023), auf dem Konferenzorte und Namen dominierender Figuren einblenden.
+    \item \textbf{Namen-Wolke:} Top-40-Figuren schweben mit sanfter Gravitation, skaliert nach Zitationshäufigkeit.
+    \item \textbf{Mini-Streamgraph:} Eine kompakte, sich selbst zeichnende Version der Themenfluss-Visualisierung.
+    \item \textbf{Zitate-Karussell:} Rotierende Zitate zentraler Figuren gepaart mit einer Sparkline ihres Zitationsverlaufs.
+    \item \textbf{Konferenz-Mosaik:} Ein Raster aller 43 Konferenzen, das subtil pulsiert.
+\end{itemize}
+
+\subsection{Rundgang (Scrollytelling)}
+Eine kuratierte Datenreise durch 43 Jahre intellektuelle Geschichte. Dieser Modus ist der Standard-Einstieg in die Analyseseite und verwendet ein Split-Panel-Layout: auf der linken Seite scrollt der Leser durch wissenschaftlich fundierten Text, auf der rechten Seite reagieren synchronisierte Visualisierungen. Sie behandelt die Dominanz der Klassik in den 1980ern, das "Austrian Revival" \cite{vaughn1994}, Schumpeters Rolle als Brückenfigur und die Pluralisierung des Diskurses nach der Jahrtausendwende.
+
 \subsection{Atlas (Rezeptionsatlas)}
 Der Atlas bietet eine makroskopische Sicht auf die Präsenz von Figuren über die Zeit. Das \textit{Präsenz-Streudiagramm} zeigt punktgenau, in welchem Jahr eine Figur wie intensiv diskutiert wurde. Die \textit{Epochen-Heatmap} aggregiert diese Daten auf Jahrzehnte-Ebene, um strukturelle Verschiebungen sichtbar zu machen.
 
@@ -91,15 +104,14 @@ Dieser Bereich zerlegt den Korpus in fünf analytische Dimensionen:
 \subsection{Zeitverlauf (Thematische Evolution)}
 Der \textit{Streamgraph} (Themenfluss) visualisiert die relative und absolute Präsenz von 16 Denkschulen. Die \textit{PPMI-Assoziationen} bieten tiefe Einblicke in den semantischen Kontext, in dem Figuren diskutiert wurden.
 
-\subsection{Erzählung (Scrollytelling)}
-Eine kuratierte Datenreise, die quantitative Befunde dogmenhistorisch einordnet. Sie behandelt die Dominanz der Klassik in den 1980ern, das "Austrian Revival" \cite{vaughn1994}, Schumpeters Rolle als Brückenfigur und die Pluralisierung des Diskurses nach der Jahrtausendwende.
+% Erzählung section removed as it is now Rundgang above
 
 \newpage
 \selectlanguage{english}
 \section{Introduction}
 This manual serves as the academic companion documentation for the AGW Analytics tools. The platform visualizes and analyzes the history of intellectual reception within the Committee for the History of Economics (AGW) of the Verein für Socialpolitik over a 43-year period (1980--2023).
 
-The underlying data is based on the published conference proceedings of the AGW, processed through text mining, network analysis, and manual curation. The platform offers five main perspectives on this data: the \textit{Atlas}, \textit{Analytics}, \textit{Networks}, \textit{Timeline}, and a guided \textit{Narrative}.
+The underlying data is based on the published conference proceedings of the AGW, processed through text mining, network analysis, and manual curation. The platform offers five main perspectives on this data: a \textit{Guided Tour}, the \textit{Atlas}, \textit{Analytics}, \textit{Networks}, and the \textit{Timeline}. Additionally, the landing page features dynamic background visualizations as an entry point.
 
 \section{Methodology and Data}
 \subsection{Corpus and Entity Recognition}
@@ -117,6 +129,19 @@ The \textit{Ego Networks} (Tab \textit{Networks}) combine two types of edges:
 
 \section{The Analytical Tools}
 
+\subsection{Landing Page}
+The landing page (\texttt{index.html}) randomly selects one of five visual modes as an animated background on each load. Each mode highlights a different aspect of the dataset and invites further exploration:
+\begin{itemize}
+    \item \textbf{Animated Timeline:} A horizontal ribbon (1980--2023) where conference markers and names of dominant figures fade in.
+    \item \textbf{Name Cloud:} The top 40 figures float with gentle gravity, scaled by citation frequency.
+    \item \textbf{Mini Streamgraph:} A compact, auto-drawing version of the topic flow visualization.
+    \item \textbf{Quote Carousel:} Rotating quotes from central figures paired with a sparkline of their citation trajectory.
+    \item \textbf{Conference Mosaic:} A subtly pulsing grid of all 43 conferences.
+\end{itemize}
+
+\subsection{Guided Tour (Scrollytelling)}
+A curated data journey through 43 years of intellectual history. This mode serves as the default entry point to the analytics page and uses a split-panel layout: on the left side, the reader scrolls through academically grounded text, while synchronized visualizations respond on the right side. It covers the dominance of the Classics in the 1980s, the "Austrian Revival" \cite{vaughn1994}, Schumpeter's role as a bridge figure, and the pluralization of discourse after the millennium.
+
 \subsection{Atlas (Reception Atlas)}
 The Atlas provides a macroscopic view of the presence of figures over time. The \textit{Presence Scatter} shows exactly in which year a figure was discussed and how intensely. The \textit{Era Heatmap} aggregates this data at the decadal level to reveal structural shifts.
 
@@ -126,8 +151,7 @@ The Atlas provides a macroscopic view of the presence of figures over time. The 
     \item \textbf{Sankey (Idea Flow):} An alluvial diagram modeling the shift of attention between schools of thought over five decades. Edge weights are based on a combination of attention migration, co-citations, and intellectual lineages.
 \end{itemize}
 
-\subsection{Narrative (Scrollytelling)}
-A curated data journey that contextualizes quantitative findings within the history of economic thought. It covers the dominance of the Classics in the 1980s, the "Austrian Revival" \cite{vaughn1994}, Schumpeter's role as a bridge figure, and the pluralization of discourse after the millennium.
+% Narrative section removed as it is now Guided Tour above
 
 \newpage
 \selectlanguage{ngerman}
