@@ -420,7 +420,9 @@
 
   <!-- ── 5 Primary Tabs ── -->
   <div class="tool-tabs" role="tablist">
-    <button class="tool-tab active" id="tab-atlas"
+    <button class="tool-tab active" id="tab-story"
+      onclick="showTool('story',this)"><span data-str="tab_story">Rundgang</span></button>
+    <button class="tool-tab" id="tab-atlas"
       onclick="showTool('atlas',this)"><span data-str="tab_atlas">Atlas</span></button>
     <button class="tool-tab" id="tab-analysen"
       onclick="showTool('analysen',this)"><span data-str="tab_analysen">Analysen</span></button>
@@ -428,8 +430,6 @@
       onclick="showTool('netzwerke',this)"><span data-str="tab_netzwerke">Netzwerke</span></button>
     <button class="tool-tab" id="tab-zeitverlauf"
       onclick="showTool('zeitverlauf',this)"><span data-str="tab_zeitverlauf">Zeitverlauf</span></button>
-    <button class="tool-tab" id="tab-story"
-      onclick="showTool('story',this)"><span data-str="tab_story">Erzählung</span></button>
   </div>
 
   <!-- ── Sub-tabs for Netzwerke ── -->
@@ -464,7 +464,7 @@
   <!-- ── Panels ── -->
   <main>
     <!-- ATLAS (was: Rezeptionsatlas) -->
-    <div class="tool-panel active" id="panel-atlas">
+    <div class="tool-panel" id="panel-atlas">
       <div class="loading" id="loading-gaze" data-str="loading">Lädt…</div>
       <div class="viz-zoom-wrap" id="wrap-mount-gaze"><div id="mount-gaze"></div></div>
     </div>
@@ -502,8 +502,8 @@
       </div>
     </div>
 
-    <!-- ERZÄHLUNG (Scrollytelling) -->
-    <div class="tool-panel" id="panel-story">
+    <!-- RUNDGANG (Scrollytelling — default active) -->
+    <div class="tool-panel active" id="panel-story">
       <div class="loading" id="loading-story" data-str="loading">Lade Erzählung…</div>
       <div id="mount-story" style="width:100%;height:600px;"></div>
     </div>
@@ -698,10 +698,11 @@
       mount('mount-pmi', 'loading-pmi', './dist/agw_pmi.js', 'pmi');
     };
 
-    /* Auto-trigger gaze map (Atlas is active by default) */
-    setTimeout(() => window.loadGaze(), 200);
+    /* Auto-trigger Rundgang (story is active by default) */
+    setTimeout(() => window.loadStory(), 200);
 
     /* Listen for tab clicks to trigger React bundle loading */
+    document.getElementById('tab-atlas').addEventListener('click', () => window.loadGaze());
     document.getElementById('tab-analysen').addEventListener('click', () => window.loadAnalysis());
     document.getElementById('sub-themen').addEventListener('click', () => window.loadPMI());
 

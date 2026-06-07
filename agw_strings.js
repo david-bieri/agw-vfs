@@ -48,7 +48,7 @@
     tab_analysen:        { de: 'Analysen',               en: 'Analytics' },
     tab_netzwerke:       { de: 'Netzwerke',              en: 'Networks' },
     tab_zeitverlauf:     { de: 'Zeitverlauf',            en: 'Timeline' },
-    tab_story:           { de: 'Erzählung',              en: 'Narrative' },
+    tab_story:           { de: 'Rundgang',               en: 'Guided Tour' },
 
     // ── Analytics page — sub-tabs ────────────────────────────────
     sub_ego:             { de: 'Ego-Netzwerk',           en: 'Ego Network' },
