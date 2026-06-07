@@ -23,15 +23,15 @@
 
 Dieses Handbuch dient als wissenschaftliche Begleitdokumentation zu den AGW Analytics-Werkzeugen. Die Plattform visualisiert und analysiert die intellektuelle Rezeptionsgeschichte innerhalb des Ausschusses für die Geschichte der Wirtschaftswissenschaften (AGW) im Verein für Socialpolitik über einen Zeitraum von 43 Jahren (1980–2023).
 
-Die zugrundeliegenden Daten basieren auf den Konferenzbänden des AGW und wurden durch Text-Mining, Netzwerkanalyse und manuelle Kuration aufbereitet. Die Plattform bietet fünf Hauptperspektiven auf diese Daten: den **Atlas**, **Analysen**, **Netzwerke**, den **Zeitverlauf** und eine geführte **Erzählung**.
+Die zugrundeliegenden Daten basieren auf den Konferenzbänden des AGW und wurden durch Text-Mining, Netzwerkanalyse und manuelle Kuration aufbereitet. Die Plattform bietet fünf Hauptperspektiven auf diese Daten: einen geführten **Rundgang**, den **Atlas**, **Analysen**, **Netzwerke** und den **Zeitverlauf**.
 
 | Dimension | Beschreibung | Methode |
 |---|---|---|
+| Rundgang | Geführte Datenreise | Scrollytelling |
 | Atlas | Wer wurde wann wie intensiv diskutiert? | Streudiagramm, Heatmap, Zeitreihe |
 | Analysen | Strukturelle Muster im Kanon | Netzwerk, Slope-Charts, Scatter |
 | Netzwerke | Relationale Verbindungen | Force-directed Graph, Sankey |
 | Zeitverlauf | Thematische Evolution | Streamgraph, PPMI |
-| Erzählung | Geführte Datenreise | Scrollytelling |
 
 ---
 
@@ -77,6 +77,31 @@ Das Sankey-Diagramm (Tab *Netzwerke* → *Sankey*) modelliert Aufmerksamkeitsfl�
 ---
 
 ## Die Analysewerkzeuge
+
+### Startseite (Landing Page)
+
+Die Startseite (`index.html`) wählt bei jedem Aufruf zufällig einen von fünf visuellen Modi als animierten Hintergrund (Hero-Visualisierung). Jeder Modus beleuchtet einen anderen Aspekt des Datensatzes:
+
+- **Animierte Zeitleiste:** Ein horizontales Band (1980–2023), auf dem Konferenzorte und Namen dominierender Figuren einblenden.
+- **Namen-Wolke:** Top-40-Figuren schweben mit sanfter Gravitation, skaliert nach Zitationshäufigkeit, farbkodiert nach Schule.
+- **Mini-Streamgraph:** Eine kompakte, sich selbst zeichnende Version der Themenfluss-Visualisierung.
+- **Zitate-Karussell:** Rotierende Zitate zentraler Figuren (Schumpeter, Hayek, Keynes, Marshall, Menger) gepaart mit einer Sparkline ihres Zitationsverlaufs.
+- **Konferenz-Mosaik:** Ein Raster aller 43 Konferenzen, das subtil pulsiert.
+
+### Rundgang (Scrollytelling)
+
+Eine kuratierte Datenreise durch 43 Jahre intellektuelle Geschichte. Dieser Modus ist der Standard-Einstieg in die Analyseseite und verwendet ein Split-Panel-Layout: auf der linken Seite scrollt der Leser durch wissenschaftlich fundierten Text, auf der rechten Seite reagieren synchronisierte Visualisierungen.
+
+Die acht Szenen behandeln:
+
+1. **Überblick** — 43 Konferenzen, 81 Figuren, 199 Verbindungen
+2. **Die Klassiker dominieren** — Klassik und Neoklassik in den 1980ern
+3. **Das Austrian Revival** — Der Aufstieg der Österreichischen Schule [3]
+4. **Schumpeter als Brückenfigur** — 28 Konferenzen, 36 Ko-Zitationen, 5 Stammbaum-Verbindungen
+5. **Pluralisierung nach 2000** — Wachsende Diversität der Schulen
+6. **Aufsteiger und Vergessene** — Wer gewann, wer verlor an Aufmerksamkeit?
+7. **Lehrer und Schüler** — Die Stammbäume der Wiener und Freiburger Schulen
+8. **Ausblick** — Die Zukunft der Dogmengeschichte
 
 ### Atlas (Rezeptionsatlas)
 
@@ -139,28 +164,13 @@ Vier Glättungsstufen (keine, 3-Konf., 5-Konf., 7-Konf.) erlauben die Wahl zwisc
 - **E — Intellektuelles Terrain:** PCA-Projektion im 53-dimensionalen Themenraum
 - **F — Ideennetz:** Bipartites Netzwerk (Top-30 Figuren × Top-22 Themen)
 
-### Erzählung (Scrollytelling)
-
-Eine kuratierte Datenreise durch 43 Jahre intellektuelle Geschichte. Der narrative Modus verwendet ein Split-Panel-Layout: auf der linken Seite scrollt der Leser durch wissenschaftlich fundierten Text, auf der rechten Seite reagieren synchronisierte Visualisierungen.
-
-Die acht Szenen behandeln:
-
-1. **Überblick** — 43 Konferenzen, 81 Figuren, 199 Verbindungen
-2. **Die Klassiker dominieren** — Klassik und Neoklassik in den 1980ern
-3. **Das Austrian Revival** — Der Aufstieg der Österreichischen Schule [3]
-4. **Schumpeter als Brückenfigur** — 28 Konferenzen, 36 Ko-Zitationen, 5 Stammbaum-Verbindungen
-5. **Pluralisierung nach 2000** — Wachsende Diversität der Schulen
-6. **Aufsteiger und Vergessene** — Wer gewann, wer verlor an Aufmerksamkeit?
-7. **Lehrer und Schüler** — Die Stammbäume der Wiener und Freiburger Schulen
-8. **Ausblick** — Die Zukunft der Dogmengeschichte
-
 ---
 
 ## Introduction
 
 This manual serves as the academic companion documentation for the AGW Analytics tools. The platform visualizes and analyzes the history of intellectual reception within the Committee for the History of Economics (AGW) of the Verein für Socialpolitik over a 43-year period (1980–2023).
 
-The underlying data is based on the published conference proceedings of the AGW, processed through text mining, network analysis, and manual curation. The platform offers five main perspectives on this data: the **Atlas**, **Analytics**, **Networks**, **Timeline**, and a guided **Narrative**.
+The underlying data is based on the published conference proceedings of the AGW, processed through text mining, network analysis, and manual curation. The platform offers five main perspectives on this data: a **Guided Tour**, the **Atlas**, **Analytics**, **Networks**, and the **Timeline**.
 
 ---
 
@@ -204,6 +214,31 @@ The Sankey diagram (Tab *Networks* → *Sankey*) models attention flows between 
 ---
 
 ## The Analytical Tools
+
+### Landing Page
+
+The landing page (`index.html`) randomly selects one of five visual modes as an animated hero background on each load. Each mode highlights a different aspect of the dataset:
+
+- **Animated Timeline:** A horizontal ribbon (1980–2023) where conference markers and dominant figure names fade in at their peak decades.
+- **Name Cloud:** The top 40 figures float with gentle gravity, sized by citation frequency, color-coded by school.
+- **Mini Streamgraph:** A compact, auto-drawing version of the topic flow visualization.
+- **Quote Carousel:** Rotating quotes from central figures (Schumpeter, Hayek, Keynes, Marshall, Menger) paired with a sparkline of their citation trajectory.
+- **Conference Mosaic:** A subtly pulsing grid of all 43 conferences showing year and location.
+
+### Guided Tour (Scrollytelling)
+
+A curated data journey through 43 years of intellectual history. This mode serves as the default entry point to the analytics page and uses a split-panel layout: on the left side, the reader scrolls through academically grounded text, while synchronized visualizations respond on the right side.
+
+The eight scenes cover:
+
+1. **Overview** — 43 conferences, 81 figures, 199 connections
+2. **The Classics Dominate** — Classical and Neoclassical dominance in the 1980s
+3. **The Austrian Revival** — The rise of the Austrian School [3]
+4. **Schumpeter as Bridge Figure** — 28 conferences, 36 co-citations, 5 lineage connections
+5. **Pluralization after 2000** — Growing diversity of schools
+6. **Risers and the Forgotten** — Who gained, who lost attention?
+7. **Teachers and Students** — The lineages of the Viennese and Freiburg schools
+8. **Outlook** — The future of Dogmengeschichte
 
 ### Atlas (Reception Atlas)
 
