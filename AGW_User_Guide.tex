@@ -69,6 +69,20 @@ Die \textit{Ego-Netzwerke} (Tab \textit{Netzwerke}) kombinieren zwei Kantenarten
     \item \textbf{Stammbaum (Lineage):} Historisch belegte Lehrer-Schüler-Beziehungen, extrahiert aus ideengeschichtlichen Standardwerken und der HET Website \cite{hetwebsite}.
 \end{enumerate}
 
+\subsection{Schulvergleich-Metriken}
+Der \textit{Schulvergleich} (Tab \textit{Analysen} $\rightarrow$ \textit{Schulvergleich}) berechnet sechs Dimensionen für jede Denkschule:
+\begin{enumerate}
+    \item \textbf{Prominenz:} Gesamtanteil an allen Konferenzzitationen (\%).
+    \item \textbf{Figurenanzahl:} Anzahl der Figuren dieser Schule im Kanon.
+    \item \textbf{Zeitliche Persistenz:} In wie vielen Dekaden die Schule aktiv war (0--5).
+    \item \textbf{Schulbrücken:} Anteil der Kanten zu Figuren anderer Schulen (\%), ein Maß für intellektuelle Offenheit.
+    \item \textbf{Interne Kohäsion:} Dichte der Verbindungen innerhalb der Schule (realisierte vs. mögliche Kanten).
+    \item \textbf{Wachstumstrend:} Linearer Trend der Zitationsanteile; positiv = wachsend, negativ = schrumpfend.
+\end{enumerate}
+
+\subsection{Pfadberechnung (Dijkstra)}
+Die \textit{Einflusspfade} (Tab \textit{Netzwerke} $\rightarrow$ \textit{Pfade}) verwenden den Dijkstra-Algorithmus auf dem kombinierten Netzwerk (Ko-Zitationen + Stammbaum), um den kürzesten intellektuellen Pfad zwischen zwei beliebigen Figuren zu finden. Die Kantengewichte basieren auf der inversen Ko-Zitationsstärke; Stammbaum-Kanten erhalten ein bevorzugtes Gewicht, da sie direkte intellektuelle Transmission repräsentieren.
+
 \section{Die Analysewerkzeuge}
 
 \subsection{Startseite (Landing Page)}
@@ -82,29 +96,44 @@ Die Startseite (\texttt{index.html}) wählt bei jedem Aufruf zufällig einen von
 \end{itemize}
 
 \subsection{Rundgang (Scrollytelling)}
-Eine kuratierte Datenreise durch 43 Jahre intellektuelle Geschichte. Dieser Modus ist der Standard-Einstieg in die Analyseseite und verwendet ein Split-Panel-Layout: auf der linken Seite scrollt der Leser durch wissenschaftlich fundierten Text, auf der rechten Seite reagieren synchronisierte Visualisierungen. Sie behandelt die Dominanz der Klassik in den 1980ern, das "Austrian Revival" \cite{vaughn1994}, Schumpeters Rolle als Brückenfigur und die Pluralisierung des Diskurses nach der Jahrtausendwende.
+Eine kuratierte Datenreise durch 43 Jahre intellektuelle Geschichte. Dieser Modus ist der Standard-Einstieg in die Analyseseite und verwendet ein Split-Panel-Layout: auf der linken Seite scrollt der Leser durch wissenschaftlich fundierten Text, auf der rechten Seite reagieren synchronisierte Visualisierungen. Sie behandelt die Dominanz der Klassik in den 1980ern, das ``Austrian Revival'' \cite{vaughn1994}, Schumpeters Rolle als Brückenfigur und die Pluralisierung des Diskurses nach der Jahrtausendwende.
 
 \subsection{Atlas (Rezeptionsatlas)}
-Der Atlas bietet eine makroskopische Sicht auf die Präsenz von Figuren über die Zeit. Das \textit{Präsenz-Streudiagramm} zeigt punktgenau, in welchem Jahr eine Figur wie intensiv diskutiert wurde. Die \textit{Epochen-Heatmap} aggregiert diese Daten auf Jahrzehnte-Ebene, um strukturelle Verschiebungen sichtbar zu machen.
+Der Atlas bietet eine makroskopische Sicht auf die Präsenz von Figuren über die Zeit. Das \textit{Präsenz-Streudiagramm} zeigt punktgenau, in welchem Jahr eine Figur wie intensiv diskutiert wurde. Die \textit{Epochen-Heatmap} aggregiert diese Daten auf Jahrzehnte-Ebene, um strukturelle Verschiebungen sichtbar zu machen. Die Heatmap verwendet einen Opazitäts-Floor von 0,15 für alle nicht-null Zellen, um auch schwache Signale sichtbar zu halten.
 
 \subsection{Analysen (Strukturelle Perspektiven)}
-Dieser Bereich zerlegt den Korpus in fünf analytische Dimensionen:
+Dieser Bereich zerlegt den Korpus in fünf analytische Dimensionen plus den Schulvergleich:
 \begin{itemize}
-    \item \textbf{Intellektuelle Strömungen:} Zeigt die Dominanz von Denkschulen als gestapelte Flächendiagramme.
-    \item \textbf{Aufsteiger \& Vergessene:} Vergleicht die Zitationshäufigkeit der ersten Hälfte des Korpus (1980--2000) mit der zweiten (2001--2023).
-    \item \textbf{Der lange Griff:} Visualisiert den zeitlichen Abstand zwischen dem Wirken einer Figur (Geburtsjahr) und ihrer Rezeption im AGW.
+    \item \textbf{A -- Intellektuelle Strömungen:} Zeigt die Dominanz von Denkschulen als gestapelte Flächendiagramme über 16 Schulen und 43 Konferenzen.
+    \item \textbf{B -- Intellektuelle Konstellation:} Force-directed PPMI-Kookkurrenz-Netzwerk mit 47 Schlüsselfiguren. Figuren, die häufig im selben Kontext zitiert werden, erscheinen nahe beieinander.
+    \item \textbf{C -- Aufsteiger \& Vergessene:} Vergleicht die Zitationshäufigkeit der ersten Hälfte des Korpus (1980--2000) mit der zweiten (2001--2023).
+    \item \textbf{D -- Der lange Griff:} Visualisiert den zeitlichen Abstand zwischen dem Wirken einer Figur (Geburtsjahr) und ihrer Rezeption im AGW.
+    \item \textbf{E -- Säulen \& Gäste:} Horizontale Balken, sortiert nach Auftrittshäufigkeit. Trennt den stabilen Kern ($\geq$10 Konferenzen) vom Peripheriekanon.
+    \item \textbf{Schulvergleich (Radar):} Vergleicht 2--3 Denkschulen über 6 Dimensionen (Prominenz, Figurenanzahl, Zeitliche Persistenz, Schulbrücken, Interne Kohäsion, Wachstumstrend) in einem Radardiagramm mit begleitender Datentabelle.
 \end{itemize}
 
 \subsection{Netzwerke (Relationalität)}
+Fünf relationale Ansichten auf das intellektuelle Netzwerk:
 \begin{itemize}
-    \item \textbf{Interaktiver Ego-Explorer:} Ein Force-directed Graph, der die Vernetzung der 81 Schlüsselfiguren zeigt. Durch Klicken auf einen Knoten ("Ego") werden direkte Nachbarn hervorgehoben. Das Detail-Panel reichert die quantitative Ansicht mit qualitativen biografischen Daten an.
+    \item \textbf{Interaktiver Ego-Explorer:} Ein Force-directed Graph, der die Vernetzung der 81 Schlüsselfiguren zeigt. Durch Klicken auf einen Knoten (``Ego'') werden direkte Nachbarn hervorgehoben. Das Detail-Panel reichert die quantitative Ansicht mit qualitativen biografischen Daten an (Lebensdaten, Hauptwerke, Stammbaum). Eine \textit{Visitenkarte} (Share Card) kann als PNG-Bild exportiert werden.
+    \item \textbf{Stammbaum (Lineage):} Hierarchische Ansicht der Lehrer-Schüler-Beziehungen, geordnet nach Denkschulen (Zeilen) und Zeit (Spalten).
     \item \textbf{Sankey (Ideenfluss):} Ein Alluvial-Diagramm, das die Verschiebung von Aufmerksamkeit zwischen Denkschulen über fünf Jahrzehnte modelliert. Die Kantenstärken basieren auf einer Kombination aus Aufmerksamkeitsmigration, Ko-Zitationen und intellektuellen Stammbäumen.
+    \item \textbf{Pfade (Einflusspfade):} Findet den kürzesten intellektuellen Pfad zwischen zwei beliebigen Denkern mittels Dijkstra-Algorithmus. Die Visualisierung zeigt die Knotenfolge mit beschrifteten Kanten (z.\,B. ``Lehrer/Schüler'', ``Ko-Zitation'') und bewahrt die kanonische Pfeilrichtung (Lehrer $\rightarrow$ Schüler).
+    \item \textbf{Zeitverlauf (Netzwerk-Evolution):} Animierte Ansicht der Netzwerkentwicklung über fünf Jahrzehnte (1980er--2020er). Ein Play-Button startet die automatische Abfolge; ein Schieberegler erlaubt manuelles Navigieren. Neue Figuren werden pro Dekade farblich hervorgehoben. Ein kumulativer Modus zeigt das wachsende Gesamtnetzwerk, ein nicht-kumulativer Modus nur die jeweilige Dekade.
 \end{itemize}
 
 \subsection{Zeitverlauf (Thematische Evolution)}
 Der \textit{Streamgraph} (Themenfluss) visualisiert die relative und absolute Präsenz von 16 Denkschulen. Die \textit{PPMI-Assoziationen} bieten tiefe Einblicke in den semantischen Kontext, in dem Figuren diskutiert wurden.
 
-% Erzählung section removed as it is now Rundgang above
+\section{Bedienungshinweise}
+\subsection{Sprachumschaltung}
+Die Plattform ist zweisprachig (DE/EN). Die Spracheinstellung wird über den DE/EN-Toggle in der Navigationsleiste gesteuert und seitenübergreifend im \texttt{localStorage} gespeichert. Die Navigations-Chrome und Tooltips werden vollständig übersetzt; akademische Inhalte (z.\,B. Figurennamen, Schulbezeichnungen) bleiben in der Originalsprache.
+
+\subsection{Tipps-System}
+Ein ``\textbf{Tips}''-Button blendet kontextuelle Hinweise an den Unter-Tabs ein oder aus. Diese Hinweise beschreiben kurz die Funktion jeder Ansicht und verschwinden, wenn der Nutzer sie deaktiviert (persistiert in der Sitzung).
+
+\subsection{Zoom und Navigation}
+Alle Visualisierungen unterstützen einen Zoom-Slider ($-$/$+$/Reset) zur Anpassung der Darstellungsgröße. SVG-basierte Visualisierungen können per Mausrad gezoomt und per Drag verschoben werden.
 
 \newpage
 \selectlanguage{english}
@@ -127,6 +156,20 @@ The \textit{Ego Networks} (Tab \textit{Networks}) combine two types of edges:
     \item \textbf{Lineage:} Historically documented teacher-student relationships, extracted from standard works in the history of economic thought and the HET Website \cite{hetwebsite}.
 \end{enumerate}
 
+\subsection{School Comparison Metrics}
+The \textit{School Comparison} (Tab \textit{Analytics} $\rightarrow$ \textit{School Comparison}) computes six dimensions for each school of thought:
+\begin{enumerate}
+    \item \textbf{Prominence:} Total share of all conference citations (\%).
+    \item \textbf{Figure count:} Number of figures belonging to this school in the canon.
+    \item \textbf{Temporal persistence:} In how many decades the school was active (0--5).
+    \item \textbf{School bridges:} Share of edges connecting to figures of other schools (\%), a measure of intellectual openness.
+    \item \textbf{Internal cohesion:} Density of connections within the school (realized vs. possible edges).
+    \item \textbf{Growth trend:} Linear trend of citation shares; positive = growing, negative = shrinking.
+\end{enumerate}
+
+\subsection{Path Computation (Dijkstra)}
+The \textit{Influence Pathways} (Tab \textit{Networks} $\rightarrow$ \textit{Pathways}) use Dijkstra's algorithm on the combined network (co-citations + lineage) to find the shortest intellectual path between any two figures. Edge weights are based on inverse co-citation strength; lineage edges receive a preferential weight as they represent direct intellectual transmission.
+
 \section{The Analytical Tools}
 
 \subsection{Landing Page}
@@ -140,18 +183,44 @@ The landing page (\texttt{index.html}) randomly selects one of five visual modes
 \end{itemize}
 
 \subsection{Guided Tour (Scrollytelling)}
-A curated data journey through 43 years of intellectual history. This mode serves as the default entry point to the analytics page and uses a split-panel layout: on the left side, the reader scrolls through academically grounded text, while synchronized visualizations respond on the right side. It covers the dominance of the Classics in the 1980s, the "Austrian Revival" \cite{vaughn1994}, Schumpeter's role as a bridge figure, and the pluralization of discourse after the millennium.
+A curated data journey through 43 years of intellectual history. This mode serves as the default entry point to the analytics page and uses a split-panel layout: on the left side, the reader scrolls through academically grounded text, while synchronized visualizations respond on the right side. It covers the dominance of the Classics in the 1980s, the ``Austrian Revival'' \cite{vaughn1994}, Schumpeter's role as a bridge figure, and the pluralization of discourse after the millennium.
 
 \subsection{Atlas (Reception Atlas)}
-The Atlas provides a macroscopic view of the presence of figures over time. The \textit{Presence Scatter} shows exactly in which year a figure was discussed and how intensely. The \textit{Era Heatmap} aggregates this data at the decadal level to reveal structural shifts.
+The Atlas provides a macroscopic view of the presence of figures over time. The \textit{Presence Scatter} shows exactly in which year a figure was discussed and how intensely. The \textit{Era Heatmap} aggregates this data at the decadal level to reveal structural shifts. The heatmap uses an opacity floor of 0.15 for all non-zero cells to keep even weak signals visible.
 
-\subsection{Networks (Relationality)}
+\subsection{Analytics (Structural Perspectives)}
+This section decomposes the corpus into five analytical dimensions plus the School Comparison:
 \begin{itemize}
-    \item \textbf{Interactive Ego Explorer:} A force-directed graph showing the interconnectedness of the 81 key figures. Clicking on a node ("Ego") highlights direct neighbors. The detail panel enriches the quantitative view with qualitative biographical data.
-    \item \textbf{Sankey (Idea Flow):} An alluvial diagram modeling the shift of attention between schools of thought over five decades. Edge weights are based on a combination of attention migration, co-citations, and intellectual lineages.
+    \item \textbf{A -- Intellectual Tides:} Shows the dominance of schools of thought as stacked area charts across 16 schools and 43 conferences.
+    \item \textbf{B -- Intellectual Constellation:} Force-directed PPMI co-occurrence network with 47 key figures. Figures frequently cited in the same context appear close together.
+    \item \textbf{C -- Rising \& Fading:} Compares citation frequency of the first half of the corpus (1980--2000) with the second (2001--2023).
+    \item \textbf{D -- The Long Reach:} Visualizes the temporal distance between a figure's active period (birth year) and their reception in the AGW.
+    \item \textbf{E -- Pillars \& Guests:} Horizontal bars sorted by frequency of appearance. Separates the stable core ($\geq$10 conferences) from the peripheral canon.
+    \item \textbf{School Comparison (Radar):} Compares 2--3 schools of thought across 6 dimensions (Prominence, Figure Count, Temporal Persistence, School Bridges, Internal Cohesion, Growth Trend) in a radar chart with an accompanying data table.
 \end{itemize}
 
-% Narrative section removed as it is now Guided Tour above
+\subsection{Networks (Relationality)}
+Five relational views on the intellectual network:
+\begin{itemize}
+    \item \textbf{Interactive Ego Explorer:} A force-directed graph showing the interconnectedness of the 81 key figures. Clicking on a node (``Ego'') highlights direct neighbors. The detail panel enriches the quantitative view with qualitative biographical data (life dates, major works, lineage). A \textit{Share Card} can be exported as a PNG image.
+    \item \textbf{Lineage:} Hierarchical view of teacher-student relationships, organized by school of thought (rows) and time (columns).
+    \item \textbf{Sankey (Idea Flow):} An alluvial diagram modeling the shift of attention between schools of thought over five decades. Edge weights are based on a combination of attention migration, co-citations, and intellectual lineages.
+    \item \textbf{Pathways (Influence Pathways):} Finds the shortest intellectual path between any two thinkers using Dijkstra's algorithm. The visualization shows the node sequence with labeled edges (e.g., ``Teacher/Student'', ``Co-citation'') and preserves canonical arrow direction (teacher $\rightarrow$ student).
+    \item \textbf{Temporal (Network Evolution):} Animated view of network development over five decades (1980s--2020s). A play button starts automatic progression; a slider allows manual navigation. New figures are highlighted per decade. A cumulative mode shows the growing total network; a non-cumulative mode shows only the current decade.
+\end{itemize}
+
+\subsection{Timeline (Thematic Evolution)}
+The \textit{Streamgraph} (Topic Flow) visualizes the relative and absolute presence of 16 schools of thought. The \textit{PPMI Associations} provide deep insights into the semantic context in which figures were discussed.
+
+\section{Usage Notes}
+\subsection{Language Switching}
+The platform is bilingual (DE/EN). The language setting is controlled via the DE/EN toggle in the navigation bar and persisted across pages in \texttt{localStorage}. Navigation chrome and tooltips are fully translated; academic content (e.g., figure names, school labels) remains in the original language.
+
+\subsection{Tips System}
+A ``\textbf{Tips}'' button toggles contextual hints on the sub-tabs on or off. These hints briefly describe the function of each view and disappear when the user deactivates them (persisted within the session).
+
+\subsection{Zoom and Navigation}
+All visualizations support a zoom slider ($-$/$+$/Reset) for adjusting display size. SVG-based visualizations can be zoomed via mouse wheel and panned via drag.
 
 \newpage
 \selectlanguage{ngerman}
