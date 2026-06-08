@@ -1,7 +1,7 @@
 /* AGW Jahrestagung 2026 — Service Worker
  * Strategy: Cache-first for shell + static assets; network-first for tiles
  */
-const CACHE = 'agw-2026-v27-lineage-fix-viz-enhancements';
+const CACHE = 'agw-2026-v31-pre-merge';
 
 const PRECACHE = [
   '/agw-vfs/',
@@ -18,6 +18,25 @@ const PRECACHE = [
   '/agw-vfs/agw_app.js',
   '/agw-vfs/agw_nav.js',
   '/agw-vfs/agw_chronik.js',
+  // Analytics & visualization modules
+  '/agw-vfs/dist/agw_gaze_map.js',
+  '/agw-vfs/dist/agw_scrollytelling.js',
+  '/agw-vfs/dist/agw_analysis.js',
+  '/agw-vfs/dist/agw_pmi.js',
+  '/agw-vfs/dist/agw_sankey.js',
+  '/agw-vfs/dist/agw_alluvial.js',
+  '/agw-vfs/dist/agw_ego_network.js',
+  '/agw-vfs/dist/school_labels.js',
+  // New feature modules
+  '/agw-vfs/dist/agw_pathways.js',
+  '/agw-vfs/dist/agw_temporal.js',
+  '/agw-vfs/dist/agw_school_compare.js',
+  '/agw-vfs/dist/agw_product_tips.js',
+  // Data files
+  '/agw-vfs/data/analysis_data.json',
+  '/agw-vfs/data/lineage_data.json',
+  '/agw-vfs/data/sankey_flows.json',
+  '/agw-vfs/data/unified_network.json',
   // External resources
   'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap',
   'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css',

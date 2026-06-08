@@ -17,10 +17,14 @@ Einzelne selbst-enthaltende HTML-Datei (`index.html`, ~152 KB). Kein Build-Proze
 
 ```
 index.html              Website (CSS + HTML + JS, alles eingebettet)
+analytics.html          AGW Analytics Dashboard (Netzwerke, Heatmaps, PPMI)
+guide.html              Benutzerhandbuch für Analytics
 AGW_en.json             Englische Übersetzungen — redaktionelles Dokument
 AGW_SVfS_Band115.bib    BibTeX-Bibliographie (40 Bände)
 AGW_Satzung.pdf         Satzung des Ausschusses
 AGW_README.md           Vollständige Projektdokumentation
+AGW_User_Guide.pdf      Wissenschaftliches Handbuch (Analytics)
+AGW_User_Guide.tex      LaTeX-Quellcode für das Handbuch
 AGW_PROGRESS.md         Aufgaben und Fortschritt
 AGW_DECISIONS.md        Architekturentscheidungen (ADRs)
 SETUP.md                Schritt-für-Schritt Deployment-Anleitung

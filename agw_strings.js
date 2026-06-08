@@ -43,11 +43,32 @@
     // ── Archive tab label (index.html) ────────────────────────────
     arch_view_chronik:   { de: 'Chronik',                en: 'Chronicle' },
 
-    // ── Analytics page — main tabs ───────────────────────────────
+    // ── Analytics page — main tabs (consolidated 5-tab layout) ────
+    tab_atlas:           { de: 'Atlas',                  en: 'Atlas' },
+    tab_analysen:        { de: 'Analysen',               en: 'Analytics' },
+    tab_netzwerke:       { de: 'Netzwerke',              en: 'Networks' },
+    tab_zeitverlauf:     { de: 'Zeitverlauf',            en: 'Timeline' },
+    tab_story:           { de: 'Rundgang',               en: 'Guided Tour' },
+
+    // ── Analytics page — sub-tabs ────────────────────────────────
+    sub_ego:             { de: 'Ego-Netzwerk',           en: 'Ego Network' },
+    sub_lineage:         { de: 'Stammbaum',              en: 'Lineages' },
+    sub_sankey:          { de: 'Sankey',                  en: 'Sankey' },
+    sub_stream:          { de: 'Streamgraph',            en: 'Streamgraph' },
+    sub_themen:          { de: 'Themenanalyse',          en: 'Topic Analysis' },
+    sub_pathways:        { de: 'Pfade',                  en: 'Pathways' },
+    sub_temporal:        { de: 'Zeitverlauf',            en: 'Temporal' },
+    sub_analysis_main:   { de: 'Analysen',               en: 'Analytics' },
+    sub_school_compare:  { de: 'Schulvergleich',         en: 'School Comparison' },
+
+    // ── Legacy tab keys (kept for guide.html compatibility) ──────
     tab_gaze:            { de: 'Rezeptionsatlas',        en: 'Reception Atlas' },
     tab_analysis:        { de: 'Analysen',               en: 'Analytics' },
     tab_pmi:             { de: 'Themenanalyse',          en: 'Topic Analysis' },
     tab_lineage:         { de: 'Stammbaum',              en: 'Lineages' },
+    tab_ego:             { de: 'Ego-Netzwerk',           en: 'Ego Network' },
+    tab_alluvial:        { de: 'Themenfluss',             en: 'Topic Flow' },
+    tab_sankey:          { de: 'Sankey',                  en: 'Sankey' },
 
     // ── Tool display names (used in guide + page headings) ────────
     tool_chronik:        { de: 'Chronik',                 en: 'Chronicle' },
@@ -372,6 +393,12 @@
     soc_hope_meta        : { de: 'Duke University Press · seit 1969', en: 'Duke University Press · since 1969' },
     soc_hei_meta         : { de: 'Fabrizio Serra Editore · seit 1993', en: 'Fabrizio Serra Editore · since 1993' },
     soc_oec_meta         : { de: 'Association Œconomia · Frankreich · zweisprachig FR/EN · seit 2011', en: 'Association Œconomia · France · bilingual FR/EN · since 2011' },
+    // ── Action buttons & guide labels ────────────────────────────────────
+    print_prog           : { de: '⎙ Programm drucken', en: '⎙ Print Programme' },
+    guide_pdf_btn        : { de: 'Wissenschaftliches Handbuch herunterladen (PDF)', en: 'Download Academic Manual (PDF)' },
+    tip_click            : { de: 'Klick', en: 'Click' },
+    tip_hover            : { de: 'Hover', en: 'Hover' },
+    tool_hero            : { de: 'Startseite', en: 'Landing Page' },
 };
 
   /* ── Helpers ──────────────────────────────────────────────────── */

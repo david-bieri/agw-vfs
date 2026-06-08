@@ -24,6 +24,9 @@ Conference microsite and standing committee website for the **AGW** — the stan
 | File | Description | Status |
 |---|---|---|
 | `index.html` | Complete website — 152 KB, 1955 lines | ✅ Deploy-ready |
+| `analytics.html` | Analytics dashboard (D3.js, networks, heatmaps) | ✅ Tested & ready |
+| `guide.html` | User guide for analytics dashboard | ✅ |
+| `AGW_User_Guide.pdf` | Academic manual for analytics (LaTeX compiled) | ✅ |
 | `AGW_en.json` | EN translation file for editorial review | ⚠ Awaiting Klump review |
 | `AGW_SVfS_Band115.bib` | BibTeX bibliography, 40 volumes | ✅ |
 | `AGW_Satzung.pdf` | Committee charter PDF | ✅ |
@@ -61,7 +64,23 @@ index.html  (152 KB, 1955 lines)
 
 AGW_en.json              Editorial file: 133 keys, glossary, review_status
 AGW_SVfS_Band115.bib     40 @Book entries, key format SVfS_115_[ROMAN]
+
+analytics.html           D3.js-based analytics dashboard
+guide.html               User guide for analytics.html
 ```
+
+---
+
+## AGW Analytics
+
+The `analytics.html` application provides interactive visualizations of the intellectual history of the AGW over 43 years (1980–2023). It features:
+- **Rundgang (Guided Tour):** Scrollytelling journey through the data
+- **Atlas:** Reception scatter plots and era heatmaps
+- **Analysen:** Structural perspectives, PPMI, and School Comparison radar charts
+- **Netzwerke:** Ego networks, Sankey idea flows, and shortest pathways
+- **Zeitverlauf:** Topic flow streamgraphs and network evolution animation
+
+The analytics dashboard is fully bilingual (DE/EN) and uses the same language system as the main website. A detailed academic manual is available in `AGW_User_Guide.pdf` and its HTML counterpart `guide.html`.
 
 ---
 

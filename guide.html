@@ -96,20 +96,12 @@
       background:var(--gold-light);color:var(--gold);white-space:nowrap; }
     .tip-text { font-size:12.5px;color:var(--text-muted);line-height:1.5; }
 
-    /* full-width cards for main tabs */
-    .tab-card { background:var(--white);border:1px solid var(--border);
-      border-radius:4px;padding:18px 22px;margin-bottom:12px;
-      display:flex;gap:20px;align-items:flex-start; }
-    .tab-badge { flex-shrink:0;width:42px;height:42px;border-radius:4px;
-      background:var(--navy);display:flex;align-items:center;
-      justify-content:center;font-size:18px; }
-    .tab-badge.gold-bg { background:var(--gold); }
-    .tab-badge.green-bg { background:var(--green); }
-    .tab-body h3 { font-size:14.5px;font-weight:600;color:var(--text-dark);
-      margin-bottom:3px; }
-    .tab-body .alt { font-size:12px;color:var(--text-muted);
-      font-style:italic;margin-bottom:6px; }
-    .tab-body p { font-size:13px;color:var(--text-muted);line-height:1.55; }
+    /* pdf download button */
+    .pdf-download { display:inline-flex;align-items:center;gap:8px;
+      background:var(--navy);color:#fff;padding:8px 16px;border-radius:4px;
+      text-decoration:none;font-size:13px;font-weight:600;margin-top:16px;
+      transition:background .2s; }
+    .pdf-download:hover { background:var(--navy-dark); }
 
     /* open analytics CTA */
     .cta { display:flex;justify-content:space-between;align-items:center;
@@ -170,58 +162,38 @@
 
   <div class="guide-intro">
     <h1 data-str="guide_h1">Benutzerhandbuch · Analytics</h1>
-    <p data-str="guide_intro">Diese Seite erklärt die drei Analysewerkzeuge und ihre Einzelansichten — was sie zeigen, wie man sie bedient und welche typischen Erkenntnisse sie liefern.</p>
+    <p data-str="guide_intro">Diese Seite erklärt die fünf Analyse-Tabs und ihre Unteransichten — was sie zeigen, wie man sie bedient und welche typischen Erkenntnisse sie liefern. Die vollständige Methodik inklusive Zitationen finden Sie im PDF-Handbuch.</p>
+    <a href="AGW_User_Guide.pdf" class="pdf-download" download>
+      📄 <span data-str="guide_pdf_btn">Wissenschaftliches Handbuch herunterladen (PDF)</span>
+    </a>
   </div>
 
-  <!-- ── CHRONIK ─────────────────────────────────────────── -->
+  <!-- ── RUNDGANG ─────────────────────────────────── -->
   <section class="tool-section">
     <div class="tool-header">
-      <span class="tool-icon"><span class="ico ico-trend" aria-hidden="true"></span></span>
+      <span class="tool-icon"><span class="ico ico-story" aria-hidden="true"></span></span>
       <div>
-        <div class="tool-title" data-str="tool_chronik">Chronik</div>
-        <div class="tool-subtitle" data-i18n="t1_sub">Archiv-Tab in der Hauptseite · Quantitatives Porträt des AGW</div>
+        <div class="tool-title" data-str="tab_story">Rundgang</div>
+        <div class="tool-subtitle" data-i18n="t7_sub">Erster Tab · Geführte Datenreise</div>
       </div>
     </div>
-    <p style="font-size:13.5px;color:var(--text-muted);margin-bottom:16px;" data-i18n="t1_desc">
-      Sechs statische Kennzahlenkarten und vier Diagramme, die den AGW als Institution auf einen Blick zeigen. Kein Zoom, kein Filter — reine Darstellung der Gesamtgeschichte.
-    </p>
     <div class="feature-grid">
-      <div class="feature-card gold">
-        <div class="fc-label">Panel 1</div>
-        <div class="fc-name" data-i18n="c1n">Kennzahlen</div>
-        <div class="fc-name-de" data-i18n-de="c1de">Key Numbers</div>
-        <div class="fc-desc" data-i18n="c1d">Sechs Eckdaten: Konferenzen, Figuren, Engagements, Geburtsjahr-Spanne, Schumpeter-Präsenz, längste Entdeckungsverzögerung.</div>
-      </div>
-      <div class="feature-card gold">
-        <div class="fc-label">Panel 2</div>
-        <div class="fc-name" data-str="panel_canon">Das wachsende Kanon</div>
-        <div class="fc-name-de" data-i18n-de="c2de">The Expanding Canon</div>
-        <div class="fc-desc" data-i18n="c2d">Kumulierte neue Figuren pro Jahr. Goldene Spitzen markieren Boomjahre. Steilster Anstieg: 1997–2004.</div>
-        <div class="fc-example fc-example-de" data-i18n="c2ex">+18 neue Figuren in 1998 — Wicksell-Konferenz</div>
-      </div>
-      <div class="feature-card gold">
-        <div class="fc-label">Panel 3</div>
-        <div class="fc-name" data-str="panel_time">Die Tiefe der Zeit</div>
-        <div class="fc-name-de" data-i18n-de="c3de">The Depth of Time</div>
-        <div class="fc-desc" data-i18n="c3d">Box-Whisker: Geburtsjahre der zitierten Figuren pro Konferenz. Zeigt, wie weit der AGW in die Geschichte greift.</div>
-        <div class="fc-example fc-example-de" data-i18n="c3ex">Francis Bacon (geb. 1561) — erster Auftritt 2001</div>
-      </div>
-      <div class="feature-card gold">
-        <div class="fc-label">Panel 4 + 5</div>
-        <div class="fc-name" data-str="panel_diversity">Vielfalt & Kanonpyramide</div>
-        <div class="fc-name-de" data-i18n-de="c4de">Diversity & Canon Pyramid</div>
-        <div class="fc-desc" data-i18n="c4d">Links: Shannon-Entropie pro Konferenz. Rechts: Kanonpyramide — Potenzgesetz der Auftrittshäufigkeit. Schumpeter führt mit Abstand.</div>
+      <div class="feature-card" style="grid-column: 1 / -1;">
+        <div class="fc-label">Scrollytelling</div>
+        <div class="fc-name" data-str="tab_story">Rundgang</div>
+        <div class="fc-name-de" data-i18n-de="s1de">Guided Tour</div>
+        <div class="fc-desc" data-i18n="s1d">Eine geführte Tour durch 43 Jahre intellektuelle Geschichte. Scrollen Sie durch den Text auf der linken Seite, um synchronisierte Visualisierungen auf der rechten Seite auszulösen. Der Text ist wissenschaftlich fundiert und ordnet die quantitativen Befunde dogmenhistorisch ein.</div>
       </div>
     </div>
   </section>
 
-  <!-- ── RECEPTION ATLAS ────────────────────────────────────────── -->
+  <!-- ── ATLAS ────────────────────────────────────────── -->
   <section class="tool-section">
     <div class="tool-header">
       <span class="tool-icon"><span class="ico ico-map" aria-hidden="true"></span></span>
       <div>
-        <div class="tool-title" data-str="tool_gaze">Rezeptionsatlas</div>
-        <div class="tool-subtitle" data-i18n="t2_sub">Erster Tab der Analysenseite · Wer wurde wann wie oft zitiert?</div>
+        <div class="tool-title" data-str="tool_gaze">Atlas</div>
+        <div class="tool-subtitle" data-i18n="t2_sub">Zweiter Tab · Wer wurde wann wie oft zitiert?</div>
       </div>
     </div>
     <p style="font-size:13.5px;color:var(--text-muted);margin-bottom:16px;" data-i18n="t2_desc">
@@ -253,13 +225,13 @@
     </div>
   </section>
 
-  <!-- ── HISTORICAL ANALYTICS ──────────────────────────────────── -->
+  <!-- ── ANALYSEN ──────────────────────────────────── -->
   <section class="tool-section">
     <div class="tool-header">
       <span class="tool-icon"><span class="ico ico-chart" aria-hidden="true"></span></span>
       <div>
-        <div class="tool-title" data-str="tool_analysis">Historische Analysen</div>
-        <div class="tool-subtitle" data-i18n="t3_sub">Zweiter Tab · Fünf strukturelle Perspektiven</div>
+        <div class="tool-title" data-str="tool_analysis">Analysen</div>
+        <div class="tool-subtitle" data-i18n="t3_sub">Dritter Tab · Sechs strukturelle Perspektiven</div>
       </div>
     </div>
     <div class="feature-grid">
@@ -268,28 +240,25 @@
         <div class="fc-name" data-str="analysis_A">Intellektuelle Strömungen</div>
         <div class="fc-name-de" data-i18n-de="a1de">Intellectual Tides</div>
         <div class="fc-desc" data-i18n="a1d">Gestapelte Flächen: Anteil jeder Denkschule am AGW-Diskurs über die Zeit. Zeigt, welche Traditionen auf- und abstiegen.</div>
-        <div class="fc-example fc-example-de" data-i18n="a1ex">Österreichische Schule: Surge ab 2010</div>
       </div>
       <div class="feature-card">
         <div class="fc-label">B</div>
         <div class="fc-name" data-str="analysis_B">Intellektuelle Konstellation</div>
         <div class="fc-name-de" data-i18n-de="a2de">Intellectual Constellation</div>
         <div class="fc-desc" data-i18n="a2d">Kookurrenz-Netzwerk: Figuren, die häufig in denselben Konferenzen zitiert werden, erscheinen nahe beieinander.</div>
-        <div class="tip-row"><span class="tip-chip" data-str="tip_hover">Hover</span><span class="tip-text" data-i18n="a2tip">Knoten hervorheben zeigt alle Ko-Präsenzverbindungen.</span></div>
+        <div class="tip-row"><span class="tip-chip" data-str="tip_hover">Hover</span><span class="tip-text" data-i18n="a2tip">Knoten hervorheben dimmt unverbundene Knoten.</span></div>
       </div>
       <div class="feature-card">
         <div class="fc-label">C</div>
         <div class="fc-name" data-str="analysis_C">Aufsteiger & Vergessene</div>
         <div class="fc-name-de" data-i18n-de="a3de">Rising & Fading</div>
         <div class="fc-desc" data-i18n="a3d">Bilaterale Balken: Figuren, die in der zweiten Hälfte des AGW häufiger (↑) oder seltener (↓) zitiert wurden als in der ersten.</div>
-        <div class="fc-example fc-example-de" data-i18n="a3ex">Hayek: starker Anstieg nach 2000</div>
       </div>
       <div class="feature-card">
         <div class="fc-label">D</div>
         <div class="fc-name" data-str="analysis_D">Der lange Griff</div>
         <div class="fc-name-de" data-i18n-de="a4de">The Long Reach</div>
         <div class="fc-desc" data-i18n="a4d">Streudiagramm: Geburtsjahr vs. Erstauftritt im AGW. Je weiter rechts der Punkt, desto länger der "Entdeckungsverzug".</div>
-        <div class="fc-example fc-example-de" data-i18n="a4ex">Francis Bacon: 439 Jahre Verzug</div>
       </div>
       <div class="feature-card">
         <div class="fc-label">E</div>
@@ -297,65 +266,100 @@
         <div class="fc-name-de" data-i18n-de="a5de">Pillars & Guests</div>
         <div class="fc-desc" data-i18n="a5d">Horizontale Balken: Figuren sortiert nach Auftrittshäufigkeit. Trennt den stabilen Kern (≥10 Konferenzen) vom Peripheriekanon.</div>
       </div>
+      <div class="feature-card gold">
+        <div class="fc-label">Schulvergleich</div>
+        <div class="fc-name" data-str="sub_school_compare">Schulvergleich Radar</div>
+        <div class="fc-name-de" data-i18n-de="scde">School Comparison Radar</div>
+        <div class="fc-desc" data-i18n="scd">Vergleichen Sie die thematische DNA von 2–3 Denkschulen direkt miteinander. Zeigt 6 Metriken: Prominenz, Anzahl Figuren, Dauer, Brücken, Kohäsion, Trend.</div>
+      </div>
     </div>
   </section>
 
-  <!-- ── TOPIC ANALYSIS ─────────────────────────────────── -->
+  <!-- ── NETZWERKE ─────────────────────────────────── -->
   <section class="tool-section">
     <div class="tool-header">
       <span class="tool-icon"><span class="ico ico-topic" aria-hidden="true"></span></span>
       <div>
-        <div class="tool-title" data-str="tool_pmi">Themenanalyse — PPMI-Assoziationen</div>
-        <div class="tool-subtitle" data-i18n="t4_sub">Dritter Tab · Textuelle Kookkurrenzanalyse · 53 Themen · 237 Figuren</div>
+        <div class="tool-title" data-str="tab_netzwerke">Netzwerke</div>
+        <div class="tool-subtitle" data-i18n="t5_sub">Vierter Tab · Fünf relationale Ansichten</div>
       </div>
     </div>
-    <p style="font-size:13.5px;color:var(--text-muted);margin-bottom:4px;" data-i18n="t4_method">
-      Methode: Positive Pointwise Mutual Information (PPMI) misst, wie viel häufiger eine Figur und ein Thema gemeinsam in einem ±400-Zeichen-Textfenster auftreten als per Zufall erwartet. Höhere Werte = stärkere, charakteristischere Assoziation.
-    </p>
-    <p style="font-size:12px;color:var(--text-faint);margin-bottom:16px;" data-i18n="t4_note">Hinweis: PPMI bevorzugt seltene Kookkurrenzen — eine Figur mit nur zwei Nennungen, beide neben einem seltenen Thema, erzielt einen hohen Score. Die Fensterzahl (hover) zeigt die Belegstärke.</p>
+    <div class="feature-grid">
+      <div class="feature-card gold">
+        <div class="fc-label">Ego-Netzwerk</div>
+        <div class="fc-name" data-str="sub_ego">Interaktiver Ego-Explorer</div>
+        <div class="fc-name-de" data-i18n-de="e1de">Interactive Ego Explorer</div>
+        <div class="fc-desc" data-i18n="e1d">Force-directed Graph aller Schlüsselfiguren. Zeigt Ko-Zitationen (grau) und intellektuelle Stammbäume (orange gestrichelt). Mit Share-Card Export.</div>
+        <div class="tip-row"><span class="tip-chip" data-str="tip_click">Klick</span><span class="tip-text" data-i18n="e1tip">Figur anklicken öffnet das Detail-Panel mit HET-Biografie und Nachbarn.</span></div>
+      </div>
+      <div class="feature-card gold">
+        <div class="fc-label">Stammbaum</div>
+        <div class="fc-name" data-str="sub_lineage">HET-Stammbaum</div>
+        <div class="fc-name-de" data-i18n-de="e2de">HET Lineage</div>
+        <div class="fc-desc" data-i18n="e2d">Hierarchische Ansicht der Lehrer-Schüler-Beziehungen, geordnet nach Denkschulen (Zeilen) und Zeit (Spalten).</div>
+      </div>
+      <div class="feature-card gold">
+        <div class="fc-label">Sankey</div>
+        <div class="fc-name" data-str="sub_sankey">Ideenfluss</div>
+        <div class="fc-name-de" data-i18n-de="e3de">Idea Flow</div>
+        <div class="fc-desc" data-i18n="e3d">Sankey-Diagramm der Aufmerksamkeitsflüsse zwischen Denkschulen über fünf Jahrzehnte. Basiert auf Migration, Ko-Zitation und Stammbaum.</div>
+        <div class="tip-row"><span class="tip-chip" data-str="tip_click">Klick</span><span class="tip-text" data-i18n="e3tip">Schule anklicken hebt ihren Pfad durch die Jahrzehnte hervor.</span></div>
+      </div>
+      <div class="feature-card gold">
+        <div class="fc-label">Pfade</div>
+        <div class="fc-name" data-str="sub_pathways">Einflusspfade</div>
+        <div class="fc-name-de" data-i18n-de="e4de">Influence Pathways</div>
+        <div class="fc-desc" data-i18n="e4d">Finden Sie die kürzeste intellektuelle Verbindung zwischen zwei beliebigen Denkern mithilfe des Dijkstra-Algorithmus.</div>
+      </div>
+      <div class="feature-card gold">
+        <div class="fc-label">Zeitverlauf</div>
+        <div class="fc-name" data-str="sub_temporal">Netzwerk-Evolution</div>
+        <div class="fc-name-de" data-i18n-de="e5de">Network Evolution</div>
+        <div class="fc-desc" data-i18n="e5d">Animierte Ansicht der Netzwerkentwicklung über fünf Jahrzehnte (1980er–2020er). Mit Play-Button und Geschwindigkeitskontrolle.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ZEITVERLAUF ─────────────────────────────────── -->
+  <section class="tool-section">
+    <div class="tool-header">
+      <span class="tool-icon"><span class="ico ico-trend" aria-hidden="true"></span></span>
+      <div>
+        <div class="tool-title" data-str="tab_zeitverlauf">Zeitverlauf</div>
+        <div class="tool-subtitle" data-i18n="t6_sub">Fünfter Tab · Thematische und schulische Evolution</div>
+      </div>
+    </div>
     <div class="feature-grid">
       <div class="feature-card green">
-        <div class="fc-label">A</div>
-        <div class="fc-name" data-str="pmi_A">Themenmatrix</div>
-        <div class="fc-name-de" data-i18n-de="p1de">Topic Heatmap</div>
-        <div class="fc-desc" data-i18n="p1d">Figur × Thema Matrix. Zellenfarbe = PPMI-Wert. Zeilen nach Schule gruppiert.</div>
-        <div class="tip-row"><span class="tip-chip" data-str="tip_filter">Filter</span><span class="tip-text" data-i18n="p1tip">Schule in der Legende anklicken filtert die Zeilen.</span></div>
+        <div class="fc-label">Streamgraph</div>
+        <div class="fc-name" data-str="sub_stream">Themenfluss</div>
+        <div class="fc-name-de" data-i18n-de="z1de">Topic Flow</div>
+        <div class="fc-desc" data-i18n="z1d">Dynamischer Streamgraph der 16 Denkschulen über 43 Konferenzen. Unterstützt absolute und relative (100%) Ansichten mit Glättung.</div>
       </div>
       <div class="feature-card green">
-        <div class="fc-label">B</div>
-        <div class="fc-name" data-str="pmi_B">Intellektuelles Porträt</div>
-        <div class="fc-name-de" data-i18n-de="p2de">Intellectual Portrait</div>
-        <div class="fc-desc" data-i18n="p2d">Radiales Stachelbild für eine einzelne Figur. Jede Achse = ein Thema, Länge = PPMI-Stärke.</div>
-        <div class="tip-row"><span class="tip-chip" data-str="tip_select">Auswahl</span><span class="tip-text" data-i18n="p2tip">Figur im Dropdown wählen — rechts erscheint die sortierte Werteliste.</span></div>
-        <div class="fc-example fc-example-de" data-i18n="p2ex">Hayek → Wissensproblem (4.8), Liberalismus (3.9)</div>
+        <div class="fc-label">Themenanalyse</div>
+        <div class="fc-name" data-str="sub_themen">PPMI-Assoziationen</div>
+        <div class="fc-name-de" data-i18n-de="z2de">PPMI Associations</div>
+        <div class="fc-desc" data-i18n="z2d">Textuelle Kookkurrenzanalyse (53 Themen × 235 Figuren). Zeigt Themenmatrix, Radardiagramme, Zeitwandel und das bipartite Ideennetz.</div>
       </div>
-      <div class="feature-card green">
-        <div class="fc-label">C</div>
-        <div class="fc-name" data-str="pmi_C">Im Wandel der Jahrzehnte</div>
-        <div class="fc-name-de" data-i18n-de="p3de">Through the Decades</div>
-        <div class="fc-desc" data-i18n="p3d">Wie verschieben sich die Themenassoziationen einer Figur über vier Jahrzehnte? Farben = 1980er/90er/2000er/2010er.</div>
-        <div class="fc-example fc-example-de" data-i18n="p3ex">Schumpeter: 1980er Innovation, 2000er Entwicklungsökonomie</div>
+    </div>
+  </section>
+
+  <!-- ── LANDING PAGE HERO ─────────────────────────── -->
+  <section class="tool-section">
+    <div class="tool-header">
+      <span class="tool-icon"><span class="ico ico-hero" aria-hidden="true">✨</span></span>
+      <div>
+        <div class="tool-title" data-str="tool_hero">Startseite</div>
+        <div class="tool-subtitle" data-i18n="hero_sub">Zufällige Hero-Visualisierungen</div>
       </div>
-      <div class="feature-card green">
-        <div class="fc-label">D</div>
-        <div class="fc-name" data-str="pmi_D">Schulbrücken</div>
-        <div class="fc-name-de" data-i18n-de="p4de">School Bridges</div>
-        <div class="fc-desc" data-i18n="p4d">Welche Denkschulen sind mit einem Thema assoziiert? Zeigt, wo ein Thema schulenübergreifend diskutiert wird.</div>
-        <div class="fc-example fc-example-de" data-i18n="p4ex">Methodenstreit: Historische Schule + Österreichische Schule</div>
-      </div>
-      <div class="feature-card green">
-        <div class="fc-label">E</div>
-        <div class="fc-name" data-str="pmi_E">Intellektuelles Terrain</div>
-        <div class="fc-name-de" data-i18n-de="p5de">Author Cluster</div>
-        <div class="fc-desc" data-i18n="p5d">PCA-Projektion: 158 Figuren im 53-dimensionalen Themenraum auf 2D reduziert. Figuren mit ähnlichem Themenprofil liegen nahe beieinander. Farbe = Schule.</div>
-        <div class="tip-row"><span class="tip-chip" data-str="tip_hover">Hover</span><span class="tip-text" data-i18n="p5tip">Top-4-Themen und Schule erscheinen beim Hover.</span></div>
-      </div>
-      <div class="feature-card green">
-        <div class="fc-label">F</div>
-        <div class="fc-name" data-str="pmi_F">Ideennetz</div>
-        <div class="fc-name-de" data-i18n-de="p6de">Idea Web</div>
-        <div class="fc-desc" data-i18n="p6d">Bipartites Netzwerk: Top-30-Figuren links, Top-22-Themen rechts. Kantenstärke = PPMI-Wert.</div>
-        <div class="tip-row"><span class="tip-chip" data-str="tip_hover">Hover</span><span class="tip-text" data-i18n="p6tip">Knoten hervorheben zeigt alle Verbindungen dieser Figur oder dieses Themas.</span></div>
+    </div>
+    <div class="feature-grid">
+      <div class="feature-card" style="grid-column: 1 / -1;">
+        <div class="fc-label">Landing Page</div>
+        <div class="fc-name" data-str="hero_title">Dynamische Hintergrund-Visualisierungen</div>
+        <div class="fc-name-de" data-i18n-de="hero_de">Dynamic Background Visualizations</div>
+        <div class="fc-desc" data-i18n="hero_desc">Die Startseite (index.html) wählt bei jedem Aufruf zufällig einen von fünf visuellen Modi als animierten Hintergrund: eine animierte Zeitleiste, eine Namen-Wolke mit Gravitation, einen Mini-Streamgraph, ein Zitate-Karussell oder ein Konferenz-Mosaik. Jeder Modus beleuchtet einen anderen Aspekt des Datensatzes.</div>
       </div>
     </div>
   </section>

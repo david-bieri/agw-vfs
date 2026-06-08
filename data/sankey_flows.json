@@ -1,0 +1,1870 @@
+{
+  "decades": [
+    {
+      "id": "1980s",
+      "label": "1980er"
+    },
+    {
+      "id": "1990s",
+      "label": "1990er"
+    },
+    {
+      "id": "2000s",
+      "label": "2000er"
+    },
+    {
+      "id": "2010s",
+      "label": "2010er"
+    },
+    {
+      "id": "2020s",
+      "label": "2020er"
+    }
+  ],
+  "schools": [
+    "Classical",
+    "Historical School",
+    "National Economy",
+    "Marxist",
+    "Austrian School",
+    "Keynesian",
+    "Post-Keynesian/Sraffian",
+    "Evolutionary",
+    "Ordoliberalismus",
+    "Raumwirtschaftslehre",
+    "Neoclassical",
+    "Mathematical Economics",
+    "Institutional",
+    "Development Economics",
+    "Contemporary",
+    "Philosophy"
+  ],
+  "schoolColors": {
+    "Classical": "#2196F3",
+    "Historical School": "#FF9800",
+    "National Economy": "#795548",
+    "Marxist": "#F44336",
+    "Austrian School": "#CE93D8",
+    "Keynesian": "#4CAF50",
+    "Post-Keynesian/Sraffian": "#00BCD4",
+    "Evolutionary": "#E91E63",
+    "Ordoliberalismus": "#80CBC4",
+    "Raumwirtschaftslehre": "#B39DDB",
+    "Neoclassical": "#90CAF9",
+    "Mathematical Economics": "#B0BEC5",
+    "Institutional": "#FF8A65",
+    "Development Economics": "#D4E157",
+    "Contemporary": "#78909C",
+    "Philosophy": "#EEEEEE",
+    "Other": "#757575"
+  },
+  "nodeSizes": {
+    "1980s": {
+      "Classical": 28.380000000000003,
+      "Historical School": 22.46,
+      "National Economy": 0,
+      "Marxist": 1.16,
+      "Austrian School": 1.58,
+      "Keynesian": 5.25,
+      "Post-Keynesian/Sraffian": 1.97,
+      "Evolutionary": 4.28,
+      "Ordoliberalismus": 0,
+      "Raumwirtschaftslehre": 6.82,
+      "Neoclassical": 12.23,
+      "Mathematical Economics": 0,
+      "Institutional": 0,
+      "Development Economics": 0,
+      "Contemporary": 4.93,
+      "Philosophy": 0.79
+    },
+    "1990s": {
+      "Classical": 12.05,
+      "Historical School": 13.6,
+      "National Economy": 0.06,
+      "Marxist": 4.0600000000000005,
+      "Austrian School": 11.54,
+      "Keynesian": 4.3,
+      "Post-Keynesian/Sraffian": 2.13,
+      "Evolutionary": 2.4699999999999998,
+      "Ordoliberalismus": 4.99,
+      "Raumwirtschaftslehre": 0.48,
+      "Neoclassical": 15.450000000000003,
+      "Mathematical Economics": 3.3200000000000003,
+      "Institutional": 2.29,
+      "Development Economics": 3.1,
+      "Contemporary": 7.5200000000000005,
+      "Philosophy": 1.56
+    },
+    "2000s": {
+      "Classical": 6.790000000000001,
+      "Historical School": 21.6,
+      "National Economy": 0.45,
+      "Marxist": 3.44,
+      "Austrian School": 13.39,
+      "Keynesian": 2.1100000000000003,
+      "Post-Keynesian/Sraffian": 2.6599999999999997,
+      "Evolutionary": 3.25,
+      "Ordoliberalismus": 4.4,
+      "Raumwirtschaftslehre": 4.93,
+      "Neoclassical": 12.36,
+      "Mathematical Economics": 6.7299999999999995,
+      "Institutional": 2.77,
+      "Development Economics": 1.8199999999999998,
+      "Contemporary": 4.859999999999999,
+      "Philosophy": 5.119999999999999
+    },
+    "2010s": {
+      "Classical": 5.1,
+      "Historical School": 9.450000000000001,
+      "National Economy": 0.5900000000000001,
+      "Marxist": 3.44,
+      "Austrian School": 14.239999999999998,
+      "Keynesian": 6.55,
+      "Post-Keynesian/Sraffian": 5.22,
+      "Evolutionary": 6.469999999999999,
+      "Ordoliberalismus": 4.450000000000001,
+      "Raumwirtschaftslehre": 4.51,
+      "Neoclassical": 15.150000000000002,
+      "Mathematical Economics": 3.22,
+      "Institutional": 6.3500000000000005,
+      "Development Economics": 5.279999999999999,
+      "Contemporary": 3.9899999999999993,
+      "Philosophy": 4.090000000000001
+    },
+    "2020s": {
+      "Classical": 0,
+      "Historical School": 18.099999999999998,
+      "National Economy": 0,
+      "Marxist": 0.7333333333333334,
+      "Austrian School": 0.7333333333333334,
+      "Keynesian": 1.1666666666666667,
+      "Post-Keynesian/Sraffian": 0,
+      "Evolutionary": 0.26666666666666666,
+      "Ordoliberalismus": 1.6333333333333335,
+      "Raumwirtschaftslehre": 0,
+      "Neoclassical": 1.4333333333333333,
+      "Mathematical Economics": 0.7333333333333334,
+      "Institutional": 2.8000000000000003,
+      "Development Economics": 2.066666666666667,
+      "Contemporary": 1.1666666666666667,
+      "Philosophy": 2.2666666666666666
+    }
+  },
+  "links": [
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Historical School",
+      "value": 10.88
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Historical School",
+      "value": 10.88
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Austrian School",
+      "value": 10.71
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Neoclassical",
+      "value": 9.89
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Neoclassical",
+      "value": 9.89
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Neoclassical",
+      "value": 9.78
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Classical",
+      "value": 9.64
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Austrian School",
+      "value": 9.23
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Historical School",
+      "value": 7.56
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Historical School",
+      "value": 7.56
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Classical",
+      "value": 5.43
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Classical",
+      "value": 4.08
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Contemporary",
+      "targetSchool": "Contemporary",
+      "value": 3.94
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Contemporary",
+      "targetSchool": "Contemporary",
+      "value": 3.89
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Raumwirtschaftslehre",
+      "targetSchool": "Raumwirtschaftslehre",
+      "value": 3.61
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Ordoliberalismus",
+      "targetSchool": "Ordoliberalismus",
+      "value": 3.52
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Ordoliberalismus",
+      "targetSchool": "Ordoliberalismus",
+      "value": 3.52
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Keynesian",
+      "value": 3.44
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Philosophy",
+      "targetSchool": "Philosophy",
+      "value": 3.27
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Contemporary",
+      "targetSchool": "Contemporary",
+      "value": 3.19
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Austrian School",
+      "value": 2.81
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Marxist",
+      "targetSchool": "Marxist",
+      "value": 2.75
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Marxist",
+      "targetSchool": "Marxist",
+      "value": 2.75
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Mathematical Economics",
+      "targetSchool": "Mathematical Economics",
+      "value": 2.66
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Evolutionary",
+      "value": 2.6
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Mathematical Economics",
+      "targetSchool": "Mathematical Economics",
+      "value": 2.58
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Institutional",
+      "targetSchool": "Institutional",
+      "value": 2.24
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Institutional",
+      "targetSchool": "Institutional",
+      "value": 2.22
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Post-Keynesian/Sraffian",
+      "targetSchool": "Post-Keynesian/Sraffian",
+      "value": 2.13
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Austrian School",
+      "value": 2.1
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Evolutionary",
+      "value": 1.98
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Evolutionary",
+      "value": 1.98
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Neoclassical",
+      "value": 1.97
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Neoclassical",
+      "value": 1.94
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Neoclassical",
+      "value": 1.94
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Neoclassical",
+      "value": 1.94
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Neoclassical",
+      "value": 1.94
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Institutional",
+      "targetSchool": "Institutional",
+      "value": 1.83
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Philosophy",
+      "targetSchool": "Philosophy",
+      "value": 1.81
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Neoclassical",
+      "value": 1.75
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Neoclassical",
+      "value": 1.75
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Neoclassical",
+      "value": 1.75
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Neoclassical",
+      "value": 1.75
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Evolutionary",
+      "value": 1.74
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Post-Keynesian/Sraffian",
+      "targetSchool": "Post-Keynesian/Sraffian",
+      "value": 1.7
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Austrian School",
+      "value": 1.69
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Austrian School",
+      "value": 1.69
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Keynesian",
+      "value": 1.69
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Austrian School",
+      "value": 1.69
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Keynesian",
+      "value": 1.69
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Austrian School",
+      "value": 1.69
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Development Economics",
+      "targetSchool": "Development Economics",
+      "value": 1.65
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Post-Keynesian/Sraffian",
+      "targetSchool": "Post-Keynesian/Sraffian",
+      "value": 1.58
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Evolutionary",
+      "value": 1.5
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Evolutionary",
+      "value": 1.5
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Evolutionary",
+      "value": 1.5
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Evolutionary",
+      "value": 1.5
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Development Economics",
+      "targetSchool": "Development Economics",
+      "value": 1.46
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Development Economics",
+      "targetSchool": "Development Economics",
+      "value": 1.46
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Austrian School",
+      "value": 1.44
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Historical School",
+      "value": 1.35
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Ordoliberalismus",
+      "targetSchool": "Ordoliberalismus",
+      "value": 1.31
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Keynesian",
+      "value": 1.29
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Austrian School",
+      "value": 1.26
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Philosophy",
+      "targetSchool": "Philosophy",
+      "value": 1.25
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Marxist",
+      "value": 1.21
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Neoclassical",
+      "value": 1.21
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Neoclassical",
+      "value": 1.21
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Neoclassical",
+      "value": 1.21
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Ordoliberalismus",
+      "value": 1.19
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Evolutionary",
+      "value": 1.18
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Evolutionary",
+      "value": 1.18
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Austrian School",
+      "value": 1.18
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Evolutionary",
+      "value": 1.18
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Austrian School",
+      "value": 1.18
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Evolutionary",
+      "value": 1.18
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Austrian School",
+      "value": 1.18
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Historical School",
+      "value": 1.17
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Historical School",
+      "value": 1.17
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Neoclassical",
+      "value": 1.15
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Neoclassical",
+      "value": 1.08
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Historical School",
+      "value": 1.07
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Austrian School",
+      "value": 1.06
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Institutional",
+      "value": 1.04
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Contemporary",
+      "targetSchool": "Neoclassical",
+      "value": 1.03
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Contemporary",
+      "value": 1.03
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Contemporary",
+      "targetSchool": "Neoclassical",
+      "value": 1.03
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Contemporary",
+      "value": 1.03
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Contemporary",
+      "targetSchool": "Neoclassical",
+      "value": 1.03
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Contemporary",
+      "value": 1.03
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Contemporary",
+      "targetSchool": "Neoclassical",
+      "value": 1.03
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Contemporary",
+      "value": 1.03
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Development Economics",
+      "value": 1.01
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "anglo",
+      "value": 1
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "anglo",
+      "targetSchool": "Neoclassical",
+      "value": 1
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "anglo",
+      "value": 1
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "anglo",
+      "targetSchool": "Neoclassical",
+      "value": 1
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "anglo",
+      "value": 1
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "anglo",
+      "targetSchool": "Neoclassical",
+      "value": 1
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "anglo",
+      "value": 1
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "anglo",
+      "targetSchool": "Neoclassical",
+      "value": 1
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Marxist",
+      "targetSchool": "Marxist",
+      "value": 0.93
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Keynesian",
+      "value": 0.93
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Contemporary",
+      "targetSchool": "Contemporary",
+      "value": 0.93
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Raumwirtschaftslehre",
+      "targetSchool": "Austrian School",
+      "value": 0.92
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Historical School",
+      "value": 0.81
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Evolutionary",
+      "value": 0.81
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Historical School",
+      "value": 0.81
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Historical School",
+      "value": 0.81
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Evolutionary",
+      "value": 0.81
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Austrian School",
+      "value": 0.81
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Historical School",
+      "value": 0.81
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Evolutionary",
+      "value": 0.81
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Austrian School",
+      "value": 0.81
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Mathematical Economics",
+      "value": 0.79
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Neoclassical",
+      "value": 0.76
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Keynesian",
+      "value": 0.76
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Neoclassical",
+      "value": 0.76
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Keynesian",
+      "value": 0.76
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Neoclassical",
+      "value": 0.76
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Keynesian",
+      "value": 0.76
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Neoclassical",
+      "value": 0.76
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Keynesian",
+      "value": 0.76
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Contemporary",
+      "value": 0.75
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "hist",
+      "value": 0.75
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "stockholm",
+      "value": 0.75
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "hist",
+      "value": 0.75
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "stockholm",
+      "value": 0.75
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "hist",
+      "value": 0.75
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "stockholm",
+      "value": 0.75
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "hist",
+      "value": 0.75
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "stockholm",
+      "value": 0.75
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Development Economics",
+      "value": 0.74
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Post-Keynesian/Sraffian",
+      "value": 0.74
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Classical",
+      "value": 0.71
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Classical",
+      "value": 0.71
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Classical",
+      "value": 0.71
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Classical",
+      "value": 0.71
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Post-Keynesian/Sraffian",
+      "value": 0.69
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Post-Keynesian/Sraffian",
+      "targetSchool": "Neoclassical",
+      "value": 0.69
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Post-Keynesian/Sraffian",
+      "value": 0.69
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Post-Keynesian/Sraffian",
+      "targetSchool": "Neoclassical",
+      "value": 0.69
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Post-Keynesian/Sraffian",
+      "value": 0.69
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Post-Keynesian/Sraffian",
+      "targetSchool": "Neoclassical",
+      "value": 0.69
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Post-Keynesian/Sraffian",
+      "value": 0.69
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Post-Keynesian/Sraffian",
+      "targetSchool": "Neoclassical",
+      "value": 0.69
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Neoclassical",
+      "value": 0.68
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Austrian School",
+      "value": 0.66
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Ordoliberalismus",
+      "value": 0.64
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Ordoliberalismus",
+      "value": 0.63
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Philosophy",
+      "targetSchool": "Philosophy",
+      "value": 0.63
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Ordoliberalismus",
+      "value": 0.63
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Ordoliberalismus",
+      "value": 0.63
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Ordoliberalismus",
+      "value": 0.63
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Contemporary",
+      "targetSchool": "Historical School",
+      "value": 0.59
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Marxist",
+      "targetSchool": "Marxist",
+      "value": 0.59
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Austrian School",
+      "value": 0.59
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Mathematical Economics",
+      "targetSchool": "Mathematical Economics",
+      "value": 0.59
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Historical School",
+      "value": 0.56
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Historical School",
+      "value": 0.56
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Historical School",
+      "value": 0.56
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Institutional",
+      "value": 0.55
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Historical School",
+      "value": 0.53
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Raumwirtschaftslehre",
+      "value": 0.52
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Marxist",
+      "value": 0.51
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Marxist",
+      "value": 0.51
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Marxist",
+      "value": 0.51
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "klassik",
+      "targetSchool": "Historical School",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "hist",
+      "targetSchool": "Historical School",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "aut",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "anglo",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "aut",
+      "targetSchool": "Neoclassical",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Ordoliberalismus",
+      "targetSchool": "ordo",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "klassik",
+      "targetSchool": "Historical School",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "hist",
+      "targetSchool": "Historical School",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "aut",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "anglo",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "aut",
+      "targetSchool": "Neoclassical",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Ordoliberalismus",
+      "targetSchool": "ordo",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "klassik",
+      "targetSchool": "Historical School",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "hist",
+      "targetSchool": "Historical School",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "aut",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "anglo",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "aut",
+      "targetSchool": "Neoclassical",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Ordoliberalismus",
+      "targetSchool": "ordo",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "klassik",
+      "targetSchool": "Historical School",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "hist",
+      "targetSchool": "Historical School",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "aut",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "anglo",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "aut",
+      "targetSchool": "Neoclassical",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Ordoliberalismus",
+      "targetSchool": "ordo",
+      "value": 0.5
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Evolutionary",
+      "value": 0.47
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Classical",
+      "value": 0.47
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Evolutionary",
+      "value": 0.47
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Classical",
+      "value": 0.47
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Evolutionary",
+      "value": 0.47
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Classical",
+      "value": 0.47
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Evolutionary",
+      "value": 0.47
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Classical",
+      "value": 0.47
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Raumwirtschaftslehre",
+      "targetSchool": "Ordoliberalismus",
+      "value": 0.46
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Contemporary",
+      "value": 0.45
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Classical",
+      "value": 0.44
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Classical",
+      "value": 0.44
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Austrian School",
+      "value": 0.44
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Classical",
+      "value": 0.44
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Austrian School",
+      "value": 0.44
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Classical",
+      "value": 0.44
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Mathematical Economics",
+      "value": 0.43
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Keynesian",
+      "value": 0.43
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Austrian School",
+      "value": 0.43
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Keynesian",
+      "value": 0.43
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Austrian School",
+      "value": 0.43
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Keynesian",
+      "value": 0.43
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Austrian School",
+      "value": 0.43
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Austrian School",
+      "targetSchool": "Keynesian",
+      "value": 0.43
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Austrian School",
+      "value": 0.43
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Philosophy",
+      "value": 0.41
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Marxist",
+      "targetSchool": "Historical School",
+      "value": 0.41
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Development Economics",
+      "value": 0.4
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Mathematical Economics",
+      "value": 0.4
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Historical School",
+      "value": 0.39
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Historical School",
+      "targetSchool": "Marxist",
+      "value": 0.37
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Mathematical Economics",
+      "targetSchool": "Keynesian",
+      "value": 0.37
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Evolutionary",
+      "value": 0.34
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Keynesian",
+      "value": 0.34
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Evolutionary",
+      "value": 0.34
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Keynesian",
+      "value": 0.34
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Evolutionary",
+      "value": 0.34
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Keynesian",
+      "value": 0.34
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Evolutionary",
+      "value": 0.34
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Keynesian",
+      "value": 0.34
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Classical",
+      "targetSchool": "Keynesian",
+      "value": 0.33
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Keynesian",
+      "targetSchool": "Historical School",
+      "value": 0.32
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Raumwirtschaftslehre",
+      "targetSchool": "Mathematical Economics",
+      "value": 0.31
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Contemporary",
+      "value": 0.31
+    },
+    {
+      "sourceDec": "1980s",
+      "targetDec": "1990s",
+      "sourceSchool": "Contemporary",
+      "targetSchool": "Evolutionary",
+      "value": 0.31
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Contemporary",
+      "value": 0.31
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Contemporary",
+      "targetSchool": "Evolutionary",
+      "value": 0.31
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Contemporary",
+      "value": 0.31
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Contemporary",
+      "targetSchool": "Evolutionary",
+      "value": 0.31
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Post-Keynesian/Sraffian",
+      "targetSchool": "Historical School",
+      "value": 0.31
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Evolutionary",
+      "targetSchool": "Contemporary",
+      "value": 0.31
+    },
+    {
+      "sourceDec": "2010s",
+      "targetDec": "2020s",
+      "sourceSchool": "Contemporary",
+      "targetSchool": "Evolutionary",
+      "value": 0.31
+    },
+    {
+      "sourceDec": "1990s",
+      "targetDec": "2000s",
+      "sourceSchool": "Neoclassical",
+      "targetSchool": "Raumwirtschaftslehre",
+      "value": 0.3
+    },
+    {
+      "sourceDec": "2000s",
+      "targetDec": "2010s",
+      "sourceSchool": "Mathematical Economics",
+      "targetSchool": "Institutional",
+      "value": 0.3
+    }
+  ]
+}
