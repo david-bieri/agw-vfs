@@ -399,6 +399,10 @@
     tip_click            : { de: 'Klick', en: 'Click' },
     tip_hover            : { de: 'Hover', en: 'Hover' },
     tool_hero            : { de: 'Startseite', en: 'Landing Page' },
+    guide_cite_title     : { de: 'Zitierweise / How to Cite', en: 'How to Cite' },
+    guide_cite_sub       : { de: 'AGW Analytics in wissenschaftlichen Arbeiten zitieren', en: 'Citing AGW Analytics in academic publications' },
+    guide_cite_desc      : { de: 'Wenn Sie Erkenntnisse, Daten oder Visualisierungen aus dem AGW Analytics-Modul in Ihrer Forschung verwenden, zitieren Sie bitte die Anwendung wie folgt:', en: 'If you use insights, data, or visualizations from the AGW Analytics module in your research, please cite the application as follows:' },
+    footer_cite          : { de: 'Zitierweise', en: 'How to Cite' },
 };
 
   /* ── Helpers ──────────────────────────────────────────────────── */
