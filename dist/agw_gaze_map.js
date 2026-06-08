@@ -493,7 +493,8 @@ function EraView({ selSchool }) {
           ALL_YEARS.map((yr) => {
             const sc = era.yearScores[yr] || 0;
             const pct = sc / era.maxSc;
-            const col = `rgba(144,202,249,${pct * 0.85})`;
+            const alpha = sc > 0 ? Math.max(0.15, pct * 0.85) : 0;
+            const col = `rgba(144,202,249,${alpha})`;
             return /* @__PURE__ */ jsx(
               "rect",
               {

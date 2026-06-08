@@ -253,6 +253,29 @@
     });
   }
 
+  // ── Toast notification ───────────────────────────────────────────────
+  function showToast(msg) {
+    const existing = document.querySelector('.agw-toast');
+    if (existing) existing.remove();
+    const toast = document.createElement('div');
+    toast.className = 'agw-toast';
+    toast.textContent = msg;
+    toast.style.cssText = `
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: var(--navy-dark, #122852); color: #fff;
+      padding: 8px 16px; border-radius: 6px; font-size: 12px;
+      font-family: 'Source Sans 3', sans-serif;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3); z-index: 700;
+      animation: agw-slide-up 0.3s ease-out;
+    `;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+      toast.style.opacity = '0';
+      toast.style.transition = 'opacity 0.3s';
+      setTimeout(() => toast.remove(), 300);
+    }, 2000);
+  }
+
   // ── Tips toggle button in nav ────────────────────────────────────────
   function addTipsToggle() {
     const navActions = document.querySelector('.nav-actions');
@@ -273,6 +296,12 @@
       const isOff = document.body.classList.toggle('agw-tips-off');
       btn.classList.toggle('active', !isOff);
       localStorage.setItem(TIPS_KEY, isOff ? '1' : '0');
+      // Show brief toast feedback
+      const lang = getLang();
+      const msg = isOff
+        ? (lang === 'en' ? 'Tips hidden' : 'Tipps ausgeblendet')
+        : (lang === 'en' ? 'Tips visible \u2713' : 'Tipps sichtbar \u2713');
+      showToast(msg);
     });
 
     navActions.insertBefore(btn, navActions.firstChild);

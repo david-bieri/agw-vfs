@@ -143,17 +143,29 @@ export default async function AGWPathways(container) {
   const adjList = new Map();
   nodes.forEach(n => adjList.set(n.id, []));
 
+  // Store original directed edges for influence/strong/lineage types
+  // Convention: source = teacher/influencer, target = student/influenced
+  const directedEdgeMap = new Map(); // key: "A|B" -> { from: A, to: B }
+
   edges.forEach(e => {
     const source = typeof e.source === 'object' ? e.source.id : e.source;
     const target = typeof e.target === 'object' ? e.target.id : e.target;
     // Co-citation: weight inversely proportional to co-citation count
-    // Lineage: fixed low weight (strong connection)
+    // Influence/strong: fixed low weight (strong connection)
     const weight = e.type === 'co-citation' 
       ? Math.max(0.5, 5 / (e.weight || 1))
-      : 1.0; // lineage = direct connection, low cost
+      : 1.0;
 
     if (adjList.has(source)) adjList.get(source).push({ node: target, weight, type: e.type });
     if (adjList.has(target)) adjList.get(target).push({ node: source, weight, type: e.type });
+
+    // For directed edge types, store the canonical direction (teacher -> student)
+    if (e.type !== 'co-citation') {
+      const key1 = `${source}|${target}`;
+      const key2 = `${target}|${source}`;
+      directedEdgeMap.set(key1, { from: source, to: target });
+      directedEdgeMap.set(key2, { from: source, to: target });
+    }
   });
 
   // Node color function
@@ -251,19 +263,32 @@ export default async function AGWPathways(container) {
 
     const pathNodes = nodes.filter(n => pathNodeIds.has(n.id)).map(n => ({ ...n }));
 
-    // Create edges from paths
+    // Create edges from paths, respecting original direction for influence edges
     const pathEdges = [];
     const edgeSet = new Set();
     paths.forEach((path, pathIdx) => {
       for (let i = 0; i < path.length - 1; i++) {
-        const key = `${path[i].node}|${path[i + 1].node}`;
-        const keyRev = `${path[i + 1].node}|${path[i].node}`;
+        const nodeA = path[i].node;
+        const nodeB = path[i + 1].node;
+        const key = `${nodeA}|${nodeB}`;
+        const keyRev = `${nodeB}|${nodeA}`;
         if (!edgeSet.has(key) && !edgeSet.has(keyRev)) {
           edgeSet.add(key);
+          const edgeType = path[i + 1].edgeType || 'co-citation';
+          // For directed edges (influence/strong), use canonical direction
+          let edgeSource = nodeA;
+          let edgeTarget = nodeB;
+          if (edgeType !== 'co-citation') {
+            const directed = directedEdgeMap.get(key);
+            if (directed) {
+              edgeSource = directed.from; // teacher/influencer
+              edgeTarget = directed.to;   // student/influenced
+            }
+          }
           pathEdges.push({
-            source: path[i].node,
-            target: path[i + 1].node,
-            type: path[i + 1].edgeType || 'co-citation',
+            source: edgeSource,
+            target: edgeTarget,
+            type: edgeType,
             pathIndex: pathIdx,
             isPrimary: pathIdx === 0
           });
@@ -354,6 +379,13 @@ export default async function AGWPathways(container) {
       const sn = pathNodes.find(n => n.id === e.source);
       const tn = pathNodes.find(n => n.id === e.target);
       if (sn && tn) {
+        // For directed edges, show the influence direction label
+        let label;
+        if (e.type === 'co-citation') {
+          label = pt('cocitation');
+        } else {
+          label = pt('lineage_lbl');
+        }
         gMain.append("text")
           .attr("x", (sn.x + tn.x) / 2)
           .attr("y", (sn.y + tn.y) / 2 - 12)
@@ -361,7 +393,7 @@ export default async function AGWPathways(container) {
           .attr("font-size", 9)
           .attr("fill", e.type === 'co-citation' ? '#4a90e2' : '#ff9800')
           .attr("font-family", "'Source Sans 3', sans-serif")
-          .text(e.type === 'co-citation' ? pt('cocitation') : pt('lineage_lbl'));
+          .text(label);
       }
     });
 

@@ -142,7 +142,7 @@ export default async function AGWScrollytelling(container) {
   el.innerHTML = "";
   // Use min(600px, 75vh) so the split-panel is always visible even on
   // shorter viewports (fixes Safari/Arc where footer overlaps the panel).
-  el.style.cssText = "position:relative;width:100%;height:min(600px,75vh);min-height:400px;overflow:hidden;";
+  el.style.cssText = "position:relative;width:100%;height:min(600px,75vh);min-height:400px;overflow:visible;";
 
   // Split layout: left = narrative text, right = visualization
   const wrapper = document.createElement("div");
@@ -430,7 +430,8 @@ export default async function AGWScrollytelling(container) {
       const r = isEgo ? 18 : 8;
 
       const nodeG = g.append("g")
-        .style("cursor", "pointer");
+        .style("cursor", "pointer")
+        .attr("pointer-events", "all");
 
       nodeG.append("circle")
         .attr("cx", pos.x).attr("cy", pos.y).attr("r", r)
@@ -438,7 +439,12 @@ export default async function AGWScrollytelling(container) {
         .attr("stroke", isEgo ? "#fff" : "none")
         .attr("stroke-width", isEgo ? 2 : 0)
         .attr("opacity", 0.9)
+        .attr("pointer-events", "all")
         .style("transition", "r 0.15s, stroke-width 0.15s");
+
+      // SVG <title> fallback for browsers where D3 mouseenter doesn't fire
+      const connCountFallback = edges.filter(e => e.source === n.id || e.target === n.id).length;
+      nodeG.append("title").text(`${n.id} (${n.school}) · ${connCountFallback} ${lang === 'en' ? 'connections' : 'Verbindungen'}`);
 
       // Label
       const parts = n.id.split(" ");
