@@ -440,6 +440,10 @@
       onclick="showSub('netzwerke','lineage',this)"><span data-str="sub_lineage">Stammbaum</span></button>
     <button class="sub-tab" id="sub-sankey"
       onclick="showSub('netzwerke','sankey',this)"><span data-str="sub_sankey">Sankey</span></button>
+    <button class="sub-tab" id="sub-pathways"
+      onclick="showSub('netzwerke','pathways',this)"><span data-str="sub_pathways">Pfade</span></button>
+    <button class="sub-tab" id="sub-temporal"
+      onclick="showSub('netzwerke','temporal',this)"><span data-str="sub_temporal">Zeitverlauf</span></button>
   </div>
 
   <!-- ── Sub-tabs for Zeitverlauf ── -->
@@ -448,6 +452,14 @@
       onclick="showSub('zeitverlauf','stream',this)"><span data-str="sub_stream">Streamgraph</span></button>
     <button class="sub-tab" id="sub-themen"
       onclick="showSub('zeitverlauf','themen',this)"><span data-str="sub_themen">Themenanalyse</span></button>
+  </div>
+
+  <!-- ── Sub-tabs for Analysen ── -->
+  <div class="sub-tabs" id="subtabs-analysen" style="display:none;">
+    <button class="sub-tab active" id="sub-analysis-main"
+      onclick="showSub('analysen','analysis-main',this)"><span data-str="sub_analysis_main">Analysen</span></button>
+    <button class="sub-tab" id="sub-school-compare"
+      onclick="showSub('analysen','school-compare',this)"><span data-str="sub_school_compare">Schulvergleich</span></button>
   </div>
 
   <!-- ── Zoom control bar ── -->
@@ -469,13 +481,19 @@
       <div class="viz-zoom-wrap" id="wrap-mount-gaze"><div id="mount-gaze"></div></div>
     </div>
 
-    <!-- ANALYSEN (was: Analysen + Themenanalyse merged as sub-panels within the React bundle) -->
+    <!-- ANALYSEN (sub-panels: Main Analysis + School Compare) -->
     <div class="tool-panel" id="panel-analysen">
-      <div class="loading" id="loading-analysis" data-str="loading">Lade Analysen…</div>
-      <div class="viz-zoom-wrap" id="wrap-mount-analysis"><div id="mount-analysis"></div></div>
+      <div class="sub-panel active" id="subpanel-analysis-main">
+        <div class="loading" id="loading-analysis" data-str="loading">Lade Analysen…</div>
+        <div class="viz-zoom-wrap" id="wrap-mount-analysis"><div id="mount-analysis"></div></div>
+      </div>
+      <div class="sub-panel" id="subpanel-school-compare">
+        <div class="loading" id="loading-school-compare" data-str="loading">Lade Schulvergleich…</div>
+        <div id="mount-school-compare" style="width:100%;height:600px;"></div>
+      </div>
     </div>
 
-    <!-- NETZWERKE (sub-panels: Ego, Stammbaum, Sankey) -->
+    <!-- NETZWERKE (sub-panels: Ego, Stammbaum, Sankey, Pathways, Temporal) -->
     <div class="tool-panel" id="panel-netzwerke">
       <div class="sub-panel active" id="subpanel-ego">
         <div class="loading" id="loading-ego" data-str="loading">Lade Ego-Netzwerk…</div>
@@ -487,6 +505,14 @@
       <div class="sub-panel" id="subpanel-sankey">
         <div class="loading" id="loading-sankey" data-str="loading">Lade Sankey…</div>
         <div id="mount-sankey" style="width:100%;height:600px;"></div>
+      </div>
+      <div class="sub-panel" id="subpanel-pathways">
+        <div class="loading" id="loading-pathways" data-str="loading">Lade Einflusspfade…</div>
+        <div id="mount-pathways" style="width:100%;height:600px;"></div>
+      </div>
+      <div class="sub-panel" id="subpanel-temporal">
+        <div class="loading" id="loading-temporal" data-str="loading">Lade Zeitverlauf…</div>
+        <div id="mount-temporal" style="width:100%;height:600px;"></div>
       </div>
     </div>
 
@@ -530,7 +556,7 @@
     }
 
     /* Track loaded state */
-    var loaded = { gaze: false, analysis: false, pmi: false, ego: false, lineage: false, sankey: false, alluvial: false, story: false };
+    var loaded = { gaze: false, analysis: false, pmi: false, ego: false, lineage: false, sankey: false, alluvial: false, story: false, pathways: false, temporal: false, schoolCompare: false };
 
     /* Show primary tool panel */
     function showTool(name, btn) {
@@ -546,7 +572,10 @@
 
       // Trigger lazy-load for the active sub-panel or the panel itself
       if (name === 'atlas') loadGaze();
-      if (name === 'analysen') loadAnalysis();
+      if (name === 'analysen') {
+        var activeSub = document.querySelector('#panel-analysen .sub-panel.active');
+        if (activeSub) triggerSubLoad('analysen', activeSub.id.replace('subpanel-', ''));
+      }
       if (name === 'netzwerke') {
         // Load the active sub-panel
         var activeSub = document.querySelector('#panel-netzwerke .sub-panel.active');
@@ -556,7 +585,12 @@
         var activeSub = document.querySelector('#panel-zeitverlauf .sub-panel.active');
         if (activeSub) triggerSubLoad('zeitverlauf', activeSub.id.replace('subpanel-', ''));
       }
-      if (name === 'story') loadStory();
+      if (name === 'story') {
+        loadStory();
+        // Reset scroll position on re-entry (cross-browser fix)
+        var narr = document.getElementById('scroll-narrative');
+        if (narr) narr.scrollTop = 0;
+      }
     }
 
     /* Show sub-panel within a tool */
@@ -577,10 +611,16 @@
         if (sub === 'ego') loadEgo();
         if (sub === 'lineage') loadLineage();
         if (sub === 'sankey') loadSankey();
+        if (sub === 'pathways') loadPathways();
+        if (sub === 'temporal') loadTemporal();
       }
       if (tool === 'zeitverlauf') {
         if (sub === 'stream') loadAlluvial();
         if (sub === 'themen') loadPMI();
+      }
+      if (tool === 'analysen') {
+        if (sub === 'analysis-main') loadAnalysis();
+        if (sub === 'school-compare') loadSchoolCompare();
       }
     }
 
@@ -654,6 +694,39 @@
       // Handled by the module script below
     }
 
+    function loadPathways() {
+      if (loaded.pathways) return;
+      loaded.pathways = true;
+      import('./dist/agw_pathways.js').then(mod => {
+        document.getElementById('loading-pathways').style.display = 'none';
+        mod.default('#mount-pathways');
+      }).catch(err => {
+        document.getElementById('loading-pathways').textContent = 'Fehler: ' + err.message;
+      });
+    }
+
+    function loadTemporal() {
+      if (loaded.temporal) return;
+      loaded.temporal = true;
+      import('./dist/agw_temporal.js').then(mod => {
+        document.getElementById('loading-temporal').style.display = 'none';
+        mod.default('#mount-temporal');
+      }).catch(err => {
+        document.getElementById('loading-temporal').textContent = 'Fehler: ' + err.message;
+      });
+    }
+
+    function loadSchoolCompare() {
+      if (loaded.schoolCompare) return;
+      loaded.schoolCompare = true;
+      import('./dist/agw_school_compare.js').then(mod => {
+        document.getElementById('loading-school-compare').style.display = 'none';
+        mod.default('#mount-school-compare');
+      }).catch(err => {
+        document.getElementById('loading-school-compare').textContent = 'Fehler: ' + err.message;
+      });
+    }
+
     function showBundleError(mountId, loadingId, filename) {
       document.getElementById(loadingId).style.display = 'none';
       document.getElementById(mountId).innerHTML =
@@ -685,7 +758,7 @@
       });
     }
 
-    window._mountState = { gaze: false, analysis: false, pmi: false };
+    window._mountState = { gaze: false, analysis: false, pmi: false, schoolCompare: false, pathways: false, temporal: false };
 
     // Override the lazy loaders for React bundles
     window.loadGaze = function() {
@@ -697,14 +770,56 @@
     window.loadPMI = function() {
       mount('mount-pmi', 'loading-pmi', './dist/agw_pmi.js', 'pmi');
     };
+    window.loadSchoolCompare = function() {
+      if (window._mountState.schoolCompare) return;
+      window._mountState.schoolCompare = true;
+      import('./dist/agw_school_compare.js').then(mod => {
+        document.getElementById('loading-school-compare').style.display = 'none';
+        mod.default('#mount-school-compare');
+      }).catch(err => {
+        document.getElementById('loading-school-compare').textContent = 'Fehler: ' + err.message;
+      });
+    };
+    window.loadPathways = function() {
+      if (window._mountState.pathways) return;
+      window._mountState.pathways = true;
+      import('./dist/agw_pathways.js').then(mod => {
+        document.getElementById('loading-pathways').style.display = 'none';
+        mod.default('#mount-pathways');
+      }).catch(err => {
+        document.getElementById('loading-pathways').textContent = 'Fehler: ' + err.message;
+      });
+    };
+    window.loadTemporal = function() {
+      if (window._mountState.temporal) return;
+      window._mountState.temporal = true;
+      import('./dist/agw_temporal.js').then(mod => {
+        document.getElementById('loading-temporal').style.display = 'none';
+        mod.default('#mount-temporal');
+      }).catch(err => {
+        document.getElementById('loading-temporal').textContent = 'Fehler: ' + err.message;
+      });
+    };
+
+    /* Prevent browser scroll restoration from showing the page mid-scroll */
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
 
     /* Auto-trigger Rundgang (story is active by default) */
     setTimeout(() => window.loadStory(), 200);
 
     /* Listen for tab clicks to trigger React bundle loading */
     document.getElementById('tab-atlas').addEventListener('click', () => window.loadGaze());
-    document.getElementById('tab-analysen').addEventListener('click', () => window.loadAnalysis());
+    document.getElementById('tab-analysen').addEventListener('click', () => {
+      var activeSub = document.querySelector('#panel-analysen .sub-panel.active');
+      var subId = activeSub ? activeSub.id.replace('subpanel-', '') : 'analysis-main';
+      if (subId === 'analysis-main') window.loadAnalysis();
+      else if (subId === 'school-compare') window.loadSchoolCompare();
+    });
     document.getElementById('sub-themen').addEventListener('click', () => window.loadPMI());
+    document.getElementById('sub-school-compare').addEventListener('click', () => window.loadSchoolCompare());
+    document.getElementById('sub-pathways').addEventListener('click', () => window.loadPathways());
+    document.getElementById('sub-temporal').addEventListener('click', () => window.loadTemporal());
 
     /* ── Zoom + Pan ── */
     window._zoomLevel = 1;
@@ -722,5 +837,6 @@
 
   </script>
 
+  <script src="dist/agw_product_tips.js"></script>
 </body>
 </html>

@@ -52,18 +52,18 @@ function setLang(l) {
 }
 
 function initLang() {
-  // Priority: 1) saved preference, 2) browser language, 3) German default
+  // Priority: 1) explicit user preference (set via toggle click), 2) German default
+  // Note: We only honour localStorage if the user explicitly toggled.
+  // Browser-language auto-detection was removed because it caused
+  // the site to load in EN despite the DE default toggle being active,
+  // confusing users across Chrome/Safari/Arc/Comet.
   let saved = null;
   try { saved = localStorage.getItem('agw-lang'); } catch(e) {}
   if (saved === 'en') { setLang('en'); return; }
   if (saved === 'de') return; // HTML default, no action needed
-
-  // No saved preference — check browser language
-  const bl = (navigator.language || '').toLowerCase();
-  if (!bl.startsWith('de') && /^(en|fr|it|nl|es|pt|pl|cs|sv|no|fi)/.test(bl)) {
-    setLang('en');
-  }
-  // else stay in German (HTML default)
+  // No saved preference — stay in German (site default)
+  // (Previously auto-detected browser language here, but this caused
+  //  cross-browser inconsistency and violated the DE-first design intent.)
 }
 
 /* ── Programme tabs ── */

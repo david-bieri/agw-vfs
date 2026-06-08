@@ -140,7 +140,9 @@ export default async function AGWScrollytelling(container) {
 
   // --- Layout ---
   el.innerHTML = "";
-  el.style.cssText = "position:relative;width:100%;height:600px;overflow:hidden;";
+  // Use min(600px, 75vh) so the split-panel is always visible even on
+  // shorter viewports (fixes Safari/Arc where footer overlaps the panel).
+  el.style.cssText = "position:relative;width:100%;height:min(600px,75vh);min-height:400px;overflow:hidden;";
 
   // Split layout: left = narrative text, right = visualization
   const wrapper = document.createElement("div");
@@ -241,6 +243,25 @@ export default async function AGWScrollytelling(container) {
       .attr("fill", d => d.color).attr("opacity", 0.3);
   }
 
+  // --- Tooltip helper for guided tour visualizations ---
+  const tourTip = document.createElement('div');
+  tourTip.style.cssText = `
+    position:fixed;pointer-events:none;z-index:400;
+    background:#122852;color:#fff;border-radius:6px;
+    padding:8px 12px;font-size:12px;font-family:'Source Sans 3',sans-serif;
+    box-shadow:0 6px 20px rgba(0,0,0,0.4);opacity:0;
+    transition:opacity 0.15s;max-width:220px;line-height:1.4;
+  `;
+  document.body.appendChild(tourTip);
+
+  function showTourTip(evt, html) {
+    tourTip.innerHTML = html;
+    tourTip.style.opacity = '1';
+    tourTip.style.left = (evt.clientX + 12) + 'px';
+    tourTip.style.top = (evt.clientY - 30) + 'px';
+  }
+  function hideTourTip() { tourTip.style.opacity = '0'; }
+
   function renderFlow(highlight) {
     vizPanel.innerHTML = "";
     const margin = { top: 20, right: 120, bottom: 40, left: 40 };
@@ -283,13 +304,38 @@ export default async function AGWScrollytelling(container) {
     const highlightedSchools = highlight ? highlight.schools : [];
     const yearRange = highlight ? highlight.yearRange : null;
 
-    svg.selectAll("path").data(series).join("path")
+    // Draw areas with mouseover interactivity
+    svg.selectAll("path.flow-area").data(series).join("path")
+      .attr("class", "flow-area")
       .attr("d", area)
       .attr("fill", d => schoolColors[d.key] || "#555")
       .attr("opacity", d => highlightedSchools.length === 0 ? 0.7 :
         highlightedSchools.includes(d.key) ? 1 : 0.08)
       .attr("stroke", d => highlightedSchools.includes(d.key) ? "#fff" : "none")
-      .attr("stroke-width", 0.5);
+      .attr("stroke-width", 0.5)
+      .style("cursor", "pointer")
+      .style("transition", "opacity 0.2s, stroke-width 0.2s")
+      .on("mouseenter", function(evt, d) {
+        // Highlight this school on hover
+        svg.selectAll("path.flow-area")
+          .attr("opacity", dd => dd.key === d.key ? 1 : 0.08)
+          .attr("stroke", dd => dd.key === d.key ? "#fff" : "none")
+          .attr("stroke-width", dd => dd.key === d.key ? 1.5 : 0);
+        showTourTip(evt, `<strong>${d.key}</strong>`);
+      })
+      .on("mousemove", function(evt) {
+        tourTip.style.left = (evt.clientX + 12) + 'px';
+        tourTip.style.top = (evt.clientY - 30) + 'px';
+      })
+      .on("mouseleave", function() {
+        // Restore original state
+        svg.selectAll("path.flow-area")
+          .attr("opacity", d => highlightedSchools.length === 0 ? 0.7 :
+            highlightedSchools.includes(d.key) ? 1 : 0.08)
+          .attr("stroke", d => highlightedSchools.includes(d.key) ? "#fff" : "none")
+          .attr("stroke-width", 0.5);
+        hideTourTip();
+      });
 
     // Year range highlight
     if (yearRange) {
@@ -376,24 +422,28 @@ export default async function AGWScrollytelling(container) {
       }
     });
 
-    // Draw nodes
+    // Draw nodes with mouseover interactivity
     miniNodes.forEach(n => {
       const pos = positions.get(n.id);
       if (!pos) return;
       const isEgo = n.id === egoName;
       const r = isEgo ? 18 : 8;
 
-      g.append("circle")
+      const nodeG = g.append("g")
+        .style("cursor", "pointer");
+
+      nodeG.append("circle")
         .attr("cx", pos.x).attr("cy", pos.y).attr("r", r)
         .attr("fill", schoolColors[n.school] || "#757575")
         .attr("stroke", isEgo ? "#fff" : "none")
         .attr("stroke-width", isEgo ? 2 : 0)
-        .attr("opacity", 0.9);
+        .attr("opacity", 0.9)
+        .style("transition", "r 0.15s, stroke-width 0.15s");
 
       // Label
       const parts = n.id.split(" ");
       const label = parts[parts.length - 1];
-      g.append("text")
+      nodeG.append("text")
         .attr("x", pos.x).attr("y", pos.y + r + 14)
         .attr("text-anchor", "middle")
         .attr("fill", isEgo ? "#fff" : "#aaa")
@@ -401,6 +451,42 @@ export default async function AGWScrollytelling(container) {
         .attr("font-family", "'Source Sans 3', sans-serif")
         .attr("font-weight", isEgo ? "600" : "400")
         .text(label);
+
+      // Mouseover: enlarge node, show full name + school
+      nodeG.on("mouseenter", function(evt) {
+        d3.select(this).select("circle")
+          .attr("r", r * 1.5)
+          .attr("stroke", "#fff")
+          .attr("stroke-width", 2);
+        d3.select(this).select("text")
+          .attr("fill", "#fff").attr("font-weight", "600");
+        // Highlight connected edges
+        g.selectAll("line")
+          .attr("opacity", l => {
+            const x1 = +l.attr("x1"), y1 = +l.attr("y1");
+            const x2 = +l.attr("x2"), y2 = +l.attr("y2");
+            const isConn = (Math.abs(x1 - pos.x) < 2 && Math.abs(y1 - pos.y) < 2) ||
+                           (Math.abs(x2 - pos.x) < 2 && Math.abs(y2 - pos.y) < 2);
+            return isConn ? 1 : 0.15;
+          });
+        const connCount = egoEdges.filter(e => e.source === n.id || e.target === n.id).length;
+        showTourTip(evt, `<strong>${n.id}</strong><br><span style="opacity:0.7">${n.school} · ${connCount} ${lang === 'en' ? 'connections' : 'Verbindungen'}</span>`);
+      })
+      .on("mousemove", function(evt) {
+        tourTip.style.left = (evt.clientX + 12) + 'px';
+        tourTip.style.top = (evt.clientY - 30) + 'px';
+      })
+      .on("mouseleave", function() {
+        d3.select(this).select("circle")
+          .attr("r", r)
+          .attr("stroke", isEgo ? "#fff" : "none")
+          .attr("stroke-width", isEgo ? 2 : 0);
+        d3.select(this).select("text")
+          .attr("fill", isEgo ? "#fff" : "#aaa")
+          .attr("font-weight", isEgo ? "600" : "400");
+        g.selectAll("line").attr("opacity", 0.6);
+        hideTourTip();
+      });
     });
 
     // Title
@@ -462,15 +548,18 @@ export default async function AGWScrollytelling(container) {
       const color = isRiser ? "#4CAF50" : isFaller ? "#f44336" : (schoolColors[d.school] || "#555");
       const opacity = (isRiser || isFaller) ? 1 : 0.3;
 
-      // Draw bar
+      // Draw bar with mouseover
       const barWidth = Math.min(w, (d.apps / 28) * w);
-      svg.append("rect")
+      const barG = svg.append("g").style("cursor", "pointer");
+
+      barG.append("rect")
         .attr("x", 0).attr("y", y(d.id) - 8)
         .attr("width", barWidth).attr("height", 16)
-        .attr("fill", color).attr("opacity", opacity).attr("rx", 3);
+        .attr("fill", color).attr("opacity", opacity).attr("rx", 3)
+        .style("transition", "opacity 0.15s");
 
       // Label left
-      svg.append("text")
+      barG.append("text")
         .attr("x", -8).attr("y", y(d.id) + 4)
         .attr("text-anchor", "end")
         .attr("fill", (isRiser || isFaller) ? "#fff" : "#888")
@@ -480,11 +569,30 @@ export default async function AGWScrollytelling(container) {
         .text(d.label);
 
       // Value right
-      svg.append("text")
+      barG.append("text")
         .attr("x", barWidth + 6).attr("y", y(d.id) + 4)
         .attr("fill", "#666").attr("font-size", 10)
         .attr("font-family", "'Source Sans 3', sans-serif")
-        .text(`${d.apps} Bände`);
+        .text(`${d.apps} ${lang === 'en' ? 'vols' : 'Bände'}`);
+
+      // Mouseover: highlight bar, show full name + school
+      barG.on("mouseenter", function(evt) {
+        d3.select(this).select("rect").attr("opacity", 1);
+        d3.select(this).select("text").attr("fill", "#fff").attr("font-weight", "600");
+        const status = isRiser ? (lang === 'en' ? ' \u2191 Rising' : ' \u2191 Aufsteiger') :
+                       isFaller ? (lang === 'en' ? ' \u2193 Fading' : ' \u2193 Verblassend') : '';
+        showTourTip(evt, `<strong>${d.id}</strong><br><span style="opacity:0.7">${d.school} \u00b7 ${d.apps} ${lang === 'en' ? 'volumes' : 'Bände'}${status}</span>`);
+      })
+      .on("mousemove", function(evt) {
+        tourTip.style.left = (evt.clientX + 12) + 'px';
+        tourTip.style.top = (evt.clientY - 30) + 'px';
+      })
+      .on("mouseleave", function() {
+        d3.select(this).select("rect").attr("opacity", opacity);
+        d3.select(this).select("text").attr("fill", (isRiser || isFaller) ? "#fff" : "#888")
+          .attr("font-weight", (isRiser || isFaller) ? "600" : "400");
+        hideTourTip();
+      });
     });
 
     // Title
@@ -538,4 +646,11 @@ export default async function AGWScrollytelling(container) {
 
   // --- Initial state ---
   activateScene(0);
+
+  // Fix cross-browser scroll restoration: ensure narrative starts at top.
+  // Some browsers (Safari, Arc) restore scroll position from BFCache or
+  // history, causing the tour to appear mid-page on load.
+  requestAnimationFrame(() => {
+    narrative.scrollTop = 0;
+  });
 }

@@ -94,7 +94,7 @@ Eine kuratierte Datenreise durch 43 Jahre intellektuelle Geschichte. Dieser Modu
 
 Die acht Szenen behandeln:
 
-1. **Überblick** — 43 Konferenzen, 81 Figuren, 199 Verbindungen
+1. **Überblick** — 43 Konferenzen, 235 Figuren, 199 Netzwerk-Verbindungen
 2. **Die Klassiker dominieren** — Klassik und Neoklassik in den 1980ern
 3. **Das Austrian Revival** — Der Aufstieg der Österreichischen Schule [3]
 4. **Schumpeter als Brückenfigur** — 28 Konferenzen, 36 Ko-Zitationen, 5 Stammbaum-Verbindungen
@@ -115,6 +115,9 @@ Der Atlas bietet eine makroskopische Sicht auf die Präsenz von Figuren über di
 
 ### Analysen (Strukturelle Perspektiven)
 
+Dieser Bereich bietet statistische Auswertungen der Konferenzdaten in zwei Unter-Tabs:
+
+#### Analysen (Hauptansicht)
 Dieser Bereich zerlegt den Korpus in fünf analytische Dimensionen:
 
 **A — Intellektuelle Strömungen:** Gestapelte Flächendiagramme zeigen den Anteil jeder Denkschule am AGW-Diskurs über die Zeit. Hier wird die "Austrian Revival" der späten 1980er und 1990er Jahre sichtbar [3], ebenso wie die wachsende Diversifizierung nach 2000.
@@ -127,21 +130,28 @@ Dieser Bereich zerlegt den Korpus in fünf analytische Dimensionen:
 
 **E — Säulen & Gäste:** Horizontale Balken, sortiert nach Auftrittshäufigkeit. Trennt den stabilen Kern (≥10 Konferenzen: Schumpeter, Marx, Keynes, Hayek, Smith, Ricardo, Menger, Weber) vom Peripheriekanon.
 
+#### Schulvergleich (School Comparison)
+Vergleichen Sie die thematische DNA von 2–3 Schulen nebeneinander in einem multidimensionalen Netzdiagramm (Radar Chart). Schulen werden anhand von sechs Metriken bewertet:
+* **Prominenz:** Anteil an allen Konferenzzitationen.
+* **Figurenanzahl:** Anzahl der Figuren, die der Schule angehören.
+* **Zeitliche Persistenz:** Anzahl der Jahrzehnte, in denen die Schule aktiv war.
+* **Brückenbildung:** Anteil der Verbindungen zu anderen Schulen.
+* **Interne Kohäsion:** Dichte der Verbindungen innerhalb der Schule.
+* **Wachstumstrend:** Positive (wachsende) oder negative (schrumpfende) Entwicklung.
+
 ### Netzwerke (Relationalität)
 
-Drei Unteransichten beleuchten die relationalen Strukturen des intellektuellen Feldes:
+Fünf Unteransichten beleuchten die relationalen Strukturen des intellektuellen Feldes:
 
-**Ego-Netzwerk (Interaktiver Explorer):** Ein Force-directed Graph aller 81 Schlüsselfiguren mit 199 Kanten. Durch Klicken auf einen Knoten wird dessen "Ego-Netzwerk" hervorgehoben — alle direkten Nachbarn bleiben sichtbar, der Rest wird gedimmt. Das Detail-Panel zeigt:
+**Ego-Netzwerk (Interaktiver Explorer):** Ein Force-directed Graph der Schlüsselfiguren. Durch Klicken auf einen Knoten wird dessen "Ego-Netzwerk" hervorgehoben. Das Detail-Panel zeigt biografische Daten, Schlüsselwerke und Nachbarn. **Neu:** Über den Button "Share Card" können Sie das aktuelle Ego-Netzwerk als hochauflösendes PNG exportieren.
 
-- Name, Schule und Lebensdaten
-- Biografische Kurzbeschreibung (aus der HET Website [2])
-- Schlüsselwerke
-- Aufschlüsselung der Nachbarn nach Ko-Zitation und Stammbaum
-- Direkter Link zum HET-Profil
+**Stammbaum (HET Lineage):** Eine hierarchische Ansicht der Lehrer-Schüler-Beziehungen, geordnet nach Denkschulen und Zeit.
 
-**Stammbaum (HET Lineage):** Eine hierarchische Ansicht der Lehrer-Schüler-Beziehungen, geordnet nach Denkschulen (vertikale Bahnen) und Zeit (horizontale Achse). Zeigt die intellektuellen Genealogien von der Wiener Grenznutzenschule über die Freiburger Ordoliberalen bis zur Harvard-Tradition.
+**Sankey (Ideenfluss):** Ein Alluvial-Diagramm, das die Verschiebung von Aufmerksamkeit zwischen 16 Denkschulen über fünf Jahrzehnte modelliert.
 
-**Sankey (Ideenfluss):** Ein Alluvial-Diagramm, das die Verschiebung von Aufmerksamkeit zwischen 16 Denkschulen über fünf Jahrzehnte modelliert. Durch Klicken auf eine Schule wird deren Pfad durch die Jahrzehnte hervorgehoben. Besonders aufschlussreich: die Persistenz der Historischen Schule, der Aufstieg der Evolutionsökonomik, und die Brückenflüsse zwischen Neoklassik und Österreichischer Schule.
+**Pfade (Influence Pathways):** Finden Sie die kürzeste intellektuelle Verbindung zwischen zwei beliebigen Denkern. Wählen Sie eine "Von"- und "Zu"-Figur, um den Pfad mittels Dijkstra-Algorithmus zu berechnen.
+
+**Zeitverlauf (Temporal):** Eine animierte Ansicht der Netzwerkentwicklung über fünf Jahrzehnte (1980er–2020er). Nutzen Sie den Play-Button und den Zeitstrahl, um das Wachstum des Kanons zu beobachten.
 
 ### Zeitverlauf (Thematische Evolution)
 
@@ -231,7 +241,7 @@ A curated data journey through 43 years of intellectual history. This mode serve
 
 The eight scenes cover:
 
-1. **Overview** — 43 conferences, 81 figures, 199 connections
+1. **Overview** — 43 conferences, 235 figures, 199 network connections
 2. **The Classics Dominate** — Classical and Neoclassical dominance in the 1980s
 3. **The Austrian Revival** — The rise of the Austrian School [3]
 4. **Schumpeter as Bridge Figure** — 28 conferences, 36 co-citations, 5 lineage connections
@@ -244,15 +254,55 @@ The eight scenes cover:
 
 The Atlas provides a macroscopic view of the presence of figures over time through three complementary views: the Presence Scatter (individual data points per figure per year), the Era Heatmap (decadal aggregation revealing structural persistence), and the Top Figures Timeline (line chart showing rise and decline of the most-cited figures).
 
+### Analytics (Structural Perspectives)
+
+This section provides statistical breakdowns of the conference data, divided into two sub-tabs:
+
+#### Analytics (Main)
+**A — Intellectual Tides:** Stacked area charts showing the share of each school of thought in the AGW discourse over time. The "Austrian Revival" of the late 1980s and 1990s becomes visible [3], as does the growing diversification after 2000.
+
+**B — Intellectual Constellation:** A co-occurrence network where figures frequently cited in the same conferences appear close together. Hovering over a node highlights all co-presence connections.
+
+**C — Rising & Fading:** Bilateral bars comparing the citation frequency of the first half of the corpus (1980–2000) with the second (2001–2023). Figures like Hayek and Eucken show strong increases; Marx and Ricardo show declines.
+
+**D — The Long Reach:** A scatter plot plotting a figure's birth year against their first appearance in the AGW. The "discovery lag" ranges from a few decades (contemporary figures) to over four centuries (Francis Bacon: 439 years).
+
+**E — Pillars & Guests:** Horizontal bars sorted by appearance frequency. Separates the stable core (≥10 conferences: Schumpeter, Marx, Keynes, Hayek, Smith, Ricardo, Menger, Weber) from the peripheral canon.
+
+#### School Comparison
+Compare the thematic DNA of 2–3 schools side-by-side using a multidimensional radar chart. Schools are evaluated across six metrics:
+* **Prominence:** Total share of all conference citations.
+* **Figure Count:** Number of figures belonging to the school.
+* **Temporal Persistence:** Number of decades the school remained active.
+* **Cross-School Bridging:** Share of edges connecting to other schools.
+* **Internal Cohesion:** Density of connections within the school.
+* **Growth Trend:** Positive (growing) or negative (shrinking) trajectory.
+
 ### Networks (Relationality)
 
-Three sub-views illuminate the relational structures of the intellectual field:
+Five sub-views illuminate the relational structures of the intellectual field:
 
-**Ego Network (Interactive Explorer):** A force-directed graph of all 81 key figures with 199 edges. Clicking a node highlights its ego network — all direct neighbors remain visible while the rest fades. The detail panel shows biographical data from the HET Website [2], key works, and a breakdown of neighbors by co-citation and lineage.
+**Ego Network (Interactive Explorer):** A force-directed graph of all 81 key figures with 199 edges. Clicking a node highlights its ego network — all direct neighbors remain visible while the rest fades. The detail panel shows biographical data from the HET Website [2], key works, and a breakdown of neighbors by co-citation and lineage. **New:** Click the "Share Card" button to export a high-resolution PNG of the current ego-network.
 
 **Lineage (HET Family Tree):** A hierarchical view of teacher-student relationships, ordered by schools of thought (vertical lanes) and time (horizontal axis). Shows the intellectual genealogies from the Viennese marginalist school through the Freiburg ordoliberals to the Harvard tradition.
 
 **Sankey (Idea Flow):** An alluvial diagram modeling the shift of attention between 16 schools of thought over five decades. Click a school to highlight its path through the decades. Particularly revealing: the persistence of the Historical School, the rise of Evolutionary Economics, and the bridge flows between Neoclassical and Austrian schools.
+
+**Pathways (Influence Paths):** Find the shortest intellectual connection between any two thinkers. Select a "From" and "To" figure to calculate the path using Dijkstra's algorithm, visualized with edge types and intermediate figures.
+
+**Temporal (Network Evolution):** An animated view of the network's evolution across five decades (1980s–2020s). Use the Play button, timeline slider, and speed controls to watch how the canon grew from 27 to 81 figures.
+
+### Timeline (Thematic Evolution)
+
+**Streamgraph (Topic Flow):** Visualizes the relative and absolute presence of 16 schools of thought across all 43 conferences. Three modes are available: Streamgraph (organic flow), Stacked (100% normalized areas), and Alluvial (Sankey flow).
+
+**PPMI Associations (Topic Analysis):** Six sub-views offer deep insights into the semantic context:
+- **A — Topic Matrix:** Figure × Topic Heatmap with PPMI values
+- **B — Intellectual Portrait:** Radial diagram for a single figure
+- **C — Through the Decades:** Topic shifts of a figure over four decades
+- **D — School Bridges:** Which schools share a topic?
+- **E — Intellectual Terrain:** PCA projection in the 53-dimensional topic space
+- **F — Idea Network:** Bipartite network (Top 30 figures × Top 22 topics)
 
 ---
 

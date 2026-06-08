@@ -56,6 +56,10 @@
     sub_sankey:          { de: 'Sankey',                  en: 'Sankey' },
     sub_stream:          { de: 'Streamgraph',            en: 'Streamgraph' },
     sub_themen:          { de: 'Themenanalyse',          en: 'Topic Analysis' },
+    sub_pathways:        { de: 'Pfade',                  en: 'Pathways' },
+    sub_temporal:        { de: 'Zeitverlauf',            en: 'Temporal' },
+    sub_analysis_main:   { de: 'Analysen',               en: 'Analytics' },
+    sub_school_compare:  { de: 'Schulvergleich',         en: 'School Comparison' },
 
     // ── Legacy tab keys (kept for guide.html compatibility) ──────
     tab_gaze:            { de: 'Rezeptionsatlas',        en: 'Reception Atlas' },
@@ -389,6 +393,12 @@
     soc_hope_meta        : { de: 'Duke University Press · seit 1969', en: 'Duke University Press · since 1969' },
     soc_hei_meta         : { de: 'Fabrizio Serra Editore · seit 1993', en: 'Fabrizio Serra Editore · since 1993' },
     soc_oec_meta         : { de: 'Association Œconomia · Frankreich · zweisprachig FR/EN · seit 2011', en: 'Association Œconomia · France · bilingual FR/EN · since 2011' },
+    // ── Action buttons & guide labels ────────────────────────────────────
+    print_prog           : { de: '⎙ Programm drucken', en: '⎙ Print Programme' },
+    guide_pdf_btn        : { de: 'Wissenschaftliches Handbuch herunterladen (PDF)', en: 'Download Academic Manual (PDF)' },
+    tip_click            : { de: 'Klick', en: 'Click' },
+    tip_hover            : { de: 'Hover', en: 'Hover' },
+    tool_hero            : { de: 'Startseite', en: 'Landing Page' },
 };
 
   /* ── Helpers ──────────────────────────────────────────────────── */
