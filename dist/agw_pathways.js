@@ -234,20 +234,21 @@ export default async function AGWPathways(container) {
     .on("zoom", (event) => gMain.attr("transform", event.transform));
   svg.call(zoom);
 
-  // Populate dropdowns
-  const sortedNodes = [...nodes].sort((a, b) => a.id.localeCompare(b.id));
+  // Populate dropdowns (sorted by Lastname, Firstname)
+  const sortedNodes = [...nodes].sort((a, b) => (a.sortName || a.id).localeCompare(b.sortName || b.id));
   const fromSelect = document.getElementById("path-from");
   const toSelect = document.getElementById("path-to");
 
   sortedNodes.forEach(n => {
+    const label = n.sortName || n.id;
     const opt1 = document.createElement("option");
     opt1.value = n.id;
-    opt1.textContent = n.id;
+    opt1.textContent = label;
     fromSelect.appendChild(opt1);
 
     const opt2 = document.createElement("option");
     opt2.value = n.id;
-    opt2.textContent = n.id;
+    opt2.textContent = label;
     toSelect.appendChild(opt2);
   });
 

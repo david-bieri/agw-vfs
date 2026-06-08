@@ -625,7 +625,7 @@ export default async function AGWEgoNetwork(container) {
   document.getElementById("ego-search").addEventListener("input", (e) => {
     const query = e.target.value.toLowerCase();
     if (query.length < 2) return;
-    const match = graphNodes.find(n => n.id.toLowerCase().includes(query));
+    const match = graphNodes.find(n => n.id.toLowerCase().includes(query) || (n.sortName && n.sortName.toLowerCase().includes(query)));
     if (match) {
       selectEgo(match.id);
     }
