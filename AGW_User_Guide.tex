@@ -26,11 +26,14 @@
 
 \usepackage[a4paper,inner=2.8cm,outer=2.3cm,top=2.6cm,bottom=2.6cm,headsep=12pt]{geometry}
 \usepackage{graphicx}
+\graphicspath{{figures/}}
 \usepackage[table]{xcolor}             % [table] enables \rowcolors for the glossary
 \usepackage{titlesec}
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{longtable}
 \usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \usepackage{enumitem}
 \usepackage{microtype}
 \usepackage{caption}
@@ -91,6 +94,32 @@
   title={#1}
 }
 
+% ---- Screenshot helper: shows figures/<name> if present, else a labelled placeholder ----
+\newcommand{\screenshot}[2][0.92\textwidth]{%
+  \IfFileExists{figures/#2}%
+    {\includegraphics[width=#1]{#2}}%
+    {\fcolorbox{rulegrey}{zebra}{\begin{minipage}[c][6.6cm][c]{#1}\centering
+       \sffamily\color{navy}\small\texttt{figures/#2}\\[4pt]
+       \itshape\footnotesize Screenshot einzufügen \,/\, to be added\end{minipage}}}%
+}
+
+% --- SCREENSHOT MANIFEST --------------------------------------------------------
+% Drop PNGs (or PDFs) into a sibling "figures/" folder using these exact names.
+% Until a file exists, a labelled placeholder renders so the document still compiles.
+% Capture at >=1400 px wide from the live site (https://david-bieri.github.io/agw-vfs/):
+%   landing.png         index.html hero (any one of the five animated modes)
+%   rundgang.png        analytics.html -> Rundgang (split-panel scrollytelling)
+%   atlas.png           analytics.html -> Atlas (presence scatter + era heatmap)
+%   analysen-tides.png  Analysen -> A: Intellektuelle Stroemungen (stacked area)
+%   radar.png           Analysen -> Schulvergleich (radar chart + data table)
+%   ego.png             Netzwerke -> Ego-Netzwerk (force-directed, one node selected)
+%   stammbaum.png       Netzwerke -> Stammbaum (lineage lanes)
+%   sankey.png          Netzwerke -> Sankey (idea flow / alluvial)
+%   pfade.png           Netzwerke -> Pfade (a computed path between two figures)
+%   streamgraph.png     Zeitverlauf -> Streamgraph (topic flow)
+%   zitierweise.png     guide.html#zitierweise (the citation section)
+% --------------------------------------------------------------------------------
+
 % ---- Metadata macros ----
 \newcommand{\guideversion}{v1.0}
 \newcommand{\guidedate}{Juni 2026}
@@ -132,15 +161,17 @@
 \rmfamily
 \pagenumbering{roman}
 \tableofcontents
+\clearpage
+\listoffigures
 \vspace{1.5em}
 
 \section*{Über dieses Handbuch \,/\, About this Manual}
 \addcontentsline{toc}{section}{Über dieses Handbuch / About this Manual}
 \selectlanguage{ngerman}
-Dieses Handbuch dokumentiert die AGW-Analytics-Plattform sowohl als Bedienungsanleitung als auch als wissenschaftliche Methodendokumentation. Es ist in zwei spiegelgleiche Teile gegliedert: \textbf{Teil~I} (deutsch) und \textbf{Teil~II} (englisch). Glossar, Literatur, Datenverfügbarkeit und Impressum am Ende gelten für beide Fassungen.
+Dieses Handbuch dokumentiert die AGW-Analytics-Plattform sowohl als Bedienungsanleitung als auch als wissenschaftliche Methodendokumentation. Es ist in zwei spiegelgleiche Teile gegliedert: \textbf{Teil~I} (deutsch) und \textbf{Teil~II} (englisch). Glossar, Literatur, Datenverfügbarkeit und Impressum am Ende gelten für beide Fassungen. Abbildungen erscheinen einmal mit zweisprachiger Bildunterschrift und gelten für beide Teile.
 
 \selectlanguage{english}
-This manual documents the AGW Analytics platform both as an operating guide and as a record of method. It is organised into two mirrored parts: \textbf{Part~I} (German) and \textbf{Part~II} (English). The glossary, references, data-availability statement and colophon at the end apply to both.
+This manual documents the AGW Analytics platform both as an operating guide and as a record of method. It is organised into two mirrored parts: \textbf{Part~I} (German) and \textbf{Part~II} (English). The glossary, references, data-availability statement and colophon at the end apply to both. Figures appear once with a bilingual caption and serve both parts.
 
 \selectlanguage{ngerman}
 \begin{lesehilfe}[Zitiervorschlag \,/\, Suggested citation]
@@ -159,6 +190,14 @@ This manual documents the AGW Analytics platform both as an operating guide and 
   url          = {https://david-bieri.github.io/agw-vfs/}
 }
 \end{verbatim}
+
+\begin{figure}[htbp]
+\centering
+\screenshot{zitierweise}
+\caption[Die Zitierweise-Seite (guide.html) mit APA-, Chicago- und BibTeX-Format.]{Die Zitierweise-Seite (guide.html) mit APA-, Chicago- und BibTeX-Format. \\ \normalfont\itshape The how-to-cite page (guide.html) with APA, Chicago and BibTeX formats.}
+\label{fig:zitierweise}
+\end{figure}
+
 
 \clearpage
 \pagenumbering{arabic}
@@ -227,11 +266,35 @@ Die Startseite (\texttt{index.html}) wählt bei jedem Aufruf zufällig einen von
     \item \textbf{Konferenz-Mosaik:} Ein Raster aller 43 Konferenzen, das subtil pulsiert.
 \end{itemize}
 
+
+\begin{figure}[htbp]
+\centering
+\screenshot{landing}
+\caption[Startseite]{Startseite: animierte Hero-Visualisierung (einer von fünf Modi). \\ \normalfont\itshape Landing page: animated hero visualisation (one of five modes).}
+\label{fig:landing}
+\end{figure}
+
 \subsection{Rundgang (Scrollytelling)}
 Eine kuratierte Datenreise durch über vier Jahrzehnte intellektueller Geschichte. Dieser Modus ist der Standard-Einstieg in die Analyseseite und verwendet ein Split-Panel-Layout: auf der linken Seite scrollt der Leser durch wissenschaftlich fundierten Text, auf der rechten Seite reagieren synchronisierte Visualisierungen. Sie behandelt die Dominanz der Klassik in den 1980ern, das ``Austrian Revival'' \cite{vaughn1994}, Schumpeters Rolle als Brückenfigur und die Pluralisierung des Diskurses nach der Jahrtausendwende.
 
+
+\begin{figure}[htbp]
+\centering
+\screenshot{rundgang}
+\caption[Rundgang]{Rundgang: Split-Panel-Scrollytelling mit synchronisierten Visualisierungen. \\ \normalfont\itshape Guided Tour: split-panel scrollytelling with synchronised visualisations.}
+\label{fig:rundgang}
+\end{figure}
+
 \subsection{Atlas (Rezeptionsatlas)}
 Der Atlas bietet eine makroskopische Sicht auf die Präsenz von Figuren über die Zeit. Das \textit{Präsenz-Streudiagramm} zeigt punktgenau, in welchem Jahr eine Figur wie intensiv diskutiert wurde. Die \textit{Epochen-Heatmap} aggregiert diese Daten auf Jahrzehnte-Ebene, um strukturelle Verschiebungen sichtbar zu machen. Die Heatmap verwendet einen Opazitäts-Floor von 0,15 für alle nicht-null Zellen, um auch schwache Signale sichtbar zu halten.
+
+
+\begin{figure}[htbp]
+\centering
+\screenshot{atlas}
+\caption[Rezeptionsatlas]{Rezeptionsatlas: Präsenz-Streudiagramm und Epochen-Heatmap. \\ \normalfont\itshape Reception Atlas: presence scatter and era heatmap.}
+\label{fig:atlas}
+\end{figure}
 
 \subsection{Analysen (Strukturelle Perspektiven)}
 Dieser Bereich zerlegt den Korpus in fünf analytische Dimensionen plus den Schulvergleich:
@@ -248,6 +311,22 @@ Dieser Bereich zerlegt den Korpus in fünf analytische Dimensionen plus den Schu
 \rmfamily Jede Achse ist auf den Maximalwert aller verglichenen Schulen normiert; eine größere umschlossene Fläche bedeutet nicht ``besser'', sondern ein breiteres Profil. Eine schmale, weit nach \emph{Wachstumstrend} ausgereckte Form etwa kennzeichnet eine kleine, aber aufstrebende Schule.
 \end{lesehilfe}
 
+
+\begin{figure}[htbp]
+\centering
+\screenshot{analysen-tides}
+\caption[Analysen A -- Intellektuelle Strömungen]{Analysen A -- Intellektuelle Strömungen: gestapelte Flächen über 16 Schulen. \\ \normalfont\itshape Analytics A -- Intellectual Tides: stacked areas across 16 schools.}
+\label{fig:tides}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\centering
+\screenshot{radar}
+\caption[Schulvergleich]{Schulvergleich: Radardiagramm über sechs Dimensionen mit Datentabelle. \\ \normalfont\itshape School Comparison: radar chart across six dimensions with data table.}
+\label{fig:radar}
+\end{figure}
+
 \subsection{Netzwerke (Relationalität)}
 Fünf relationale Ansichten auf das intellektuelle Netzwerk:
 \begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
@@ -258,12 +337,52 @@ Fünf relationale Ansichten auf das intellektuelle Netzwerk:
     \item \textbf{Zeitverlauf (Netzwerk-Evolution):} Animierte Ansicht der Netzwerkentwicklung über fünf Jahrzehnte (1980er--2020er). Ein Play-Button startet die automatische Abfolge; ein Schieberegler erlaubt manuelles Navigieren. Neue Figuren werden pro Dekade farblich hervorgehoben. Ein kumulativer Modus zeigt das wachsende Gesamtnetzwerk, ein nicht-kumulativer Modus nur die jeweilige Dekade.
 \end{itemize}
 
+
+\begin{figure}[htbp]
+\centering
+\screenshot{ego}
+\caption[Ego-Explorer]{Ego-Explorer: Force-directed Netzwerk; ein Ego-Knoten ist ausgewählt. \\ \normalfont\itshape Ego Explorer: force-directed network with one ego node selected.}
+\label{fig:ego}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\centering
+\screenshot{stammbaum}
+\caption[Stammbaum]{Stammbaum: Lehrer-Schüler-Beziehungen, nach Schule (Zeilen) und Zeit (Spalten). \\ \normalfont\itshape Lineage: teacher-student relationships, by school (rows) and time (columns).}
+\label{fig:stammbaum}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\centering
+\screenshot{sankey}
+\caption[Sankey]{Sankey: Aufmerksamkeitsfluss zwischen Denkschulen über fünf Jahrzehnte. \\ \normalfont\itshape Sankey: flow of attention between schools of thought over five decades.}
+\label{fig:sankey}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\centering
+\screenshot{pfade}
+\caption[Einflusspfade]{Einflusspfade: kürzester Pfad (Dijkstra) mit beschrifteten Kanten. \\ \normalfont\itshape Influence Pathways: shortest path (Dijkstra) with labelled edges.}
+\label{fig:pfade}
+\end{figure}
+
 \subsection{Zeitverlauf (Thematische Evolution)}
 Der \textit{Streamgraph} (Themenfluss) visualisiert die relative und absolute Präsenz von 16 Denkschulen. Die \textit{PPMI-Assoziationen} bieten tiefe Einblicke in den semantischen Kontext, in dem Figuren diskutiert wurden.
 
 \begin{lesehilfe}[Lesehilfe: der Streamgraph]
 \rmfamily Die \emph{Dicke} eines Bandes zeigt den Anteil einer Schule pro Jahr; die \emph{vertikale Verschiebung} hat keine eigene Bedeutung (die Bänder sind um eine Mittellinie gestapelt). Lesen Sie Trends, nicht absolute Höhen einzelner Punkte.
 \end{lesehilfe}
+
+
+\begin{figure}[htbp]
+\centering
+\screenshot{streamgraph}
+\caption[Streamgraph]{Streamgraph: relative Präsenz von 16 Denkschulen über die Zeit. \\ \normalfont\itshape Streamgraph: relative presence of 16 schools of thought over time.}
+\label{fig:streamgraph}
+\end{figure}
 
 \section{Bedienungshinweise}
 \subsection{Sprachumschaltung}
@@ -432,6 +551,78 @@ Stammbaum / Lineage & Quellenbelegte Lehrer-Schüler-Kanten. & Sourced teacher-s
 Opazitäts-Floor & Mindesttransparenz, damit schwache Werte sichtbar bleiben. & Minimum opacity so weak values stay visible. \\
 \bottomrule
 \end{tabularx}
+
+\section{Die Tagungsbände \,/\, The Conference Volumes}
+\selectlanguage{ngerman}
+Die Beiträge der AGW-Jahrestagungen erscheinen in der Reihe \textit{Studien zur Entwicklung der ökonomischen Theorie} innerhalb der \textit{Schriften des Vereins für Socialpolitik} (Neue Folge, Band 115/\textsc{N}), Duncker \& Humblot, Berlin. Die Bände erscheinen in der Regel ein bis zwei (gelegentlich mehr) Jahre nach der jeweiligen Tagung; die Bandzählung folgt der \emph{Publikations}reihenfolge und stimmt daher nicht mit der laufenden Tagungsnummer überein. Band~XXV ist ein Doppelband zu den beiden Tagungen 2001 und 2002; ``i.\,V.'' (in Vorbereitung) kennzeichnet noch nicht erschienene Bände.
+\selectlanguage{english}
+\par\smallskip\noindent\textit{The proceedings of the AGW annual meetings appear in the series} Studien zur Entwicklung der ökonomischen Theorie \textit{within the} Schriften des Vereins für Socialpolitik \textit{(New Series, vol.\ 115/\textsc{N}), Duncker \& Humblot, Berlin. Volumes appear typically one to two (occasionally more) years after the meeting, so Band numbers follow the order of \textbf{publication} and do not match the conference number. Band~XXV is a combined volume for the 2001 and 2002 meetings;} ``i.\,V.'' \textit{marks volumes not yet published.}
+\selectlanguage{ngerman}
+
+\begingroup\small
+\renewcommand{\arraystretch}{1.22}
+\begin{longtable}{@{}r c L{3.0cm} L{6.7cm} c@{}}
+\toprule
+{\sffamily\bfseries Nr.} & {\sffamily\bfseries Jahr} & {\sffamily\bfseries Ort} & {\sffamily\bfseries Thema} & {\sffamily\bfseries Band}\\
+\midrule
+\endfirsthead
+\toprule
+{\sffamily\bfseries Nr.} & {\sffamily\bfseries Jahr} & {\sffamily\bfseries Ort} & {\sffamily\bfseries Thema} & {\sffamily\bfseries Band}\\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r}{\footnotesize\itshape Fortsetzung nächste Seite \,/\, continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+1 & 1980 & Gießen (DE) & Klassische Nationalökonomie & I\\
+2 & 1981 & Salzburg (AT) & Merkantilismus und Kameralismus & II\\
+3 & 1982 & Basel (CH) & Theoriegeschichte – wozu? & III\\
+4 & 1983 & Göttingen (DE) & Marx, Keynes, Schumpeter & IV\\
+5 & 1984 & Salzburg (AT) & Deutsche Nationalökonomie Ende des 18. und in der ersten Hälfte des 19. Jahrhunderts & V\\
+6 & 1985 & Münster (DE) & Entwicklungen der deutschsprachigen Nationalökonomie im 19. Jahrhundert & VI\\
+7 & 1986 & Stuttgart (DE) & Allgemeine Gleichgewichtsanalyse & IX\\
+8 & 1987 & Würzburg (DE) & Konjunkturtheorie im ausgehenden 19. Jahrhundert & VII\\
+9 & 1988 & Berlin (DE) & Deutschsprachige Wirtschafts-, Konjunktur- und Geldtheorie in der ersten Hälfte des 20. Jahrhunderts & VIII\\
+10 & 1989 & Tübingen (DE) & Friedrich List; Carl Menger; Lorenz von Stein & X\\
+11 & 1990 & Frankfurt am Main (DE) & Darstellung der Wirtschaft und Wirtschaftswissenschaften in der Belletristik & XI\\
+12 & 1991 & Ittingen (Schweiz) (CH) & Osteuropäische Dogmengeschichte & XII\\
+13 & 1992 & Augsburg (DE) & Deutsche Finanzwissenschaft zwischen 1918 und 1939 & XIII\\
+14 & 1993 & Tellow (DE) & Johann Heinrich von Thünen als Wirtschaftstheoretiker & XIV\\
+15 & 1994 & Weimar (DE) & Revolution und Evolution in der Wirtschaftstheorie & XV\\
+16 & 1995 & Salzburg (AT) & Die Umsetzung wirtschaftspolitischer Grundkonzeptionen in die kontinentaleuropäische Praxis des 19. und 20. Jahrhunderts (I) & XVI\\
+17 & 1996 & Maastricht (NL) & Die Umsetzung wirtschaftspolitischer Grundkonzeptionen in die kontinentaleuropäische Praxis des 19. und 20. Jahrhunderts (II) & XVII\\
+18 & 1997 & Stuttgart-Hohenheim (DE) & Knut Wicksell & XVIII\\
+19 & 1998 & Würzburg (DE) & John Stuart Mill & XIX\\
+20 & 1999 & Ulm (DE) & Die Ältere Historische Schule: Wirtschaftstheoretische Beiträge und wirtschaftspolitische Vorstellungen & XX\\
+21 & 2000 & Wien (AT) & Ideen, Methoden und Entwicklungen der Geschichte des ökonomischen Denkens & XXII\\
+22 & 2001 & Hamburg (DE) & Die deutschsprachige Wirtschaftswissenschaft in den ersten Jahrzehnten nach 1945 (I) & XXV\\
+23 & 2002 & Obermayerhofen bei Graz (AT) & Die deutschsprachige Wirtschaftswissenschaft in den ersten Jahrzehnten nach 1945 (II) & XXV\\
+24 & 2003 & Oldenburg (DE) & Ökonomie und Religion & XXI\\
+25 & 2004 & Bonn (DE) & Wirtschaftswissenschaft und Technik & XXIII\\
+26 & 2005 & Berlin (DE) & Deutsche Einflüsse auf amerikanisches wirtschaftswissenschaftliches Denken und amerikanische Einflüsse auf deutsches Wirtschaftsdenken & XXXII\\
+27 & 2006 & Graz (AT) & Wissen = The Knowledge Economy & XXVI\\
+28 & 2007 & Lüdinghausen / Nordkirchen (DE) & Wechselseitige Einflüsse zwischen dem deutschen wirtschaftswissenschaftlichen Denken und dem anderer europäischer Sprachräume & XXIV\\
+29 & 2008 & Berlin (DE) & Der Einfluss deutschsprachigen wirtschaftswissenschaftlichen Denkens in Japan & XXVII\\
+30 & 2009 & Wien (AT) & Geschichte der Entwicklungstheorien & XXXI\\
+31 & 2010 & Stuttgart-Hohenheim (DE) & Die Ökonomik im Spannungsfeld zwischen Natur- und Geisteswissenschaften. Alte und neue Perspektiven im Licht des jüngsten Methodenstreits & XXVIII\\
+32 & 2011 & Freiburg im Breisgau (DE) & Die Entwicklung der Raumwirtschaftslehre von ihren Anfängen bis in die Gegenwart & XXIX\\
+33 & 2012 & Marbach am Neckar (DE) & Die Zeit um den Ersten Weltkrieg als Krisenzeit der Nationalökonomen & XXX\\
+34 & 2013 & Berlin (DE) & Neue Perspektiven auf die Politische Ökonomie von Karl Marx und Friedrich Engels / Die Marx-Engels-Gesamtausgabe (MEGA) & XXXIV\\
+35 & 2014 & Wien (AT) & Macht oder ökonomisches Gesetz? & XXXV\\
+36 & 2015 & Erfurt (DE) & Kontinuität und Wandel in der Institutionenökonomik & XXXIII\\
+37 & 2016 & Karlsruhe (DE) & Deflations- und Stagnationstheorien & XXXVIII\\
+38 & 2017 & Siegen (DE) & Einkommens- und Vermögensverteilung in historischer Perspektive & XXXVII\\
+39 & 2018 & Darmstadt (DE) & Kameralismus und Merkantilismus & XXXIX\\
+40 & 2019 & Hamburg (DE) & Ökonomie und Evolution & XXXVI\\
+41 & 2021 & Online (Zoom) & Entwicklung der Konjunkturforschung im frühen 20. Jahrhundert & XL\\
+42 & 2022 & Jena (DE) & Zur Geschichte des Vereins für Socialpolitik & XLI\\
+43 & 2023 & Edinburgh (UK) & Adam Smith @ 300 & XLII\\
+44 & 2024 & Fulda (DE) & Frauen in der Geschichte der Wirtschaftswissenschaften & XLIII\\
+45 & 2025 & Bayreuth (DE) & Theoriegeschichte der Geoökonomik & XLIV\,(i.\,V.)\\
+46 & 2026 & Riva San Vitale, Tessin (CH) & Zukunftsperspektiven der Theoriegeschichte: Methoden, Themen, Kontroversen & XLV\,(i.\,V.)\\
+\end{longtable}
+\endgroup
 
 \section{Literatur \,/\, References}
 \begin{thebibliography}{9}
