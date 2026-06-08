@@ -1,53 +1,177 @@
+% =====================================================================
+%  AGW Analytics — Wissenschaftliches Handbuch / Academic Manual
+%  Improved layout, June 2026
+%
+%  FONTS: This file targets a full TeX Live / Overleaf install and uses
+%  the AGW house fonts:
+%      EB Garamond   (display + body)  -> matches the site headings font
+%      Source Sans 3 (headings/labels) -> matches the site UI/body font
+%  If you compile somewhere without these packages, comment the two
+%  font lines flagged below; the document falls back to Latin Modern.
+%
+%  ENGINE: pdfLaTeX is fine. (math uses Latin Modern math — robust;
+%  one equation only. To match Garamond math in Overleaf you could add
+%  \usepackage{ebgaramond-maths}, but it is optional and not required.)
+% =====================================================================
 \documentclass[11pt,a4paper,twoside]{article}
-\usepackage[utf8]{inputenc}
+
 \usepackage[T1]{fontenc}
-\usepackage[ngerman,english]{babel}
-\usepackage{geometry}
-\geometry{a4paper, margin=2.5cm}
+\usepackage[utf8]{inputenc}            % harmless on modern TeX (utf8 is default)
+\usepackage[main=ngerman,english]{babel}
+
+% ---- AGW house fonts (comment these two lines for a Latin Modern fallback) ----
+\usepackage{ebgaramond}                       % serif display + body
+\usepackage[scaled=0.95]{sourcesanspro}       % sans headings + UI labels
+% ------------------------------------------------------------------------------
+
+\usepackage[a4paper,inner=2.8cm,outer=2.3cm,top=2.6cm,bottom=2.6cm,headsep=12pt]{geometry}
 \usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage{xcolor}
+\usepackage[table]{xcolor}             % [table] enables \rowcolors for the glossary
 \usepackage{titlesec}
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
 \usepackage{microtype}
 \usepackage{caption}
 \usepackage{float}
 \usepackage{parskip}
+\usepackage[most]{tcolorbox}
+\usepackage{fancyhdr}
+\usepackage{hyperref}                  % load late
 
-% Colors
+% ---- Palette (matches the website) ----
 \definecolor{navy}{HTML}{1B3A6B}
+\definecolor{navydark}{HTML}{122852}
 \definecolor{accent}{HTML}{3A6BAF}
 \definecolor{gold}{HTML}{B8860B}
 \definecolor{green}{HTML}{4A7C59}
+\definecolor{rulegrey}{HTML}{C7CEDA}
+\definecolor{zebra}{HTML}{EEF2F8}
 
-% Hyperref setup
+% ---- Hyperref (palette-consistent; magenta filecolor removed) ----
 \hypersetup{
     colorlinks=true,
     linkcolor=navy,
-    filecolor=magenta,      
+    citecolor=green,
+    filecolor=accent,
     urlcolor=accent,
-    pdftitle={AGW Analytics - User Guide},
+    pdftitle={AGW Analytics — Wissenschaftliches Handbuch / Academic Manual},
     pdfauthor={David Bieri},
+    pdfsubject={User guide for the AGW Analytics platform},
+    pdfkeywords={history of economic thought, AGW, Verein fuer Socialpolitik, network analysis, PPMI},
+    bookmarksnumbered=true,
 }
 
-% Title format
-\titleformat{\section}{\Large\bfseries\color{navy}}{\thesection}{1em}{}
-\titleformat{\subsection}{\large\bfseries\color{accent}}{\thesubsection}{1em}{}
+% ---- Headings in Source Sans, navy ----
+\titleformat{\part}{\sffamily\huge\bfseries\color{navy}}{}{0pt}{\thepart.\quad}
+\titleformat{\section}{\sffamily\Large\bfseries\color{navy}}{\thesection}{0.75em}{}
+\titleformat{\subsection}{\sffamily\large\bfseries\color{accent}}{\thesubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{1.6ex plus .3ex minus .2ex}{0.9ex}
 
-\title{\Huge \textbf{AGW Analytics}\\ \Large Wissenschaftliches Handbuch / Academic Manual}
-\author{Ausschuss für die Geschichte der Wirtschaftswissenschaften\\ Verein für Socialpolitik}
-\date{2026}
+% ---- Running heads ----
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.8pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{rulegrey}\leaders\hrule height \headrulewidth\hfill}}
+\fancyhead[LE]{\small\sffamily\color{navy}\leftmark}
+\fancyhead[RO]{\small\sffamily\color{navy}\nouppercase{\rightmark}}
+\fancyhead[LO,RE]{\small\sffamily\color{navy}\textbf{AGW Analytics}}
+\fancyfoot[C]{\small\sffamily\color{navy}\thepage}
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}\fancyfoot[C]{\small\sffamily\color{navy}\thepage}}
+
+% ---- "How to read" callout box ----
+\newtcolorbox{lesehilfe}[1][Lesehilfe]{
+  enhanced, breakable,
+  colback=zebra, colframe=navy,
+  boxrule=0.4pt, left=10pt, right=10pt, top=6pt, bottom=6pt,
+  fonttitle=\sffamily\bfseries\color{white},
+  coltitle=white, attach boxed title to top left={yshift=-2mm,xshift=6pt},
+  boxed title style={colback=navy,boxrule=0pt,arc=1pt},
+  title={#1}
+}
+
+% ---- Metadata macros ----
+\newcommand{\guideversion}{v1.0}
+\newcommand{\guidedate}{Juni 2026}
+\newcommand{\siteurl}{https://david-bieri.github.io/agw-vfs/}
 
 \begin{document}
+\sffamily\selectlanguage{ngerman}
 
-\maketitle
+% =====================================================================
+%  TITLE PAGE
+% =====================================================================
+\begin{titlepage}
+\thispagestyle{empty}
+\centering
+\vspace*{2.2cm}
+{\sffamily\small\color{accent}\bfseries AUSSCHUSS FÜR DIE GESCHICHTE DER WIRTSCHAFTSWISSENSCHAFTEN}\\[2pt]
+{\sffamily\small\color{accent}VEREIN FÜR SOCIALPOLITIK}\\[1.6cm]
+
+{\color{rulegrey}\rule{0.5\textwidth}{0.8pt}}\\[0.9cm]
+{\rmfamily\fontsize{46}{50}\selectfont\bfseries\color{navy}AGW Analytics}\\[0.35cm]
+{\sffamily\large\color{navydark}\itshape Intellectual Lineages in German-Language Economics}\\[0.55cm]
+{\sffamily\Large\color{navydark}Wissenschaftliches Handbuch}\\[2pt]
+{\sffamily\large\color{accent}\itshape Academic Manual}\\[0.9cm]
+{\color{rulegrey}\rule{0.5\textwidth}{0.8pt}}\\[1.4cm]
+
+{\sffamily\normalsize\color{navydark}Eine quantitative Analyse von 43 AGW-Konferenzbänden}\\
+{\sffamily\normalsize\color{navydark}\itshape A quantitative analysis of 43 AGW conference volumes}\\[0.3cm]
+{\sffamily\small\color{accent}1980\,--\,2025}
+
+\vfill
+{\sffamily\small\color{navydark}David Bieri \quad·\quad Virginia Tech, SPIA}\\[2pt]
+{\sffamily\footnotesize\color{accent}\href{\siteurl}{\siteurl}}\\[10pt]
+{\sffamily\footnotesize\color{navydark}\guideversion\ \quad·\quad \guidedate}
+\end{titlepage}
+
+% =====================================================================
+%  FRONT MATTER
+% =====================================================================
+\rmfamily
+\pagenumbering{roman}
 \tableofcontents
-\newpage
+\vspace{1.5em}
+
+\section*{Über dieses Handbuch \,/\, About this Manual}
+\addcontentsline{toc}{section}{Über dieses Handbuch / About this Manual}
+\selectlanguage{ngerman}
+Dieses Handbuch dokumentiert die AGW-Analytics-Plattform sowohl als Bedienungsanleitung als auch als wissenschaftliche Methodendokumentation. Es ist in zwei spiegelgleiche Teile gegliedert: \textbf{Teil~I} (deutsch) und \textbf{Teil~II} (englisch). Glossar, Literatur, Datenverfügbarkeit und Impressum am Ende gelten für beide Fassungen.
+
+\selectlanguage{english}
+This manual documents the AGW Analytics platform both as an operating guide and as a record of method. It is organised into two mirrored parts: \textbf{Part~I} (German) and \textbf{Part~II} (English). The glossary, references, data-availability statement and colophon at the end apply to both.
 
 \selectlanguage{ngerman}
+\begin{lesehilfe}[Zitiervorschlag \,/\, Suggested citation]
+\rmfamily Bieri, D. (2026). \textit{AGW Analytics: Intellectual Lineages in German-Language Economics} [Interactive web application]. Ausschuss für die Geschichte der Wirtschaftswissenschaften, Verein für Socialpolitik. \url{\siteurl}
+\end{lesehilfe}
+
+\noindent{\sffamily\small\bfseries\color{navy}BibTeX}
+\begin{verbatim}
+@misc{bieri2026agw,
+  author       = {Bieri, David},
+  title        = {{AGW Analytics: Intellectual Lineages in German-Language Economics}},
+  year         = {2026},
+  howpublished = {Interactive web application},
+  note         = {Ausschuss fuer die Geschichte der Wirtschaftswissenschaften,
+                  Verein fuer Socialpolitik},
+  url          = {https://david-bieri.github.io/agw-vfs/}
+}
+\end{verbatim}
+
+\clearpage
+\pagenumbering{arabic}
+
+% =====================================================================
+%  PART I — DEUTSCH
+% =====================================================================
+\part{Deutsche Fassung}
+\selectlanguage{ngerman}
+\setcounter{section}{0}
+
 \section{Einführung}
-Dieses Handbuch dient als wissenschaftliche Begleitdokumentation zu den AGW Analytics-Werkzeugen. Die Plattform visualisiert und analysiert die intellektuelle Rezeptionsgeschichte innerhalb des Ausschusses für die Geschichte der Wirtschaftswissenschaften (AGW) im Verein für Socialpolitik über einen Zeitraum von 43 Jahren (1980--2023).
+Dieses Handbuch dient als wissenschaftliche Begleitdokumentation zu den AGW Analytics-Werkzeugen. Die Plattform visualisiert und analysiert die intellektuelle Rezeptionsgeschichte innerhalb des Ausschusses für die Geschichte der Wirtschaftswissenschaften (AGW) im Verein für Socialpolitik über 43 Konferenzbände im Zeitraum 1980--2025.
 
 Die zugrundeliegenden Daten basieren auf den Konferenzbänden des AGW und wurden durch Text-Mining, Netzwerkanalyse und manuelle Kuration aufbereitet. Die Plattform bietet fünf Hauptperspektiven auf diese Daten: einen geführten \textit{Rundgang}, den \textit{Atlas}, \textit{Analysen}, \textit{Netzwerke} und den \textit{Zeitverlauf}. Zusätzlich bietet die Startseite dynamische Visualisierungen als Einstieg.
 
@@ -58,20 +182,20 @@ Der Korpus umfasst die veröffentlichten Bände der AGW-Jahrestagungen. Mittels 
 \subsection{Kookkurrenz und PPMI}
 Die thematische Analyse (Tab \textit{Zeitverlauf} $\rightarrow$ \textit{Themenanalyse}) basiert auf Positive Pointwise Mutual Information (PPMI). PPMI misst die Assoziationsstärke zwischen einer Figur und einem von 53 identifizierten Themen innerhalb eines Textfensters von $\pm 400$ Zeichen.
 \begin{equation}
-    PPMI(x,y) = \max\left(0, \log_2 \frac{P(x,y)}{P(x)P(y)}\right)
+    \mathrm{PPMI}(x,y) = \max\!\left(0,\ \log_2 \frac{P(x,y)}{P(x)\,P(y)}\right)
 \end{equation}
 Dieser Ansatz filtert allgemeine Begriffe heraus und hebt charakteristische, spezifische Assoziationen hervor \cite{jurafsky2000}.
 
 \subsection{Netzwerkkonstruktion}
 Die \textit{Ego-Netzwerke} (Tab \textit{Netzwerke}) kombinieren zwei Kantenarten:
-\begin{enumerate}
+\begin{enumerate}[leftmargin=*,itemsep=2pt,topsep=2pt]
     \item \textbf{Ko-Zitationen:} Figuren, die signifikant oft im selben Konferenzband zitiert werden.
     \item \textbf{Stammbaum (Lineage):} Historisch belegte Lehrer-Schüler-Beziehungen, extrahiert aus ideengeschichtlichen Standardwerken und der HET Website \cite{hetwebsite}.
 \end{enumerate}
 
 \subsection{Schulvergleich-Metriken}
 Der \textit{Schulvergleich} (Tab \textit{Analysen} $\rightarrow$ \textit{Schulvergleich}) berechnet sechs Dimensionen für jede Denkschule:
-\begin{enumerate}
+\begin{enumerate}[leftmargin=*,itemsep=2pt,topsep=2pt]
     \item \textbf{Prominenz:} Gesamtanteil an allen Konferenzzitationen (\%).
     \item \textbf{Figurenanzahl:} Anzahl der Figuren dieser Schule im Kanon.
     \item \textbf{Zeitliche Persistenz:} In wie vielen Dekaden die Schule aktiv war (0--5).
@@ -83,12 +207,20 @@ Der \textit{Schulvergleich} (Tab \textit{Analysen} $\rightarrow$ \textit{Schulve
 \subsection{Pfadberechnung (Dijkstra)}
 Die \textit{Einflusspfade} (Tab \textit{Netzwerke} $\rightarrow$ \textit{Pfade}) verwenden den Dijkstra-Algorithmus auf dem kombinierten Netzwerk (Ko-Zitationen + Stammbaum), um den kürzesten intellektuellen Pfad zwischen zwei beliebigen Figuren zu finden. Die Kantengewichte basieren auf der inversen Ko-Zitationsstärke; Stammbaum-Kanten erhalten ein bevorzugtes Gewicht, da sie direkte intellektuelle Transmission repräsentieren.
 
+\subsection{Grenzen der Interpretation}
+Die Plattform quantifiziert ideengeschichtliche \emph{Rezeption}, nicht intellektuelle Bedeutung an sich. Drei Vorbehalte sind beim Lesen aller Visualisierungen zu beachten:
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+    \item \textbf{Erfassung.} ``Zitation'' bezeichnet hier die Nennung einer Figur im Volltext der Konferenzbände, nicht eine formale bibliografische Zitation. Häufigkeit misst Aufmerksamkeit, nicht Zustimmung: Eine intensiv \emph{kritisierte} Figur erscheint prominent.
+    \item \textbf{NER-Präzision.} Die automatische Entitätenerkennung ist fehlerbehaftet; Namensgleichheit, Abkürzungen und OCR-Artefakte wurden manuell nachkuratiert, aber Restfehler sind möglich. Die Disambiguierung (Max vs. Alfred Weber) ist kuratiert, nicht algorithmisch garantiert.
+    \item \textbf{Stammbaum-Kanten sind interpretativ.} Lehrer-Schüler-Beziehungen reichen von dokumentierter Promotionsbetreuung bis zu breiterer ``Beeinflussung''. Jede Kante ist quellenbelegt (siehe Datenverfügbarkeit), aber die Auswahl bleibt eine wissenschaftliche Setzung, keine objektive Tatsache.
+\end{itemize}
+
 \section{Die Analysewerkzeuge}
 
 \subsection{Startseite (Landing Page)}
 Die Startseite (\texttt{index.html}) wählt bei jedem Aufruf zufällig einen von fünf visuellen Modi als animierten Hintergrund (Hero-Visualisierung). Jeder Modus beleuchtet einen anderen Aspekt des Datensatzes und lädt zur weiteren Exploration ein:
-\begin{itemize}
-    \item \textbf{Animierte Zeitleiste:} Ein horizontales Band (1980--2023), auf dem Konferenzorte und Namen dominierender Figuren einblenden.
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+    \item \textbf{Animierte Zeitleiste:} Ein horizontales Band (1980--2025), auf dem Konferenzorte und Namen dominierender Figuren einblenden.
     \item \textbf{Namen-Wolke:} Top-40-Figuren schweben mit sanfter Gravitation, skaliert nach Zitationshäufigkeit.
     \item \textbf{Mini-Streamgraph:} Eine kompakte, sich selbst zeichnende Version der Themenfluss-Visualisierung.
     \item \textbf{Zitate-Karussell:} Rotierende Zitate zentraler Figuren gepaart mit einer Sparkline ihres Zitationsverlaufs.
@@ -96,27 +228,31 @@ Die Startseite (\texttt{index.html}) wählt bei jedem Aufruf zufällig einen von
 \end{itemize}
 
 \subsection{Rundgang (Scrollytelling)}
-Eine kuratierte Datenreise durch 43 Jahre intellektuelle Geschichte. Dieser Modus ist der Standard-Einstieg in die Analyseseite und verwendet ein Split-Panel-Layout: auf der linken Seite scrollt der Leser durch wissenschaftlich fundierten Text, auf der rechten Seite reagieren synchronisierte Visualisierungen. Sie behandelt die Dominanz der Klassik in den 1980ern, das ``Austrian Revival'' \cite{vaughn1994}, Schumpeters Rolle als Brückenfigur und die Pluralisierung des Diskurses nach der Jahrtausendwende.
+Eine kuratierte Datenreise durch über vier Jahrzehnte intellektueller Geschichte. Dieser Modus ist der Standard-Einstieg in die Analyseseite und verwendet ein Split-Panel-Layout: auf der linken Seite scrollt der Leser durch wissenschaftlich fundierten Text, auf der rechten Seite reagieren synchronisierte Visualisierungen. Sie behandelt die Dominanz der Klassik in den 1980ern, das ``Austrian Revival'' \cite{vaughn1994}, Schumpeters Rolle als Brückenfigur und die Pluralisierung des Diskurses nach der Jahrtausendwende.
 
 \subsection{Atlas (Rezeptionsatlas)}
 Der Atlas bietet eine makroskopische Sicht auf die Präsenz von Figuren über die Zeit. Das \textit{Präsenz-Streudiagramm} zeigt punktgenau, in welchem Jahr eine Figur wie intensiv diskutiert wurde. Die \textit{Epochen-Heatmap} aggregiert diese Daten auf Jahrzehnte-Ebene, um strukturelle Verschiebungen sichtbar zu machen. Die Heatmap verwendet einen Opazitäts-Floor von 0,15 für alle nicht-null Zellen, um auch schwache Signale sichtbar zu halten.
 
 \subsection{Analysen (Strukturelle Perspektiven)}
 Dieser Bereich zerlegt den Korpus in fünf analytische Dimensionen plus den Schulvergleich:
-\begin{itemize}
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
     \item \textbf{A -- Intellektuelle Strömungen:} Zeigt die Dominanz von Denkschulen als gestapelte Flächendiagramme über 16 Schulen und 43 Konferenzen.
     \item \textbf{B -- Intellektuelle Konstellation:} Force-directed PPMI-Kookkurrenz-Netzwerk mit 47 Schlüsselfiguren. Figuren, die häufig im selben Kontext zitiert werden, erscheinen nahe beieinander.
-    \item \textbf{C -- Aufsteiger \& Vergessene:} Vergleicht die Zitationshäufigkeit der ersten Hälfte des Korpus (1980--2000) mit der zweiten (2001--2023).
+    \item \textbf{C -- Aufsteiger \& Vergessene:} Vergleicht die Zitationshäufigkeit der ersten Hälfte des Korpus (1980--2000) mit der zweiten (2001--2025).
     \item \textbf{D -- Der lange Griff:} Visualisiert den zeitlichen Abstand zwischen dem Wirken einer Figur (Geburtsjahr) und ihrer Rezeption im AGW.
     \item \textbf{E -- Säulen \& Gäste:} Horizontale Balken, sortiert nach Auftrittshäufigkeit. Trennt den stabilen Kern ($\geq$10 Konferenzen) vom Peripheriekanon.
     \item \textbf{Schulvergleich (Radar):} Vergleicht 2--3 Denkschulen über 6 Dimensionen (Prominenz, Figurenanzahl, Zeitliche Persistenz, Schulbrücken, Interne Kohäsion, Wachstumstrend) in einem Radardiagramm mit begleitender Datentabelle.
 \end{itemize}
 
+\begin{lesehilfe}[Lesehilfe: das Radardiagramm]
+\rmfamily Jede Achse ist auf den Maximalwert aller verglichenen Schulen normiert; eine größere umschlossene Fläche bedeutet nicht ``besser'', sondern ein breiteres Profil. Eine schmale, weit nach \emph{Wachstumstrend} ausgereckte Form etwa kennzeichnet eine kleine, aber aufstrebende Schule.
+\end{lesehilfe}
+
 \subsection{Netzwerke (Relationalität)}
 Fünf relationale Ansichten auf das intellektuelle Netzwerk:
-\begin{itemize}
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
     \item \textbf{Interaktiver Ego-Explorer:} Ein Force-directed Graph, der die Vernetzung der 81 Schlüsselfiguren zeigt. Durch Klicken auf einen Knoten (``Ego'') werden direkte Nachbarn hervorgehoben. Das Detail-Panel reichert die quantitative Ansicht mit qualitativen biografischen Daten an (Lebensdaten, Hauptwerke, Stammbaum). Eine \textit{Visitenkarte} (Share Card) kann als PNG-Bild exportiert werden.
-    \item \textbf{Stammbaum (Lineage):} Hierarchische Ansicht der Lehrer-Schüler-Beziehungen, geordnet nach Denkschulen (Zeilen) und Zeit (Spalten).
+    \item \textbf{Stammbaum (Lineage):} Hierarchische Ansicht der Lehrer-Schüler-Beziehungen, geordnet nach Denkschulen (Zeilen/Lanes) und Zeit (Spalten). Jede Kante ist quellenbelegt: Der überwiegende Teil verweist auf ideengeschichtliche Standardwerke (``Reference-Track''), eine kleinere Gruppe auf laufende Editionsarbeit zu August Lösch \cite{bieri2026loesch}. So lässt sich etwa Löschs eigene Verortung -- als Schüler im Umfeld von Joseph Schumpeter und Arthur Spiethoff in Bonn -- entlang der Spalten nachvollziehen.
     \item \textbf{Sankey (Ideenfluss):} Ein Alluvial-Diagramm, das die Verschiebung von Aufmerksamkeit zwischen Denkschulen über fünf Jahrzehnte modelliert. Die Kantenstärken basieren auf einer Kombination aus Aufmerksamkeitsmigration, Ko-Zitationen und intellektuellen Stammbäumen.
     \item \textbf{Pfade (Einflusspfade):} Findet den kürzesten intellektuellen Pfad zwischen zwei beliebigen Denkern mittels Dijkstra-Algorithmus. Die Visualisierung zeigt die Knotenfolge mit beschrifteten Kanten (z.\,B. ``Lehrer/Schüler'', ``Ko-Zitation'') und bewahrt die kanonische Pfeilrichtung (Lehrer $\rightarrow$ Schüler).
     \item \textbf{Zeitverlauf (Netzwerk-Evolution):} Animierte Ansicht der Netzwerkentwicklung über fünf Jahrzehnte (1980er--2020er). Ein Play-Button startet die automatische Abfolge; ein Schieberegler erlaubt manuelles Navigieren. Neue Figuren werden pro Dekade farblich hervorgehoben. Ein kumulativer Modus zeigt das wachsende Gesamtnetzwerk, ein nicht-kumulativer Modus nur die jeweilige Dekade.
@@ -124,6 +260,10 @@ Fünf relationale Ansichten auf das intellektuelle Netzwerk:
 
 \subsection{Zeitverlauf (Thematische Evolution)}
 Der \textit{Streamgraph} (Themenfluss) visualisiert die relative und absolute Präsenz von 16 Denkschulen. Die \textit{PPMI-Assoziationen} bieten tiefe Einblicke in den semantischen Kontext, in dem Figuren diskutiert wurden.
+
+\begin{lesehilfe}[Lesehilfe: der Streamgraph]
+\rmfamily Die \emph{Dicke} eines Bandes zeigt den Anteil einer Schule pro Jahr; die \emph{vertikale Verschiebung} hat keine eigene Bedeutung (die Bänder sind um eine Mittellinie gestapelt). Lesen Sie Trends, nicht absolute Höhen einzelner Punkte.
+\end{lesehilfe}
 
 \section{Bedienungshinweise}
 \subsection{Sprachumschaltung}
@@ -135,10 +275,25 @@ Ein ``\textbf{Tips}''-Button blendet kontextuelle Hinweise an den Unter-Tabs ein
 \subsection{Zoom und Navigation}
 Alle Visualisierungen unterstützen einen Zoom-Slider ($-$/$+$/Reset) zur Anpassung der Darstellungsgröße. SVG-basierte Visualisierungen können per Mausrad gezoomt und per Drag verschoben werden.
 
-\newpage
+\subsection{Suche}
+Die Tastenkombination \texttt{Strg}/\texttt{Cmd}\,+\,\texttt{K} öffnet eine Schnellsuche über die Inhalte der aktuellen Seite (Figuren, Schulen, Programmpunkte).
+
+\subsection{Barrierefreiheit}
+Die Oberfläche respektiert die Systemeinstellung \texttt{prefers-reduced-motion} (Animationen werden dann reduziert), bietet sichtbare Fokus-Markierungen für Tastaturnavigation und Touch-Ziele von mindestens 44\,px.
+
+\subsection{Installation und Offline-Nutzung}
+Die Seite ist eine Progressive Web App (PWA): Über ``Zum Startbildschirm hinzufügen'' lässt sie sich wie eine App installieren. Ein Service Worker hält die zuletzt besuchten Seiten für die Offline-Nutzung vor.
+
+% =====================================================================
+%  PART II — ENGLISH
+% =====================================================================
+\clearpage
+\part{English Version}
 \selectlanguage{english}
+\setcounter{section}{0}
+
 \section{Introduction}
-This manual serves as the academic companion documentation for the AGW Analytics tools. The platform visualizes and analyzes the history of intellectual reception within the Committee for the History of Economics (AGW) of the Verein für Socialpolitik over a 43-year period (1980--2023).
+This manual serves as the academic companion documentation for the AGW Analytics tools. The platform visualizes and analyzes the history of intellectual reception within the Committee for the History of Economics (AGW) of the Verein für Socialpolitik across 43 conference volumes spanning 1980--2025.
 
 The underlying data is based on the published conference proceedings of the AGW, processed through text mining, network analysis, and manual curation. The platform offers five main perspectives on this data: a \textit{Guided Tour}, the \textit{Atlas}, \textit{Analytics}, \textit{Networks}, and the \textit{Timeline}. Additionally, the landing page features dynamic background visualizations as an entry point.
 
@@ -147,18 +302,22 @@ The underlying data is based on the published conference proceedings of the AGW,
 The corpus comprises the published volumes of the AGW annual conferences. Using Named Entity Recognition (NER), 81 key intellectual figures were identified and disambiguated.
 
 \subsection{Co-occurrence and PPMI}
-The thematic analysis (Tab \textit{Timeline} $\rightarrow$ \textit{Topic Analysis}) is based on Positive Pointwise Mutual Information (PPMI). PPMI measures the strength of association between a figure and one of 53 identified topics within a text window of $\pm 400$ characters. This approach filters out generic terms and highlights characteristic, specific associations \cite{jurafsky2000}.
+The thematic analysis (Tab \textit{Timeline} $\rightarrow$ \textit{Topic Analysis}) is based on Positive Pointwise Mutual Information (PPMI). PPMI measures the strength of association between a figure and one of 53 identified topics within a text window of $\pm 400$ characters.
+\begin{equation}
+    \mathrm{PPMI}(x,y) = \max\!\left(0,\ \log_2 \frac{P(x,y)}{P(x)\,P(y)}\right)
+\end{equation}
+This approach filters out generic terms and highlights characteristic, specific associations \cite{jurafsky2000}.
 
 \subsection{Network Construction}
 The \textit{Ego Networks} (Tab \textit{Networks}) combine two types of edges:
-\begin{enumerate}
+\begin{enumerate}[leftmargin=*,itemsep=2pt,topsep=2pt]
     \item \textbf{Co-citations:} Figures that are significantly often cited in the same conference volume.
     \item \textbf{Lineage:} Historically documented teacher-student relationships, extracted from standard works in the history of economic thought and the HET Website \cite{hetwebsite}.
 \end{enumerate}
 
 \subsection{School Comparison Metrics}
 The \textit{School Comparison} (Tab \textit{Analytics} $\rightarrow$ \textit{School Comparison}) computes six dimensions for each school of thought:
-\begin{enumerate}
+\begin{enumerate}[leftmargin=*,itemsep=2pt,topsep=2pt]
     \item \textbf{Prominence:} Total share of all conference citations (\%).
     \item \textbf{Figure count:} Number of figures belonging to this school in the canon.
     \item \textbf{Temporal persistence:} In how many decades the school was active (0--5).
@@ -170,12 +329,20 @@ The \textit{School Comparison} (Tab \textit{Analytics} $\rightarrow$ \textit{Sch
 \subsection{Path Computation (Dijkstra)}
 The \textit{Influence Pathways} (Tab \textit{Networks} $\rightarrow$ \textit{Pathways}) use Dijkstra's algorithm on the combined network (co-citations + lineage) to find the shortest intellectual path between any two figures. Edge weights are based on inverse co-citation strength; lineage edges receive a preferential weight as they represent direct intellectual transmission.
 
+\subsection{Limitations and Caveats}
+The platform quantifies the \emph{reception} of ideas, not intellectual importance as such. Three caveats apply when reading every visualization:
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+    \item \textbf{What is captured.} ``Citation'' here means a mention of a figure in the full text of the proceedings, not a formal bibliographic reference. Frequency measures attention, not endorsement: a heavily \emph{criticised} figure appears prominent.
+    \item \textbf{NER precision.} Automatic entity recognition is imperfect; homonyms, abbreviations and OCR artefacts were manually curated, but residual errors are possible. Disambiguation (Max vs. Alfred Weber) is curated, not algorithmically guaranteed.
+    \item \textbf{Lineage edges are interpretive.} Teacher-student links range from documented doctoral supervision to broader ``influence''. Every edge is sourced (see Data Availability), but the selection remains a scholarly judgement, not an objective fact.
+\end{itemize}
+
 \section{The Analytical Tools}
 
 \subsection{Landing Page}
 The landing page (\texttt{index.html}) randomly selects one of five visual modes as an animated background on each load. Each mode highlights a different aspect of the dataset and invites further exploration:
-\begin{itemize}
-    \item \textbf{Animated Timeline:} A horizontal ribbon (1980--2023) where conference markers and names of dominant figures fade in.
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
+    \item \textbf{Animated Timeline:} A horizontal ribbon (1980--2025) where conference markers and names of dominant figures fade in.
     \item \textbf{Name Cloud:} The top 40 figures float with gentle gravity, scaled by citation frequency.
     \item \textbf{Mini Streamgraph:} A compact, auto-drawing version of the topic flow visualization.
     \item \textbf{Quote Carousel:} Rotating quotes from central figures paired with a sparkline of their citation trajectory.
@@ -183,27 +350,31 @@ The landing page (\texttt{index.html}) randomly selects one of five visual modes
 \end{itemize}
 
 \subsection{Guided Tour (Scrollytelling)}
-A curated data journey through 43 years of intellectual history. This mode serves as the default entry point to the analytics page and uses a split-panel layout: on the left side, the reader scrolls through academically grounded text, while synchronized visualizations respond on the right side. It covers the dominance of the Classics in the 1980s, the ``Austrian Revival'' \cite{vaughn1994}, Schumpeter's role as a bridge figure, and the pluralization of discourse after the millennium.
+A curated data journey through more than four decades of intellectual history. This mode serves as the default entry point to the analytics page and uses a split-panel layout: on the left side, the reader scrolls through academically grounded text, while synchronized visualizations respond on the right side. It covers the dominance of the Classics in the 1980s, the ``Austrian Revival'' \cite{vaughn1994}, Schumpeter's role as a bridge figure, and the pluralization of discourse after the millennium.
 
 \subsection{Atlas (Reception Atlas)}
 The Atlas provides a macroscopic view of the presence of figures over time. The \textit{Presence Scatter} shows exactly in which year a figure was discussed and how intensely. The \textit{Era Heatmap} aggregates this data at the decadal level to reveal structural shifts. The heatmap uses an opacity floor of 0.15 for all non-zero cells to keep even weak signals visible.
 
 \subsection{Analytics (Structural Perspectives)}
 This section decomposes the corpus into five analytical dimensions plus the School Comparison:
-\begin{itemize}
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
     \item \textbf{A -- Intellectual Tides:} Shows the dominance of schools of thought as stacked area charts across 16 schools and 43 conferences.
     \item \textbf{B -- Intellectual Constellation:} Force-directed PPMI co-occurrence network with 47 key figures. Figures frequently cited in the same context appear close together.
-    \item \textbf{C -- Rising \& Fading:} Compares citation frequency of the first half of the corpus (1980--2000) with the second (2001--2023).
+    \item \textbf{C -- Rising \& Fading:} Compares citation frequency of the first half of the corpus (1980--2000) with the second (2001--2025).
     \item \textbf{D -- The Long Reach:} Visualizes the temporal distance between a figure's active period (birth year) and their reception in the AGW.
     \item \textbf{E -- Pillars \& Guests:} Horizontal bars sorted by frequency of appearance. Separates the stable core ($\geq$10 conferences) from the peripheral canon.
     \item \textbf{School Comparison (Radar):} Compares 2--3 schools of thought across 6 dimensions (Prominence, Figure Count, Temporal Persistence, School Bridges, Internal Cohesion, Growth Trend) in a radar chart with an accompanying data table.
 \end{itemize}
 
+\begin{lesehilfe}[How to read: the radar chart]
+\rmfamily Each axis is normalised to the maximum across the compared schools; a larger enclosed area is not ``better'' but a broader profile. A narrow shape stretched far along \emph{Growth Trend}, for instance, marks a small but rising school.
+\end{lesehilfe}
+
 \subsection{Networks (Relationality)}
 Five relational views on the intellectual network:
-\begin{itemize}
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
     \item \textbf{Interactive Ego Explorer:} A force-directed graph showing the interconnectedness of the 81 key figures. Clicking on a node (``Ego'') highlights direct neighbors. The detail panel enriches the quantitative view with qualitative biographical data (life dates, major works, lineage). A \textit{Share Card} can be exported as a PNG image.
-    \item \textbf{Lineage:} Hierarchical view of teacher-student relationships, organized by school of thought (rows) and time (columns).
+    \item \textbf{Lineage:} Hierarchical view of teacher-student relationships, organized by school of thought (rows/lanes) and time (columns). Every edge is sourced: the majority point to standard works in the history of economic thought (the ``reference track''), and a smaller set to ongoing editorial work on August Lösch \cite{bieri2026loesch}. Lösch's own position -- as a student in the orbit of Joseph Schumpeter and Arthur Spiethoff at Bonn -- can thus be traced along the columns.
     \item \textbf{Sankey (Idea Flow):} An alluvial diagram modeling the shift of attention between schools of thought over five decades. Edge weights are based on a combination of attention migration, co-citations, and intellectual lineages.
     \item \textbf{Pathways (Influence Pathways):} Finds the shortest intellectual path between any two thinkers using Dijkstra's algorithm. The visualization shows the node sequence with labeled edges (e.g., ``Teacher/Student'', ``Co-citation'') and preserves canonical arrow direction (teacher $\rightarrow$ student).
     \item \textbf{Temporal (Network Evolution):} Animated view of network development over five decades (1980s--2020s). A play button starts automatic progression; a slider allows manual navigation. New figures are highlighted per decade. A cumulative mode shows the growing total network; a non-cumulative mode shows only the current decade.
@@ -211,6 +382,10 @@ Five relational views on the intellectual network:
 
 \subsection{Timeline (Thematic Evolution)}
 The \textit{Streamgraph} (Topic Flow) visualizes the relative and absolute presence of 16 schools of thought. The \textit{PPMI Associations} provide deep insights into the semantic context in which figures were discussed.
+
+\begin{lesehilfe}[How to read: the streamgraph]
+\rmfamily The \emph{thickness} of a band shows a school's share in a given year; the \emph{vertical position} carries no meaning of its own (bands are stacked around a centre line). Read trends, not the absolute height of any single point.
+\end{lesehilfe}
 
 \section{Usage Notes}
 \subsection{Language Switching}
@@ -222,8 +397,43 @@ A ``\textbf{Tips}'' button toggles contextual hints on the sub-tabs on or off. T
 \subsection{Zoom and Navigation}
 All visualizations support a zoom slider ($-$/$+$/Reset) for adjusting display size. SVG-based visualizations can be zoomed via mouse wheel and panned via drag.
 
-\newpage
-\selectlanguage{ngerman}
+\subsection{Search}
+The keyboard shortcut \texttt{Ctrl}/\texttt{Cmd}\,+\,\texttt{K} opens a quick search across the content of the current page (figures, schools, programme items).
+
+\subsection{Accessibility}
+The interface respects the \texttt{prefers-reduced-motion} system setting (animations are reduced accordingly), provides visible focus indicators for keyboard navigation, and uses touch targets of at least 44\,px.
+
+\subsection{Installation and Offline Use}
+The site is a Progressive Web App (PWA): via ``Add to Home Screen'' it can be installed like an app. A service worker keeps recently visited pages available offline.
+
+% =====================================================================
+%  BACK MATTER (applies to both parts)
+% =====================================================================
+\clearpage
+\part{Glossar · Literatur · Anhang \,/\, Glossary · References · Appendix}
+\setcounter{section}{0}
+
+\section{Glossar \,/\, Glossary}
+\renewcommand{\arraystretch}{1.3}
+\rowcolors{2}{zebra}{white}
+\noindent\begin{tabularx}{\textwidth}{@{}>{\bfseries\sffamily}l X X@{}}
+\toprule
+\sffamily\textbf{Begriff / Term} & \sffamily\textbf{Deutsch} & \sffamily\textbf{English}\\
+\midrule
+PPMI & Positive Pointwise Mutual Information: misst, wie stark zwei Begriffe über den Zufall hinaus gemeinsam auftreten. & Positive Pointwise Mutual Information: measures how strongly two terms co-occur beyond chance. \\
+Ko-Zitation & Gemeinsame Nennung zweier Figuren im selben Band. & Joint mention of two figures in the same volume. \\
+Ego-Netzwerk & Teilgraph um eine fokussierte Figur und ihre direkten Nachbarn. & Subgraph centred on one focal figure and its direct neighbours. \\
+Force-directed & Layout, das verbundene Knoten anzieht und alle Knoten abstößt. & Layout that attracts linked nodes and repels all nodes. \\
+Alluvial / Sankey & Flussdiagramm; Bandbreite kodiert Mengen. & Flow diagram; band width encodes magnitude. \\
+Streamgraph & Um eine Mittellinie gestapeltes Flächendiagramm. & Area chart stacked around a centre baseline. \\
+Dijkstra & Algorithmus für den kürzesten gewichteten Pfad. & Shortest weighted-path algorithm. \\
+NER & Automatische Erkennung von Eigennamen im Text. & Automatic recognition of proper names in text. \\
+Stammbaum / Lineage & Quellenbelegte Lehrer-Schüler-Kanten. & Sourced teacher-student edges. \\
+Opazitäts-Floor & Mindesttransparenz, damit schwache Werte sichtbar bleiben. & Minimum opacity so weak values stay visible. \\
+\bottomrule
+\end{tabularx}
+
+\section{Literatur \,/\, References}
 \begin{thebibliography}{9}
 \bibitem{jurafsky2000}
 Jurafsky, D., \& Martin, J. H. (2000). \textit{Speech and Language Processing}. Prentice Hall.
@@ -239,13 +449,29 @@ Schumpeter, J. A. (1954). \textit{History of Economic Analysis}. Oxford Universi
 
 \bibitem{blaug1997}
 Blaug, M. (1997). \textit{Economic Theory in Retrospect} (5th ed.). Cambridge University Press.
+
+\bibitem{bieri2026loesch}
+Bieri, D. (Ed.). (2026, forthcoming). \textit{August Lösch: Briefe und Korrespondenz} (Beiträge zur Geschichte der deutschsprachigen Ökonomie, Bd. 53). Metropolis Verlag, Marburg.
 \end{thebibliography}
 
-\section*{Weiterführende Literatur / Further Reading}
-\begin{itemize}
+\section*{Weiterführende Literatur \,/\, Further Reading}
+\addcontentsline{toc}{section}{Weiterführende Literatur / Further Reading}
+\begin{itemize}[leftmargin=*,itemsep=2pt,topsep=2pt]
     \item Kurz, H. D. (2013). \textit{Geschichte des ökonomischen Denkens}. C.H. Beck.
-    \item Tribe, K. (1995). \textit{Strategies of Economic Order: German Economic Discourse, 1750-1950}. Cambridge University Press.
+    \item Tribe, K. (1995). \textit{Strategies of Economic Order: German Economic Discourse, 1750--1950}. Cambridge University Press.
     \item Hagemann, H. (Ed.). (2010). \textit{Studien zur Entwicklung der ökonomischen Theorie}. Duncker \& Humblot.
 \end{itemize}
+
+\section{Datenverfügbarkeit \,/\, Data Availability}
+\selectlanguage{ngerman}
+Der Quellcode der Plattform und die kuratierten Datensätze (einschließlich der quellenbelegten Stammbaum-Kantenliste) sind öffentlich einsehbar: \href{https://github.com/david-bieri/agw-vfs}{github.com/david-bieri/agw-vfs}. Für reproduzierbare Zitate sollte die jeweils verwendete Version (Commit-Hash bzw. \guideversion) angegeben werden.
+
+\selectlanguage{english}
+\noindent The platform source code and curated datasets (including the sourced lineage edge list) are publicly available at \href{https://github.com/david-bieri/agw-vfs}{github.com/david-bieri/agw-vfs}. For reproducible citation, state the specific version used (commit hash or \guideversion).
+
+\section*{Impressum \,/\, Colophon}
+\addcontentsline{toc}{section}{Impressum / Colophon}
+\selectlanguage{ngerman}
+Herausgegeben vom Ausschuss für die Geschichte der Wirtschaftswissenschaften (AGW), einem ständigen Ausschuss des Vereins für Socialpolitik (Vorsitz: Prof. Rainer Klump). Konzeption, Datenkuration und Umsetzung: David Bieri, Virginia Tech, School of Public and International Affairs (SPIA), Gastgeber der Jahrestagung 2026 am Steger Center, Riva San Vitale. Kontakt: \href{mailto:bieri@vt.edu}{bieri@vt.edu}.
 
 \end{document}
