@@ -596,12 +596,12 @@ function initLogistikMap() {
     [45.9040, 8.9703, G,  '\uD83C\uDF93',
       '<strong>Steger Center (Tagungsort)</strong><br>Villa Maderni, Via Settala 8<br>'
      +'Riva San Vitale<br><small>10\u201312 Min. Fussweg vom Bahnhof Capolago</small>'],
-    [46.0051, 8.9500, R,  '\uD83C\uDF7D',
-      '<strong>Ristorante Cantinone</strong><br>Piazza Cioccaro 8, Lugano<br>'
+    [46.0048, 8.9533, R,  '\uD83C\uDF7D',
+      '<strong>Ristorante Trattoria Galleria</strong><br>Via Giosu\u00e8 Carducci 4, Lugano<br>'
      +'<small>Willkommensnachtessen, Do 25. Juni, 19:30</small>'],
     [46.0044, 8.9497, B,  '\uD83C\uDFE8',
       '<strong>Hotel Dante</strong><br>Piazza Cioccaro 5, Lugano<br>'
-     +'<small>30\u00a0m vom Cantinone \u00b7 Funicolare direkt vor der T\u00fcr</small>'],
+     +'<small>Funicolare direkt vor der T\u00fcr \u00b7 5\u00a0Min. zur Trattoria Galleria</small>'],
     [46.0028, 8.9504, B,  '\uD83C\uDFE8',
       '<strong>Hotel Walter au Lac</strong><br>Riva Caccia 1, Lugano<br>'
      +'<small>Seelage, 10\u00a0Min. Fussweg zum HB Lugano</small>'],
@@ -656,8 +656,8 @@ function downloadIcal(){
     'SUMMARY:AGW 46. Jahrestagung 2026','LOCATION:Steger Center\\, Via Settala 8\\, Riva San Vitale',
     'URL:https://david-bieri.github.io/agw-vfs/','END:VEVENT',
     'BEGIN:VEVENT','UID:agw2026-thu@agw-vfs.de','DTSTART:20260625T173000Z','DTEND:20260625T210000Z',
-    'SUMMARY:AGW 2026 - Willkommensabendessen (Cantinone\\, Lugano)',
-    'LOCATION:Ristorante Cantinone\\, Piazza Cioccaro 8\\, Lugano','END:VEVENT',
+    'SUMMARY:AGW 2026 - Willkommensabendessen (Trattoria Galleria\\, Lugano)',
+    'LOCATION:Ristorante Trattoria Galleria\\, Via Giosu\u00e8 Carducci 4\\, Lugano','END:VEVENT',
     'BEGIN:VEVENT','UID:agw2026-fri@agw-vfs.de','DTSTART:20260626T070000Z','DTEND:20260626T163000Z',
     'SUMMARY:AGW 2026 - Wissenschaftliches Programm Tag 1','LOCATION:Steger Center\\, Riva San Vitale','END:VEVENT',
     'BEGIN:VEVENT','UID:agw2026-sat@agw-vfs.de','DTSTART:20260627T070000Z','DTEND:20260627T150000Z',

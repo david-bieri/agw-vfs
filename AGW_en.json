@@ -190,7 +190,7 @@
       ]
     },
     "hero_hosted_by": {
-      "de": "Ausgerichtet von",
+      "de": "Veranstaltet von",
       "en": "Hosted by",
       "review_status": "SETTLED"
     },
@@ -246,8 +246,8 @@
       "review_status": "SETTLED"
     },
     "prog_welcome_note": {
-      "de": "Historische Altstadt · direkt an der Funicolare-Station",
-      "en": "Historic old town · next to the funicular station",
+      "de": "Zentrum Lugano · Tel. +41 91 922 24 15",
+      "en": "Central Lugano · Tel. +41 91 922 24 15",
       "review_status": "SETTLED"
     },
     "prog_opening": {
@@ -354,8 +354,8 @@
       "review_status": "SETTLED"
     },
     "card_thu_note": {
-      "de": "Das Restaurant liegt direkt in der historischen Altstadt, an der Funicolare-Station, in unmittelbarer Nähe des empfohlenen Tagungshotels.",
-      "en": "The restaurant is located in the historic old town, adjacent to the funicular station, steps from the recommended conference hotel.",
+      "de": "Tel. +41 91 922 24 15 · www.trattoriagalleria.ch",
+      "en": "Tel. +41 91 922 24 15 · www.trattoriagalleria.ch",
       "review_status": "SETTLED"
     },
     "card_fri_day": {
