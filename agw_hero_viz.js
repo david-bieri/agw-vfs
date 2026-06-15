@@ -37,7 +37,16 @@
     'Mathematical Economics': '#499894',
     'Econometrics': '#499894',
     'Post-Keynesian/Sraffian': '#59a14f',
-    'Contemporary': '#bab0ac'
+    'Contemporary': '#bab0ac',
+    // Lowercase lane-code aliases used by some nodes in the data
+    'klassik': '#4e79a7',          // Classical
+    'hist': '#76b7b2',             // Historical School
+    'aut': '#e15759',              // Austrian School
+    'anglo': '#f28e2b',            // Neoclassical / Anglo
+    'stockholm': '#a0cbe8',        // Stockholm School
+    'inst': '#ff9da7',             // Institutional
+    'ordo': '#9c755f',             // Ordoliberalismus
+    'raum': '#86bcb6'              // Raumwirtschaftslehre
   };
 
   // Curated quotes for Mode D
@@ -71,7 +80,20 @@
       .then(function (r) { return r.json(); })
       .then(function (data) {
         var modes = [modeTimeline, modeNameCloud, modeStreamgraph, modeQuoteCarousel, modeMosaic];
-        var chosen = modes[Math.floor(Math.random() * modes.length)];
+        // Optional override for testing/debugging: ?heroMode=a..e (or 0..4).
+        // Falls back to a random mode for normal visitors.
+        var chosen;
+        var forced = (new URLSearchParams(window.location.search).get('heroMode') || '').toLowerCase();
+        var letterMap = { a: 0, b: 1, c: 2, d: 3, e: 4 };
+        if (forced in letterMap) {
+          chosen = modes[letterMap[forced]];
+        } else if (forced !== '' && !isNaN(parseInt(forced, 10)) && modes[parseInt(forced, 10)]) {
+          chosen = modes[parseInt(forced, 10)];
+        } else {
+          chosen = modes[Math.floor(Math.random() * modes.length)];
+        }
+        var modeNames = ['timeline', 'namecloud', 'streamgraph', 'quotecarousel', 'mosaic'];
+        canvas.setAttribute('data-hero-mode', modeNames[modes.indexOf(chosen)]);
         chosen(canvas, data);
       })
       .catch(function (err) { console.warn('Hero viz: could not load data', err); });
@@ -121,6 +143,48 @@
     });
   }
 
+  // Pick the year (1980–2023) at which a figure is most prominent in the
+  // conference record. Priority: explicit `debut` → midpoint of `activeDecades`
+  // → birth-based estimate. Always clamped to the timeline domain.
+  function figurePeakYear(n) {
+    var year;
+    if (typeof n.debut === 'number') {
+      year = n.debut;
+    } else if (Array.isArray(n.activeDecades) && n.activeDecades.length) {
+      var decs = n.activeDecades.map(function (d) {
+        return parseInt(String(d).replace(/[^0-9]/g, ''), 10);
+      }).filter(function (v) { return !isNaN(v); });
+      if (decs.length) {
+        year = (Math.min.apply(null, decs) + Math.max.apply(null, decs)) / 2 + 5;
+      }
+    }
+    if (typeof year !== 'number' || isNaN(year)) {
+      var birth = n.birth || n.born || 1900;
+      year = birth + 45; // rough "peak activity" offset
+    }
+    return Math.max(1980, Math.min(2023, Math.round(year)));
+  }
+
+  // Nudge apart figures whose computed peakX collides, so names don't stack
+  // on top of one another at the same point on the ribbon.
+  function spreadFigures(figures) {
+    var byX = {};
+    figures.forEach(function (f) {
+      var key = Math.round(f.peakX * 43); // bucket by year
+      (byX[key] = byX[key] || []).push(f);
+    });
+    Object.keys(byX).forEach(function (key) {
+      var group = byX[key];
+      if (group.length < 2) return;
+      // Fan the colliding names out horizontally within ~1.5 years
+      var spread = 1.5 / 43;
+      var start = -spread * (group.length - 1) / 2;
+      group.forEach(function (f, i) {
+        f.peakX = Math.max(0, Math.min(1, f.peakX + start + i * spread));
+      });
+    });
+  }
+
   // ─── MODE A: ANIMATED TIMELINE RIBBON ─────────────────────────────────────────
 
   function modeTimeline(canvas, data) {
@@ -133,19 +197,22 @@
       conferences.push({ year: year, x: 0 });
     }
 
-    // Top figures with approximate peak decades
+    // Top figures positioned by their first appearance in the conference
+    // citation record (`debut`, 1980–2023). Falls back to the midpoint of
+    // `activeDecades`, then to a birth-based estimate, so a name always
+    // lands somewhere meaningful on the 1980–2023 timeline.
     var topNodes = getTopNodes(data, 20);
     var figures = topNodes.map(function (n, i) {
-      var born = n.born || 1900;
-      var peakDecade = Math.max(1980, Math.min(2020, born + 80)); // approximate peak activity
+      var year = figurePeakYear(n);
       return {
         name: n.id.split(' ').pop(), // last name only
         color: getSchoolColor(n.school),
-        peakX: (peakDecade - 1980) / 43,
+        peakX: (year - 1980) / 43,
         y: 0.2 + (i % 8) * 0.08,
         opacity: 0
       };
     });
+    spreadFigures(figures); // nudge apart names that land on the same year
 
     var startTime = Date.now();
     var duration = 8000; // 8 seconds to draw the full timeline
