@@ -327,6 +327,28 @@ let pubSearchQ = '';
 
 /* ── Chapter data (populated entries; others show placeholder) ── */
 const PUB_CHAPTERS = {
+  'XLIII': [
+    { author: 'Kerstin Dross-Kr\u00fcpe', title: 'Frauen und Wirtschaft in der r\u00f6mischen Antike' },
+    { author: 'Charlotte Backerra', title: 'Regierende Frauen in der fr\u00fchen Neuzeit und ihre Wirtschaftskompetenz' },
+    { author: 'Elisabeth Allgoewer', title: 'Frauen im Verein f\u00fcr Socialpolitik' },
+    { author: 'Christian Kremser', title: 'Beatrice Webb (1858\u20131943) als \u00d6konomin' },
+    { author: 'G\u00fcnther Chaloupek', title: 'Helene Bauer (1871\u20131942) \u2013 b\u00fcrgerliche und sozialistische \u00d6konomie' },
+    { author: 'Reinhard Schumacher \u00b7 Svenja Flechtner \u00b7 Matthias St\u00f6rring', title: 'Charlotte Leubuscher (1888\u20131961)' },
+    { author: 'Uwe Dathe \u00b7 Daniel Nientiedt', title: 'Edith Eucken (1896\u20131985)' },
+    { author: 'Hans Frambach', title: 'Cl\u00e4re Tisch (1907\u20131941) \u2013 Leben und Werk' },
+    { author: 'Harald Hagemann', title: 'Fanny Ginor (1911\u20132007): Die Basler National\u00f6konomie nach Israel getragen' },
+    { author: 'Lachezar Grudev', title: 'Vera Smith (1912\u20131976). Eine mutige \u00d6konomin im Spannungsfeld dreier Welten' },
+    { author: 'Bertram Schefold', title: 'Joan Robinson (1903\u20131983) \u2013 eine pers\u00f6nliche Charakterisierung' },
+  ],
+  'XLII': [
+    { author: 'Karen Horn', title: 'Geschichte der Wirtschaftswissenschaften als interdisziplin\u00e4re Aufgabe: Ein \u00dcberblick \u00fcber die j\u00fcngere Adam-Smith-Forschung' },
+    { author: 'Philipp Robinson R\u00f6ssner', title: 'Smith\u2019s Scotland. Contextualising the Wealth of Nations' },
+    { author: 'Sabine F\u00f6llinger', title: 'Antike Philosophie im Denken von Adam Smith' },
+    { author: 'Reinhard Schumacher', title: 'Die unterschiedlichen Ansichten Adam Smiths und David Humes \u00fcber wirtschaftliche Entwicklung und zwischenstaatliche Kriege' },
+    { author: 'Ludwig Nellinger', title: 'Methodik und Erkenntnisfortschritt: Adam Smith und Johann Heinrich von Th\u00fcnen' },
+    { author: 'Heinz D. Kurz', title: 'Smith, Marx und Schumpeter \u00fcber den Zivilisationsprozess' },
+    { author: 'Reinhard Blomert', title: 'Adam Smith \u00fcber Gentlemen, Gesch\u00e4ftsleute und innere Richter' },
+  ],
   'XLI': [
     { author: 'Elisabeth Allgoewer', title: 'Zur Gründungsgeschichte des Vereins für Socialpolitik' },
     { author: 'Volker Caspari', title: 'Methodenstreit und Werturteilsdebatte' },

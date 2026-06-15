@@ -330,7 +330,8 @@ const PUBLICATIONS = [
   { num:'XXXIX', numN:39, year:2022, decade:'2010s', title_de:'Kameralismus und Merkantilismus', title_en:'Cameralism and Mercantilism', editor:'hrsg. v. Volker Caspari', url:DH_SEARCH, econstor:'https://www.econstor.eu/handle/10419/286115' },
   { num:'XL', numN:40, year:null, decade:'2010s', title_de:'Entwicklung der Konjunkturforschung im frühen 20. Jahrhundert', title_en:'Development of Business Cycle Research in the Early 20th Century', editor:'', url:DH_SEARCH },
   { num:'XLI', numN:41, year:null, decade:'2010s', title_de:'Zur Geschichte des Vereins für Socialpolitik', title_en:'Zur Geschichte des Vereins f{\"u}r Socialpolitik', editor:'hrsg. v. Peter Spahn', url:DH_SEARCH, econstor:'https://directory.doabooks.org/handle/20.500.12854/121170' },
-  { num:'XLII', numN:42, year:null, decade:'2010s', title_de:'Adam Smith @ 300', title_en:'Adam Smith @ 300', editor:'', url:DH_SEARCH, econstor:'https://www.econstor.eu/handle/10419/301208' },
+  { num:'XLII', numN:42, year:2025, decade:'2020s', title_de:'Adam Smith @ 300', title_en:'Adam Smith @ 300', editor:'hrsg. v. Rainer Klump', url:DH_SEARCH, econstor:'https://www.econstor.eu/handle/10419/301208' },
+  { num:'XLIII', numN:43, year:2025, decade:'2020s', title_de:'Ökonominnen. Frauen in der Geschichte der Wirtschaftswissenschaften', title_en:'Women Economists: Women in the History of Economics', editor:'hrsg. v. Rainer Klump', url:'https://www.duncker-humblot.de/buch/oekonominnen-frauen-in-der-geschichte-der-wirtschaftswissenschaften-9783428196388/', econstor:'https://www.econstor.eu/handle/10419/333577' },
 ];
 
 const FMTS = [
@@ -341,6 +342,10 @@ const FMTS = [
   ];
 
 const ANNOUNCEMENTS=[
+  {date:'2026-06-15',icon:'\U0001F4DA',
+   title_de:'Band XLIII (Fulda 2024) erschienen',title_en:'Volume XLIII published',
+   text_de:'Der Tagungsband \u201e\u00d6konominnen. Frauen in der Geschichte der Wirtschaftswissenschaften\u201c (hrsg. v. Rainer Klump) ist beim Verlag Duncker & Humblot erschienen.',
+   text_en:'The proceedings volume \u201cWomen Economists: Women in the History of Economics\u201d (ed. Rainer Klump) has been published by Duncker & Humblot.'},
   {date:'2026-05-29',icon:'\U0001F310',
    title_de:'Website der 46. Jahrestagung online',title_en:'Conference website launched',
    text_de:'Die offizielle Konferenzwebsite f\u00fcr Riva San Vitale ist jetzt zug\u00e4nglich.',
@@ -349,7 +354,7 @@ const ANNOUNCEMENTS=[
    title_de:'Tagungsprogramm best\u00e4tigt',title_en:'Academic programme confirmed',
    text_de:'Das wissenschaftliche Programm ist vollst\u00e4ndig best\u00e4tigt: 10 Vortr\u00e4ge zu den Zukunftsperspektiven der Theoriegeschichte.',
    text_en:'The full academic programme has been confirmed: 10 papers on the future of the history of economic thought.'},
-  {date:'2026-03-15',icon:'\U0001F4DA',
+  {date:'2025-01-15',icon:'\U0001F4DA',
    title_de:'Band XLII (Edinburgh 2023) erschienen',title_en:'Volume XLII published',
    text_de:'Der Tagungsband Adam Smith @ 300 ist beim Verlag Duncker & Humblot erschienen.',
    text_en:'The proceedings volume Adam Smith @ 300 has been published by Duncker & Humblot.'},

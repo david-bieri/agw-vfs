@@ -283,7 +283,7 @@
     footer_hosted          : { en: 'Annual Conference 2026 hosted by Dr. David Bieri,' },
     footer_col_conf        : { en: 'Annual Conference 2026' },
     footer_col_about       : { en: 'About AGW' },
-    footer_updated         : { en: 'Updated: May 2026 · Subject to change' },
+    footer_updated         : { en: 'Updated: June 2026 · Subject to change' },
     // ── (uncategorised) ──
     hero_eyebrow           : { en: 'Committee for the History of Economics · Annual Conference 2026' },
     hero_pill_venue        : { en: 'Virginia Tech Steger Center · Riva San Vitale, Ticino' },
@@ -343,7 +343,7 @@
     satz_lbl_mbr         : { en: 'Members' },
     satz_val_mbr         : { en: '48 (as of 2026)' },
     satz_lbl_pub         : { en: 'Publications' },
-    satz_val_pub         : { en: '42 volumes (as of 2026)' },
+    satz_val_pub         : { en: '43 volumes (as of 2026)' },
     satz_lbl_chair       : { en: 'Chair' },
     // ── Missing translations gap-fill (audit 2026-06-03) ─────────
     sec_lbl_news         : { en: 'News' },
