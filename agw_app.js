@@ -124,7 +124,7 @@ function renderChairs() {
       return '<div class="chair-item' + (isCurrent ? ' chair-current' : '') + '">'
         + '<div class="chair-num">' + (i + 1) + '</div>'
         + '<div class="chair-body">'
-        + '<div class="chair-name">' + c.name
+        + '<div class="chair-name">' + (c.title ? c.title + ' ' : '') + c.name
         + (isCurrent ? ' <span class="badge badge-gold" style="font-size:10px;vertical-align:middle;">' + current_lbl + '</span>' : '')
         + '</div>'
         + '<div class="chair-inst">' + c.inst + '</div>'

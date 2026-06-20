@@ -6,18 +6,18 @@
  */
 
 const CHAIRS = [
-  { name:'Fritz Neumark', inst:'Goethe-Universität Frankfurt', start:1980, end:1982, past:true },
-  { name:'Harald Scherf', inst:'Universität Hamburg', start:1982, end:1990, past:true },
-  { name:'Bertram Schefold', inst:'Goethe-Universität Frankfurt', start:1990, end:1992, past:true },
-  { name:'Heinz Rieter', inst:'Universität Hamburg', start:1992, end:1996, past:true },
-  { name:'Erich Streißler', inst:'Universität Wien', start:1996, end:2000, past:true },
-  { name:'Christian Scheer', inst:'Universität Hamburg', start:2000, end:2004, past:true },
-  { name:'Harald Hagemann', inst:'Universität Hohenheim', start:2004, end:2008, past:true },
-  { name:'Heinz D. Kurz', inst:'Karl-Franzens-Universität Graz', start:2008, end:2012, past:true },
-  { name:'Hans-Michael Trautwein', inst:'Carl von Ossietzky Universität Oldenburg', start:2012, end:2016, past:true },
-  { name:'Volker Caspari', inst:'Goethe-Universität Frankfurt', start:2016, end:2019, past:true },
-  { name:'Peter Spahn', inst:'Universität Hohenheim', start:2019, end:2022, past:true },
-  { name:'Rainer Klump', inst:'Goethe-Universität Frankfurt', start:2023, end:null, past:false },
+  { name:'Fritz Neumark',          title:'Prof. Dr.', inst:'Goethe-Universität Frankfurt',             start:1980, end:1982, past:true },
+  { name:'Harald Scherf',          title:'Prof. Dr.', inst:'Universität Hamburg',                       start:1982, end:1986, past:true },
+  { name:'Bertram Schefold',       title:'Prof. Dr.', inst:'Goethe-Universität Frankfurt',             start:1986, end:1990, past:true },
+  { name:'Heinz Rieter',           title:'Prof. Dr.', inst:'Universität Hamburg',                       start:1990, end:1994, past:true },
+  { name:'Erich Streißler',        title:'Prof. Dr.', inst:'Universität Wien',                          start:1994, end:1998, past:true },
+  { name:'Christian Scheer',       title:'Prof. Dr.', inst:'Universität Hamburg',                       start:1998, end:2002, past:true },
+  { name:'Heinz D. Kurz',          title:'Prof. Dr.', inst:'Karl-Franzens-Universität Graz',           start:2002, end:2006, past:true },
+  { name:'Harald Hagemann',        title:'Prof. Dr.', inst:'Universität Hohenheim',                     start:2006, end:2010, past:true },
+  { name:'Hans-Michael Trautwein', title:'Prof. Dr.', inst:'Carl von Ossietzky Universität Oldenburg', start:2010, end:2014, past:true },
+  { name:'Volker Caspari',         title:'Prof. Dr.', inst:'Goethe-Universität Frankfurt',             start:2014, end:2018, past:true },
+  { name:'Peter Spahn',            title:'Prof. Dr.', inst:'Universität Hohenheim',                     start:2018, end:2022, past:true },
+  { name:'Rainer Klump',           title:'Prof. Dr.', inst:'Goethe-Universität Frankfurt',             start:2022, end:2026, past:false },
 ];
 
 const MEMBERS = [
