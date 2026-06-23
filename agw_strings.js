@@ -409,6 +409,28 @@
     footer_cite          : { de: 'Zitierweise', en: 'How to Cite' },
     footer_contact_lbl   : { de: 'Kontakt', en: 'Contact' },
     contact_channels_lbl : { de: 'Kontakt', en: 'Contact' },
+    // ── Members' publications page ───────────────────────────────────────
+    nav_member_pubs      : { de: 'Publikationen der Mitglieder', en: "Members' Publications" },
+    mpub_page_title      : { de: 'Publikationen der Mitglieder', en: "Members' Publications" },
+    mpub_label           : { de: 'Forschung', en: 'Research' },
+    mpub_intro           : { de: 'Ausgewählte Publikationen der AGW-Mitglieder. Durchsuchen Sie die Literatur nach thematischen Schwerpunkten oder nach Mitglied. Die Liste wird laufend ergänzt.', en: 'Selected publications by AGW members. Browse the literature by thematic area or by member. The list is continuously expanded.' },
+    mpub_search_ph       : { de: 'Titel, Autor oder Zeitschrift suchen…', en: 'Search title, author or journal…' },
+    mpub_filter_all      : { de: 'Alle Themen', en: 'All themes' },
+    mpub_count           : { de: 'Publikationen', en: 'publications' },
+    mpub_by              : { de: 'von', en: 'by' },
+    mpub_view_theme      : { de: 'Nach Thema', en: 'By theme' },
+    mpub_view_member     : { de: 'Nach Mitglied', en: 'By member' },
+    mpub_members_count   : { de: 'Mitglieder', en: 'members' },
+    mpub_one_pub         : { de: 'Publikation', en: 'publication' },
+    mpub_jump           : { de: 'Springe zu', en: 'Jump to' },
+    mpub_all_members     : { de: 'Alle Mitglieder', en: 'All members' },
+    mpub_profile         : { de: 'Profil', en: 'Profile' },
+    mpub_no_results      : { de: 'Keine Publikationen gefunden.', en: 'No publications found.' },
+    mpub_doi_link        : { de: 'DOI', en: 'DOI' },
+    mpub_link            : { de: 'Link', en: 'Link' },
+    mpub_member_link     : { de: 'Profil ansehen', en: 'View profile' },
+    mpub_contribute_title: { de: 'Eigene Publikationen beitragen', en: 'Contribute your publications' },
+    mpub_contribute_text : { de: 'Mitglieder, die ihre Publikationen aufnehmen oder aktualisieren lassen möchten, senden bitte eine Liste (DOIs, ORCID oder Lebenslauf) an den Gastgeber: <a href="mailto:bieri@vt.edu" style="color:inherit;font-weight:600;">bieri@vt.edu</a>.', en: 'Members who would like their publications added or updated are invited to send a list (DOIs, ORCID or CV) to the host: <a href="mailto:bieri@vt.edu" style="color:inherit;font-weight:600;">bieri@vt.edu</a>.' },
 };
 
   /* ── Helpers ──────────────────────────────────────────────────── */

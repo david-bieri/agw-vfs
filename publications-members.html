@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGW · Publikationen der Mitglieder</title>
+<!-- Favicon — AGW initials on navy -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231B3A6B'/><text x='16' y='22' font-family='Georgia,serif' font-size='15' fill='white' text-anchor='middle' font-weight='600'>AGW</text></svg>">
+<meta name="description" content="Ausgewählte Publikationen der Mitglieder des Ausschusses für die Geschichte der Wirtschaftswissenschaften (AGW), geordnet nach thematischen Schwerpunkten.">
+<meta name="author" content="AGW – Ausschuss für die Geschichte der Wirtschaftswissenschaften, Verein für Socialpolitik">
+<meta name="keywords" content="History of Economics, Theoriegeschichte, Publikationen, AGW, Verein für Socialpolitik, Mitglieder">
+<link rel="canonical" href="https://david-bieri.github.io/agw-vfs/publications-members.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:site_name" content="AGW – Verein für Socialpolitik">
+<meta property="og:title" content="AGW · Publikationen der Mitglieder">
+<meta property="og:description" content="Ausgewählte Publikationen der AGW-Mitglieder, geordnet nach thematischen Schwerpunkten.">
+<meta property="og:url" content="https://david-bieri.github.io/agw-vfs/publications-members.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AGW · Publikationen der Mitglieder">
+<meta name="twitter:description" content="Ausgewählte Publikationen der AGW-Mitglieder, geordnet nach thematischen Schwerpunkten.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="agw_styles.css">
+<link rel="manifest" href="/agw-vfs/manifest.json">
+<meta name="theme-color" content="#1B3A6B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="/agw-vfs/icon-192.png">
+</head>
+<body>
+
+<div id="nav-mount"></div>
+
+<section class="section" id="mitglieder-publikationen">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="mpub_label">Forschung</div>
+    <h2 class="section-title" data-i18n="mpub_page_title">Publikationen der Mitglieder</h2>
+    <p class="section-intro" data-i18n="mpub_intro">Ausgewählte Publikationen der AGW-Mitglieder, geordnet nach thematischen Schwerpunkten. Die Liste wird laufend ergänzt.</p>
+
+    <!-- Search + view toggle -->
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:14px;">
+      <input type="text" class="members-search" id="mpub-search" style="margin-bottom:0;max-width:320px;"
+             placeholder="Titel, Autor oder Zeitschrift suchen…" oninput="mpubSearch(this.value)">
+      <div class="mpub-viewtoggle" id="mpub-viewtoggle" role="tablist">
+        <button class="mpub-vt-btn active" id="mpub-vt-theme" role="tab" onclick="mpubSetView('theme')" data-i18n="mpub_view_theme">Nach Thema</button>
+        <button class="mpub-vt-btn" id="mpub-vt-member" role="tab" onclick="mpubSetView('member')" data-i18n="mpub_view_member">Nach Mitglied</button>
+      </div>
+      <span style="font-size:12px;color:var(--text-faint);" id="mpub-count-note"></span>
+    </div>
+    <!-- Theme filter chips (theme view only) -->
+    <div id="mpub-theme-filters" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px;"></div>
+    <!-- Member jump bar (member view only) -->
+    <div id="mpub-member-jump" style="display:none;flex-wrap:wrap;gap:4px 10px;margin-bottom:28px;font-size:13px;"></div>
+
+    <!-- Publications grouped by theme -->
+    <div id="mpub-list"></div>
+
+    <!-- Contribute callout -->
+    <div class="callout callout-gold" style="margin-top:36px;">
+      <div class="callout-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+      <div>
+        <div class="callout-title" data-i18n="mpub_contribute_title">Eigene Publikationen beitragen</div>
+        <div class="callout-text" data-i18n-html="mpub_contribute_text">Mitglieder, die ihre Publikationen aufnehmen oder aktualisieren lassen möchten, senden bitte eine Liste (DOIs, ORCID oder Lebenslauf) an den Gastgeber: <a href="mailto:bieri@vt.edu" style="color:inherit;font-weight:600;">bieri@vt.edu</a>.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:18px;font-size:13px;color:var(--text-faint);">
+      <a href="committee.html#mitglieder" data-i18n="mpub_member_link">Profil ansehen</a> ·
+      <a href="archive.html#publikationen" data-i18n="nav_publications">Publikationen</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand-col">
+      <div class="footer-brand-name">Ausschuss für die Geschichte der Wirtschaftswissenschaften</div>
+      <div class="footer-text" style="margin-bottom:10px;">
+        <span data-i18n="footer_desc">Ständiger Ausschuss für Theoriegeschichte und Dogmengeschichte im</span>
+        <a href="https://www.socialpolitik.de/de" target="_blank"> Verein für Socialpolitik (VfS)</a>.
+      </div>
+      <div class="footer-text">
+        <span data-i18n="footer_hosted">Jahrestagung 2026 ausgerichtet von Dr. David Bieri,</span>
+        <a href="mailto:bieri@vt.edu">bieri@vt.edu</a> ·
+        <a href="https://liberalarts.vt.edu/departments-and-schools/school-of-public-and-international-affairs.html" target="_blank"> Virginia Tech · SPIA</a> ·
+        <a href="https://stegercenter.vt.edu" target="_blank">Steger Center</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-label">Links</div>
+      <ul class="footer-links">
+        <li><a href="https://www.socialpolitik.de/de" target="_blank">Verein für Socialpolitik</a></li>
+        <li><a href="https://history-economicthought.committee.socialpolitik.de/" target="_blank">AGW / VfS</a></li>
+        <li><a href="committee.html#mitglieder" data-i18n="nav_members">Mitgliederliste</a></li>
+        <li><a href="archive.html#publikationen" data-i18n="nav_publications">Publikationen</a></li>
+        <li><a href="https://www.eshet.net" target="_blank">ESHET</a></li>
+      </ul>
+    </div>
+  </div>
+  <hr class="footer-divider">
+  <div class="footer-bottom">
+    <span>AGW / Verein für Socialpolitik · Jahrestagung 2026 · Riva San Vitale</span>
+    <span><a href="guide.html#zitierweise" style="color:rgba(255,255,255,.55);text-decoration:none;margin-right:12px;" data-i18n="footer_cite">Zitierweise</a><span data-i18n="footer_updated">Stand: Juni 2026 · Änderungen vorbehalten</span></span>
+  </div>
+</footer>
+
+<div id="search-overlay" onclick="if(event.target===this)closeSearch()"><div id="search-box"><div id="search-input-row"><span style="font-size:18px;margin-right:10px;color:var(--text-faint);"><span class="ico ico-search" aria-hidden="true"></span></span><input id="search-input" type="text" autocomplete="off" oninput="runSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()" placeholder="Suchen… / Search…"><button id="search-close" onclick="closeSearch()">✕</button></div><div id="search-results"><div class="srch-empty">Suchbegriff eingeben…</div></div><div id="search-hint">↵ öffnet &nbsp;·&nbsp; Esc schließt &nbsp;·&nbsp; Ctrl+K</div></div></div>
+
+<script src="agw_strings.js"></script>
+<script src="agw_data.js"></script>
+<script src="agw_app.js"></script>
+<script src="agw_nav.js"></script>
+<script src="agw_member_pubs.js"></script>
+<script src="agw_member_pubs_app.js"></script>
+<script>
+  AGW.renderNav('archive');
+  // Ensure correct language is applied to this page's tagged elements
+  if (window.AGW && window.AGW.applyLang) { window.AGW.applyLang(window.AGW.getLang()); }
+</script>
+
+</body>
+</html>

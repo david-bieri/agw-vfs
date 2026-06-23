@@ -52,6 +52,7 @@
               '<div class="dropdown">' +
                 '<a href="archive.html#archiv"><span data-i18n="nav_archive">Archiv</span></a>' +
                 '<a href="archive.html#publikationen"><span data-i18n="nav_publications">Publikationen</span></a>' +
+                '<a href="publications-members.html"><span data-i18n="nav_member_pubs">Publikationen der Mitglieder</span></a>' +
               '</div>' +
             '</li>' +
 
@@ -103,6 +104,7 @@
         '<div class="mobile-menu-group" data-i18n="nav_archive">Archiv</div>' +
         '<a href="archive.html#archiv" onclick="toggleMobileMenu()"><span data-i18n="nav_archive">Archiv</span></a>' +
         '<a href="archive.html#publikationen" onclick="toggleMobileMenu()"><span data-i18n="nav_publications">Publikationen</span></a>' +
+        '<a href="publications-members.html" onclick="toggleMobileMenu()"><span data-i18n="nav_member_pubs">Publikationen der Mitglieder</span></a>' +
 
         '<div class="mobile-menu-group" data-i18n="nav_about_group">Über den AGW</div>' +
         '<a href="committee.html#ueber" onclick="toggleMobileMenu()"><span data-i18n="nav_about">Über den Ausschuss</span></a>' +
