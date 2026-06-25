@@ -519,13 +519,13 @@
       "review_status": "SETTLED"
     },
     "train_fri": {
-      "de": "Abfahrt HB Lugano 08:12 (Beginn 09:00)",
-      "en": "Depart Lugano HB 08:12 (9:00 start)",
+      "de": "Abfahrt HB Lugano 08:06 · Ankunft 08:21 (Beginn 09:00)",
+      "en": "Depart Lugano HB 08:06 · Arrive 08:21 (9:00 start)",
       "review_status": "SETTLED"
     },
     "train_sat": {
-      "de": "Abfahrt HB Lugano 07:42 (Beginn 08:30)",
-      "en": "Depart Lugano HB 07:42 (8:30 start)",
+      "de": "Abfahrt HB Lugano 08:36 · Ankunft 08:51 (Beginn 09:15)",
+      "en": "Depart Lugano HB 08:36 · Arrive 08:51 (9:15 start)",
       "review_status": "SETTLED"
     },
     "train_timetable": {

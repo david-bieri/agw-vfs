@@ -635,8 +635,8 @@ function initLogistikMap() {
      +'<small>Direkt am Bahnhof \u00b7 kein Zug zur Tagung n\u00f6tig</small>'],
     [45.9055, 8.9796, GR, '\uD83D\uDE89',
       '<strong>Bahnhof Capolago-Riva San Vitale</strong><br>'
-     +'<small>TILO S10: alle 30\u00a0Min. ab HB Lugano (\u223015\u00a0Min.)<br>'
-     +'Fr Abfahrt 08:12 \u00b7 Sa Abfahrt 07:42</small>'],
+     +'<small>TILO S10/S90: mehrmals pro Stunde ab HB Lugano (\u223015\u00a0Min.)<br>'
+     +'Fr Abfahrt 08:06 \u00b7 Sa Abfahrt 08:36</small>'],
     [45.9035, 8.9778, P,  '\uD83D\uDE9F',
       '<strong>Ferrovia Monte Generoso</strong><br>Capolago<br>'
      +'<small>Zahnradbahn zum Gipfel (1704\u00a0m), seit 1890<br>'
@@ -680,9 +680,9 @@ function downloadIcal(){
     'BEGIN:VEVENT','UID:agw2026-thu@agw-vfs.de','DTSTART:20260625T173000Z','DTEND:20260625T210000Z',
     'SUMMARY:AGW 2026 - Willkommensabendessen (Trattoria Galleria\\, Lugano)',
     'LOCATION:Ristorante Trattoria Galleria\\, Via Giosu\u00e8 Carducci 4\\, Lugano','END:VEVENT',
-    'BEGIN:VEVENT','UID:agw2026-fri@agw-vfs.de','DTSTART:20260626T070000Z','DTEND:20260626T163000Z',
-    'SUMMARY:AGW 2026 - Wissenschaftliches Programm Tag 1','LOCATION:Steger Center\\, Riva San Vitale','END:VEVENT',
-    'BEGIN:VEVENT','UID:agw2026-sat@agw-vfs.de','DTSTART:20260627T070000Z','DTEND:20260627T150000Z',
+    'BEGIN:VEVENT','UID:agw2026-fri@agw-vfs.de','DTSTART:20260626T070000Z','DTEND:20260626T193000Z',
+    'SUMMARY:AGW 2026 - Programm Tag 1 + Apericena & Abendvortrag (Schefold)','LOCATION:Steger Center\\, Riva San Vitale','END:VEVENT',
+    'BEGIN:VEVENT','UID:agw2026-sat@agw-vfs.de','DTSTART:20260627T071500Z','DTEND:20260627T150000Z',
     'SUMMARY:AGW 2026 - Programm Tag 2 + Monte Generoso','LOCATION:Steger Center\\, Riva San Vitale','END:VEVENT',
     'END:VCALENDAR'].join(R);
   var blob=new Blob([t],{type:'text/calendar;charset=utf-8'});
