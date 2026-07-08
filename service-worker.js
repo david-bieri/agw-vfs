@@ -1,42 +1,42 @@
 /* AGW Jahrestagung 2026 — Service Worker
  * Strategy: Cache-first for shell + static assets; network-first for tiles
  */
-const CACHE = 'agw-2026-v33-history';
+const CACHE = 'agw-2026-v34-domain';
 
 const PRECACHE = [
-  '/agw-vfs/',
-  '/agw-vfs/index.html',
-  '/agw-vfs/archive.html',
-  '/agw-vfs/committee.html',
-  '/agw-vfs/analytics.html',
-  '/agw-vfs/guide.html',
-  '/agw-vfs/manifest.json',
+  '/',
+  '/index.html',
+  '/archive.html',
+  '/committee.html',
+  '/analytics.html',
+  '/guide.html',
+  '/manifest.json',
   // Foundation files (loaded by every page)
-  '/agw-vfs/agw_styles.css',
-  '/agw-vfs/agw_strings.js',
-  '/agw-vfs/agw_data.js',
-  '/agw-vfs/agw_app.js',
-  '/agw-vfs/agw_nav.js',
-  '/agw-vfs/agw_chronik.js',
+  '/agw_styles.css',
+  '/agw_strings.js',
+  '/agw_data.js',
+  '/agw_app.js',
+  '/agw_nav.js',
+  '/agw_chronik.js',
   // Analytics & visualization modules
-  '/agw-vfs/dist/agw_gaze_map.js',
-  '/agw-vfs/dist/agw_scrollytelling.js',
-  '/agw-vfs/dist/agw_analysis.js',
-  '/agw-vfs/dist/agw_pmi.js',
-  '/agw-vfs/dist/agw_sankey.js',
-  '/agw-vfs/dist/agw_alluvial.js',
-  '/agw-vfs/dist/agw_ego_network.js',
-  '/agw-vfs/dist/school_labels.js',
+  '/dist/agw_gaze_map.js',
+  '/dist/agw_scrollytelling.js',
+  '/dist/agw_analysis.js',
+  '/dist/agw_pmi.js',
+  '/dist/agw_sankey.js',
+  '/dist/agw_alluvial.js',
+  '/dist/agw_ego_network.js',
+  '/dist/school_labels.js',
   // New feature modules
-  '/agw-vfs/dist/agw_pathways.js',
-  '/agw-vfs/dist/agw_temporal.js',
-  '/agw-vfs/dist/agw_school_compare.js',
-  '/agw-vfs/dist/agw_product_tips.js',
+  '/dist/agw_pathways.js',
+  '/dist/agw_temporal.js',
+  '/dist/agw_school_compare.js',
+  '/dist/agw_product_tips.js',
   // Data files
-  '/agw-vfs/data/analysis_data.json',
-  '/agw-vfs/data/lineage_data.json',
-  '/agw-vfs/data/sankey_flows.json',
-  '/agw-vfs/data/unified_network.json',
+  '/data/analysis_data.json',
+  '/data/lineage_data.json',
+  '/data/sankey_flows.json',
+  '/data/unified_network.json',
   // External resources
   'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap',
   'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css',
@@ -99,7 +99,7 @@ self.addEventListener('fetch', function(e) {
       }).catch(function() {
         // Offline fallback — return cached index
         if (e.request.destination === 'document') {
-          return caches.match('/agw-vfs/index.html');
+          return caches.match('/index.html');
         }
       });
     })

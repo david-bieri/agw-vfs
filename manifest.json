@@ -2,8 +2,8 @@
   "name": "AGW 46. Jahrestagung 2026",
   "short_name": "AGW 2026",
   "description": "Zukunftsperspektiven der Theoriegeschichte \u00b7 Riva San Vitale, 25.\u201327. Juni 2026",
-  "start_url": "/agw-vfs/",
-  "scope": "/agw-vfs/",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "orientation": "any",
   "theme_color": "#1B3A6B",
@@ -16,12 +16,12 @@
   "shortcuts": [
     {
       "name": "Tagungsprogramm",
-      "url": "/agw-vfs/#tagungsprogramm",
+      "url": "/#tagungsprogramm",
       "description": "Wissenschaftliches Programm"
     },
     {
       "name": "Anreise & Logistik",
-      "url": "/agw-vfs/#logistik",
+      "url": "/#logistik",
       "description": "Hotels, Anreise, Karte"
     }
   ]
