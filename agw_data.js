@@ -18,7 +18,7 @@ const CHAIRS = [
   { name:'Volker Caspari',         title:'Prof. Dr.', inst:'Goethe-Universität Frankfurt',             start:2014, end:2018, past:true },
   { name:'Peter Spahn',            title:'Prof. Dr.', inst:'Universität Hohenheim',                     start:2018, end:2022, past:true },
   { name:'Rainer Klump',           title:'Prof. Dr.', inst:'Goethe-Universität Frankfurt',             start:2022, end:2026, past:true },
-  { name:'Elisabeth Allgoewer',    title:'Prof. Dr.', inst:'Universität Hamburg',                      start:2026, end:, past:false },
+  { name:'Elisabeth Allgoewer',    title:'Prof. Dr.', inst:'Universität Hamburg',                      start:2026, end:2030, past:false },
 ];
 
 const MEMBERS = [
