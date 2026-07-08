@@ -12,12 +12,13 @@ const CHAIRS = [
   { name:'Heinz Rieter',           title:'Prof. Dr.', inst:'Universität Hamburg',                       start:1990, end:1994, past:true },
   { name:'Erich Streißler',        title:'Prof. Dr.', inst:'Universität Wien',                          start:1994, end:1998, past:true },
   { name:'Christian Scheer',       title:'Prof. Dr.', inst:'Universität Hamburg',                       start:1998, end:2002, past:true },
-  { name:'Heinz D. Kurz',          title:'Prof. Dr.', inst:'Karl-Franzens-Universität Graz',           start:2002, end:2006, past:true },
-  { name:'Harald Hagemann',        title:'Prof. Dr.', inst:'Universität Hohenheim',                     start:2006, end:2010, past:true },
+  { name:'Harald Hagemann',        title:'Prof. Dr.', inst:'Universität Hohenheim',                     start:2002, end:2006, past:true },
+  { name:'Heinz D. Kurz',          title:'Prof. Dr.', inst:'Karl-Franzens-Universität Graz',           start:2006, end:2010, past:true },
   { name:'Hans-Michael Trautwein', title:'Prof. Dr.', inst:'Carl von Ossietzky Universität Oldenburg', start:2010, end:2014, past:true },
   { name:'Volker Caspari',         title:'Prof. Dr.', inst:'Goethe-Universität Frankfurt',             start:2014, end:2018, past:true },
   { name:'Peter Spahn',            title:'Prof. Dr.', inst:'Universität Hohenheim',                     start:2018, end:2022, past:true },
-  { name:'Rainer Klump',           title:'Prof. Dr.', inst:'Goethe-Universität Frankfurt',             start:2022, end:2026, past:false },
+  { name:'Rainer Klump',           title:'Prof. Dr.', inst:'Goethe-Universität Frankfurt',             start:2022, end:2026, past:true },
+  { name:'Elisabeth Allgoewer',    title:'Prof. Dr.', inst:'Universität Hamburg',                      start:2026, end:, past:false },
 ];
 
 const MEMBERS = [
