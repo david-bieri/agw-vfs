@@ -113,7 +113,7 @@ function getInitials(name) {
 function renderChairs() {
   const el = document.getElementById('chairs-timeline');
   if (!el) return;
-  const current_lbl = lang === 'en' ? ((AGW.S.chairs_current && AGW.S.chairs_current.en) || 'Current Chair') : 'Aktueller Vorsitzender';
+  const current_lbl = lang === 'en' ? ((AGW.S.chairs_current && AGW.S.chairs_current.en) || 'Current Chair') : 'Aktuelle Vorsitzende';
   const past_lbl    = lang === 'en' ? ((AGW.S.chairs_past && AGW.S.chairs_past.en)    || 'Past Chair')    : 'Ehemaliger Vorsitzender';
 
   el.innerHTML = '<div class="chairs-list">'
