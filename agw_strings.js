@@ -48,6 +48,10 @@
     tab_analysen:        { de: 'Analysen',               en: 'Analytics' },
     tab_netzwerke:       { de: 'Netzwerke',              en: 'Networks' },
     tab_zeitverlauf:     { de: 'Zeitverlauf',            en: 'Timeline' },
+    tab_schulen:         { de: 'Schulen',                en: 'Schools' },
+    schulen_title:       { de: 'Denkschulen & Verbindungen', en: 'Schools of Thought & Connections' },
+    schulen_intro:       { de: 'Figuren der Wirtschaftstheorie, gruppiert nach Denkschule. Die Linien zeigen Ko-Zitationen sowie Lehrer–Schüler- und Einfluss-Beziehungen aus dem AGW-Tagungskorpus. Knotengröße nach Tagungspräsenz. Über einen Knoten fahren für Details; eine Schule anklicken zum Hervorheben.', en: 'Figures from the history of economic thought, grouped by school. Lines show co-citations as well as teacher–student and influence relations from the AGW conference corpus. Node size reflects conference presence. Hover a node for details; click a school to highlight it.' },
+    schulen_note:        { de: 'Ko-Zitation = gemeinsame Nennung in Tagungsbeiträgen · Lehrer–Schüler / Einfluss = dokumentierte intellektuelle Linien. Datenbasis: 81 Figuren · 199 Verbindungen. Ergänzt den zeitlich geordneten Stammbaum (Netzwerke).', en: 'Co-citation = joint mention in conference contributions · Teacher–student / influence = documented intellectual lines. Data: 81 figures · 199 connections. Complements the time-ordered Stammbaum (Networks).' },
     tab_story:           { de: 'Rundgang',               en: 'Guided Tour' },
 
     // ── Analytics page — sub-tabs ────────────────────────────────

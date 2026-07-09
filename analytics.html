@@ -401,6 +401,16 @@
       .hetl-legend, .hetl-note { padding-left: 14px; padding-right: 14px; }
       .hetl-note { margin-left: 14px; margin-right: 14px; }
     }
+    /* ── Denkschulen network panel (schn-*) ── */
+    .schn-legend { display:flex; flex-wrap:wrap; gap:8px; padding:14px 24px 6px; }
+    .schn-chip { display:inline-flex; align-items:center; gap:7px; padding:5px 12px; border:1px solid var(--border); border-radius:100px; background:#fff; font-size:12px; color:var(--text-body); cursor:pointer; transition:all .15s; }
+    .schn-chip i { width:10px; height:10px; border-radius:50%; flex:none; }
+    .schn-chip span { color:var(--text-faint); font-size:11px; }
+    .schn-chip:hover { border-color:var(--accent); }
+    .schn-chip.on { background:var(--navy); color:#fff; border-color:var(--navy); }
+    .schn-chip.on span { color:rgba(255,255,255,.6); }
+    .schn-stage { position:relative; margin:8px 24px 6px; background:var(--navy); border-radius:12px; overflow:hidden; }
+    #schulen-canvas { display:block; width:100%; height:560px; }
   </style>
 </head>
 <body>
@@ -435,6 +445,8 @@
       onclick="showTool('netzwerke',this)"><span data-str="tab_netzwerke">Netzwerke</span></button>
     <button class="tool-tab" id="tab-zeitverlauf"
       onclick="showTool('zeitverlauf',this)"><span data-str="tab_zeitverlauf">Zeitverlauf</span></button>
+    <button class="tool-tab" id="tab-schulen"
+      onclick="showTool('schulen',this)"><span data-str="tab_schulen">Schulen</span></button>
   </div>
 
   <!-- ── Sub-tabs for Netzwerke ── -->
@@ -538,6 +550,17 @@
       <div class="loading" id="loading-story" data-str="loading">Lade Rundgang…</div>
       <div id="mount-story" style="width:100%;height:600px;"></div>
     </div>
+
+    <!-- DENKSCHULEN (school-clustered network — vanilla, complements the Stammbaum) -->
+    <div class="tool-panel" id="panel-schulen">
+      <div class="hetl-head">
+        <div class="hetl-title" data-str="schulen_title">Denkschulen & Verbindungen</div>
+        <p class="hetl-intro" data-str="schulen_intro">Figuren der Wirtschaftstheorie, gruppiert nach Denkschule. Die Linien zeigen Ko-Zitationen sowie Lehrer–Schüler- und Einfluss-Beziehungen aus dem AGW-Tagungskorpus. Knotengröße nach Tagungspräsenz. Über einen Knoten fahren für Details; eine Schule anklicken zum Hervorheben.</p>
+      </div>
+      <div id="schulen-legend" class="schn-legend"></div>
+      <div class="schn-stage"><canvas id="schulen-canvas"></canvas><div id="schulen-tip" class="hetl-tip"></div></div>
+      <p class="hetl-note" data-str="schulen_note">Ko-Zitation = gemeinsame Nennung in Tagungsbeiträgen · Lehrer–Schüler / Einfluss = dokumentierte intellektuelle Linien. Datenbasis: 81 Figuren · 199 Verbindungen. Ergänzt den zeitlich geordneten Stammbaum (Netzwerke).</p>
+    </div>
   </main>
 
   <footer class="page-footer">
@@ -546,6 +569,7 @@
   </footer>
 
   <script src="agw_strings.js"></script>
+  <script src="agw_schools_net.js"></script>
   <!-- ── Language + tab + sub-tab logic ── -->
   <script>
     /* Language — delegates to agw_strings.js (AGW global) */
@@ -590,6 +614,7 @@
         var activeSub = document.querySelector('#panel-zeitverlauf .sub-panel.active');
         if (activeSub) triggerSubLoad('zeitverlauf', activeSub.id.replace('subpanel-', ''));
       }
+      if (name === 'schulen' && window.__schoolsNet) window.__schoolsNet.activate();
       if (name === 'story') {
         loadStory();
         // Reset scroll position on re-entry (cross-browser fix)

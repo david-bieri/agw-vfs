@@ -104,6 +104,14 @@
     if (window.AGW && window.AGW.applyLang) {
       window.AGW.applyLang(window.AGW.getLang ? window.AGW.getLang() : 'de');
     }
+
+    // On-scroll shadow — fades a subtle shadow in once the page leaves the top
+    var navEl = mount.querySelector('.nav');
+    if (navEl) {
+      var onNavScroll = function () { navEl.classList.toggle('scrolled', window.scrollY > 8); };
+      window.addEventListener('scroll', onNavScroll, { passive: true });
+      onNavScroll();
+    }
   };
 
   /** Render a small shared footer into #footer-mount. */
