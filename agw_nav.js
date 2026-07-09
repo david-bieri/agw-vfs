@@ -47,15 +47,15 @@
             '<li class="nav-item' + pageActive('events') + '">' +
               '<a href="events.html"><span data-i18n="nav_events">Veranstaltungen</span></a>' +
             '</li>' +
-            '<li class="nav-item' + pageActive('archive') + '">' +
-              '<a href="archive.html">' +
-                '<span data-i18n="nav_archive">Archiv</span>' +
+            '<li class="nav-item' + ((active === 'archive' || active === 'analytics' || active === 'research') ? ' nav-active' : '') + '">' +
+              '<a href="archive.html#publikationen">' +
+                '<span data-i18n="nav_research">Forschung</span>' +
                 '<span class="caret">▾</span>' +
               '</a>' +
               '<div class="dropdown">' +
-                '<a href="archive.html#archiv"><span data-i18n="nav_archive">Archiv</span></a>' +
                 '<a href="archive.html#publikationen"><span data-i18n="nav_publications">Publikationen</span></a>' +
-                '<a href="publications-members.html"><span data-i18n="nav_member_pubs">Publikationen der Mitglieder</span></a>' +
+                '<a href="publications-members.html"><span data-i18n="nav_member_pubs">Forschung der Mitglieder</span></a>' +
+                '<a href="analytics.html"><span data-i18n="nav_analytics">Analyse</span></a>' +
               '</div>' +
             '</li>' +
 
@@ -71,12 +71,6 @@
                 '<a href="committee.html#mitglieder"><span data-i18n="nav_members">Mitgliederliste</span></a>' +
                 '<a href="committee.html#satzung"><span data-i18n="nav_satzung">Satzung</span></a>' +
               '</div>' +
-            '</li>' +
-
-            '<li class="nav-item' + pageActive('analytics') + '">' +
-              '<a href="analytics.html">' +
-                '<span data-i18n="nav_analytics">Analyse</span>' +
-              '</a>' +
             '</li>' +
 
           '</ul>' +
@@ -105,19 +99,16 @@
         '<a href="index.html#logistik" onclick="toggleMobileMenu()"><span data-i18n="nav_travel">Anreise &amp; Logistik</span></a>' +
 
         '<a href="events.html" onclick="toggleMobileMenu()"><span data-i18n="nav_events">Veranstaltungen</span></a>' +
-        '<div class="mobile-menu-group" data-i18n="nav_archive">Archiv</div>' +
-        '<a href="archive.html#archiv" onclick="toggleMobileMenu()"><span data-i18n="nav_archive">Archiv</span></a>' +
+        '<div class="mobile-menu-group" data-i18n="nav_research">Forschung</div>' +
         '<a href="archive.html#publikationen" onclick="toggleMobileMenu()"><span data-i18n="nav_publications">Publikationen</span></a>' +
-        '<a href="publications-members.html" onclick="toggleMobileMenu()"><span data-i18n="nav_member_pubs">Publikationen der Mitglieder</span></a>' +
+        '<a href="publications-members.html" onclick="toggleMobileMenu()"><span data-i18n="nav_member_pubs">Forschung der Mitglieder</span></a>' +
+        '<a href="analytics.html" onclick="toggleMobileMenu()"><span data-i18n="nav_analytics">Analyse</span></a>' +
 
         '<div class="mobile-menu-group" data-i18n="nav_about_group">Über den AGW</div>' +
         '<a href="committee.html#ueber" onclick="toggleMobileMenu()"><span data-i18n="nav_about">Über den Ausschuss</span></a>' +
         '<a href="committee.html#geschichte" onclick="toggleMobileMenu()"><span data-i18n="nav_history">Geschichte des AGW</span></a>' +
         '<a href="committee.html#mitglieder" onclick="toggleMobileMenu()"><span data-i18n="nav_members">Mitgliederliste</span></a>' +
         '<a href="committee.html#satzung" onclick="toggleMobileMenu()"><span data-i18n="nav_satzung">Satzung</span></a>' +
-
-        '<div class="mobile-menu-group" data-i18n="nav_analytics">Analyse</div>' +
-        '<a href="analytics.html" onclick="toggleMobileMenu()"><span data-i18n="nav_analytics">Analyse</span></a>' +
       '</div>';
 
     // Re-apply language to the freshly-injected nav
@@ -148,8 +139,8 @@
           '</div>' +
           '<div class="footer-col">' +
             '<div class="footer-col-title" data-i18n="footer_col_about">Über</div>' +
-            '<a href="archive.html" data-i18n="nav_archive">Archiv</a>' +
-            '<a href="archive.html#publikationen" data-i18n="nav_publications">Publikationen</a>' +
+            '<a href="archive.html#publikationen" data-i18n="nav_research">Forschung</a>' +
+            '<a href="publications-members.html" data-i18n="nav_member_pubs">Forschung der Mitglieder</a>' +
             '<a href="committee.html" data-i18n="nav_about">Über den AGW</a>' +
             '<a href="analytics.html" data-i18n="nav_analytics">Analyse</a>' +
           '</div>' +
