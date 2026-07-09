@@ -32,16 +32,8 @@
           '</a>' +
           '<ul class="nav-links">' +
 
-            '<li class="nav-item' + pageActive('conference') + '">' +
-              '<a href="index.html#tagungsprogramm">' +
-                '<span data-i18n="nav_conference">Jahrestagung 2026</span>' +
-                '<span class="caret">▾</span>' +
-              '</a>' +
-              '<div class="dropdown">' +
-                '<a href="index.html#tagungsprogramm"><span data-i18n="nav_programme">Tagungsprogramm</span></a>' +
-                '<a href="index.html#rahmenprogramm"><span data-i18n="nav_social">Rahmenprogramm</span></a>' +
-                '<a href="index.html#logistik"><span data-i18n="nav_travel">Anreise &amp; Logistik</span></a>' +
-              '</div>' +
+            '<li class="nav-item' + ((active === 'home' || active === 'conference') ? ' nav-active' : '') + '">' +
+              '<a href="index.html"><span data-i18n="nav_home">Aktuelles</span></a>' +
             '</li>' +
 
             '<li class="nav-item' + pageActive('events') + '">' +
@@ -93,10 +85,7 @@
       // Mobile menu — overlay panel toggled by hamburger button.
       // Each link calls toggleMobileMenu() so the menu closes on navigation.
       '<div class="mobile-menu" id="mobile-menu">' +
-        '<div class="mobile-menu-group" data-i18n="nav_conference">Jahrestagung 2026</div>' +
-        '<a href="index.html#tagungsprogramm" onclick="toggleMobileMenu()"><span data-i18n="nav_programme">Tagungsprogramm</span></a>' +
-        '<a href="index.html#rahmenprogramm" onclick="toggleMobileMenu()"><span data-i18n="nav_social">Rahmenprogramm</span></a>' +
-        '<a href="index.html#logistik" onclick="toggleMobileMenu()"><span data-i18n="nav_travel">Anreise &amp; Logistik</span></a>' +
+        '<a href="index.html" onclick="toggleMobileMenu()"><span data-i18n="nav_home">Aktuelles</span></a>' +
 
         '<a href="events.html" onclick="toggleMobileMenu()"><span data-i18n="nav_events">Veranstaltungen</span></a>' +
         '<div class="mobile-menu-group" data-i18n="nav_research">Forschung</div>' +
@@ -133,9 +122,9 @@
           '</div>' +
           '<div class="footer-col">' +
             '<div class="footer-col-title" data-i18n="footer_col_conf">Jahrestagung 2026</div>' +
-            '<a href="index.html#tagungsprogramm" data-i18n="nav_programme">Tagungsprogramm</a>' +
-            '<a href="index.html#rahmenprogramm" data-i18n="nav_social">Rahmenprogramm</a>' +
-            '<a href="index.html#logistik" data-i18n="nav_travel">Anreise &amp; Logistik</a>' +
+            '<a href="jahrestagung-2026.html#tagungsprogramm" data-i18n="nav_programme">Tagungsprogramm</a>' +
+            '<a href="jahrestagung-2026.html#rahmenprogramm" data-i18n="nav_social">Rahmenprogramm</a>' +
+            '<a href="jahrestagung-2026.html#logistik" data-i18n="nav_travel">Anreise &amp; Logistik</a>' +
           '</div>' +
           '<div class="footer-col">' +
             '<div class="footer-col-title" data-i18n="footer_col_about">Über</div>' +

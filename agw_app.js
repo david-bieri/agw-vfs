@@ -37,6 +37,8 @@ function setLang(l) {
   renderPubs();
   renderAnnouncements();
   renderEvents();
+  renderNextEvent();
+  renderGlance();
   updateCountdown();
 
   // Toggle button active state (guarded — nav buttons are injected by
@@ -581,6 +583,51 @@ function renderPubs() {
   }).join('') + '</div>';
 }
 
+/* ── Home: Nächste Jahrestagung spotlight (guarded — index.html only) ── */
+function renderNextEvent(){
+  var el=document.getElementById('next-event'); if(!el) return;
+  var de=(typeof lang==='undefined')?true:lang!=='en';
+  var today=new Date(); today.setHours(0,0,0,0);
+  var fmt=function(s,e){var so=new Date(s),eo=e?new Date(e):null,loc=de?'de-DE':'en-GB',opt={day:'numeric',month:'long',year:'numeric'};
+    if(!eo||s===e)return so.toLocaleDateString(loc,opt);
+    return so.toLocaleDateString(loc,{day:'numeric'})+'\u2013'+eo.toLocaleDateString(loc,opt);};
+  var up=[];
+  (typeof EVENTS!=='undefined'?EVENTS:[]).forEach(function(ev){
+    if(ev.kind!=='jahrestagung') return;
+    var end=ev.end?new Date(ev.end):new Date(ev.start);
+    if(end>=today) up.push({t:new Date(ev.start).getTime(),ev:ev});
+  });
+  up.sort(function(a,b){return a.t-b.t;});
+  if(!up.length){
+    el.innerHTML='<div class="home-next home-next-empty"><p>'+(de?'Die n\u00e4chste Jahrestagung ist derzeit in Planung.':'The next annual meeting is currently being planned.')
+      +'</p><a class="home-next-cta" href="events.html">'+(de?'Alle Veranstaltungen \u2192':'All events \u2192')+'</a></div>';
+    return;
+  }
+  var e=up[0].ev, loc=de?(e.loc_de||e.loc_en||''):(e.loc_en||e.loc_de||'');
+  var sub=de?(e.desc_de||''):(e.desc_en||'');
+  var ext=e.url&&/^https?:/.test(e.url);
+  el.innerHTML='<a class="home-next" href="'+(e.url||'events.html')+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'
+    +'<div class="home-next-kicker">'+(de?'N\u00e4chste Jahrestagung':'Next annual meeting')+'</div>'
+    +'<div class="home-next-title">'+e.title+'</div>'
+    +(sub?'<div class="home-next-sub">'+sub+'</div>':'')
+    +'<div class="home-next-meta">'+fmt(e.start,e.end)+(loc?' \u00b7 '+loc:'')+'</div>'
+    +'<span class="home-next-cta">'+(de?'Mehr erfahren \u2192':'Learn more \u2192')+'</span></a>';
+}
+
+/* ── Home: Ausschuss auf einen Blick (guarded — index.html only) ── */
+function renderGlance(){
+  var el=document.getElementById('home-glance'); if(!el) return;
+  var de=(typeof lang==='undefined')?true:lang!=='en';
+  var chair=(typeof CHAIRS!=='undefined')?CHAIRS.filter(function(c){return !c.past;})[0]:null;
+  var chairName=chair?((chair.title?chair.title+' ':'')+chair.name):'';
+  var count=(typeof MEMBERS!=='undefined')?MEMBERS.length:0;
+  var item=function(v,l){return '<div class="glance-item"><div class="glance-value">'+v+'</div><div class="glance-label">'+l+'</div></div>';};
+  el.innerHTML=(chairName?item(chairName,de?'Vorsitzende':'Chair'):'')
+    +item(count+(de?' Mitglieder':' members'),de?'Ausschuss':'Committee')
+    +item('VfS',de?'Verein f\u00fcr Socialpolitik':'German Economic Association')
+    +'<a class="glance-item glance-link" href="analytics.html"><div class="glance-value">Stammbaum \u2192</div><div class="glance-label">'+(de?'Denkschulen erkunden':'Explore the schools')+'</div></a>';
+}
+
 /* ── Init ── */
 renderChairs();
 renderMembers(MEMBERS);
@@ -589,6 +636,8 @@ renderPubs();
 renderAnnouncements();
 updateCountdown();
 renderEvents();
+renderNextEvent();
+renderGlance();
 initLang();
   addSessionIcalBtns(); // Apply saved/auto-detected language preference
 /* ── Logistik map (Leaflet.js, no API key) ── */
