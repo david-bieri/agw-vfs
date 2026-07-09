@@ -22,7 +22,7 @@ const CHAIRS = [
 ];
 
 const MEMBERS = [
-  { name:'Elisabeth Allgoewer', title:'Prof. Dr.', inst:'Universität Hamburg', city:'Hamburg', country:'DE', emeritus:false, role:'', focus_de:'Geldtheorie, Makroökonomik, Geschichte der Ökonomik', focus_en:'Monetary theory, macroeconomics, history of economics' },
+  { name:'Elisabeth Allgoewer', title:'Prof. Dr.', inst:'Universität Hamburg', city:'Hamburg', country:'DE', emeritus:false, role:'chair', focus_de:'Geldtheorie, Makroökonomik, Geschichte der Ökonomik', focus_en:'Monetary theory, macroeconomics, history of economics' },
   { name:'Ingo Barens', title:'Prof. em. Dr.', inst:'TU Darmstadt', city:'Darmstadt', country:'DE', emeritus:true, role:'', focus_de:'Keynesianismus, Beschäftigungstheorie', focus_en:'Keynesianism, employment theory' },
   { name:'Reinhard Blomert', title:'Dr. habil.', inst:'Wissenschaftszentrum Berlin (WZB)', city:'Berlin', country:'DE', emeritus:false, role:'', focus_de:'Wissenssoziologie, Geschichte der Wirtschaftswissenschaften', focus_en:'Sociology of knowledge, history of economics' },
   { name:'David Bieri', title:'Prof. Dr.', inst:'Virginia Tech, Blacksburg', city:'Blacksburg', country:'US', emeritus:false, role:'host2026', focus_de:'Geschichte der Finanzmarkttheorie, Urban Economics', focus_en:'History of financial theory, urban economics' },
@@ -44,7 +44,7 @@ const MEMBERS = [
   { name:'Karen Horn', title:'Prof. Dr.', inst:'Universität Erfurt', city:'Erfurt', country:'DE', emeritus:false, role:'', focus_de:'Adam Smith, Geschichte des Liberalismus', focus_en:'Adam Smith, history of liberalism' },
   { name:'Hauke Janssen', title:'Dr.', inst:'(unabhängig)', city:'–', country:'DE', emeritus:false, role:'', focus_de:'Geschichte der Wirtschaftswissenschaften im Nationalsozialismus', focus_en:'History of economics under National Socialism' },
   { name:'Hansjörg Klausinger', title:'Prof. em. Dr.', inst:'Wirtschaftsuniversität Wien', city:'Wien', country:'AT', emeritus:true, role:'', focus_de:'Österreichische Schule, Hayek, Konjunkturtheorie', focus_en:'Austrian School, Hayek, business cycle theory' },
-  { name:'Rainer Klump', title:'Prof. Dr.', inst:'Goethe-Universität Frankfurt', city:'Frankfurt', country:'DE', emeritus:false, role:'chair', focus_de:'Wachstumstheorie, Institutionenökonomik, Dogmengeschichte', focus_en:'Growth theory, institutional economics, history of doctrines' },
+  { name:'Rainer Klump', title:'Prof. Dr.', inst:'Goethe-Universität Frankfurt', city:'Frankfurt', country:'DE', emeritus:false, role:'', focus_de:'Wachstumstheorie, Institutionenökonomik, Dogmengeschichte', focus_en:'Growth theory, institutional economics, history of doctrines' },
   { name:'Stefan Kolev', title:'Prof. Dr.', inst:'Westfälische Hochschule Zwickau', city:'Zwickau', country:'DE', emeritus:false, role:'', focus_de:'Ordoliberalismus, Hayek, Mont Pèlerin Society', focus_en:'Ordoliberalism, Hayek, Mont Pèlerin Society' },
   { name:'Hagen Krämer', title:'Prof. Dr.', inst:'Hochschule Karlsruhe', city:'Karlsruhe', country:'DE', emeritus:false, role:'', focus_de:'Einkommensverteilung, Post-Keynesianismus', focus_en:'Income distribution, Post-Keynesianism' },
   { name:'Heinz D. Kurz', title:'Prof. em. Dr.', inst:'Karl-Franzens-Universität Graz', city:'Graz', country:'AT', emeritus:true, role:'', focus_de:'Sraffa, klassische politische Ökonomie, Kapitaltheorie', focus_en:'Sraffa, classical political economy, capital theory' },

@@ -178,7 +178,7 @@ function renderMembers(list) {
     grid.innerHTML = '<div style="padding:32px;text-align:center;color:var(--text-faint);font-style:italic;">Keine Mitglieder gefunden / No members found</div>';
     return;
   }
-  const chair_lbl = lang === 'en' ? ((AGW.S.mbr_chair && AGW.S.mbr_chair.en)    || 'Chair')     : 'Vorsitzender';
+  const chair_lbl = lang === 'en' ? ((AGW.S.mbr_chair && AGW.S.mbr_chair.en)    || 'Chair')     : 'Vorsitzende';
   const host_lbl  = lang === 'en' ? ((AGW.S.mbr_host2026 && AGW.S.mbr_host2026.en) || '2026 Host') : 'Gastgeber 2026';
   const em_lbl    = lang === 'en' ? 'Emeritus/a' : 'Emeritus/a';
   const FLAG = { DE:'\u{1f1e9}\u{1f1ea}', AT:'\u{1f1e6}\u{1f1f9}', CH:'\u{1f1e8}\u{1f1ed}',
@@ -232,7 +232,7 @@ function renderArchive() {
   const nr_lbl   = lang === 'en' ? 'Annual Conference' : 'Jahrestagung';
   const papers_lbl = lang === 'en' ? 'Selected Papers' : 'Beitr\u00e4ge';
   const venue_lbl  = lang === 'en' ? 'Venue' : 'Tagungsort';
-  const pending    = lang === 'en' ? 'Forthcoming' : 'Angek\u00fcndigt';
+  const pending    = lang === 'en' ? 'Volume in preparation' : 'Band in Vorbereitung';
   const no_papers  = lang === 'en' ? 'Programme details to be added.' : 'Programm wird erg\u00e4nzt.';
   const no_covid   = lang === 'en' ? '(No conference in 2020 due to COVID-19)' : '(2020 entf\u00e4llt aufgrund von COVID-19)';
   const speaker_match_lbl = lang === 'en' ? 'Speaker match' : 'Referent';
