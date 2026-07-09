@@ -991,8 +991,15 @@ function renderEvents(){
       loc:de?(ev.loc_de||ev.loc_en||''):(ev.loc_en||ev.loc_de||''), venue:'',
       host:ev.host||'', dates:fmt(ev.start,ev.end), url:ev.url, external:true});
   });
+  var DE_MO={januar:0,februar:1,'m\u00e4rz':2,april:3,mai:4,juni:5,juli:6,august:7,september:8,oktober:9,november:10,dezember:11};
+  var archiveTs=function(c){
+    var y=c.year||0, mo=0, d=1, ds=(c.dates||'').toLowerCase();
+    for(var k in DE_MO){ if(ds.indexOf(k)>-1){ mo=DE_MO[k]; break; } }
+    var m=ds.match(/(\d{1,2})\s*\./); if(m) d=parseInt(m[1],10);
+    return new Date(y,mo,d).getTime();
+  };
   (typeof ARCHIVE!=='undefined'?ARCHIVE:[]).forEach(function(c){
-    items.push({sort:(c.year||0)*10000, upcoming:false,
+    items.push({sort:archiveTs(c), upcoming:false,
       kind:'jahrestagung', affiliation:'agw', edition:c.nr,
       title:de?(c.nr+'. Jahrestagung des AGW'):(ord(c.nr)+' AGW Annual Meeting'),
       subtitle:de?(c.theme||''):(c.theme_en||c.theme||''),
