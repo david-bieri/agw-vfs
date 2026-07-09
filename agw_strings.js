@@ -415,6 +415,9 @@
     contact_channels_lbl : { de: 'Kontakt', en: 'Contact' },
     // ── Members' publications page ───────────────────────────────────────
     nav_member_pubs      : { de: 'Publikationen der Mitglieder', en: "Members' Publications" },
+    nav_events           : { de: 'Veranstaltungen', en: 'Events' },
+    events_title         : { de: 'Veranstaltungen', en: 'Events' },
+    events_lead          : { de: 'Jahrestagungen des AGW sowie affiliierte Tagungen, Seminare und Netzwerke aus der Theorie- und Ordnungsgeschichte.', en: 'AGW annual meetings alongside affiliated conferences, seminars, and networks from the history of economics and constitutional economics.' },
     mpub_page_title      : { de: 'Publikationen der Mitglieder', en: "Members' Publications" },
     mpub_label           : { de: 'Forschung', en: 'Research' },
     mpub_intro           : { de: 'Ausgewählte Publikationen der AGW-Mitglieder. Durchsuchen Sie die Literatur nach thematischen Schwerpunkten oder nach Mitglied. Die Liste wird laufend ergänzt.', en: 'Selected publications by AGW members. Browse the literature by thematic area or by member. The list is continuously expanded.' },

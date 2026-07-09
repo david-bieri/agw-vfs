@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGW · Veranstaltungen</title>
+
+<!-- Favicon — AGW initials on navy -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231B3A6B'/><text x='16' y='22' font-family='Georgia,serif' font-size='13' font-weight='bold' fill='white' text-anchor='middle'>AGW</text></svg>">
+
+<!-- Primary meta -->
+<meta name="description" content="Veranstaltungen des AGW: Jahrestagungen sowie affiliierte Tagungen, Seminare und Netzwerke aus der Geschichte der Wirtschaftswissenschaften und der Ordnungsökonomik.">
+<meta name="author" content="AGW – Ausschuss für die Geschichte der Wirtschaftswissenschaften, Verein für Socialpolitik">
+<meta name="keywords" content="History of Economics, Theoriegeschichte, Jahrestagung, Veranstaltungen, Ordnungsökonomik, ESHET, NOuS, Verein für Socialpolitik, AGW">
+<link rel="canonical" href="https://www.agw-vfs.de/events.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:locale:alternate" content="en_GB">
+<meta property="og:site_name" content="AGW – Verein für Socialpolitik">
+<meta property="og:title" content="AGW · Veranstaltungen">
+<meta property="og:description" content="Jahrestagungen des AGW sowie affiliierte Tagungen, Seminare und Netzwerke aus der Theorie- und Ordnungsgeschichte.">
+<meta property="og:url" content="https://www.agw-vfs.de/events.html">
+
+<!-- Twitter / X card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AGW · Veranstaltungen">
+<meta name="twitter:description" content="Jahrestagungen des AGW sowie affiliierte Tagungen, Seminare und Netzwerke aus der Theorie- und Ordnungsgeschichte.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="agw_styles.css">
+
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#1B3A6B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="AGW 2026">
+<link rel="apple-touch-icon" href="/icon-192.png">
+
+<!-- Page-scoped component styles (uses shared CSS vars from agw_styles.css, with fallbacks) -->
+<style>
+  .ev-wrap{max-width:1040px;margin:0 auto;padding:44px 1.5rem 88px;}
+  .ev-hero{margin-bottom:36px;padding-bottom:24px;border-bottom:1px solid var(--border,#DDE2EA);}
+  .ev-hero h1{font-family:'EB Garamond',Georgia,serif;font-size:2rem;font-weight:600;color:var(--navy,#1B3A6B);margin-bottom:10px;}
+  .ev-hero p{font-size:1.05rem;color:var(--text-muted,#6B7280);max-width:70ch;line-height:1.6;}
+  .ev-section-h{font-family:'EB Garamond',Georgia,serif;font-size:1.3rem;font-weight:600;color:var(--navy,#1B3A6B);margin:0 0 18px;padding-bottom:8px;border-bottom:2px solid var(--gold,#B8860B);display:inline-block;}
+  .ev-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px;margin-bottom:8px;}
+  .ev-card{background:var(--white,#fff);border:1px solid var(--border,#DDE2EA);border-radius:10px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;transition:box-shadow .15s,border-color .15s;}
+  .ev-card:hover{box-shadow:0 4px 18px rgba(27,58,107,.08);border-color:var(--navy,#1B3A6B);}
+  .ev-card-top{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .ev-badge{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:100px;}
+  .ev-badge-agw{background:var(--navy,#1B3A6B);color:#fff;}
+  .ev-badge-aff{background:var(--accent-pale,#EAF0F8);color:var(--navy,#1B3A6B);}
+  .ev-kind{font-size:11.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--text-faint,#9CA3AF);}
+  .ev-title{font-family:'EB Garamond',Georgia,serif;font-size:1.12rem;font-weight:600;color:var(--text-dark,#1C1C1E);line-height:1.3;margin:0;}
+  .ev-sub{font-size:13.5px;color:var(--text-body,#2C2C30);line-height:1.5;margin:0;}
+  .ev-meta{font-size:12.5px;color:var(--text-muted,#6B7280);line-height:1.5;margin-top:auto;}
+  .ev-link{font-size:12.5px;font-weight:600;color:var(--navy,#1B3A6B);text-decoration:none;align-self:flex-start;}
+  .ev-link:hover{text-decoration:underline;}
+  .ev-empty{font-size:14px;color:var(--text-muted,#6B7280);font-style:italic;padding:8px 0;}
+  .ev-net-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;}
+  .ev-net{background:var(--cream,#FAFAF7);border:1px solid var(--border-light,#EEF1F5);border-radius:10px;padding:16px 18px;}
+  .ev-net-abbr{font-family:'EB Garamond',Georgia,serif;font-size:1.15rem;font-weight:700;color:var(--navy,#1B3A6B);}
+  .ev-net-name{font-size:12.5px;color:var(--text-muted,#6B7280);line-height:1.4;margin:4px 0 10px;}
+  .ev-net-links{display:flex;gap:14px;flex-wrap:wrap;}
+  .ev-net-links a{font-size:12px;font-weight:600;color:var(--accent,#3A6BAF);text-decoration:none;}
+  .ev-net-links a:hover{text-decoration:underline;}
+  .ev-footer{background:var(--navy-dark,#122852);color:rgba(255,255,255,.75);padding:28px 1.5rem;font-size:12.5px;}
+  .ev-footer-inner{max-width:1040px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;}
+  .ev-footer a{color:rgba(255,255,255,.7);text-decoration:none;}
+  .ev-footer a:hover{color:#fff;}
+</style>
+</head>
+<body>
+
+<div id="nav-mount"></div>
+
+<div class="ev-wrap">
+  <header class="ev-hero">
+    <h1 data-i18n="events_title">Veranstaltungen</h1>
+    <p data-i18n="events_lead">Jahrestagungen des AGW sowie affiliierte Tagungen, Seminare und Netzwerke aus der Theorie- und Ordnungsgeschichte.</p>
+  </header>
+
+  <div id="events-timeline"></div>
+
+  <div id="event-networks" style="margin-top:52px;"></div>
+</div>
+
+<footer class="ev-footer">
+  <div class="ev-footer-inner">
+    <span>AGW · Ausschuss für die Geschichte der Wirtschaftswissenschaften · Verein für Socialpolitik</span>
+    <span><a href="guide.html#zitierweise" data-i18n="footer_cite">Zitierweise</a> · © 2026 · <a href="mailto:bieri@vt.edu">David Bieri</a></span>
+  </div>
+</footer>
+
+<div id="search-overlay" onclick="if(event.target===this)closeSearch()"><div id="search-box"><div id="search-input-row"><span style="font-size:18px;margin-right:10px;color:var(--text-faint);"><span class="ico ico-search" aria-hidden="true"></span></span><input id="search-input" type="text" autocomplete="off" oninput="runSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()" placeholder="Suchen… / Search…"><button id="search-close" onclick="closeSearch()">✕</button></div><div id="search-results"><div class="srch-empty">Suchbegriff eingeben…</div></div><div id="search-hint">↵ öffnet &nbsp;·&nbsp; Esc schließt &nbsp;·&nbsp; Ctrl+K</div></div></div>
+
+<script src="agw_strings.js"></script>
+<script src="agw_data.js"></script>
+<script src="agw_app.js"></script>
+<script src="agw_nav.js"></script>
+<script>AGW.renderNav('events');</script>
+
+</body>
+</html>

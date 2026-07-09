@@ -73,7 +73,7 @@ const MEMBERS = [
 ];
 
 const ARCHIVE = [
-  { nr:46, year:2026, dates:'25.–27. Juni 2026', country:'CH', loc_de:'Riva San Vitale, Tessin', loc_en:'Riva San Vitale, Ticino', venue:'Virginia Tech Steger Center, Villa Maderni', theme:'Zukunftsperspektiven der Theoriegeschichte: Methoden, Themen, Kontroversen', theme_en:'Future Perspectives in the History of Economic Thought: Methods, Topics, Controversies', vol:null, papers:[
+  { nr:46, year:2026, dates:'25.–27. Juni 2026', country:'CH', loc_de:'Riva San Vitale, Tessin', loc_en:'Riva San Vitale, Ticino', venue:'Virginia Tech Steger Center, Villa Maderni', theme:'Zukunftsperspektiven der Theoriegeschichte: Methoden, Themen, Kontroversen', theme_en:'Future Perspectives in the History of Economic Thought: Methods, Topics, Controversies', vol:null, page:'jahrestagung-2026.html', papers:[
     { author:'Hans-Michael Trautwein · Richard Sturn', title:'Der Stand und die Zukunft der theoriegeschichtlichen Forschung', inst:'Oldenburg · Graz' },
     { author:'Alexander Linsbichler', title:'Theoriegeschichte und Wissenschaftsphilosophie', inst:'Linz' },
     { author:'Gilles Campagnolo', title:'Inhalt und Grenzen der «philosophie économique»', inst:'Paris' },
@@ -363,6 +363,30 @@ const ANNOUNCEMENTS=[
    text_en:'The proceedings volume Adam Smith @ 300 has been published by Duncker & Humblot.'},
 ];
 
+const EVENTS = [
+  { id:'erfurt-doktorandenseminar-2026', series:'erfurt-doktorandenseminar', edition:12,
+    kind:'seminar', affiliation:'affiliated',
+    title:'12. Doktorandenseminar zur Erneuerung der Ordnungs\u00f6konomik',
+    start:'2026-02-11', end:'2026-02-12',
+    loc_de:'Universit\u00e4t Erfurt', loc_en:'University of Erfurt',
+    host:'Ludwig-Erhard-Forum u.\u00a0a.',
+    url:'https://www.ludwig-erhard.de/veranstaltung/12-doktorandenseminar-zur-erneuerung-der-ordnungsoekonomik/',
+    tags:['ordoliberal'],
+    desc_de:'J\u00e4hrliches Doktorandenseminar zur Ordnungs\u00f6konomik und Sozialphilosophie; mitgetragen u.\u00a0a. vom Netzwerk f\u00fcr Ordnungs\u00f6konomik und Sozialphilosophie (NOuS).',
+    desc_en:'Annual doctoral seminar on constitutional economics and social philosophy; co-hosted among others by the Network for Ordnungs\u00f6konomik and Social Philosophy (NOuS).' }
+];
+
+const EVENT_NETWORKS = [
+  { id:'eshet', abbr:'ESHET',
+    name_de:'European Society for the History of Economic Thought',
+    name_en:'European Society for the History of Economic Thought',
+    url:'https://www.eshet.net/', events_url:'https://www.eshet.net/forthcoming-conference/', tags:['general'] },
+  { id:'nous', abbr:'NOuS',
+    name_de:'Netzwerk f\u00fcr Ordnungs\u00f6konomik und Sozialphilosophie',
+    name_en:'Network for Ordnungs\u00f6konomik and Social Philosophy',
+    url:'https://nous.network/', events_url:'https://nous.network/veranstaltungen/', tags:['ordoliberal'] }
+];
+
 // Also expose on a namespace object for explicit cross-page access
 window.AGW_DATA = {
   CHAIRS: typeof CHAIRS !== 'undefined' ? CHAIRS : undefined,
@@ -370,5 +394,7 @@ window.AGW_DATA = {
   ARCHIVE: typeof ARCHIVE !== 'undefined' ? ARCHIVE : undefined,
   PUBLICATIONS: typeof PUBLICATIONS !== 'undefined' ? PUBLICATIONS : undefined,
   FMTS: typeof FMTS !== 'undefined' ? FMTS : undefined,
-  ANNOUNCEMENTS: typeof ANNOUNCEMENTS !== 'undefined' ? ANNOUNCEMENTS : undefined
+  ANNOUNCEMENTS: typeof ANNOUNCEMENTS !== 'undefined' ? ANNOUNCEMENTS : undefined,
+  EVENTS: typeof EVENTS !== 'undefined' ? EVENTS : undefined,
+  EVENT_NETWORKS: typeof EVENT_NETWORKS !== 'undefined' ? EVENT_NETWORKS : undefined
 };

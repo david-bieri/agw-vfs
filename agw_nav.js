@@ -44,6 +44,9 @@
               '</div>' +
             '</li>' +
 
+            '<li class="nav-item' + pageActive('events') + '">' +
+              '<a href="events.html"><span data-i18n="nav_events">Veranstaltungen</span></a>' +
+            '</li>' +
             '<li class="nav-item' + pageActive('archive') + '">' +
               '<a href="archive.html">' +
                 '<span data-i18n="nav_archive">Archiv</span>' +
@@ -101,6 +104,7 @@
         '<a href="index.html#rahmenprogramm" onclick="toggleMobileMenu()"><span data-i18n="nav_social">Rahmenprogramm</span></a>' +
         '<a href="index.html#logistik" onclick="toggleMobileMenu()"><span data-i18n="nav_travel">Anreise &amp; Logistik</span></a>' +
 
+        '<a href="events.html" onclick="toggleMobileMenu()"><span data-i18n="nav_events">Veranstaltungen</span></a>' +
         '<div class="mobile-menu-group" data-i18n="nav_archive">Archiv</div>' +
         '<a href="archive.html#archiv" onclick="toggleMobileMenu()"><span data-i18n="nav_archive">Archiv</span></a>' +
         '<a href="archive.html#publikationen" onclick="toggleMobileMenu()"><span data-i18n="nav_publications">Publikationen</span></a>' +

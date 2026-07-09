@@ -36,6 +36,7 @@ function setLang(l) {
   renderArchive();
   renderPubs();
   renderAnnouncements();
+  renderEvents();
   updateCountdown();
 
   // Toggle button active state (guarded — nav buttons are injected by
@@ -298,7 +299,7 @@ function renderArchive() {
       + '</div></div>'
       + '<button class="archive-toggle" id="archive-toggle-' + i + '">▾</button></div>'
       + '<div class="archive-body" id="archive-body-' + i + '">'
-      + '<div class="archive-body-inner">'
+      + '<div class="archive-body-inner">' + (c.page ? '<a href="' + c.page + '" style="display:inline-block;margin-bottom:12px;font-size:12.5px;font-weight:600;color:var(--navy);text-decoration:none;">' + (lang === 'en' ? 'View conference page \u2192' : 'Zur Tagungsseite \u2192') + '</a>' : '')
       + '<div><div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);margin-bottom:10px;">' + papers_lbl + (papers.length ? ' (' + papers.length + ')' : '') + '</div>'
       + '<div class="archive-papers-list">' + papersHtml + '</div></div>'
       + '</div></div></div>';
@@ -587,6 +588,7 @@ renderArchive();
 renderPubs();
 renderAnnouncements();
 updateCountdown();
+renderEvents();
 initLang();
   addSessionIcalBtns(); // Apply saved/auto-detected language preference
 /* ── Logistik map (Leaflet.js, no API key) ── */
@@ -676,7 +678,7 @@ function downloadIcal(){
   var t=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//AGW VfS//JT2026//DE','CALSCALE:GREGORIAN','METHOD:PUBLISH',
     'BEGIN:VEVENT','UID:agw2026-main@agw-vfs.de','DTSTART;VALUE=DATE:20260625','DTEND;VALUE=DATE:20260628',
     'SUMMARY:AGW 46. Jahrestagung 2026','LOCATION:Steger Center\\, Via Settala 8\\, Riva San Vitale',
-    'URL:https://david-bieri.github.io/agw-vfs/','END:VEVENT',
+    'URL:https://www.agw-vfs.de/','END:VEVENT',
     'BEGIN:VEVENT','UID:agw2026-thu@agw-vfs.de','DTSTART:20260625T173000Z','DTEND:20260625T210000Z',
     'SUMMARY:AGW 2026 - Willkommensabendessen (Trattoria Galleria\\, Lugano)',
     'LOCATION:Ristorante Trattoria Galleria\\, Via Giosu\u00e8 Carducci 4\\, Lugano','END:VEVENT',
@@ -766,7 +768,7 @@ window.addEventListener('scroll',function(){
 (function(){
   var el=document.getElementById('footer-qr');
   if(!el||typeof QRCode==='undefined')return;
-  new QRCode(el,{text:'https://david-bieri.github.io/agw-vfs/',
+  new QRCode(el,{text:'https://www.agw-vfs.de/',
     width:88,height:88,colorDark:'#1B3A6B',colorLight:'#ffffff',
     correctLevel:QRCode.CorrectLevel.M});
 })();
@@ -907,7 +909,7 @@ function renderAnnouncements(){
 /* ── PWA: register service worker ── */
 if('serviceWorker' in navigator){
   window.addEventListener('load', function(){
-    navigator.serviceWorker.register('/agw-vfs/service-worker.js',{scope:'/agw-vfs/'})
+    navigator.serviceWorker.register('/service-worker.js',{scope:'/'})
       .then(function(reg){ console.log('SW registered:', reg.scope); })
       .catch(function(e){ /* SW unavailable on this context */ });
   });
@@ -957,4 +959,81 @@ function addSessionIcalBtns() {
       titleEl.appendChild(btn);
     });
   });
+}
+
+
+/* ── Events: unified timeline (Jahrestagungen from ARCHIVE + affiliated EVENTS) ──
+   ARCHIVE holds only past/current Jahrestagungen; upcoming items live in EVENTS
+   with ISO dates until they happen, then move to ARCHIVE. Status is derived here.
+   Guarded: renders only on the page carrying #events-timeline. */
+function renderEvents(){
+  var el=document.getElementById('events-timeline'); if(!el) return;
+  var de = (typeof lang==='undefined') ? true : lang!=='en';
+  var today=new Date(); today.setHours(0,0,0,0);
+  var ord=function(n){var s=['th','st','nd','rd'],v=n%100;return n+(s[(v-20)%10]||s[v]||s[0]);};
+  var kindLbl=function(k){
+    var m=de?{jahrestagung:'Jahrestagung',seminar:'Seminar',workshop:'Workshop',lecture:'Vortrag',conference:'Tagung'}
+            :{jahrestagung:'Annual Meeting',seminar:'Seminar',workshop:'Workshop',lecture:'Lecture',conference:'Conference'};
+    return m[k]||k;
+  };
+  var fmt=function(s,e){
+    var so=new Date(s), eo=e?new Date(e):null, loc=de?'de-DE':'en-GB';
+    var opt={day:'numeric',month:'long',year:'numeric'};
+    if(!eo||s===e) return so.toLocaleDateString(loc,opt);
+    return so.toLocaleDateString(loc,{day:'numeric'})+'\u2013'+eo.toLocaleDateString(loc,opt);
+  };
+  var items=[];
+  (typeof EVENTS!=='undefined'?EVENTS:[]).forEach(function(ev){
+    var end=ev.end?new Date(ev.end):new Date(ev.start);
+    items.push({sort:new Date(ev.start).getTime(), upcoming:end>=today,
+      kind:ev.kind, affiliation:ev.affiliation, edition:ev.edition,
+      title:ev.title, subtitle:de?(ev.desc_de||''):(ev.desc_en||''),
+      loc:de?(ev.loc_de||ev.loc_en||''):(ev.loc_en||ev.loc_de||''), venue:'',
+      host:ev.host||'', dates:fmt(ev.start,ev.end), url:ev.url, external:true});
+  });
+  (typeof ARCHIVE!=='undefined'?ARCHIVE:[]).forEach(function(c){
+    items.push({sort:(c.year||0)*10000, upcoming:false,
+      kind:'jahrestagung', affiliation:'agw', edition:c.nr,
+      title:de?(c.nr+'. Jahrestagung des AGW'):(ord(c.nr)+' AGW Annual Meeting'),
+      subtitle:de?(c.theme||''):(c.theme_en||c.theme||''),
+      loc:de?(c.loc_de||''):(c.loc_en||c.loc_de||''), venue:c.venue||'',
+      host:'', dates:(c.dates||String(c.year)), url:(c.page||'archive.html#archiv'), external:false, hasPage:!!c.page});
+  });
+  var up=items.filter(function(x){return x.upcoming;}).sort(function(a,b){return a.sort-b.sort;});
+  var pa=items.filter(function(x){return !x.upcoming;}).sort(function(a,b){return b.sort-a.sort;});
+  var card=function(x){
+    var badge=x.affiliation==='agw'
+      ? '<span class="ev-badge ev-badge-agw">AGW</span>'
+      : '<span class="ev-badge ev-badge-aff">'+(de?'Affiliiert':'Affiliated')+'</span>';
+    var kind='<span class="ev-kind">'+kindLbl(x.kind)+(x.edition?' \u00b7 '+(de?(x.edition+'.'):('#'+x.edition)):'')+'</span>';
+    var meta=[x.dates,x.loc,x.venue,(x.host?(de?'Veranstalter: ':'Host: ')+x.host:'')].filter(Boolean).join(' \u00b7 ');
+    var lt=x.external?(de?'Mehr erfahren \u2197':'Learn more \u2197'):(x.hasPage?(de?'Zur Tagungsseite \u2192':'Event page \u2192'):(de?'Zum Archiv':'To archive'));
+    var la=x.external?' target="_blank" rel="noopener"':'';
+    return '<article class="ev-card">'
+      +'<div class="ev-card-top">'+badge+kind+'</div>'
+      +'<h3 class="ev-title">'+x.title+'</h3>'
+      +(x.subtitle?'<p class="ev-sub">'+x.subtitle+'</p>':'')
+      +'<div class="ev-meta">'+meta+'</div>'
+      +(x.url?'<a class="ev-link" href="'+x.url+'"'+la+'>'+lt+'</a>':'')
+      +'</article>';
+  };
+  var h='';
+  h+='<h2 class="ev-section-h">'+(de?'Kommende Veranstaltungen':'Upcoming Events')+'</h2>';
+  h+= up.length ? '<div class="ev-grid">'+up.map(card).join('')+'</div>'
+       : '<p class="ev-empty">'+(de?'Derzeit sind keine kommenden Veranstaltungen angek\u00fcndigt.':'No upcoming events are currently announced.')+'</p>';
+  h+='<h2 class="ev-section-h" style="margin-top:44px;">'+(de?'Vergangene Veranstaltungen':'Past Events')+'</h2>';
+  h+='<div class="ev-grid">'+pa.map(card).join('')+'</div>';
+  el.innerHTML=h;
+  var nl=document.getElementById('event-networks');
+  if(nl && typeof EVENT_NETWORKS!=='undefined'){
+    nl.innerHTML='<h2 class="ev-section-h">'+(de?'Verwandte Netzwerke & Veranstaltungskalender':'Related Networks & Event Calendars')+'</h2>'
+      +'<p class="ev-empty" style="margin-bottom:18px;">'+(de?'Wissenschaftliche Netzwerke und Gesellschaften im Umfeld der Theorie- und Ordnungsgeschichte, deren Veranstaltungskalender f\u00fcr Mitglieder von Interesse sind.':'Scholarly networks and societies adjacent to the history of economics and constitutional economics, whose event calendars are of interest to members.')+'</p>'
+      +'<div class="ev-net-grid">'+EVENT_NETWORKS.map(function(n){
+          return '<div class="ev-net"><div class="ev-net-abbr">'+n.abbr+'</div>'
+            +'<div class="ev-net-name">'+(de?n.name_de:n.name_en)+'</div>'
+            +'<div class="ev-net-links"><a href="'+n.url+'" target="_blank" rel="noopener">'+(de?'Website \u2197':'Website \u2197')+'</a>'
+            +(n.events_url?'<a href="'+n.events_url+'" target="_blank" rel="noopener">'+(de?'Veranstaltungen \u2197':'Events \u2197')+'</a>':'')
+            +'</div></div>';
+        }).join('')+'</div>';
+  }
 }
