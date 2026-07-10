@@ -33,17 +33,19 @@ Uppercase mini-labels appear as `.section-label`, `.hl-eyebrow`, `.hl-kicker`, `
 
 **Fix:** define one `--tracking-label` (recommend `.14em`) and a single `.eyebrow` utility (11px, weight 600, navy, uppercase); have the others inherit. Consolidates ~5 near-duplicate rules.
 
-## 4. Two blues, and now a gold that lives only off-site (a real decision)
+## 4. Two different golds — site vs. generator (a real decision) — *corrected*
 
-The palette carries `--navy #1B3A6B`, `--navy-dark #122852`, `--navy-mid #24477F`, and `--accent #3A6BAF` (a lighter blue). The navies form a clean scale; `--accent` is used sparingly and mostly reads fine, but it's worth auditing whether it earns its place or should fold into the navy scale.
+The palette carries `--navy #1B3A6B`, `--navy-dark #122852`, `--navy-mid #24477F`, and `--accent #3A6BAF` (a lighter blue used for hovers). The navies form a clean scale; `--accent` earns its place as the hover blue.
 
-The sharper issue: the **thumbnail/social-card generator introduced gold `#CBA13A`** as the kicker accent — and gold appears **nowhere in the site CSS**. So the committee's social cards and its website are now subtly different brands. This is the one finding with strategic weight, not just cleanup.
+**Correction to an earlier draft of this audit:** the site absolutely *does* use gold — `--gold #B8860B` and `--gold-light #F5EED0` appear throughout (hero rule, `gold-rule`, chair emphasis on `member-card.chair` / `chair-current`, `pullquote`, `callout-gold`, memorial `tl-item`). Gold is an established AGW accent, not absent.
 
-**Decision needed (pick one):**
-- **(a) Adopt gold as a site accent** — add `--gold`, and use it lightly (kicker underscores, the `.gold-rule`, active-tab indicator). This unifies site ↔ social and adds warmth against all that navy. My lean.
-- **(b) Keep gold social-only** — then soften/retire gold in the generator so the cards match the site's navy-only accenting instead.
+The real inconsistency is that there are **two golds**:
+- **Site gold `#B8860B`** (darkgoldenrod) — chosen to read on the warm-white `--cream` canvas.
+- **Generator/social gold `#CBA13A`** (brighter) — chosen to read on the navy card backgrounds.
 
-Either is fine; the current state (gold on cards, none on site) is the only wrong answer.
+So the committee's website and its social cards accent with different gold values. That may be *defensible* (a darker gold on cream, a brighter gold on navy is a real perceptual need), or it may just be drift. This is the one finding with strategic weight — it wants an eye, not a token rename.
+
+**Decision needed:** unify to a single gold that holds up on both cream and navy, **or** formalise a documented pair (`--gold` on-cream + `--gold-on-navy`) so both surfaces are intentional rather than accidental. See `AGW_DESIGN_BRIEF.md` for the Claude Design exploration that settles it.
 
 ## 5. Responsive breakpoints are ad hoc (medium)
 
