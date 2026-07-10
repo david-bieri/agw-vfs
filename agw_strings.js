@@ -53,7 +53,7 @@
     schulen_intro:       { de: 'Figuren der Wirtschaftstheorie, gruppiert nach Denkschule. Die Linien zeigen Ko-Zitationen sowie Lehrer–Schüler- und Einfluss-Beziehungen aus dem AGW-Tagungskorpus. Knotengröße nach Tagungspräsenz. Über einen Knoten fahren für Details; eine Schule anklicken zum Hervorheben.', en: 'Figures from the history of economic thought, grouped by school. Lines show co-citations as well as teacher–student and influence relations from the AGW conference corpus. Node size reflects conference presence. Hover a node for details; click a school to highlight it.' },
     schulen_note:        { de: 'Ko-Zitation = gemeinsame Nennung in Tagungsbeiträgen · Lehrer–Schüler / Einfluss = dokumentierte intellektuelle Linien. Datenbasis: 81 Figuren · 199 Verbindungen. Ergänzt den zeitlich geordneten Stammbaum (Netzwerke).', en: 'Co-citation = joint mention in conference contributions · Teacher–student / influence = documented intellectual lines. Data: 81 figures · 199 connections. Complements the time-ordered Stammbaum (Networks).' },
     impr_label:          { de: 'Impressionen',            en: 'Impressions' },
-    impr_title:          { de: 'Impressionen 2026',       en: 'Impressions 2026' },
+    impr_title:          { de: 'Impressionen aus Riva',    en: 'Impressions from Riva' },
     impr_lead:           { de: 'Eindrücke von der 46. Jahrestagung in der Villa Maderni, Riva San Vitale.', en: 'Scenes from the 46th Annual Conference at Villa Maderni, Riva San Vitale.' },
     gal_close:           { de: 'Schließen',               en: 'Close' },
     gal_prev:            { de: 'Vorheriges Bild',         en: 'Previous image' },
