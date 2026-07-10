@@ -1,7 +1,7 @@
 /* AGW Jahrestagung 2026 — Service Worker
  * Strategy: Cache-first for shell + static assets; network-first for tiles
  */
-const CACHE = 'agw-2026-v44-nav-sticky';
+const CACHE = 'agw-2026-v45-gallery';
 
 const PRECACHE = [
   '/',
@@ -22,6 +22,7 @@ const PRECACHE = [
   '/agw_chronik.js',
   '/agw_hero_viz.js',
   '/agw_schools_net.js',
+  '/agw_gallery.js',
   // Analytics & visualization modules
   '/dist/agw_gaze_map.js',
   '/dist/agw_scrollytelling.js',
@@ -41,6 +42,8 @@ const PRECACHE = [
   '/data/lineage_data.json',
   '/data/sankey_flows.json',
   '/data/unified_network.json',
+  // Gallery manifest (images are cached on demand, NOT precached)
+  '/data/gallery.js',
   // External resources
   'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap',
   'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css',
@@ -83,6 +86,21 @@ self.addEventListener('fetch', function(e) {
           return resp;
         })
         .catch(function() { return caches.match(e.request); })
+    );
+    return;
+  }
+
+  // Runtime cache-on-demand for gallery images (never precached)
+  if (e.request.destination === 'image' && url.indexOf('/img/gallery/') !== -1) {
+    e.respondWith(
+      caches.match(e.request).then(function(cached) {
+        if (cached) return cached;
+        return fetch(e.request).then(function(resp) {
+          var clone = resp.clone();
+          caches.open(CACHE).then(function(c) { c.put(e.request, clone); });
+          return resp;
+        });
+      })
     );
     return;
   }

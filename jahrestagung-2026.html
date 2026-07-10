@@ -444,6 +444,16 @@
     </div>
   </div>
 </section><!-- ── Publikationen ── --><!-- ── Geschichte des AGW ── -->
+<!-- ── Impressionen 2026 ── -->
+<section class="section" id="impressionen">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="impr_label">Impressionen</div>
+    <h2 class="section-title" data-i18n="impr_title">Impressionen 2026</h2>
+    <p style="max-width:640px;color:var(--text-muted);line-height:1.7;" data-i18n="impr_lead">Eindrücke von der 46. Jahrestagung in der Villa Maderni, Riva San Vitale.</p>
+    <div id="gallery-mount"></div>
+  </div>
+</section>
+
 <!-- ── Footer ── --><footer class="footer">
   <div class="footer-inner">
     <div class="footer-brand-col">
@@ -517,6 +527,8 @@
 <script>AGW.renderNav('events');</script>
 <div id="search-overlay" onclick="if(event.target===this)closeSearch()"><div id="search-box"><div id="search-input-row"><span style="font-size:18px;margin-right:10px;color:var(--text-faint);"><span class="ico ico-search" aria-hidden="true"></span></span><input id="search-input" type="text" autocomplete="off" oninput="runSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()" placeholder="Suchen… / Search…"><button id="search-close" onclick="closeSearch()">✕</button></div><div id="search-results"><div class="srch-empty">Suchbegriff eingeben…</div></div><div id="search-hint">↵ öffnet &nbsp;·&nbsp; Esc schließt &nbsp;·&nbsp; Ctrl+K</div></div></div>
 <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Zurück nach oben">↑</button>
+<script src="data/gallery.js"></script>
+<script src="agw_gallery.js"></script>
 <script src="agw_chronik.js"></script>
 </body>
 </html>
