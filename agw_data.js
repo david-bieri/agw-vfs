@@ -373,7 +373,17 @@ const EVENTS = [
     url:'https://www.ludwig-erhard.de/veranstaltung/12-doktorandenseminar-zur-erneuerung-der-ordnungsoekonomik/',
     tags:['ordoliberal'],
     desc_de:'J\u00e4hrliches Doktorandenseminar zur Ordnungs\u00f6konomik und Sozialphilosophie; mitgetragen u.\u00a0a. vom Netzwerk f\u00fcr Ordnungs\u00f6konomik und Sozialphilosophie (NOuS).',
-    desc_en:'Annual doctoral seminar on constitutional economics and social philosophy; co-hosted among others by the Network for Ordnungs\u00f6konomik and Social Philosophy (NOuS).' }
+    desc_en:'Annual doctoral seminar on constitutional economics and social philosophy; co-hosted among others by the Network for Ordnungs\u00f6konomik and Social Philosophy (NOuS).' },
+  { id:'eshet-hes-nice-2026', series:'eshet-annual', edition:29,
+    kind:'conference', affiliation:'affiliated',
+    title:'Joint ESHET\u2013HES Conference 2026',
+    start:'2026-05-26', end:'2026-05-29',
+    loc_de:'Nizza \u00b7 Universit\u00e9 C\u00f4te d\u2019Azur', loc_en:'Nice \u00b7 Universit\u00e9 C\u00f4te d\u2019Azur',
+    host:'ESHET & HES \u00b7 GREDEG',
+    url:'https://www.eshet-conference.net/joint-eshet-hes-nice',
+    tags:['general'],
+    desc_de:'Erste gemeinsame Tagung der European Society for the History of Economic Thought (ESHET) und der History of Economics Society (HES); zugleich 29. ESHET-Jahrestagung. Thema: \u201eEconomists under Pressure and the Political Limits to Economics\u201c.',
+    desc_en:'First-ever joint conference of the European Society for the History of Economic Thought (ESHET) and the History of Economics Society (HES); also the 29th ESHET annual conference. Theme: \u201cEconomists under Pressure and the Political Limits to Economics.\u201d' }
 ];
 
 const EVENT_NETWORKS = [

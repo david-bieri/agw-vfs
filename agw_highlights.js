@@ -36,6 +36,42 @@
       '</picture>';
   }
 
+  function liveCount(tok) {
+    var D = window.AGW_DATA || {};
+    if (tok === '@members') return (D.MEMBERS && D.MEMBERS.length) || null;
+    if (tok === '@volumes') return (D.PUBLICATIONS && D.PUBLICATIONS.length) || null;
+    return null;
+  }
+  function statsHTML(S, L) {
+    if (!S) return '';
+    var cells = (S.cells || []).map(function (c) {
+      var v = (typeof c.v === 'string' && c.v.charAt(0) === '@') ? liveCount(c.v) : c.v;
+      if (v === null || v === undefined || v === '') v = '\u2013';
+      return '<div class="hl-stat"><div class="hl-stat-v">' + esc(v) + '</div>' +
+             '<div class="hl-stat-l">' + esc(bi(c.l, L)) + '</div></div>';
+    }).join('');
+    var tag = S.href ? 'a' : 'div', href = S.href ? ' href="' + esc(S.href) + '"' : '';
+    return '<' + tag + ' class="hl-stats"' + href + '>' +
+      '<span class="hl-kicker">' + esc(bi(S.kicker, L)) + '</span>' +
+      '<div class="hl-stat-grid">' + cells + '</div></' + tag + '>';
+  }
+  function teaserHTML(T, L) {
+    if (!T) return '';
+    var glyph = '<svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true">' +
+      '<g fill="none" stroke="currentColor" stroke-width="1.4">' +
+      '<line x1="17" y1="17" x2="6" y2="7"/><line x1="17" y1="17" x2="28" y2="9"/>' +
+      '<line x1="17" y1="17" x2="9" y2="27"/><line x1="17" y1="17" x2="27" y2="26"/></g>' +
+      '<g fill="currentColor"><circle cx="17" cy="17" r="3.2"/><circle cx="6" cy="7" r="2"/>' +
+      '<circle cx="28" cy="9" r="2"/><circle cx="9" cy="27" r="2"/></g>' +
+      '<circle cx="27" cy="26" r="2.4" fill="#CBA13A"/></svg>';
+    return '<a class="hl-teaser" href="' + esc(T.href) + '">' +
+      '<div class="hl-glyph">' + glyph + '</div>' +
+      '<div><span class="hl-kicker">' + esc(bi(T.kicker, L)) + '</span>' +
+      '<div class="hl-card-title">' + esc(bi(T.title, L)) + '</div>' +
+      '<div class="hl-meta">' + esc(bi(T.meta, L)) + '</div>' +
+      '<span class="hl-cta hl-cta-sm">' + esc(bi(T.cta, L)) + ' \u2192</span></div></a>';
+  }
+
   function render() {
     var mount = document.getElementById('fokus-mount');
     if (!mount) return;
@@ -60,7 +96,7 @@
         '</a>';
     }
 
-    var rail = (H.rail || []).map(function (r) {
+    var railCards = (H.rail || []).map(function (r) {
       var ratio = r.ratio || '1 / 1';
       var thumb = r.img ? picPlain(r.img, bi(r.title, L)) : '';
       var ext = /^https?:/i.test(r.href || '');
@@ -74,6 +110,7 @@
         '</div>' +
       '</a>';
     }).join('');
+    var rail = railCards + statsHTML(H.stats, L) + teaserHTML(H.teaser, L);
 
     mount.innerHTML =
       '<div class="hl-eyebrow">' + esc(bi(H.eyebrow, L)) + '</div>' +

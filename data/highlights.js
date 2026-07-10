@@ -44,5 +44,24 @@ window.AGW.HIGHLIGHTS = {
                en: 'David Bieri · Frankfurter Allgemeine Zeitung' },
       href: 'https://www.faz.net/aktuell/wirtschaft/geooekonom-august-loesch-der-raeumliche-visionaer-accg-110760868.html',
       cta:  { de: 'faz.net', en: 'faz.net' } }
-  ]
+  ],
+
+  stats: {
+    kicker: { de: 'Der AGW in Zahlen', en: 'The AGW in numbers' },
+    href: 'committee.html#ueberblick',
+    cells: [
+      { v: '1980',     l: { de: 'gegründet', en: 'founded' } },
+      { v: '46',       l: { de: 'Jahrestagungen', en: 'annual conferences' } },
+      { v: '@members', l: { de: 'Mitglieder', en: 'members' } },
+      { v: '@volumes', l: { de: 'Bände (SVfS)', en: 'volumes (SVfS)' } }
+    ]
+  },
+
+  teaser: {
+    kicker: { de: 'Analytik', en: 'Analytics' },
+    title:  { de: 'Stammbaum der Denkschulen', en: 'Family tree of the schools' },
+    meta:   { de: '14 Denkschulen · 81 Figuren · 43 Jahre Rezeption', en: '14 schools · 81 figures · 43 years of reception' },
+    href: 'analytics.html',
+    cta:  { de: 'Erkunden', en: 'Explore' }
+  }
 };
