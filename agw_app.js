@@ -625,7 +625,7 @@ function renderGlance(){
   el.innerHTML=(chairName?item(chairName,de?'Vorsitzende':'Chair'):'')
     +item(count+(de?' Mitglieder':' members'),de?'Ausschuss':'Committee')
     +item('VfS',de?'Verein f\u00fcr Socialpolitik':'German Economic Association')
-    +'<a class="glance-item glance-link" href="analytics.html"><div class="glance-value">Stammbaum \u2192</div><div class="glance-label">'+(de?'Denkschulen erkunden':'Explore the schools')+'</div></a>';
+    +'<a class="glance-item glance-link is-clickable" href="analytics.html"><div class="glance-value">Stammbaum \u2192</div><div class="glance-label">'+(de?'Denkschulen erkunden':'Explore the schools')+'</div></a>';
 }
 
 /* ── Init ── */

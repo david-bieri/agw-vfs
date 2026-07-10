@@ -51,7 +51,7 @@
              '<div class="hl-stat-l">' + esc(bi(c.l, L)) + '</div></div>';
     }).join('');
     var tag = S.href ? 'a' : 'div', href = S.href ? ' href="' + esc(S.href) + '"' : '';
-    return '<' + tag + ' class="hl-stats"' + href + '>' +
+    return '<' + tag + ' class="hl-stats is-clickable"' + href + '>' +
       '<span class="hl-kicker">' + esc(bi(S.kicker, L)) + '</span>' +
       '<div class="hl-stat-grid">' + cells + '</div></' + tag + '>';
   }
@@ -64,7 +64,7 @@
       '<g fill="currentColor"><circle cx="17" cy="17" r="3.2"/><circle cx="6" cy="7" r="2"/>' +
       '<circle cx="28" cy="9" r="2"/><circle cx="9" cy="27" r="2"/></g>' +
       '<circle cx="27" cy="26" r="2.4" fill="#CBA13A"/></svg>';
-    return '<a class="hl-teaser" href="' + esc(T.href) + '">' +
+    return '<a class="hl-teaser is-clickable" href="' + esc(T.href) + '">' +
       '<div class="hl-glyph">' + glyph + '</div>' +
       '<div><span class="hl-kicker">' + esc(bi(T.kicker, L)) + '</span>' +
       '<div class="hl-card-title">' + esc(bi(T.title, L)) + '</div>' +
@@ -85,7 +85,7 @@
         return picVariants(m, '(max-width:820px) 50vw, 320px', bi(F.title, L));
       }).join('');
       feat =
-        '<a class="hl-feature" href="' + esc(F.href) + '">' +
+        '<a class="hl-feature is-clickable" href="' + esc(F.href) + '">' +
           '<div class="hl-feature-media hl-diptych">' + media + '</div>' +
           '<div class="hl-feature-body">' +
             '<span class="hl-kicker">' + esc(bi(F.kicker, L)) + '</span>' +
@@ -100,7 +100,7 @@
       var ratio = r.ratio || '1 / 1';
       var thumb = r.img ? picPlain(r.img, bi(r.title, L)) : '';
       var ext = /^https?:/i.test(r.href || '');
-      return '<a class="hl-card" href="' + esc(r.href) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>' +
+      return '<a class="hl-card is-clickable" href="' + esc(r.href) + '"' + (ext ? ' target="_blank" rel="noopener"' : '') + '>' +
         '<div class="hl-card-thumb" style="aspect-ratio:' + ratio + '">' + thumb + '</div>' +
         '<div class="hl-card-body">' +
           '<span class="hl-kicker">' + esc(bi(r.kicker, L)) + '</span>' +
@@ -113,7 +113,7 @@
     var rail = railCards + statsHTML(H.stats, L) + teaserHTML(H.teaser, L);
 
     mount.innerHTML =
-      '<div class="hl-eyebrow">' + esc(bi(H.eyebrow, L)) + '</div>' +
+      '<div class="hl-eyebrow eyebrow">' + esc(bi(H.eyebrow, L)) + '</div>' +
       '<div class="hl-grid">' + feat + '<div class="hl-rail">' + rail + '</div></div>';
   }
 

@@ -129,20 +129,20 @@
             '</div>' +
           '</div>' +
           '<div class="footer-col">' +
-            '<div class="footer-col-title" data-i18n="footer_col_conf">Jahrestagung 2026</div>' +
+            '<div class="footer-col-title eyebrow" data-i18n="footer_col_conf">Jahrestagung 2026</div>' +
             '<a href="jahrestagung-2026.html#tagungsprogramm" data-i18n="nav_programme">Tagungsprogramm</a>' +
             '<a href="jahrestagung-2026.html#rahmenprogramm" data-i18n="nav_social">Rahmenprogramm</a>' +
             '<a href="jahrestagung-2026.html#logistik" data-i18n="nav_travel">Anreise &amp; Logistik</a>' +
           '</div>' +
           '<div class="footer-col">' +
-            '<div class="footer-col-title" data-i18n="footer_col_about">Über</div>' +
+            '<div class="footer-col-title eyebrow" data-i18n="footer_col_about">Über</div>' +
             '<a href="archive.html#publikationen" data-i18n="nav_research">Forschung</a>' +
             '<a href="publications-members.html" data-i18n="nav_member_pubs">Forschung der Mitglieder</a>' +
             '<a href="committee.html" data-i18n="nav_about">Über den AGW</a>' +
             '<a href="analytics.html" data-i18n="nav_analytics">Analyse</a>' +
           '</div>' +
           '<div class="footer-col">' +
-            '<div class="footer-col-title">Kontakt</div>' +
+            '<div class="footer-col-title eyebrow">Kontakt</div>' +
             '<a href="mailto:bieri@vt.edu">bieri@vt.edu</a>' +
             '<a href="https://www.socialpolitik.de/de" target="_blank" rel="noopener">' +
               'socialpolitik.de ↗</a>' +

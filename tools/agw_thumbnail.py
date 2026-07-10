@@ -28,7 +28,14 @@ from PIL import Image, ImageDraw, ImageFont, ImageOps
 HERE = os.path.dirname(os.path.abspath(__file__))
 FONTS = {'garamond': os.path.join(HERE, 'fonts', 'EBGaramond.ttf'),
          'source':   os.path.join(HERE, 'fonts', 'SourceSans3.ttf')}
-NAVY = (27, 58, 107); NAVY_DEEP = (20, 32, 54); GOLD = (203, 161, 58); WHITE = (255, 255, 255)
+# ── AGW palette (kept in lock-step with agw_styles.css :root) ──
+# Gold is a documented PAIR, not one value: the site accents on the cream
+# canvas with the darker --gold (#B8860B); every card this tool renders sits
+# on navy or a photo, so it uses the brighter --gold-on-navy (#CBA13A) that
+# reads on a dark background. Change both surfaces together, never just one.
+NAVY = (27, 58, 107); NAVY_DEEP = (20, 32, 54); WHITE = (255, 255, 255)
+GOLD_ON_CREAM = (184, 134, 11)   # #B8860B — matches --gold        (site, on cream)
+GOLD          = (203, 161, 58)   # #CBA13A — matches --gold-on-navy (cards, on navy)
 FORMATS = {'og': (1200, 630), 'square': (1080, 1080), 'portrait': (1080, 1350)}
 
 def font(fam, wght, size):
