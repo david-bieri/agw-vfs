@@ -512,3 +512,40 @@ A durable per-event landing (programme, proceedings, photos) that outlives the r
 **Consequences:**
 - Future events follow the `jahrestagung-2026.html` template.
 - `index.html` is now the evergreen committee landing, not a conference page (see the committee-home split).
+
+---
+
+## ADR-024: "Im Fokus" Landing Highlight — Live HTML, Not Baked Rasters
+
+**Date:** 2026-07-10
+**Status:** Accepted
+
+**Decision:**
+The `index.html` "Im Fokus" band (a featured item + a supporting rail) is rendered as live, bilingual HTML from `data/highlights.js` via `agw_highlights.js` — never as pre-rendered image cards. The featured slot takes a landscape image or a two-portrait diptych; the rail holds photo/publication/press cards plus optional stats/analytics tiles. Member and volume counts bind to live `MEMBERS`/`PUBLICATIONS` so they never go stale.
+
+**Rationale:**
+Baking text into raster cards would break the site's non-negotiables — the DE/EN toggle (ADR-004/014), accessibility, responsiveness, and SEO. Live HTML keeps all of these while sharing the branded design language. Branded raster cards are reserved for social / `og:image` (ADR-025), where a single-language raster is the correct medium.
+
+**Consequences:**
+- Featured images reuse the gallery variant pipeline (`img/gallery/<id>-{480,960,1440}`); rail thumbnails are plain `img/highlights/<name>.{webp,jpg}`.
+- `index.html` gained a real `og:image` (the first the site has had), pointing at a generated card in `img/highlights/`.
+- Images are runtime-cached (SW image branch broadened from `/img/gallery/` to `/img/`); the two JS files are precached and require a cache bump on edit.
+
+---
+
+## ADR-025: Branded Social/Thumbnail Cards Are a Generator, Not Hand-Made
+
+**Date:** 2026-07-10
+**Status:** Accepted
+
+**Decision:**
+Social and `og:image` cards are produced by `tools/agw_thumbnail.py` (Pillow, bundled EB Garamond + Source Sans 3 fonts), not designed by hand. Four styles (`a` floating coverline · `b` editorial split · `c` display headline · `lowerthird` institutional) × formats (`og` 1200×630 · `square` 1080×1080 · `portrait` 1080×1350), with a per-image `--focus` crop. The tool, fonts, docs, and example renders live under `tools/`; generated cards for actual use go to `img/highlights/`.
+
+**Rationale:**
+A generator guarantees a consistent AGW visual language across many future items and doubles the site's brand into social channels, at near-zero marginal effort. The magazine-style register (image-forward, gold kicker) is a deliberate *contrast* to the disciplined main site — acceptable because these are standalone posters, not on-page chrome.
+
+**Consequences:**
+- `tools/` is a repo utility tree, not part of the served app shell — not precached, no SW impact.
+- The generator introduced gold `#CBA13A`, which currently exists only on cards, not in the site CSS — see the design audit (item 4) for the pending unify-or-retire decision.
+- The scholarly-title convention (German titles untranslated, ADR-014) carries into card text; only kicker/meta translate.
+
