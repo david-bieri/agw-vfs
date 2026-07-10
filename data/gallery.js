@@ -68,6 +68,18 @@ window.AGW.GALLERY = {
       alt: { de: 'Impression von der 46. Jahrestagung des AGW, Villa Maderni, Riva San Vitale',
              en: 'Scene from the 46th AGW Annual Conference, Villa Maderni, Riva San Vitale' },
       cap: { de: '46. Jahrestagung des AGW · Villa Maderni, Riva San Vitale',
-             en: '46th AGW Annual Conference · Villa Maderni, Riva San Vitale' } }
+             en: '46th AGW Annual Conference · Villa Maderni, Riva San Vitale' } },
+
+    { id: 'p1480b', w: 5472, h: 3648,
+      alt: { de: 'Das Gipfelgebäude Fiore di pietra (Mario Botta) am Monte Generoso mit Alpenpanorama',
+             en: 'The Fiore di pietra summit building (Mario Botta) on Monte Generoso with alpine panorama' },
+      cap: { de: 'Fiore di pietra (Mario Botta) am Monte Generoso · Exkursion der 46. Jahrestagung',
+             en: 'Fiore di pietra (Mario Botta) on Monte Generoso · 46th Annual Conference excursion' } },
+
+    { id: 'p1473', w: 5472, h: 3648,
+      alt: { de: 'Gruppenfoto der AGW-Teilnehmenden vor dem Fiore di pietra am Monte Generoso',
+             en: 'Group photo of AGW participants in front of Fiore di pietra on Monte Generoso' },
+      cap: { de: 'AGW-Teilnehmende am Monte Generoso · Exkursion 2026',
+             en: 'AGW participants on Monte Generoso · 2026 excursion' } }
   ]
 };
