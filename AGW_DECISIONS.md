@@ -9,7 +9,7 @@ Statuses: `Accepted` | `Superseded` | `Deprecated` | `Proposed`
 ## ADR-001: Single Self-Contained HTML File Architecture
 
 **Date:** 2026-05-29
-**Status:** Accepted
+**Status:** Superseded by ADR-013 (multi-page architecture, 2026-06-04)
 
 **Decision:**
 Ship the website as a single self-contained HTML file with all CSS, JS, translations, and data embedded. No build step, no framework, no backend required.
@@ -52,7 +52,7 @@ The AGW is an independent committee of the VfS. The website is its permanent onl
 ## ADR-003: Paper Titles and Speaker Names Not Translated
 
 **Date:** 2026-05-29
-**Status:** Accepted
+**Status:** Superseded by ADR-014 (paper-title Option 3 hybrid, 2026-06-04)
 
 **Decision:**
 Academic paper titles, speaker names, and institutional affiliations remain in German in both DE and EN modes of the language toggle. Only UI chrome, section labels, informational prose, and editorial text are translated.
@@ -293,6 +293,60 @@ Satzung §7.2 requires public accessibility of the charter — a download link s
 
 ---
 
+## ADR-013: Multi-Page Architecture (supersedes ADR-001)
+
+**Date:** 2026-06-04
+**Status:** Accepted (supersedes ADR-001)
+
+**Decision:**
+Split the monolithic `index.html` into multiple static HTML pages sharing a set of extracted foundation files. Keep the no-bundler / no-framework posture for the pages and foundation files; the React analytics bundles remain the sole build-step exception (ADR-018).
+
+**Rationale:**
+The single file passed ~300 KB — the explicit Phase-3 trigger written into ADR-001 — once archive, committee, and analytics content landed. One file became unmaintainable and shipped every section to every visitor. Multiple pages improve load, caching, and editing isolation while staying build-free.
+
+**Consequences:**
+- Each page carries `<div id="nav-mount"></div>` and calls `AGW.renderNav('pageId')`.
+- Foundation files must stay extracted, never re-inlined (ADR-015).
+- Because pages share `agw_app.js`, every `render*()`/`init*()` must early-return on a missing target (ADR-016).
+- The service worker precaches all pages + foundation files and must bump on any change.
+
+---
+
+## ADR-014: Paper Titles — Option 3 Hybrid (supersedes ADR-003)
+
+**Date:** 2026-06-04
+**Status:** Accepted (supersedes ADR-003)
+
+**Decision:**
+The German paper title is always shown. In EN mode a translated subtitle is appended in `<span class="title-trans">`. Speaker names, addresses, and venue names remain German regardless of toggle.
+
+**Rationale:**
+ADR-003's "never translate" left EN visitors with no sense of a paper's topic; full translation (rejected) would misrepresent German-language works. The hybrid preserves scholarly identity while giving EN readers a topical gloss.
+
+**Consequences:**
+- `prog_title_N` keys carry both DE and EN; `agw_strings.js` is the single source of truth.
+- The appended subtitle wraps to a new line on mobile (≤640 px).
+
+---
+
+## ADR-015: Foundation Files Extracted
+
+**Date:** 2026-06-04
+**Status:** Accepted
+
+**Decision:**
+CSS, shared data, render logic, nav/footer, strings, and the Chronik panel are extracted into shared foundation files (`agw_styles.css`, `agw_strings.js`, `agw_data.js`, `agw_app.js`, `agw_nav.js`, `agw_chronik.js`) loaded by every page. They must not be re-inlined into any page.
+
+**Rationale:**
+DRY across pages: one edit propagates everywhere, and the browser caches the foundation files once across navigation.
+
+**Consequences:**
+- A single foundation edit changes all pages — powerful and risky; validate broadly.
+- Sharing `agw_app.js` across pages is what makes the ADR-016 render-guard rule non-negotiable.
+- The service worker must precache the foundation files and bump its cache on any change.
+
+---
+
 ## ADR-016: Render-Guard Pattern for All Shared Init Paths
 
 **Date:** 2026-06-04
@@ -374,3 +428,87 @@ CSS `zoom` rescales the element's layout box as well as its rendered output. App
 - `window.setZoom()` targets `.viz-zoom-wrap` directly
 - The CSS `zoom` property is not part of the CSS spec (it is a legacy property), but has universal browser support including Firefox as of 2024; it is safe to use here
 - If a future browser drops `zoom` support, the fallback is `transform: scale()` with the scroll limitation accepted, or a full reimplementation using a ResizeObserver to measure content and set explicit dimensions
+
+---
+
+## ADR-020 — Runtime/load-failure debugging discipline: evidence-first, verify-the-deploy, minimal-fix-first
+
+**Status:** Accepted (2026-06-08)
+**Related:** Amends the recorded "definitive fix" in ADR-018 (see Consequences); reinforces ADR-016 (render guards).
+
+### Context
+
+The Rezeptionsatlas / analytics React-loading bug consumed roughly a full day across several chats (with compaction mid-flight) and was ultimately resolved not in-session but by handing the page to a browser-capable agent (Manus AI). The post-mortem identified that the time sunk was not caused by the bug's difficulty — the fix is a single importmap line — but by *how it was debugged*:
+
+1. **Blind diagnosis.** The failure was a 404 on a transitively-imported CDN module (`react/jsx-runtime` from esm.sh, whose root-relative internal imports resolved against the GitHub Pages origin), whose HTML error body was then parsed as JS → `SyntaxError`. That failure mode is trivially visible in a browser Network + Console tab and nearly impossible to pin down by reasoning from screenshots of a blank render. Debugging proceeded from the rendered symptom, not the runtime evidence.
+2. **Corrupted feedback loop.** Several "fixes" shipped HTML/CSS/SW but not the compiled `dist/*.js` bundles. Failed verifications were therefore misattributed to "wrong hypothesis" when the true cause was "the experiment never ran." Belief updates went the wrong direction.
+3. **Wrong-shape fix.** The working solution was to vendor the `jsx-runtime` shim locally (`"react/jsx-runtime": "./vendor/react-jsx-runtime.mjs"`). The in-session plan instead drifted toward rebuilding all three bundles with React inlined and *deleting* `vendor/` — heavier, slower, and discarding the artifact that turned out to be the fix.
+4. **Hypothesis discipline lapsed under fragmentation.** The standing rule (discard any hypothesis that cannot explain BOTH "the site used to work" AND "the other tabs still work") was not applied ruthlessly, partly because the ruled-out space was reconstructed from notes each session rather than held in one context.
+
+### Decision
+
+For any runtime or load-time failure (blank render, module won't load, console error, "it used to work," a fix that didn't take effect), the following sequence is mandatory **before proposing a fix**:
+
+1. **State the two invariants in writing.** "It used to work" + "the other tabs/pages still work." Any hypothesis that cannot explain both is discarded immediately.
+2. **Get runtime evidence first.** The actual Console error and the Network tab (failing requests + their response content-type/body) must be in hand before any hypothesis is formed. For load failures, the Network tab is the entire diagnosis. Drive Claude in Chrome against the live page, or have David paste the verbatim console error + a Network-tab screenshot filtered to failures — never a screenshot of the rendered (blank) result alone.
+3. **Verify the experiment ran before interpreting it.** Fingerprint the live deployed artifact (e.g. SHA of the on-server `dist/*.js`) against what was built. If they don't match, the deploy was incomplete and the result is void — do not update beliefs on it. Any deploy touching analytics behavior MUST include `dist/agw_gaze_map.js`, `dist/agw_analysis.js`, `dist/agw_pmi.js` (per the 2026-06-05 deploy-artifact lesson).
+4. **Prefer the minimal dependency-severing fix.** A one-line importmap repoint beats a three-bundle WSL rebuild. Reach for architectural cleanliness only after the bug is dead.
+5. **Reach for a browser-capable agent early** when the bug is environment/runtime-specific rather than logic-specific. That capability gap is precisely what resolved this bug; treat it as a routing decision, not a last resort.
+
+The operational protocol lives in `AGW_DEBUG.md` (skill).
+
+### Consequences
+
+- **ADR-018 correction.** The actual production fix is local vendoring of `react/jsx-runtime` (`./vendor/react-jsx-runtime.mjs`), with `react`/`react-dom` still external via esm.sh and recharts still `?external=react,react-dom`. The previously recorded "definitive fix = rebuild with React bundled in, remove `vendor/`" is **wrong** and superseded: `vendor/` is load-bearing and must be kept. ADR-018's externalization principle stands; only the jsx-runtime delivery mechanism is amended.
+- Debugging gains an explicit evidence gate, which front-loads a small cost (get the Network tab) to avoid multi-hour blind iteration.
+- Deploy verification by artifact hash becomes routine for analytics changes.
+
+---
+
+## ADR-021: Custom-Domain Base-Path Rule
+
+**Date:** 2026-07-09
+**Status:** Accepted
+
+**Decision:**
+On `www.agw-vfs.de` the site serves from root `/`. Internal paths must be root-absolute (`/…`) or relative, never `/agw-vfs/`-prefixed. `canonical` / `og:url` must reference the **served** host (`www.agw-vfs.de`), not the apex. Any domain or base-path change must sweep `agw_app.js` as well — the iCal export URL, the footer QR text, and the service-worker registration path — not only the HTML/manifest/SW set.
+
+**Rationale:**
+The `/agw-vfs/` sub-path is a `github.io` project-site artifact; on the custom root domain those paths 404. In the first migration sweep the SW registration path (`register('/agw-vfs/service-worker.js', {scope:'/agw-vfs/'})`) was missed, so the service worker never registered on the new origin.
+
+**Consequences:**
+- Grep beyond HTML/manifest/SW (into `agw_app.js`) whenever domain or paths change.
+- Verify `canonical` matches the served host, or it contradicts the Pages redirect.
+
+---
+
+## ADR-022: Events Data Model
+
+**Date:** 2026-07-09
+**Status:** Accepted
+
+**Decision:**
+`ARCHIVE` is the single source of truth for AGW's own Jahrestagungen (all treated as past). Upcoming and affiliated dated events live in a separate `EVENTS` array with ISO dates (an event migrates into `ARCHIVE` once past). Peer networks with their own event feeds are modelled in `EVENT_NETWORKS`. `renderEvents()` merges `ARCHIVE` + `EVENTS` and derives past/upcoming status from the date at render time.
+
+**Rationale:**
+Avoid duplicating the 46-conference record; derive status once rather than hand-maintaining it.
+
+**Consequences:**
+- `events.html` reads both sources; adding a Jahrestagung means one `ARCHIVE` entry, nothing more.
+
+---
+
+## ADR-023: Archival Event-Page Standard
+
+**Date:** 2026-07-09
+**Status:** Accepted
+
+**Decision:**
+Each archived Jahrestagung gets a standalone page; its `ARCHIVE` entry carries a `page:` field, and `renderEvents()` + `renderArchive()` auto-link to it. `jahrestagung-2026.html` is the first instance and the template for future events.
+
+**Rationale:**
+A durable per-event landing (programme, proceedings, photos) that outlives the rolling conference page.
+
+**Consequences:**
+- Future events follow the `jahrestagung-2026.html` template.
+- `index.html` is now the evergreen committee landing, not a conference page (see the committee-home split).
