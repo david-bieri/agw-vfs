@@ -46,7 +46,7 @@ window.AGW.GALLERY = {
       cap: { de: '46. Jahrestagung des AGW · Villa Maderni, Riva San Vitale',
              en: '46th AGW Annual Conference · Villa Maderni, Riva San Vitale' } },
 
-    { id: 'p4921', w: 5712, h: 4284,
+    { id: 'p4921', w: 4284, h: 5712,
       alt: { de: 'Impression von der 46. Jahrestagung des AGW, Villa Maderni, Riva San Vitale',
              en: 'Scene from the 46th AGW Annual Conference, Villa Maderni, Riva San Vitale' },
       cap: { de: '46. Jahrestagung des AGW · Villa Maderni, Riva San Vitale',
@@ -64,7 +64,7 @@ window.AGW.GALLERY = {
       cap: { de: '46. Jahrestagung des AGW · Villa Maderni, Riva San Vitale',
              en: '46th AGW Annual Conference · Villa Maderni, Riva San Vitale' } },
 
-    { id: 'p4936', w: 5712, h: 4284,
+    { id: 'p4936', w: 4284, h: 5712,
       alt: { de: 'Impression von der 46. Jahrestagung des AGW, Villa Maderni, Riva San Vitale',
              en: 'Scene from the 46th AGW Annual Conference, Villa Maderni, Riva San Vitale' },
       cap: { de: '46. Jahrestagung des AGW · Villa Maderni, Riva San Vitale',
