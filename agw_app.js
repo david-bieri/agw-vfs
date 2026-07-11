@@ -944,12 +944,12 @@ function runSearch(q){
 /* ── News feed ── */
 function renderAnnouncements(){
   var el=document.getElementById('news-list');if(!el)return;
-  el.innerHTML=ANNOUNCEMENTS.map(function(a){
+  var items=ANNOUNCEMENTS.slice().sort(function(x,y){return y.date<x.date?-1:(y.date>x.date?1:0);});
+  el.innerHTML=items.map(function(a){
     var d=new Date(a.date);
     var fmt=d.toLocaleDateString(lang==='de'?'de-DE':'en-GB',{day:'numeric',month:'long',year:'numeric'});
     return '<div style="padding:16px 0;border-bottom:1px solid var(--border-light);">'
       +'<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">'
-      +'<span style="font-size:16px;">'+a.icon+'</span>'
       +'<span style="font-size:11.5px;font-weight:600;letter-spacing:.06em;color:var(--text-faint);text-transform:uppercase;">'+fmt+'</span></div>'
       +'<div style="font-size:15px;font-weight:600;color:var(--text-dark);margin-bottom:4px;font-family:\'EB Garamond\',serif;">'+(lang==='de'?a.title_de:a.title_en)+'</div>'
       +'<div style="font-size:13.5px;color:var(--text-muted);line-height:1.55;">'+(lang==='de'?a.text_de:a.text_en)+'</div>'
