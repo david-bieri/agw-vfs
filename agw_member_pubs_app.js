@@ -190,7 +190,7 @@
                     'onclick="event.stopPropagation();">' + esc(t('mpub_profile')) + ' ›</a>';
       html += '<div class="mpub-member-card' + (isOpen ? ' open' : '') + '" id="' + anchor + '">' +
                 '<div class="mpub-member-head" onclick="mpubToggleMember(\'' + attr(name).replace(/'/g, "\\'") + '\')">' +
-                  '<span class="mpub-member-chevron">▶</span>' +
+                  '<span class="mpub-member-chevron">▾</span>' +
                   '<span class="mpub-member-name">' + esc(name) + '</span>' +
                   (focus ? '<span class="mpub-member-focus">· ' + esc(focus) + '</span>' : '') +
                   '<span class="mpub-member-pubcount">' + n + ' ' + esc(countWord) +

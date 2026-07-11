@@ -810,7 +810,8 @@ setInterval(updateCountdown, 30000);
 
 /* ── Back to top ── */
 window.addEventListener('scroll',function(){
-  document.getElementById('back-top').classList.toggle('visible',window.scrollY>400);
+  var bt=document.getElementById('back-top');
+  if(bt)bt.classList.toggle('visible',window.scrollY>400);
 },{passive:true});
 
 /* ── QR code ── */

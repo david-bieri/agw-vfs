@@ -1,48 +1,60 @@
-# Claude Design brief — AGW gold reconciliation
+# Claude Design brief — AGW comprehensive design review
 
-*Paste this whole file into a fresh Claude Design session, and attach a screenshot of the live `www.agw-vfs.de` landing page. This brief is deliberately narrow: it settles one accent-colour decision, not a redesign.*
+*Paste this whole file into a fresh Claude Design session. Attach screenshots of the live pages (at least the landing page www.agw-vfs.de, plus committee.html, archive.html, analytics.html, and jahrestagung-2026.html). Optionally attach AGW_DESIGN_AUDIT.md as internal reference — but treat it as one input, not a script; go broader.*
 
 ---
 
 ## Who / what
 
-The AGW is the standing committee for the history of economic thought within the Verein für Socialpolitik. Its site (`www.agw-vfs.de`) is a restrained, scholarly, bilingual (DE/EN) institutional site. **Do not** propose layout, IA, typography, or content changes — those are settled. This is purely about one colour.
+The AGW is the standing committee for the history of economic thought within the **Verein für Socialpolitik (VfS)**. www.agw-vfs.de is its permanent home: a scholarly, institutional, bilingual (DE/EN) site — restrained and text-forward, but with a few distinctive data-visualisation showpieces. It is a static, hand-built site (vanilla HTML/CSS/JS, no framework); the only compiled part is the React analytics.
 
-**Design language (fixed):**
-- Navy scale — primary `#1B3A6B`, dark `#122852`, mid `#24477F`
-- Hover blue (accent) `#3A6BAF`
-- Canvas — warm white / cream `#FAFAF7`
-- Type — EB Garamond (headings/serif) + Source Sans 3 (body/UI)
+**Goal of this review:** a **comprehensive, best-practice design assessment for cohesion and polish across the whole site** — then on-canvas explorations of the highest-impact improvements. Not a redesign; an elevation of what's there so it reads unmistakably as one considered hand.
 
-## The problem to solve
+## Pages to assess
 
-Gold is an established AGW accent, but there are **two different gold values in play**, on two different backgrounds:
+- index.html — committee landing: animated hero constellation of thinkers → "Im Fokus" highlight band → next Jahrestagung → Aktuelles → Bereiche gateways → Auf einen Blick → Kontakt
+- committee.html — about, history, members, chairs, sister societies, statutes
+- archive.html — scholarly archive (list/map/speakers/chronik) + publications
+- events.html — unified timeline of AGW + affiliated events
+- jahrestagung-2026.html — archival conference page + "Impressionen" photo gallery
+- analytics.html — interactive HET analytics (Stammbaum, Denkschulen network, Rezeptionsatlas, topic analysis)
+- guide.html — analytics user guide
 
-- **Site gold `#B8860B`** (darkgoldenrod) — used on the **cream** canvas: the hero rule, chair emphasis, pullquotes, callouts, memorial items.
-- **Social-card gold `#CBA13A`** (brighter) — used on **navy** backgrounds in the generated social/og cards (`tools/agw_thumbnail.py`).
+## What to evaluate (and propose improvements for)
 
-So the website and the committee's social cards accent with different golds. It might be a legitimate perceptual need (a darker gold reads on cream, a brighter gold reads on navy) — or it might just be drift. The goal is to make it **intentional**.
-
-## What to explore (side by side)
-
-Produce a small comparison board with these surfaces, each rendered in **2–3 gold variants**:
-
-1. **On cream** — the landing hero (navy eyebrow, a thin gold rule under the title, EB Garamond H1) and one "Im Fokus" card (white card on cream, gold kicker accent).
-2. **On navy** — a social card (navy lower third, gold uppercase kicker over an EB Garamond white headline) — the generator's `lowerthird`/`c` look.
-
-Variants to compare:
-- **A — one gold `#B8860B` everywhere** (the site's current gold, also on navy).
-- **B — one gold `#CBA13A` everywhere** (the brighter gold, also on cream).
-- **C — a documented pair**: keep a warm gold on cream and a brighter gold on navy, tuned so they read as *the same family* (propose the two hexes).
-
-For each, judge: legibility (esp. gold text/rules on navy and on cream), warmth against all that navy, and whether it still reads "institutional/scholarly," not decorative.
+1. **Visual hierarchy & density** — does the eye land in the right order on each page? Is spacing doing enough work?
+2. **Typographic system** — the EB Garamond / Source Sans 3 pairing: scale, rhythm, heading/label consistency, measure/line-length.
+3. **Colour system** — palette discipline and contrast/accessibility across navy, the accent blue, gold, green, and the neutrals. Is the palette used consistently and intentionally on both the cream canvas and the navy surfaces?
+4. **Component consistency** — cards, tiles, badges, buttons, nav, footer, the "Im Fokus" band, gallery: do they feel like one system? Where do they drift?
+5. **Spacing & layout grid** — section rhythm, container widths, alignment, gutters.
+6. **Responsive behaviour** — breakpoint consistency and how each page reflows on mobile.
+7. **Accessibility** — colour contrast, focus states, motion (there's hover-lift + an animated hero), tap targets.
+8. **Cohesion of the showpieces with the chrome** — do the hero constellation, the analytics visualisations, the gallery, and the branded social cards feel of-a-piece with the institutional shell, or like separate worlds?
+9. **Overall polish** — the small things that separate "competent" from "considered."
 
 ## Deliverable
 
-A recommendation — **one gold** (with the hex) **or** a **documented on-cream/on-navy pair** (two hexes) — with a one-line rationale. That's it. I'll wire the result into `--gold` / `--gold-light` in `agw_styles.css` and into the `GOLD` constant in `tools/agw_thumbnail.py` so the site and the social cards finally match.
+- A **prioritised set of findings** (high-impact → slow-burn), each with a concrete, implementable recommendation.
+- **On-canvas explorations** of the top few: e.g. a refined component set, a tightened type scale, and a before/after of the landing page and one content page.
+- Everything must be realisable in **vanilla CSS** (no framework, no build) using CSS custom properties.
 
-## Constraints
+## Current design tokens (for accuracy)
 
-- Gold is **decoration only** (rules, kicker accents, emphasis borders) — never body text or large fills; the site is bilingual and text stays real DOM.
-- Whatever you pick must pass legibility on **both** `#FAFAF7` cream and `#1B3A6B` navy.
-- Keep navy primary; gold is the warm secondary accent, used sparingly.
+```
+Navy: --navy #1B3A6B · --navy-dark #122852 · --navy-mid #24477F
+Accent (hover blue): --accent #3A6BAF · --accent-pale #EAF0F8
+Gold: --gold #B8860B · --gold-light #F5EED0        Green: --green #4A7C59 · --green-pale #EAF2EC
+Canvas: --cream #FAFAF7 · --white #FFFFFF
+Text: --text-dark #1C1C1E · --text-body #2C2C30 · --text-muted #6B7280 · --text-faint #9CA3AF
+Borders: --border #DDE2EA · --border-light #EEF1F5
+Recently tokenised: --radius-card 12px · --hover-shadow · --tracking-label .14em
+Type: EB Garamond (headings/serif, display) + Source Sans 3 (body/UI)
+```
+
+## Non-negotiables (do NOT change)
+
+- **Bilingual** — all UI text is real, translatable DOM (DE/EN toggle); no text baked into images.
+- **Register** — scholarly, institutional, understated. Not a startup landing page.
+- **Identity** — VfS **navy** #1B3A6B is primary (never VT maroon); EB Garamond + Source Sans 3.
+- **Architecture** — static vanilla CSS/JS, no framework/build; keep it implementable by hand.
+- **Content & IA** — leave copy, navigation structure, and page inventory as-is; this is about the visual system, not the information architecture.
