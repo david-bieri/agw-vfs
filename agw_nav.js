@@ -114,6 +114,62 @@
     }
   };
 
+  /**
+   * Render a MINIMAL "utility" nav for focused sub-pages (analytics, guide).
+   * Brand + an optional contextual back-link + DE/EN toggle — deliberately
+   * omits the main links, search, VfS button and hamburger. Uses the same
+   * shared .nav* styles and the shared AGW.S / applyLang i18n as every page.
+   *
+   *   AGW.renderUtilityNav({ back: { href, key } })
+   *     back.href — where the ← link points
+   *     back.key  — AGW.S key for its label (data-str, both DE + EN in JS)
+   */
+  window.AGW.renderUtilityNav = function (opts) {
+    opts = opts || {};
+    var mount = document.getElementById('nav-mount');
+    if (!mount) return;
+
+    var back = opts.back;
+    var backHtml = back
+      ? '<a class="nav-back" href="' + back.href + '">← ' +
+          '<span data-str="' + back.key + '">' +
+            (window.AGW.t ? window.AGW.t(back.key) : '') +
+          '</span>' +
+        '</a>'
+      : '';
+
+    mount.innerHTML =
+      '<nav class="nav" role="navigation">' +
+        '<div class="nav-inner">' +
+          '<a class="nav-brand" href="index.html">' +
+            '<span class="nav-brand-primary">AGW</span>' +
+            '<span class="nav-brand-sep"></span>' +
+            '<span class="nav-brand-sub" data-i18n="nav_brand_sub">Verein für Socialpolitik</span>' +
+          '</a>' +
+          backHtml +
+          '<div class="nav-actions">' +
+            '<div class="lang-toggle" role="group" aria-label="Language">' +
+              '<button class="lang-btn active" id="btn-de" onclick="setLang(\'de\')">DE</button>' +
+              '<button class="lang-btn" id="btn-en" onclick="setLang(\'en\')">EN</button>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</nav>';
+
+    // Re-apply language to the freshly-injected nav (host page also calls this)
+    if (window.AGW && window.AGW.applyLang) {
+      window.AGW.applyLang(window.AGW.getLang ? window.AGW.getLang() : 'de');
+    }
+
+    // On-scroll shadow — parity with renderNav
+    var navEl = mount.querySelector('.nav');
+    if (navEl) {
+      var onNavScroll = function () { navEl.classList.toggle('scrolled', window.scrollY > 8); };
+      window.addEventListener('scroll', onNavScroll, { passive: true });
+      onNavScroll();
+    }
+  };
+
   /** Render a small shared footer into #footer-mount. */
   window.AGW.renderFooter = function () {
     var mount = document.getElementById('footer-mount');

@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="agw_styles.css">
 
   <!-- ES module import map — resolves bare specifiers to CDN -->
   <script type="importmap">
@@ -26,87 +27,9 @@
   </script>
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* Resets, tokens, nav & language toggle now inherited from agw_styles.css */
+    body { overflow-x: hidden; }
 
-    /* ── CSS variables — identical to index.html ── */
-    :root {
-      --navy:         #1B3A6B;
-      --navy-dark:    #122852;
-      --navy-mid:     #24477F;
-      --accent:       #3A6BAF;
-      --accent-pale:  #EAF0F8;
-      --gold:         #B8860B;
-      --gold-light:   #F5EED0;
-      --cream:        #FAFAF7;
-      --white:        #FFFFFF;
-      --text-dark:    #1C1C1E;
-      --text-body:    #2C2C30;
-      --text-muted:   #6B7280;
-      --text-faint:   #9CA3AF;
-      --border:       #DDE2EA;
-      --border-light: #EEF1F5;
-      --green:        #4A7C59;
-      --green-pale:   #EAF2EC;
-      /* — synced with agw_styles.css (design cohesion pass) — */
-      --text-meta:    #5A6270;
-      --gold-on-navy: #CBA13A;
-      --gold-ink:     #6B4F00;
-      --radius-sm:    8px;
-      --radius-pill:  100px;
-      --tracking-label: .14em;
-    }
-
-    html { scroll-behavior: smooth; font-size: 16px; }
-    body {
-      font-family: 'Source Sans 3', sans-serif;
-      color: var(--text-body);
-      background: var(--cream);
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
-
-    /* ── Nav — exact match to index.html ── */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 200;
-      background: var(--navy-dark);
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-    }
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      height: 56px;
-      padding: 0 1.5rem;
-      gap: 0;
-    }
-    .nav-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      color: #fff;
-      font-family: 'EB Garamond', Georgia, serif;
-      font-size: 18px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      flex-shrink: 0;
-    }
-    .nav-brand-sep {
-      width: 1px;
-      height: 18px;
-      background: rgba(255,255,255,0.25);
-    }
-    .nav-brand-sub {
-      font-size: 12px;
-      font-family: 'Source Sans 3', sans-serif;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      color: rgba(255,255,255,0.6);
-      text-transform: uppercase;
-    }
     .nav-back {
       font-size: 12px;
       color: rgba(255,255,255,0.55);
@@ -116,44 +39,6 @@
       transition: color .15s;
     }
     .nav-back:hover { color: rgba(255,255,255,0.9); }
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-left: auto;
-      flex-shrink: 0;
-    }
-
-    /* ── Language toggle ── */
-    .lang-toggle {
-      display: flex;
-      align-items: center;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: var(--radius-pill);
-      padding: 4px 2px;
-      gap: 0;
-      cursor: pointer;
-      font-family: 'Source Sans 3', sans-serif;
-    }
-    .lang-btn {
-      padding: 3px 9px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      color: rgba(255,255,255,0.45);
-      border-radius: var(--radius-pill);
-      transition: background .15s, color .15s;
-      border: none;
-      background: none;
-      cursor: pointer;
-      font-family: inherit;
-    }
-    .lang-btn.active {
-      background: rgba(255,255,255,0.18);
-      color: #fff;
-    }
-
     /* ── Primary tool tabs (5 main tabs) ── */
     .tool-tabs {
       background: var(--white);
@@ -291,11 +176,7 @@
   
     /* ── Mobile responsiveness ── */
     @media (max-width: 600px) {
-      .nav-inner    { padding: 0 0.875rem; }
-      .nav-brand    { font-size: 16px; gap: 8px; }
-      .nav-brand-sub{ font-size: 10px; letter-spacing: 0.04em; }
       .nav-back     { margin-left: 14px; font-size: 11px; }
-      .lang-btn     { padding: 3px 8px; font-size: 10px; }
       .tool-tab     { padding: 10px 14px; font-size: 13px; }
       .sub-tab      { padding: 7px 11px; font-size: 12px; }
     }
@@ -422,23 +303,8 @@
 </head>
 <body>
 
-  <!-- ── Nav ── -->
-  <nav class="nav" role="navigation">
-    <div class="nav-inner">
-      <a class="nav-brand" href="index.html">
-        <span>AGW</span>
-        <span class="nav-brand-sep"></span>
-        <span class="nav-brand-sub">Verein für Socialpolitik</span>
-      </a>
-      <a class="nav-back" href="index.html"><span class="back-arrow">←</span> <span class="back-text" data-str="nav_back_main">Zur Tagungsseite</span></a>
-      <div class="nav-actions">
-        <div class="lang-toggle" role="group" aria-label="Language">
-          <button class="lang-btn active" id="btn-de" onclick="setLang('de')">DE</button>
-          <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <!-- ── Nav (shared utility variant — see agw_nav.js) ── -->
+  <div id="nav-mount"></div>
 
   <!-- ── 5 Primary Tabs ── -->
   <div class="tool-tabs" role="tablist">
@@ -572,10 +438,11 @@
 
   <footer class="page-footer">
     <span>AGW · Ausschuss für die Geschichte der Wirtschaftswissenschaften · Verein für Socialpolitik</span>
-    <span><a href="guide.html#zitierweise" style="color:var(--text-muted);text-decoration:none;margin-right:10px;" data-i18n="footer_cite">Zitierweise</a>© 2026 · <a href="mailto:bieri@vt.edu">David Bieri</a></span>
+    <span><a href="guide.html#zitierweise" style="color:var(--text-muted);text-decoration:none;margin-right:10px;" data-i18n="footer_cite">Zitierweise</a>© 2026 · <a href="/cdn-cgi/l/email-protection#13717a76617a5365673d767766">David Bieri</a></span>
   </footer>
 
-  <script src="agw_strings.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="agw_strings.js"></script>
+  <script src="agw_nav.js"></script>
   <script src="agw_schools_net.js"></script>
   <!-- ── Language + tab + sub-tab logic ── -->
   <script>
@@ -773,6 +640,9 @@
         '<code>bash build_analytics.sh</code>' +
         AGW.t('bundle_hint', lang) + '</div>';
     }
+
+    /* Shared minimal nav (brand + back-link + DE/EN) */
+    AGW.renderUtilityNav({ back: { href: 'index.html', key: 'nav_back_main' } });
 
     setLang(lang);
   </script>
