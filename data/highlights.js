@@ -20,8 +20,8 @@ window.AGW.HIGHLIGHTS = {
   featured: {
     media: ['img/gallery/p4936', 'img/gallery/p4921'],
     kicker: { de: 'Neuer Vorsitz', en: 'New chair' },
-    title:  { de: 'Prof. Dr. Rainer Klump übergibt den AGW-Vorsitz an Prof. Dr. Elisabeth Allgöwer',
-              en: 'Prof. Rainer Klump hands over the AGW chair to Prof. Elisabeth Allgöwer' },
+    title:  { de: 'Prof. Dr. Rainer Klump übergibt den AGW-Vorsitz an Prof. Dr. Elisabeth Allgoewer',
+              en: 'Prof. Rainer Klump hands over the AGW chair to Prof. Elisabeth Allgoewer' },
     meta:   { de: 'Amtsübergabe · 46. Jahrestagung, Riva San Vitale · Juni 2026',
               en: 'Handover of office · 46th Annual Conference, Riva San Vitale · June 2026' },
     href: 'jahrestagung-2026.html#impressionen',
