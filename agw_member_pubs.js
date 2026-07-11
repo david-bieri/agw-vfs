@@ -13,8 +13,10 @@
  *                         names drift, ids do not.
  *
  * ─── HOW TO ADD A PUBLICATION ──────────────────────────────────────────────
- *   1. (Optional) run  `python3 tools/doi_expand.py 10.xxxx/yyyy`  to fetch
- *      clean metadata for a DOI, then paste the printed object below.
+ *   1. Preferred: run  `python3 tools/pubs_import.py <ORCID> --mid <slug>`  (also
+ *      `--doi 10.xxxx/yyyy` and `--bib overlord.bib`). For an unstructured
+ *      submission (PDF/Word CV) use  `python3 tools/cv_extract.py`.  Paste the
+ *      output below, then validate:  `python3 tools/pubs_import.py --lint`.
  *   2. Set `mid` to the member's `id` slug from MEMBERS (agw_data.js).
  *      Set `type` to one of: article | book | chapter | edited | wp.
  *   3. Tag `themes` with one or more ids from PUB_THEMES (see list below).
@@ -26,7 +28,8 @@
  *   classical      smith          austrian       keynesian
  *   monetary       ordoliberal    historical     marxian
  *   cameralism     evolutionary   distribution   public_finance
- *   methodology    econ_history   feminist       general
+ *   methodology    econ_history   spatial        feminist
+ *   general
  *   ─ see PUB_THEMES below for the full bilingual labels.
  * ─────────────────────────────────────────────────────────────────────────── */
 
@@ -53,8 +56,9 @@
     { id:'public_finance',order:12, de:'Finanzwissenschaft',                      en:'Public Finance' },
     { id:'methodology',   order:13, de:'Methodologie & Wissenschaftstheorie',     en:'Methodology & Philosophy of Science' },
     { id:'econ_history',  order:14, de:'Wirtschafts- & Institutionengeschichte',  en:'Economic & Institutional History' },
-    { id:'feminist',      order:15, de:'Feministische & heterodoxe Ökonomik',     en:'Feminist & Heterodox Economics' },
-    { id:'general',       order:16, de:'Geschichte der Wirtschaftswissenschaften',en:'History of Economics (general)' }
+    { id:'spatial',       order:15, de:'Raumwirtschaftslehre & Standorttheorie',  en:'Spatial Economics & Location Theory' },
+    { id:'feminist',      order:16, de:'Feministische & heterodoxe Ökonomik',     en:'Feminist & Heterodox Economics' },
+    { id:'general',       order:17, de:'Geschichte der Wirtschaftswissenschaften',en:'History of Economics (general)' }
   ];
 
   /* ── Member publications ──────────────────────────────────────────────────

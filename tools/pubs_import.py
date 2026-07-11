@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-pubs_import.py — build MEMBER_PUBS entries for agw_member_pubs.js.
+pubs_import.py — build MEMBER_PUBS entries for agw_member_pubs.js.  (v3)
 
 Supersedes tools/doi_expand.py (which emitted the pre-v53 schema: `member:` by
 display name, and no `type` field). Delete that file.
@@ -11,7 +11,11 @@ Standard library only — no API key, no token, no account, no dependencies.
 ────────────────────────────────────────────────────────────────────────────
 WHAT IT DOES
 
-Two sources, used together, because neither is sufficient alone:
+Three sources, used together, because none is sufficient alone. This is not
+over-engineering: on the one member whose record we could fully audit, ORCID
+returned nine DOI-bearing journal articles and missed BOTH of his German book
+chapters — which were the most subject-relevant things he had written. A local
+.bib had them. Neither source alone produces a defensible entry.
 
   ORCID  (pub.orcid.org)   — the member's OWN deposited works list. Includes
                              monographs, edited volumes, chapters and pre-DOI
@@ -20,6 +24,10 @@ Two sources, used together, because neither is sufficient alone:
   Crossref (api.crossref.org) — rich, clean metadata (full author list, exact
                              venue, canonical type) for anything with a DOI.
                              This is the enrichment layer.
+  A local .bib (--bib)     — your own bibliography. Catches the chapters,
+                             Festschrift contributions and German-language book
+                             work that never got a DOI and never reached ORCID.
+                             Needs `pip install bibtexparser`.
 
 So: discover via ORCID, enrich via Crossref, merge, emit. Works without a DOI
 still make it into the output — flagged, with whatever ORCID knows.
@@ -35,6 +43,12 @@ USAGE
 
   # A few DOIs, no ORCID:
   python3 tools/pubs_import.py --doi 10.1215/00182702-26-2-327 --mid schefold-bertram
+
+  # Everything by a member in your own .bib (matched on surname + first initial):
+  python3 tools/pubs_import.py --bib ~/refs/overlord.bib --mid schefold-bertram
+
+  # ...and enrich the .bib hits that carry a DOI:
+  python3 tools/pubs_import.py --bib overlord.bib --mid kurz-heinz-d --enrich
 
   # Validate the data file after pasting (do this every time):
   python3 tools/pubs_import.py --lint
@@ -120,12 +134,26 @@ THEME_HINTS = [
     ("distribution",   ["distribution", "growth theory", "capital theory", "verteilung", "wachstum"]),
     ("public_finance", ["public finance", "taxation", "finanzwissenschaft", "fiscal"]),
     ("methodology",    ["methodolog", "philosophy of econom", "popper", "wissenschaftstheorie", "epistem"]),
-    ("econ_history",   ["economic history", "wirtschaftsgeschichte"]),
+    ("econ_history",   ["economic history", "wirtschaftsgeschichte", "history of econom"]),
+    ("spatial",        ["lösch", "loesch", "christaller", "thünen", "thuenen", "standort",
+                        "location theory", "spatial econom", "economic geography",
+                        "regional science", "raumwirtschaft", "agglomeration"]),
     ("feminist",       ["feminist", "gender", "women", "ökonominnen"]),
 ]
 
 
 # ── helpers ─────────────────────────────────────────────────────────────────
+def member_name(mid):
+    """Display name for a mid, read from MEMBERS in agw_data.js. Used as the
+    author fallback: Crossref returns no author list for edited volumes."""
+    try:
+        data = open(DATA_JS, encoding="utf-8").read()
+    except OSError:
+        return ""
+    m = re.search(r"\{ id:'%s', name:'([^']+)'" % re.escape(mid), data)
+    return m.group(1) if m else ""
+
+
 def get_json(url):
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
     with urllib.request.urlopen(req, timeout=30) as r:
@@ -175,9 +203,18 @@ def crossref(doi):
     if len(msg.get("author") or []) > 4:
         author_str += " et al."
 
-    ct = msg.get("container-title") or []
-    venue = ct[0] if ct else (msg.get("publisher") or "")
-    if ct and msg.get("volume"):
+    ctype = CROSSREF_TYPE.get(msg.get("type", ""), "article")
+    ct = [c for c in (msg.get("container-title") or []) if c]
+    if ctype in ("chapter", "edited", "book") and len(ct) > 1:
+        # For book chapters Crossref often lists the SERIES first and the book
+        # second ("Advances in Spatial Science" vs the actual volume title).
+        # The longer string is almost always the book. Flagged for review anyway.
+        venue = max(ct, key=len)
+    elif ct:
+        venue = ct[0]
+    else:
+        venue = msg.get("publisher") or ""
+    if ct and ctype == "article" and msg.get("volume"):
         venue += " %s" % msg["volume"]
         if msg.get("issue"):
             venue += "(%s)" % msg["issue"]
@@ -194,7 +231,7 @@ def crossref(doi):
         "authors": author_str,
         "venue": venue,
         "year": year,
-        "type": CROSSREF_TYPE.get(msg.get("type", ""), "article"),
+        "type": ctype,
         "doi": doi,
     }
 
@@ -235,19 +272,153 @@ def orcid_works(orcid):
     return out
 
 
+# ── local .bib ──────────────────────────────────────────────────────────────
+BIB_TYPE = {
+    "article": "article", "book": "book", "inbook": "chapter", "incollection": "chapter",
+    "techreport": "wp", "phdthesis": "book", "inproceedings": "article",
+    "proceedings": "edited", "conference": "article", "manual": "wp",
+    "unpublished": "wp", "misc": "wp", "mastersthesis": "wp", "booklet": "wp",
+}
+LATEX_ACCENT = {"a": "\u00e4", "o": "\u00f6", "u": "\u00fc",
+                "A": "\u00c4", "O": "\u00d6", "U": "\u00dc"}
+
+
+def de_latex(s):
+    """Strip the LaTeX that lives in every real-world .bib file."""
+    if not s:
+        return ""
+    s = re.sub(r"\\enquote\{([^{}]*)\}", "\u201c\\1\u201d", s)
+    s = re.sub(r"\\(emph|textit|textbf|texttt|textsc|mkbibquote)\{([^{}]*)\}", r"\2", s)
+    s = re.sub(r'\\"\{?([aouAOU])\}?', lambda m: LATEX_ACCENT[m.group(1)], s)
+    s = re.sub(r"\\'\{?([a-zA-Z])\}?", r"\1", s)
+    s = re.sub(r"\\`\{?([a-zA-Z])\}?", r"\1", s)
+    s = re.sub(r"\\ss\{?\}?", "\u00df", s)
+    s = s.replace("\\&", "&")
+    s = re.sub(r"\\[a-zA-Z]+\s*", "", s)          # any macro left standing
+    s = s.replace("{", "").replace("}", "").replace("~", " ").replace("--", "\u2013")
+    return re.sub(r"\s+", " ", s).strip()
+
+
+def ascii_fold(s):
+    s = de_latex(s).replace("\u00e4", "ae").replace("\u00f6", "oe") \
+                   .replace("\u00fc", "ue").replace("\u00df", "ss")
+    import unicodedata
+    return unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().lower().strip()
+
+
+def bib_works(path, mid):
+    """Every work in `path` authored/edited by the member `mid`.
+
+    Matched on surname + first initial of the given name. Surname alone is not
+    safe: Adolph Wagner is not Helmut Wagner, and a bibliography of this field
+    contains both.
+    """
+    try:
+        import bibtexparser
+        from bibtexparser.bparser import BibTexParser
+    except ImportError:
+        sys.exit("--bib needs bibtexparser:  pip install bibtexparser")
+
+    name = member_name(mid)
+    if not name:
+        sys.exit("Unknown --mid '%s' (no such id in MEMBERS)." % mid)
+    parts = name.split()
+    surname, given = ascii_fold(parts[-1]), (ascii_fold(parts[0])[:1] if len(parts) > 1 else "")
+
+    parser = BibTexParser(common_strings=True)
+    parser.ignore_nonstandard_types = False
+    with open(path, encoding="utf-8", errors="replace") as f:
+        db = bibtexparser.load(f, parser)
+
+    out, seen = [], set()
+    for e in db.entries:
+        field = e.get("author") or e.get("editor") or ""
+        # repair the classic "Kurz, Heinz D.and Salvadori, Neri" missing-space bug
+        field = re.sub(r"([A-Z]\.)and\s", r"\1 and ", field)
+        matched = False
+        for a in re.split(r"\s+and\s+", field):
+            a = a.strip()
+            if not a:
+                continue
+            sur = a.split(",")[0] if "," in a else a.split()[-1]
+            giv = a.split(",", 1)[1] if "," in a else " ".join(a.split()[:-1])
+            if ascii_fold(sur) != surname:
+                continue
+            g = ascii_fold(giv)
+            if given and g and not g.startswith(given):
+                continue          # different person sharing a surname
+            matched = True
+            break
+        if not matched:
+            continue
+
+        # `chapter` is the piece, `title` the containing book — but some entries
+        # carry a bare chapter NUMBER, which is not a title.
+        chap = de_latex(e.get("chapter", ""))
+        title = chap if (chap and not chap.strip().isdigit()) else de_latex(e.get("title", ""))
+        if not title:
+            continue
+        key = ascii_fold(title)[:55]
+        if key in seen:
+            continue
+        seen.add(key)
+
+        etype = (e.get("ENTRYTYPE") or "article").lower()
+        typ = BIB_TYPE.get(etype, "article")
+        if not e.get("author") and e.get("editor"):
+            typ = "edited"
+
+        venue = ""
+        for k in ("journal", "booktitle", "publisher", "institution", "school", "series"):
+            if e.get(k):
+                venue = de_latex(e[k])
+                break
+
+        ym = re.search(r"(1[6-9]\d\d|20\d\d)", str(e.get("year", "")))
+        out.append({
+            "title": title, "type": typ,
+            "authors": bib_authors(field),
+            "venue": venue, "year": int(ym.group(1)) if ym else None,
+            "doi": (e.get("doi") or "").strip(), "_bib": e.get("ID", ""),
+        })
+    return out
+
+
+def bib_authors(field, limit=4):
+    """BibTeX 'Kurz, Heinz D. and Salvadori, Neri' -> 'Heinz D. Kurz \u00b7 Neri Salvadori',
+    matching the display convention already used in MEMBER_PUBS."""
+    names = []
+    for a in re.split(r"\s+and\s+", field or ""):
+        a = de_latex(a.strip())
+        if not a:
+            continue
+        if "," in a:
+            sur, giv = [x.strip() for x in a.split(",", 1)]
+            names.append((giv + " " + sur).strip())
+        else:
+            names.append(a)
+    out = " \u00b7 ".join(names[:limit])
+    if len(names) > limit:
+        out += " et al."
+    return out
+
+
 # ── emit ────────────────────────────────────────────────────────────────────
 def to_entry(rec, mid, fixed_themes=None, fallback_author=""):
     guessed = fixed_themes is None
     themes = fixed_themes or suggest_themes(rec["title"], rec.get("venue"))
-    authors = rec.get("authors") or fallback_author
+    # Crossref returns no author list for edited volumes; fall back to the member.
+    authors = rec.get("authors") or fallback_author or member_name(mid)
 
     warn = []
     if guessed:
         warn.append("themes GUESSED")
     if not rec.get("doi"):
-        warn.append("no DOI \u2014 metadata from ORCID only")
-    if not authors:
-        warn.append("no author list")
+        warn.append("no DOI" + (" \u2014 from .bib" if rec.get("_bib") else " \u2014 from ORCID only"))
+    if rec.get("type") in ("chapter", "edited") and rec.get("venue"):
+        warn.append("venue may be the series, not the book")
+    if not rec.get("authors"):
+        warn.append("author list inferred")
     if not rec.get("venue"):
         warn.append("no venue")
     note = ("   // " + "; ".join(warn) + " \u2014 verify") if warn else ""
@@ -315,6 +486,11 @@ def main():
     ap.add_argument("orcid", nargs="?", help="ORCID iD, e.g. 0000-0002-1825-0097")
     ap.add_argument("--mid", help="member id slug from MEMBERS in agw_data.js (e.g. schefold-bertram)")
     ap.add_argument("--doi", action="append", default=[], help="DOI (repeatable); use instead of an ORCID iD")
+    ap.add_argument("--bib", help="path to a local .bib; emits every work by --mid found in it")
+    ap.add_argument("--enrich", action="store_true",
+                    help="with --bib: fetch Crossref metadata for entries that carry a DOI")
+    ap.add_argument("--no-wp", action="store_true",
+                    help="drop working papers / reports (recommended: the site shows selected work)")
     ap.add_argument("--themes", help="comma-separated theme ids applied to ALL entries (skips guessing)")
     ap.add_argument("--since", type=int, help="only works published in or after this year")
     ap.add_argument("--limit", type=int, default=25, help="max entries to print, newest first (default 25)")
@@ -326,13 +502,26 @@ def main():
         sys.exit(lint())
     if not a.mid:
         sys.exit("--mid is required: the member's id slug from MEMBERS in agw_data.js")
-    if not a.orcid and not a.doi:
+    if not a.orcid and not a.doi and not a.bib:
         ap.print_help()
         sys.exit(1)
 
     fixed = [t.strip() for t in a.themes.split(",")] if a.themes else None
 
-    if a.doi:
+    if a.bib:
+        records = bib_works(a.bib, a.mid)
+        n_doi = sum(1 for r in records if r["doi"])
+        print("// %s: %d work(s) by %s (%d with a DOI)"
+              % (os.path.basename(a.bib), len(records), member_name(a.mid), n_doi), file=sys.stderr)
+        if a.enrich:
+            for i, r in enumerate(records):
+                if r["doi"]:
+                    better = crossref(r["doi"])
+                    if better:
+                        better["_bib"] = r["_bib"]
+                        records[i] = better
+                    time.sleep(0.2)
+    elif a.doi:
         records = []
         for d in a.doi:
             r = crossref(clean_doi(d))
@@ -354,6 +543,8 @@ def main():
             else:
                 records.append(w)
 
+    if a.no_wp:
+        records = [r for r in records if r.get("type") != "wp"]
     if a.since:
         records = [r for r in records if not r.get("year") or r["year"] >= a.since]
     records.sort(key=lambda r: -(r.get("year") or 0))
@@ -365,12 +556,14 @@ def main():
         return
 
     n_nodoi = sum(1 for r in records if not r.get("doi"))
+    src = "your .bib" if a.bib else ("ORCID + Crossref" if a.orcid else "Crossref")
     print("\n    // \u2500\u2500 %s \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500" % a.mid)
     for r in records:
         print(to_entry(r, a.mid, fixed, a.author))
-    print("\n// %d entries (%d without a DOI \u2014 check those first). Review themes,\n"
-          "// drop what doesn't belong, paste into MEMBER_PUBS, then run --lint."
-          % (len(records), n_nodoi), file=sys.stderr)
+    print("\n// %d entries from %s (%d without a DOI \u2014 check those first).\n"
+          "// This is a candidate list, not a selection: the page shows *selected* work.\n"
+          "// Review themes, drop what doesn't belong, paste into MEMBER_PUBS, run --lint."
+          % (len(records), src, n_nodoi), file=sys.stderr)
 
 
 if __name__ == "__main__":
