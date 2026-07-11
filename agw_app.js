@@ -288,7 +288,7 @@ function renderArchive() {
         }).join('');
     }
 
-    html += '<div class="archive-item">'
+    html += '<div class="archive-item is-clickable">'
       + '<div class="archive-head" onclick="toggleArchive(' + i + ')">'
       + '<div class="archive-year">' + c.year + '</div>'
       + '<div style="flex:1;min-width:0;">'
@@ -606,8 +606,8 @@ function renderNextEvent(){
   var e=up[0].ev, loc=de?(e.loc_de||e.loc_en||''):(e.loc_en||e.loc_de||'');
   var sub=de?(e.desc_de||''):(e.desc_en||'');
   var ext=e.url&&/^https?:/.test(e.url);
-  el.innerHTML='<a class="home-next" href="'+(e.url||'events.html')+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'
-    +'<div class="home-next-kicker">'+(de?'N\u00e4chste Jahrestagung':'Next annual meeting')+'</div>'
+  el.innerHTML='<a class="home-next is-clickable" href="'+(e.url||'events.html')+'"'+(ext?' target="_blank" rel="noopener"':'')+'>'
+    +'<div class="home-next-kicker eyebrow">'+(de?'N\u00e4chste Jahrestagung':'Next annual meeting')+'</div>'
     +'<div class="home-next-title">'+e.title+'</div>'
     +(sub?'<div class="home-next-sub">'+sub+'</div>':'')
     +'<div class="home-next-meta">'+fmt(e.start,e.end)+(loc?' \u00b7 '+loc:'')+'</div>'

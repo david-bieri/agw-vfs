@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGW · Style Guide</title>
+<meta name="description" content="Lebendes Gestaltungssystem des AGW — Tokens, Typografie und Komponenten, live aus agw_styles.css gelesen.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231B3A6B'/><text x='16' y='22' font-family='Georgia,serif' font-size='13' font-weight='bold' fill='white' text-anchor='middle'>AGW</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- The guide links the SAME stylesheet the site uses; every swatch, size and
+     component below is rendered from the live tokens. Change a value in
+     agw_styles.css and this page updates with it. -->
+<link rel="stylesheet" href="agw_styles.css">
+<style>
+  /* Guide-only scaffolding (kept minimal; everything visual comes from tokens) */
+  .sg-wrap{max-width:1080px;margin:0 auto;padding:0 1.5rem;}
+  .sg-masthead{background:var(--navy);color:#fff;padding:var(--space-8) 1.5rem var(--space-7);}
+  .sg-masthead .sg-wrap{padding:0 1.5rem;}
+  .sg-eyebrow{font-size:var(--fs-label);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;}
+  .sg-section{padding:var(--space-8) 0 var(--space-6);border-bottom:1px solid var(--border-light);}
+  .sg-section:last-child{border-bottom:none;}
+  .sg-h2{font-family:'EB Garamond',serif;font-weight:500;font-size:2rem;color:var(--navy);letter-spacing:-.01em;}
+  .sg-lede{color:var(--text-muted);font-size:var(--fs-md);max-width:var(--measure-prose);margin-top:var(--space-2);}
+  .sg-subhead{font-size:var(--fs-label);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--accent);margin:var(--space-6) 0 var(--space-4);}
+  .mono{font-family:'SF Mono',ui-monospace,Menlo,Consolas,monospace;}
+  /* token grids */
+  .sg-swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:var(--space-3);}
+  .sg-swatch{border:1px solid var(--border-light);border-radius:var(--radius-sm);overflow:hidden;background:var(--white);}
+  .sg-swatch .chip{height:64px;}
+  .sg-swatch .meta{padding:var(--space-2) var(--space-3);}
+  .sg-swatch .name{font-size:var(--fs-note);font-weight:600;color:var(--text-dark);}
+  .sg-swatch .hex{font-size:var(--fs-note);color:var(--text-muted);}
+  /* type rows */
+  .sg-type-row{display:flex;align-items:baseline;gap:var(--space-4);padding:var(--space-3) 0;border-bottom:1px solid var(--border-light);}
+  .sg-type-row .spec{margin-left:auto;color:var(--text-faint);white-space:nowrap;}
+  /* contrast table */
+  .sg-table{width:100%;border-collapse:collapse;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;}
+  .sg-table th{background:var(--navy);color:rgba(255,255,255,.92);font-size:var(--fs-label);font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-align:left;padding:var(--space-3) var(--space-4);}
+  .sg-table td{padding:var(--space-3) var(--space-4);border-top:1px solid var(--border-light);font-size:var(--fs-ui);}
+  .sg-pass{font-size:var(--fs-note);font-weight:600;padding:2px 8px;border-radius:var(--radius-pill);}
+  .sg-pass.aaa,.sg-pass.aa{color:var(--green);background:var(--green-pale);}
+  .sg-pass.fail{color:#B84A4A;background:#FBEAEA;}
+  /* button/badge demo rows */
+  .sg-row{display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;}
+  .sg-btn{display:inline-flex;align-items:center;gap:6px;font-weight:500;cursor:default;border:1.5px solid transparent;}
+  .sg-btn.primary{padding:8px 16px;border-radius:var(--radius-sm);font-size:var(--fs-ui);background:var(--navy);color:#fff;border-color:var(--navy);}
+  .sg-btn.outline{padding:8px 16px;border-radius:var(--radius-sm);font-size:var(--fs-ui);background:#fff;color:var(--accent);border-color:var(--accent);}
+  .sg-btn.pill{padding:11px 22px;border-radius:var(--radius-pill);font-size:var(--fs-ui);font-weight:600;background:var(--navy);color:#fff;border-color:var(--navy);}
+  .sg-btn.ghost{padding:11px 22px;border-radius:var(--radius-pill);font-size:var(--fs-ui);font-weight:600;background:transparent;color:var(--navy);border-color:var(--border);}
+  .sg-btn.sm{padding:6px 12px;border-radius:var(--radius-sm);font-size:var(--fs-note);background:#fff;color:var(--accent);border-color:var(--accent);}
+  .sg-badge{font-size:var(--fs-label);font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:var(--radius-pill);}
+  .sg-badge.blue{background:var(--accent-pale);color:var(--accent);}
+  .sg-badge.green{background:var(--green-pale);color:var(--green);}
+  .sg-badge.gold{background:var(--gold-light);color:var(--gold-ink);}
+  .sg-disc{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:var(--fs-note);}
+  .sg-disc.closed{background:var(--border-light);color:var(--text-muted);}
+  .sg-disc.open{background:var(--navy);color:#fff;transform:rotate(180deg);}
+  .sg-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);}
+  .sg-note{font-size:var(--fs-label);color:var(--text-faint);margin-top:var(--space-2);}
+  .sg-usage{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);margin-top:var(--space-3);}
+  .sg-usage .do,.sg-usage .dont{border:1px solid var(--border);border-radius:var(--radius-sm);padding:var(--space-4);font-size:var(--fs-ui);}
+  .sg-usage .do{border-left:3px solid var(--green);}
+  .sg-usage .dont{border-left:3px solid #B84A4A;}
+  .sg-toc{display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-5);margin-top:var(--space-5);font-size:var(--fs-ui);}
+  .sg-toc a{color:rgba(255,255,255,.8);}
+  .sg-toc a:hover{color:#fff;}
+  @media(max-width:768px){.sg-cards{grid-template-columns:1fr;}.sg-usage{grid-template-columns:1fr;}}
+  @media(max-width:600px){.sg-h2{font-size:1.6rem;}}
+</style>
+</head>
+<body>
+
+<header class="sg-masthead">
+  <div class="sg-wrap">
+    <div class="sg-eyebrow" style="color:var(--gold-light);" data-i18n="sg_eyebrow">AGW · Gestaltungssystem</div>
+    <h1 style="font-family:'EB Garamond',serif;font-weight:500;font-size:clamp(2rem,4vw,2.75rem);line-height:1.1;margin:var(--space-3) 0;letter-spacing:-.01em;" data-i18n="sg_title">Living Style Guide</h1>
+    <p style="color:rgba(255,255,255,.82);font-size:var(--fs-lead);max-width:var(--measure-prose);font-weight:300;" data-i18n="sg_lede">Tokens, Typografie und Komponenten — live aus <span class="mono" style="font-size:var(--fs-ui);">agw_styles.css</span> gelesen. Ändert sich ein Token, ändert sich diese Seite mit.</p>
+    <nav class="sg-toc">
+      <a href="#tokens" data-i18n="sg_toc_tokens">Farben &amp; Tokens</a>
+      <a href="#type" data-i18n="sg_toc_type">Typografie</a>
+      <a href="#components" data-i18n="sg_toc_comp">Komponenten</a>
+      <a href="#a11y" data-i18n="sg_toc_a11y">Kontrast</a>
+    </nav>
+  </div>
+</header>
+
+<main class="sg-wrap">
+
+  <!-- ════ TOKENS (E3) ════ -->
+  <section class="sg-section" id="tokens">
+    <h2 class="sg-h2" data-i18n="sg_s1_title">Farben &amp; Tokens</h2>
+    <p class="sg-lede" data-i18n="sg_s1_lede">Die primäre Farbe ist VfS-Marineblau. Gold ist ein dokumentiertes Paar: dunkler auf Creme, heller auf Marineblau.</p>
+
+    <div class="sg-subhead" data-i18n="sg_s1_palette">Palette</div>
+    <div class="sg-swatches" id="sg-palette"><!-- rendered live --></div>
+
+    <div class="sg-subhead" data-i18n="sg_s1_gold">Das Gold-Paar</div>
+    <div class="sg-usage">
+      <div class="do" style="background:var(--cream);">
+        <div style="display:flex;align-items:center;gap:var(--space-3);">
+          <span style="width:44px;height:44px;border-radius:var(--radius-sm);background:var(--gold);flex-shrink:0;"></span>
+          <div><strong style="color:var(--text-dark);">--gold</strong> <span class="mono" style="font-size:var(--fs-note);color:var(--text-muted);">#B8860B</span><div class="sg-note" data-i18n="sg_gold_cream">auf Creme — Linien &amp; große Akzente</div></div>
+        </div>
+      </div>
+      <div class="do" style="background:var(--navy);border-left-color:var(--gold-on-navy);">
+        <div style="display:flex;align-items:center;gap:var(--space-3);">
+          <span style="width:44px;height:44px;border-radius:var(--radius-sm);background:var(--gold-on-navy);flex-shrink:0;"></span>
+          <div><strong style="color:#fff;">--gold-on-navy</strong> <span class="mono" style="font-size:var(--fs-note);color:rgba(255,255,255,.7);">#CBA13A</span><div class="sg-note" style="color:rgba(255,255,255,.6);" data-i18n="sg_gold_navy">auf Marineblau — Countdown, Konstellation, OG</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-subhead" data-i18n="sg_s1_radius">Radius &amp; Raster</div>
+    <div class="sg-row" id="sg-radius"><!-- rendered live --></div>
+  </section>
+
+  <!-- ════ TYPE (E2) ════ -->
+  <section class="sg-section" id="type">
+    <h2 class="sg-h2" data-i18n="sg_s2_title">Typografie</h2>
+    <p class="sg-lede" data-i18n="sg_s2_lede">EB Garamond für Anzeige und Zitate; Source Sans 3 für Oberfläche und Fließtext. Ein dokumentierter Stufenmaßstab.</p>
+
+    <div class="sg-subhead" data-i18n="sg_s2_scale">Maßstab</div>
+    <div id="sg-typescale"><!-- rendered live --></div>
+
+    <div class="sg-subhead" data-i18n="sg_s2_measure">Zeilenmaß — 68 Zeichen</div>
+    <p style="font-size:var(--fs-md);line-height:1.75;max-width:var(--measure-prose);color:var(--text-body);" data-i18n="sg_measure_body">Der Ausschuss versteht sich als wissenschaftliche Plattform, die Ökonominnen und Ökonomen aus dem deutschsprachigen Raum zusammenführt. Das Maß von rund achtundsechzig Zeichen hält die Zeile im komfortablen Lesebereich — der Blick findet mühelos zum Zeilenanfang zurück.</p>
+    <blockquote style="font-family:'EB Garamond',serif;font-size:var(--fs-card);font-style:italic;color:var(--navy);border-left:3px solid var(--gold);padding-left:var(--space-4);margin-top:var(--space-5);line-height:1.5;" data-i18n="sg_quote">„Zur Geschichte des ökonomischen Denkens.“</blockquote>
+  </section>
+
+  <!-- ════ COMPONENTS (E1) ════ -->
+  <section class="sg-section" id="components">
+    <h2 class="sg-h2" data-i18n="sg_s3_title">Komponenten</h2>
+    <p class="sg-lede" data-i18n="sg_s3_lede">Eine Hover-Geste, ein Radius-Maßstab, ein Aufklapp-Element. Schaltflächen und Steuerelemente sind bewusst getrennte Familien.</p>
+
+    <div class="sg-subhead" data-i18n="sg_s3_btn">Schaltflächen — die <span class="mono" style="font-size:var(--fs-note);">.btn</span>-Familie</div>
+    <div class="sg-row">
+      <span class="sg-btn primary">.btn-primary</span>
+      <span class="sg-btn outline">.btn-outline</span>
+      <span class="sg-btn pill">.btn-pill</span>
+      <span class="sg-btn ghost">.btn-ghost</span>
+      <span class="sg-btn sm">.btn-sm</span>
+    </div>
+    <div class="sg-subhead" style="color:var(--text-muted);" data-i18n="sg_s3_ctrl">Steuerelemente — eigene Familie (keine Schaltflächen)</div>
+    <div class="sg-row">
+      <span style="display:inline-flex;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;font-size:var(--fs-meta);">
+        <span style="padding:7px 14px;background:var(--navy);color:#fff;font-weight:500;">Nach Thema</span>
+        <span style="padding:7px 14px;background:#fff;color:var(--text-muted);border-left:1px solid var(--border);">Nach Mitglied</span>
+      </span>
+      <span style="display:inline-flex;align-items:center;background:var(--accent-pale);border:1px solid #C5D8EE;border-radius:var(--radius-pill);padding:4px 2px;">
+        <span style="padding:3px 10px;font-size:var(--fs-label);font-weight:600;letter-spacing:.06em;background:var(--navy);color:#fff;border-radius:var(--radius-pill);">DE</span>
+        <span style="padding:3px 10px;font-size:var(--fs-label);font-weight:600;letter-spacing:.06em;color:var(--text-muted);">EN</span>
+      </span>
+    </div>
+
+    <div class="sg-subhead" data-i18n="sg_s3_badge">Abzeichen &amp; Aufklappen</div>
+    <div class="sg-row" style="gap:var(--space-6);">
+      <span class="sg-row">
+        <span class="sg-badge blue">Blau</span>
+        <span class="sg-badge green">Grün</span>
+        <span class="sg-badge gold">Gold</span>
+      </span>
+      <span class="sg-row">
+        <span style="display:inline-flex;flex-direction:column;align-items:center;gap:6px;"><span class="sg-disc closed">▾</span><span class="sg-note">closed</span></span>
+        <span style="display:inline-flex;flex-direction:column;align-items:center;gap:6px;"><span class="sg-disc open">▾</span><span class="sg-note">open</span></span>
+      </span>
+    </div>
+
+    <div class="sg-subhead" data-i18n="sg_s3_cards">Karten</div>
+    <div class="sg-cards">
+      <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius-card);overflow:hidden;">
+        <div style="background:var(--navy);color:rgba(255,255,255,.92);font-size:var(--fs-note);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;padding:10px 16px;">Kontakt &amp; Organisation</div>
+        <div style="padding:14px 18px;">
+          <div style="display:flex;gap:12px;padding:7px 0;border-bottom:1px solid var(--border-light);font-size:var(--fs-meta);"><span style="color:var(--text-muted);font-weight:500;min-width:88px;">Vorsitz</span><span style="color:var(--text-dark);">R. Klump</span></div>
+          <div style="display:flex;gap:12px;padding:7px 0;font-size:var(--fs-meta);"><span style="color:var(--text-muted);font-weight:500;min-width:88px;">Gastgeber</span><span style="color:var(--accent);">D. Bieri</span></div>
+          <div class="sg-note" data-i18n="sg_card_header">Kopf = Referenz / strukturierte Daten</div>
+        </div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:var(--radius-card);padding:22px;display:flex;flex-direction:column;">
+        <div style="font-family:'EB Garamond',serif;font-size:var(--fs-lead);color:var(--navy);margin-bottom:8px;">Forschung</div>
+        <p style="color:var(--text-muted);font-size:var(--fs-ui);line-height:1.55;flex:1;margin-bottom:14px;">Tagungsbände und Publikationen.</p>
+        <span style="font-size:var(--fs-meta);font-weight:600;color:var(--accent);">Öffnen →</span>
+        <div class="sg-note" data-i18n="sg_card_gateway">Zugang — ohne Kopf, Hover: Rand + Schatten</div>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:var(--radius-card);padding:22px;">
+        <div style="font-size:var(--fs-label);font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--text-faint);margin-bottom:8px;">Rückblick</div>
+        <div style="font-family:'EB Garamond',serif;font-size:var(--fs-card);color:var(--navy);line-height:1.3;margin-bottom:10px;">46. Jahrestagung · Riva San Vitale</div>
+        <span style="font-size:var(--fs-meta);font-weight:600;color:var(--accent);">Zur Tagungsseite →</span>
+        <div class="sg-note" data-i18n="sg_card_teaser">Teaser — Gold-Kante links</div>
+      </div>
+    </div>
+
+    <div class="sg-subhead" data-i18n="sg_s3_hover">Ein Hover für klickbare Karten</div>
+    <div class="sg-usage">
+      <div class="do"><strong style="color:var(--green);">✓ </strong><span data-i18n="sg_hover_do"><span class="mono" style="font-size:var(--fs-note);">.is-clickable</span> — Rand → Akzent + weicher Schatten, kein Anheben.</span></div>
+      <div class="dont"><strong style="color:#B84A4A;">✗ </strong><span data-i18n="sg_hover_dont"><span class="mono" style="font-size:var(--fs-note);">translateY(-2px)</span>-Anheben, unterschiedliche Schatten pro Karte.</span></div>
+    </div>
+  </section>
+
+  <!-- ════ CONTRAST (E3) ════ -->
+  <section class="sg-section" id="a11y">
+    <h2 class="sg-h2" data-i18n="sg_s4_title">Kontrast — WCAG</h2>
+    <p class="sg-lede" data-i18n="sg_s4_lede">Live berechnet aus den Tokens. Fließtext braucht 4,5:1; große Schrift 3:1.</p>
+    <table class="sg-table" style="margin-top:var(--space-5);">
+      <thead><tr><th data-i18n="sg_th_sample">Beispiel</th><th data-i18n="sg_th_token">Token</th><th data-i18n="sg_th_on">auf</th><th data-i18n="sg_th_ratio">Verhältnis</th></tr></thead>
+      <tbody id="sg-contrast"><!-- rendered live --></tbody>
+    </table>
+    <p class="sg-note" style="margin-top:var(--space-4);" data-i18n="sg_s4_foot"><span class="mono">--text-faint</span> ist nur für Dekoration (Linien, Trenner) — niemals für Text.</p>
+  </section>
+
+</main>
+
+<footer style="background:var(--navy-dark);color:rgba(255,255,255,.55);padding:var(--space-6) 1.5rem;">
+  <div class="sg-wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--space-2);font-size:var(--fs-note);">
+    <span data-i18n="sg_foot_left">AGW · Living Style Guide — aus agw_styles.css gelesen</span>
+    <span style="color:rgba(255,255,255,.35);" data-i18n="sg_foot_right">Bei jeder Token-Änderung aktuell</span>
+  </div>
+</footer>
+
+<script>
+/* ─────────────────────────────────────────────────────────────
+   Living render: read the REAL tokens from agw_styles.css and
+   build the swatches, type scale and contrast table from them.
+   Nothing here hardcodes a hex or size — edit the CSS, reload,
+   and the guide follows.
+   ───────────────────────────────────────────────────────────── */
+(function(){
+  var cs = getComputedStyle(document.documentElement);
+  var v = function(name){ return cs.getPropertyValue(name).trim(); };
+
+  // ── helpers: hex → luminance → WCAG ratio ──
+  function toRGB(hex){
+    hex = hex.replace('#','');
+    if(hex.length===3) hex = hex.split('').map(function(c){return c+c;}).join('');
+    return [0,2,4].map(function(i){return parseInt(hex.substr(i,2),16);});
+  }
+  function lum(rgb){
+    var a = rgb.map(function(x){ x/=255; return x<=0.03928 ? x/12.92 : Math.pow((x+0.055)/1.055,2.4); });
+    return 0.2126*a[0]+0.7152*a[1]+0.0722*a[2];
+  }
+  function ratio(fg,bg){
+    var l1=lum(toRGB(fg)), l2=lum(toRGB(bg));
+    var hi=Math.max(l1,l2), lo=Math.min(l1,l2);
+    return (hi+0.05)/(lo+0.05);
+  }
+  function grade(r, large){
+    var need = large ? 3 : 4.5;
+    if(r>=7) return ['aaa','AAA'];
+    if(r>=need) return ['aa','AA'];
+    return ['fail', large ? '<3:1' : '<4.5:1'];
+  }
+
+  // ── palette ──
+  var palette = [
+    ['--navy-dark','navy-dark'],['--navy','navy'],['--navy-mid','navy-mid'],
+    ['--accent','accent'],['--accent-pale','accent-pale'],['--green','green'],
+    ['--green-pale','green-pale'],['--gold','gold'],['--gold-light','gold-light'],
+    ['--cream','cream'],['--border','border'],['--text-body','text-body']
+  ];
+  document.getElementById('sg-palette').innerHTML = palette.map(function(p){
+    var hex = v(p[0]);
+    var light = ['--accent-pale','--green-pale','--gold-light','--cream'].indexOf(p[0])>-1;
+    var border = light ? 'border:1px solid var(--border);' : '';
+    return '<div class="sg-swatch"><div class="chip" style="background:'+hex+';'+border+'"></div>'+
+           '<div class="meta"><div class="name">'+p[1]+'</div><div class="hex mono">'+hex.toUpperCase()+'</div></div></div>';
+  }).join('');
+
+  // ── radius chips ──
+  var radii = [['--radius-sm','sm'],['--radius-card','card'],['--radius-pill','pill']];
+  document.getElementById('sg-radius').innerHTML = radii.map(function(r){
+    var val = v(r[0]);
+    return '<span style="display:inline-flex;flex-direction:column;align-items:center;gap:6px;">'+
+           '<span style="width:72px;height:52px;background:var(--accent-pale);border:1.5px solid var(--accent);border-radius:'+val+';"></span>'+
+           '<span class="sg-note" style="color:var(--text-muted);">'+r[1]+' · '+val+'</span></span>';
+  }).join('');
+
+  // ── type scale ──
+  var scale = [
+    ['--fs-lead','Lead',"'EB Garamond',serif",'—'],
+    ['--fs-card','Card / Titel',"'EB Garamond',serif",'—'],
+    ['--fs-md','Body','inherit','1.65'],
+    ['--fs-body','Body kompakt','inherit','1.6'],
+    ['--fs-ui','UI','inherit','1.5'],
+    ['--fs-meta','Meta','inherit','1.5'],
+    ['--fs-note','Note','inherit','1.4'],
+    ['--fs-label','Label','inherit','.14em'],
+    ['--fs-micro','Micro','inherit','—']
+  ];
+  document.getElementById('sg-typescale').innerHTML = scale.map(function(s){
+    var val = v(s[0]);
+    var isLabel = s[0]==='--fs-label';
+    var style = 'font-size:'+val+';font-family:'+s[2]+';color:var(--text-dark);'+
+      (isLabel?'font-weight:600;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--accent);':'');
+    return '<div class="sg-type-row"><span style="'+style+'">'+s[1]+' — Theoriegeschichte</span>'+
+           '<span class="spec mono">'+s[0].replace('--','')+' · '+val+'</span></div>';
+  }).join('');
+
+  // ── contrast table ──
+  var cream = v('--cream'), navy = v('--navy');
+  var rows = [
+    ['text-body','--text-body','cream',cream,false],
+    ['text-muted','--text-muted','cream',cream,false],
+    ['text-meta','--text-meta','cream',cream,false],
+    ['text-faint','--text-faint','cream',cream,false],
+    ['accent','--accent','white','#FFFFFF',false],
+    ['gold-on-navy','--gold-on-navy','navy',navy,true]
+  ];
+  document.getElementById('sg-contrast').innerHTML = rows.map(function(r){
+    var fg = r[1].charAt(0)==='#' ? r[1] : v(r[1]);
+    var r0 = ratio(fg, r[3]);
+    var g = grade(r0, r[4]);
+    var swatchBg = r[2].indexOf('navy')>-1 ? navy : (r[2]==='white'?'#FFFFFF':cream);
+    return '<tr><td><span style="color:'+fg+';background:'+swatchBg+';padding:3px 10px;border-radius:var(--radius-sm);font-size:var(--fs-ui);">Aa Ökonomie</span></td>'+
+           '<td class="mono" style="color:var(--text-muted);">'+r[1]+'</td>'+
+           '<td style="color:var(--text-muted);">'+r[2]+'</td>'+
+           '<td><span class="sg-pass '+g[0]+'">'+r0.toFixed(1)+':1 · '+g[1]+'</span></td></tr>';
+  }).join('');
+})();
+</script>
+
+</body>
+</html>
