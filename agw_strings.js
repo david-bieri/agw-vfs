@@ -457,9 +457,9 @@
     home_contact_label   : { de: 'Mitmachen', en: 'Get involved' },
     home_contact_title   : { de: 'Kontakt & Mitwirkung', en: 'Contact & Participation' },
     home_contact_body    : { de: 'Interesse an der Arbeit des Ausschusses? Für Fragen zur Mitgliedschaft, zu Vorträgen oder zur Jahrestagung wenden Sie sich an den Ausschuss.', en: "Interested in the committee's work? For questions about membership, presenting, or the annual meeting, please get in touch." },
-    mpub_page_title      : { de: 'Publikationen der Mitglieder', en: "Members' Publications" },
+    mpub_page_title      : { de: 'Forschung der Mitglieder', en: "Members' Research" },
     mpub_label           : { de: 'Forschung', en: 'Research' },
-    mpub_intro           : { de: 'Ausgewählte Publikationen der AGW-Mitglieder. Durchsuchen Sie die Literatur nach thematischen Schwerpunkten oder nach Mitglied. Die Liste wird laufend ergänzt.', en: 'Selected publications by AGW members. Browse the literature by thematic area or by member. The list is continuously expanded.' },
+    mpub_intro           : { de: 'Forschungsschwerpunkte und <em>ausgewählte</em> Publikationen der AGW-Mitglieder — keine vollständigen Schriftenverzeichnisse. Durchsuchen Sie die Auswahl nach Themen oder nach Mitglied. Die Angaben beruhen auf Selbstauskunft der Mitglieder und werden jährlich fortgeschrieben.', en: 'Research foci and <em>selected</em> publications by AGW members — not complete bibliographies. Browse the selection by theme or by member. Entries are based on members\' own submissions and are updated annually.' },
     mpub_search_ph       : { de: 'Titel, Autor oder Zeitschrift suchen…', en: 'Search title, author or journal…' },
     mpub_filter_all      : { de: 'Alle Themen', en: 'All themes' },
     mpub_count           : { de: 'Publikationen', en: 'publications' },
@@ -475,8 +475,14 @@
     mpub_doi_link        : { de: 'DOI', en: 'DOI' },
     mpub_link            : { de: 'Link', en: 'Link' },
     mpub_member_link     : { de: 'Profil ansehen', en: 'View profile' },
-    mpub_contribute_title: { de: 'Eigene Publikationen beitragen', en: 'Contribute your publications' },
-    mpub_contribute_text : { de: 'Mitglieder, die ihre Publikationen aufnehmen oder aktualisieren lassen möchten, senden bitte eine Liste (DOIs, ORCID oder Lebenslauf) an den Gastgeber: <a href="mailto:bieri@vt.edu" style="color:inherit;font-weight:600;">bieri@vt.edu</a>.', en: 'Members who would like their publications added or updated are invited to send a list (DOIs, ORCID or CV) to the host: <a href="mailto:bieri@vt.edu" style="color:inherit;font-weight:600;">bieri@vt.edu</a>.' },
+    mpub_contribute_title: { de: 'Eigene Forschung beitragen', en: 'Contribute your research' },
+    mpub_contribute_text : { de: 'Mitglieder, die aufgenommen oder aktualisiert werden möchten, senden bitte ihre <strong>ORCID iD</strong> (oder eine Liste von DOIs) sowie Forschungsschwerpunkte an <a href="mailto:bieri@vt.edu?subject=Forschung%20der%20Mitglieder" style="color:inherit;font-weight:600;">bieri@vt.edu</a>. Mit der Zusendung erklären Sie sich damit einverstanden, dass Name, Institution, Forschungsschwerpunkte, ausgewählte Publikationen sowie ORCID-/Homepage-Links auf www.agw-vfs.de veröffentlicht werden; der Widerruf ist jederzeit formlos per E-Mail möglich.', en: 'Members who would like to be listed or updated are invited to send their <strong>ORCID iD</strong> (or a list of DOIs) together with their research foci to <a href="mailto:bieri@vt.edu?subject=Members%27%20Research" style="color:inherit;font-weight:600;">bieri@vt.edu</a>. By submitting, you consent to the publication of your name, institution, research foci, selected publications and ORCID/homepage links on www.agw-vfs.de; consent may be withdrawn at any time by e-mail.' },
+    mpub_homepage        : { de: 'Homepage', en: 'Homepage' },
+    mpub_type_article    : { de: 'Aufsatz', en: 'Article' },
+    mpub_type_book       : { de: 'Monographie', en: 'Book' },
+    mpub_type_chapter    : { de: 'Beitrag', en: 'Chapter' },
+    mpub_type_edited     : { de: 'Herausgeberschaft', en: 'Edited' },
+    mpub_type_wp         : { de: 'Working Paper', en: 'Working paper' },
 };
 
   /* ── Helpers ──────────────────────────────────────────────────── */

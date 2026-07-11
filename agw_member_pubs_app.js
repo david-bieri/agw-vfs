@@ -17,9 +17,30 @@
   var PUBS    = (window.AGW_DATA && window.AGW_DATA.MEMBER_PUBS) || [];
   var MEMBERS = window.MEMBERS || (window.AGW_DATA && window.AGW_DATA.MEMBERS) || [];
 
-  // Quick lookup of member metadata by name (institution + focus).
-  var MEMBER_BY_NAME = {};
-  MEMBERS.forEach(function (m) { MEMBER_BY_NAME[m.name] = m; });
+  // Lookup of member metadata by stable id slug (primary) and by display name
+  // (legacy fallback, so a hand-added entry keyed on `member` still resolves).
+  var MEMBER_BY_ID = {}, MEMBER_BY_NAME = {};
+  MEMBERS.forEach(function (m) {
+    if (m.id) MEMBER_BY_ID[m.id] = m;
+    MEMBER_BY_NAME[m.name] = m;
+  });
+
+  // Resolve the member record a publication belongs to.
+  function memberOf(p) {
+    if (p.mid && MEMBER_BY_ID[p.mid]) return MEMBER_BY_ID[p.mid];
+    if (p.member && MEMBER_BY_NAME[p.member]) return MEMBER_BY_NAME[p.member];
+    return null;
+  }
+  // Display name for a publication's member; degrades gracefully if unresolved.
+  function memberName(p) {
+    var m = memberOf(p);
+    return m ? m.name : (p.member || p.mid || '—');
+  }
+  // Grouping key: prefer the stable id.
+  function memberKey(p) {
+    var m = memberOf(p);
+    return (m && m.id) ? m.id : ('name:' + memberName(p));
+  }
 
   var state = { view: 'theme', theme: 'all', q: '', openMember: null };
 
@@ -51,11 +72,23 @@
           (p.themes || []).indexOf(state.theme) === -1) return false;
       if (q) {
         var hay = (p.title + ' ' + (p.authors || '') + ' ' + (p.venue || '') + ' ' +
-                   (p.member || '')).toLowerCase();
+                   memberName(p)).toLowerCase();
         if (hay.indexOf(q) === -1) return false;
       }
       return true;
     });
+  }
+
+  /* Publication-type badge. Books and edited volumes must not read like articles. */
+  function typeBadge(type) {
+    if (!type) return '';
+    var key = 'mpub_type_' + type;
+    var label = t(key);
+    if (!label || label === key) return '';
+    return '<span style="display:inline-block;margin-left:8px;padding:1px 6px;border-radius:3px;' +
+           'font-family:\'Source Sans 3\',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;' +
+           'text-transform:uppercase;vertical-align:middle;color:var(--navy);' +
+           'background:rgba(27,58,107,.08);border:1px solid rgba(27,58,107,.15);">' + esc(label) + '</span>';
   }
 
   /* One publication row (reuses .pub-item visual language). */
@@ -70,12 +103,12 @@
              '" target="_blank" rel="noopener">' + esc(t('mpub_link')) +
              ' <span class="ico ico-ext" aria-hidden="true"></span></a>';
     }
-    var authors = p.authors ? esc(p.authors) : esc(p.member);
+    var authors = p.authors ? esc(p.authors) : esc(memberName(p));
     var venue   = p.venue ? '<em>' + esc(p.venue) + '</em>' : '';
     var yr      = p.year ? ' · ' + p.year : '';
     return '<div class="pub-item-wrap"><div class="pub-item" style="grid-template-columns:1fr auto;cursor:default;">' +
              '<div>' +
-               '<div class="pub-title">' + esc(p.title) + '</div>' +
+               '<div class="pub-title">' + esc(p.title) + typeBadge(p.type) + '</div>' +
                '<div class="pub-meta">' + authors + (venue ? ' · ' + venue : '') + yr + '</div>' +
              '</div>' +
              '<div class="pub-actions">' + link + '</div>' +
@@ -138,12 +171,12 @@
   }
 
   /* ── MEMBER VIEW ────────────────────────────────────────────────────────── */
-  // Group matching publications by member name.
+  // Group matching publications by stable member key (id where available).
   function groupByMember(list) {
     var map = {};
     list.forEach(function (p) {
-      var name = p.member || '—';
-      (map[name] = map[name] || []).push(p);
+      var k = memberKey(p);
+      (map[k] = map[k] || []).push(p);
     });
     return map;
   }
@@ -154,47 +187,77 @@
     return (parts[parts.length - 1] + ' ' + name).toLowerCase();
   }
 
-  function renderMemberJump(names) {
+  function anchorFor(key) {
+    return 'm-' + String(key).replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase();
+  }
+  function jsq(s) { return String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'"); }
+
+  function renderMemberJump(keys, labels) {
     var bar = document.getElementById('mpub-member-jump');
     if (!bar) return;
-    if (!names.length) { bar.innerHTML = ''; return; }
+    if (!keys.length) { bar.innerHTML = ''; return; }
     bar.className = 'mpub-jumpbar';
     var html = '<span style="color:var(--text-faint);margin-right:4px;">' + esc(t('mpub_jump')) + ':</span>';
-    names.forEach(function (n) {
-      var anchor = 'm-' + n.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase();
-      html += '<a href="#' + anchor + '" onclick="mpubOpenMember(\'' + attr(n).replace(/'/g, "\\'") + '\');">' +
-              esc(n) + '</a>';
+    keys.forEach(function (k) {
+      html += '<a href="#' + anchorFor(k) + '" onclick="mpubOpenMember(\'' + jsq(k) + '\');">' +
+              esc(labels[k]) + '</a>';
     });
     bar.innerHTML = html;
+  }
+
+  /* External profile links for a member: ORCID and institutional homepage
+   * are optional and opt-in — they render only when present in MEMBERS. */
+  function memberLinks(m) {
+    var out = '';
+    if (!m) return out;
+    if (m.orcid) {
+      out += '<a class="mpub-member-profilelink" href="https://orcid.org/' + attr(m.orcid) +
+             '" target="_blank" rel="noopener" onclick="event.stopPropagation();">ORCID ' +
+             '<span class="ico ico-ext" aria-hidden="true"></span></a>';
+    }
+    if (m.homepage) {
+      out += '<a class="mpub-member-profilelink" href="' + attr(m.homepage) +
+             '" target="_blank" rel="noopener" onclick="event.stopPropagation();">' +
+             esc(t('mpub_homepage')) + ' <span class="ico ico-ext" aria-hidden="true"></span></a>';
+    }
+    return out;
   }
 
   function renderMemberView(list) {
     var l = curLang();
     var groups = groupByMember(list);
-    var names = Object.keys(groups).sort(function (a, b) {
-      return sortKey(a) < sortKey(b) ? -1 : (sortKey(a) > sortKey(b) ? 1 : 0);
+
+    // Display name per group key, derived from the first publication in it.
+    var labels = {};
+    Object.keys(groups).forEach(function (k) { labels[k] = memberName(groups[k][0]); });
+
+    var keys = Object.keys(groups).sort(function (a, b) {
+      var ka = sortKey(labels[a]), kb = sortKey(labels[b]);
+      return ka < kb ? -1 : (ka > kb ? 1 : 0);
     });
-    renderMemberJump(names);
+    renderMemberJump(keys, labels);
 
     var html = '';
-    names.forEach(function (name) {
-      var pubs = groups[name].slice().sort(function (a, b) { return (b.year || 0) - (a.year || 0); });
-      var meta = MEMBER_BY_NAME[name];
+    keys.forEach(function (key) {
+      var pubs = groups[key].slice().sort(function (a, b) { return (b.year || 0) - (a.year || 0); });
+      var meta = memberOf(pubs[0]);
+      var name = labels[key];
       var focus = meta ? (l === 'en' ? meta.focus_en : meta.focus_de) : '';
       var inst  = meta ? meta.inst : '';
-      var anchor = 'm-' + name.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase();
-      var isOpen = (state.openMember === name) || (state.q.trim() !== '');
+      var anchor = anchorFor(key);
+      var isOpen = (state.openMember === key) || (state.q.trim() !== '');
       var n = pubs.length;
       var countWord = n === 1 ? t('mpub_one_pub') : t('mpub_count');
       var profile = '<a class="mpub-member-profilelink" href="committee.html#mitglieder" ' +
-                    'onclick="event.stopPropagation();">' + esc(t('mpub_profile')) + ' ›</a>';
+                    'onclick="event.stopPropagation();">' + esc(t('mpub_profile')) + ' \u203a</a>';
       html += '<div class="mpub-member-card' + (isOpen ? ' open' : '') + '" id="' + anchor + '">' +
-                '<div class="mpub-member-head" onclick="mpubToggleMember(\'' + attr(name).replace(/'/g, "\\'") + '\')">' +
-                  '<span class="mpub-member-chevron">▾</span>' +
+                '<div class="mpub-member-head" onclick="mpubToggleMember(\'' + jsq(key) + '\')">' +
+                  '<span class="mpub-member-chevron">\u25be</span>' +
                   '<span class="mpub-member-name">' + esc(name) + '</span>' +
-                  (focus ? '<span class="mpub-member-focus">· ' + esc(focus) + '</span>' : '') +
+                  (focus ? '<span class="mpub-member-focus">\u00b7 ' + esc(focus) + '</span>' : '') +
                   '<span class="mpub-member-pubcount">' + n + ' ' + esc(countWord) +
-                    (inst ? ' · ' + esc(inst) : '') + '&nbsp;&nbsp;' + profile + '</span>' +
+                    (inst ? ' \u00b7 ' + esc(inst) : '') + '&nbsp;&nbsp;' +
+                    memberLinks(meta) + profile + '</span>' +
                 '</div>' +
                 '<div class="mpub-member-body"><div class="pub-list-inner">' +
                   pubs.map(pubRow).join('') +
@@ -256,14 +319,14 @@
     render();
   };
 
-  window.mpubToggleMember = function (name) {
-    state.openMember = (state.openMember === name) ? null : name;
+  window.mpubToggleMember = function (key) {
+    state.openMember = (state.openMember === key) ? null : key;
     render();
   };
 
   // Used by the jump bar: ensure target is open, then let the anchor scroll.
-  window.mpubOpenMember = function (name) {
-    state.openMember = name;
+  window.mpubOpenMember = function (key) {
+    state.openMember = key;
     render();
   };
 

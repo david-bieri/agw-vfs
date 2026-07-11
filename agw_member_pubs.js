@@ -7,13 +7,16 @@
  * Two objects are exposed on window.AGW_DATA:
  *   • PUB_THEMES        — the controlled thematic vocabulary (id + DE/EN label)
  *   • MEMBER_PUBS       — array of publications, each tagged with one or more
- *                         theme ids and linked to a member by `member` (the
- *                         member's `name` in MEMBERS, used for cross-linking).
+ *                         theme ids and linked to a member by `mid` (the
+ *                         member's stable `id` slug in MEMBERS, e.g.
+ *                         'schefold-bertram'). Never key on the display name:
+ *                         names drift, ids do not.
  *
  * ─── HOW TO ADD A PUBLICATION ──────────────────────────────────────────────
  *   1. (Optional) run  `python3 tools/doi_expand.py 10.xxxx/yyyy`  to fetch
  *      clean metadata for a DOI, then paste the printed object below.
- *   2. Set `member` to the exact member name as it appears in MEMBERS.
+ *   2. Set `mid` to the member's `id` slug from MEMBERS (agw_data.js).
+ *      Set `type` to one of: article | book | chapter | edited | wp.
  *   3. Tag `themes` with one or more ids from PUB_THEMES (see list below).
  *   4. Provide `title` (original language is fine), `year`, `venue`, and
  *      optionally `authors`, `doi`, and `url`.
@@ -57,101 +60,102 @@
   /* ── Member publications ──────────────────────────────────────────────────
    * SEED DATA: a representative, verifiable starter set so the page is not
    * empty. Replace / extend freely. Each entry:
-   *   { member, themes:[ids], title, authors, venue, year, doi?, url? }
+   *   { mid, themes:[ids], title, type, authors, venue, year, doi?, url? }
+   * `type` ∈ article | book | chapter | edited | wp  (renders as a badge)
    * `doi` renders as a link to https://doi.org/<doi>; `url` is an alternative
    * link (publisher / open access) shown when no DOI is present. */
   var MEMBER_PUBS = [
 
     // ── Bertram Schefold ──────────────────────────────────────────────────
-    { member:'Bertram Schefold', themes:['classical','general'],
-      title:'The Revival of Economic Thought in Germany: The Dogmenhistorischer Ausschuss',
+    { mid:'schefold-bertram', themes:['classical','general'],
+      title:'The Revival of Economic Thought in Germany: The Dogmenhistorischer Ausschuss', type:'article',
       authors:'Bertram Schefold', venue:'History of Political Economy 26(2)', year:1994,
       doi:'10.1215/00182702-26-2-327' },
-    { member:'Bertram Schefold', themes:['classical'],
-      title:'Mr Sraffa on Joint Production and Other Essays',
+    { mid:'schefold-bertram', themes:['classical'],
+      title:'Mr Sraffa on Joint Production and Other Essays', type:'book',
       authors:'Bertram Schefold', venue:'Routledge', year:1989 },
 
     // ── Heinz D. Kurz ─────────────────────────────────────────────────────
-    { member:'Heinz D. Kurz', themes:['classical','distribution'],
-      title:'Theory of Production: A Long-Period Analysis',
+    { mid:'kurz-heinz-d', themes:['classical','distribution'],
+      title:'Theory of Production: A Long-Period Analysis', type:'book',
       authors:'Heinz D. Kurz · Neri Salvadori', venue:'Cambridge University Press', year:1995 },
-    { member:'Heinz D. Kurz', themes:['general'],
-      title:'Economic Thought: A Brief History',
+    { mid:'kurz-heinz-d', themes:['general'],
+      title:'Economic Thought: A Brief History', type:'book',
       authors:'Heinz D. Kurz', venue:'Columbia University Press', year:2016 },
 
     // ── Christian Gehrke ──────────────────────────────────────────────────
-    { member:'Christian Gehrke', themes:['classical'],
-      title:'The Economics of Production: Sraffa and the Classical Approach',
+    { mid:'gehrke-christian', themes:['classical'],
+      title:'The Economics of Production: Sraffa and the Classical Approach', type:'article',
       authors:'Christian Gehrke · Heinz D. Kurz', venue:'Review of Political Economy', year:2018,
       doi:'10.1080/09538259.2018.1442907' },
 
     // ── Karen Horn ────────────────────────────────────────────────────────
-    { member:'Karen Horn', themes:['smith','general'],
-      title:'Roads to Wisdom: Conversations with Ten Nobel Laureates in Economics',
+    { mid:'horn-karen', themes:['smith','general'],
+      title:'Roads to Wisdom: Conversations with Ten Nobel Laureates in Economics', type:'book',
       authors:'Karen Ilse Horn', venue:'Edward Elgar', year:2009 },
 
     // ── Hansjörg Klausinger ───────────────────────────────────────────────
-    { member:'Hansjörg Klausinger', themes:['austrian','monetary'],
-      title:'Hayek: A Life, 1899–1950',
+    { mid:'klausinger-hansjoerg', themes:['austrian','monetary'],
+      title:'Hayek: A Life, 1899–1950', type:'book',
       authors:'Bruce Caldwell · Hansjörg Klausinger', venue:'University of Chicago Press', year:2022 },
 
     // ── Stefan Kolev ──────────────────────────────────────────────────────
-    { member:'Stefan Kolev', themes:['ordoliberal','austrian'],
-      title:'Neoliberale Staatsverständnisse im Vergleich',
+    { mid:'kolev-stefan', themes:['ordoliberal','austrian'],
+      title:'Neoliberale Staatsverständnisse im Vergleich', type:'book',
       authors:'Stefan Kolev', venue:'Lucius & Lucius / De Gruyter', year:2013 },
 
     // ── Nils Goldschmidt ──────────────────────────────────────────────────
-    { member:'Nils Goldschmidt', themes:['ordoliberal'],
-      title:'Grundtexte zur Freiburger Tradition der Ordnungsökonomik',
+    { mid:'goldschmidt-nils', themes:['ordoliberal'],
+      title:'Grundtexte zur Freiburger Tradition der Ordnungsökonomik', type:'edited',
       authors:'Nils Goldschmidt · Michael Wohlgemuth (Hrsg.)', venue:'Mohr Siebeck', year:2008 },
 
     // ── Harald Hagemann ───────────────────────────────────────────────────
-    { member:'Harald Hagemann', themes:['monetary','distribution'],
-      title:'Business Cycle Theory: Selected Texts 1860–1939',
+    { mid:'hagemann-harald', themes:['monetary','distribution'],
+      title:'Business Cycle Theory: Selected Texts 1860–1939', type:'edited',
       authors:'Harald Hagemann (ed.)', venue:'Pickering & Chatto', year:2002 },
 
     // ── Hans-Michael Trautwein ────────────────────────────────────────────
-    { member:'Hans-Michael Trautwein', themes:['monetary','keynesian'],
-      title:'The Theory of International Economic Policy in Retrospect',
+    { mid:'trautwein-hans-michael', themes:['monetary','keynesian'],
+      title:'The Theory of International Economic Policy in Retrospect', type:'article',
       authors:'Hans-Michael Trautwein', venue:'Journal of the History of Economic Thought', year:2017,
       doi:'10.1017/S1053837216000638' },
 
     // ── Jochen Hartwig ────────────────────────────────────────────────────
-    { member:'Jochen Hartwig', themes:['keynesian','distribution'],
-      title:'Distribution and Growth in a Kaleckian Framework',
+    { mid:'hartwig-jochen', themes:['keynesian','distribution'],
+      title:'Distribution and Growth in a Kaleckian Framework', type:'article',
       authors:'Jochen Hartwig', venue:'Metroeconomica', year:2013,
       doi:'10.1111/meca.12018' },
 
     // ── Svenja Flechtner ──────────────────────────────────────────────────
-    { member:'Svenja Flechtner', themes:['feminist','methodology'],
-      title:'Aspirations and Economic Behavior: A Survey',
+    { mid:'flechtner-svenja', themes:['feminist','methodology'],
+      title:'Aspirations and Economic Behavior: A Survey', type:'article',
       authors:'Svenja Flechtner', venue:'Journal of Economic Surveys', year:2017,
       doi:'10.1111/joes.12153' },
 
     // ── Karl Milford ──────────────────────────────────────────────────────
-    { member:'Karl Milford', themes:['methodology'],
-      title:'Hutchison on the History and Philosophy of Economics',
+    { mid:'milford-karl', themes:['methodology'],
+      title:'Hutchison on the History and Philosophy of Economics', type:'article',
       authors:'Karl Milford', venue:'Journal of Economic Methodology', year:2010 },
 
     // ── Alexander Ebner ───────────────────────────────────────────────────
-    { member:'Alexander Ebner', themes:['evolutionary'],
-      title:'The Institutions of the Market: Organizations, Social Systems, and Governance',
+    { mid:'ebner-alexander', themes:['evolutionary'],
+      title:'The Institutions of the Market: Organizations, Social Systems, and Governance', type:'edited',
       authors:'Alexander Ebner · Nikolaus Beck (eds.)', venue:'Oxford University Press', year:2008 },
 
     // ── Philipp Robinson Rössner ──────────────────────────────────────────
-    { member:'Philipp Robinson Rössner', themes:['econ_history','monetary'],
-      title:'Managing the Wealth of Nations: Political Economies of Change in Preindustrial Europe',
+    { mid:'roessner-philipp-robinson', themes:['econ_history','monetary'],
+      title:'Managing the Wealth of Nations: Political Economies of Change in Preindustrial Europe', type:'book',
       authors:'Philipp Robinson Rössner', venue:'Bloomsbury Academic', year:2021 },
 
     // ── David Bieri ───────────────────────────────────────────────────────
-    { member:'David Bieri', themes:['monetary','econ_history'],
-      title:'Form Follows Function: On the Interaction between Real Estate Finance and Urban Spatial Structure',
+    { mid:'bieri-david', themes:['monetary','econ_history'],
+      title:'Form Follows Function: On the Interaction between Real Estate Finance and Urban Spatial Structure', type:'article',
       authors:'David S. Bieri', venue:'Journal of Economic Issues', year:2017,
       doi:'10.1080/00213624.2017.1320518' },
 
     // ── Joachim Zweynert ──────────────────────────────────────────────────
-    { member:'Joachim Zweynert', themes:['general','evolutionary'],
-      title:'When Ideas Fail: Economic Thought, the Failure of Transition and the Rise of Institutional Instability in Post-Soviet Russia',
+    { mid:'zweynert-joachim', themes:['general','evolutionary'],
+      title:'When Ideas Fail: Economic Thought, the Failure of Transition and the Rise of Institutional Instability in Post-Soviet Russia', type:'book',
       authors:'Joachim Zweynert', venue:'Routledge', year:2018 }
 
   ];
