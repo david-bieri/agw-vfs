@@ -17,7 +17,7 @@
       "hetSchool": "Evolutionary economics",
       "keyWorks": "Theory of Economic Development (1911); Business Cycles (1939); Capitalism, Socialism and Democracy (1942)",
       "keyContribution": "Creative destruction and entrepreneurial innovation",
-      "teacherStudent": "Teacher of: Samuelson, Tobin, Tsuru, Heilbroner, Bergson, Metzler; Student of: Bhm-Bawerk, Wieser, Philippovich",
+      "teacherStudent": "Teacher of: Samuelson, Tobin, Tsuru, Heilbroner, Bergson, Metzler; Student of: Böhm-Bawerk, Wieser, Philippovich",
       "hetUrl": "https://www.hetwebsite.net/het/profiles/schumpeter.htm",
       "debut": 1982,
       "activeDecades": [
@@ -167,7 +167,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Blaug, Mark"
+      "sortName": "Blaug, Mark",
+      "death": 2011
     },
     {
       "id": "John Maynard Keynes",
@@ -248,7 +249,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Sraffa, Piero"
+      "sortName": "Sraffa, Piero",
+      "death": 1983
     },
     {
       "id": "Werner Sombart",
@@ -464,7 +466,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Streissler, Erich Wolfgang"
+      "sortName": "Streissler, Erich Wolfgang",
+      "death": 2014
     },
     {
       "id": "Karl Gustav Cassel",
@@ -621,7 +624,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Niehans, Jürg"
+      "sortName": "Niehans, Jürg",
+      "death": 2007
     },
     {
       "id": "Colin Clark",
@@ -637,7 +641,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Clark, Colin"
+      "sortName": "Clark, Colin",
+      "death": 1989
     },
     {
       "id": "Erich Schneider",
@@ -654,7 +659,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Schneider, Erich"
+      "sortName": "Schneider, Erich",
+      "death": 1970
     },
     {
       "id": "Karl Brandt",
@@ -670,7 +676,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Brandt, Karl"
+      "sortName": "Brandt, Karl",
+      "death": 1975
     },
     {
       "id": "Edgar Salin",
@@ -686,7 +693,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Salin, Edgar"
+      "sortName": "Salin, Edgar",
+      "death": 1974
     },
     {
       "id": "Arthur Cecil Pigou",
@@ -788,23 +796,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Locke, John"
-    },
-    {
-      "id": "Keith Tribe",
-      "school": "Historical School",
-      "birth": 1949,
-      "conferenceAppearances": 9,
-      "inCoCitation": true,
-      "inLineage": false,
-      "debut": 1994,
-      "activeDecades": [
-        "1990s",
-        "2000s",
-        "2010s",
-        "2020s"
-      ],
-      "sortName": "Tribe, Keith"
+      "sortName": "Locke, John",
+      "death": 1704
     },
     {
       "id": "Robert Merton Solow",
@@ -820,7 +813,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Solow, Robert Merton"
+      "sortName": "Solow, Robert Merton",
+      "death": 2023
     },
     {
       "id": "Ernst Helmstädter",
@@ -836,7 +830,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Helmstädter, Ernst"
+      "sortName": "Helmstädter, Ernst",
+      "death": 2018
     },
     {
       "id": "William Jack Baumol",
@@ -853,7 +848,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Baumol, William Jack"
+      "sortName": "Baumol, William Jack",
+      "death": 2017
     },
     {
       "id": "James McGill Buchanan",
@@ -869,7 +865,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Buchanan, James McGill"
+      "sortName": "Buchanan, James McGill",
+      "death": 2013
     },
     {
       "id": "Gottfried von Haberler",
@@ -951,7 +948,7 @@
     },
     {
       "id": "Paul Robin Krugman",
-      "school": "Raumwirtschaftslehre",
+      "school": "Neoclassical",
       "birth": 1953,
       "conferenceAppearances": 8,
       "inCoCitation": true,
@@ -962,7 +959,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Krugman, Paul Robin"
+      "sortName": "Krugman, Paul Robin",
+      "hetSchool": "New Economic Geography / Raumwirtschaftslehre"
     },
     {
       "id": "Joseph Eugene Stiglitz",
@@ -994,12 +992,13 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Leijonhufvud, Axel"
+      "sortName": "Leijonhufvud, Axel",
+      "death": 2022
     },
     {
       "id": "Harald Winkel",
       "school": "Historical School",
-      "birth": 1928,
+      "birth": 1931,
       "conferenceAppearances": 8,
       "inCoCitation": true,
       "inLineage": false,
@@ -1011,7 +1010,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Winkel, Harald"
+      "sortName": "Winkel, Harald",
+      "death": 2005
     },
     {
       "id": "Karl Häuser",
@@ -1027,7 +1027,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Häuser, Karl"
+      "sortName": "Häuser, Karl",
+      "death": 2008
     },
     {
       "id": "Joan Violet Robinson",
@@ -1051,7 +1052,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Robinson, Joan Violet"
+      "sortName": "Robinson, Joan Violet",
+      "death": 1983
     },
     {
       "id": "Wilhelm Röpke",
@@ -1095,7 +1097,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Fisher, Allan George Barnard"
+      "sortName": "Fisher, Allan George Barnard",
+      "death": 1976
     },
     {
       "id": "Karl Diehl",
@@ -1111,7 +1114,8 @@
         "2010s",
         "2020s"
       ],
-      "sortName": "Diehl, Karl"
+      "sortName": "Diehl, Karl",
+      "death": 1943
     },
     {
       "id": "Lujo Brentano",
@@ -1136,7 +1140,7 @@
     },
     {
       "id": "Thomas R. Malthus",
-      "school": "klassik",
+      "school": "Classical",
       "birth": 1766,
       "death": 1834,
       "lane": "klassik",
@@ -1157,7 +1161,7 @@
     },
     {
       "id": "Friedrich List",
-      "school": "klassik",
+      "school": "National Economy",
       "birth": 1789,
       "death": 1846,
       "lane": "klassik",
@@ -1177,7 +1181,7 @@
     },
     {
       "id": "Karl Knies",
-      "school": "hist",
+      "school": "Historical School",
       "birth": 1821,
       "death": 1898,
       "lane": "hist",
@@ -1198,7 +1202,7 @@
     },
     {
       "id": "Karl Bücher",
-      "school": "hist",
+      "school": "Historical School",
       "birth": 1847,
       "death": 1930,
       "lane": "hist",
@@ -1217,7 +1221,7 @@
     },
     {
       "id": "Adolph Wagner",
-      "school": "hist",
+      "school": "Historical School",
       "birth": 1835,
       "death": 1917,
       "lane": "hist",
@@ -1238,7 +1242,7 @@
     },
     {
       "id": "Arthur Spiethoff",
-      "school": "hist",
+      "school": "Historical School",
       "birth": 1873,
       "death": 1957,
       "lane": "hist",
@@ -1258,7 +1262,7 @@
     },
     {
       "id": "Léon Walras",
-      "school": "aut",
+      "school": "Neoclassical",
       "birth": 1834,
       "death": 1910,
       "lane": "aut",
@@ -1285,7 +1289,7 @@
     },
     {
       "id": "Vilfredo Pareto",
-      "school": "aut",
+      "school": "Neoclassical",
       "birth": 1848,
       "death": 1923,
       "lane": "aut",
@@ -1305,7 +1309,7 @@
     },
     {
       "id": "Friedrich von Wieser",
-      "school": "aut",
+      "school": "Austrian School",
       "birth": 1851,
       "death": 1926,
       "lane": "aut",
@@ -1326,7 +1330,7 @@
     },
     {
       "id": "Irving Fisher",
-      "school": "anglo",
+      "school": "Neoclassical",
       "birth": 1867,
       "death": 1947,
       "lane": "anglo",
@@ -1346,7 +1350,7 @@
     },
     {
       "id": "Frank H. Knight",
-      "school": "anglo",
+      "school": "Neoclassical",
       "birth": 1885,
       "death": 1972,
       "lane": "anglo",
@@ -1365,7 +1369,7 @@
     },
     {
       "id": "Lionel Robbins",
-      "school": "anglo",
+      "school": "Neoclassical",
       "birth": 1898,
       "death": 1984,
       "lane": "anglo",
@@ -1385,7 +1389,7 @@
     },
     {
       "id": "Wassily Leontief",
-      "school": "anglo",
+      "school": "Mathematical Economics",
       "birth": 1905,
       "death": 1999,
       "lane": "anglo",
@@ -1405,7 +1409,7 @@
     },
     {
       "id": "Jacob Viner",
-      "school": "anglo",
+      "school": "Neoclassical",
       "birth": 1892,
       "death": 1970,
       "lane": "anglo",
@@ -1424,7 +1428,7 @@
     },
     {
       "id": "Bertil Ohlin",
-      "school": "stockholm",
+      "school": "Neoclassical",
       "birth": 1899,
       "death": 1979,
       "lane": "stockholm",
@@ -1443,7 +1447,7 @@
     },
     {
       "id": "Gunnar Myrdal",
-      "school": "stockholm",
+      "school": "Neoclassical",
       "birth": 1898,
       "death": 1987,
       "lane": "stockholm",
@@ -1463,7 +1467,7 @@
     },
     {
       "id": "Thorstein Veblen",
-      "school": "inst",
+      "school": "Institutional",
       "birth": 1857,
       "death": 1929,
       "lane": "inst",
@@ -1489,7 +1493,7 @@
     },
     {
       "id": "John Bates Clark",
-      "school": "inst",
+      "school": "Neoclassical",
       "birth": 1847,
       "death": 1938,
       "lane": "inst",
@@ -1508,7 +1512,7 @@
     },
     {
       "id": "John R. Commons",
-      "school": "inst",
+      "school": "Institutional",
       "birth": 1862,
       "death": 1945,
       "lane": "inst",
@@ -1527,7 +1531,7 @@
     },
     {
       "id": "Wesley C. Mitchell",
-      "school": "inst",
+      "school": "Institutional",
       "birth": 1874,
       "death": 1948,
       "lane": "inst",
@@ -1545,7 +1549,7 @@
     },
     {
       "id": "Frank W. Taussig",
-      "school": "inst",
+      "school": "Neoclassical",
       "birth": 1859,
       "death": 1940,
       "lane": "inst",
@@ -1563,7 +1567,7 @@
     },
     {
       "id": "Franz Böhm",
-      "school": "ordo",
+      "school": "Ordoliberalismus",
       "birth": 1895,
       "death": 1977,
       "lane": "ordo",
@@ -1574,7 +1578,7 @@
       "inLineage": true,
       "bioSummaryDe": "Austrian economist, statesman, leading member of the Austrian School and creator of the Austrian theory of capital.",
       "bioSummaryEn": "Austrian economist, statesman, leading member of the Austrian School and creator of the Austrian theory of capital.",
-      "hetSchool": "Austrian School",
+      "hetSchool": "Ordo-liberal",
       "keyWorks": "Capital und Capitalzins: Erste Abteilung, Geschichte und Kritik der Capitalstheorien (1884); Capital und Capitalzins: Zweite Abteilung, Positive Theorie des Capitals (1889)",
       "keyContribution": "Austrian theory of capital",
       "teacherStudent": "Teacher of: Ludwig von Mises, Friedrich von Hayek, Joseph Schumpeter; Student of: Carl Menger",
@@ -1590,7 +1594,7 @@
     },
     {
       "id": "Alexander Rüstow",
-      "school": "ordo",
+      "school": "Ordoliberalismus",
       "birth": 1885,
       "death": 1963,
       "lane": "ordo",
@@ -1610,7 +1614,7 @@
     },
     {
       "id": "Johann H. von Thünen",
-      "school": "raum",
+      "school": "Raumwirtschaftslehre",
       "birth": 1783,
       "death": 1850,
       "lane": "raum",
@@ -1630,7 +1634,7 @@
     },
     {
       "id": "Alfred Weber",
-      "school": "raum",
+      "school": "Raumwirtschaftslehre",
       "birth": 1868,
       "death": 1958,
       "lane": "raum",
@@ -1641,7 +1645,7 @@
       "inLineage": true,
       "bioSummaryDe": "German sociologist and political economist who founded modern sociology and analyzed the relationship between the Protestant ethic and capitalism.",
       "bioSummaryEn": "German sociologist and political economist who founded modern sociology and analyzed the relationship between the Protestant ethic and capitalism.",
-      "hetSchool": "German Historical School",
+      "hetSchool": "Raumwirtschaftslehre / location theory",
       "keyWorks": "The Protestant Ethic and the Spirit of Capitalism (1905); Economy and Society (1914); General Economic History (1923)",
       "keyContribution": "Protestant ethic's role in capitalism and the theory of Verstehen",
       "teacherStudent": "Teacher of: Else von Richthofen; Student of: None found",
@@ -1654,7 +1658,7 @@
     },
     {
       "id": "Walter Christaller",
-      "school": "raum",
+      "school": "Raumwirtschaftslehre",
       "birth": 1893,
       "death": 1969,
       "lane": "raum",
@@ -1675,7 +1679,7 @@
     },
     {
       "id": "August Lösch",
-      "school": "raum",
+      "school": "Raumwirtschaftslehre",
       "birth": 1906,
       "death": 1945,
       "lane": "raum",
@@ -1696,7 +1700,7 @@
     },
     {
       "id": "Andreas Predöhl",
-      "school": "raum",
+      "school": "Raumwirtschaftslehre",
       "birth": 1893,
       "death": 1974,
       "lane": "raum",
@@ -1717,7 +1721,7 @@
     },
     {
       "id": "Tord Palander",
-      "school": "raum",
+      "school": "Raumwirtschaftslehre",
       "birth": 1902,
       "death": 1972,
       "lane": "raum",
@@ -1734,7 +1738,7 @@
     },
     {
       "id": "Edgar M. Hoover",
-      "school": "raum",
+      "school": "Raumwirtschaftslehre",
       "birth": 1907,
       "death": 1992,
       "lane": "raum",
@@ -1751,7 +1755,7 @@
     },
     {
       "id": "Walter Isard",
-      "school": "raum",
+      "school": "Raumwirtschaftslehre",
       "birth": 1919,
       "death": 2010,
       "lane": "raum",
@@ -1769,7 +1773,7 @@
     },
     {
       "id": "Wolfgang F. Stolper",
-      "school": "raum",
+      "school": "Raumwirtschaftslehre",
       "birth": 1912,
       "death": 2002,
       "lane": "raum",
