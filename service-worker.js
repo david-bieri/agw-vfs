@@ -1,7 +1,7 @@
 /* AGW Jahrestagung 2026 — Service Worker
  * Strategy: Cache-first for shell + static assets; network-first for tiles
  */
-const CACHE = 'agw-2026-v50-cohesion';
+const CACHE = 'agw-2026-v51-data-fixes';
 
 const PRECACHE = [
   '/',
@@ -12,6 +12,7 @@ const PRECACHE = [
   '/jahrestagung-2026.html',
   '/analytics.html',
   '/guide.html',
+  '/publications-members.html',
   '/manifest.json',
   // Foundation files (loaded by every page)
   '/agw_styles.css',
@@ -24,6 +25,8 @@ const PRECACHE = [
   '/agw_schools_net.js',
   '/agw_gallery.js',
   '/agw_highlights.js',
+  '/agw_member_pubs.js',
+  '/agw_member_pubs_app.js',
   // Analytics & visualization modules
   '/dist/agw_gaze_map.js',
   '/dist/agw_scrollytelling.js',
