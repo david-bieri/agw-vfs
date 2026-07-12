@@ -851,38 +851,91 @@ function initArchiveMap(){
 }
 
 /* ── Speaker frequency ── */
+/* ── Contributor statistics (Referenten tab) ─────────────────────────────────
+ * Counts PUBLISHED CHAPTERS across all 43 Tagungsbände, not talks.
+ *
+ * This used to count ARCHIVE[].papers[] — 150 talk records covering only 18 of the
+ * 46 conferences. The other 28 have no paper list, so the ranking was a biased
+ * sample of the recent conferences and omitted 29 people with two or more published
+ * chapters: Dieter Schneider (12 chapters) did not appear at all, nor did Heinz
+ * Rieter (8) or Karl-Heinz Schmidt (10). VOLUME_CHAPTERS covers every volume.
+ *
+ * Names are folded before counting. The corpus spells the same person several ways
+ * ("Erich Streißler" / "Erich W. Streissler", "Jürgen Backhaus" / "Jürgen G.
+ * Backhaus"), and counting the raw strings splits one contributor into two. The key
+ * is surname + first initial, umlauts and ß normalised — the same rule used to map
+ * chapter authors to member ids. Nobiliary particles stay with the surname.
+ */
+var _NAME_PARTICLES = ['von','van','de','der','den','du','zu','zur','ter','la','le'];
+
+function foldName(s){
+  return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .replace(/\u00df/g,'ss').toLowerCase();
+}
+function personKey(n){
+  var w = String(n||'').trim().split(/\s+/);
+  if (w.length < 2) return foldName(n);
+  var i = w.length - 1;
+  while (i > 1 && _NAME_PARTICLES.indexOf(w[i-1].toLowerCase()) !== -1) i--;
+  return foldName(w.slice(i).join(' ')) + '|' + foldName(w[0]).charAt(0);
+}
+
 function buildSpeakerStats(){
-  var el=document.getElementById('speaker-freq-table');
-  if(!el)return;
-  var freq={};
-  ARCHIVE.forEach(function(c){
-    (c.papers||[]).forEach(function(p){
-      p.author.split(/[\u00b7,]+/).forEach(function(raw){
-        var name=raw.replace(/\s*\([^)]+\)\s*/g,'').trim();
-        if(name.length<4)return;
-        if(!freq[name])freq[name]=[];
-        freq[name].push({year:c.year,nr:c.nr});
-      });
+  var el = document.getElementById('speaker-freq-table');
+  if (!el) return;
+
+  var CH = (window.AGW_DATA && window.AGW_DATA.VOLUME_CHAPTERS) || [];
+  var VM = (window.AGW_DATA && window.AGW_DATA.VOLUME_META) || [];
+  if (!CH.length) { el.innerHTML = ''; return; }   /* corpus absent: render nothing, never a wrong list */
+
+  var YEAR = {};
+  VM.forEach(function(v){ YEAR[v.vol] = v.year; });
+
+  var P = {};
+  CH.forEach(function(ch){
+    String(ch.authors||'').split(/\s*\/\s*/).forEach(function(nm){
+      nm = nm.trim();
+      if (nm.length < 4) return;
+      var k = personKey(nm);
+      if (!P[k]) P[k] = { names:{}, n:0, years:{} };
+      P[k].names[nm] = (P[k].names[nm]||0) + 1;
+      P[k].n++;
+      if (YEAR[ch.vol]) P[k].years[YEAR[ch.vol]] = 1;
     });
   });
-  var sorted=Object.keys(freq).filter(function(n){return freq[n].length>=2;})
-    .sort(function(a,b){return freq[b].length-freq[a].length;});
-  var isDE=lang==='de';
-  var rows=sorted.slice(0,25).map(function(name,i){
-    var c=freq[name];
-    var tags=c.map(function(x){return '<span style="font-size:11px;background:var(--border-light);color:var(--text-muted);padding:1px 6px;border-radius:3px;margin:1px;display:inline-block;">'+x.year+'</span>';}).join('');
-    return '<tr><td style="color:var(--text-faint);font-size:12px;padding:8px 10px;">'+(i+1)+'.</td>'
-      +'<td style="padding:8px 10px;"><strong>'+name+'</strong><div style="margin-top:4px;">'+tags+'</div></td>'
-      +'<td style="padding:8px 10px;text-align:center;"><span style="background:var(--navy);color:#fff;font-size:11px;font-weight:700;padding:2px 7px;border-radius:10px;">'+c.length+'</span></td></tr>';
+
+  var sorted = Object.keys(P).filter(function(k){ return P[k].n >= 2; })
+    .sort(function(a,b){ return P[b].n - P[a].n; });
+
+  var isDE = lang === 'de';
+  var rows = sorted.slice(0, 25).map(function(k, i){
+    var p = P[k];
+    /* Display the fullest spelling the corpus uses for this person. */
+    var name = Object.keys(p.names).sort(function(a,b){ return b.length - a.length; })[0];
+    var tags = Object.keys(p.years).sort().map(function(y){
+      return '<span style="font-size:11px;background:var(--border-light);color:var(--text-muted);'
+           + 'padding:1px 6px;border-radius:3px;margin:1px;display:inline-block;">' + y + '</span>';
+    }).join('');
+    return '<tr><td style="color:var(--text-faint);font-size:12px;padding:8px 10px;">' + (i+1) + '.</td>'
+      + '<td style="padding:8px 10px;"><strong>' + name + '</strong><div style="margin-top:4px;">' + tags + '</div></td>'
+      + '<td style="padding:8px 10px;text-align:center;"><span style="background:var(--navy);color:#fff;'
+      + 'font-size:11px;font-weight:700;padding:2px 7px;border-radius:10px;">' + p.n + '</span></td></tr>';
   }).join('');
-  el.innerHTML='<p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">'
-    +(isDE?'Referentinnen und Referenten mit mind. 2 Beitr\u00e4gen (aus dokumentierten Tagungen).':'Speakers with at least 2 contributions (from documented conferences).')
-    +'</p><table style="width:100%;border-collapse:collapse;font-size:13.5px;">'
-    +'<thead><tr>'
-    +'<th style="text-align:left;padding:7px 10px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);border-bottom:2px solid var(--border);width:28px;">#</th>'
-    +'<th style="text-align:left;padding:7px 10px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);border-bottom:2px solid var(--border);">'+(isDE?'Referent/in':'Speaker')+'</th>'
-    +'<th style="text-align:center;padding:7px 10px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);border-bottom:2px solid var(--border);width:64px;">'+(isDE?'Vortr\u00e4ge':'Papers')+'</th>'
-    +'</tr></thead><tbody>'+rows+'</tbody></table>';
+
+  el.innerHTML = '<p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">'
+    + (isDE
+        ? 'Autorinnen und Autoren mit mindestens zwei Beitr\u00e4gen in den Tagungsb\u00e4nden (alle 43 B\u00e4nde, '
+          + CH.length + ' Beitr\u00e4ge).'
+        : 'Authors with at least two contributions to the conference volumes (all 43 volumes, '
+          + CH.length + ' chapters).')
+    + '</p><table style="width:100%;border-collapse:collapse;font-size:13.5px;">'
+    + '<thead><tr>'
+    + '<th style="text-align:left;padding:7px 10px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);border-bottom:2px solid var(--border);width:28px;">#</th>'
+    + '<th style="text-align:left;padding:7px 10px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);border-bottom:2px solid var(--border);">'
+    + (isDE ? 'Autor/in' : 'Author') + '</th>'
+    + '<th style="text-align:center;padding:7px 10px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);border-bottom:2px solid var(--border);width:64px;">'
+    + (isDE ? 'Beitr\u00e4ge' : 'Chapters') + '</th>'
+    + '</tr></thead><tbody>' + rows + '</tbody></table>';
 }
 
 /* ── Global search ── */
