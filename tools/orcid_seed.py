@@ -1,300 +1,289 @@
 #!/usr/bin/env python3
-"""orcid_seed.py — seed MEMBER_PUBS from ORCID for the members who have nothing yet.
+"""orcid_seed.py — batch companion to pubs_import.py, for the members who have nothing yet.
 
-Three steps, each stopping for a human. Nothing is written to the site automatically,
-because every failure mode here is a failure mode with a colleague's name on it.
+pubs_import.py already does the hard parts: ORCID works, Crossref enrichment, the type
+map, theme suggestion, --lint. This does NOT reimplement any of it — it imports it.
+What it adds is the four things pubs_import cannot do:
 
-    python tools\\orcid_seed.py --find
-        Who has no MEMBER_PUBS entry? Searches ORCID by name, prints candidate iDs with
-        their affiliations, and writes tools/orcid_ids.csv. YOU then delete the wrong
-        rows and keep the right one per member. ORCID name search returns homonyms —
-        "Helmut Wagner" is several people — so nothing is auto-accepted.
+  1. TRIAGE     Who actually has no MEMBER_PUBS entry, and how thin is their chapter
+                record? pubs_import takes one mid on the command line; it has no view
+                of the whole membership.
+  2. DISCOVERY  Find candidate ORCID iDs BY NAME. pubs_import requires you to already
+                have the iD.   ⚠ READ THE CONSENT NOTE BELOW BEFORE USING --find.
+  3. REVIEW     A CSV round-trip with a KEEP column, so 100+ candidates get triaged in
+                a spreadsheet instead of a terminal.
+  4. WP CHECK   For every working paper, ask Crossref whether a published version now
+                exists.
+
+────────────────────────────────────────────────────────────────────────────
+⚠ CONSENT — READ BEFORE RUNNING --find
+
+pubs_import.py says, and has always said:
+
+    "Only run this for a member who has SENT you their ORCID iD. An ORCID iD being
+     public is not the same thing as a member asking to be listed on the AGW site.
+     Consent comes from the submission, not from the data being findable."
+
+--find searches ORCID BY NAME, for members who have submitted nothing. That is exactly
+what the rule forbids.
+
+It exists because the model has arguably already changed: the Tagungsband chapters are
+the committee's OWN publication record, and the 2026 supplements were curated from the
+maintainer's own .bib — neither was submission-based. If curation is the model, then the
+rule above should be REVISED, not quietly broken. And the Datenschutzerklärung that tells
+members this is happening stops being optional: a privacy notice is what makes
+"legitimate interest" defensible rather than merely convenient.
+
+So --find is gated behind an explicit flag. If the question is unsettled, use --fetch
+with iDs that members sent you, and email the rest.
+────────────────────────────────────────────────────────────────────────────
+
+USAGE
+
+    python tools\\orcid_seed.py --triage
+        Who has nothing? Offline, no requests. Start here.
+
+    python tools\\orcid_seed.py --find --i-have-decided-the-consent-question
+        ORCID name search -> tools/orcid_ids.csv (candidate iDs + affiliations).
+        THEN CURATE BY HAND: delete wrong rows, keep AT MOST ONE per member. Name
+        search returns homonyms — MEMBERS contains a "Helmut Wagner", and so does half
+        of German economics. Nothing is auto-accepted.
 
     python tools\\orcid_seed.py --fetch
-        Reads the confirmed tools/orcid_ids.csv, pulls each iD's works, enriches DOIs via
-        Crossref (type / venue / authors / year), and writes tools/orcid_review.csv with an
-        empty KEEP column. Flags any preprint/working paper that appears to have a
-        published version (see WHY below).
+        Reads the curated tools/orcid_ids.csv, pulls works via pubs_import.orcid_works(),
+        flags preprints that look published, writes tools/orcid_review.csv (KEEP column).
 
     python tools\\orcid_seed.py --emit
-        Reads tools/orcid_review.csv, takes the rows you marked KEEP=x, and prints a
-        MEMBER_PUBS block to stdout. Paste it into agw_member_pubs.js.
-
-WHY THE WORKING-PAPER CHECK EXISTS
-    A bibliography freezes an item at the moment it was entered. Working papers get
-    published; the record does not notice. Of four WPs checked by hand in July 2026,
-    THREE had been published — one under a changed title ("Ludwig von Mises and the
-    Ordo-interventionists" became "Paleo- and Neoliberals: ..."). Listing a colleague's
-    2016 working paper six years after it appeared in a Springer volume is a small,
-    entirely avoidable embarrassment. So: for every preprint, this queries Crossref by
-    title and flags near matches that have a journal or book container.
+        KEEP=x rows -> a MEMBER_PUBS block on stdout.
+        Then: python tools\\pubs_import.py --lint
 
 WHAT ORCID WILL NOT GIVE YOU
-    ORCID systematically misses German-language book chapters. On the maintainer's own
-    record, 9 of 15 items were absent — including both Lösch chapters in the AGW
-    Tagungsbände. So an empty or thin ORCID result is NOT evidence that a member has
-    published little. It is evidence that ORCID has poor coverage of this literature.
-    Where ORCID comes back empty, the answer is to ask the member, not to conclude.
-
-    This is also why the AGW chapters are the SPINE of a member's record and ORCID is
-    only a supplement: our own Tagungsband corpus is complete where ORCID is not.
-
-NO API KEY NEEDED — the ORCID public API and Crossref are both open. Be polite: this
-sleeps between requests and caches every response under tools/.cache_orcid/.
+    ORCID systematically misses German-language book chapters. On the one record we could
+    fully audit it returned nine DOI-bearing articles and missed BOTH German book
+    chapters — the most subject-relevant things that member had written. An empty ORCID
+    result is NOT evidence that a member has published little; it is evidence that ORCID
+    covers this literature badly. Where it comes back empty: ask the member.
 """
 
 import argparse
 import csv
-import json
 import os
 import re
 import sys
 import time
-import urllib.error
 import urllib.parse
-import urllib.request
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO = os.path.dirname(HERE)
-DATA_JS = os.path.join(REPO, "agw_data.js")
-PUBS_JS = os.path.join(REPO, "agw_member_pubs.js")
-CHAPS_JS = os.path.join(REPO, "agw_volume_chapters.js")
+sys.path.insert(0, HERE)
+import pubs_import as pi  # noqa: E402  — single source of truth for fetch / enrich / emit
 
+REPO = os.path.dirname(HERE)
+CHAPS_JS = os.path.join(REPO, "agw_volume_chapters.js")
 IDS_CSV = os.path.join(HERE, "orcid_ids.csv")
 REVIEW_CSV = os.path.join(HERE, "orcid_review.csv")
-CACHE = os.path.join(HERE, ".cache_orcid")
-
-MAILTO = "bieri@vt.edu"
-UA = "agw-vfs/1.0 (https://www.agw-vfs.de; mailto:%s)" % MAILTO
 
 ORCID_SEARCH = ("https://pub.orcid.org/v3.0/expanded-search/"
                 "?q=given-names:%s+AND+family-name:%s&rows=8")
-ORCID_WORKS = "https://pub.orcid.org/v3.0/%s/works"
-CROSSREF_DOI = "https://api.crossref.org/works/%s?mailto=" + MAILTO
-CROSSREF_TITLE = ("https://api.crossref.org/works?query.bibliographic=%s"
-                  "&rows=3&select=DOI,title,type,container-title,published"
-                  "&mailto=" + MAILTO)
+CROSSREF_TITLE = ("https://api.crossref.org/works?query.bibliographic=%s&rows=3"
+                  "&select=DOI,title,type,container-title&mailto=" + pi.MAILTO)
 
-# ORCID work types -> our MEMBER_PUBS `type` vocabulary (mpub_type_* strings exist for
-# exactly these five; anything else must be mapped, not invented).
-TYPE_MAP = {
-    "journal-article": "article", "book": "book", "book-chapter": "chapter",
-    "edited-book": "edited", "working-paper": "wp", "preprint": "wp",
-    "report": "wp", "conference-paper": "chapter", "book-review": "article",
-}
-PREPRINTISH = {"wp"}
+FIELDS = ["KEEP", "THEMES", "mid", "member", "year", "type", "title",
+          "venue", "authors", "doi", "published_version"]
+
+PARTICLES = {"von", "van", "de", "der", "den", "zu", "zur", "ter"}
 
 
-# ── plumbing ────────────────────────────────────────────────────────────────
-def get(url, key, tries=2):
-    os.makedirs(CACHE, exist_ok=True)
-    path = os.path.join(CACHE, re.sub(r"[^\w.-]", "_", key)[:120] + ".json")
-    if os.path.exists(path):
-        try:
-            return json.load(open(path, encoding="utf-8"))
-        except ValueError:
-            pass
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
-    for _ in range(tries):
-        try:
-            with urllib.request.urlopen(req, timeout=45) as r:
-                data = json.loads(r.read().decode("utf-8"))
-            json.dump(data, open(path, "w", encoding="utf-8"), ensure_ascii=False)
-            time.sleep(1)                     # polite: ~1 request/second
-            return data
-        except (urllib.error.HTTPError, urllib.error.URLError, ValueError):
-            time.sleep(2)
-    return None
-
-
-def read_array(path, name):
-    """Pull a JS array out of a data file without executing it."""
-    src = open(path, encoding="utf-8").read()
-    m = re.search(r"%s\s*=\s*\[(.*?)\n\s*\];" % name, src, re.S)
+def _array(path, name):
+    if not os.path.exists(path):
+        return ""
+    m = re.search(r"%s\s*=\s*\[(.*?)\n\s*\];" % name,
+                  open(path, encoding="utf-8").read(), re.S)
     return m.group(1) if m else ""
 
 
-def members():
-    blk = read_array(DATA_JS, "const MEMBERS")
-    return [{"mid": mid, "name": name}
-            for mid, name in re.findall(r"\{ id:'([^']+)', name:'([^']+)'", blk)]
-
-
-def members_without_pubs():
-    have = set(re.findall(r"mid:'([^']+)'", read_array(PUBS_JS, "MEMBER_PUBS")))
-    chaps = read_array(CHAPS_JS, "const VOLUME_CHAPTERS") if os.path.exists(CHAPS_JS) else ""
+def triage():
+    """[{mid, name, chapters}] for members with no MEMBER_PUBS entry, thinnest first."""
+    members = re.findall(r"\{ id:'([^']+)', name:'([^']+)'",
+                         _array(pi.DATA_JS, "const MEMBERS"))
+    have = set(re.findall(r"mid:'([^']+)'", _array(pi.PUBS_JS, "MEMBER_PUBS")))
     nchap = {}
-    for mids in re.findall(r"mids:\[([^\]]*)\]", chaps):
+    for mids in re.findall(r"mids:\[([^\]]*)\]", _array(CHAPS_JS, "const VOLUME_CHAPTERS")):
         for mid in re.findall(r"'([^']+)'", mids):
             nchap[mid] = nchap.get(mid, 0) + 1
-    out = []
-    for m in members():
-        if m["mid"] not in have:
-            m["chapters"] = nchap.get(m["mid"], 0)
-            out.append(m)
+    out = [{"mid": mid, "name": name, "chapters": nchap.get(mid, 0)}
+           for mid, name in members if mid not in have]
+    out.sort(key=lambda m: m["chapters"])
     return out
+
+
+def show_triage():
+    todo = triage()
+    thin = [m for m in todo if m["chapters"] <= 1]
+    fat = [m for m in todo if m["chapters"] > 1]
+    print("%d members have no MEMBER_PUBS entry.\n" % len(todo))
+    print("THIN (\u22641 AGW chapter) \u2014 %d members. These are the ones a supplement helps:" % len(thin))
+    for m in thin:
+        print("   %-32s %d chapter(s)" % (m["name"], m["chapters"]))
+    print("\nAlso without a MEMBER_PUBS entry, but their AGW chapters already carry the")
+    print("page (%d members). A supplement adds little here:" % len(fat))
+    for m in fat:
+        print("   %-32s %d chapters" % (m["name"], m["chapters"]))
+    return 0
 
 
 def split_name(name):
     parts = name.split()
-    PART = {"von", "van", "de", "der", "zu", "zur", "den", "ter"}
     i = len(parts) - 1
-    while i > 1 and parts[i - 1].lower() in PART:
+    while i > 1 and parts[i - 1].lower() in PARTICLES:
         i -= 1
-    return " ".join(parts[:i]), " ".join(parts[i:])     # (given, family)
+    return " ".join(parts[:i]), " ".join(parts[i:])
 
 
-# ── step 1: find candidate iDs ──────────────────────────────────────────────
 def find():
-    todo = members_without_pubs()
-    print("%d members have no MEMBER_PUBS entry.\n" % len(todo))
     rows = []
-    for m in todo:
+    for m in [x for x in triage() if x["chapters"] <= 1]:
         given, family = split_name(m["name"])
-        url = ORCID_SEARCH % (urllib.parse.quote(given), urllib.parse.quote(family))
-        data = get(url, "search_" + m["mid"])
+        data = pi.get_json(ORCID_SEARCH % (urllib.parse.quote(given), urllib.parse.quote(family)))
         hits = (data or {}).get("expanded-result") or []
-        print("%-30s %-28s %d candidate(s)" % (m["name"], "(%d chapters)" % m["chapters"], len(hits)))
+        print("%-32s %d candidate(s)" % (m["name"], len(hits)))
         if not hits:
-            rows.append({"mid": m["mid"], "name": m["name"], "orcid": "",
-                         "cand_name": "", "affiliation": "", "note": "NO ORCID HIT — ask the member"})
+            rows.append({"mid": m["mid"], "name": m["name"], "orcid": "", "cand_name": "",
+                         "affiliation": "", "note": "NO HIT \u2014 ask the member directly"})
+            continue
         for h in hits:
             inst = "; ".join((h.get("institution-name") or [])[:2])
-            cand = "%s %s" % (h.get("given-names") or "", h.get("family-names") or "")
-            print("    %-20s %-28s %s" % (h.get("orcid-id"), cand.strip()[:28], inst[:44]))
+            cand = ("%s %s" % (h.get("given-names") or "", h.get("family-names") or "")).strip()
+            print("     %-20s %-26s %s" % (h.get("orcid-id"), cand[:26], inst[:46]))
             rows.append({"mid": m["mid"], "name": m["name"], "orcid": h.get("orcid-id"),
-                         "cand_name": cand.strip(), "affiliation": inst, "note": ""})
+                         "cand_name": cand, "affiliation": inst, "note": ""})
+        time.sleep(1)
     with open(IDS_CSV, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["mid", "name", "orcid", "cand_name", "affiliation", "note"])
         w.writeheader()
         w.writerows(rows)
     print("\nwrote %s" % IDS_CSV)
-    print("NOW: open it, delete the wrong rows, keep AT MOST ONE per member.")
-    print("     ORCID name search returns homonyms. Check the affiliation column.")
+    print("NOW CURATE IT: keep AT MOST ONE orcid per mid, and check the affiliation column.")
     return 0
 
 
-# ── step 2: fetch works ─────────────────────────────────────────────────────
 def published_version(title):
-    """Does a preprint have a published version? Returns a hint string, or ''."""
-    q = urllib.parse.quote(re.sub(r"\s+", " ", title)[:120])
-    data = get(CROSSREF_TITLE % q, "cr_title_" + title[:60])
+    """Has this preprint since appeared in a journal or book? '' if not.
+
+    Exists because a .bib freezes an item at the moment it was entered, and working papers
+    get published. Of four WPs audited by hand in July 2026, THREE had been published, one
+    under a changed title. Listing a colleague's working paper years after it appeared in a
+    Springer volume is small and entirely avoidable."""
+    data = pi.get_json(CROSSREF_TITLE % urllib.parse.quote(re.sub(r"\s+", " ", title)[:120]))
+    want = re.sub(r"\W+", " ", title.lower()).split()[:6]
     for it in ((data or {}).get("message") or {}).get("items", []):
-        t = (it.get("title") or [""])[0]
-        if not t:
-            continue
-        # crude but adequate: same opening words, and it has a real container
-        a = re.sub(r"\W+", " ", t.lower()).split()[:6]
-        b = re.sub(r"\W+", " ", title.lower()).split()[:6]
+        got = re.sub(r"\W+", " ", (it.get("title") or [""])[0].lower()).split()[:6]
         cont = (it.get("container-title") or [""])[0]
-        if a and a == b and it.get("type") in ("journal-article", "book-chapter") and cont:
-            return "PUBLISHED? %s (%s) doi:%s" % (cont[:40], it.get("type"), it.get("DOI"))
+        if want and got == want and cont and it.get("type") in ("journal-article", "book-chapter"):
+            return "%s (%s) doi:%s" % (cont[:44], it.get("type"), it.get("DOI"))
     return ""
 
 
 def fetch():
     if not os.path.exists(IDS_CSV):
-        sys.exit("Run --find first, then curate %s." % IDS_CSV)
+        sys.exit("No %s. Run --triage, then --find \u2014 or write the file by hand "
+                 "(columns: mid,name,orcid) from iDs members sent you." % IDS_CSV)
     ids = [r for r in csv.DictReader(open(IDS_CSV, encoding="utf-8-sig")) if r.get("orcid")]
-    seen = {}
+    per = {}
     for r in ids:
-        seen.setdefault(r["mid"], []).append(r)
-    dupes = [k for k, v in seen.items() if len(v) > 1]
+        per.setdefault(r["mid"], []).append(r["orcid"])
+    dupes = [k for k, v in per.items() if len(v) > 1]
     if dupes:
-        sys.exit("More than one ORCID kept for: %s — pick one per member." % ", ".join(dupes))
+        sys.exit("More than one ORCID kept for: %s\nPick ONE per member \u2014 this is the step that "
+                 "stops another person's work landing on a colleague's page." % ", ".join(dupes))
 
     rows = []
     for r in ids:
-        data = get(ORCID_WORKS % r["orcid"], "works_" + r["orcid"])
-        groups = (data or {}).get("group") or []
-        print("%-30s %s  %d works" % (r["name"], r["orcid"], len(groups)))
-        for g in groups:
-            s = (g.get("work-summary") or [{}])[0]
-            title = (((s.get("title") or {}).get("title") or {}).get("value") or "").strip()
-            if not title:
+        works = pi.orcid_works(pi.normalise_orcid(r["orcid"]))
+        print("%-30s %-21s %d works" % (r["name"], r["orcid"], len(works)))
+        for w in works:
+            e = pi.to_entry(w, r["mid"], fallback_author=r["name"])
+            if not e:
                 continue
-            year = (((s.get("publication-date") or {}).get("year") or {}).get("value") or "")
-            wtype = TYPE_MAP.get((s.get("type") or "").lower().replace("_", "-"), "")
-            doi = ""
-            for eid in ((s.get("external-ids") or {}).get("external-id") or []):
-                if (eid.get("external-id-type") or "").lower() == "doi":
-                    doi = (eid.get("external-id-value") or "").strip()
-                    break
-            venue = (s.get("journal-title") or {}).get("value") or ""
-            authors = ""
-            # Crossref is the better source for venue/authors/type when we have a DOI
-            if doi:
-                cr = get(CROSSREF_DOI % urllib.parse.quote(doi), "cr_" + doi)
-                msg = (cr or {}).get("message") or {}
-                if msg:
-                    venue = (msg.get("container-title") or [venue])[0] or venue
-                    wtype = TYPE_MAP.get(msg.get("type", ""), wtype)
-                    au = msg.get("author") or []
-                    authors = " \u00b7 ".join(
-                        ("%s %s" % (a.get("given", ""), a.get("family", ""))).strip()
-                        for a in au[:4] if a.get("family"))
-                    if len(au) > 4:
-                        authors += " et al."
-            flag = published_version(title) if wtype in PREPRINTISH else ""
-            rows.append({"KEEP": "", "THEMES": "", "mid": r["mid"], "member": r["name"],
-                         "year": year, "type": wtype or "article", "title": title,
-                         "venue": venue, "authors": authors or r["name"], "doi": doi,
-                         "flag": flag})
+            flag = published_version(e["title"]) if e.get("type") == "wp" else ""
+            rows.append({"KEEP": "", "THEMES": ",".join(e.get("themes") or []),
+                         "mid": r["mid"], "member": r["name"], "year": e.get("year") or "",
+                         "type": e.get("type") or "article", "title": e["title"],
+                         "venue": e.get("venue") or "", "authors": e.get("authors") or r["name"],
+                         "doi": e.get("doi") or "", "published_version": flag})
     rows.sort(key=lambda x: (x["member"], -int(x["year"] or 0)))
     with open(REVIEW_CSV, "w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=["KEEP", "THEMES", "mid", "member", "year", "type",
-                                          "title", "venue", "authors", "doi", "flag"])
+        w = csv.DictWriter(f, fieldnames=FIELDS)
         w.writeheader()
         w.writerows(rows)
-    flagged = sum(1 for r in rows if r["flag"])
-    print("\nwrote %s  (%d candidates, %d preprints look PUBLISHED — check the flag column)"
-          % (REVIEW_CSV, len(rows), flagged))
-    print("NOW: mark KEEP=x on 2-3 per member and fill THEMES (ids from PUB_THEMES).")
+    flagged = sum(1 for r in rows if r["published_version"])
+    print("\nwrote %s  (%d candidates)" % (REVIEW_CSV, len(rows)))
+    if flagged:
+        print("  \u26a0 %d working paper(s) appear to HAVE BEEN PUBLISHED \u2014 see the last column." % flagged)
+    print("NOW: KEEP=x on 2\u20133 per member. THEMES is a GUESS \u2014 verify it.")
     return 0
 
 
-# ── step 3: emit ────────────────────────────────────────────────────────────
 def emit():
     if not os.path.exists(REVIEW_CSV):
         sys.exit("Run --fetch first.")
     rows = [r for r in csv.DictReader(open(REVIEW_CSV, encoding="utf-8-sig"))
             if str(r.get("KEEP", "")).strip().lower() in ("x", "y", "yes", "1")]
     if not rows:
-        sys.exit("Nothing marked KEEP in %s." % REVIEW_CSV)
+        sys.exit("Nothing marked KEEP.")
 
-    themes = set(re.findall(r"\{\s*id:'([^']+)',\s*order:", open(PUBS_JS, encoding="utf-8").read()))
+    themes = set(re.findall(r"\{\s*id:'([^']+)',\s*order:",
+                            open(pi.PUBS_JS, encoding="utf-8").read()))
     bad = {t for r in rows for t in re.split(r"[,\s]+", r["THEMES"]) if t and t not in themes}
     if bad:
-        sys.exit("Unknown theme id(s): %s\nValid: %s" % (", ".join(bad), ", ".join(sorted(themes))))
+        sys.exit("Unknown theme id(s): %s\nValid: %s"
+                 % (", ".join(sorted(bad)), ", ".join(sorted(themes))))
 
-    def js(s):
-        return "'" + str(s or "").replace("\\", "\\\\").replace("'", "\\'") + "'"
+    zombies = [r for r in rows if r["type"] == "wp" and r["published_version"]]
+    if zombies:
+        print("\u26a0 %d kept working paper(s) appear to be PUBLISHED \u2014 cite the published version:"
+              % len(zombies), file=sys.stderr)
+        for r in zombies:
+            print("    %-50s \u2192 %s" % (r["title"][:50], r["published_version"]), file=sys.stderr)
+        print("", file=sys.stderr)
 
-    out = []
     for member in sorted({r["member"] for r in rows}):
-        out.append("")
-        out.append("    // \u2500\u2500 %s \u2500\u2500" % member)
+        print("")
+        print("    // \u2500\u2500 %s \u2500\u2500" % member)
         for r in [x for x in rows if x["member"] == member]:
             ts = [t for t in re.split(r"[,\s]+", r["THEMES"]) if t]
-            out.append("    { mid:%s, themes:[%s]," % (js(r["mid"]), ",".join(js(t) for t in ts)))
-            out.append("      title:%s, type:%s," % (js(r["title"]), js(r["type"])))
-            tail = "      authors:%s, venue:%s, year:%s" % (js(r["authors"]), js(r["venue"]), r["year"])
-            out.append(tail + (",\n      doi:%s }," % js(r["doi"]) if r["doi"] else " },"))
-    print("\n".join(out))
-    print("\n/* %d entries for %d members — paste into MEMBER_PUBS in agw_member_pubs.js,\n"
-          "   then: node --check agw_member_pubs.js  and bump the service worker. */"
-          % (len(rows), len({r["member"] for r in rows})), file=sys.stderr)
+            print("    { mid:%s, themes:[%s]," % (pi.js_str(r["mid"]),
+                                                  ",".join(pi.js_str(t) for t in ts)))
+            print("      title:%s, type:%s," % (pi.js_str(r["title"]), pi.js_str(r["type"])))
+            tail = "      authors:%s, venue:%s, year:%s" % (
+                pi.js_str(r["authors"]), pi.js_str(r["venue"]), r["year"])
+            print(tail + (",\n      doi:%s }," % pi.js_str(r["doi"]) if r["doi"] else " },"))
+    print("\n/* %d entries \u2014 paste into MEMBER_PUBS, then: python tools\\pubs_import.py --lint */"
+          % len(rows), file=sys.stderr)
     return 0
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--find", action="store_true", help="step 1: candidate ORCID iDs")
-    ap.add_argument("--fetch", action="store_true", help="step 2: works -> review CSV")
-    ap.add_argument("--emit", action="store_true", help="step 3: KEEP rows -> MEMBER_PUBS block")
+    ap.add_argument("--triage", action="store_true", help="who has no MEMBER_PUBS entry (offline)")
+    ap.add_argument("--find", action="store_true",
+                    help="search ORCID by NAME \u2014 read the CONSENT note first")
+    ap.add_argument("--i-have-decided-the-consent-question", action="store_true", dest="consent",
+                    help="required for --find")
+    ap.add_argument("--fetch", action="store_true", help="works \u2192 tools/orcid_review.csv")
+    ap.add_argument("--emit", action="store_true", help="KEEP rows \u2192 MEMBER_PUBS block")
     a = ap.parse_args()
+
+    if a.triage:
+        return show_triage()
     if a.find:
+        if not a.consent:
+            sys.exit(
+                "\n--find searches ORCID BY NAME for members who submitted nothing.\n"
+                "pubs_import.py's own rule says: \"Consent comes from the submission, not\n"
+                "from the data being findable.\"\n\n"
+                "Settle that first (see the CONSENT section at the top of this file).\n"
+                "If it is settled, re-run with --i-have-decided-the-consent-question.\n")
         return find()
     if a.fetch:
         return fetch()

@@ -129,7 +129,13 @@ THEME_HINTS = [
     ("ordoliberal",    ["ordo", "eucken", "röpke", "roepke", "freiburg", "ordnungsökonomik", "neoliberal"]),
     ("historical",     ["historical school", "schmoller", "roscher", "sombart", "methodenstreit", "historische schule"]),
     ("marxian",        ["marx", "marxian", "marxist"]),
-    ("cameralism",     ["cameral", "kameral", "mercantil", "preindustrial"]),
+    # v60: `cameralism` was retired and replaced by `preclassical`, which spans the
+    # mercantilists, the cameralists AND the physiocrats — the committee's own Band
+    # XXXIX pairs "Kameralismus und Merkantilismus" in its title. Emitting the old id
+    # here would produce a theme that no longer exists in PUB_THEMES (--lint catches it).
+    ("preclassical",   ["cameral", "kameral", "mercantil", "merkantil", "preindustrial",
+                        "physiokrat", "physiocrat", "quesnay", "turgot", "tableau économique",
+                        "justi", "seckendorff", "sonnenfels", "graumann", "vorklassi"]),
     ("evolutionary",   ["evolutionary", "schumpeter", "institution", "veblen", "innovation"]),
     ("distribution",   ["distribution", "growth theory", "capital theory", "verteilung", "wachstum"]),
     ("public_finance", ["public finance", "taxation", "finanzwissenschaft", "fiscal"]),

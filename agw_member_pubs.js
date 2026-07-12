@@ -160,8 +160,101 @@
     // ── Joachim Zweynert ──────────────────────────────────────────────────
     { mid:'zweynert-joachim', themes:['general','evolutionary'],
       title:'When Ideas Fail: Economic Thought, the Failure of Transition and the Rise of Institutional Instability in Post-Soviet Russia', type:'book',
-      authors:'Joachim Zweynert', venue:'Routledge', year:2018 }
+      authors:'Joachim Zweynert', venue:'Routledge', year:2018 },
 
+    /* ── Ergänzungen 2026: selected further publications ───────────────────
+     * Curated by the maintainer from the master bibliography for the members whose
+     * AGW chapter record is thin (≤1 chapter) — for everyone else the Tagungsband
+     * chapters already carry the page. Explicitly a SELECTION („ausgewählte
+     * Publikationen“), which is what caps the maintenance obligation (ADR-029).
+     * Titles already present in VOLUME_CHAPTERS were excluded, so nothing is
+     * double-listed as both an AGW contribution and a „further publication“. */
+    // ── Dirk Ehnts ──
+    { mid:'ehnts-dirk', themes:['monetary'],
+      title:'Knapp\'s `State Theory of Money\' and its Reception in German Academic Discourse', type:'wp',
+      authors:'Dirk Ehnts', venue:'Institute for International Political Economy, Berlin School of Economics and Law', year:2019 },
+    { mid:'ehnts-dirk', themes:['spatial','methodology'],
+      title:'From New Trade Theory to New Economic Geography: A Space Odyssey', type:'article',
+      authors:'Dirk Ehnts · Hans-Michael Trautwein', venue:'Œconomia: A Journal for the History, Methodology and Philosophy of Economics', year:2012 },
+
+    // ── Hans Frambach ──
+    { mid:'frambach-hans', themes:['general'],
+      title:'On the Economic Significance of the Catholic Social Doctrine: 125 Years of Rerum Novarum', type:'edited',
+      authors:'Jürgen Backhaus · Günther Chaloupek · Hans A. Frambach', venue:'SPringer International', year:2017 },
+    { mid:'frambach-hans', themes:['general'],
+      title:'How to Fight Unemployment? A Review of the Strategy Discussion in ``Der Deutsche Volkswirt\'\', 1930–1932', type:'chapter',
+      authors:'Hans A. Frambach', venue:'Springer', year:2011 },
+
+    // ── Horst Todt ──
+    { mid:'todt-horst', themes:['spatial'],
+      title:'Die Struktur der Wirtschaftsraumes: Eine vergleichende Betrachtung der Konzeptionen von Walter Christaller und August Lösch', type:'chapter',
+      authors:'Horst Todt', venue:'Duncker und Humblot', year:2014 },
+
+    // ── Ingo Barens ──
+    { mid:'barens-ingo', themes:['keynesian','monetary'],
+      title:'Keynes on Monetary Policy, Finance and Uncertainty', type:'article',
+      authors:'Ingo Barens', venue:'European Journal of the History of Economic Thought', year:2012 },
+    { mid:'barens-ingo', themes:['keynesian','monetary'],
+      title:'“Animal spirits” in John Maynard Keynes\'s General Theory of Employment, Interest and Money: Some Short and Sceptical Remarks', type:'wp',
+      authors:'Ingo Barens', venue:'Technische Universität Darmstadt, Department of Law and Economics', year:2011 },
+
+    // ── Jan Greitens ──
+    { mid:'greitens-jan', themes:['monetary','preclassical'],
+      title:'Geldtheorie und -politik in Preußen Mitte des 18. Jahrhunderts', type:'article',
+      authors:'Jan Greitens', venue:'Jahrbuch für Wirtschaftsgeschichte / Economic History Yearbook 61(1), 217–257', year:2020,
+      doi:'10.1515/jbwg-2020-0010' },
+    { mid:'greitens-jan', themes:['monetary','econ_history'],
+      title:'Monetary Anchors in a Digital Age: A Historical Perspective on the ECB\u2019s Digital Euro and US Stablecoins', type:'wp',
+      authors:'Jan Greitens', venue:'IBF Paper Series 02-26, Institut f\u00fcr Bank- und Finanzgeschichte, Frankfurt a.M.', year:2026,
+      url:'https://hdl.handle.net/10419/340050' },
+
+    // ── Jan-Otmar Hesse ──
+    { mid:'hesse-jan-otmar', themes:['general'],
+      title:'Wirtschaft als Wissenschaft: Die Volkswirtschaftslehre in der frühen Bundesrepublik', type:'book',
+      authors:'Jan-Otmar Hesse', venue:'Campus Verlag', year:2010 },
+    { mid:'hesse-jan-otmar', themes:['general'],
+      title:'Some Relationships between a Scholar\'s and an Entrepreneur\'s Life: The Biography of L. Albert Hahn', type:'article',
+      authors:'Jan-Otmar Hesse', venue:'History of Political Economy', year:2007 },
+
+    // ── Jochen Hartwig ──
+    { mid:'hartwig-jochen', themes:['general'],
+      title:'Testing the Baumol-Norhaus Model with EU KLEMS Data', type:'article',
+      authors:'Jochen Hartwig', venue:'Review of Income and Wealth', year:2011 },
+
+    // ── Johannes Schmidt ──
+    { mid:'schmidt-johannes', themes:['general'],
+      title:'Die Bedeutung der Saldenmechanik für die makroökonomische Theoriebildung', type:'chapter',
+      authors:'Johannes Schmidt', venue:'Metropolis-Verlag', year:2011 },
+    { mid:'schmidt-johannes', themes:['monetary','distribution'],
+      title:'Wachstum und Verteilung in der Geldwirtschaft: Das wissenschaftliche Werk Erich Preiser (1900-1967)', type:'book',
+      authors:'Johannes Schmidt', venue:'Metropolis-Verlag', year:1998 },
+
+    // ── Karl Milford ──
+    { mid:'milford-karl', themes:['methodology','econ_history'],
+      title:'Theoretical and Methodological Positions of German Economics in the Middle of the Nineteenth Centruy', type:'article',
+      authors:'Erich W. Streissler · Karl Milford', venue:'History of Economic Ideas', year:1993 },
+
+    // ── Nils Goldschmidt ──
+    { mid:'goldschmidt-nils', themes:['austrian','ordoliberal'],
+      title:'Walter Eucken’s Place in the History of Ideas', type:'article',
+      authors:'Nils Goldschmidt', venue:'Review of Austrian Economics', year:2013 },
+    { mid:'goldschmidt-nils', themes:['ordoliberal','methodology'],
+      title:'The Philosophy of Social Market Economy: Michel Foucault’s Analysis of Ordoliberalism', type:'article',
+      authors:'Nils Goldschmidt · Hermann Rauchenschwandtner', venue:'Journal of Contextual Economics – Schmollers Jahrbuch 138(2), 157–184', year:2018,
+      doi:'10.3790/schm.138.2.157' },
+    { mid:'goldschmidt-nils', themes:['ordoliberal'],
+      title:'Phänomenologie und die Ordnung der Wirtschaft: Edmund Husserl, Rudolf Eucken, Walter Eucken, Michel Foucault', type:'edited',
+      authors:'Hans-Helmuth Gander · Nils Goldschmidt · Uwe Dathe', venue:'Ergon Verlag', year:2009 },
+
+    // ── Stefan Kolev ──
+    { mid:'kolev-stefan', themes:['ordoliberal'],
+      title:'Transatlantic Roads to Mont Pèlerin: “Old Chicago” and Freiburg in a World of Disintegrating Orders', type:'article',
+      authors:'Stefan Kolev · Ekkehard A. Köhler', venue:'History of Political Economy 54(4), 745–784', year:2022,
+      doi:'10.1215/00182702-9895916' },
+    { mid:'kolev-stefan', themes:['austrian','ordoliberal'],
+      title:'Paleo- and Neoliberals: Ludwig von Mises and the “Ordo-interventionists”', type:'chapter',
+      authors:'Stefan Kolev', venue:'in: Commun/Kolev (Hrsg.), Wilhelm Röpke (1899–1966), Springer, S. 65–90', year:2018,
+      doi:'10.1007/978-3-319-68357-7_5' },
   ];
 
   window.AGW_DATA.PUB_THEMES  = PUB_THEMES;
