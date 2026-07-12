@@ -195,6 +195,10 @@
 
 <div id="search-overlay" onclick="if(event.target===this)closeSearch()"><div id="search-box"><div id="search-input-row"><span style="font-size:18px;margin-right:10px;color:var(--text-faint);"><span class="ico ico-search" aria-hidden="true"></span></span><input id="search-input" type="text" autocomplete="off" oninput="runSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()" placeholder="Suchen… / Search…"><button id="search-close" onclick="closeSearch()">✕</button></div><div id="search-results"><div class="srch-empty">Suchbegriff eingeben…</div></div><div id="search-hint">↵ öffnet &nbsp;·&nbsp; Esc schließt &nbsp;·&nbsp; Ctrl+K</div></div></div>
 
+<!-- Leaflet: the Karte tab needs the JS, not just the CSS. initArchiveMap() guards on
+     `typeof L === "undefined"` and bails silently, so a missing script renders an empty
+     460px box with no console error. Lost in the multi-page split. -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" crossorigin=""></script>
 <script src="agw_strings.js"></script>
 <script src="agw_data.js"></script>
 <script src="agw_volume_chapters.js"></script>
