@@ -30,6 +30,17 @@
   var VOL_BY_NUM = {};
   VOLS.forEach(function (v) { VOL_BY_NUM[v.num] = v; });
 
+  /* Volume years come from VOLUME_META, not PUBLICATIONS: PUBLICATIONS has year:null for
+   * 31 of the 43 volumes, which left most chapters dated 0 — sorted to the bottom of every
+   * theme block and shown without a year. VOLUME_META carries the publisher's own imprint
+   * year for all 43. PUBLICATIONS stays as the fallback. */
+  var META_BY_VOL = {};
+  ((window.AGW_DATA && window.AGW_DATA.VOLUME_META) || [])
+    .forEach(function (m) { META_BY_VOL[m.vol] = m; });
+  function volYear(vol) {
+    return (META_BY_VOL[vol] && META_BY_VOL[vol].year) || (VOL_BY_NUM[vol] && VOL_BY_NUM[vol].year) || null;
+  }
+
   var CHAPTERS = ((window.AGW_DATA && window.AGW_DATA.VOLUME_CHAPTERS) || [])
     .map(function (c) {
       var v = VOL_BY_NUM[c.vol] || {};
@@ -37,7 +48,7 @@
         mid: null, agw: true, vol: c.vol, volN: c.volN,
         title: c.title, authors: c.authors, mids: c.mids || [],
         themes: c.themes || [], pages: c.pages, url: c.url,
-        year: v.year || null, type: 'chapter',
+        year: volYear(c.vol), type: 'chapter',
         venue: 'Studien zur Entwicklung der \u00f6konomischen Theorie ' + c.vol
       };
     });
@@ -99,9 +110,23 @@
   }
   function attr(s) { return esc(s).replace(/"/g, '&quot;'); }
 
-  /* Everything renderable: the AGW chapters (one row per member author) plus the
-   * members' own submitted publications. */
-  function allRows() { return MEMBER_CHAPTERS.concat(PUBS); }
+  /* Two row sets, and using the wrong one is the bug this comment exists to prevent.
+   *
+   *   MEMBER view  -> MEMBER_CHAPTERS: one row per member author, so a chapter written by
+   *                   two members appears on BOTH of their cards. Correct there.
+   *   THEME view,
+   *   search, and
+   *   pill counts  -> CHAPTERS: one row per chapter, full stop.
+   *
+   * Feeding the member expansion into the theme view did two things wrong at once. It
+   * listed the one 2-member chapter (Bd XXIV, Gehrke/Kurz) TWICE, and it dropped all 145
+   * chapters whose authors are not AGW members — so every theme pill undercounted badly
+   * (general showed 33 of 59; spatial 11 of 22). The themes describe the CORPUS, not the
+   * membership; a chapter by a guest author is still a chapter on that theme. */
+  function rowsFor(view) {
+    return (view === 'member' ? MEMBER_CHAPTERS : CHAPTERS).concat(PUBS);
+  }
+  function allRows() { return rowsFor(state.view); }
 
   /* Return publications matching the current search; if ignoreTheme, skip theme filter. */
   function matching(ignoreTheme) {
