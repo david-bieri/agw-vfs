@@ -328,60 +328,27 @@ function toggleArchive(i) {
 let pubDecadeFilter = 'all';
 let pubSearchQ = '';
 
-/* ── Chapter data (populated entries; others show placeholder) ── */
-const PUB_CHAPTERS = {
-  'XLIII': [
-    { author: 'Kerstin Dross-Kr\u00fcpe', title: 'Frauen und Wirtschaft in der r\u00f6mischen Antike' },
-    { author: 'Charlotte Backerra', title: 'Regierende Frauen in der fr\u00fchen Neuzeit und ihre Wirtschaftskompetenz' },
-    { author: 'Elisabeth Allgoewer', title: 'Frauen im Verein f\u00fcr Socialpolitik' },
-    { author: 'Christian Kremser', title: 'Beatrice Webb (1858\u20131943) als \u00d6konomin' },
-    { author: 'G\u00fcnther Chaloupek', title: 'Helene Bauer (1871\u20131942) \u2013 b\u00fcrgerliche und sozialistische \u00d6konomie' },
-    { author: 'Reinhard Schumacher \u00b7 Svenja Flechtner \u00b7 Matthias St\u00f6rring', title: 'Charlotte Leubuscher (1888\u20131961)' },
-    { author: 'Uwe Dathe \u00b7 Daniel Nientiedt', title: 'Edith Eucken (1896\u20131985)' },
-    { author: 'Hans Frambach', title: 'Cl\u00e4re Tisch (1907\u20131941) \u2013 Leben und Werk' },
-    { author: 'Harald Hagemann', title: 'Fanny Ginor (1911\u20132007): Die Basler National\u00f6konomie nach Israel getragen' },
-    { author: 'Lachezar Grudev', title: 'Vera Smith (1912\u20131976). Eine mutige \u00d6konomin im Spannungsfeld dreier Welten' },
-    { author: 'Bertram Schefold', title: 'Joan Robinson (1903\u20131983) \u2013 eine pers\u00f6nliche Charakterisierung' },
-  ],
-  'XLII': [
-    { author: 'Karen Horn', title: 'Geschichte der Wirtschaftswissenschaften als interdisziplin\u00e4re Aufgabe: Ein \u00dcberblick \u00fcber die j\u00fcngere Adam-Smith-Forschung' },
-    { author: 'Philipp Robinson R\u00f6ssner', title: 'Smith\u2019s Scotland. Contextualising the Wealth of Nations' },
-    { author: 'Sabine F\u00f6llinger', title: 'Antike Philosophie im Denken von Adam Smith' },
-    { author: 'Reinhard Schumacher', title: 'Die unterschiedlichen Ansichten Adam Smiths und David Humes \u00fcber wirtschaftliche Entwicklung und zwischenstaatliche Kriege' },
-    { author: 'Ludwig Nellinger', title: 'Methodik und Erkenntnisfortschritt: Adam Smith und Johann Heinrich von Th\u00fcnen' },
-    { author: 'Heinz D. Kurz', title: 'Smith, Marx und Schumpeter \u00fcber den Zivilisationsprozess' },
-    { author: 'Reinhard Blomert', title: 'Adam Smith \u00fcber Gentlemen, Gesch\u00e4ftsleute und innere Richter' },
-  ],
-  'XLI': [
-    { author: 'Elisabeth Allgoewer', title: 'Zur Gründungsgeschichte des Vereins für Socialpolitik' },
-    { author: 'Volker Caspari', title: 'Methodenstreit und Werturteilsdebatte' },
-    { author: 'Alexander Ebner', title: 'Schumpeter und der Verein für Socialpolitik' },
-    { author: 'Tetsushi Harada', title: 'Rezeption der deutschen Sozialwissenschaften in Japan' },
-    { author: 'Jan-Otmar Hesse', title: 'Wirtschaftswissenschaft in der Weimarer Republik' },
-    { author: 'Hauke Janssen', title: 'Die Nationalökonomie im Nationalsozialismus' },
-    { author: 'Bertram Schefold', title: 'Kontinuitäten und Brüche in der Theoriegeschichte des VfS' },
-  ],
-  'XXXI': [
-    { author: 'Heinz D. Kurz', title: 'Geschichte der Entwicklungstheorien: Einleitung' },
-    { author: 'N.N.', title: 'Friedrich List und die Historische Schule' },
-    { author: 'N.N.', title: 'Werner Sombart und der technische Fortschritt' },
-    { author: 'N.N.', title: 'Kumulatives Wachstum bei Myrdal und Krugman' },
-  ],
-  'XXIII': [
-    { author: 'Elisabeth Allgoewer', title: 'Ökonomik und Technik: Einleitung' },
-    { author: 'Christian Gehrke', title: 'Bortkiewicz und die Produktionstheorie' },
-    { author: 'Harald Hagemann', title: 'Technischer Wandel in der ökonomischen Theorie' },
-    { author: 'Heinz D. Kurz', title: 'Sraffa und die Produktion von Waren durch Waren' },
-    { author: 'Helge Peukert', title: 'Schumpeter über Innovation und Konjunktur' },
-    { author: 'Dieter Schneider', title: 'Investitionstheorie und technischer Fortschritt' },
-  ],
-  'IV': [
-    { author: 'Harald Scherf (Hrsg.)', title: 'Drei Jubiläen (1983): Einleitung' },
-    { author: 'N.N.', title: 'Karl Marx: 100 Jahre Kapital-Vollendung' },
-    { author: 'N.N.', title: 'Joseph Schumpeter: Theorien und Erbe' },
-    { author: 'N.N.', title: 'John Maynard Keynes: Allgemeine Theorie revisited' },
-  ],
-};
+/* ── Volume chapters (Tagungsband ToCs) ──────────────────────────────────────
+ * The full ToC of all 43 volumes lives in agw_volume_chapters.js
+ * (window.AGW_DATA.VOLUME_CHAPTERS, 288 chapters harvested from the D&H eLibrary
+ * and cross-checked against the volume PDFs). This supersedes the old hand-made
+ * PUB_CHAPTERS map, which covered 6 volumes with no page numbers and no links.
+ *
+ * Read LAZILY, inside the render function — never as a top-level const. agw_app.js
+ * must not depend on another file's globals being defined at parse time (ADR-017:
+ * a top-level reference to a later-loaded constant aborts the whole file silently).
+ * If agw_volume_chapters.js is absent, chaptersFor() returns [] and the ToC falls
+ * back to its placeholder — the page still renders.
+ */
+function escHtml(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+function chaptersFor(num) {
+  const all = (window.AGW_DATA && window.AGW_DATA.VOLUME_CHAPTERS) || [];
+  return all.filter(c => c.vol === num);
+}
 
 /* ── Citation state ── */
 const pubCiteFormat = {};
@@ -518,15 +485,31 @@ function renderPubs() {
     const num    = p.num;
     const activeFmt = pubCiteFormat[num] || 'bibtex';
 
-    /* — Chapter list — */
-    const chaps = PUB_CHAPTERS[num];
-    const chapHtml = chaps
-      ? chaps.map(c => `<div class="pub-chapter">
-          <span class="pub-chapter-author">${c.author}</span>
-          <span class="pub-chapter-title">${c.title}</span>
-          ${c.pages ? `<span class="pub-chapter-pages">S. ${c.pages}</span>` : ''}
-        </div>`).join('')
+    /* — Chapter list (harvested ToC) — */
+    const chaps = chaptersFor(num);
+    const pp_lbl = lang === 'de' ? 'S.' : 'pp.';
+    const cite_lbl = (AGW.S.cite_title && AGW.S.cite_title[lang]) || 'Zitieren';
+    const bib_lbl  = (AGW.S.cite_vol_bib && AGW.S.cite_vol_bib[lang]) || 'Band als BibTeX';
+    const chapHtml = chaps.length
+      ? chaps.map(c => {
+          const t = escHtml(c.title);
+          const title = c.url
+            ? `<a class="pub-chapter-link" href="${escHtml(c.url)}" target="_blank" rel="noopener">${t}</a>`
+            : t;
+          return `<div class="pub-chapter">
+          <span class="pub-chapter-author">${escHtml(c.authors)}</span>
+          <span class="pub-chapter-title">${title}</span>
+          <span class="pub-chapter-pages">${c.pages ? `${pp_lbl} ${escHtml(c.pages)}` : ''}
+            <button class="cite-btn" data-cite="${c.volN}|${escHtml(c.pages)}"
+                    title="${escHtml(cite_lbl)}">${escHtml(cite_lbl)}</button>
+          </span>
+        </div>`;
+        }).join('')
       : `<div class="pub-toc-placeholder">${no_toc}</div>`;
+    const volBib = chaps.length
+      ? `<div class="pub-toc-actions"><button class="cite-btn cite-btn-vol"
+           data-cite-all="vol:${escHtml(num)}">${escHtml(bib_lbl)}</button></div>`
+      : '';
 
     /* — Citation tabs — */
     const tabsHtml = FMTS.map(f =>
@@ -560,7 +543,7 @@ function renderPubs() {
     <div class="pub-detail-inner">
       <div class="pub-detail-left">
         <div class="pub-detail-sec-lbl">${toc_lbl}</div>
-        <div class="pub-chapter-list">${chapHtml}</div>
+        <div class="pub-chapter-list">${chapHtml}</div>${volBib}
       </div>
       <div class="pub-detail-right">
         <div class="pub-detail-sec-lbl">${cite_lbl}</div>

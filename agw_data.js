@@ -407,7 +407,11 @@ const EVENT_NETWORKS = [
 ];
 
 // Also expose on a namespace object for explicit cross-page access
-window.AGW_DATA = {
+/* MERGE, never assign: other data files (agw_member_pubs.js, agw_volume_chapters.js)
+ * also publish onto window.AGW_DATA, and script order across pages is not fixed. A bare
+ * `window.AGW_DATA = {...}` here silently erases whatever loaded first — the failure is
+ * invisible (the page renders, the data is just gone). See ADR-017. */
+window.AGW_DATA = Object.assign(window.AGW_DATA || {}, {
   CHAIRS: typeof CHAIRS !== 'undefined' ? CHAIRS : undefined,
   MEMBERS: typeof MEMBERS !== 'undefined' ? MEMBERS : undefined,
   ARCHIVE: typeof ARCHIVE !== 'undefined' ? ARCHIVE : undefined,
@@ -416,4 +420,4 @@ window.AGW_DATA = {
   ANNOUNCEMENTS: typeof ANNOUNCEMENTS !== 'undefined' ? ANNOUNCEMENTS : undefined,
   EVENTS: typeof EVENTS !== 'undefined' ? EVENTS : undefined,
   EVENT_NETWORKS: typeof EVENT_NETWORKS !== 'undefined' ? EVENT_NETWORKS : undefined
-};
+});

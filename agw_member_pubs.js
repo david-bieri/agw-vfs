@@ -27,7 +27,7 @@
  * ─── THEME IDS ─────────────────────────────────────────────────────────────
  *   classical      smith          austrian       keynesian
  *   monetary       ordoliberal    historical     marxian
- *   cameralism     evolutionary   distribution   public_finance
+ *   preclassical   evolutionary   distribution   public_finance
  *   methodology    econ_history   spatial        feminist
  *   general
  *   ─ see PUB_THEMES below for the full bilingual labels.
@@ -50,7 +50,7 @@
     { id:'ordoliberal',   order:6,  de:'Ordoliberalismus & Ordnungsökonomik',     en:'Ordoliberalism & Constitutional Economics' },
     { id:'historical',    order:7,  de:'Historische Schule',                      en:'German Historical School' },
     { id:'marxian',       order:8,  de:'Marxistische Ökonomik',                   en:'Marxian Economics' },
-    { id:'cameralism',    order:9,  de:'Kameralismus',                            en:'Cameralism' },
+    { id:'preclassical',  order:9,  de:'Vorklassik: Merkantilismus, Kameralismus & Physiokratie', en:'Pre-classical: Mercantilism, Cameralism & Physiocracy' },
     { id:'evolutionary',  order:10, de:'Evolutionäre & Institutionenökonomik',    en:'Evolutionary & Institutional Economics' },
     { id:'distribution',  order:11, de:'Verteilungs- & Wachstumstheorie',         en:'Distribution & Growth Theory' },
     { id:'public_finance',order:12, de:'Finanzwissenschaft',                      en:'Public Finance' },

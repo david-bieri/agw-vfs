@@ -474,6 +474,21 @@
     mpub_no_results      : { de: 'Keine Publikationen gefunden.', en: 'No publications found.' },
     mpub_doi_link        : { de: 'DOI', en: 'DOI' },
     mpub_link            : { de: 'Link', en: 'Link' },
+
+    /* — AGW Tagungsband chapters (agw_volume_chapters.js) — */
+    mpub_block_agw       : { de: 'Beitr\u00e4ge zu AGW-Tagungsb\u00e4nden', en: 'Contributions to AGW conference volumes' },
+    mpub_block_other     : { de: 'Weitere Publikationen', en: 'Further publications' },
+    mpub_badge_agw       : { de: 'AGW-Band', en: 'AGW volume' },
+    mpub_pp              : { de: 'S.', en: 'pp.' },
+
+    /* — Citation export (agw_cite.js) — */
+    cite_title           : { de: 'Zitieren', en: 'Cite' },
+    cite_copy            : { de: 'Kopieren', en: 'Copy' },
+    cite_copied          : { de: 'Kopiert', en: 'Copied' },
+    cite_close           : { de: 'Schlie\u00dfen', en: 'Close' },
+    cite_bib_dl          : { de: '.bib herunterladen', en: 'Download .bib' },
+    cite_vol_bib         : { de: 'Band als BibTeX', en: 'Volume as BibTeX' },
+    cite_all_bib         : { de: 'Alle als BibTeX', en: 'All as BibTeX' },
     mpub_member_link     : { de: 'Profil ansehen', en: 'View profile' },
     mpub_contribute_title: { de: 'Eigene Forschung beitragen', en: 'Contribute your research' },
     mpub_contribute_text : { de: 'Mitglieder, die aufgenommen oder aktualisiert werden möchten, senden bitte ihre <strong>ORCID iD</strong> (oder eine Liste von DOIs) sowie Forschungsschwerpunkte an <a href="mailto:bieri@vt.edu?subject=Forschung%20der%20Mitglieder" style="color:inherit;font-weight:600;">bieri@vt.edu</a>. Mit der Zusendung erklären Sie sich damit einverstanden, dass Name, Institution, Forschungsschwerpunkte, ausgewählte Publikationen sowie ORCID-/Homepage-Links auf www.agw-vfs.de veröffentlicht werden; der Widerruf ist jederzeit formlos per E-Mail möglich.', en: 'Members who would like to be listed or updated are invited to send their <strong>ORCID iD</strong> (or a list of DOIs) together with their research foci to <a href="mailto:bieri@vt.edu?subject=Members%27%20Research" style="color:inherit;font-weight:600;">bieri@vt.edu</a>. By submitting, you consent to the publication of your name, institution, research foci, selected publications and ORCID/homepage links on www.agw-vfs.de; consent may be withdrawn at any time by e-mail.' },

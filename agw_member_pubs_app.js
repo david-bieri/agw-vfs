@@ -16,6 +16,41 @@
   var THEMES  = (window.AGW_DATA && window.AGW_DATA.PUB_THEMES)  || [];
   var PUBS    = (window.AGW_DATA && window.AGW_DATA.MEMBER_PUBS) || [];
   var MEMBERS = window.MEMBERS || (window.AGW_DATA && window.AGW_DATA.MEMBERS) || [];
+  var VOLS    = (typeof PUBLICATIONS !== 'undefined') ? PUBLICATIONS : [];
+
+  /* ── AGW Tagungsband chapters ───────────────────────────────────────────────
+   * The committee's own proceedings: 288 chapters across 43 volumes. These are the
+   * SPINE of a member's record here; MEMBER_PUBS is the supplement. Different
+   * provenance (our own publication record, not a member's submission) and a
+   * different consent basis — hence a separate array, and a separate block.
+   *
+   * A chapter carries `mids` (a LIST — a co-authored chapter belongs to every member
+   * on it) rather than a single `mid`. It is expanded here into one pub-shaped row
+   * PER member author, so the existing grouping and rendering work unchanged. */
+  var VOL_BY_NUM = {};
+  VOLS.forEach(function (v) { VOL_BY_NUM[v.num] = v; });
+
+  var CHAPTERS = ((window.AGW_DATA && window.AGW_DATA.VOLUME_CHAPTERS) || [])
+    .map(function (c) {
+      var v = VOL_BY_NUM[c.vol] || {};
+      return {
+        mid: null, agw: true, vol: c.vol, volN: c.volN,
+        title: c.title, authors: c.authors, mids: c.mids || [],
+        themes: c.themes || [], pages: c.pages, url: c.url,
+        year: v.year || null, type: 'chapter',
+        venue: 'Studien zur Entwicklung der \u00f6konomischen Theorie ' + c.vol
+      };
+    });
+
+  /* One row per member author, so a chapter appears on each of their pages. */
+  var MEMBER_CHAPTERS = [];
+  CHAPTERS.forEach(function (c) {
+    c.mids.forEach(function (mid) {
+      var row = {}; for (var k in c) row[k] = c[k];
+      row.mid = mid;
+      MEMBER_CHAPTERS.push(row);
+    });
+  });
 
   // Lookup of member metadata by stable id slug (primary) and by display name
   // (legacy fallback, so a hand-added entry keyed on `member` still resolves).
@@ -64,10 +99,14 @@
   }
   function attr(s) { return esc(s).replace(/"/g, '&quot;'); }
 
+  /* Everything renderable: the AGW chapters (one row per member author) plus the
+   * members' own submitted publications. */
+  function allRows() { return MEMBER_CHAPTERS.concat(PUBS); }
+
   /* Return publications matching the current search; if ignoreTheme, skip theme filter. */
   function matching(ignoreTheme) {
     var q = state.q.trim().toLowerCase();
-    return PUBS.filter(function (p) {
+    return allRows().filter(function (p) {
       if (!ignoreTheme && state.view === 'theme' && state.theme !== 'all' &&
           (p.themes || []).indexOf(state.theme) === -1) return false;
       if (q) {
@@ -93,6 +132,7 @@
 
   /* One publication row (reuses .pub-item visual language). */
   function pubRow(p) {
+    if (p.agw) return chapterRow(p);
     var link = '';
     if (p.doi) {
       link = '<a class="pub-link" href="https://doi.org/' + attr(p.doi) +
@@ -112,6 +152,33 @@
                '<div class="pub-meta">' + authors + (venue ? ' · ' + venue : '') + yr + '</div>' +
              '</div>' +
              '<div class="pub-actions">' + link + '</div>' +
+           '</div></div>';
+  }
+
+  /* An AGW-Tagungsband chapter: volume + page range instead of a journal venue. */
+  function chapterRow(c) {
+    var link = c.url
+      ? '<a class="pub-link" href="' + attr(c.url) + '" target="_blank" rel="noopener">' +
+        esc(t('mpub_link')) + ' <span class="ico ico-ext" aria-hidden="true"></span></a>'
+      : '';
+    /* Same badge idiom as typeBadge(), but FILLED navy rather than tinted: this is the
+     * committee's own publication record, not a self-reported item. */
+    var badge = '<span style="display:inline-block;margin-left:8px;padding:1px 6px;border-radius:3px;' +
+                'font-family:\'Source Sans 3\',sans-serif;font-size:10px;font-weight:600;letter-spacing:.06em;' +
+                'text-transform:uppercase;vertical-align:middle;color:#fff;background:var(--navy);' +
+                'border:1px solid var(--navy);">' + esc(t('mpub_badge_agw')) + '</span>';
+    var meta = esc(c.authors) +
+               ' \u00b7 <em>' + esc(c.venue) + '</em>' +
+               (c.pages ? ' \u00b7 ' + esc(t('mpub_pp')) + ' ' + esc(c.pages) : '') +
+               (c.year ? ' \u00b7 ' + c.year : '');
+    var cite = '<button class="cite-btn" data-cite="' + attr(String(c.volN)) + '|' + attr(c.pages) + '">' +
+               esc(t('cite_title')) + '</button>';
+    return '<div class="pub-item-wrap"><div class="pub-item" style="grid-template-columns:1fr auto;cursor:default;">' +
+             '<div>' +
+               '<div class="pub-title">' + esc(c.title) + badge + '</div>' +
+               '<div class="pub-meta">' + meta + '</div>' +
+             '</div>' +
+             '<div class="pub-actions">' + cite + link + '</div>' +
            '</div></div>';
   }
 
@@ -223,6 +290,32 @@
     return out;
   }
 
+  /* Two blocks per member: the AGW contributions are the spine, everything else is
+   * explicitly a supplement. A member with no AGW chapter simply gets one block —
+   * no empty heading. */
+  function memberBlocks(rows) {
+    var agw   = rows.filter(function (p) { return p.agw; })
+                    .sort(function (a, b) { return (b.volN || 0) - (a.volN || 0); });
+    var other = rows.filter(function (p) { return !p.agw; })
+                    .sort(function (a, b) { return (b.year || 0) - (a.year || 0); });
+    var out = '';
+    if (agw.length) {
+      var mid = agw[0].mid;
+      out += '<div class="mpub-block-lbl">' + esc(t('mpub_block_agw')) +
+             '<span class="mpub-block-n">' + agw.length + '</span>' +
+             '<button class="cite-btn cite-btn-vol" data-cite-all="mid:' + attr(mid) + '">' +
+             esc(t('cite_all_bib')) + '</button></div>' +
+             '<div class="pub-list-inner">' + agw.map(pubRow).join('') + '</div>';
+    }
+    if (other.length) {
+      out += '<div class="mpub-block-lbl' + (agw.length ? ' mpub-block-lbl-2' : '') + '">' +
+             esc(t('mpub_block_other')) +
+             '<span class="mpub-block-n">' + other.length + '</span></div>' +
+             '<div class="pub-list-inner">' + other.map(pubRow).join('') + '</div>';
+    }
+    return out;
+  }
+
   function renderMemberView(list) {
     var l = curLang();
     var groups = groupByMember(list);
@@ -259,9 +352,7 @@
                     (inst ? ' \u00b7 ' + esc(inst) : '') + '&nbsp;&nbsp;' +
                     memberLinks(meta) + profile + '</span>' +
                 '</div>' +
-                '<div class="mpub-member-body"><div class="pub-list-inner">' +
-                  pubs.map(pubRow).join('') +
-                '</div></div>' +
+                '<div class="mpub-member-body">' + memberBlocks(pubs) + '</div>' +
               '</div>';
     });
     return html;
