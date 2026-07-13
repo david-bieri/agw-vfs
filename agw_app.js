@@ -791,11 +791,7 @@ function updateCountdown(){
 }
 setInterval(updateCountdown, 30000);
 
-/* ── Back to top ── */
-window.addEventListener('scroll',function(){
-  var bt=document.getElementById('back-top');
-  if(bt)bt.classList.toggle('visible',window.scrollY>400);
-},{passive:true});
+/* ── Back to top ── moved to agw_nav.js (self-mounting; agw_app.js is not loaded on analytics.html / guide.html) ── */
 
 /* ── QR code ── */
 (function(){

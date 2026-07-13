@@ -215,4 +215,61 @@
     }
   };
 
+  /* ── Back-to-top button ──────────────────────────────────────────────
+   * Self-mounting. Lives here (not in the page HTML, not in agw_app.js)
+   * because agw_nav.js is the only script every page loads: analytics.html
+   * and guide.html do NOT load agw_app.js, and only index.html and
+   * jahrestagung-2026.html ever carried the hardcoded <button>. Owning both
+   * the markup and the scroll handler here makes the control appear on every
+   * page by construction, including any page added later.
+   * Styles: #back-top / #back-top.visible in agw_styles.css.
+   */
+  (function mountBackTop() {
+    if (typeof document === 'undefined') return;
+
+    var LABEL = { de: 'Zurück nach oben', en: 'Back to top' };
+
+    var mount = function () {
+      if (document.getElementById('back-top')) return;   // idempotent
+      var body = document.body;
+      if (!body) return;
+
+      var btn = document.createElement('button');
+      btn.id = 'back-top';
+      btn.type = 'button';
+      btn.innerHTML = '&uarr;';
+
+      var setLabel = function (lang) {
+        btn.setAttribute('aria-label', LABEL[lang] || LABEL.de);
+        btn.setAttribute('title', LABEL[lang] || LABEL.de);
+      };
+      setLabel(window.AGW && window.AGW.getLang ? window.AGW.getLang() : 'de');
+
+      btn.addEventListener('click', function () {
+        var reduce = window.matchMedia &&
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      });
+
+      body.appendChild(btn);
+
+      var onScroll = function () {
+        btn.classList.toggle('visible', window.scrollY > 400);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();   // correct state on a page loaded mid-scroll (anchor / restore)
+
+      window.addEventListener('agw-lang-change', function (e) {
+        setLabel((e && e.detail && e.detail.lang) ||
+          (window.AGW && window.AGW.getLang ? window.AGW.getLang() : 'de'));
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', mount);
+    } else {
+      mount();
+    }
+  })();
+
 })();
