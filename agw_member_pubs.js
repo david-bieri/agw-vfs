@@ -321,6 +321,12 @@
       title:'China: Quo Vadis?', type:'book',
       authors:'Helmut Wagner', venue:'Springer Fachmedien Wiesbaden', year:2025,
       doi:'10.1007/978-3-658-46816-3' },
+
+    // ── Anselm Küsters (neu gewählt 2026) ──
+    { mid:'kuesters-anselm', themes:['ordoliberal','econ_history'],
+      title:'The Making and Unmaking of Ordoliberal Language: A Digital Conceptual History of European Competition Law', type:'book',
+      authors:'Anselm Küsters', venue:'Studien zur europäischen Rechtsgeschichte 340, Klostermann, Frankfurt a.M.', year:2023,
+      url:'https://www.lhlt.mpg.de/3579283/volume340' },
   ];
 
   window.AGW_DATA.PUB_THEMES  = PUB_THEMES;
