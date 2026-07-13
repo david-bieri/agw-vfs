@@ -272,4 +272,64 @@
     }
   })();
 
+  /* ── Update notice ──────────────────────────────────────────────────────────
+   * The service worker is cache-first, so a visitor always renders the PREVIOUS
+   * deploy: the new SW installs in the background, activates, claims the page —
+   * but the DOM was already built from the old files. They would only see a change
+   * on their next visit, which is why "please hard-refresh" kept being necessary.
+   *
+   * Instead the page notices when a new SW has taken over and offers a reload. The
+   * `hadController` guard matters: on a FIRST visit the SW also claims the page,
+   * and prompting a brand-new visitor to reload would be nonsense.
+   *
+   * Lives in agw_nav.js because that is the one script all eight pages load.
+   */
+  (function mountUpdateNotice() {
+    if (!('serviceWorker' in navigator)) return;
+
+    var hadController = !!navigator.serviceWorker.controller;   // false on a first visit
+    var shown = false;
+
+    navigator.serviceWorker.addEventListener('controllerchange', function () {
+      if (!hadController || shown) return;   // first install, or already asked
+      shown = true;
+      show();
+    });
+
+    /* Look for a new deploy on load, and hourly for a tab left open. */
+    navigator.serviceWorker.ready.then(function (reg) {
+      if (!reg || !reg.update) return;
+      reg.update();
+      setInterval(function () { reg.update(); }, 60 * 60 * 1000);
+    }).catch(function () { /* no registration yet — nothing to update */ });
+
+    function show() {
+      var de = (document.documentElement.lang || 'de') !== 'en';
+      var bar = document.createElement('div');
+      bar.setAttribute('role', 'status');
+      bar.style.cssText =
+        'position:fixed;left:50%;bottom:22px;transform:translateX(-50%);z-index:1300;' +
+        'display:flex;align-items:center;gap:14px;max-width:calc(100vw - 32px);' +
+        'padding:11px 14px 11px 18px;border-radius:8px;' +
+        'background:#1B3A6B;color:#fff;box-shadow:0 8px 30px rgba(11,26,51,.32);' +
+        "font-family:'Source Sans 3',sans-serif;font-size:14px;line-height:1.35;" +
+        'opacity:0;transition:opacity .25s ease;';
+      bar.innerHTML =
+        '<span>' + (de ? 'Neue Inhalte verf\u00fcgbar.' : 'New content is available.') + '</span>' +
+        '<button type="button" style="flex:none;font-family:inherit;font-size:13px;font-weight:600;' +
+        'color:#1B3A6B;background:#fff;border:none;border-radius:5px;padding:6px 12px;cursor:pointer;">' +
+        (de ? 'Neu laden' : 'Reload') + '</button>' +
+        '<button type="button" aria-label="' + (de ? 'Schlie\u00dfen' : 'Dismiss') + '" ' +
+        'style="flex:none;background:none;border:none;color:rgba(255,255,255,.7);font-size:19px;' +
+        'line-height:1;cursor:pointer;padding:0 2px;">\u00d7</button>';
+
+      var btns = bar.querySelectorAll('button');
+      btns[0].addEventListener('click', function () { location.reload(); });
+      btns[1].addEventListener('click', function () { bar.remove(); });
+
+      document.body.appendChild(bar);
+      requestAnimationFrame(function () { bar.style.opacity = '1'; });
+    }
+  })();
+
 })();
