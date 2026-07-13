@@ -920,6 +920,29 @@ function renderCommitteeFacts() {
     });
   }
 
+  /* Host of the most recent conference. The markup used to read "Dr. David Bieri" —
+   * MEMBERS says `title:'Prof. Dr.'`, so the page was quietly demoting him — and the
+   * label hardcoded "Gastgeber 2026", which would have gone stale next year. Both now
+   * come from ARCHIVE[].host + MEMBERS. The mailto is kept: it is the conference contact
+   * address, not a member attribute. */
+  var hostEntry = (typeof ARCHIVE !== 'undefined')
+    ? ARCHIVE.filter(function (e) { return e.host; }).sort(function (a, b) { return b.year - a.year; })[0]
+    : null;
+  if (hostEntry && typeof MEMBERS !== 'undefined') {
+    var hm = MEMBERS.filter(function (m) { return m.id === hostEntry.host; })[0];
+    var hl = document.getElementById('fact-host-lbl');
+    var hv = document.getElementById('fact-host');
+    if (hl) {
+      hl.textContent = (isDE ? (hm && hm.gender === 'f' ? 'Gastgeberin ' : 'Gastgeber ') : 'Host ')
+        + hostEntry.year;
+    }
+    if (hv && hm) {
+      var a = hv.querySelector('a');           // keep the mailto if the markup has one
+      var full = ((hm.title ? hm.title + ' ' : '') + hm.name).trim();
+      if (a) { a.textContent = full; } else { hv.textContent = full; }
+    }
+  }
+
   var yr = new Date().getFullYear();
   var asOf = isDE ? ' (Stand ' + yr + ')' : ' (as of ' + yr + ')';
 
