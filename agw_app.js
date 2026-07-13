@@ -39,6 +39,7 @@ function setLang(l) {
   renderEvents();
   renderNextEvent();
   renderGlance();
+  renderCommitteeFacts();   // committee.html: chair name + live counts (null-guarded elsewhere)
   updateCountdown();
 
   // Toggle button active state (guarded — nav buttons are injected by
@@ -874,6 +875,48 @@ function personKey(n){
   var i = w.length - 1;
   while (i > 1 && _NAME_PARTICLES.indexOf(w[i-1].toLowerCase()) !== -1) i--;
   return foldName(w.slice(i).join(' ')) + '|' + foldName(w[0]).charAt(0);
+}
+
+/* ── "Der AGW in Zahlen" + Kontakt: derive the facts, never hardcode them ──────
+ * committee.html used to spell the chair's name into the HTML twice. When the chair
+ * changed in 2026 the page went on naming Rainer Klump, and no data edit could fix it.
+ * The same card also carried "48 Mitglieder" and "42 Bände" as literals — the German
+ * said 42 while the English string said 43.
+ *
+ * Everything here is now read from CHAIRS / MEMBERS / PUBLICATIONS / ARCHIVE. The current
+ * chair is simply the CHAIRS entry that is not `past`. Re-run on language change, because
+ * "Bände"/"volumes" is language-dependent. Null-guarded throughout (ADR-016): committee.html
+ * is the only page with these nodes, and agw_app.js is loaded by several.
+ */
+function renderCommitteeFacts() {
+  var isDE = lang === 'de';
+
+  var chair = (typeof CHAIRS !== 'undefined')
+    ? CHAIRS.filter(function (c) { return !c.past; })[0]
+    : null;
+  if (chair) {
+    var name = ((chair.title ? chair.title + ' ' : '') + chair.name).trim();
+    ['fact-chair', 'fact-chair-2'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.textContent = name;
+    });
+  }
+
+  var yr = new Date().getFullYear();
+  var asOf = isDE ? ' (Stand ' + yr + ')' : ' (as of ' + yr + ')';
+
+  var m = document.getElementById('fact-members');
+  if (m && typeof MEMBERS !== 'undefined') m.textContent = MEMBERS.length + asOf;
+
+  var v = document.getElementById('fact-volumes');
+  if (v && typeof PUBLICATIONS !== 'undefined') {
+    v.textContent = PUBLICATIONS.length + (isDE ? ' Bände' : ' volumes') + asOf;
+  }
+
+  var c = document.getElementById('fact-confs');
+  if (c && typeof ARCHIVE !== 'undefined') {
+    c.textContent = ARCHIVE.length + (isDE ? ' Jahrestagungen' : ' annual conferences') + asOf;
+  }
 }
 
 function buildSpeakerStats(){
