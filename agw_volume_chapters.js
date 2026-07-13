@@ -1274,7 +1274,7 @@
       themes:['feminist'], url:'https://elibrary.duncker-humblot.com/book-chapter/2041/nobelpreis-2023-fur-claudia-goldin-die-erwerbskarriere-von-frauen-im-fokus', src:'dh' },
     { volN:43, vol:'XLIII', pages:'25–58',
       title:'Vom utopischen Institutionengestalten. Beatrice Webb (1858–1943) und ihre kontextuale Ökonomik',
-      authors:'Christian E. W. Kremser', mids:[],
+      authors:'Christian E. W. Kremser', mids:['kremser-christian'],
       themes:['evolutionary', 'feminist'], url:'https://elibrary.duncker-humblot.com/book-chapter/2042/vom-utopischen-institutionengestalten', src:'dh' },
     { volN:43, vol:'XLIII', pages:'59–86',
       title:'Helene Bauer (1871–1942) –„bürgerliche und sozialistische Ökonomie“',
@@ -1286,7 +1286,7 @@
       themes:['distribution', 'feminist'], url:'https://elibrary.duncker-humblot.com/book-chapter/2044/charlotte-leubuscher-18881961-von-der-sozialen-frage-zur-pionierin-der-entwicklungsokonomik', src:'dh' },
     { volN:43, vol:'XLIII', pages:'117–144',
       title:'Edith Eucken-Erdsiek (1896–1985)',
-      authors:'Uwe Dathe / Daniel Nientiedt', mids:[],
+      authors:'Uwe Dathe / Daniel Nientiedt', mids:['nientiedt-daniel'],
       themes:['ordoliberal', 'feminist'], url:'https://elibrary.duncker-humblot.com/book-chapter/2045/edith-eucken-erdsiek-18961985', src:'dh' },
     { volN:43, vol:'XLIII', pages:'145–186',
       title:'Erinnerungen an Joan Robinson (1903–1983). Von den mikroökonomischen Lehrmeinungen zu den kapitaltheoretischen Debatten',
@@ -1302,7 +1302,7 @@
       themes:['feminist'], url:'https://elibrary.duncker-humblot.com/book-chapter/2048/fanny-ginor-19112007-die-basler-nationalokonomie-nach-israel-getragen', src:'dh' },
     { volN:43, vol:'XLIII', pages:'237',
       title:'Vera Constance Smith (1912–1976). Eine Ökonomin im Spannungsfeld dreier Welten',
-      authors:'Lachezar Grudev', mids:[],
+      authors:'Lachezar Grudev', mids:['grudev-lachezar'],
       themes:['feminist'], url:'https://elibrary.duncker-humblot.com/book-chapter/2049/vera-constance-smith-19121976-eine-okonomin-im-spannungsfeld-dreier-welten', src:'dh' },
   ];
 

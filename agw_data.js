@@ -21,7 +21,15 @@ const CHAIRS = [
   { name:'Elisabeth Allgoewer',    title:'Prof. Dr.', inst:'Universität Hamburg',                      start:2026, end:2030, past:false },
 ];
 
-/* `gender:'f'` is present ONLY where German grammar needs it — the Emerita/Emeritus badge
+/* `orcid:` is optional. When present the member card renders the official ORCID iD mark,
+ * linking to https://orcid.org/<id>. Two rules, both learned the hard way:
+ *   1. NEVER add an iD found by name search without confirming the affiliation. Michael
+ *      Wohlgemuth's name-matched iD belongs to an open-access researcher at Bielefeld, not
+ *      to the ordoliberal economist — it is deliberately absent here.
+ *   2. iDs are MOD-11-2 checksummed. Run the check before committing; a transposed digit
+ *      produces a live link to somebody else's record.
+ *
+ * `gender:'f'` is present ONLY where German grammar needs it — the Emerita/Emeritus badge
  * and the Vorsitzende/Vorsitzender label. It is not displayed anywhere and carries no other
  * meaning. Absent = the masculine forms are used. Two bugs made this necessary: the emeritus
  * badge read the placeholder "Emeritus/a" for everyone, and the chair badge was hardcoded to
@@ -32,7 +40,7 @@ const MEMBERS = [
   { id:'barens-ingo', name:'Ingo Barens', title:'Prof. em. Dr.', inst:'TU Darmstadt', city:'Darmstadt', country:'DE', emeritus:true, role:'', focus_de:'Keynesianismus, Beschäftigungstheorie', focus_en:'Keynesianism, employment theory' },
   { id:'blomert-reinhard', name:'Reinhard Blomert', title:'Dr. habil.', inst:'Wissenschaftszentrum Berlin (WZB)', city:'Berlin', country:'DE', emeritus:false, role:'', focus_de:'Wissenssoziologie, Geschichte der Wirtschaftswissenschaften', focus_en:'Sociology of knowledge, history of economics' },
   { id:'bieri-david', name:'David Bieri', title:'Prof. Dr.', inst:'Virginia Tech', city:'Blacksburg', country:'US', emeritus:false, role:'', focus_de:'Geschichte der Finanzmarkttheorie, Urban Economics', focus_en:'History of financial theory, urban economics' },
-  { id:'braun-eduard', name:'Eduard Braun', title:'PD Dr.', inst:'TU Clausthal', city:'Clausthal', country:'DE', emeritus:false, role:'', focus_de:'Österreichische Schule, Kapitaltheorie', focus_en:'Austrian School, capital theory' },
+  { id:'braun-eduard', name:'Eduard Braun', title:'PD Dr.', inst:'TU Clausthal', city:'Clausthal', country:'DE', orcid:'0000-0002-1752-4287', emeritus:false, role:'', focus_de:'Österreichische Schule, Kapitaltheorie', focus_en:'Austrian School, capital theory' },
   { id:'caspari-volker', name:'Volker Caspari', title:'Prof. em. Dr.', inst:'Goethe-Universität Frankfurt/Main', city:'Frankfurt', country:'DE', emeritus:true, role:'', focus_de:'Sraffa, Verteilungstheorie, Geschichte der ökonomischen Analyse', focus_en:'Sraffa, distribution theory, history of economic analysis' },
   { id:'chaloupek-guenther', name:'Günther Chaloupek', title:'Dr.', inst:'Kammer für Arbeiter und Angestellte', city:'Wien', country:'AT', emeritus:false, role:'', focus_de:'Österreichische Wirtschaftsgeschichte, Arbeiterbewegung', focus_en:'Austrian economic history, labour movement' },
   { id:'dopfer-kurt', name:'Kurt Dopfer', title:'Prof. em. Dr.', inst:'Universität St. Gallen', city:'St. Gallen', country:'CH', emeritus:true, role:'', focus_de:'Evolutionäre Ökonomik, Rationalität', focus_en:'Evolutionary economics, rationality' },
@@ -42,7 +50,8 @@ const MEMBERS = [
   { id:'frambach-hans', name:'Hans Frambach', title:'Prof. Dr.', inst:'Bergische Universität Wuppertal', city:'Wuppertal', country:'DE', emeritus:false, role:'', focus_de:'Geschichte des ökonomischen Denkens, Wohlfahrtstheorie', focus_en:'History of economic thought, welfare theory' },
   { id:'gehrke-christian', name:'Christian Gehrke', title:'Prof. Dr.', inst:'Karl-Franzens-Universität Graz', city:'Graz', country:'AT', emeritus:false, role:'', focus_de:'Sraffa, klassische politische Ökonomie', focus_en:'Sraffa, classical political economy' },
   { id:'goldschmidt-nils', name:'Nils Goldschmidt', title:'Prof. Dr.', inst:'Universität Siegen', city:'Siegen', country:'DE', emeritus:false, role:'', focus_de:'Ordoliberalismus, soziale Marktwirtschaft', focus_en:'Ordoliberalism, social market economy' },
-  { id:'greitens-jan', name:'Jan Greitens', title:'Prof. Dr.', inst:'DHBW Mosbach', city:'Mosbach', country:'DE', emeritus:false, role:'', focus_de:'Geschichte der Geldtheorie', focus_en:'History of monetary theory' },
+  { id:'greitens-jan', name:'Jan Greitens', title:'Prof. Dr.', inst:'Westfälische Hochschule', city:'Gelsenkirchen', country:'DE', emeritus:false, role:'', focus_de:'Geschichte der Geldtheorie', focus_en:'History of monetary theory' },
+  { id:'grudev-lachezar', name:'Lachezar Grudev', title:'Dr.', inst:'Westsächsische Hochschule Zwickau', city:'Zwickau', country:'DE', emeritus:false, role:'', focus_de:'Ordoliberalismus, Konjunkturtheorie, Methodologie der Ökonomik', focus_en:'Ordoliberalism, business cycle theory, methodology of economics' },
   { id:'hagemann-harald', name:'Harald Hagemann', title:'Prof. em. Dr.', inst:'Universität Hohenheim', city:'Hohenheim', country:'DE', emeritus:true, role:'', focus_de:'Konjunkturtheorie, Geschichte der Makroökonomik', focus_en:'Business cycle theory, history of macroeconomics' },
   { id:'harada-tetsushi', name:'Tetsushi Harada', title:'Prof. Dr.', inst:'Kwansei Gakuin University', city:'Nishinomiya', country:'JP', emeritus:false, role:'', focus_de:'Rezeption deutschsprachiger Ökonomik in Japan', focus_en:'Reception of German-language economics in Japan' },
   { id:'hartwig-jochen', name:'Jochen Hartwig', title:'Prof. Dr.', inst:'TU Chemnitz', city:'Chemnitz', country:'DE', emeritus:false, role:'', focus_de:'Post-Keynesianismus, Verteilungstheorie', focus_en:'Post-Keynesianism, distribution theory' },
@@ -51,14 +60,16 @@ const MEMBERS = [
   { id:'janssen-hauke', name:'Hauke Janssen', title:'Dr.', inst:'(unabhängig)', city:'–', country:'DE', emeritus:false, role:'', focus_de:'Geschichte der Wirtschaftswissenschaften im Nationalsozialismus', focus_en:'History of economics under National Socialism' },
   { id:'klausinger-hansjoerg', name:'Hansjörg Klausinger', title:'Prof. em. Dr.', inst:'Wirtschaftsuniversität Wien', city:'Wien', country:'AT', emeritus:true, role:'', focus_de:'Österreichische Schule, Hayek, Konjunkturtheorie', focus_en:'Austrian School, Hayek, business cycle theory' },
   { id:'klump-rainer', name:'Rainer Klump', title:'Prof. Dr.', inst:'Goethe-Universität Frankfurt', city:'Frankfurt', country:'DE', emeritus:false, role:'', focus_de:'Wachstumstheorie, Institutionenökonomik, Dogmengeschichte', focus_en:'Growth theory, institutional economics, history of doctrines' },
-  { id:'kolev-stefan', name:'Stefan Kolev', title:'Prof. Dr.', inst:'Westfälische Hochschule Zwickau', city:'Zwickau', country:'DE', emeritus:false, role:'', focus_de:'Ordoliberalismus, Hayek, Mont Pèlerin Society', focus_en:'Ordoliberalism, Hayek, Mont Pèlerin Society' },
+  { id:'kolev-stefan', name:'Stefan Kolev', title:'Prof. Dr.', inst:'Westsächsische Hochschule Zwickau', city:'Zwickau', country:'DE', emeritus:false, role:'', focus_de:'Ordoliberalismus, Hayek, Mont Pèlerin Society', focus_en:'Ordoliberalism, Hayek, Mont Pèlerin Society' },
   { id:'kraemer-hagen', name:'Hagen Krämer', title:'Prof. Dr.', inst:'Hochschule Karlsruhe', city:'Karlsruhe', country:'DE', emeritus:false, role:'', focus_de:'Einkommensverteilung, Post-Keynesianismus', focus_en:'Income distribution, Post-Keynesianism' },
+  { id:'kremser-christian', name:'Christian Kremser', title:'Dr.', inst:'(unabhängig)', city:'–', country:'DE', emeritus:false, role:'', focus_de:'Ideengeschichte, ökonomische Utopien, Wirtschaftsphilosophie', focus_en:'History of ideas, economic utopias, philosophy of economics' },
   { id:'kuesters-anselm', name:'Anselm Küsters', title:'Dr.', inst:'Centrum für Europäische Politik (cep)', city:'Berlin', country:'DE', emeritus:false, role:'', focus_de:'Ordoliberalismus, europäisches Wettbewerbsrecht, Digital Humanities', focus_en:'Ordoliberalism, European competition law, digital humanities' },
   { id:'kurz-heinz-d', name:'Heinz D. Kurz', title:'Prof. em. Dr.', inst:'Karl-Franzens-Universität Graz', city:'Graz', country:'AT', emeritus:true, role:'', focus_de:'Sraffa, klassische politische Ökonomie, Kapitaltheorie', focus_en:'Sraffa, classical political economy, capital theory' },
   { id:'landmann-oliver', name:'Oliver Landmann', title:'Prof. em. Dr.', inst:'Universität Freiburg', city:'Freiburg', country:'DE', emeritus:true, role:'', focus_de:'Wachstumstheorie, internationale Makroökonomik', focus_en:'Growth theory, international macroeconomics' },
   { id:'lorenz-hans-walter', name:'Hans-Walter Lorenz', title:'Prof. Dr. em.', inst:'Friedrich-Schiller-Universität Jena', city:'Jena', country:'DE', emeritus:true, role:'', focus_de:'Nichtlineare Dynamik, Konjunkturtheorie', focus_en:'Nonlinear dynamics, business cycle theory' },
   { id:'milford-karl', name:'Karl Milford', title:'Prof. Dr.', inst:'Universität Wien', city:'Wien', country:'AT', emeritus:false, role:'', focus_de:'Wissenschaftstheorie, Popper, Geschichte der Methodologie', focus_en:'Philosophy of science, Popper, history of methodology' },
-  { id:'molavi-arash', name:'Arash Molavi', title:'Dr.', inst:'Finanzministerium Berlin', city:'Berlin', country:'DE', emeritus:false, role:'', focus_de:'Evolutionsökonomik, Wettbewerbstheorie', focus_en:'Evolutionary economics, competition theory' },
+  { id:'molavi-arash', name:'Arash Molavi', title:'Dr.', inst:'Finanzministerium Berlin', city:'Berlin', country:'DE', orcid:'0000-0003-1177-109X', emeritus:false, role:'', focus_de:'Evolutionsökonomik, Wettbewerbstheorie', focus_en:'Evolutionary economics, competition theory' },
+  { id:'nientiedt-daniel', name:'Daniel Nientiedt', title:'Dr.', inst:'Walter Eucken Institut', city:'Freiburg', country:'DE', orcid:'0009-0008-4560-3450', emeritus:false, role:'', focus_de:'Ökonomische Theorie der Politik, Ordoliberalismus, Österreichische Schule', focus_en:'Economic theory of politics, ordoliberalism, Austrian School' },
   { id:'peukert-helge', name:'Helge Peukert', title:'Prof. Dr. Dr.', inst:'Universität Siegen', city:'Siegen', country:'DE', emeritus:false, role:'', focus_de:'Schumpeter, Geschichte der Konjunkturtheorie', focus_en:'Schumpeter, history of business cycle theory' },
   { id:'priddat-birger', name:'Birger Priddat', title:'Prof. em. Dr.', inst:'Universität Witten/Herdecke', city:'Witten', country:'DE', emeritus:true, role:'', focus_de:'Institutionenökonomik, Rhetorik der Ökonomik', focus_en:'Institutional economics, rhetoric of economics' },
   { id:'rieter-heinz', name:'Heinz Rieter', title:'Prof. em. Dr.', inst:'Universität Hamburg', city:'Hamburg', country:'DE', emeritus:true, role:'', focus_de:'Geschichte der Wirtschaftswissenschaften, Methodologie', focus_en:'History of economics, methodology' },

@@ -201,6 +201,25 @@ function renderMembers(list) {
     ? ((AGW.S.mbr_chair && AGW.S.mbr_chair.en) || 'Chair')
     : (m.gender === 'f' ? 'Vorsitzende' : 'Vorsitzender');
   const emLbl = (m) => (m.gender === 'f' ? 'Emerita' : 'Emeritus');
+  /* ORCID iD mark. ORCID's brand guidance is explicit that the iD icon may be used to link
+   * to a record, and that the iD should be shown as a full https://orcid.org/ URI. The icon
+   * is inlined rather than hot-linked from orcid.org so the page makes no third-party request
+   * (the same reason the fonts and Leaflet are on the privacy-hardening list). */
+  const ORCID_MARK = '<svg viewBox="0 0 256 256" width="15" height="15" aria-hidden="true" '
+    + 'style="vertical-align:-2px;"><path fill="#A6CE39" d="M256 128c0 70.7-57.3 128-128 128S0 198.7 0 128 57.3 0 128 0s128 57.3 128 128z"/>'
+    + '<path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zM78.6 66.9c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10z'
+    + 'M108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7 '
+    + 'C191.7 111.2 178 93 148 93h-23.7v79.4z"/></svg>';
+  const orcidLink = (m) => {
+    if (!m.orcid) return '';
+    const href = 'https://orcid.org/' + m.orcid;
+    return '<a class="member-orcid" href="' + href + '" target="_blank" rel="noopener"'
+      + ' title="ORCID iD: ' + m.orcid + '" aria-label="ORCID iD von ' + m.name + '"'
+      + ' style="display:inline-flex;align-items:center;gap:5px;margin-top:8px;font-size:11px;'
+      + 'font-family:\'Source Sans 3\',sans-serif;color:var(--text-muted);text-decoration:none;">'
+      + ORCID_MARK + '<span>' + m.orcid + '</span></a>';
+  };
+
   const FLAG = { DE:'\u{1f1e9}\u{1f1ea}', AT:'\u{1f1e6}\u{1f1f9}', CH:'\u{1f1e8}\u{1f1ed}',
                  US:'\u{1f1fa}\u{1f1f8}', UK:'\u{1f1ec}\u{1f1e7}', JP:'\u{1f1ef}\u{1f1f5}' };
   grid.innerHTML = list.map(m => {
@@ -220,6 +239,7 @@ function renderMembers(list) {
       + '<div class="member-inst">' + m.inst + (m.city && m.city !== '–' ? ' · ' + m.city : '') + '</div>'
       + (focus ? '<div class="member-focus">' + focus + '</div>' : '')
       + (badges.length ? '<div class="member-badges">' + badges.join('') + '</div>' : '')
+      + orcidLink(m)
       + '</div>';
   }).join('');
 }
