@@ -358,11 +358,8 @@
     satz_lbl_grund       : { en: 'Founded' },
     satz_val_grund       : { en: '1980 (1st Jahrestagung in Gießen)' },
     satz_lbl_tag         : { en: 'Conferences' },
-    satz_val_tag         : { en: '46 Jahrestagungen (as of 2026)' },
     satz_lbl_mbr         : { en: 'Members' },
-    satz_val_mbr         : { en: '48 (as of 2026)' },
     satz_lbl_pub         : { en: 'Publications' },
-    satz_val_pub         : { en: '43 volumes (as of 2026)' },
     satz_lbl_chair       : { en: 'Chair' },
     // ── Missing translations gap-fill (audit 2026-06-03) ─────────
     sec_lbl_news         : { en: 'News' },

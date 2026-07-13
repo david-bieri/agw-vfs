@@ -287,23 +287,52 @@
   (function mountUpdateNotice() {
     if (!('serviceWorker' in navigator)) return;
 
-    var hadController = !!navigator.serviceWorker.controller;   // false on a first visit
+    var hadController = !!navigator.serviceWorker.controller;   // false on a very first visit
     var shown = false;
 
+    /* Two ways a new deploy can reach us, and we need BOTH:
+     *   1. controllerchange — the SW calls skipWaiting(), so a new worker activates and takes
+     *      over the page mid-session. This is the common case.
+     *   2. updatefound -> statechange — catches the update if the controller swap does not
+     *      fire for us (e.g. the worker activates during navigation, before this listener
+     *      is attached). Relying on (1) alone left a window where nothing appeared, which is
+     *      precisely why "is the update notice working?" was unanswerable.
+     */
     navigator.serviceWorker.addEventListener('controllerchange', function () {
-      if (!hadController || shown) return;   // first install, or already asked
-      shown = true;
-      show();
+      if (hadController) show('controllerchange');
     });
 
-    /* Look for a new deploy on load, and hourly for a tab left open. */
     navigator.serviceWorker.ready.then(function (reg) {
-      if (!reg || !reg.update) return;
-      reg.update();
-      setInterval(function () { reg.update(); }, 60 * 60 * 1000);
-    }).catch(function () { /* no registration yet — nothing to update */ });
+      if (!reg) return;
 
-    function show() {
+      if (reg.waiting && hadController) show('waiting');       // a new worker is already staged
+
+      reg.addEventListener('updatefound', function () {
+        var nw = reg.installing;
+        if (!nw) return;
+        nw.addEventListener('statechange', function () {
+          if ((nw.state === 'installed' || nw.state === 'activated') && hadController) {
+            show('updatefound:' + nw.state);
+          }
+        });
+      });
+
+      if (reg.update) {
+        reg.update();
+        setInterval(function () { reg.update(); }, 60 * 60 * 1000);   // a tab left open for days
+      }
+    }).catch(function () { /* no registration — nothing to update */ });
+
+    /* Exposed so the maintainer can answer "does the bar actually render?" without waiting
+     * for a deploy: call AGW.showUpdateBar() in the console. */
+    window.AGW = window.AGW || {};
+    window.AGW.showUpdateBar = function () { shown = false; show('manual'); };
+
+    function show(why) {
+      if (shown) return;
+      shown = true;
+      if (window.console && console.info) console.info('[AGW] update notice shown (' + why + ')');
+
       var de = (document.documentElement.lang || 'de') !== 'en';
       var bar = document.createElement('div');
       bar.setAttribute('role', 'status');
