@@ -20,8 +20,8 @@
  *   No rebuild step — this is plain JS loaded at runtime. Bump the SW cache after
  *   editing so clients pick up the change.
  *
- * NOTE: the captions below are AUTO-GENERATED PLACEHOLDERS (neutral venue/event
- *       framing) pending David's revised versions. Replace cap.de / cap.en freely.
+ * NOTE: captions were written by David (2026-07). ONE placeholder remains: p4901 still
+ *       carries the neutral venue framing — replace cap.de / cap.en when known.
  */
 window.AGW = window.AGW || {};
 window.AGW.GALLERY = {
@@ -35,40 +35,40 @@ window.AGW.GALLERY = {
              en: '46th AGW Annual Conference · Villa Maderni, Riva San Vitale' } },
 
     { id: 'p4905', w: 5712, h: 4284,
-      alt: { de: 'Impression von der 46. Jahrestagung des AGW, Villa Maderni, Riva San Vitale',
-             en: 'Scene from the 46th AGW Annual Conference, Villa Maderni, Riva San Vitale' },
-      cap: { de: '46. Jahrestagung des AGW · Villa Maderni, Riva San Vitale',
-             en: '46th AGW Annual Conference · Villa Maderni, Riva San Vitale' } },
+      alt: { de: 'Konferenzraum im Neubau der Villa Maderni, 46. Jahrestagung des AGW',
+             en: 'Conference room in the new wing of the Villa Maderni, 46th AGW Annual Conference' },
+      cap: { de: 'Konferenzraum im Neubau der Villa Maderni',
+             en: 'Conference room in the new wing of the Villa Maderni' } },
 
     { id: 'p4918', w: 5712, h: 4284,
-      alt: { de: 'Impression von der 46. Jahrestagung des AGW, Villa Maderni, Riva San Vitale',
-             en: 'Scene from the 46th AGW Annual Conference, Villa Maderni, Riva San Vitale' },
-      cap: { de: '46. Jahrestagung des AGW · Villa Maderni, Riva San Vitale',
-             en: '46th AGW Annual Conference · Villa Maderni, Riva San Vitale' } },
+      alt: { de: 'Übergabe der Jubiläumsausgabe der „Revue de Philosophie Économique“ während der 46. Jahrestagung des AGW',
+             en: 'Presentation of the anniversary issue of the “Revue de Philosophie Économique” during the 46th AGW Annual Conference' },
+      cap: { de: 'Gilles Campagnolo (CNRS, Paris) überreicht die Jubiläumsausgabe der „Revue de Philosophie Économique“ an David Bieri (Virginia Tech, Blacksburg) und Sara Steinert Borella (Virginia Tech, Riva)',
+             en: 'Gilles Campagnolo (CNRS, Paris) presents the anniversary issue of the “Revue de Philosophie Économique” to David Bieri (Virginia Tech, Blacksburg) and Sara Steinert Borella (Virginia Tech, Riva)' } },
 
     { id: 'p4921', w: 4284, h: 5712,
-      alt: { de: 'Impression von der 46. Jahrestagung des AGW, Villa Maderni, Riva San Vitale',
-             en: 'Scene from the 46th AGW Annual Conference, Villa Maderni, Riva San Vitale' },
-      cap: { de: '46. Jahrestagung des AGW · Villa Maderni, Riva San Vitale',
-             en: '46th AGW Annual Conference · Villa Maderni, Riva San Vitale' } },
+      alt: { de: 'Lesesaal der Villa Maderni, Riva San Vitale',
+             en: 'Reading room of the Villa Maderni, Riva San Vitale' },
+      cap: { de: 'Lesesaal der Villa Maderni',
+             en: 'Reading room of the Villa Maderni' } },
 
     { id: 'p4924', w: 5712, h: 4284,
-      alt: { de: 'Impression von der 46. Jahrestagung des AGW, Villa Maderni, Riva San Vitale',
-             en: 'Scene from the 46th AGW Annual Conference, Villa Maderni, Riva San Vitale' },
-      cap: { de: '46. Jahrestagung des AGW · Villa Maderni, Riva San Vitale',
-             en: '46th AGW Annual Conference · Villa Maderni, Riva San Vitale' } },
+      alt: { de: 'Bertram Schefold beim traditionellen Kamingespräch der Jahrestagung',
+             en: 'Bertram Schefold delivering the conference’s traditional fireside talk' },
+      cap: { de: 'Traditionelles Kamingespräch von Bertram Schefold (Frankfurt) zu „Raffaels Schule von Athen“',
+             en: 'Bertram Schefold (Frankfurt) gives the traditional fireside talk on “Raffaels Schule von Athen”' } },
 
     { id: 'p4929', w: 5712, h: 4284,
-      alt: { de: 'Impression von der 46. Jahrestagung des AGW, Villa Maderni, Riva San Vitale',
-             en: 'Scene from the 46th AGW Annual Conference, Villa Maderni, Riva San Vitale' },
-      cap: { de: '46. Jahrestagung des AGW · Villa Maderni, Riva San Vitale',
-             en: '46th AGW Annual Conference · Villa Maderni, Riva San Vitale' } },
+      alt: { de: 'Blick auf den Luganersee aus Riva San Vitale',
+             en: 'View of Lake Lugano from Riva San Vitale' },
+      cap: { de: 'Blick auf den Luganersee aus Riva San Vitale',
+             en: 'View of Lake Lugano from Riva San Vitale' } },
 
     { id: 'p4936', w: 4284, h: 5712,
-      alt: { de: 'Impression von der 46. Jahrestagung des AGW, Villa Maderni, Riva San Vitale',
-             en: 'Scene from the 46th AGW Annual Conference, Villa Maderni, Riva San Vitale' },
-      cap: { de: '46. Jahrestagung des AGW · Villa Maderni, Riva San Vitale',
-             en: '46th AGW Annual Conference · Villa Maderni, Riva San Vitale' } },
+      alt: { de: 'Übergabe der Glocke des AGW-Vorsitzes von Rainer Klump an Elisabeth Allgoewer',
+             en: 'Handover of the AGW chair’s bell from Rainer Klump to Elisabeth Allgoewer' },
+      cap: { de: 'Übergabe der Glocke des AGW-Vorsitzes von Rainer Klump an Elisabeth Allgoewer',
+             en: 'Handover of the AGW chair’s bell from Rainer Klump to Elisabeth Allgoewer' } },
 
     { id: 'p1480b', w: 5472, h: 3648,
       alt: { de: 'Das Gipfelgebäude Fiore di pietra (Mario Botta) am Monte Generoso mit Alpenpanorama',
