@@ -327,6 +327,30 @@
       title:'The Making and Unmaking of Ordoliberal Language: A Digital Conceptual History of European Competition Law', type:'book',
       authors:'Anselm Küsters', venue:'Studien zur europäischen Rechtsgeschichte 340, Klostermann, Frankfurt a.M.', year:2023,
       url:'https://www.lhlt.mpg.de/3579283/volume340' },
+
+    /* Daniel Nientiedt (Walter Eucken Institut, Freiburg). Supplied by David, 2026-07;
+     * each verified against the publisher's record via DOI. The Eucken volume is an EDITED
+     * work — he is Herausgeber with Vanberg and Dathe, NOT its author — so it takes
+     * type:'edited' and the (Hrsg.) convention rather than an authorship claim. */
+    { mid:'nientiedt-daniel', themes:['austrian','ordoliberal'],
+      title:'Hayek and Schmitt on the \u2018depoliticization\u2019 of the economy',
+      type:'article', authors:'Daniel Nientiedt',
+      venue:'Cambridge Journal of Economics 49(2), S. 221\u2013233', year:2025,
+      doi:'10.1093/cje/beae048' },
+
+    { mid:'nientiedt-daniel', themes:['ordoliberal'],
+      title:'The renaissance of ordoliberalism in the 1970s and 1980s',
+      type:'article', authors:'Tim Krieger \u00b7 Daniel Nientiedt',
+      venue:'Constitutional Political Economy 36, S. 408\u2013423', year:2025,
+      doi:'10.1007/s10602-023-09411-2' },
+
+    { mid:'nientiedt-daniel', themes:['ordoliberal'],
+      title:'Walter Eucken: Gesammelte Schriften, Bd. II/3 \u2013 Freiheit, Staat und Sozialismus',
+      type:'edited',
+      authors:'Viktor J. Vanberg \u00b7 Daniel Nientiedt \u00b7 Uwe Dathe (Hrsg.)',
+      venue:'Mohr Siebeck, T\u00fcbingen, 357 S.', year:2023,
+      doi:'10.1628/978-3-16-162024-9' },
+
   ];
 
   window.AGW_DATA.PUB_THEMES  = PUB_THEMES;

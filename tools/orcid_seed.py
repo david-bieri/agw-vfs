@@ -355,8 +355,13 @@ ORCID_RE = re.compile(r"^\d{4}-\d{4}-\d{4}-\d{3}[\dX]$")
 # link, so a wrong one does not merely misattribute a bibliography — it points at a
 # stranger's record under a colleague's name.
 BLOCKED = {
-    "wohlgemuth-michael": "name-matched iD belongs to an open-access researcher at Bielefeld, "
-                          "not the ordoliberal economist",
+    "wohlgemuth-michael": "name-matched iDs belong to librarians (SLUB Dresden / Bielefeld), "
+                          "not to the ordoliberal economist",
+    "kremser-christian":  "0000-0002-6953-935X is Christian Kremser PhD, Dept. of Radiology, "
+                          "Medical University of Innsbruck \u2014 an MRI physicist, not the "
+                          "historian of economic ideas. It was curated in once; never again.",
+    "lorenz-hans-walter": "the only candidate (0000-0001-9269-3593) has NO affiliation and NO "
+                          "works. A blank affiliation is not a confirmation \u2014 ask him.",
 }
 
 
