@@ -2,19 +2,29 @@
 
 **Read this and `AGW_SESSION_NOTES.md` before doing anything.** This file is slow-moving project context and non-negotiables; `AGW_SESSION_NOTES.md` is authoritative for present, undeployed state.
 
-**Current version:** v48 (SW cache `agw-2026-v48-fokus`) · **Repo:** `david-bieri/agw-vfs` · **Live:** `www.agw-vfs.de`
+**Current version:** v61 (SW cache `agw-2026-v61-theme-view-corpus`) · **Repo:** `david-bieri/agw-vfs` · **Live:** `www.agw-vfs.de`
 **Status:** post-conference. The 46th Jahrestagung (Riva San Vitale, 25–27 June 2026) has concluded; the site is now the committee's evergreen home.
 
 ---
 
 ## What this is
 
-Static, multi-page site for the AGW — the VfS standing committee for the history of economic thought. **7 pages**, shared foundation files, vanilla JS. The only build step is the React analytics bundles (esbuild → `dist/`, loaded via importmap from esm.sh).
+Static, multi-page site for the AGW — the VfS standing committee for the history of economic thought. **8 pages**, shared foundation files, vanilla JS. The only build step is the React analytics bundles (esbuild → `dist/`, loaded via importmap from esm.sh).
 
-**Pages:** `index.html` (committee landing) · `events.html` · `jahrestagung-2026.html` · `archive.html` · `committee.html` · `analytics.html` · `guide.html`
+**Pages:** `index.html` (committee landing) · `events.html` · `jahrestagung-2026.html` · `archive.html` · `committee.html` · `publications-members.html` · `analytics.html` · `guide.html`
 **Nav:** Aktuelles · Veranstaltungen · Forschung · Über den AGW
 **Foundation JS/CSS:** `agw_styles.css`, `agw_strings.js`, `agw_data.js`, `agw_app.js`, `agw_nav.js`, `agw_chronik.js`, `agw_hero_viz.js`, `agw_schools_net.js`, `agw_gallery.js`, `agw_highlights.js`
-**Data:** `data/gallery.js`, `data/highlights.js`, `data/*.json` · **Tools:** `tools/agw_thumbnail.py`, `tools/gallery_add.py`
+**Scholarly record:** `agw_volume_chapters.js` (`VOLUME_CHAPTERS` — 288 chapters, 43 volumes; `VOLUME_META` — year/editors/ISBN/DOI for all 43), `agw_member_pubs.js` (`MEMBER_PUBS`, `PUB_THEMES` ×17), `agw_member_pubs_app.js`, `agw_cite.js`
+**Data:** `data/gallery.js`, `data/highlights.js`, `data/*.json`
+**Tools:** `tools/agw_thumbnail.py`, `gallery_add.py`, `dh_fetch.py`, `dh_toc.py`, `pdf_toc.py`, **`themes.csv`**, `pubs_import.py`, `orcid_seed.py`, `cv_extract.py`
+
+### Five things that will bite you
+
+1. **`tools/themes.csv` is load-bearing.** It is the per-chapter theme curation overlay (keyed `volN|pages`), read by `dh_toc.py --build`. Rebuilding the corpus *without* it silently regenerates every theme as `GUESSED` and destroys two passes of human curation. Never gitignore it. (ADR-030)
+2. **Aggregate views count `VOLUME_CHAPTERS`; member views count `MEMBER_CHAPTERS`.** Confusing the two has now caused two silent, plausible, wrong outputs — a contributor ranking missing its most prolific author, and theme pills undercounting by half. (ADR-033)
+3. **`PUBLICATIONS` has `year:null` for 31 of 43 volumes.** Never read a volume year from it. Use `VOLUME_META`. (ADR-030)
+4. **A guard that returns empty hides the fault.** ADR-016 stops one broken thing from cascading — and is exactly why `archive.html` rendered an empty map for weeks with no console error. When something looks blank, suspect a missing dependency, not a logic bug. (`AGW_DEBUG.md`)
+5. **Verify against `raw.githubusercontent.com`, never the Pages CDN.** The CDN lies for minutes; raw does not.
 
 ## Non-negotiables
 

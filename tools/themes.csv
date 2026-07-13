@@ -1,0 +1,289 @@
+volN,pages,themes,confidence,decision,source
+1,9–52,"smith, distribution",high,keep,2nd pass
+1,53–92,classical,high,change,2nd pass
+1,93–110,smith,high,keep,2nd pass
+1,111–116,smith,high,change,2nd pass
+1,117–134,"classical, marxian",high,expand/reduce,2nd pass
+1,137,distribution,medium,change,2nd pass
+2,9–62,preclassical,high,keep,2nd pass
+2,63–92,preclassical,high,keep,2nd pass
+2,93–130,"preclassical, monetary",high,keep,2nd pass
+2,131–148,"preclassical, public_finance",high,expand/reduce,2nd pass
+2,149,"preclassical, public_finance, econ_history",high,change,2nd pass
+3,9–36,preclassical,high,keep,2nd pass
+3,37–54,preclassical,medium,keep,2nd pass
+3,55–100,preclassical,medium,keep,2nd pass
+3,101–133,"preclassical, public_finance",high,change,2nd pass
+3,139,methodology,high,change,"2nd pass; preclassical removed (volume rule false positive — chapter is methodological, not physiocratic)"
+4,9–24,"keynesian, monetary",high,keep,2nd pass
+4,27–65,"keynesian, evolutionary",high,keep,2nd pass
+4,73–106,"keynesian, evolutionary",high,keep,2nd pass
+4,107,marxian,high,keep,2nd pass
+5,9–28,preclassical,high,keep,2nd pass
+5,29–80,classical,high,change,2nd pass
+5,81–110,smith,high,keep,2nd pass
+5,111,monetary,high,change,2nd pass
+6,9–28,monetary,high,change,2nd pass
+6,29–60,classical,high,change,2nd pass
+6,65–104,general,medium,keep,2nd pass
+6,105–170,public_finance,high,expand/reduce,2nd pass
+6,171,austrian,high,change,2nd pass
+7,9–34,monetary,high,keep,2nd pass
+7,35–64,monetary,high,keep,2nd pass
+7,65–76,"keynesian, monetary",high,keep,2nd pass
+7,77–98,"monetary, historical",high,keep,2nd pass
+7,99–126,evolutionary,high,keep,2nd pass
+7,127,general,high,keep,2nd pass
+8,11–62,classical,medium,change,2nd pass
+8,63–74,general,high,keep,2nd pass
+8,75–86,monetary,high,keep,2nd pass
+8,87–102,monetary,high,keep,2nd pass
+8,103–140,"austrian, monetary, evolutionary",high,expand/reduce,2nd pass
+8,141–170,monetary,high,keep,2nd pass
+8,171,general,low,keep,2nd pass
+9,19–56,public_finance,high,change,2nd pass
+9,57–94,"preclassical, methodology",medium,change,2nd pass
+9,95,methodology,high,change,2nd pass
+10,11–62,general,medium,keep,2nd pass
+10,63–78,general,medium,keep,2nd pass
+10,79–102,distribution,low,change,2nd pass
+10,103–114,public_finance,medium,keep,kept 1st pass (2nd demoted public_finance → general)
+10,115–152,econ_history,medium,change,2nd pass
+10,153–196,austrian,high,keep,2nd pass
+10,197,feminist,high,change,2nd pass
+11,13–90,general,high,keep,2nd pass
+11,91–108,monetary,medium,change,2nd pass
+11,109–132,general,high,keep,2nd pass
+11,133–190,general,high,keep,2nd pass
+11,191–238,general,high,keep,2nd pass
+11,239–256,general,high,keep,2nd pass
+11,257–280,general,high,keep,2nd pass
+11,281–300,"ordoliberal, historical",high,keep,2nd pass
+11,301,austrian,high,change,2nd pass
+12,9–32,general,high,keep,2nd pass
+12,33–64,classical,high,change,2nd pass
+12,65–90,historical,high,keep,kept 1st pass (2nd demoted historical → general)
+12,91–110,classical,high,keep,2nd pass
+12,111,austrian,high,change,2nd pass
+13,11–110,public_finance,high,keep,2nd pass
+13,143–164,"historical, public_finance",high,expand/reduce,2nd pass
+13,165–198,public_finance,high,change,2nd pass
+13,199–248,"monetary, public_finance",high,keep,2nd pass
+13,249,public_finance,high,keep,2nd pass
+14,17–42,"distribution, spatial",high,expand/reduce,2nd pass
+14,43–82,"distribution, spatial",high,expand/reduce,2nd pass
+14,83–86,"distribution, spatial",high,expand/reduce,2nd pass
+14,87–114,"distribution, spatial",high,expand/reduce,2nd pass
+14,115–149,"distribution, spatial",high,keep,2nd pass
+14,153–164,"distribution, spatial",high,expand/reduce,2nd pass
+14,165–178,spatial,medium,keep,2nd pass
+14,183,spatial,high,keep,2nd pass
+15,13–46,methodology,high,change,2nd pass
+15,47–66,"historical, methodology",high,change,"kept 1st pass (2nd dropped historical, added nothing)"
+15,67–100,"historical, methodology",high,change,"kept 1st pass (2nd dropped historical, added nothing)"
+15,101–122,"methodology, econ_history",high,expand/reduce,2nd pass
+15,123,"monetary, distribution",high,keep,2nd pass
+16,17–37,preclassical,high,change,2nd pass
+16,43–80,historical,high,keep,2nd pass
+16,81–128,general,medium,keep,2nd pass
+16,129–160,ordoliberal,high,change,2nd pass
+16,161–170,ordoliberal,high,change,2nd pass
+16,171–228,monetary,high,change,2nd pass
+17,11–48,general,medium,keep,2nd pass
+17,49–66,"monetary, econ_history",high,change,2nd pass
+17,67–94,monetary,high,change,2nd pass
+17,95–154,general,medium,keep,2nd pass
+17,155–160,keynesian,high,keep,2nd pass
+17,161,general,high,keep,2nd pass
+18,15–34,"keynesian, monetary",high,expand/reduce,2nd pass
+18,35–38,"keynesian, monetary",high,expand/reduce,2nd pass
+18,39–62,monetary,high,keep,2nd pass
+18,63–110,monetary,high,change,2nd pass
+18,111–130,distribution,high,change,2nd pass
+18,131–183,general,low,keep,2nd pass
+18,187–216,monetary,high,keep,2nd pass
+18,217–245,public_finance,high,change,2nd pass
+18,253–258,monetary,high,change,2nd pass
+18,259,monetary,high,change,2nd pass
+19,39–42,classical,high,change,2nd pass
+19,43–48,classical,high,change,2nd pass
+19,49–88,"classical, methodology",high,expand/reduce,2nd pass
+19,89–96,"classical, methodology",high,expand/reduce,2nd pass
+19,97–110,"classical, methodology",high,expand/reduce,2nd pass
+19,111–190,"classical, public_finance",high,change,2nd pass
+19,191–214,"classical, monetary",high,change,2nd pass
+19,215–252,"classical, distribution",high,change,2nd pass
+19,253–280,"classical, distribution",high,keep,2nd pass
+19,281,"classical, distribution",high,change,2nd pass
+20,13–37,historical,high,keep,2nd pass
+20,41–72,"historical, distribution",high,keep,2nd pass
+20,73–103,"monetary, historical",high,change,2nd pass
+20,107–124,historical,high,change,2nd pass
+20,125–152,historical,high,change,2nd pass
+20,157,historical,high,change,2nd pass
+21,19–57,general,high,keep,2nd pass
+21,63–75,general,high,keep,2nd pass
+21,79–93,smith,high,keep,2nd pass
+21,97–121,general,high,keep,2nd pass
+21,125–148,"classical, methodology",medium,change,2nd pass
+21,149–200,monetary,high,change,2nd pass
+21,207,general,high,keep,2nd pass
+22,15–60,methodology,high,change,2nd pass
+22,61–98,methodology,high,change,2nd pass
+22,99–116,general,high,keep,2nd pass
+22,117–362,general,high,keep,2nd pass
+22,363–386,general,medium,keep,2nd pass
+22,387,evolutionary,high,keep,2nd pass
+23,13–42,"classical, distribution",high,change,2nd pass
+23,47–86,general,high,keep,2nd pass
+23,93–124,methodology,medium,change,2nd pass
+23,133–168,historical,high,keep,2nd pass
+23,173–197,classical,high,keep,2nd pass
+23,203–233,"classical, marxian",high,keep,2nd pass
+24,13–36,smith,high,keep,2nd pass
+24,37–64,marxian,high,keep,2nd pass
+24,65–96,general,high,keep,2nd pass
+24,97–118,general,high,keep,2nd pass
+24,119–140,general,high,keep,2nd pass
+24,141,distribution,medium,change,2nd pass
+25,25–200,general,high,change,2nd pass
+25,201–234,general,high,keep,2nd pass
+25,235–290,general,medium,keep,2nd pass
+25,291–333,ordoliberal,high,keep,2nd pass
+25,343–357,ordoliberal,high,keep,2nd pass
+25,363–379,general,high,keep,2nd pass
+25,383–394,general,high,keep,2nd pass
+25,399–443,general,high,keep,2nd pass
+25,451–478,general,high,keep,2nd pass
+25,491–578,"monetary, econ_history",high,change,2nd pass
+25,589–617,keynesian,high,keep,2nd pass
+26,17–32,smith,high,keep,2nd pass
+26,37–54,general,high,keep,2nd pass
+26,61–79,historical,medium,keep,kept 1st pass (2nd demoted historical → general)
+26,83–97,methodology,high,change,2nd pass
+26,103–124,distribution,medium,change,2nd pass
+26,129–148,evolutionary,high,keep,2nd pass
+26,149–202,methodology,medium,change,2nd pass
+26,211–243,distribution,high,keep,2nd pass
+27,13–28,methodology,high,change,2nd pass
+27,29–46,historical,high,change,2nd pass
+27,47–68,general,high,keep,2nd pass
+27,69–90,econ_history,high,change,2nd pass
+27,91–104,methodology,medium,change,2nd pass
+27,105–130,public_finance,high,keep,2nd pass
+27,131–176,austrian,high,keep,2nd pass
+27,177–194,general,high,keep,2nd pass
+27,195–206,econ_history,medium,change,2nd pass
+27,207,marxian,high,keep,2nd pass
+28,11–34,methodology,high,change,2nd pass
+28,35–72,"austrian, methodology",high,change,2nd pass
+28,73–106,methodology,high,change,2nd pass
+28,107–124,"keynesian, methodology",high,expand/reduce,2nd pass
+28,125–160,keynesian,high,keep,2nd pass
+28,161,monetary,high,keep,2nd pass
+29,17–56,spatial,high,change,2nd pass
+29,57–126,spatial,high,keep,2nd pass
+29,127–160,"historical, spatial",high,change,2nd pass
+29,161–186,spatial,high,keep,2nd pass
+29,187–206,spatial,high,keep,2nd pass
+29,207–238,spatial,high,keep,2nd pass
+29,239–332,spatial,high,change,2nd pass
+29,333–336,spatial,high,keep,2nd pass
+29,337,spatial,high,change,2nd pass
+30,15–46,methodology,medium,change,2nd pass
+30,47–72,methodology,medium,change,2nd pass
+30,73–116,general,medium,change,2nd pass
+30,117–176,austrian,high,change,2nd pass
+30,177–208,general,high,keep,2nd pass
+30,209–250,general,high,keep,2nd pass
+30,251–328,general,medium,keep,2nd pass
+30,329,general,high,keep,2nd pass
+31,13–42,historical,high,change,2nd pass
+31,43–76,historical,high,keep,2nd pass
+31,77–92,historical,high,keep,2nd pass
+31,93–126,distribution,medium,change,2nd pass
+31,127–152,"evolutionary, distribution",high,change,2nd pass
+31,153–180,distribution,high,keep,2nd pass
+31,181,ordoliberal,high,keep,2nd pass
+32,13–122,econ_history,medium,keep,kept 1st pass (2nd demoted econ_history → general)
+32,123–182,evolutionary,high,keep,2nd pass
+32,183–206,distribution,high,change,2nd pass
+32,207–226,general,high,keep,2nd pass
+32,227–260,austrian,high,keep,2nd pass
+32,261–291,general,high,keep,2nd pass
+32,299–332,general,high,keep,2nd pass
+32,333–383,monetary,high,change,2nd pass
+32,401,monetary,high,keep,2nd pass
+33,11–42,evolutionary,high,keep,2nd pass
+33,43–58,evolutionary,high,keep,2nd pass
+33,59–88,evolutionary,high,keep,2nd pass
+33,89–114,"evolutionary, distribution",high,keep,2nd pass
+33,115–136,"evolutionary, distribution",high,change,2nd pass
+33,137,methodology,medium,change,2nd pass
+34,19–44,marxian,high,expand/reduce,2nd pass
+34,45–80,"marxian, distribution",high,expand/reduce,2nd pass
+34,81–112,marxian,high,keep,2nd pass
+34,113–176,classical,high,change,2nd pass
+34,177–206,marxian,high,keep,2nd pass
+34,207,marxian,high,keep,2nd pass
+35,19–40,"austrian, distribution",high,expand/reduce,2nd pass
+35,41–56,"austrian, distribution",high,expand/reduce,2nd pass
+35,57–78,"austrian, monetary",high,expand/reduce,2nd pass
+35,79–120,"austrian, distribution",medium,expand/reduce,2nd pass
+35,121–162,evolutionary,medium,change,2nd pass
+35,163,"austrian, methodology",medium,expand/reduce,2nd pass
+36,17–58,evolutionary,high,change,2nd pass
+36,63–109,"marxian, evolutionary",high,expand/reduce,2nd pass
+36,119–151,evolutionary,high,change,2nd pass
+36,159–187,evolutionary,high,keep,2nd pass
+36,191–215,"austrian, evolutionary",high,expand/reduce,2nd pass
+36,219–247,evolutionary,high,change,2nd pass
+37,9–64,"monetary, distribution, spatial",high,expand/reduce,2nd pass
+37,65–84,distribution,high,change,2nd pass
+37,85–124,"smith, distribution",high,expand/reduce,2nd pass
+37,125,distribution,high,change,2nd pass
+38,9–52,distribution,medium,change,2nd pass
+38,53–84,"keynesian, distribution",high,change,2nd pass
+38,85–112,"distribution, monetary",high,keep,"kept 1st pass (2nd dropped monetary, added nothing)"
+38,113–140,"marxian, distribution",medium,change,2nd pass
+38,141,"austrian, monetary",high,expand/reduce,2nd pass
+39,11–46,preclassical,high,keep,2nd pass
+39,47–72,preclassical,high,keep,2nd pass
+39,73–132,"preclassical, public_finance",high,change,2nd pass
+39,133–146,"preclassical, historical",high,keep,2nd pass
+39,147–176,preclassical,high,change,2nd pass
+39,177,preclassical,high,keep,2nd pass
+40,15–44,"monetary, methodology",high,expand/reduce,2nd pass
+40,45–86,"austrian, monetary",high,expand/reduce,2nd pass
+40,87–134,general,high,keep,2nd pass
+40,135–174,monetary,high,keep,2nd pass
+40,175–190,monetary,high,change,2nd pass
+40,191–222,monetary,high,change,2nd pass
+40,223–238,"keynesian, ordoliberal",high,keep,2nd pass
+40,239–290,"monetary, spatial",high,keep,2nd pass
+40,291–312,keynesian,high,keep,2nd pass
+40,313,keynesian,high,keep,2nd pass
+41,17–80,historical,high,keep,2nd pass
+41,81–134,feminist,high,change,2nd pass
+41,135–204,econ_history,high,keep,kept 1st pass (2nd demoted econ_history → general)
+41,205–238,historical,high,keep,2nd pass
+41,239–280,econ_history,high,keep,kept 1st pass (2nd demoted econ_history → general)
+41,281–294,methodology,high,change,2nd pass
+41,295,econ_history,high,keep,2nd pass
+42,13–84,smith,high,change,2nd pass
+42,85–128,smith,high,keep,2nd pass
+42,129–154,smith,high,keep,2nd pass
+42,155–176,smith,high,keep,2nd pass
+42,177–204,smith,high,keep,2nd pass
+42,205–232,general,high,keep,2nd pass
+42,233–288,"smith, methodology, spatial",medium,expand/reduce,2nd pass
+42,289,"smith, marxian, evolutionary",high,expand/reduce,2nd pass
+43,15–24,feminist,high,change,2nd pass
+43,25–58,"evolutionary, feminist",high,expand/reduce,2nd pass
+43,59–86,"marxian, feminist",high,change,2nd pass
+43,87–116,"distribution, feminist",high,change,2nd pass
+43,117–144,"ordoliberal, feminist",high,expand/reduce,2nd pass
+43,145–186,"keynesian, distribution, feminist",high,change,2nd pass
+43,187–216,feminist,high,change,2nd pass
+43,217–236,feminist,high,change,2nd pass
+43,237,feminist,high,change,2nd pass
