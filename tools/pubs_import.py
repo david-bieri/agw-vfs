@@ -54,11 +54,31 @@ USAGE
   python3 tools/pubs_import.py --lint
 
 ────────────────────────────────────────────────────────────────────────────
-BEFORE YOU RUN IT
+BEFORE YOU RUN IT  (policy revised 2026-07-12 — ADR-031)
 
-Only run this for a member who has SENT you their ORCID iD. An ORCID iD being
-public is not the same thing as a member asking to be listed on the AGW site.
-Consent comes from the submission, not from the data being findable.
+The old rule here read: "Only run this for a member who has SENT you their ORCID
+iD. Consent comes from the submission, not from the data being findable."
+
+That rule has been superseded, because the model it described no longer matches
+what the site is. The Tagungsband chapters (VOLUME_CHAPTERS, 288 across 43
+volumes) are the COMMITTEE'S OWN publication record, not member submissions, and
+47 of 48 members appear in them because they wrote in them. MEMBER_PUBS is now a
+committee-curated SELECTION of further work, on the same footing.
+
+So the basis is legitimate interest in maintaining an accurate scholarly record
+of the committee's own field, using data the members themselves made public
+(ORCID, Crossref, the publisher's own metadata) — not consent-by-submission.
+
+Three things follow, and they are not optional:
+
+  1. A PRIVACY NOTICE must exist. Legitimate interest without a Datenschutz-
+     erklärung telling data subjects what is processed and why is not a legal
+     basis, it is just a preference. Impressum + Datenschutzerklärung are a
+     PREREQUISITE for running this at scale, not a follow-up task.
+  2. AN OPT-OUT must be offered, and must be honoured without argument.
+  3. ACCURACY IS ON US (DSGVO Art. 5(1)(d)). Read every line before it ships.
+     Working papers get published — check. Names collide — check. A wrong entry
+     on a colleague's page is a data-protection failure, not a typo.
 
 AFTER YOU RUN IT
 
@@ -574,3 +594,20 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+def crossref_title(title, rows=3):
+    """Look a work up in Crossref BY TITLE. Used by orcid_seed.py --verify to triage entries
+    that carry no DOI. A miss is weak evidence (books are patchily indexed), a hit is strong."""
+    try:
+        url = ("https://api.crossref.org/works?query.bibliographic="
+               + urllib.parse.quote(title[:120]) + "&rows=%d&mailto=bieri@vt.edu" % rows)
+        with urllib.request.urlopen(url, timeout=20) as r:
+            items = json.load(r).get("message", {}).get("items", [])
+    except Exception:
+        return None
+    want = re.sub(r"[^a-z0-9]+", " ", title.lower()).strip()
+    for it in items:
+        got = re.sub(r"[^a-z0-9]+", " ", (it.get("title") or [""])[0].lower()).strip()
+        if got and (got[:40] == want[:40] or got in want or want in got):
+            return it
+    return None

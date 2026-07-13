@@ -460,6 +460,78 @@ def members(dry_run=False):
     return 0
 
 
+
+# ── verify every DOI in MEMBER_PUBS actually resolves ───────────────────────
+def verify():
+    """Resolve every MEMBER_PUBS DOI against Crossref and flag the ones that do not exist,
+    or whose title does not match what we publish.
+
+    This exists because ONE of the original seed entries was fabricated: David Bieri's card
+    carried "Form Follows Function", Journal of Economic Issues 2017, doi
+    10.1080/00213624.2017.1320518. No such paper. The DOI even sat inside the real JEI 2017
+    range, so nothing about it looked wrong — a plausible journal, a plausible year, a
+    plausible DOI shape, and no such article.
+
+    Under ADR-031 the bibliography is committee-curated on a legitimate-interest basis, which
+    puts ACCURACY ON THE MAINTAINER. A fabricated publication under a colleague's name is the
+    single worst thing this page can do. Run this before every deploy that touches MEMBER_PUBS.
+
+    Must run on David's machine — the container cannot reach api.crossref.org.
+    """
+    src = open(pi.PUBS_JS, encoding="utf-8").read()
+    entries = re.findall(r"\{ mid:'([^']+)',.*?title:'((?:[^'\\]|\\.)*)'.*?(?:doi:'([^']*)')?\s*\}",
+                         src, re.S)
+    rows = []
+    for mid, title, doi in entries:
+        rows.append((mid, title.replace("\\'", "'"), doi))
+
+    missing = [r for r in rows if not r[2]]
+    todo = [r for r in rows if r[2]]
+    print("%d entries with a DOI, %d without.\n" % (len(todo), len(missing)))
+
+    bad, ok = [], 0
+    for mid, title, doi in todo:
+        data = pi.crossref(doi)
+        if not data:
+            bad.append((mid, doi, title, "DOI DOES NOT RESOLVE \u2014 possible fabrication"))
+            print("  \u2717 %-22s %s\n      %s" % (mid, doi, title[:70]))
+            continue
+        ct = (data.get("title") or [""])[0]
+        a, b = norm(ct), norm(title)
+        if ct and a[:40] != b[:40] and a not in b and b not in a:
+            bad.append((mid, doi, title, "title mismatch: Crossref says %r" % ct))
+            print("  ~ %-22s %s\n      ours    : %s\n      crossref: %s" % (mid, doi, title[:66], ct[:66]))
+        else:
+            ok += 1
+        time.sleep(0.2)
+
+    print("\n%d verified, %d problem(s)." % (ok, len(bad)))
+    # The no-DOI entries are the ones that worry me most: they cannot be checked by
+    # resolution, and BOTH fabrications found so far were plausible-looking. Books legitimately
+    # have no DOI, so a miss here is not proof of anything — but a title that Crossref has
+    # never heard of, attributed to a member, deserves a human look.
+    if missing:
+        print("\n%d entries carry no DOI. Searching Crossref by title \u2014 a MISS is not proof of"
+              % len(missing))
+        print("fabrication (books often have no Crossref record), but it flags what to eyeball.\n")
+        for mid, title, _ in missing:
+            hit = pi.crossref_title(title) if hasattr(pi, "crossref_title") else None
+            if hit:
+                print("   \u2713 %-22s %s" % (mid, title[:60]))
+            else:
+                print("   ? %-22s %s   \u2190 no Crossref match; CHECK BY HAND" % (mid, title[:60]))
+            time.sleep(0.2)
+    if bad:
+        print("\nA fabricated or misattributed publication under a colleague's name is the worst")
+        print("failure this page has. Fix every \u2717 before deploying.")
+        return 1
+    return 0
+
+
+def norm(s):
+    return re.sub(r"[^a-z0-9]+", " ", (s or "").lower()).strip()
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -468,6 +540,8 @@ def main():
                     help="search ORCID by NAME for the thin members \u2192 tools/orcid_ids.csv")
     ap.add_argument("--fetch", action="store_true", help="works \u2192 tools/orcid_review.csv")
     ap.add_argument("--emit", action="store_true", help="KEEP rows \u2192 MEMBER_PUBS block")
+    ap.add_argument("--verify", action="store_true",
+                    help="resolve every MEMBER_PUBS DOI against Crossref; flags fabrications")
     ap.add_argument("--members", action="store_true",
                     help="write orcid: into MEMBERS in agw_data.js from tools/orcid_ids.csv")
     ap.add_argument("--dry-run", action="store_true", help="with --members: report, change nothing")
@@ -481,6 +555,8 @@ def main():
         return fetch()
     if a.emit:
         return emit()
+    if a.verify:
+        return verify()
     if a.members:
         return members(dry_run=a.dry_run)
     ap.print_help()

@@ -88,10 +88,13 @@
       authors:'Heinz D. Kurz', venue:'Columbia University Press', year:2016 },
 
     // ── Christian Gehrke ──────────────────────────────────────────────────
-    { mid:'gehrke-christian', themes:['classical'],
-      title:'The Economics of Production: Sraffa and the Classical Approach', type:'article',
-      authors:'Christian Gehrke · Heinz D. Kurz', venue:'Review of Political Economy', year:2018,
-      doi:'10.1080/09538259.2018.1442907' },
+    /* Christian Gehrke had ONE MEMBER_PUBS entry and it was fabricated: "The Economics of
+     * Production: Sraffa and the Classical Approach", doi 10.1080/09538259.2018.1442907.
+     * That prefix IS Review of Political Economy — the suffix is not a real article. Same
+     * signature as the Bieri/JEI fabrication: real journal, plausible DOI shape, no paper.
+     * Removed rather than replaced — inventing a substitute is the error, not the cure.
+     * He has FIVE chapters in the corpus (Bd XXIII, XXIV, XXX, XXXI, XXXV), so his card is
+     * well populated without it. Ask him for a supplement, or take one from ORCID. */
 
     // ── Karen Horn ────────────────────────────────────────────────────────
     { mid:'horn-karen', themes:['smith','general'],
@@ -152,10 +155,15 @@
       authors:'Philipp Robinson Rössner', venue:'Bloomsbury Academic', year:2021 },
 
     // ── David Bieri ───────────────────────────────────────────────────────
-    { mid:'bieri-david', themes:['monetary','econ_history'],
-      title:'Form Follows Function: On the Interaction between Real Estate Finance and Urban Spatial Structure', type:'article',
-      authors:'David S. Bieri', venue:'Journal of Economic Issues', year:2017,
-      doi:'10.1080/00213624.2017.1320518' },
+    /* Verified against the publisher's record (OUP), 2026-07. This REPLACES a fabricated
+     * entry ("Form Follows Function", Journal of Economic Issues, doi 10.1080/00213624.2017.1320518)
+     * that was in the original seed batch. That DOI resolves to nothing — but it sits inside
+     * the real JEI 2017 range, so it looked entirely plausible. See the audit note below. */
+    { mid:'bieri-david', themes:['evolutionary','monetary','spatial'],
+      title:'Schumpeter\u2019s Gesetz and Gestalt in space: exploring evolutionary economic geographies of money and finance',
+      type:'article', authors:'David Bieri',
+      venue:'Cambridge Journal of Regions, Economy and Society 16(3), S. 561\u2013586', year:2023,
+      doi:'10.1093/cjres/rsad025' },
 
     // ── Joachim Zweynert ──────────────────────────────────────────────────
     { mid:'zweynert-joachim', themes:['general','evolutionary'],
@@ -217,9 +225,13 @@
       authors:'Jan-Otmar Hesse', venue:'History of Political Economy', year:2007 },
 
     // ── Jochen Hartwig ──
+    /* Crossref returned no match for this one — but the paper is real and it was OUR typo:
+     * "Baumol-Norhaus" for Baumol\u2013NORDHAUS. Venue and year were missing too. A --verify
+     * miss means "look at this", not "it is fake"; here the entry was wrong, not invented. */
     { mid:'hartwig-jochen', themes:['general'],
-      title:'Testing the Baumol-Norhaus Model with EU KLEMS Data', type:'article',
-      authors:'Jochen Hartwig', venue:'Review of Income and Wealth', year:2011 },
+      title:'Testing the Baumol\u2013Nordhaus Model with EU KLEMS Data', type:'article',
+      authors:'Jochen Hartwig',
+      venue:'Review of Income and Wealth 57(3), S. 471\u2013489', year:2011 },
 
     // ── Johannes Schmidt ──
     { mid:'schmidt-johannes', themes:['general'],
