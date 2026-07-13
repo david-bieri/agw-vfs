@@ -1,90 +1,100 @@
 # AGW Session Notes
 
-**Last session:** 2026-07-10
-**Topic:** Impressionen gallery → landing "Im Fokus" feature → social-card generator → doc consolidation + cohesion audit
-**Working version at session end:** v48 (`agw-2026-v48-fokus`)
-**Conference T-minus:** concluded (46th Jahrestagung, 25–27 June 2026)
+**Last session:** 2026-07-12 (long, single-topic, one compaction)
+**Topic:** The Tagungsband chapter corpus — harvest → theme curation → volume ToCs → member research spine → citation export → supplements → ORCID harvest. Four silent-failure bugs found and fixed along the way.
+**Working version at session end:** **v62** (`agw-2026-v62-member-data`) — verified live on `main`
+**Conference status:** CONCLUDED (46. JT, 25–27 June 2026). Standing-committee-home phase.
 
 ---
 
 ## 1. Just deployed this session
 
-- `v44` — sticky-nav fix (`#nav-mount{display:contents}` + on-scroll shadow) ✓
-- consolidated `AGW_DECISIONS.md` (backfill 013/14/15, merge 020, add 021–023) + removed misfiled `COWORK_PROJECT_INSTRUCTIONS.md` / redundant files ✓
-- `v45` — Impressionen gallery + accessible lightbox on `jahrestagung-2026.html` ✓
-- `v46` — reorder ("Impressionen aus Riva" first) + Monte Generoso excursion photos + `tools/gallery_add.py` ✓
-- `v47` — EXIF-orientation fix for `p4921`/`p4936` (were sideways) ✓
-- `v48` — "Im Fokus" landing highlight + first `og:image` ✓ (needed a fix mid-deploy: the manifest landed at repo root as `highlights.js`; moved to `data/highlights.js`)
-- `tools/` thumbnail generator (script + fonts + examples) — commit instructions given ? (confirm pushed)
+All verified live on `main` via `raw.githubusercontent.com`. **Nothing is pending.**
+
+- **v58 — the chapter corpus.** `agw_volume_chapters.js`: **288 chapters, 43 volumes**, zero HTML↔PDF disagreements, plus `VOLUME_META` (year, editors, ISBN, DOI for all 43). Volume ToCs on `archive.html`; the two-block member spine on `publications-members.html`; `agw_cite.js` (Chicago/Harvard/BibTeX, bulk `.bib` per volume and per member); `preclassical` replacing `cameralism`; the `agw_data.js` `Object.assign` fix.
+- **v60 — archive fixes + supplements.** Leaflet **JS** added to `archive.html`; Referenten tab rebuilt on the corpus with name folding; 19 curated supplements; four working papers upgraded to their published versions; `pubs_import.py` THEME_HINTS fixed.
+- **v61 — theme-view fix.** `rowsFor(view)`: aggregate views count `VOLUME_CHAPTERS`, member views count `MEMBER_CHAPTERS`. Chapter years now from `VOLUME_META`.
+- **v62 — member data.** 11 ORCID-sourced supplements (Sturn, Braun, Krämer, Wagner, Landmann); four institution records corrected (Lorenz → Friedrich-Schiller-Universität Jena; Weizsäcker → MPI **für Verhaltensökonomik**, renamed end-2025; city dropped from `inst` for Bieri and Chaloupek).
+- **Docs.** `tools/themes.csv` committed (it had been 404 on `main` — see §4); ADR-026…033 promoted (33 ADRs on `main`); `AGW_PROGRESS.md` → v61; `AGW_CLAUDE.md` refreshed.
+
+**State of the record:** `MEMBER_PUBS` 49 · `VOLUME_CHAPTERS` 288 · `VOLUME_META` 43 · **47 of 48 members now have something on their page.**
+
+---
 
 ## 2. Pending deploy
 
-**Doc pass (this session — in `/mnt/user-data/outputs/docs/`):** no SW bump (docs aren't precached).
-```powershell
-copy "outputs\docs\README.md" "README.md"
-copy "outputs\docs\AGW_CLAUDE.md" "AGW_CLAUDE.md"
-copy "outputs\docs\AGW_README.md" "AGW_README.md"
-copy "outputs\docs\AGW_PROGRESS.md" "AGW_PROGRESS.md"
-copy "outputs\docs\AGW_DECISIONS.md" "AGW_DECISIONS.md"
-copy "outputs\docs\AGW_DESIGN_AUDIT.md" "AGW_DESIGN_AUDIT.md"
-copy "outputs\docs\AGW_SESSION_NOTES.md" "AGW_SESSION_NOTES.md"
-git add README.md AGW_CLAUDE.md AGW_README.md AGW_PROGRESS.md AGW_DECISIONS.md AGW_DESIGN_AUDIT.md AGW_SESSION_NOTES.md
-git commit -m "docs: refresh CLAUDE/README/README/PROGRESS to v48; add ADR-024/025 + design audit; session notes"
-git push
-```
+**Nothing.** Everything produced this session is on `main` and verified.
 
-**`.gitignore` fix** (the additions from the docs step never actually applied — scratch files still show untracked):
-```powershell
-Get-Content gitignore-additions.txt | Add-Content .gitignore
-del gitignore-additions.txt
-git add .gitignore
-git commit -m "chore: apply .gitignore rules (scratch + npm files)"
-git push
-```
-
-**`tools/` generator** (if not already pushed): `Expand-Archive outputs\agw-thumbnail-tool.zip -DestinationPath . -Force` → `git add tools` → commit → push.
+---
 
 ## 3. Decisions made this session
 
-- **ADR-024** — "Im Fokus" landing highlight is live bilingual HTML, not baked-in-image text (disciplined approach; branded rasters are social-only).
-- **ADR-025** — branded social/og cards come from `tools/agw_thumbnail.py` (4 styles × og/square/portrait), not hand-made.
-- Featured slot takes a landscape image OR a two-portrait diptych (p4936 + p4921) — folded into ADR-024.
+**ADR-026 … ADR-033**, all promoted to `AGW_DECISIONS.md`.
+
+- **030** The chapter corpus: the D&H eLibrary is the source of truth. Crossref holds chapter DOIs for only 2 of 43 volumes; `PUBLICATIONS` has `year:null` for 31 of 43; `citation_publication_date` is the *e-edition* date; PDF filenames carry stale band numbers (matched by content fingerprint instead). **`tools/themes.csv` is the curation overlay and must stay in the repo.**
+- **031** *(David's call)* The member bibliography is **committee-curated on a legitimate-interest basis**, not consent-by-submission — this **withdrew** the standing rule in `pubs_import.py`. The consequences are obligations, not notes: a Datenschutzerklärung must exist, an opt-out must be honoured, accuracy is on the maintainer.
+- **033** **Aggregate views count the corpus; member views count the expansion.** Written after the same mistake produced two silent wrong outputs in one day.
+
+---
 
 ## 4. Latent issues surfaced
 
-- **Gold `#CBA13A`** exists on social cards but nowhere in the site CSS → site ↔ social brand gap (design audit item 4; decision pending).
-- **Design drift** (audit items 1–3): card radius 10px vs 12px; three card-hover idioms; eyebrow letter-spacing varies `.07/.1/.14/.18em`. All mechanical token cleanup.
-- **`agw_schools_net.js` `NET`**: Léon Walras & Vilfredo Pareto laned `"Austrian School"` (→ Neoclassical); Alfred Weber's `c` blurb is Max Weber's (copy-paste bleed).
-- **Op-ed rail thumbnail** (`img/highlights/oped_loesch.jpg`): the Lösch portrait scan is landscape with the subject right-of-centre; the plain crop centres on him but was not eyeballed by Claude. The generator's `--focus` is vertical only (no horizontal crop) — add if needed.
-- Gallery/Im Fokus were built without Claude seeing the rendered page — David to confirm diptych crop + op-ed thumb framing on the live site (Im Fokus screenshot already looked good).
+- **`tools/themes.csv` was missing from `main` for four versions.** It sat in every deploy block and never landed; a corpus rebuild would have silently regenerated all 288 themes as `GUESSED`, destroying two passes of human curation. Now committed. **The lesson generalises: a file that appears in a deploy block is not a file that was pushed.** Verify the artefact, not the instruction.
+- **Two working papers still unchecked:** `Ehnts 2019` (Knapp's State Theory of Money) and `Barens 2011` ("Animal spirits" in Keynes). Of the five WPs actually checked, **four had been published** — one under a changed title. A `.bib` freezes an item at the moment it entered the library; nothing updates it. `orcid_seed.py` now emits a `published_version` column for exactly this.
+- **ORCID homonyms are the standing hazard.** `Michael Wohlgemuth`'s ORCID belongs to an open-access/bibliometrics researcher at Bielefeld, **not** the ordoliberal economist. Nothing was taken from it. The `venue` column caught it — the name and affiliation string did not.
+- **ORCID deposits carry the depositor's own errors.** Thomsen's record types Band XXXVII as an *edited* volume; the publisher's citation gives Caspari as editor (Thomsen has a chapter, which the corpus already carries). Wagner's five hits were one book in two language editions plus three of its own chapters, and one DOI read `10.10l07/…` with a lowercase L. All three excluded — and the exclusions are written into a comment block in `agw_member_pubs.js` so a future session doesn't cheerfully re-add them.
+- **The `archive.html` scroll question was never answered.** David reported the page scrolling to the bottom on load, but the URL carried `#publikationen` — the last section — so an anchor jump and "scrolled to the bottom" are indistinguishable. **Load `archive.html` with no hash.** If it still jumps, it's real and needs the console (AGW_DEBUG step 1: do not theorise from the symptom).
+- **PowerShell writes CSVs in CP850**, not UTF-8 (`Krämer` → `Kr„mer`, byte 0x84 kills a utf-8 read). `orcid_seed.py` now decodes utf-8/cp1252/cp850 and hard-fails on an unknown `mid` — a `turn-richard` typo would otherwise have attached a publication to nobody.
+- **`overlord.bib` has lost ligatures** — `Œconomia` arrived as `conomia`. If it happened once it happened elsewhere; grep the master bib.
+- **`MEMBER_PUBS` co-authorship is single-`mid`.** Ehnts' 2012 paper with Trautwein (also a member) shows only on Ehnts' card. `VOLUME_CHAPTERS` uses `mids[]` and does this correctly. Harmless now, wrong in principle.
+- **Two clones exist.** Keep `C:\Users\bieri\Documents\GitHub\agw-vfs`, not the OneDrive one — OneDrive syncs `.git` objects mid-write and can corrupt the index.
+- Carried: cross-page `Ctrl+K` search is per-page only; PWA on mobile untested.
+
+---
 
 ## 5. Open questions for David
 
-- **Gold accent:** adopt site-wide (add `--gold`, use on kicker rules/active tabs) or retire it from the generator so cards match the navy-only site? (audit item 4 — highest-leverage design call.)
-- **Member "Forschung der Mitglieder" feature** (the original standing request): static vs. backend, and the vitae/GDPR decision. Still unstarted.
-- Confirm `tools/` generator was pushed.
+### 🔴 Persistent — the one thing that should not slide
+
+**Impressum + Datenschutzerklärung.** ADR-031 makes this a **prerequisite**, not a follow-up: legitimate interest without a privacy notice is not a legal basis, it is a preference. It is also independent of the member feature — the site now publishes 288 chapter records naming ~200 people. Blocked on six facts (Diensteanbieter — VfS e.V. recommended; postal address; Vertretungsberechtigte; Vereinsregister-Nr. + Registergericht; contact email; DSB) — **or one email to the VfS Geschäftsstelle** asking for their Impressum boilerplate, their Datenschutzerklärung *and* their member-consent template. Every German e.V. has all three; reusing association-approved text is faster and safer than drafting. Open for three sessions.
+
+### Five emails — the last mile the tooling cannot walk
+
+ORCID gave nothing usable for these five. That is a fact about ORCID's coverage of German economics, not about their output.
+
+| member | why |
+|---|---|
+| **Arash Molavi** | 0 chapters; ORCID registered but empty. **The only member with nothing on his page.** |
+| **Michael Wohlgemuth** | the ORCID hit was a different person entirely |
+| **Reinhard Blomert** | no iD found |
+| **Hans-Walter Lorenz** | no iD found (emeritus) |
+| **Carl Christian von Weizsäcker** | no iD found — he co-authors with Krämer in *Wirtschaftsdienst*; a direct ask would produce better material than any harvest |
+
+### Smaller
+
+- **`archive.html` with no hash** — does it still scroll to the bottom?
+- **Ehnts 2019 / Barens 2011** — the last two unchecked working papers.
+
+---
 
 ## 6. Suggested next session
 
-1. **Build v49** (ready — full spec below): "Im Fokus" rail tiles (Option 1) + the ESHET–HES Nice event. Bump SW to v49; `agw_data.js`, `data/highlights.js`, `agw_highlights.js`, `agw_styles.css`, `index.html` are the touched precached assets.
-2. **Design cohesion pass** — audit items 1–3 (radius/hover/eyebrow tokens) as one CSS-token commit; then resolve gold (item 4).
-3. Deploy the doc pass + `.gitignore` fix + `tools/` if not done.
+1. **Impressum + Datenschutzerklärung.** Six facts, or the VfS boilerplate. The binding constraint on the whole member-research track.
+2. **Privacy hardening** — self-host Google Fonts (every page load currently sends the visitor's IP to Google: the *LG München I, 20.01.2022* fact pattern), vendor Leaflet + qrcode into `vendor/`, click-to-load the OSM map. **Needs nothing from anyone**, and it *shortens* the Datenschutzerklärung that has to be written. The right thing to build while waiting on the VfS.
+3. **The five emails** (§5).
+4. **Check the last two working papers.**
+5. **Backlog:** the v49 "Im Fokus" rail tiles + ESHET–HES Nice event (spec in git history); the design cohesion pass (`AGW_DESIGN_AUDIT.md`, incl. the gold-accent decision); school-laning correction (Jevons, Sraffa); `MEMBER_PUBS` co-authorship → `mids[]`.
 
-### v49 spec — rail tiles (Option 1, confirmed)
-Add a `tiles[]` to `data/highlights.js` + render in `agw_highlights.js`; CSS `.hl-tile`/`.hl-stats`/`.hl-teaser` in `agw_styles.css`:
-- **Stats tile** — kicker "Der AGW in Zahlen" / "The AGW in numbers"; 2×2 metrics: `1980` (gegründet), `46` (Jahrestagungen), `@members` → `MEMBERS.length`, `@volumes` → `PUBLICATIONS.length`; whole tile links `committee.html#ueberblick`.
-- **Stammbaum teaser** — kicker "Analytik"; title "Stammbaum der Denkschulen"; meta "14 Denkschulen · 81 Figuren · 43 Jahre"; small node glyph; links `analytics.html`.
-(Blend numbers + both links, per David.)
+---
 
-### v49 spec — ESHET–HES Nice event
-Add to `EVENTS` in `agw_data.js` (dates verified: **26–29 May 2026**, i.e. *before* the AGW Jahrestagung, now past):
-```js
-{ id:'eshet-hes-nice-2026', series:'eshet', edition:29, kind:'conference', affiliation:'affiliated',
-  title:'1. gemeinsame ESHET–HES-Tagung (29. ESHET-Jahrestagung)',
-  start:'2026-05-26', end:'2026-05-29',
-  loc_de:'Nice (Université Côte d’Azur / GREDEG)', loc_en:'Nice (Université Côte d’Azur / GREDEG)',
-  host:'Université Côte d’Azur · GREDEG',
-  url:'https://www.eshet-conference.net/joint-eshet-hes-nice', tags:['general'],
-  desc_de:'Erste gemeinsame Tagung von ESHET und History of Economics Society (HES); Thema „Economists under Pressure and the Political Limits to Economics".',
-  desc_en:'First joint conference of ESHET and the History of Economics Society (HES); theme "Economists under Pressure and the Political Limits to Economics."' }
-```
+## Method notes worth keeping
+
+- **Four silent failures in one session**, none of which threw an error: an empty map (Leaflet CSS loaded without its JS), a contributor ranking built from 18 of 46 conferences (Dieter Schneider's 12 chapters simply absent), theme pills counting the member expansion instead of the corpus, and a curation file that was never actually committed. **A wrong number is more dangerous than a crash** — it looks like an answer. Assert any new aggregate against the corpus; never eyeball it.
+- **A guard that returns empty protects the page and hides the fault.** ADR-016 is why one broken map didn't cascade — and also why nobody noticed it for weeks. When something renders blank, suspect a missing dependency before a logic bug.
+- **Verify the instrument before believing the reading.** The self-corrected errors this session (print-vs-electronic ISBN; reading Crossref's 476-item relevance sweep as a ceiling; calling Rieter's genuine 245-page bibliography chapter a parse bug; assuming `to_entry()` returned a dict when it returns a formatted string) were all one mistake: interpreting a result without checking that the instrument measured what was assumed.
+- **Use the instrument that answers the question.** Web search will happily return ORCID iDs — belonging to the wrong people. ORCID's own API returns the affiliation alongside the iD. Under ADR-031 the accuracy obligation is the maintainer's, and a confidently wrong iD on a colleague's page is exactly the error that survives review.
+- **The JS smoke-test pattern:** concatenate the data file with an inline test script and pipe to `node` — mirrors the browser's shared-scope `<script>` loading. Stub `setInterval`/`setTimeout` before loading `agw_app.js`, or the countdown hangs the run.
+
+---
+
+*Generated via the AGW_HANDOVER.md protocol at the end of the 2026-07-12 session.*
