@@ -16,26 +16,22 @@ What it adds is the four things pubs_import cannot do:
                 exists.
 
 ────────────────────────────────────────────────────────────────────────────
-⚠ CONSENT — READ BEFORE RUNNING --find
+BASIS FOR PROCESSING  (settled 2026-07-12 — ADR-031)
 
-pubs_import.py says, and has always said:
+The site's member bibliography is COMMITTEE-CURATED, not submission-based. The
+Tagungsband chapters are the committee's own publication record; MEMBER_PUBS is a
+curated selection of further work. Searching ORCID by name is therefore on the same
+footing as curating from a bibliography — public data, curated by the committee.
 
-    "Only run this for a member who has SENT you their ORCID iD. An ORCID iD being
-     public is not the same thing as a member asking to be listed on the AGW site.
-     Consent comes from the submission, not from the data being findable."
+The old "consent comes from the submission" rule in pubs_import.py has been revised
+accordingly. What replaces it is NOT weaker, it is different, and it has teeth:
 
---find searches ORCID BY NAME, for members who have submitted nothing. That is exactly
-what the rule forbids.
-
-It exists because the model has arguably already changed: the Tagungsband chapters are
-the committee's OWN publication record, and the 2026 supplements were curated from the
-maintainer's own .bib — neither was submission-based. If curation is the model, then the
-rule above should be REVISED, not quietly broken. And the Datenschutzerklärung that tells
-members this is happening stops being optional: a privacy notice is what makes
-"legitimate interest" defensible rather than merely convenient.
-
-So --find is gated behind an explicit flag. If the question is unsettled, use --fetch
-with iDs that members sent you, and email the rest.
+  * A Datenschutzerklärung must exist. Legitimate interest without a privacy notice
+    is not a legal basis. This is now the binding prerequisite for running --find at
+    scale — not a follow-up task.
+  * An opt-out must be offered and honoured without argument.
+  * Accuracy is on the maintainer (DSGVO Art. 5(1)(d)). Read every line. Homonyms
+    and stale working papers are data-protection failures, not typos.
 ────────────────────────────────────────────────────────────────────────────
 
 USAGE
@@ -43,7 +39,7 @@ USAGE
     python tools\\orcid_seed.py --triage
         Who has nothing? Offline, no requests. Start here.
 
-    python tools\\orcid_seed.py --find --i-have-decided-the-consent-question
+    python tools\\orcid_seed.py --find
         ORCID name search -> tools/orcid_ids.csv (candidate iDs + affiliations).
         THEN CURATE BY HAND: delete wrong rows, keep AT MOST ONE per member. Name
         search returns homonyms — MEMBERS contains a "Helmut Wagner", and so does half
@@ -67,6 +63,7 @@ WHAT ORCID WILL NOT GIVE YOU
 
 import argparse
 import csv
+import io
 import os
 import re
 import sys
@@ -91,6 +88,46 @@ FIELDS = ["KEEP", "THEMES", "mid", "member", "year", "type", "title",
           "venue", "authors", "doi", "published_version"]
 
 PARTICLES = {"von", "van", "de", "der", "den", "zu", "zur", "ter"}
+
+
+def safe_json(url):
+    """pubs_import.get_json() raises on network errors by design — its own callers wrap
+    it. We wrap it too: one unreachable name must not abort a 25-member run."""
+    try:
+        return pi.get_json(url)
+    except Exception as e:                       # noqa: BLE001 — any network failure
+        print("     ! %s" % str(e)[:70], file=sys.stderr)
+        return None
+
+
+def read_csv(path):
+    """Read a CSV that PowerShell may have written in the OEM codepage.
+
+    `Out-File` / `>` on a German Windows box writes **CP850**, not UTF-8: `Krämer`
+    arrives as `Kr„mer` and byte 0x84 kills a utf-8 read outright. Try the sane
+    encodings in order rather than making the user think about codepages.
+    Tip for the user: `... | Set-Content -Encoding utf8 file.csv`."""
+    raw = open(path, "rb").read()
+    for enc in ("utf-8-sig", "utf-8", "cp1252", "cp850"):
+        try:
+            txt = raw.decode(enc)
+        except UnicodeDecodeError:
+            continue
+        if enc in ("cp1252", "cp850"):
+            print("  (note: %s was %s-encoded, not UTF-8 \u2014 decoded anyway)"
+                  % (os.path.basename(path), enc), file=sys.stderr)
+        return list(csv.DictReader(io.StringIO(txt)))
+    sys.exit("Cannot decode %s in any known encoding." % path)
+
+
+def check_mids(rows):
+    """Every mid must exist in MEMBERS. A typo here ('turn-richard' for 'sturn-richard')
+    silently attaches a publication to nobody \u2014 nothing downstream complains."""
+    known = set(re.findall(r"\{ id:'([^']+)', name:", open(pi.DATA_JS, encoding="utf-8").read()))
+    bad = sorted({r["mid"] for r in rows if r.get("mid") and r["mid"] not in known})
+    if bad:
+        sys.exit("Unknown mid(s) in the CSV: %s\nThese do not exist in MEMBERS \u2014 fix the "
+                 "spelling before going further." % ", ".join(bad))
 
 
 def _array(path, name):
@@ -139,13 +176,37 @@ def split_name(name):
     return " ".join(parts[:i]), " ".join(parts[i:])
 
 
+def without_orcid():
+    """Members who have no `orcid:` in MEMBERS. THIS is the right set for --find.
+
+    It used to reuse triage() — members with no MEMBER_PUBS entry — which is a different
+    question entirely. Once Sturn, Krämer, Braun, Wagner and Landmann were given supplements
+    they vanished from that list, so --find silently stopped searching for exactly the people
+    whose iDs were still missing. Ask the question you actually mean.
+    """
+    src = open(pi.DATA_JS, encoding="utf-8").read()
+    out = []
+    for line in src.split("\n"):
+        m = re.search(r"\{ id:'([^']+)', name:'([^']+)'", line)
+        if not m:
+            continue
+        if "orcid:'" in line:
+            continue
+        inst = re.search(r"inst:'([^']*)'", line)
+        out.append({"mid": m.group(1), "name": m.group(2),
+                    "inst": inst.group(1) if inst else ""})
+    return out
+
+
 def find():
     rows = []
-    for m in [x for x in triage() if x["chapters"] <= 1]:
+    todo = [m for m in without_orcid() if m["mid"] not in BLOCKED]
+    print("%d member(s) have no ORCID iD yet.\n" % len(todo))
+    for m in todo:
         given, family = split_name(m["name"])
-        data = pi.get_json(ORCID_SEARCH % (urllib.parse.quote(given), urllib.parse.quote(family)))
+        data = safe_json(ORCID_SEARCH % (urllib.parse.quote(given), urllib.parse.quote(family)))
         hits = (data or {}).get("expanded-result") or []
-        print("%-32s %d candidate(s)" % (m["name"], len(hits)))
+        print("%-30s %-34s %d candidate(s)" % (m["name"], m["inst"][:34], len(hits)))
         if not hits:
             rows.append({"mid": m["mid"], "name": m["name"], "orcid": "", "cand_name": "",
                          "affiliation": "", "note": "NO HIT \u2014 ask the member directly"})
@@ -162,7 +223,11 @@ def find():
         w.writeheader()
         w.writerows(rows)
     print("\nwrote %s" % IDS_CSV)
-    print("NOW CURATE IT: keep AT MOST ONE orcid per mid, and check the affiliation column.")
+    print("NOW CURATE IT. Delete every row you cannot confirm; keep at most ONE per member.")
+    print("The affiliation column is the test, not the name. In the July 2026 run, three of")
+    print("nine searches returned a confident WRONG person: a clinician in Innsbruck for")
+    print("Kremser, a librarian in Dresden for Wohlgemuth, and eight unrelated 'Christian")
+    print("von ...' records for von Weizsäcker. A blank affiliation is NOT a confirmation.")
     return 0
 
 
@@ -173,7 +238,7 @@ def published_version(title):
     get published. Of four WPs audited by hand in July 2026, THREE had been published, one
     under a changed title. Listing a colleague's working paper years after it appeared in a
     Springer volume is small and entirely avoidable."""
-    data = pi.get_json(CROSSREF_TITLE % urllib.parse.quote(re.sub(r"\s+", " ", title)[:120]))
+    data = safe_json(CROSSREF_TITLE % urllib.parse.quote(re.sub(r"\s+", " ", title)[:120]))
     want = re.sub(r"\W+", " ", title.lower()).split()[:6]
     for it in ((data or {}).get("message") or {}).get("items", []):
         got = re.sub(r"\W+", " ", (it.get("title") or [""])[0].lower()).split()[:6]
@@ -187,7 +252,9 @@ def fetch():
     if not os.path.exists(IDS_CSV):
         sys.exit("No %s. Run --triage, then --find \u2014 or write the file by hand "
                  "(columns: mid,name,orcid) from iDs members sent you." % IDS_CSV)
-    ids = [r for r in csv.DictReader(open(IDS_CSV, encoding="utf-8-sig")) if r.get("orcid")]
+    rows_in = read_csv(IDS_CSV)
+    check_mids(rows_in)
+    ids = [r for r in rows_in if r.get("orcid")]
     per = {}
     for r in ids:
         per.setdefault(r["mid"], []).append(r["orcid"])
@@ -201,15 +268,31 @@ def fetch():
         works = pi.orcid_works(pi.normalise_orcid(r["orcid"]))
         print("%-30s %-21s %d works" % (r["name"], r["orcid"], len(works)))
         for w in works:
-            e = pi.to_entry(w, r["mid"], fallback_author=r["name"])
-            if not e:
+            # ORCID gives a thin record (title/type/year/doi, no authors, often no venue).
+            # Crossref is the better source wherever a DOI exists — this is exactly what
+            # pubs_import does in its own --orcid path; mirror it rather than inventing one.
+            rec = w
+            if w.get("doi"):
+                enriched = pi.crossref(w["doi"])
+                if enriched:
+                    rec = enriched
+                time.sleep(0.2)                      # be polite to Crossref
+            title = (rec.get("title") or "").strip()
+            if not title:
                 continue
-            flag = published_version(e["title"]) if e.get("type") == "wp" else ""
-            rows.append({"KEEP": "", "THEMES": ",".join(e.get("themes") or []),
-                         "mid": r["mid"], "member": r["name"], "year": e.get("year") or "",
-                         "type": e.get("type") or "article", "title": e["title"],
-                         "venue": e.get("venue") or "", "authors": e.get("authors") or r["name"],
-                         "doi": e.get("doi") or "", "published_version": flag})
+            rtype = rec.get("type") or "article"
+            flag = published_version(title) if rtype == "wp" else ""
+            rows.append({
+                "KEEP": "",
+                "THEMES": ",".join(pi.suggest_themes(title, rec.get("venue"))),
+                "mid": r["mid"], "member": r["name"],
+                "year": rec.get("year") or "",
+                "type": rtype, "title": title,
+                "venue": rec.get("venue") or "",
+                "authors": rec.get("authors") or r["name"],
+                "doi": rec.get("doi") or "",
+                "published_version": flag,
+            })
     rows.sort(key=lambda x: (x["member"], -int(x["year"] or 0)))
     with open(REVIEW_CSV, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS)
@@ -226,8 +309,9 @@ def fetch():
 def emit():
     if not os.path.exists(REVIEW_CSV):
         sys.exit("Run --fetch first.")
-    rows = [r for r in csv.DictReader(open(REVIEW_CSV, encoding="utf-8-sig"))
+    rows = [r for r in read_csv(REVIEW_CSV)
             if str(r.get("KEEP", "")).strip().lower() in ("x", "y", "yes", "1")]
+    check_mids(rows)
     if not rows:
         sys.exit("Nothing marked KEEP.")
 
@@ -262,33 +346,138 @@ def emit():
     return 0
 
 
+
+# ── write iDs back into MEMBERS ─────────────────────────────────────────────
+ORCID_RE = re.compile(r"^\d{4}-\d{4}-\d{4}-\d{3}[\dX]$")
+
+# Never write an iD for these, whatever a CSV says. Each was a name-search match that
+# turned out to be a DIFFERENT PERSON. The member card renders the iD as a live public
+# link, so a wrong one does not merely misattribute a bibliography — it points at a
+# stranger's record under a colleague's name.
+BLOCKED = {
+    "wohlgemuth-michael": "name-matched iD belongs to an open-access researcher at Bielefeld, "
+                          "not the ordoliberal economist",
+}
+
+
+def orcid_checksum_ok(oid):
+    """ORCID iDs carry a MOD-11-2 check digit. A transposed digit is therefore
+    detectable — and a transposed digit yields a live link to somebody else."""
+    digits = oid.replace("-", "")
+    total = 0
+    for ch in digits[:-1]:
+        total = (total + int(ch)) * 2
+    expected = (12 - total % 11) % 11
+    return ("X" if expected == 10 else str(expected)) == digits[-1].upper()
+
+
+def members(dry_run=False):
+    """Write `orcid:` into MEMBERS in agw_data.js from the curated tools/orcid_ids.csv."""
+    if not os.path.exists(IDS_CSV):
+        sys.exit("No %s. Curate it first (columns: mid,name,orcid)." % IDS_CSV)
+    rows = [r for r in read_csv(IDS_CSV) if (r.get("orcid") or "").strip()]
+    check_mids(rows)
+
+    # Two members cannot share an iD. A duplicate is not a near-miss, it is a guaranteed
+    # misattribution — and it is exactly what a careless copy-paste down a spreadsheet
+    # column produces. (This check exists because a test fixture did precisely that.)
+    seen = {}
+    dupes = []
+    for r in rows:
+        oid = (r.get("orcid") or "").strip().replace("https://orcid.org/", "").strip("/")
+        if oid in seen and seen[oid] != r["mid"]:
+            dupes.append((oid, seen[oid], r["mid"]))
+        seen.setdefault(oid, r["mid"])
+    if dupes:
+        for oid, a, b in dupes:
+            print("  \u2717 %s is assigned to BOTH %s and %s" % (oid, a, b), file=sys.stderr)
+        sys.exit("\nRefusing to write: an ORCID iD identifies one person. Nothing was changed.")
+
+    src = open(pi.DATA_JS, encoding="utf-8").read()
+    added, changed, skipped, bad = [], [], [], []
+
+    for r in rows:
+        mid = r["mid"].strip()
+        oid = r["orcid"].strip().replace("https://orcid.org/", "").strip("/")
+
+        if mid in BLOCKED:
+            skipped.append((mid, BLOCKED[mid]))
+            continue
+        if not ORCID_RE.match(oid):
+            bad.append((mid, oid, "malformed \u2014 expected 0000-0000-0000-0000"))
+            continue
+        if not orcid_checksum_ok(oid):
+            bad.append((mid, oid, "CHECKSUM FAILS \u2014 this is a typo, and it would link to "
+                                  "someone else's record"))
+            continue
+
+        m = re.search(r"^(\s*\{ id:'%s'.*)$" % re.escape(mid), src, re.M)
+        if not m:
+            bad.append((mid, oid, "mid not found in MEMBERS"))
+            continue
+        line = m.group(1)
+
+        have = re.search(r"orcid:'([^']*)'", line)
+        if have and have.group(1) == oid:
+            continue                                    # already correct, nothing to do
+        if have:
+            new = line.replace("orcid:'%s'" % have.group(1), "orcid:'%s'" % oid)
+            changed.append((mid, have.group(1), oid))
+        else:
+            new = line.replace("emeritus:", "orcid:'%s', emeritus:" % oid, 1)
+            added.append((mid, oid))
+        src = src.replace(line, new, 1)
+
+    for mid, oid, why in bad:
+        print("  \u2717 %-30s %-22s %s" % (mid, oid, why), file=sys.stderr)
+    if bad:
+        sys.exit("\nRefusing to write: %d bad iD(s) above. Nothing was changed." % len(bad))
+
+    for mid, oid in added:
+        print("  + %-30s %s" % (mid, oid))
+    for mid, old, oid in changed:
+        print("  ~ %-30s %s \u2192 %s" % (mid, old, oid))
+    for mid, why in skipped:
+        print("  \u2013 %-30s SKIPPED \u2014 %s" % (mid, why))
+
+    if dry_run:
+        print("\n--dry-run: agw_data.js NOT written. %d to add, %d to change."
+              % (len(added), len(changed)))
+        return 0
+    if not added and not changed:
+        print("Nothing to do \u2014 every iD in the CSV is already in MEMBERS.")
+        return 0
+
+    open(pi.DATA_JS, "w", encoding="utf-8").write(src)
+    total = len(re.findall(r"orcid:'", src))
+    print("\nwrote %s \u2014 %d member(s) now carry an ORCID iD." % (pi.DATA_JS, total))
+    print("Now: node --check agw_data.js, then bump the service-worker cache.")
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--triage", action="store_true", help="who has no MEMBER_PUBS entry (offline)")
     ap.add_argument("--find", action="store_true",
-                    help="search ORCID by NAME \u2014 read the CONSENT note first")
-    ap.add_argument("--i-have-decided-the-consent-question", action="store_true", dest="consent",
-                    help="required for --find")
+                    help="search ORCID by NAME for the thin members \u2192 tools/orcid_ids.csv")
     ap.add_argument("--fetch", action="store_true", help="works \u2192 tools/orcid_review.csv")
     ap.add_argument("--emit", action="store_true", help="KEEP rows \u2192 MEMBER_PUBS block")
+    ap.add_argument("--members", action="store_true",
+                    help="write orcid: into MEMBERS in agw_data.js from tools/orcid_ids.csv")
+    ap.add_argument("--dry-run", action="store_true", help="with --members: report, change nothing")
     a = ap.parse_args()
 
     if a.triage:
         return show_triage()
     if a.find:
-        if not a.consent:
-            sys.exit(
-                "\n--find searches ORCID BY NAME for members who submitted nothing.\n"
-                "pubs_import.py's own rule says: \"Consent comes from the submission, not\n"
-                "from the data being findable.\"\n\n"
-                "Settle that first (see the CONSENT section at the top of this file).\n"
-                "If it is settled, re-run with --i-have-decided-the-consent-question.\n")
         return find()
     if a.fetch:
         return fetch()
     if a.emit:
         return emit()
+    if a.members:
+        return members(dry_run=a.dry_run)
     ap.print_help()
     return 0
 
