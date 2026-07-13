@@ -255,6 +255,72 @@
       title:'Paleo- and Neoliberals: Ludwig von Mises and the “Ordo-interventionists”', type:'chapter',
       authors:'Stefan Kolev', venue:'in: Commun/Kolev (Hrsg.), Wilhelm Röpke (1899–1966), Springer, S. 65–90', year:2018,
       doi:'10.1007/978-3-319-68357-7_5' },
+
+    /* ── ORCID seed 2026 ─────────────────────────────────────
+     * Harvested via tools/orcid_seed.py, then selected and verified by hand.
+     * Not everything ORCID returned is here, and that is deliberate:
+     *   • Michael Wohlgemuth's ORCID hit was a DIFFERENT PERSON (an open-access /
+     *     bibliometrics researcher at Bielefeld, not the ordoliberal economist).
+     *     Nothing was taken from it. Homonyms are the standing hazard here.
+     *   • Stephan Thomsen's record claims Band XXXVII as an EDITED volume; the
+     *     publisher's own citation gives the editor as Caspari. He has a chapter in
+     *     it, which the corpus already carries. Not added.
+     *   • Helmut Wagner's five hits were one book in two language editions plus three
+     *     of its own chapters. Listed once. (One of those DOIs also had a typo:
+     *     10.10l07/… with a lowercase L.) */
+    // ── Eduard Braun ──
+    { mid:'braun-eduard', themes:['austrian','distribution'],
+      title:'Capital is not a factor of production but organizes the allocation and distribution of resources in capitalism', type:'article',
+      authors:'Eduard Braun', venue:'The Review of Austrian Economics 38(4)', year:2025,
+      doi:'10.1007/s11138-024-00655-1' },
+    { mid:'braun-eduard', themes:['historical','monetary'],
+      title:'The German Historical School on Monetary Calculation and the Feasibility of Socialism', type:'article',
+      authors:'Eduard Braun', venue:'Journal of Institutional Economics 19(5)', year:2023,
+      doi:'10.1017/S1744137423000127' },
+    { mid:'braun-eduard', themes:['austrian','distribution'],
+      title:'Carl Menger’s Contribution to Capital Theory', type:'chapter',
+      authors:'Eduard Braun', venue:'in: Mengerian Economics, Edward Elgar', year:2023,
+      doi:'10.4337/9781035302895.00012' },
+
+    // ── Hagen Krämer ──
+    { mid:'kraemer-hagen', themes:['general'],
+      title:'The Gypsy Economist: The Life and Times of Colin Clark', type:'article',
+      authors:'Hagen M. Krämer', venue:'European Journal of the History of Economic Thought 30(1)', year:2023,
+      doi:'10.1080/09672567.2022.2138898' },
+    { mid:'kraemer-hagen', themes:['general','methodology'],
+      title:'What are services? Misconceptions and neglected insights from the productivity controversy in the classical period', type:'article',
+      authors:'Hagen M. Krämer', venue:'European Journal of the History of Economic Thought 30(6)', year:2023,
+      doi:'10.1080/09672567.2023.2292804' },
+    { mid:'kraemer-hagen', themes:['marxian','keynesian','evolutionary'],
+      title:'The Marx-Keynes-Schumpeter System, Part I: Long Waves and Short Cycles in the Capitalist Growth Record', type:'chapter',
+      authors:'Hagen M. Krämer · Christian R. Proaño · Mark Setterfield', venue:'in: Capitalism, Inclusive Growth, and Social Protection, Edward Elgar', year:2023,
+      doi:'10.4337/9781786433077.00010' },
+
+    // ── Oliver Landmann ──
+    { mid:'landmann-oliver', themes:['monetary'],
+      title:'On the Logic of Fiscal Policy Coordination in a Monetary Union', type:'article',
+      authors:'Oliver Landmann', venue:'Open Economies Review 29(1)', year:2018,
+      doi:'10.1007/s11079-017-9446-z' },
+
+    // ── Richard Sturn ──
+    { mid:'sturn-richard', themes:['public_finance','general'],
+      title:'From public finance to public economics', type:'article',
+      authors:'Maxime Desmarais-Tremblay · Marianne Johnson · Richard Sturn', venue:'European Journal of the History of Economic Thought 30(5)', year:2023,
+      doi:'10.1080/09672567.2023.2248323' },
+    { mid:'sturn-richard', themes:['methodology','general'],
+      title:'Ideology, power, and progress: Economics and its dilemmas', type:'article',
+      authors:'Richard Sturn', venue:'Acta Oeconomica 72(S1)', year:2022,
+      doi:'10.1556/032.2022.00020' },
+    { mid:'sturn-richard', themes:['preclassical','methodology'],
+      title:'Agency, exchange, and power in scholastic thought', type:'article',
+      authors:'Richard Sturn', venue:'European Journal of the History of Economic Thought 24(4)', year:2017,
+      doi:'10.1080/09672567.2017.1338393' },
+
+    // ── Helmut Wagner ──
+    { mid:'wagner-helmut', themes:['general'],
+      title:'China: Quo Vadis?', type:'book',
+      authors:'Helmut Wagner', venue:'Springer Fachmedien Wiesbaden', year:2025,
+      doi:'10.1007/978-3-658-46816-3' },
   ];
 
   window.AGW_DATA.PUB_THEMES  = PUB_THEMES;
