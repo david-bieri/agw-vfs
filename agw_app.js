@@ -181,18 +181,36 @@ function renderMembers(list) {
     grid.innerHTML = '<div style="padding:32px;text-align:center;color:var(--text-faint);font-style:italic;">Keine Mitglieder gefunden / No members found</div>';
     return;
   }
-  const chair_lbl = lang === 'en' ? ((AGW.S.mbr_chair && AGW.S.mbr_chair.en)    || 'Chair')     : 'Vorsitzende';
-  const host_lbl  = lang === 'en' ? ((AGW.S.mbr_host2026 && AGW.S.mbr_host2026.en) || '2026 Host') : 'Gastgeber 2026';
-  const em_lbl    = lang === 'en' ? 'Emeritus/a' : 'Emeritus/a';
+  /* Badge labels inflect. German (and Latin) distinguish Vorsitzende/Vorsitzender and
+   * Emerita/Emeritus, so the label depends on the MEMBER, not just the language.
+   *   - `em_lbl` used to read the placeholder 'Emeritus/a' for everyone — the slash was a
+   *     hedge, not a decision, and it showed on all 14 emeritus cards.
+   *   - `chair_lbl` used to be hardcoded to the feminine 'Vorsitzende'. Correct for
+   *     Allgoewer by accident; wrong for Klump and for every chair before her.
+   * Gender comes from MEMBERS.gender (see agw_data.js) — never inferred from the name. */
+  /* Host badge: derived from ARCHIVE[].host, so it covers every year a member hosted, not
+   * just the current one. It used to be a `role:'host2026'` literal on a single member —
+   * which could not express 2025, and would have gone stale in 2027.
+   * Inflects: Karen Horn hosted 2023, so the German reads "Gastgeberin". */
+  const hostYears = (m) => (typeof ARCHIVE === 'undefined' ? [] : ARCHIVE)
+    .filter(e => e.host === m.id).map(e => e.year).sort((a, b) => b - a);
+  const hostLbl = (m, yrs) => (lang === 'en' ? 'Host ' : (m.gender === 'f' ? 'Gastgeberin ' : 'Gastgeber '))
+    + yrs.join(', ');
+
+  const chairLbl = (m) => lang === 'en'
+    ? ((AGW.S.mbr_chair && AGW.S.mbr_chair.en) || 'Chair')
+    : (m.gender === 'f' ? 'Vorsitzende' : 'Vorsitzender');
+  const emLbl = (m) => (m.gender === 'f' ? 'Emerita' : 'Emeritus');
   const FLAG = { DE:'\u{1f1e9}\u{1f1ea}', AT:'\u{1f1e6}\u{1f1f9}', CH:'\u{1f1e8}\u{1f1ed}',
                  US:'\u{1f1fa}\u{1f1f8}', UK:'\u{1f1ec}\u{1f1e7}', JP:'\u{1f1ef}\u{1f1f5}' };
   grid.innerHTML = list.map(m => {
     const focus  = lang === 'de' ? m.focus_de : m.focus_en;
     const flag   = FLAG[m.country] || '';
     const badges = [];
-    if (m.role === 'chair')    badges.push('<span class="badge badge-gold">'  + chair_lbl + '</span>');
-    if (m.role === 'host2026') badges.push('<span class="badge badge-blue">'  + host_lbl  + '</span>');
-    if (m.emeritus)            badges.push('<span class="badge" style="background:var(--border-light);color:var(--text-muted);">' + em_lbl + '</span>');
+    if (m.role === 'chair')    badges.push('<span class="badge badge-gold">'  + chairLbl(m) + '</span>');
+    const _hy = hostYears(m);
+    if (_hy.length)            badges.push('<span class="badge badge-blue">'  + hostLbl(m, _hy) + '</span>');
+    if (m.emeritus)            badges.push('<span class="badge" style="background:var(--border-light);color:var(--text-muted);">' + emLbl(m) + '</span>');
     return '<div class="member-card' + (m.role === 'chair' ? ' chair' : '') + '">'
       + '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">'
       + '<div class="member-initial">' + getInitials(m.name) + '</div>'

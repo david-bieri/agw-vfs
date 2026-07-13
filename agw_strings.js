@@ -279,7 +279,10 @@
     arch_upload            : { en: 'Submit Paper' },
     arch_upload_note       : { en: 'Papers are added following consultation with the chair.' },
     mbr_chair              : { en: 'Chair' },
-    mbr_host2026           : { en: '2026 Host' },
+    /* Host badge text is built in agw_app.js from ARCHIVE[].host + the year, and inflects
+     * in German (Gastgeber / Gastgeberin). This key is retained only so an older cached
+     * agw_app.js does not fall through to `undefined`. */
+    mbr_host2026           : { en: 'Host' },
     mbr_search             : { en: 'Search members…' },
     pub_series_lbl         : { en: 'Series Information' },
     pub_all_link           : { en: 'All volumes at publisher ↗' },

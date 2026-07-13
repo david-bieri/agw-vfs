@@ -21,18 +21,24 @@ const CHAIRS = [
   { name:'Elisabeth Allgoewer',    title:'Prof. Dr.', inst:'Universität Hamburg',                      start:2026, end:2030, past:false },
 ];
 
+/* `gender:'f'` is present ONLY where German grammar needs it — the Emerita/Emeritus badge
+ * and the Vorsitzende/Vorsitzender label. It is not displayed anywhere and carries no other
+ * meaning. Absent = the masculine forms are used. Two bugs made this necessary: the emeritus
+ * badge read the placeholder "Emeritus/a" for everyone, and the chair badge was hardcoded to
+ * the feminine "Vorsitzende" — correct for Allgoewer by accident, wrong for every chair before
+ * her. Do not infer this from first names at runtime; it is data, and it is stated here. */
 const MEMBERS = [
-  { id:'allgoewer-elisabeth', name:'Elisabeth Allgoewer', title:'Prof. Dr.', inst:'Universität Hamburg', city:'Hamburg', country:'DE', emeritus:false, role:'chair', focus_de:'Geldtheorie, Makroökonomik, Geschichte der Ökonomik', focus_en:'Monetary theory, macroeconomics, history of economics' },
+  { id:'allgoewer-elisabeth', name:'Elisabeth Allgoewer', title:'Prof. Dr.', inst:'Universität Hamburg', city:'Hamburg', country:'DE', gender:'f', emeritus:false, role:'chair', focus_de:'Geldtheorie, Makroökonomik, Geschichte der Ökonomik', focus_en:'Monetary theory, macroeconomics, history of economics' },
   { id:'barens-ingo', name:'Ingo Barens', title:'Prof. em. Dr.', inst:'TU Darmstadt', city:'Darmstadt', country:'DE', emeritus:true, role:'', focus_de:'Keynesianismus, Beschäftigungstheorie', focus_en:'Keynesianism, employment theory' },
   { id:'blomert-reinhard', name:'Reinhard Blomert', title:'Dr. habil.', inst:'Wissenschaftszentrum Berlin (WZB)', city:'Berlin', country:'DE', emeritus:false, role:'', focus_de:'Wissenssoziologie, Geschichte der Wirtschaftswissenschaften', focus_en:'Sociology of knowledge, history of economics' },
-  { id:'bieri-david', name:'David Bieri', title:'Prof. Dr.', inst:'Virginia Tech', city:'Blacksburg', country:'US', emeritus:false, role:'host2026', focus_de:'Geschichte der Finanzmarkttheorie, Urban Economics', focus_en:'History of financial theory, urban economics' },
+  { id:'bieri-david', name:'David Bieri', title:'Prof. Dr.', inst:'Virginia Tech', city:'Blacksburg', country:'US', emeritus:false, role:'', focus_de:'Geschichte der Finanzmarkttheorie, Urban Economics', focus_en:'History of financial theory, urban economics' },
   { id:'braun-eduard', name:'Eduard Braun', title:'PD Dr.', inst:'TU Clausthal', city:'Clausthal', country:'DE', emeritus:false, role:'', focus_de:'Österreichische Schule, Kapitaltheorie', focus_en:'Austrian School, capital theory' },
   { id:'caspari-volker', name:'Volker Caspari', title:'Prof. em. Dr.', inst:'Goethe-Universität Frankfurt/Main', city:'Frankfurt', country:'DE', emeritus:true, role:'', focus_de:'Sraffa, Verteilungstheorie, Geschichte der ökonomischen Analyse', focus_en:'Sraffa, distribution theory, history of economic analysis' },
   { id:'chaloupek-guenther', name:'Günther Chaloupek', title:'Dr.', inst:'Kammer für Arbeiter und Angestellte', city:'Wien', country:'AT', emeritus:false, role:'', focus_de:'Österreichische Wirtschaftsgeschichte, Arbeiterbewegung', focus_en:'Austrian economic history, labour movement' },
   { id:'dopfer-kurt', name:'Kurt Dopfer', title:'Prof. em. Dr.', inst:'Universität St. Gallen', city:'St. Gallen', country:'CH', emeritus:true, role:'', focus_de:'Evolutionäre Ökonomik, Rationalität', focus_en:'Evolutionary economics, rationality' },
   { id:'ebner-alexander', name:'Alexander Ebner', title:'Prof. Dr.', inst:'Goethe-Universität Frankfurt a. M.', city:'Frankfurt', country:'DE', emeritus:false, role:'', focus_de:'Schumpeter, Evolutionsökonomik, Institutionenökonomik', focus_en:'Schumpeter, evolutionary economics, institutional economics' },
   { id:'ehnts-dirk', name:'Dirk Ehnts', title:'Dr.', inst:'TU Chemnitz', city:'Chemnitz', country:'DE', emeritus:false, role:'', focus_de:'Moderne Geldtheorie (MMT), Post-Keynesianismus', focus_en:'Modern Monetary Theory (MMT), Post-Keynesianism' },
-  { id:'flechtner-svenja', name:'Svenja Flechtner', title:'Prof. Dr.', inst:'Universität Siegen', city:'Siegen', country:'DE', emeritus:false, role:'', focus_de:'Feministische Ökonomik, Heterodoxe Ökonomik', focus_en:'Feminist economics, heterodox economics' },
+  { id:'flechtner-svenja', name:'Svenja Flechtner', title:'Prof. Dr.', inst:'Universität Siegen', city:'Siegen', country:'DE', gender:'f', emeritus:false, role:'', focus_de:'Feministische Ökonomik, Heterodoxe Ökonomik', focus_en:'Feminist economics, heterodox economics' },
   { id:'frambach-hans', name:'Hans Frambach', title:'Prof. Dr.', inst:'Bergische Universität Wuppertal', city:'Wuppertal', country:'DE', emeritus:false, role:'', focus_de:'Geschichte des ökonomischen Denkens, Wohlfahrtstheorie', focus_en:'History of economic thought, welfare theory' },
   { id:'gehrke-christian', name:'Christian Gehrke', title:'Prof. Dr.', inst:'Karl-Franzens-Universität Graz', city:'Graz', country:'AT', emeritus:false, role:'', focus_de:'Sraffa, klassische politische Ökonomie', focus_en:'Sraffa, classical political economy' },
   { id:'goldschmidt-nils', name:'Nils Goldschmidt', title:'Prof. Dr.', inst:'Universität Siegen', city:'Siegen', country:'DE', emeritus:false, role:'', focus_de:'Ordoliberalismus, soziale Marktwirtschaft', focus_en:'Ordoliberalism, social market economy' },
@@ -41,7 +47,7 @@ const MEMBERS = [
   { id:'harada-tetsushi', name:'Tetsushi Harada', title:'Prof. Dr.', inst:'Kwansei Gakuin University', city:'Nishinomiya', country:'JP', emeritus:false, role:'', focus_de:'Rezeption deutschsprachiger Ökonomik in Japan', focus_en:'Reception of German-language economics in Japan' },
   { id:'hartwig-jochen', name:'Jochen Hartwig', title:'Prof. Dr.', inst:'TU Chemnitz', city:'Chemnitz', country:'DE', emeritus:false, role:'', focus_de:'Post-Keynesianismus, Verteilungstheorie', focus_en:'Post-Keynesianism, distribution theory' },
   { id:'hesse-jan-otmar', name:'Jan-Otmar Hesse', title:'Prof. Dr.', inst:'Universität Bayreuth', city:'Bayreuth', country:'DE', emeritus:false, role:'', focus_de:'Wirtschaftsgeschichte, Geschichte des Vereins für Socialpolitik', focus_en:'Economic history, history of the VfS' },
-  { id:'horn-karen', name:'Karen Horn', title:'Prof. Dr.', inst:'Universität Erfurt', city:'Erfurt', country:'DE', emeritus:false, role:'', focus_de:'Adam Smith, Geschichte des Liberalismus', focus_en:'Adam Smith, history of liberalism' },
+  { id:'horn-karen', name:'Karen Horn', title:'Prof. Dr.', inst:'Universität Erfurt', city:'Erfurt', country:'DE', gender:'f', emeritus:false, role:'', focus_de:'Adam Smith, Geschichte des Liberalismus', focus_en:'Adam Smith, history of liberalism' },
   { id:'janssen-hauke', name:'Hauke Janssen', title:'Dr.', inst:'(unabhängig)', city:'–', country:'DE', emeritus:false, role:'', focus_de:'Geschichte der Wirtschaftswissenschaften im Nationalsozialismus', focus_en:'History of economics under National Socialism' },
   { id:'klausinger-hansjoerg', name:'Hansjörg Klausinger', title:'Prof. em. Dr.', inst:'Wirtschaftsuniversität Wien', city:'Wien', country:'AT', emeritus:true, role:'', focus_de:'Österreichische Schule, Hayek, Konjunkturtheorie', focus_en:'Austrian School, Hayek, business cycle theory' },
   { id:'klump-rainer', name:'Rainer Klump', title:'Prof. Dr.', inst:'Goethe-Universität Frankfurt', city:'Frankfurt', country:'DE', emeritus:false, role:'', focus_de:'Wachstumstheorie, Institutionenökonomik, Dogmengeschichte', focus_en:'Growth theory, institutional economics, history of doctrines' },
@@ -73,8 +79,13 @@ const MEMBERS = [
   { id:'zweynert-joachim', name:'Joachim Zweynert', title:'Prof. Dr.', inst:'Universität Witten/Herdecke', city:'Witten', country:'DE', emeritus:false, role:'', focus_de:'Geschichte der Wirtschaftswissenschaften in Osteuropa', focus_en:'History of economics in Eastern Europe' },
 ];
 
+/* `host:` is the member id of the colleague who hosted that Jahrestagung. The host badge on
+ * the member cards is DERIVED from this — it used to be a `role:'host2026'` literal on one
+ * member, which could only ever express the current year and quietly went stale the moment
+ * the conference moved on. Add `host:` here when a new conference is recorded; the badge
+ * follows. (Same principle as the chair: ask the data, don't spell it into the markup.) */
 const ARCHIVE = [
-  { nr:46, year:2026, dates:'25.–27. Juni 2026', country:'CH', loc_de:'Riva San Vitale, Tessin', loc_en:'Riva San Vitale, Ticino', venue:'Virginia Tech Steger Center, Villa Maderni', theme:'Zukunftsperspektiven der Theoriegeschichte: Methoden, Themen, Kontroversen', theme_en:'Future Perspectives in the History of Economic Thought: Methods, Topics, Controversies', vol:null, page:'jahrestagung-2026.html', papers:[
+  { host:'bieri-david', nr:46, year:2026, dates:'25.–27. Juni 2026', country:'CH', loc_de:'Riva San Vitale, Tessin', loc_en:'Riva San Vitale, Ticino', venue:'Virginia Tech Steger Center, Villa Maderni', theme:'Zukunftsperspektiven der Theoriegeschichte: Methoden, Themen, Kontroversen', theme_en:'Future Perspectives in the History of Economic Thought: Methods, Topics, Controversies', vol:null, page:'jahrestagung-2026.html', papers:[
     { author:'Hans-Michael Trautwein · Richard Sturn', title:'Der Stand und die Zukunft der theoriegeschichtlichen Forschung', inst:'Oldenburg · Graz' },
     { author:'Alexander Linsbichler', title:'Theoriegeschichte und Wissenschaftsphilosophie', inst:'Linz' },
     { author:'Gilles Campagnolo', title:'Inhalt und Grenzen der «philosophie économique»', inst:'Paris' },
@@ -86,7 +97,7 @@ const ARCHIVE = [
     { author:'Andrea Franc', title:'Wie Geschichte des ökonomischen Denkens unterrichten?', inst:'Luzern' },
     { author:'Lachezar Grudev', title:'Geschichte der ökonomischen Analyse – wozu?', inst:'Chemnitz' }
   ] },
-  { nr:45, year:2025, dates:'9.–10. Mai 2025', country:'DE', loc_de:'Bayreuth', loc_en:'Bayreuth', venue:'Universität Bayreuth', theme:'Theoriegeschichte der Geoökonomik', theme_en:'History of Economic Thought on Geo-economics', vol:null, papers:[
+  { host:'hesse-jan-otmar', nr:45, year:2025, dates:'9.–10. Mai 2025', country:'DE', loc_de:'Bayreuth', loc_en:'Bayreuth', venue:'Universität Bayreuth', theme:'Theoriegeschichte der Geoökonomik', theme_en:'History of Economic Thought on Geo-economics', vol:null, papers:[
     { author:'Julius Nipperdey', title:'Kameralismus und die globale Wirtschaft', inst:'Saarbrücken' },
     { author:'Richard Sturn', title:'Adam Smiths Geoökonomik: Zwischen Freihandelsideal und geopolitischem Realismus', inst:'Graz' },
     { author:'Birger Priddat', title:'Über den Handel. Kant und Fichte. Pro und Contra.', inst:'Witten/Herdecke' },
@@ -96,7 +107,7 @@ const ARCHIVE = [
     { author:'Reinhard Schumacher · Svenja Flechtner · Matthias Störring', title:'Charlotte Leubuscher (1888–1961): Von der Sozialen Frage zur Pionierin der Entwicklungsökonomik', inst:'Siegen/Berlin' },
     { author:'Daniel Nientiedt', title:'Hayek zu Internationalem Föderalismus', inst:'Freiburg' }
   ] },
-  { nr:44, year:2024, dates:'30. Mai – 1. Juni 2024', country:'DE', loc_de:'Fulda', loc_en:'Fulda', venue:'Stadtschloss Fulda, Marmorsaal', theme:'Frauen in der Geschichte der Wirtschaftswissenschaften', theme_en:'Women in the History of Economics', vol:'XLIII', papers:[
+  { host:'klump-rainer', nr:44, year:2024, dates:'30. Mai – 1. Juni 2024', country:'DE', loc_de:'Fulda', loc_en:'Fulda', venue:'Stadtschloss Fulda, Marmorsaal', theme:'Frauen in der Geschichte der Wirtschaftswissenschaften', theme_en:'Women in the History of Economics', vol:'XLIII', papers:[
     { author:'Kerstin Dross-Krüpe', title:'Frauen und Wirtschaft in der römischen Antike', inst:'' },
     { author:'Charlotte Backerra', title:'Regierende Frauen in der frühen Neuzeit und ihre Wirtschaftskompetenz', inst:'' },
     { author:'Elisabeth Allgoewer', title:'Frauen im Verein für Socialpolitik', inst:'Hamburg' },
@@ -109,7 +120,7 @@ const ARCHIVE = [
     { author:'Lachezar Grudev', title:'Vera Smith (1912–1976). Eine mutige Ökonomin im Spannungsfeld dreier Welten', inst:'Zwickau' },
     { author:'Bertram Schefold', title:'Joan Robinson (1903–1983) – eine persönliche Charakterisierung (Kamingespräch)', inst:'Frankfurt' }
   ] },
-  { nr:43, year:2023, dates:'21.–23. Juni 2023', country:'UK', loc_de:'Edinburgh', loc_en:'Edinburgh', venue:'Panmure House / Queen Margaret University', theme:'Adam Smith @ 300', theme_en:'Adam Smith @ 300', vol:'XLII', papers:[
+  { host:'horn-karen', nr:43, year:2023, dates:'21.–23. Juni 2023', country:'UK', loc_de:'Edinburgh', loc_en:'Edinburgh', venue:'Panmure House / Queen Margaret University', theme:'Adam Smith @ 300', theme_en:'Adam Smith @ 300', vol:'XLII', papers:[
     { author:'Karen Horn', title:'Geschichte der Wirtschaftswissenschaften als interdisziplinäre Aufgabe: Ein Überblick über die jüngere Adam-Smith-Forschung', inst:'Erfurt' },
     { author:'Philipp Robinson Rössner', title:'Smith\'s Scotland. Contextualising the Wealth of Nations', inst:'Manchester' },
     { author:'Sabine Föllinger', title:'Antike Philosophie im Denken von Adam Smith', inst:'Marburg' },
@@ -118,7 +129,7 @@ const ARCHIVE = [
     { author:'Heinz D. Kurz', title:'Smith, Marx und Schumpeter über den Zivilisationsprozess. Ein Vergleich ihrer evolutorischen Ansätze', inst:'Graz' },
     { author:'Reinhard Blomert', title:'Adam Smith über Gentlemen, Geschäftsleute und innere Richter. Eine Rekonfiguration', inst:'Berlin' }
   ] },
-  { nr:42, year:2022, dates:'16.–18. Juni 2022', country:'DE', loc_de:'Jena', loc_en:'Jena', venue:'Universität Jena', theme:'Zur Geschichte des Vereins für Socialpolitik', theme_en:'On the History of the Verein für Socialpolitik', vol:'XLI', papers:[
+  { host:'lorenz-hans-walter', nr:42, year:2022, dates:'16.–18. Juni 2022', country:'DE', loc_de:'Jena', loc_en:'Jena', venue:'Universität Jena', theme:'Zur Geschichte des Vereins für Socialpolitik', theme_en:'On the History of the Verein für Socialpolitik', vol:'XLI', papers:[
     { author:'Bertram Schefold', title:'Das sich wandelnde Selbstverständnis des VfS im Spiegel seiner Jahrestagungen, 1950–2000', inst:'Frankfurt' },
     { author:'Jan-Otmar Hesse', title:'Die wirtschaftshistorische Forschung im VfS', inst:'Bayreuth' },
     { author:'Elisabeth Allgoewer', title:'Frauen im Verein für Socialpolitik', inst:'Hamburg' },
