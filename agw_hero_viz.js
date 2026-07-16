@@ -88,7 +88,17 @@
     hero.insertBefore(scrim, hero.firstChild);
     hero.insertBefore(cv, hero.firstChild);
     var inner = hero.querySelector('.hero-inner');
-    if (inner) { inner.style.position = 'relative'; inner.style.zIndex = '2'; }
+    if (inner) {
+      inner.style.position = 'relative'; inner.style.zIndex = '2';
+      // The centered .hero-inner box overlaps the constellation's right half; on
+      // desktop let pointer events fall through it to the canvas, but keep its
+      // real interactive children (rotator hover, any links/buttons) live.
+      if (canHover) {
+        inner.style.pointerEvents = 'none';
+        var live = inner.querySelectorAll('a, button, .hero-rotator');
+        for (var q = 0; q < live.length; q++) live[q].style.pointerEvents = 'auto';
+      }
+    }
 
     var ctx = cv.getContext('2d');
     var W = 0, H = 0, DPR = Math.min(window.devicePixelRatio || 1, 2), raf = null, nodes = [];
@@ -269,6 +279,7 @@
     var el = document.getElementById('hero-rot-theme');
     if (!el) return;
     if (typeof ARCHIVE === 'undefined') return;
+    var box = (el.closest && el.closest('.hero-rotator')) || el.parentNode;
     var reduceR = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
     function lang() { return (window.AGW && window.AGW.getLang) ? window.AGW.getLang() : 'de'; }
     function themes() {
@@ -278,14 +289,38 @@
         .slice(0, 6)
         .map(function (c) { return (de ? c.theme : (c.theme_en || c.theme)) + ' (' + c.year + ')'; });
     }
-    var list = themes(), ti = 0;
+    var list = themes(), ti = 0, timer = null, paused = false;
+
+    // Reserve the height of the TALLEST theme and centre within it, so rotation
+    // never reflows the page — full titles kept, no truncation.
+    function measure() {
+      if (!box) return;
+      var keep = el.textContent, prevTrans = el.style.transition;
+      el.style.transition = 'none'; box.style.height = 'auto';
+      var max = 0;
+      for (var i = 0; i < list.length; i++) { el.textContent = list[i]; if (box.offsetHeight > max) max = box.offsetHeight; }
+      el.textContent = keep;
+      box.style.alignContent = 'center';
+      box.style.height = max ? max + 'px' : '';
+      el.style.transition = prevTrans;
+    }
     function show() { el.textContent = list[ti] || ''; }
-    show();
-    window.addEventListener('agw-lang-change', function () { list = themes(); if (ti >= list.length) ti = 0; show(); });
-    if (!reduceR && list.length > 1) {
-      setInterval(function () { el.style.opacity = 0;
-        setTimeout(function () { ti = (ti + 1) % list.length; show(); el.style.opacity = 1; }, 500);
-      }, 3800);
+    // dwell scales with length so long conference titles stay up long enough to read
+    function dwell() { return Math.min(9000, Math.max(3200, 2600 + (list[ti] || '').length * 45)); }
+    function schedule() { clearTimeout(timer); if (reduceR || paused || list.length < 2) return; timer = setTimeout(step, dwell()); }
+    function step() {
+      el.style.opacity = 0;
+      setTimeout(function () { ti = (ti + 1) % list.length; show(); el.style.opacity = 1; schedule(); }, 500);
+    }
+
+    show(); measure(); schedule();
+
+    window.addEventListener('agw-lang-change', function () { list = themes(); if (ti >= list.length) ti = 0; show(); measure(); schedule(); });
+    window.addEventListener('resize', measure);
+    if (document.fonts && document.fonts.ready) { document.fonts.ready.then(measure); }
+    if (box) {                                   // pause on hover so long titles can be read in full
+      box.addEventListener('mouseenter', function () { paused = true; clearTimeout(timer); });
+      box.addEventListener('mouseleave', function () { paused = false; schedule(); });
     }
   }
 
