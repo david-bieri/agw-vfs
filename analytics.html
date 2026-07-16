@@ -745,5 +745,30 @@
   </script>
 
   <script src="dist/agw_product_tips.js"></script>
+  <!-- deep-link: #stammbaum (also #lineage / #netzwerke) opens Netzwerke → Stammbaum.
+       Entry point for the landing-page hero constellation (click a figure → here). -->
+  <script>
+  (function () {
+    function openFromHash() {
+      var h = (location.hash || '').replace('#', '').toLowerCase();
+      if (h !== 'stammbaum' && h !== 'lineage' && h !== 'netzwerke') return;
+      if (typeof showTool !== 'function') return;
+      var toolBtn = null, tabs = document.querySelectorAll('.tool-tab');
+      for (var i = 0; i < tabs.length; i++) {
+        if ((tabs[i].getAttribute('onclick') || '').indexOf("'netzwerke'") > -1) { toolBtn = tabs[i]; break; }
+      }
+      if (toolBtn) showTool('netzwerke', toolBtn);
+      if (h !== 'netzwerke' && typeof showSub === 'function') {
+        var subBtn = document.getElementById('sub-lineage');
+        if (subBtn) showSub('netzwerke', 'lineage', subBtn);
+      }
+      var panel = document.getElementById('panel-netzwerke');
+      if (panel && panel.scrollIntoView) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', openFromHash);
+    else openFromHash();
+    window.addEventListener('hashchange', openFromHash);
+  })();
+  </script>
 </body>
 </html>
