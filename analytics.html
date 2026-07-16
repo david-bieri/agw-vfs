@@ -745,22 +745,51 @@
   </script>
 
   <script src="dist/agw_product_tips.js"></script>
-  <!-- deep-link: #stammbaum (also #lineage / #netzwerke) opens Netzwerke → Stammbaum.
-       Entry point for the landing-page hero constellation (click a figure → here). -->
+  <!-- deep-link: #stammbaum[=Name] opens Netzwerke → Stammbaum and (if a name is
+       given) focuses that figure. Entry point for the hero constellation. -->
   <script>
   (function () {
+    function focusPerson(key) {
+      if (!key) return;
+      var want = decodeURIComponent(key).toLowerCase(), tries = 0;
+      (function attempt() {
+        tries++;
+        var L = window.AGW && window.AGW.LINEAGE;
+        if (L && L.figures) {
+          var fig = null;
+          for (var i = 0; i < L.figures.length; i++) {
+            var f = L.figures[i];
+            if ((f.id && f.id.toLowerCase() === want) ||
+                (f.name && f.name.toLowerCase() === want) ||
+                (f.full && f.full.toLowerCase() === want)) { fig = f; break; }
+          }
+          if (!fig) return;                       // not in the Stammbaum — leave the panel open
+          var sel = (window.CSS && CSS.escape) ? CSS.escape(fig.id) : fig.id;
+          var g = document.querySelector('#hetl-mount .hetl-node[data-id="' + sel + '"]');
+          if (g) {
+            g.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));  // locks focus on the figure + its lineage
+            if (g.scrollIntoView) g.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            return;
+          }
+        }
+        if (tries < 80) setTimeout(attempt, 60);   // Stammbaum lazy-loads; wait for data + render
+      })();
+    }
     function openFromHash() {
-      var h = (location.hash || '').replace('#', '').toLowerCase();
-      if (h !== 'stammbaum' && h !== 'lineage' && h !== 'netzwerke') return;
+      var raw = (location.hash || '').replace('#', ''), eq = raw.indexOf('=');
+      var cmd = (eq < 0 ? raw : raw.slice(0, eq)).toLowerCase();
+      var key = eq < 0 ? '' : raw.slice(eq + 1);
+      if (cmd !== 'stammbaum' && cmd !== 'lineage' && cmd !== 'netzwerke') return;
       if (typeof showTool !== 'function') return;
       var toolBtn = null, tabs = document.querySelectorAll('.tool-tab');
       for (var i = 0; i < tabs.length; i++) {
         if ((tabs[i].getAttribute('onclick') || '').indexOf("'netzwerke'") > -1) { toolBtn = tabs[i]; break; }
       }
       if (toolBtn) showTool('netzwerke', toolBtn);
-      if (h !== 'netzwerke' && typeof showSub === 'function') {
+      if (cmd !== 'netzwerke' && typeof showSub === 'function') {
         var subBtn = document.getElementById('sub-lineage');
         if (subBtn) showSub('netzwerke', 'lineage', subBtn);
+        focusPerson(key);
       }
       var panel = document.getElementById('panel-netzwerke');
       if (panel && panel.scrollIntoView) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });

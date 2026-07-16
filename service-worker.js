@@ -1,7 +1,7 @@
 /* AGW Jahrestagung 2026 — Service Worker
  * Strategy: Cache-first for shell + static assets; network-first for tiles
  */
-const CACHE = 'agw-2026-v69-hero-constellation';
+const CACHE = 'agw-2026-v72-stammbaum-integration';
 
 const PRECACHE = [
   '/',
@@ -23,6 +23,8 @@ const PRECACHE = [
   '/agw_chronik.js',
   '/agw_hero_viz.js',
   '/agw_schools_net.js',
+  '/agw_lineage_data.js',
+  '/agw_lineage.js',
   '/agw_gallery.js',
   '/agw_highlights.js',
   '/agw_member_pubs.js',
@@ -45,7 +47,6 @@ const PRECACHE = [
   '/dist/agw_product_tips.js',
   // Data files
   '/data/analysis_data.json',
-  '/data/lineage_data.json',
   '/data/sankey_flows.json',
   '/data/unified_network.json',
   // Gallery manifest (images are cached on demand, NOT precached)

@@ -25,7 +25,8 @@ import sys, json, re, argparse, unicodedata
 from pathlib import Path
 
 TOP_N        = 34
-N_LUM        = 8
+N_LUM        = 10          # luminaries (gold ring) = top-N_LUM by factor …
+LUM_EXTRA    = []          # …plus any fids listed here, regardless of rank (explicit picks)
 PIN          = ['losch-august']      # Lösch is #32 by factor; pin guarantees the Raumwirtschaft strand survives a rebuild
 EDGE_PER_NODE = 3
 
@@ -57,8 +58,26 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--corpus',     type=Path, default=Path('data/agw_corpus.json'))
     ap.add_argument('--proximity',  type=Path, default=Path('data/agw_proximity_body.json'))
+    ap.add_argument('--lineage',    type=Path, default=Path('agw_lineage_data.js'))
     ap.add_argument('--hero',       type=Path, default=Path('agw_hero_viz.js'))
     args = ap.parse_args()
+
+    # Stammbaum id resolution: map each hero figure to its exact agw_lineage_data.js
+    # id at BUILD time (deterministic; disambiguates e.g. Max vs Alfred Weber), so the
+    # hero click can deep-link straight to data-id="<sid>" with no runtime guessing.
+    by_full, by_name = {}, {}
+    if args.lineage.exists():
+        lg = args.lineage.read_text(encoding='utf-8')
+        for lid, lname, lfull in re.findall(
+                r'"id":\s*"([^"]+)",\s*"name":\s*"([^"]*)",\s*"full":\s*"([^"]*)"', lg):
+            by_full[lfull.lower()] = lid
+            by_name.setdefault(lname.lower(), []).append(lid)
+
+    def stammbaum_id(fid, full):
+        sid = by_full.get(full.lower())
+        if sid: return sid                       # exact full name — unambiguous
+        cand = by_name.get(short_name(fid, full).lower(), [])
+        return cand[0] if len(cand) == 1 else None  # unique short name, else leave unlinked
 
     corpus = json.loads(args.corpus.read_text(encoding='utf-8'))
     figs = [r for r in corpus['figures'] if r['prominence'].get('factor') is not None]
@@ -72,7 +91,7 @@ def main():
             extra = next((r for r in figs if r['fid'] == fid), None)
             if extra: chosen.append(extra); have.add(fid)
 
-    lum = {r['fid'] for r in figs[:N_LUM]}
+    lum = {r['fid'] for r in figs[:N_LUM]} | set(LUM_EXTRA)
 
     # scale factor to a 0..100 span for the hero (max = 100 already, but be robust)
     fmax = max(r['prominence']['factor'] for r in chosen) or 1
@@ -85,6 +104,7 @@ def main():
             "p": 1 if r['fid'] in lum else 0,
             "f": round(100 * r['prominence']['factor'] / fmax, 1),
             "id": r['fid'],
+            "sid": stammbaum_id(r['fid'], r['name']),   # agw_lineage_data.js id, or null if not in the Stammbaum
         })
 
     # edges: body co-occurrence backbone among the chosen nodes
@@ -122,6 +142,11 @@ def main():
           f"{len(EDGES)} backbone edges")
     print("luminaries:", ", ".join(f['n'] for f in FIGS if f['p']))
     print("pinned present:", ", ".join(f for f in PIN if f in idx) or "(none)")
+    linked = [f['n'] for f in FIGS if f['sid']]
+    unlinked = [f['n'] for f in FIGS if not f['sid']]
+    print(f"Stammbaum-linked ({len(linked)}/{len(FIGS)}): click focuses the figure")
+    if unlinked:
+        print(f"  not in Stammbaum ({len(unlinked)}): click opens panel unfocused — {', '.join(unlinked)}")
 
 if __name__ == '__main__':
     main()
