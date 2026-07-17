@@ -68,3 +68,24 @@ package-lock.json
 # Review candidates (regenerable)
 member_pubs_candidates.js
 tools/chapters_raw.json
+
+# --- 2026-07-17 additions ---
+# Scratch / working files (never intended for the repo)
+cli.txt
+first.txt
+ui-ux.txt
+gitignore-additions.txt
+
+# Python cache
+__pycache__/
+*.pyc
+
+# npm — build_analytics.sh uses 
+px --yes esbuild, no package.json pinning,
+# so these are local scaffolding, not build reproducibility.
+package.json
+package-lock.json
+
+# Review candidates (regenerable)
+member_pubs_candidates.js
+tools/chapters_raw.json
