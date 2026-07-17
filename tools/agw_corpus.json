@@ -1,0 +1,5198 @@
+{
+  "_provenance": {
+    "built": "2026-07-15",
+    "builder": "agw_corpus_build.py",
+    "frozen_identity_source": "agw_figures_clean.json (240, disambiguation NOT re-run)",
+    "evidence": "disaggregated tensor",
+    "weights_metric1": {
+      "index": 2,
+      "biblio": 4,
+      "cite": 3,
+      "text": 1
+    },
+    "factor": {
+      "loading_pc1": {
+        "index": -0.0,
+        "biblio": 0.451,
+        "cite": 0.628,
+        "text": 0.634
+      },
+      "loading_pc2": {
+        "index": 0.0,
+        "biblio": 0.892,
+        "cite": -0.337,
+        "text": -0.3
+      },
+      "explained": [
+        0.736,
+        0.231
+      ]
+    },
+    "prominence_metrics": "1 fixed / 2 bm25 / 3 factor(PC1) / 4 rasch(+SE) / 5a centrality=eigenvector(raw W, volume-tracking, corroborates factor) 5b cent_ppmi=eigenvector(PPMI, frequency-corrected, independent) + pagerank(raw)",
+    "proximity_source": "agw_proximity_body.json",
+    "readmitted_status_referenced": [
+      "commons-john-r",
+      "hoover-edgar-m",
+      "isard-walter",
+      "knies-carl",
+      "landmann-julius",
+      "malthus-thomas-robert",
+      "mitchell-wesley-clair",
+      "palander-tord",
+      "pareto-vilfredo",
+      "robbins-lionel",
+      "rustow-alexander",
+      "spiethoff-arthur",
+      "stolper-wolfgang-f",
+      "taussig-frank-william",
+      "veblen-thorstein",
+      "viner-jacob",
+      "walras-leon"
+    ]
+  },
+  "conferences": [
+    {
+      "year": 1980,
+      "number": 1,
+      "theme": "Klassische Nationalökonomie",
+      "location": "Gießen"
+    },
+    {
+      "year": 1981,
+      "number": 2,
+      "theme": "Merkantilismus und Kameralismus",
+      "location": "Salzburg"
+    },
+    {
+      "year": 1982,
+      "number": 3,
+      "theme": "Theoriegeschichte – wozu?",
+      "location": "Basel"
+    },
+    {
+      "year": 1983,
+      "number": 4,
+      "theme": "Marx, Keynes, Schumpeter",
+      "location": "Göttingen"
+    },
+    {
+      "year": 1984,
+      "number": 5,
+      "theme": "Deutsche Nationalökonomie Ende des 18. und in der ersten Hälfte des 19. Jahrhunderts",
+      "location": "Salzburg"
+    },
+    {
+      "year": 1985,
+      "number": 6,
+      "theme": "Entwicklungen der deutschsprachigen Nationalökonomie im 19. Jahrhundert",
+      "location": "Münster"
+    },
+    {
+      "year": 1986,
+      "number": 7,
+      "theme": "Allgemeine Gleichgewichtsanalyse",
+      "location": "Stuttgart"
+    },
+    {
+      "year": 1987,
+      "number": 8,
+      "theme": "Konjunkturtheorie im ausgehenden 19. Jahrhundert",
+      "location": "Würzburg"
+    },
+    {
+      "year": 1988,
+      "number": 9,
+      "theme": "Deutschsprachige Wirtschafts-, Konjunktur- und Geldtheorie in der ersten Hälfte des 20. Jahrhunderts",
+      "location": "Berlin"
+    },
+    {
+      "year": 1989,
+      "number": 10,
+      "theme": "Friedrich List; Carl Menger; Lorenz von Stein",
+      "location": "Tübingen"
+    },
+    {
+      "year": 1990,
+      "number": 11,
+      "theme": "Darstellung der Wirtschaft und Wirtschaftswissenschaften in der Belletristik",
+      "location": "Frankfurt am Main"
+    },
+    {
+      "year": 1991,
+      "number": 12,
+      "theme": "Osteuropäische Dogmengeschichte",
+      "location": "Ittingen (Schweiz)"
+    },
+    {
+      "year": 1992,
+      "number": 13,
+      "theme": "Deutsche Finanzwissenschaft zwischen 1918 und 1939",
+      "location": "Augsburg"
+    },
+    {
+      "year": 1993,
+      "number": 14,
+      "theme": "Johann Heinrich von Thünen als Wirtschaftstheoretiker",
+      "location": "Tellow"
+    },
+    {
+      "year": 1994,
+      "number": 15,
+      "theme": "Revolution und Evolution in der Wirtschaftstheorie",
+      "location": "Weimar"
+    },
+    {
+      "year": 1995,
+      "number": 16,
+      "theme": "Die Umsetzung wirtschaftspolitischer Grundkonzeptionen in die kontinentaleuropäische Praxis des 19. und 20. Jahrhunderts (I)",
+      "location": "Salzburg"
+    },
+    {
+      "year": 1996,
+      "number": 17,
+      "theme": "Die Umsetzung wirtschaftspolitischer Grundkonzeptionen in die kontinentaleuropäische Praxis des 19. und 20. Jahrhunderts (II)",
+      "location": "Maastricht"
+    },
+    {
+      "year": 1997,
+      "number": 18,
+      "theme": "Knut Wicksell",
+      "location": "Stuttgart-Hohenheim"
+    },
+    {
+      "year": 1998,
+      "number": 19,
+      "theme": "John Stuart Mill",
+      "location": "Würzburg"
+    },
+    {
+      "year": 1999,
+      "number": 20,
+      "theme": "Die Ältere Historische Schule: Wirtschaftstheoretische Beiträge und wirtschaftspolitische Vorstellungen",
+      "location": "Ulm"
+    },
+    {
+      "year": 2000,
+      "number": 21,
+      "theme": "Ideen, Methoden und Entwicklungen der Geschichte des ökonomischen Denkens",
+      "location": "Wien"
+    },
+    {
+      "year": 2001,
+      "number": 22,
+      "theme": "Die deutschsprachige Wirtschaftswissenschaft in den ersten Jahrzehnten nach 1945 (I)",
+      "location": "Hamburg"
+    },
+    {
+      "year": 2003,
+      "number": 24,
+      "theme": "Ökonomie und Religion",
+      "location": "Oldenburg"
+    },
+    {
+      "year": 2004,
+      "number": 25,
+      "theme": "Wirtschaftswissenschaft und Technik",
+      "location": "Bonn"
+    },
+    {
+      "year": 2005,
+      "number": 26,
+      "theme": "Deutsche Einflüsse auf amerikanisches wirtschaftswissenschaftliches Denken und amerikanische Einflüsse auf deutsches Wirtschaftsdenken",
+      "location": "Berlin"
+    },
+    {
+      "year": 2006,
+      "number": 27,
+      "theme": "Wissen = The Knowledge Economy",
+      "location": "Graz"
+    },
+    {
+      "year": 2007,
+      "number": 28,
+      "theme": "Wechselseitige Einflüsse zwischen dem deutschen wirtschaftswissenschaftlichen Denken und dem anderer europäischer Sprachräume",
+      "location": "Lüdinghausen / Nordkirchen"
+    },
+    {
+      "year": 2008,
+      "number": 29,
+      "theme": "Der Einfluss deutschsprachigen wirtschaftswissenschaftlichen Denkens in Japan",
+      "location": "Berlin"
+    },
+    {
+      "year": 2009,
+      "number": 30,
+      "theme": "Geschichte der Entwicklungstheorien",
+      "location": "Wien"
+    },
+    {
+      "year": 2010,
+      "number": 31,
+      "theme": "Die Ökonomik im Spannungsfeld zwischen Natur- und Geisteswissenschaften. Alte und neue Perspektiven im Licht des jüngsten Methodenstreits",
+      "location": "Stuttgart-Hohenheim"
+    },
+    {
+      "year": 2011,
+      "number": 32,
+      "theme": "Die Entwicklung der Raumwirtschaftslehre von ihren Anfängen bis in die Gegenwart",
+      "location": "Freiburg im Breisgau"
+    },
+    {
+      "year": 2012,
+      "number": 33,
+      "theme": "Die Zeit um den Ersten Weltkrieg als Krisenzeit der Nationalökonomen",
+      "location": "Marbach am Neckar"
+    },
+    {
+      "year": 2013,
+      "number": 34,
+      "theme": "Neue Perspektiven auf die Politische Ökonomie von Karl Marx und Friedrich Engels / Die Marx-Engels-Gesamtausgabe (MEGA)",
+      "location": "Berlin"
+    },
+    {
+      "year": 2014,
+      "number": 35,
+      "theme": "Macht oder ökonomisches Gesetz?",
+      "location": "Wien"
+    },
+    {
+      "year": 2015,
+      "number": 36,
+      "theme": "Kontinuität und Wandel in der Institutionenökonomik",
+      "location": "Erfurt"
+    },
+    {
+      "year": 2016,
+      "number": 37,
+      "theme": "Deflations- und Stagnationstheorien",
+      "location": "Karlsruhe"
+    },
+    {
+      "year": 2017,
+      "number": 38,
+      "theme": "Einkommens- und Vermögensverteilung in historischer Perspektive",
+      "location": "Siegen"
+    },
+    {
+      "year": 2018,
+      "number": 39,
+      "theme": "Kameralismus und Merkantilismus",
+      "location": "Darmstadt"
+    },
+    {
+      "year": 2019,
+      "number": 40,
+      "theme": "Ökonomie und Evolution",
+      "location": "Hamburg"
+    },
+    {
+      "year": 2021,
+      "number": 41,
+      "theme": "Entwicklung der Konjunkturforschung im frühen 20. Jahrhundert",
+      "location": "Online (Zoom)"
+    },
+    {
+      "year": 2022,
+      "number": 42,
+      "theme": "Zur Geschichte des Vereins für Socialpolitik",
+      "location": "Jena"
+    },
+    {
+      "year": 2023,
+      "number": 43,
+      "theme": "Adam Smith @ 300",
+      "location": "Edinburgh"
+    },
+    {
+      "year": 2024,
+      "number": 44,
+      "theme": "Frauen in der Geschichte der Wirtschaftswissenschaften",
+      "location": "Fulda"
+    }
+  ],
+  "figures": [
+    {
+      "fid": "davenant-charles",
+      "name": "Charles Davenant",
+      "birth": 1656,
+      "death": 1714,
+      "school": "Classical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 14.48,
+        "factor": 20.2,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.1,
+        "pagerank": 4.15,
+        "cent_ppmi": 2.0
+      }
+    },
+    {
+      "fid": "cantillon-richard",
+      "name": "Richard Cantillon",
+      "birth": 1680,
+      "death": 1734,
+      "school": "Classical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 14.07,
+        "factor": 20.2,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 13.6,
+        "pagerank": 11.8,
+        "cent_ppmi": 17.6
+      }
+    },
+    {
+      "fid": "hume-david",
+      "name": "David Hume",
+      "birth": 1711,
+      "death": 1776,
+      "school": "Classical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 76.0,
+        "bm25": 36.81,
+        "factor": 50.9,
+        "rasch": 51.2,
+        "rasch_se": 0.409,
+        "centrality": 8.7,
+        "pagerank": 12.72,
+        "cent_ppmi": 15.4
+      }
+    },
+    {
+      "fid": "smith-adam",
+      "name": "Adam Smith",
+      "birth": 1723,
+      "death": 1790,
+      "school": "Classical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 226.0,
+        "bm25": 78.83,
+        "factor": 89.2,
+        "rasch": 83.4,
+        "rasch_se": 0.352,
+        "centrality": 62.7,
+        "pagerank": 100.0,
+        "cent_ppmi": 43.6
+      }
+    },
+    {
+      "fid": "ferguson-adam",
+      "name": "Adam Ferguson",
+      "birth": 1723,
+      "death": 1816,
+      "school": "Classical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 20.0,
+        "bm25": 18.79,
+        "factor": 9.2,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "bentham-jeremy",
+      "name": "Jeremy Bentham",
+      "birth": 1748,
+      "death": 1832,
+      "school": "Classical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 35.0,
+        "bm25": 16.32,
+        "factor": 42.6,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 6.6,
+        "pagerank": 9.73,
+        "cent_ppmi": 19.7
+      }
+    },
+    {
+      "fid": "sartorius-georg",
+      "name": "Georg Sartorius",
+      "birth": 1765,
+      "death": 1828,
+      "school": "Classical",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 29.0,
+        "bm25": 24.84,
+        "factor": 41.3,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 8.8,
+        "pagerank": 8.96,
+        "cent_ppmi": 12.5
+      }
+    },
+    {
+      "fid": "lotz-johann-friedrich-eusebius",
+      "name": "Johann Friedrich Eusebius Lotz",
+      "birth": 1771,
+      "death": 1838,
+      "school": "Classical",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 42.0,
+        "bm25": 26.98,
+        "factor": 45.4,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 6.6,
+        "pagerank": 10.31,
+        "cent_ppmi": 15.9
+      }
+    },
+    {
+      "fid": "ricardo-david",
+      "name": "David Ricardo",
+      "birth": 1772,
+      "death": 1823,
+      "school": "Classical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 125.0,
+        "bm25": 62.24,
+        "factor": 71.2,
+        "rasch": 70.0,
+        "rasch_se": 0.358,
+        "centrality": 46.8,
+        "pagerank": 46.02,
+        "cent_ppmi": 38.7
+      }
+    },
+    {
+      "fid": "torrens-robert",
+      "name": "Robert Torrens",
+      "birth": 1780,
+      "death": 1864,
+      "school": "Classical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 12.47,
+        "factor": 17.8,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "rau-karl-heinrich",
+      "name": "Karl Heinrich Rau",
+      "birth": 1792,
+      "death": 1870,
+      "school": "Classical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 14.54,
+        "factor": 7.7,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "hermann-friedrich-benedict-wilhelm",
+      "name": "Friedrich Benedict Wilhelm von Hermann",
+      "birth": 1795,
+      "death": 1868,
+      "school": "Classical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 8.0,
+        "bm25": 6.91,
+        "factor": 3.4,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "rae-john",
+      "name": "John Rae",
+      "birth": 1796,
+      "death": 1872,
+      "school": "Classical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 12.02,
+        "factor": 5.8,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "mill-john-stuart",
+      "name": "John Stuart Mill",
+      "birth": 1806,
+      "death": 1873,
+      "school": "Classical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 262.0,
+        "bm25": 61.46,
+        "factor": 86.5,
+        "rasch": 67.2,
+        "rasch_se": 0.362,
+        "centrality": 21.4,
+        "pagerank": 16.65,
+        "cent_ppmi": 24.5
+      }
+    },
+    {
+      "fid": "cairnes-john-elliott",
+      "name": "John Elliott Cairnes",
+      "birth": 1823,
+      "death": 1875,
+      "school": "Classical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 8.0,
+        "bm25": 6.58,
+        "factor": 3.4,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "bagehot-walter",
+      "name": "Walter Bagehot",
+      "birth": 1826,
+      "death": 1877,
+      "school": "Classical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 28.0,
+        "bm25": 22.18,
+        "factor": 32.0,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 1.4,
+        "pagerank": 4.8,
+        "cent_ppmi": 7.7
+      }
+    },
+    {
+      "fid": "cannan-edwin",
+      "name": "Edwin Cannan",
+      "birth": 1861,
+      "death": 1935,
+      "school": "Classical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 33.0,
+        "bm25": 23.25,
+        "factor": 35.7,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 0.7,
+        "pagerank": 3.38,
+        "cent_ppmi": 16.2
+      }
+    },
+    {
+      "fid": "amonn-alfred",
+      "name": "Alfred Amonn",
+      "birth": 1883,
+      "death": 1962,
+      "school": "Classical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 41.0,
+        "bm25": 28.61,
+        "factor": 47.7,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 14.7,
+        "pagerank": 14.67,
+        "cent_ppmi": 40.8
+      }
+    },
+    {
+      "fid": "hildebrand-bruno",
+      "name": "Bruno Hildebrand",
+      "birth": 1812,
+      "death": 1878,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 108.0,
+        "bm25": 42.06,
+        "factor": 70.6,
+        "rasch": 54.8,
+        "rasch_se": 0.395,
+        "centrality": 14.5,
+        "pagerank": 13.76,
+        "cent_ppmi": 17.1
+      }
+    },
+    {
+      "fid": "stein-lorenz",
+      "name": "Lorenz von Stein",
+      "birth": 1815,
+      "death": 1890,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 32.0,
+        "bm25": 33.2,
+        "factor": 44.1,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 6.3,
+        "pagerank": 7.67,
+        "cent_ppmi": 27.3
+      }
+    },
+    {
+      "fid": "roscher-wilhelm-georg-friedrich",
+      "name": "Wilhelm Georg Friedrich Roscher",
+      "birth": 1817,
+      "death": 1894,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 76.0,
+        "bm25": 53.09,
+        "factor": 65.5,
+        "rasch": 58.1,
+        "rasch_se": 0.383,
+        "centrality": 44.6,
+        "pagerank": 38.99,
+        "cent_ppmi": 26.5
+      }
+    },
+    {
+      "fid": "roesler-hermann",
+      "name": "Hermann Roesler",
+      "birth": 1834,
+      "death": 1894,
+      "school": "Historical School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 13.0,
+        "bm25": 14.43,
+        "factor": 21.1,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "wagner-adolph",
+      "name": "Adolph Wagner",
+      "birth": 1835,
+      "death": 1917,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 48.0,
+        "bm25": 36.4,
+        "factor": 51.5,
+        "rasch": 47.4,
+        "rasch_se": 0.428,
+        "centrality": 28.9,
+        "pagerank": 29.13,
+        "cent_ppmi": 27.2
+      }
+    },
+    {
+      "fid": "bergmann-eugen",
+      "name": "Eugen von Bergmann",
+      "birth": 1836,
+      "death": 1904,
+      "school": "Historical School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 13.11,
+        "factor": 26.2,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 1.1,
+        "pagerank": 4.0,
+        "cent_ppmi": 10.2
+      }
+    },
+    {
+      "fid": "schmoller-gustav",
+      "name": "Gustav von Schmoller",
+      "birth": 1838,
+      "death": 1917,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 62.0,
+        "bm25": 47.72,
+        "factor": 60.4,
+        "rasch": 58.1,
+        "rasch_se": 0.383,
+        "centrality": 67.6,
+        "pagerank": 59.64,
+        "cent_ppmi": 29.9
+      }
+    },
+    {
+      "fid": "cohn-gustav",
+      "name": "Gustav Cohn",
+      "birth": 1840,
+      "death": 1919,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 17.0,
+        "bm25": 14.96,
+        "factor": 28.6,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "knapp-georg-friedrich",
+      "name": "Georg Friedrich Knapp",
+      "birth": 1842,
+      "death": 1926,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 33.0,
+        "bm25": 25.29,
+        "factor": 43.9,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 23.8,
+        "pagerank": 20.64,
+        "cent_ppmi": 26.2
+      }
+    },
+    {
+      "fid": "brentano-lujo",
+      "name": "Lujo Brentano",
+      "birth": 1844,
+      "death": 1931,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 64.0,
+        "bm25": 42.87,
+        "factor": 54.7,
+        "rasch": 54.8,
+        "rasch_se": 0.395,
+        "centrality": 25.5,
+        "pagerank": 19.36,
+        "cent_ppmi": 14.7
+      }
+    },
+    {
+      "fid": "bucher-karl",
+      "name": "Karl Bücher",
+      "birth": 1847,
+      "death": 1930,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 40.0,
+        "bm25": 26.78,
+        "factor": 40.4,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 33.7,
+        "pagerank": 27.84,
+        "cent_ppmi": 32.4
+      }
+    },
+    {
+      "fid": "hasbach-wilhelm",
+      "name": "Wilhelm Hasbach",
+      "birth": 1849,
+      "death": 1920,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 20.0,
+        "bm25": 16.49,
+        "factor": 28.6,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 3.8,
+        "pagerank": 6.04,
+        "cent_ppmi": 11.1
+      }
+    },
+    {
+      "fid": "toynbee-arnold",
+      "name": "Arnold Toynbee",
+      "birth": 1852,
+      "death": 1883,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 8.0,
+        "bm25": 8.25,
+        "factor": 3.4,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "ehrenberg-richard",
+      "name": "Richard Ehrenberg",
+      "birth": 1857,
+      "death": 1921,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 47.0,
+        "bm25": 24.14,
+        "factor": 46.0,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 6.7,
+        "pagerank": 8.87,
+        "cent_ppmi": 19.0
+      }
+    },
+    {
+      "fid": "sombart-werner",
+      "name": "Werner Sombart",
+      "birth": 1863,
+      "death": 1941,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 90.0,
+        "bm25": 59.47,
+        "factor": 70.8,
+        "rasch": 70.0,
+        "rasch_se": 0.358,
+        "centrality": 63.7,
+        "pagerank": 53.94,
+        "cent_ppmi": 24.2
+      }
+    },
+    {
+      "fid": "herkner-heinrich",
+      "name": "Heinrich Herkner",
+      "birth": 1863,
+      "death": 1932,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 45.0,
+        "bm25": 29.29,
+        "factor": 49.6,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 16.6,
+        "pagerank": 15.37,
+        "cent_ppmi": 24.0
+      }
+    },
+    {
+      "fid": "weber-max",
+      "name": "Max Weber",
+      "birth": 1864,
+      "death": 1920,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 109.0,
+        "bm25": 71.0,
+        "factor": 76.1,
+        "rasch": 78.1,
+        "rasch_se": 0.351,
+        "centrality": 70.3,
+        "pagerank": 72.45,
+        "cent_ppmi": 31.5
+      }
+    },
+    {
+      "fid": "diehl-karl",
+      "name": "Karl Diehl",
+      "birth": 1864,
+      "death": 1943,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 63.0,
+        "bm25": 34.38,
+        "factor": 56.8,
+        "rasch": 51.2,
+        "rasch_se": 0.409,
+        "centrality": 7.3,
+        "pagerank": 7.81,
+        "cent_ppmi": 25.5
+      }
+    },
+    {
+      "fid": "oppenheimer-franz",
+      "name": "Franz Oppenheimer",
+      "birth": 1864,
+      "death": 1943,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 13.84,
+        "factor": 17.8,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 15.0,
+        "pagerank": 15.69,
+        "cent_ppmi": 44.8
+      }
+    },
+    {
+      "fid": "bonn-moritz-julius",
+      "name": "Moritz Julius Bonn",
+      "birth": 1873,
+      "death": 1965,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 20.0,
+        "bm25": 19.55,
+        "factor": 28.6,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 29.5,
+        "pagerank": 24.38,
+        "cent_ppmi": 36.6
+      }
+    },
+    {
+      "fid": "boese-franz",
+      "name": "Franz Boese",
+      "birth": 1880,
+      "death": 1947,
+      "school": "Historical School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 49.0,
+        "bm25": 22.59,
+        "factor": 44.4,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 20.3,
+        "pagerank": 15.42,
+        "cent_ppmi": 16.5
+      }
+    },
+    {
+      "fid": "albrecht-gerhard",
+      "name": "Gerhard Albrecht",
+      "birth": 1889,
+      "death": 1971,
+      "school": "Historical School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 20.0,
+        "bm25": 16.34,
+        "factor": 22.1,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 4.0,
+        "pagerank": 7.87,
+        "cent_ppmi": 18.1
+      }
+    },
+    {
+      "fid": "salin-edgar",
+      "name": "Edgar Salin",
+      "birth": 1892,
+      "death": 1974,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 71.0,
+        "bm25": 44.28,
+        "factor": 63.5,
+        "rasch": 58.1,
+        "rasch_se": 0.383,
+        "centrality": 39.4,
+        "pagerank": 26.01,
+        "cent_ppmi": 16.4
+      }
+    },
+    {
+      "fid": "bulow-friedrich",
+      "name": "Friedrich Bülow",
+      "birth": 1894,
+      "death": 1972,
+      "school": "Historical School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 35.0,
+        "bm25": 20.12,
+        "factor": 41.9,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 7.1,
+        "pagerank": 11.82,
+        "cent_ppmi": 25.9
+      }
+    },
+    {
+      "fid": "baxa-jakob",
+      "name": "Jakob Baxa",
+      "birth": 1895,
+      "death": 1979,
+      "school": "Historical School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 17.0,
+        "bm25": 15.1,
+        "factor": 28.6,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "ritschl-hans",
+      "name": "Hans Ritschl",
+      "birth": 1897,
+      "death": 1963,
+      "school": "Historical School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 4.0,
+        "bm25": 3.76,
+        "factor": 0.0,
+        "rasch": 0.0,
+        "rasch_se": 0.99,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "egner-erich",
+      "name": "Erich Egner",
+      "birth": 1899,
+      "death": 1967,
+      "school": "Historical School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 11.8,
+        "factor": 26.2,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 2.9,
+        "pagerank": 4.73,
+        "cent_ppmi": 7.0
+      }
+    },
+    {
+      "fid": "abel-wilhelm",
+      "name": "Wilhelm Abel",
+      "birth": 1904,
+      "death": 1985,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 41.0,
+        "bm25": 29.26,
+        "factor": 47.7,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 2.2,
+        "pagerank": 6.96,
+        "cent_ppmi": 26.7
+      }
+    },
+    {
+      "fid": "stavenhagen-gerhard",
+      "name": "Gerhard Stavenhagen",
+      "birth": 1905,
+      "death": 1975,
+      "school": "Historical School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 22.0,
+        "bm25": 18.37,
+        "factor": 32.8,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 3.8,
+        "pagerank": 6.73,
+        "cent_ppmi": 25.2
+      }
+    },
+    {
+      "fid": "treue-wilhelm",
+      "name": "Wilhelm Treue",
+      "birth": 1909,
+      "death": 1992,
+      "school": "Historical School",
+      "confidence": "low",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 16.51,
+        "factor": 20.2,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "stark-werner",
+      "name": "Werner Stark",
+      "birth": 1909,
+      "death": 1985,
+      "school": "Historical School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 18.0,
+        "bm25": 16.11,
+        "factor": 30.4,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 24.9,
+        "pagerank": 19.88,
+        "cent_ppmi": 28.1
+      }
+    },
+    {
+      "fid": "burgin-alfred",
+      "name": "Alfred Bürgin",
+      "birth": 1922,
+      "death": 2006,
+      "school": "Historical School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 42.0,
+        "bm25": 25.42,
+        "factor": 43.7,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 0.2,
+        "pagerank": 3.52,
+        "cent_ppmi": 4.9
+      }
+    },
+    {
+      "fid": "landes-david-saul",
+      "name": "David Saul Landes",
+      "birth": 1924,
+      "death": 2013,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 24.0,
+        "bm25": 21.17,
+        "factor": 30.5,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 10.0,
+        "pagerank": 13.69,
+        "cent_ppmi": 23.5
+      }
+    },
+    {
+      "fid": "eagly-robert-v",
+      "name": "Robert V. Eagly",
+      "birth": 1925,
+      "death": 1997,
+      "school": "Historical School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 16.86,
+        "factor": 17.8,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "borchardt-knut",
+      "name": "Knut Borchardt",
+      "birth": 1926,
+      "death": 2019,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 58.0,
+        "bm25": 30.79,
+        "factor": 47.2,
+        "rasch": 47.4,
+        "rasch_se": 0.428,
+        "centrality": 3.5,
+        "pagerank": 4.72,
+        "cent_ppmi": 11.9
+      }
+    },
+    {
+      "fid": "schremmer-eckart",
+      "name": "Eckart Schremmer",
+      "birth": 1926,
+      "death": 2013,
+      "school": "Historical School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 11.54,
+        "factor": 17.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "winkel-harald",
+      "name": "Harald Winkel",
+      "birth": 1928,
+      "death": 1995,
+      "school": "Historical School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 42.0,
+        "bm25": 41.34,
+        "factor": 50.1,
+        "rasch": 51.2,
+        "rasch_se": 0.409,
+        "centrality": 5.9,
+        "pagerank": 9.0,
+        "cent_ppmi": 28.3
+      }
+    },
+    {
+      "fid": "kaufhold-karl-heinrich",
+      "name": "Karl Heinrich Kaufhold",
+      "birth": 1931,
+      "death": 2016,
+      "school": "Historical School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 28.0,
+        "bm25": 22.02,
+        "factor": 11.7,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.2,
+        "pagerank": 7.03,
+        "cent_ppmi": 8.8
+      }
+    },
+    {
+      "fid": "hont-istvan",
+      "name": "István Hont",
+      "birth": 1947,
+      "death": 2013,
+      "school": "Historical School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 29.0,
+        "bm25": 19.7,
+        "factor": 34.4,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 3.9,
+        "pagerank": 8.8,
+        "cent_ppmi": 8.3
+      }
+    },
+    {
+      "fid": "tribe-keith",
+      "name": "Keith Tribe",
+      "birth": 1949,
+      "death": null,
+      "school": "Historical School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 45.0,
+        "bm25": 43.73,
+        "factor": 51.9,
+        "rasch": 54.8,
+        "rasch_se": 0.395,
+        "centrality": 2.2,
+        "pagerank": 3.77,
+        "cent_ppmi": 4.7
+      }
+    },
+    {
+      "fid": "list-friedrich",
+      "name": "Friedrich List",
+      "birth": 1789,
+      "death": 1846,
+      "school": "National Economy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 44.0,
+        "bm25": 31.41,
+        "factor": 41.4,
+        "rasch": 47.4,
+        "rasch_se": 0.428,
+        "centrality": 31.0,
+        "pagerank": 25.39,
+        "cent_ppmi": 21.1
+      }
+    },
+    {
+      "fid": "rodbertus-jagetzow-carl",
+      "name": "Carl Rodbertus-Jagetzow",
+      "birth": 1805,
+      "death": 1875,
+      "school": "Marxist",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 13.32,
+        "factor": 17.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 1.2,
+        "pagerank": 3.9,
+        "cent_ppmi": 6.2
+      }
+    },
+    {
+      "fid": "marx-karl",
+      "name": "Karl Marx",
+      "birth": 1818,
+      "death": 1883,
+      "school": "Marxist",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 176.0,
+        "bm25": 64.92,
+        "factor": 74.6,
+        "rasch": 72.7,
+        "rasch_se": 0.354,
+        "centrality": 66.0,
+        "pagerank": 62.87,
+        "cent_ppmi": 25.4
+      }
+    },
+    {
+      "fid": "engels-friedrich",
+      "name": "Friedrich Engels",
+      "birth": 1820,
+      "death": 1895,
+      "school": "Marxist",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 35.0,
+        "bm25": 32.69,
+        "factor": 44.9,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 12.8,
+        "pagerank": 14.87,
+        "cent_ppmi": 7.2
+      }
+    },
+    {
+      "fid": "luxemburg-rosa",
+      "name": "Rosa Luxemburg",
+      "birth": 1871,
+      "death": 1919,
+      "school": "Marxist",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 16.19,
+        "factor": 20.2,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 6.7,
+        "pagerank": 8.94,
+        "cent_ppmi": 22.0
+      }
+    },
+    {
+      "fid": "hilferding-rudolf",
+      "name": "Rudolf Hilferding",
+      "birth": 1877,
+      "death": 1941,
+      "school": "Marxist",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 47.0,
+        "bm25": 30.11,
+        "factor": 46.0,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 8.8,
+        "pagerank": 11.73,
+        "cent_ppmi": 14.7
+      }
+    },
+    {
+      "fid": "bauer-otto",
+      "name": "Otto Bauer",
+      "birth": 1881,
+      "death": 1938,
+      "school": "Marxist",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 51.0,
+        "bm25": 32.83,
+        "factor": 52.1,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 12.9,
+        "pagerank": 14.05,
+        "cent_ppmi": 20.8
+      }
+    },
+    {
+      "fid": "dobb-maurice-herbert",
+      "name": "Maurice Herbert Dobb",
+      "birth": 1900,
+      "death": 1976,
+      "school": "Marxist",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 13.95,
+        "factor": 20.2,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 5.1,
+        "pagerank": 7.06,
+        "cent_ppmi": 21.6
+      }
+    },
+    {
+      "fid": "weissel-erwin",
+      "name": "Erwin Weissel",
+      "birth": 1937,
+      "death": null,
+      "school": "Marxist",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 12.36,
+        "factor": 17.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "menger-carl",
+      "name": "Carl Menger",
+      "birth": 1840,
+      "death": 1921,
+      "school": "Austrian School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 106.0,
+        "bm25": 58.58,
+        "factor": 74.1,
+        "rasch": 67.2,
+        "rasch_se": 0.362,
+        "centrality": 46.1,
+        "pagerank": 38.83,
+        "cent_ppmi": 39.4
+      }
+    },
+    {
+      "fid": "bohm-bawerk-eugen",
+      "name": "Eugen von Böhm-Bawerk",
+      "birth": 1851,
+      "death": 1914,
+      "school": "Austrian School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 106.0,
+        "bm25": 49.43,
+        "factor": 66.6,
+        "rasch": 64.3,
+        "rasch_se": 0.367,
+        "centrality": 44.4,
+        "pagerank": 37.79,
+        "cent_ppmi": 43.0
+      }
+    },
+    {
+      "fid": "wieser-friedrich",
+      "name": "Friedrich von Wieser",
+      "birth": 1851,
+      "death": 1926,
+      "school": "Austrian School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 34.0,
+        "bm25": 38.86,
+        "factor": 41.8,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 40.3,
+        "pagerank": 32.49,
+        "cent_ppmi": 37.3
+      }
+    },
+    {
+      "fid": "philippovich-eugen",
+      "name": "Eugen von Philippovich",
+      "birth": 1858,
+      "death": 1917,
+      "school": "Austrian School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 20.22,
+        "factor": 22.8,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 10.3,
+        "pagerank": 8.86,
+        "cent_ppmi": 16.4
+      }
+    },
+    {
+      "fid": "pribram-karl",
+      "name": "Karl Pribram",
+      "birth": 1877,
+      "death": 1973,
+      "school": "Austrian School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 50.0,
+        "bm25": 35.32,
+        "factor": 51.2,
+        "rasch": 47.4,
+        "rasch_se": 0.428,
+        "centrality": 16.0,
+        "pagerank": 15.76,
+        "cent_ppmi": 50.6
+      }
+    },
+    {
+      "fid": "mayer-hans",
+      "name": "Hans Mayer",
+      "birth": 1879,
+      "death": 1955,
+      "school": "Austrian School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 44.0,
+        "bm25": 39.92,
+        "factor": 50.7,
+        "rasch": 47.4,
+        "rasch_se": 0.428,
+        "centrality": 36.5,
+        "pagerank": 29.34,
+        "cent_ppmi": 39.3
+      }
+    },
+    {
+      "fid": "mises-ludwig",
+      "name": "Ludwig von Mises",
+      "birth": 1881,
+      "death": 1973,
+      "school": "Austrian School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 69.0,
+        "bm25": 46.01,
+        "factor": 62.9,
+        "rasch": 58.1,
+        "rasch_se": 0.383,
+        "centrality": 43.0,
+        "pagerank": 37.99,
+        "cent_ppmi": 43.3
+      }
+    },
+    {
+      "fid": "neisser-hans-philip",
+      "name": "Hans Philip Neisser",
+      "birth": 1895,
+      "death": 1975,
+      "school": "Austrian School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 85.0,
+        "bm25": 39.41,
+        "factor": 64.6,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 39.7,
+        "pagerank": 36.8,
+        "cent_ppmi": 66.7
+      }
+    },
+    {
+      "fid": "hayek-friedrich-august",
+      "name": "Friedrich August von Hayek",
+      "birth": 1899,
+      "death": 1992,
+      "school": "Austrian School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 252.0,
+        "bm25": 79.24,
+        "factor": 92.4,
+        "rasch": 86.1,
+        "rasch_se": 0.353,
+        "centrality": 66.4,
+        "pagerank": 61.76,
+        "cent_ppmi": 45.2
+      }
+    },
+    {
+      "fid": "haberler-gottfried",
+      "name": "Gottfried von Haberler",
+      "birth": 1900,
+      "death": 1995,
+      "school": "Austrian School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 28.0,
+        "bm25": 29.77,
+        "factor": 38.2,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 40.1,
+        "pagerank": 34.48,
+        "cent_ppmi": 47.7
+      }
+    },
+    {
+      "fid": "machlup-fritz",
+      "name": "Fritz Machlup",
+      "birth": 1902,
+      "death": 1983,
+      "school": "Austrian School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 65.0,
+        "bm25": 37.26,
+        "factor": 59.8,
+        "rasch": 47.4,
+        "rasch_se": 0.428,
+        "centrality": 31.5,
+        "pagerank": 26.04,
+        "cent_ppmi": 43.5
+      }
+    },
+    {
+      "fid": "morgenstern-oskar",
+      "name": "Oskar Morgenstern",
+      "birth": 1902,
+      "death": 1977,
+      "school": "Austrian School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 56.0,
+        "bm25": 37.57,
+        "factor": 57.9,
+        "rasch": 51.2,
+        "rasch_se": 0.409,
+        "centrality": 38.4,
+        "pagerank": 35.47,
+        "cent_ppmi": 51.8
+      }
+    },
+    {
+      "fid": "kirzner-israel-meir",
+      "name": "Israel Meir Kirzner",
+      "birth": 1930,
+      "death": null,
+      "school": "Austrian School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 17.0,
+        "bm25": 16.55,
+        "factor": 28.6,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 4.8,
+        "pagerank": 5.21,
+        "cent_ppmi": 14.9
+      }
+    },
+    {
+      "fid": "streissler-erich-wolfgang",
+      "name": "Erich Wolfgang Streissler",
+      "birth": 1933,
+      "death": 2025,
+      "school": "Austrian School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 58.0,
+        "bm25": 47.83,
+        "factor": 58.7,
+        "rasch": 58.1,
+        "rasch_se": 0.383,
+        "centrality": 7.0,
+        "pagerank": 11.91,
+        "cent_ppmi": 26.3
+      }
+    },
+    {
+      "fid": "hennings-klaus-hinrich",
+      "name": "Klaus Hinrich Hennings",
+      "birth": 1937,
+      "death": 1986,
+      "school": "Austrian School",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 12.79,
+        "factor": 17.8,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.8,
+        "pagerank": 3.23,
+        "cent_ppmi": 11.7
+      }
+    },
+    {
+      "fid": "lavoie-don",
+      "name": "Don Lavoie",
+      "birth": 1951,
+      "death": 2001,
+      "school": "Austrian School",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 23.0,
+        "bm25": 20.13,
+        "factor": 34.3,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "hawtrey-ralph-george",
+      "name": "Ralph George Hawtrey",
+      "birth": 1879,
+      "death": 1975,
+      "school": "Keynesian",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 22.0,
+        "bm25": 19.11,
+        "factor": 35.5,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 8.4,
+        "pagerank": 8.36,
+        "cent_ppmi": 35.5
+      }
+    },
+    {
+      "fid": "lavington-frederick",
+      "name": "Frederick Lavington",
+      "birth": 1881,
+      "death": 1927,
+      "school": "Keynesian",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 21.0,
+        "bm25": 13.47,
+        "factor": 25.4,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 13.3,
+        "pagerank": 11.83,
+        "cent_ppmi": 44.3
+      }
+    },
+    {
+      "fid": "keynes-john-maynard",
+      "name": "John Maynard Keynes",
+      "birth": 1883,
+      "death": 1946,
+      "school": "Keynesian",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 226.0,
+        "bm25": 74.16,
+        "factor": 88.8,
+        "rasch": 75.4,
+        "rasch_se": 0.352,
+        "centrality": 66.9,
+        "pagerank": 69.44,
+        "cent_ppmi": 57.9
+      }
+    },
+    {
+      "fid": "hansen-alvin-harvey",
+      "name": "Alvin Harvey Hansen",
+      "birth": 1887,
+      "death": 1975,
+      "school": "Keynesian",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 37.0,
+        "bm25": 22.43,
+        "factor": 46.8,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 21.6,
+        "pagerank": 20.12,
+        "cent_ppmi": 46.1
+      }
+    },
+    {
+      "fid": "burchardt-fritz-adolph",
+      "name": "Fritz Adolph Burchardt",
+      "birth": 1902,
+      "death": 1958,
+      "school": "Keynesian",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 25.0,
+        "bm25": 20.72,
+        "factor": 36.4,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 4.9,
+        "pagerank": 6.74,
+        "cent_ppmi": 32.5
+      }
+    },
+    {
+      "fid": "johr-walter-adolf",
+      "name": "Walter Adolf Jöhr",
+      "birth": 1919,
+      "death": 1994,
+      "school": "Keynesian",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 10.36,
+        "factor": 17.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 17.6,
+        "pagerank": 16.28,
+        "cent_ppmi": 43.5
+      }
+    },
+    {
+      "fid": "patinkin-don",
+      "name": "Don Patinkin",
+      "birth": 1922,
+      "death": 1995,
+      "school": "Keynesian",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 120.0,
+        "bm25": 39.78,
+        "factor": 71.5,
+        "rasch": 47.4,
+        "rasch_se": 0.428,
+        "centrality": 4.1,
+        "pagerank": 8.69,
+        "cent_ppmi": 32.6
+      }
+    },
+    {
+      "fid": "leijonhufvud-axel",
+      "name": "Axel Leijonhufvud",
+      "birth": 1933,
+      "death": 2022,
+      "school": "Keynesian",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 71.0,
+        "bm25": 41.65,
+        "factor": 61.5,
+        "rasch": 51.2,
+        "rasch_se": 0.409,
+        "centrality": 0.9,
+        "pagerank": 4.32,
+        "cent_ppmi": 16.7
+      }
+    },
+    {
+      "fid": "bateman-bradley-w",
+      "name": "Bradley W. Bateman",
+      "birth": 1956,
+      "death": null,
+      "school": "Keynesian",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 10.42,
+        "factor": 17.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "sraffa-piero",
+      "name": "Piero Sraffa",
+      "birth": 1898,
+      "death": 1983,
+      "school": "Post-Keynesian/Sraffian",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 131.0,
+        "bm25": 63.17,
+        "factor": 76.1,
+        "rasch": 72.7,
+        "rasch_se": 0.354,
+        "centrality": 18.9,
+        "pagerank": 21.13,
+        "cent_ppmi": 30.4
+      }
+    },
+    {
+      "fid": "robinson-joan-violet",
+      "name": "Joan Violet Robinson",
+      "birth": 1903,
+      "death": 1983,
+      "school": "Post-Keynesian/Sraffian",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 49.0,
+        "bm25": 38.7,
+        "factor": 52.7,
+        "rasch": 51.2,
+        "rasch_se": 0.409,
+        "centrality": 29.9,
+        "pagerank": 34.28,
+        "cent_ppmi": 55.5
+      }
+    },
+    {
+      "fid": "kaldor-nicholas",
+      "name": "Nicholas Kaldor",
+      "birth": 1908,
+      "death": 1986,
+      "school": "Post-Keynesian/Sraffian",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 49.0,
+        "bm25": 35.07,
+        "factor": 50.1,
+        "rasch": 47.4,
+        "rasch_se": 0.428,
+        "centrality": 9.1,
+        "pagerank": 17.52,
+        "cent_ppmi": 73.2
+      }
+    },
+    {
+      "fid": "pasinetti-luigi-lodovico",
+      "name": "Luigi Lodovico Pasinetti",
+      "birth": 1930,
+      "death": 2023,
+      "school": "Post-Keynesian/Sraffian",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 35.0,
+        "bm25": 22.8,
+        "factor": 42.6,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 2.0,
+        "pagerank": 4.72,
+        "cent_ppmi": 11.1
+      }
+    },
+    {
+      "fid": "garegnani-pierangelo",
+      "name": "Pierangelo Garegnani",
+      "birth": 1930,
+      "death": 2011,
+      "school": "Post-Keynesian/Sraffian",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 28.0,
+        "bm25": 24.37,
+        "factor": 36.4,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 6.6,
+        "pagerank": 9.27,
+        "cent_ppmi": 16.7
+      }
+    },
+    {
+      "fid": "davidson-paul",
+      "name": "Paul Davidson",
+      "birth": 1930,
+      "death": 2022,
+      "school": "Post-Keynesian/Sraffian",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 20.0,
+        "bm25": 13.1,
+        "factor": 22.1,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "riese-hajo",
+      "name": "Hajo Riese",
+      "birth": 1934,
+      "death": 2012,
+      "school": "Post-Keynesian/Sraffian",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 50.0,
+        "bm25": 23.46,
+        "factor": 45.6,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 2.3,
+        "pagerank": 3.55,
+        "cent_ppmi": 6.6
+      }
+    },
+    {
+      "fid": "steedman-ian",
+      "name": "Ian Steedman",
+      "birth": 1941,
+      "death": null,
+      "school": "Post-Keynesian/Sraffian",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 22.0,
+        "bm25": 20.02,
+        "factor": 32.8,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 4.1,
+        "pagerank": 7.79,
+        "cent_ppmi": 58.0
+      }
+    },
+    {
+      "fid": "kalmbach-peter",
+      "name": "Peter Kalmbach",
+      "birth": 1941,
+      "death": null,
+      "school": "Post-Keynesian/Sraffian",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 18.0,
+        "bm25": 17.89,
+        "factor": 30.4,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.1,
+        "pagerank": 3.7,
+        "cent_ppmi": 7.7
+      }
+    },
+    {
+      "fid": "kregel-jan-allen",
+      "name": "Jan Allen Kregel",
+      "birth": 1944,
+      "death": null,
+      "school": "Post-Keynesian/Sraffian",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 20.0,
+        "bm25": 13.79,
+        "factor": 22.1,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 2.0,
+        "pagerank": 3.65,
+        "cent_ppmi": 4.7
+      }
+    },
+    {
+      "fid": "bibow-jorg",
+      "name": "Jörg Bibow",
+      "birth": 1963,
+      "death": null,
+      "school": "Post-Keynesian/Sraffian",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 38.0,
+        "bm25": 16.21,
+        "factor": 32.7,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 2.4,
+        "pagerank": 8.2,
+        "cent_ppmi": 29.8
+      }
+    },
+    {
+      "fid": "schumpeter-joseph-alois",
+      "name": "Joseph Alois Schumpeter",
+      "birth": 1883,
+      "death": 1950,
+      "school": "Evolutionary",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 297.0,
+        "bm25": 99.4,
+        "factor": 100.0,
+        "rasch": 100.0,
+        "rasch_se": 0.373,
+        "centrality": 100.0,
+        "pagerank": 95.63,
+        "cent_ppmi": 46.0
+      }
+    },
+    {
+      "fid": "binswanger-hans-christoph",
+      "name": "Hans Christoph Binswanger",
+      "birth": 1929,
+      "death": 2018,
+      "school": "Evolutionary",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 20.0,
+        "bm25": 15.71,
+        "factor": 28.6,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 4.3,
+        "pagerank": 12.22,
+        "cent_ppmi": 39.5
+      }
+    },
+    {
+      "fid": "mokyr-joel",
+      "name": "Joel Mokyr",
+      "birth": 1946,
+      "death": null,
+      "school": "Evolutionary",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 38.0,
+        "bm25": 21.03,
+        "factor": 38.6,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "hutter-michael",
+      "name": "Michael Hutter",
+      "birth": 1947,
+      "death": null,
+      "school": "Evolutionary",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 12.67,
+        "factor": 17.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 1.3,
+        "pagerank": 3.3,
+        "cent_ppmi": 4.7
+      }
+    },
+    {
+      "fid": "foss-nicolai-juul",
+      "name": "Nicolai Juul Foss",
+      "birth": 1964,
+      "death": null,
+      "school": "Evolutionary",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 21.0,
+        "bm25": 16.12,
+        "factor": 31.0,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "eucken-walter",
+      "name": "Walter Eucken",
+      "birth": 1891,
+      "death": 1950,
+      "school": "Ordoliberalismus",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 276.0,
+        "bm25": 54.73,
+        "factor": 77.8,
+        "rasch": 64.3,
+        "rasch_se": 0.367,
+        "centrality": 49.9,
+        "pagerank": 49.48,
+        "cent_ppmi": 42.2
+      }
+    },
+    {
+      "fid": "bohm-franz",
+      "name": "Franz Böhm",
+      "birth": 1895,
+      "death": 1977,
+      "school": "Ordoliberalismus",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 37.0,
+        "bm25": 29.25,
+        "factor": 44.1,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "ropke-wilhelm",
+      "name": "Wilhelm Röpke",
+      "birth": 1899,
+      "death": 1966,
+      "school": "Ordoliberalismus",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 188.0,
+        "bm25": 47.34,
+        "factor": 81.3,
+        "rasch": 54.8,
+        "rasch_se": 0.395,
+        "centrality": 34.2,
+        "pagerank": 31.41,
+        "cent_ppmi": 40.2
+      }
+    },
+    {
+      "fid": "lutz-friedrich-august",
+      "name": "Friedrich August Lutz",
+      "birth": 1901,
+      "death": 1975,
+      "school": "Ordoliberalismus",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 29.0,
+        "bm25": 30.06,
+        "factor": 42.1,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 26.5,
+        "pagerank": 20.93,
+        "cent_ppmi": 42.5
+      }
+    },
+    {
+      "fid": "muller-armack-alfred",
+      "name": "Alfred Müller-Armack",
+      "birth": 1901,
+      "death": 1978,
+      "school": "Ordoliberalismus",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 20.0,
+        "bm25": 20.23,
+        "factor": 28.6,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 13.2,
+        "pagerank": 11.44,
+        "cent_ppmi": 22.6
+      }
+    },
+    {
+      "fid": "norr-knut-wolfgang",
+      "name": "Knut Wolfgang Nörr",
+      "birth": 1935,
+      "death": null,
+      "school": "Ordoliberalismus",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 12.36,
+        "factor": 17.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "grossekettler-heinz",
+      "name": "Heinz Grossekettler",
+      "birth": 1938,
+      "death": 2012,
+      "school": "Ordoliberalismus",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 23.0,
+        "bm25": 19.78,
+        "factor": 34.3,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 6.0,
+        "pagerank": 11.64,
+        "cent_ppmi": 34.6
+      }
+    },
+    {
+      "fid": "suntum-ulrich",
+      "name": "Ulrich van Suntum",
+      "birth": 1950,
+      "death": null,
+      "school": "Ordoliberalismus",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 23.0,
+        "bm25": 24.87,
+        "factor": 36.8,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 0.2,
+        "pagerank": 3.59,
+        "cent_ppmi": 5.6
+      }
+    },
+    {
+      "fid": "thunen-johann-heinrich",
+      "name": "Johann Heinrich von Thünen",
+      "birth": 1783,
+      "death": 1850,
+      "school": "Raumwirtschaftslehre",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 39.0,
+        "bm25": 34.74,
+        "factor": 48.2,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 38.8,
+        "pagerank": 38.7,
+        "cent_ppmi": 43.8
+      }
+    },
+    {
+      "fid": "christaller-walter",
+      "name": "Walter Christaller",
+      "birth": 1893,
+      "death": 1969,
+      "school": "Raumwirtschaftslehre",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 41.0,
+        "bm25": 19.38,
+        "factor": 44.7,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 9.4,
+        "pagerank": 10.84,
+        "cent_ppmi": 20.2
+      }
+    },
+    {
+      "fid": "predohl-andreas",
+      "name": "Andreas Predöhl",
+      "birth": 1893,
+      "death": 1974,
+      "school": "Raumwirtschaftslehre",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 35.0,
+        "bm25": 21.85,
+        "factor": 45.5,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 12.6,
+        "pagerank": 15.85,
+        "cent_ppmi": 26.9
+      }
+    },
+    {
+      "fid": "losch-august",
+      "name": "August Lösch",
+      "birth": 1906,
+      "death": 1945,
+      "school": "Raumwirtschaftslehre",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 71.0,
+        "bm25": 43.5,
+        "factor": 62.6,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 50.2,
+        "pagerank": 45.58,
+        "cent_ppmi": 39.8
+      }
+    },
+    {
+      "fid": "boventer-edwin",
+      "name": "Edwin von Böventer",
+      "birth": 1929,
+      "death": 2000,
+      "school": "Raumwirtschaftslehre",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 20.0,
+        "bm25": 19.34,
+        "factor": 28.6,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.8,
+        "pagerank": 3.93,
+        "cent_ppmi": 17.8
+      }
+    },
+    {
+      "fid": "krugman-paul-robin",
+      "name": "Paul Robin Krugman",
+      "birth": 1953,
+      "death": null,
+      "school": "Raumwirtschaftslehre",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 123.0,
+        "bm25": 42.25,
+        "factor": 74.2,
+        "rasch": 47.4,
+        "rasch_se": 0.428,
+        "centrality": 10.7,
+        "pagerank": 19.88,
+        "cent_ppmi": 49.7
+      }
+    },
+    {
+      "fid": "jevons-william-stanley",
+      "name": "William Stanley Jevons",
+      "birth": 1835,
+      "death": 1882,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 51.0,
+        "bm25": 41.88,
+        "factor": 55.0,
+        "rasch": 51.2,
+        "rasch_se": 0.409,
+        "centrality": 27.0,
+        "pagerank": 28.88,
+        "cent_ppmi": 63.9
+      }
+    },
+    {
+      "fid": "marshall-alfred",
+      "name": "Alfred Marshall",
+      "birth": 1842,
+      "death": 1924,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 131.0,
+        "bm25": 71.06,
+        "factor": 75.1,
+        "rasch": 83.4,
+        "rasch_se": 0.352,
+        "centrality": 45.1,
+        "pagerank": 51.83,
+        "cent_ppmi": 84.3
+      }
+    },
+    {
+      "fid": "edgeworth-francis-ysidro",
+      "name": "Francis Ysidro Edgeworth",
+      "birth": 1845,
+      "death": 1926,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 54.0,
+        "bm25": 32.6,
+        "factor": 55.2,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 7.1,
+        "pagerank": 6.87,
+        "cent_ppmi": 33.1
+      }
+    },
+    {
+      "fid": "clark-john-bates",
+      "name": "John Bates Clark",
+      "birth": 1847,
+      "death": 1938,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 20.0,
+        "bm25": 15.65,
+        "factor": 9.2,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "wicksell-knut",
+      "name": "Knut Wicksell",
+      "birth": 1851,
+      "death": 1926,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 156.0,
+        "bm25": 62.6,
+        "factor": 82.4,
+        "rasch": 67.2,
+        "rasch_se": 0.362,
+        "centrality": 36.4,
+        "pagerank": 42.3,
+        "cent_ppmi": 77.1
+      }
+    },
+    {
+      "fid": "cassel-karl-gustav",
+      "name": "Karl Gustav Cassel",
+      "birth": 1866,
+      "death": 1945,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 54.0,
+        "bm25": 39.4,
+        "factor": 56.9,
+        "rasch": 47.4,
+        "rasch_se": 0.428,
+        "centrality": 23.6,
+        "pagerank": 22.74,
+        "cent_ppmi": 62.7
+      }
+    },
+    {
+      "fid": "fisher-irving",
+      "name": "Irving Fisher",
+      "birth": 1867,
+      "death": 1947,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 36.0,
+        "bm25": 21.81,
+        "factor": 13.5,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 7.4,
+        "pagerank": 10.71,
+        "cent_ppmi": 44.4
+      }
+    },
+    {
+      "fid": "pigou-arthur-cecil",
+      "name": "Arthur Cecil Pigou",
+      "birth": 1877,
+      "death": 1959,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 61.0,
+        "bm25": 47.65,
+        "factor": 60.5,
+        "rasch": 58.1,
+        "rasch_se": 0.383,
+        "centrality": 23.5,
+        "pagerank": 28.45,
+        "cent_ppmi": 85.7
+      }
+    },
+    {
+      "fid": "heckscher-eli-filip",
+      "name": "Eli Filip Heckscher",
+      "birth": 1879,
+      "death": 1952,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 21.13,
+        "factor": 28.7,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 6.1,
+        "pagerank": 10.1,
+        "cent_ppmi": 44.3
+      }
+    },
+    {
+      "fid": "knight-frank-hyneman",
+      "name": "Frank Hyneman Knight",
+      "birth": 1885,
+      "death": 1972,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 21.0,
+        "bm25": 17.51,
+        "factor": 31.0,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 4.9,
+        "pagerank": 11.5,
+        "cent_ppmi": 71.7
+      }
+    },
+    {
+      "fid": "ellis-howard-sylvester",
+      "name": "Howard Sylvester Ellis",
+      "birth": 1898,
+      "death": 1992,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 23.0,
+        "bm25": 23.43,
+        "factor": 37.2,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "ohlin-bertil-gotthard",
+      "name": "Bertil Gotthard Ohlin",
+      "birth": 1899,
+      "death": 1979,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 14.0,
+        "bm25": 19.45,
+        "factor": 26.3,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 21.7,
+        "pagerank": 22.83,
+        "cent_ppmi": 58.4
+      }
+    },
+    {
+      "fid": "carell-erich",
+      "name": "Erich Carell",
+      "birth": 1899,
+      "death": 1975,
+      "school": "Neoclassical",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 8.0,
+        "bm25": 6.31,
+        "factor": 3.4,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "schneider-erich",
+      "name": "Erich Schneider",
+      "birth": 1900,
+      "death": 1970,
+      "school": "Neoclassical",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 116.0,
+        "bm25": 47.93,
+        "factor": 74.9,
+        "rasch": 54.8,
+        "rasch_se": 0.395,
+        "centrality": 43.8,
+        "pagerank": 57.83,
+        "cent_ppmi": 78.6
+      }
+    },
+    {
+      "fid": "hicks-john-richard",
+      "name": "John Richard Hicks",
+      "birth": 1904,
+      "death": 1989,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 73.0,
+        "bm25": 45.79,
+        "factor": 60.8,
+        "rasch": 64.3,
+        "rasch_se": 0.367,
+        "centrality": 27.1,
+        "pagerank": 34.54,
+        "cent_ppmi": 100.0
+      }
+    },
+    {
+      "fid": "stigler-george-joseph",
+      "name": "George Joseph Stigler",
+      "birth": 1911,
+      "death": 1991,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 25.0,
+        "bm25": 17.21,
+        "factor": 32.9,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 2.0,
+        "pagerank": 5.56,
+        "cent_ppmi": 28.9
+      }
+    },
+    {
+      "fid": "friedman-milton",
+      "name": "Milton Friedman",
+      "birth": 1912,
+      "death": 2006,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 101.0,
+        "bm25": 50.18,
+        "factor": 70.7,
+        "rasch": 61.3,
+        "rasch_se": 0.374,
+        "centrality": 14.2,
+        "pagerank": 14.55,
+        "cent_ppmi": 39.3
+      }
+    },
+    {
+      "fid": "samuelson-paul-anthony",
+      "name": "Paul Anthony Samuelson",
+      "birth": 1915,
+      "death": 2009,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 116.0,
+        "bm25": 73.33,
+        "factor": 77.5,
+        "rasch": 83.4,
+        "rasch_se": 0.352,
+        "centrality": 23.3,
+        "pagerank": 31.58,
+        "cent_ppmi": 94.2
+      }
+    },
+    {
+      "fid": "brems-hans",
+      "name": "Hans Brems",
+      "birth": 1915,
+      "death": 2000,
+      "school": "Neoclassical",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 20.0,
+        "bm25": 16.32,
+        "factor": 28.6,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "brunner-karl",
+      "name": "Karl Brunner",
+      "birth": 1916,
+      "death": 1989,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 37.0,
+        "bm25": 19.99,
+        "factor": 43.4,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 4.7,
+        "pagerank": 12.41,
+        "cent_ppmi": 35.2
+      }
+    },
+    {
+      "fid": "niehans-jurg",
+      "name": "Jürg Niehans",
+      "birth": 1919,
+      "death": 2007,
+      "school": "Neoclassical",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 61.0,
+        "bm25": 42.29,
+        "factor": 58.1,
+        "rasch": 58.1,
+        "rasch_se": 0.383,
+        "centrality": 1.5,
+        "pagerank": 3.87,
+        "cent_ppmi": 18.2
+      }
+    },
+    {
+      "fid": "giersch-herbert",
+      "name": "Herbert Giersch",
+      "birth": 1921,
+      "death": 2010,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 33.0,
+        "bm25": 18.98,
+        "factor": 35.7,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 4.2,
+        "pagerank": 8.21,
+        "cent_ppmi": 30.2
+      }
+    },
+    {
+      "fid": "baumol-william-jack",
+      "name": "William Jack Baumol",
+      "birth": 1922,
+      "death": 2017,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 30.0,
+        "bm25": 30.11,
+        "factor": 39.8,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 3.5,
+        "pagerank": 3.89,
+        "cent_ppmi": 7.3
+      }
+    },
+    {
+      "fid": "johnson-harry-gordon",
+      "name": "Harry Gordon Johnson",
+      "birth": 1923,
+      "death": 1977,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 22.0,
+        "bm25": 12.64,
+        "factor": 32.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.8,
+        "pagerank": 3.99,
+        "cent_ppmi": 14.5
+      }
+    },
+    {
+      "fid": "solow-robert-merton",
+      "name": "Robert Merton Solow",
+      "birth": 1924,
+      "death": 2023,
+      "school": "Neoclassical",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 50.0,
+        "bm25": 42.98,
+        "factor": 55.0,
+        "rasch": 54.8,
+        "rasch_se": 0.395,
+        "centrality": 3.8,
+        "pagerank": 10.4,
+        "cent_ppmi": 46.5
+      }
+    },
+    {
+      "fid": "chipman-john-somerset",
+      "name": "John Somerset Chipman",
+      "birth": 1926,
+      "death": 2021,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 21.0,
+        "bm25": 17.8,
+        "factor": 31.0,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 5.0,
+        "pagerank": 9.82,
+        "cent_ppmi": 31.6
+      }
+    },
+    {
+      "fid": "negishi-takashi",
+      "name": "Takashi Negishi",
+      "birth": 1933,
+      "death": null,
+      "school": "Neoclassical",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 28.0,
+        "bm25": 23.95,
+        "factor": 36.4,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "jr-robert-emerson-lucas",
+      "name": "Robert Emerson Lucas Jr.",
+      "birth": 1937,
+      "death": 2023,
+      "school": "Neoclassical",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 0,
+        "bm25": 0,
+        "factor": null,
+        "rasch": null,
+        "rasch_se": null,
+        "centrality": null,
+        "pagerank": null,
+        "cent_ppmi": null
+      }
+    },
+    {
+      "fid": "bliss-christopher",
+      "name": "Christopher Bliss",
+      "birth": 1940,
+      "death": null,
+      "school": "Neoclassical",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 8.0,
+        "bm25": 9.05,
+        "factor": 3.4,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "bernoulli-daniel",
+      "name": "Daniel Bernoulli",
+      "birth": 1700,
+      "death": 1782,
+      "school": "Mathematical Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 36.0,
+        "bm25": 20.08,
+        "factor": 34.4,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "babbage-charles",
+      "name": "Charles Babbage",
+      "birth": 1791,
+      "death": 1871,
+      "school": "Mathematical Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 28.0,
+        "bm25": 17.72,
+        "factor": 32.0,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 2.6,
+        "pagerank": 3.87,
+        "cent_ppmi": 5.6
+      }
+    },
+    {
+      "fid": "bortkiewicz-ladislaus",
+      "name": "Ladislaus von Bortkiewicz",
+      "birth": 1868,
+      "death": 1931,
+      "school": "Mathematical Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 29.0,
+        "bm25": 28.86,
+        "factor": 40.7,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 17.3,
+        "pagerank": 11.76,
+        "cent_ppmi": 20.3
+      }
+    },
+    {
+      "fid": "frisch-ragnar-anton-kittil",
+      "name": "Ragnar Anton Kittil Frisch",
+      "birth": 1895,
+      "death": 1973,
+      "school": "Mathematical Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 25.0,
+        "bm25": 20.4,
+        "factor": 38.8,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 7.1,
+        "pagerank": 10.77,
+        "cent_ppmi": 63.1
+      }
+    },
+    {
+      "fid": "marschak-jacob",
+      "name": "Jacob Marschak",
+      "birth": 1898,
+      "death": 1977,
+      "school": "Mathematical Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 29.0,
+        "bm25": 21.7,
+        "factor": 40.7,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 20.3,
+        "pagerank": 24.54,
+        "cent_ppmi": 75.6
+      }
+    },
+    {
+      "fid": "tinbergen-jan",
+      "name": "Jan Tinbergen",
+      "birth": 1903,
+      "death": 1994,
+      "school": "Mathematical Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 32.0,
+        "bm25": 26.49,
+        "factor": 43.0,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 6.8,
+        "pagerank": 10.98,
+        "cent_ppmi": 71.6
+      }
+    },
+    {
+      "fid": "leontief-wassily",
+      "name": "Wassily Leontief",
+      "birth": 1905,
+      "death": 1999,
+      "school": "Mathematical Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 17.0,
+        "bm25": 17.02,
+        "factor": 23.5,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 8.8,
+        "pagerank": 15.55,
+        "cent_ppmi": 70.1
+      }
+    },
+    {
+      "fid": "stackelberg-heinrich",
+      "name": "Heinrich von Stackelberg",
+      "birth": 1905,
+      "death": 1946,
+      "school": "Mathematical Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 63.0,
+        "bm25": 23.77,
+        "factor": 49.1,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 7.0,
+        "pagerank": 7.15,
+        "cent_ppmi": 25.8
+      }
+    },
+    {
+      "fid": "allen-roy-george-douglas",
+      "name": "Roy George Douglas Allen",
+      "birth": 1906,
+      "death": 1983,
+      "school": "Mathematical Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 20.0,
+        "bm25": 18.44,
+        "factor": 28.6,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 27.4,
+        "pagerank": 24.6,
+        "cent_ppmi": 63.1
+      }
+    },
+    {
+      "fid": "stone-john-richard-nicholas",
+      "name": "John Richard Nicholas Stone",
+      "birth": 1913,
+      "death": 1991,
+      "school": "Mathematical Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 15.0,
+        "bm25": 19.99,
+        "factor": 27.5,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "krelle-wilhelm",
+      "name": "Wilhelm Krelle",
+      "birth": 1916,
+      "death": 2004,
+      "school": "Mathematical Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 28.0,
+        "bm25": 24.37,
+        "factor": 36.4,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 3.2,
+        "pagerank": 8.27,
+        "cent_ppmi": 36.0
+      }
+    },
+    {
+      "fid": "dorfman-robert",
+      "name": "Robert Dorfman",
+      "birth": 1916,
+      "death": 2002,
+      "school": "Mathematical Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 40.0,
+        "bm25": 27.16,
+        "factor": 46.4,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 4.0,
+        "pagerank": 5.63,
+        "cent_ppmi": 15.9
+      }
+    },
+    {
+      "fid": "arrow-kenneth-joseph",
+      "name": "Kenneth Joseph Arrow",
+      "birth": 1921,
+      "death": 2017,
+      "school": "Mathematical Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 44.0,
+        "bm25": 31.28,
+        "factor": 48.7,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 1.1,
+        "pagerank": 7.26,
+        "cent_ppmi": 35.7
+      }
+    },
+    {
+      "fid": "morishima-michio",
+      "name": "Michio Morishima",
+      "birth": 1923,
+      "death": 2004,
+      "school": "Mathematical Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 24.0,
+        "bm25": 24.43,
+        "factor": 34.6,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "weintraub-e-roy",
+      "name": "E. Roy Weintraub",
+      "birth": 1943,
+      "death": null,
+      "school": "Mathematical Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 20.0,
+        "bm25": 20.39,
+        "factor": 28.6,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 1.3,
+        "pagerank": 3.31,
+        "cent_ppmi": 5.8
+      }
+    },
+    {
+      "fid": "geanakoplos-john",
+      "name": "John Geanakoplos",
+      "birth": 1955,
+      "death": null,
+      "school": "Mathematical Economics",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 11.17,
+        "factor": 17.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "lowe-adolph",
+      "name": "Adolph Lowe",
+      "birth": 1893,
+      "death": 1995,
+      "school": "Institutional",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 73.0,
+        "bm25": 46.02,
+        "factor": 63.7,
+        "rasch": 58.1,
+        "rasch_se": 0.383,
+        "centrality": 26.7,
+        "pagerank": 24.45,
+        "cent_ppmi": 56.5
+      }
+    },
+    {
+      "fid": "mannheim-karl",
+      "name": "Karl Mannheim",
+      "birth": 1893,
+      "death": 1947,
+      "school": "Institutional",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 10.4,
+        "factor": 17.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 9.3,
+        "pagerank": 10.92,
+        "cent_ppmi": 46.6
+      }
+    },
+    {
+      "fid": "myrdal-gunnar",
+      "name": "Gunnar Myrdal",
+      "birth": 1898,
+      "death": 1987,
+      "school": "Institutional",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 105.0,
+        "bm25": 36.83,
+        "factor": 65.6,
+        "rasch": 51.2,
+        "rasch_se": 0.409,
+        "centrality": 10.5,
+        "pagerank": 16.52,
+        "cent_ppmi": 64.5
+      }
+    },
+    {
+      "fid": "galbraith-john-kenneth",
+      "name": "John Kenneth Galbraith",
+      "birth": 1908,
+      "death": 2006,
+      "school": "Institutional",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 8.36,
+        "factor": 5.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "boulding-kenneth-ewart",
+      "name": "Kenneth Ewart Boulding",
+      "birth": 1910,
+      "death": 1993,
+      "school": "Institutional",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 14.03,
+        "factor": 26.2,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 3.2,
+        "pagerank": 4.57,
+        "cent_ppmi": 12.5
+      }
+    },
+    {
+      "fid": "simon-herbert-alexander",
+      "name": "Herbert Alexander Simon",
+      "birth": 1916,
+      "death": 2001,
+      "school": "Institutional",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 14.0,
+        "bm25": 18.62,
+        "factor": 26.3,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 6.3,
+        "pagerank": 14.04,
+        "cent_ppmi": 47.3
+      }
+    },
+    {
+      "fid": "buchanan-james-mcgill",
+      "name": "James McGill Buchanan",
+      "birth": 1919,
+      "death": 2013,
+      "school": "Institutional",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 50.0,
+        "bm25": 38.77,
+        "factor": 55.1,
+        "rasch": 54.8,
+        "rasch_se": 0.395,
+        "centrality": 9.6,
+        "pagerank": 9.78,
+        "cent_ppmi": 30.7
+      }
+    },
+    {
+      "fid": "perlman-mark",
+      "name": "Mark Perlman",
+      "birth": 1923,
+      "death": 2006,
+      "school": "Institutional",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 27.0,
+        "bm25": 15.81,
+        "factor": 36.2,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 2.2,
+        "pagerank": 6.78,
+        "cent_ppmi": 28.2
+      }
+    },
+    {
+      "fid": "richter-rudolf",
+      "name": "Rudolf Richter",
+      "birth": 1926,
+      "death": 2021,
+      "school": "Institutional",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 36.0,
+        "bm25": 24.16,
+        "factor": 43.7,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 10.9,
+        "pagerank": 15.62,
+        "cent_ppmi": 43.3
+      }
+    },
+    {
+      "fid": "hodgson-geoffrey-martin",
+      "name": "Geoffrey Martin Hodgson",
+      "birth": 1946,
+      "death": null,
+      "school": "Institutional",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 30.0,
+        "bm25": 27.91,
+        "factor": 42.4,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 2.2,
+        "pagerank": 9.08,
+        "cent_ppmi": 11.9
+      }
+    },
+    {
+      "fid": "swedberg-richard",
+      "name": "Richard Swedberg",
+      "birth": 1948,
+      "death": null,
+      "school": "Institutional",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 20.0,
+        "bm25": 20.19,
+        "factor": 28.6,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 3.9,
+        "pagerank": 3.89,
+        "cent_ppmi": 5.4
+      }
+    },
+    {
+      "fid": "backhaus-jurgen",
+      "name": "Jürgen Backhaus",
+      "birth": 1950,
+      "death": null,
+      "school": "Institutional",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 34.0,
+        "bm25": 28.46,
+        "factor": 41.3,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 8.7,
+        "pagerank": 13.02,
+        "cent_ppmi": 24.6
+      }
+    },
+    {
+      "fid": "peukert-helge",
+      "name": "Helge Peukert",
+      "birth": 1961,
+      "death": null,
+      "school": "Institutional",
+      "confidence": "low",
+      "status": "studied",
+      "prominence": {
+        "fixed": 33.0,
+        "bm25": 31.72,
+        "factor": 44.9,
+        "rasch": 47.4,
+        "rasch_se": 0.428,
+        "centrality": 8.3,
+        "pagerank": 14.4,
+        "cent_ppmi": 38.1
+      }
+    },
+    {
+      "fid": "fisher-allan-george-barnard",
+      "name": "Allan George Barnard Fisher",
+      "birth": 1895,
+      "death": 1976,
+      "school": "Development Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 0,
+        "bm25": 0,
+        "factor": null,
+        "rasch": null,
+        "rasch_se": null,
+        "centrality": null,
+        "pagerank": null,
+        "cent_ppmi": null
+      }
+    },
+    {
+      "fid": "brandt-karl",
+      "name": "Karl Brandt",
+      "birth": 1899,
+      "death": 1975,
+      "school": "Development Economics",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 52.0,
+        "bm25": 36.31,
+        "factor": 30.1,
+        "rasch": 58.1,
+        "rasch_se": 0.383,
+        "centrality": 6.2,
+        "pagerank": 8.07,
+        "cent_ppmi": 26.7
+      }
+    },
+    {
+      "fid": "kuznets-simon-smith",
+      "name": "Simon Smith Kuznets",
+      "birth": 1901,
+      "death": 1985,
+      "school": "Development Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 26.0,
+        "bm25": 24.41,
+        "factor": 39.5,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 3.5,
+        "pagerank": 11.17,
+        "cent_ppmi": 55.0
+      }
+    },
+    {
+      "fid": "gerschenkron-alexander",
+      "name": "Alexander Gerschenkron",
+      "birth": 1904,
+      "death": 1978,
+      "school": "Development Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 11.76,
+        "factor": 20.2,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 3.6,
+        "pagerank": 6.76,
+        "cent_ppmi": 36.5
+      }
+    },
+    {
+      "fid": "clark-colin",
+      "name": "Colin Clark",
+      "birth": 1905,
+      "death": 1989,
+      "school": "Development Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 14.15,
+        "factor": 5.8,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "fourastie-jean",
+      "name": "Jean Fourastié",
+      "birth": 1907,
+      "death": 1990,
+      "school": "Development Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 17.0,
+        "bm25": 15.31,
+        "factor": 23.5,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.5,
+        "pagerank": 5.7,
+        "cent_ppmi": 28.9
+      }
+    },
+    {
+      "fid": "kindleberger-charles-poor",
+      "name": "Charles Poor Kindleberger",
+      "birth": 1910,
+      "death": 2003,
+      "school": "Development Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 12.05,
+        "factor": 22.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 1.3,
+        "pagerank": 4.62,
+        "cent_ppmi": 36.3
+      }
+    },
+    {
+      "fid": "hirschman-albert-otto",
+      "name": "Albert Otto Hirschman",
+      "birth": 1915,
+      "death": 2012,
+      "school": "Development Economics",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 37.0,
+        "bm25": 25.28,
+        "factor": 44.1,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 6.5,
+        "pagerank": 9.16,
+        "cent_ppmi": 44.7
+      }
+    },
+    {
+      "fid": "bowley-marian",
+      "name": "Marian Bowley",
+      "birth": 1911,
+      "death": 2002,
+      "school": "Contemporary",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 14.46,
+        "factor": 7.7,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "hauser-karl",
+      "name": "Karl Häuser",
+      "birth": 1920,
+      "death": 2002,
+      "school": "Contemporary",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 75.0,
+        "bm25": 45.74,
+        "factor": 63.8,
+        "rasch": 54.8,
+        "rasch_se": 0.395,
+        "centrality": 13.7,
+        "pagerank": 21.03,
+        "cent_ppmi": 53.0
+      }
+    },
+    {
+      "fid": "helmstadter-ernst",
+      "name": "Ernst Helmstädter",
+      "birth": 1924,
+      "death": 2009,
+      "school": "Contemporary",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 67.0,
+        "bm25": 41.92,
+        "factor": 59.6,
+        "rasch": 54.8,
+        "rasch_se": 0.395,
+        "centrality": 10.5,
+        "pagerank": 13.09,
+        "cent_ppmi": 31.7
+      }
+    },
+    {
+      "fid": "blaug-mark",
+      "name": "Mark Blaug",
+      "birth": 1927,
+      "death": 2011,
+      "school": "Contemporary",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 144.0,
+        "bm25": 60.47,
+        "factor": 69.1,
+        "rasch": 80.8,
+        "rasch_se": 0.351,
+        "centrality": 8.8,
+        "pagerank": 8.94,
+        "cent_ppmi": 22.2
+      }
+    },
+    {
+      "fid": "bernholz-peter",
+      "name": "Peter Bernholz",
+      "birth": 1929,
+      "death": 2022,
+      "school": "Contemporary",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 15.25,
+        "factor": 20.2,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "laidler-david-ernest-william",
+      "name": "David Ernest William Laidler",
+      "birth": 1938,
+      "death": null,
+      "school": "Contemporary",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 42.0,
+        "bm25": 30.72,
+        "factor": 50.6,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 0.9,
+        "pagerank": 4.39,
+        "cent_ppmi": 16.8
+      }
+    },
+    {
+      "fid": "groenewegen-peter",
+      "name": "Peter Groenewegen",
+      "birth": 1939,
+      "death": 2016,
+      "school": "Contemporary",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 24.0,
+        "bm25": 23.16,
+        "factor": 34.6,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 1.4,
+        "pagerank": 3.9,
+        "cent_ppmi": 12.0
+      }
+    },
+    {
+      "fid": "schafer-wolf",
+      "name": "Wolf Schäfer",
+      "birth": 1942,
+      "death": null,
+      "school": "Contemporary",
+      "confidence": "low",
+      "status": "studied",
+      "prominence": {
+        "fixed": 20.0,
+        "bm25": 14.28,
+        "factor": 29.3,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 1.4,
+        "pagerank": 5.36,
+        "cent_ppmi": 14.9
+      }
+    },
+    {
+      "fid": "stiglitz-joseph-eugene",
+      "name": "Joseph Eugene Stiglitz",
+      "birth": 1943,
+      "death": null,
+      "school": "Contemporary",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 36.0,
+        "bm25": 34.04,
+        "factor": 46.5,
+        "rasch": 51.2,
+        "rasch_se": 0.409,
+        "centrality": 1.0,
+        "pagerank": 4.68,
+        "cent_ppmi": 11.8
+      }
+    },
+    {
+      "fid": "jonung-lars",
+      "name": "Lars Jonung",
+      "birth": 1944,
+      "death": null,
+      "school": "Contemporary",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 26.0,
+        "bm25": 21.13,
+        "factor": 37.9,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "cesarano-filippo",
+      "name": "Filippo Cesarano",
+      "birth": 1944,
+      "death": null,
+      "school": "Contemporary",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 11.35,
+        "factor": 26.2,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "brewer-anthony",
+      "name": "Anthony Brewer",
+      "birth": 1946,
+      "death": null,
+      "school": "Contemporary",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 14.64,
+        "factor": 26.2,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 1.3,
+        "pagerank": 3.3,
+        "cent_ppmi": 4.7
+      }
+    },
+    {
+      "fid": "besomi-daniele",
+      "name": "Daniele Besomi",
+      "birth": 1963,
+      "death": null,
+      "school": "Contemporary",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 15.28,
+        "factor": 26.2,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "jones-charles-i",
+      "name": "Charles I. Jones",
+      "birth": 1968,
+      "death": null,
+      "school": "Contemporary",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 33.0,
+        "bm25": 28.29,
+        "factor": 42.6,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 1.3,
+        "pagerank": 7.1,
+        "cent_ppmi": 17.1
+      }
+    },
+    {
+      "fid": "hennecke-hans-jorg",
+      "name": "Hans Jörg Hennecke",
+      "birth": 1969,
+      "death": null,
+      "school": "Contemporary",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 8.0,
+        "bm25": 8.54,
+        "factor": 3.4,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "blesgen-detlef-j",
+      "name": "Detlef J. Blesgen",
+      "birth": null,
+      "death": null,
+      "school": "Contemporary",
+      "confidence": "low",
+      "status": "studied",
+      "prominence": {
+        "fixed": 17.0,
+        "bm25": 12.2,
+        "factor": 28.6,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "bacon-francis",
+      "name": "Francis Bacon",
+      "birth": 1561,
+      "death": 1626,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 24.0,
+        "bm25": 19.41,
+        "factor": 23.6,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 0.7,
+        "pagerank": 6.45,
+        "cent_ppmi": 4.8
+      }
+    },
+    {
+      "fid": "hobbes-thomas",
+      "name": "Thomas Hobbes",
+      "birth": 1588,
+      "death": 1679,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 18.0,
+        "bm25": 18.12,
+        "factor": 25.9,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 6.7,
+        "pagerank": 12.88,
+        "cent_ppmi": 12.6
+      }
+    },
+    {
+      "fid": "locke-john",
+      "name": "John Locke",
+      "birth": 1632,
+      "death": 1704,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 60.0,
+        "bm25": 40.47,
+        "factor": 51.5,
+        "rasch": 58.1,
+        "rasch_se": 0.383,
+        "centrality": 7.5,
+        "pagerank": 11.4,
+        "cent_ppmi": 19.7
+      }
+    },
+    {
+      "fid": "kant-immanuel",
+      "name": "Immanuel Kant",
+      "birth": 1724,
+      "death": 1804,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 33.0,
+        "bm25": 23.71,
+        "factor": 39.8,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 9.7,
+        "pagerank": 12.58,
+        "cent_ppmi": 27.1
+      }
+    },
+    {
+      "fid": "humboldt-wilhelm",
+      "name": "Wilhelm von Humboldt",
+      "birth": 1767,
+      "death": 1835,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 20.0,
+        "bm25": 18.97,
+        "factor": 32.1,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 5.0,
+        "pagerank": 10.83,
+        "cent_ppmi": 40.4
+      }
+    },
+    {
+      "fid": "hegel-georg-wilhelm-friedrich",
+      "name": "Georg Wilhelm Friedrich Hegel",
+      "birth": 1770,
+      "death": 1831,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 20.0,
+        "bm25": 15.59,
+        "factor": 9.2,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "nietzsche-friedrich",
+      "name": "Friedrich Nietzsche",
+      "birth": 1844,
+      "death": 1900,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 8.0,
+        "bm25": 9.35,
+        "factor": 3.4,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "husserl-edmund",
+      "name": "Edmund Husserl",
+      "birth": 1859,
+      "death": 1938,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 12.4,
+        "factor": 17.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 3.7,
+        "pagerank": 7.19,
+        "cent_ppmi": 13.1
+      }
+    },
+    {
+      "fid": "cassirer-ernst",
+      "name": "Ernst Cassirer",
+      "birth": 1874,
+      "death": 1945,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 8.0,
+        "bm25": 8.24,
+        "factor": 3.4,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "landmann-edith",
+      "name": "Edith Landmann",
+      "birth": 1877,
+      "death": 1951,
+      "school": "Philosophy",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 8.0,
+        "bm25": 8.48,
+        "factor": 3.4,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "heidegger-martin",
+      "name": "Martin Heidegger",
+      "birth": 1889,
+      "death": 1976,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 14.62,
+        "factor": 26.2,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 7.3,
+        "pagerank": 8.95,
+        "cent_ppmi": 18.2
+      }
+    },
+    {
+      "fid": "popper-karl-raimund",
+      "name": "Karl Raimund Popper",
+      "birth": 1902,
+      "death": 1994,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 28.0,
+        "bm25": 18.83,
+        "factor": 39.5,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 5.3,
+        "pagerank": 5.93,
+        "cent_ppmi": 15.9
+      }
+    },
+    {
+      "fid": "adorno-theodor-w",
+      "name": "Theodor W. Adorno",
+      "birth": 1903,
+      "death": 1969,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 8.0,
+        "bm25": 9.3,
+        "factor": 3.4,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "arendt-hannah",
+      "name": "Hannah Arendt",
+      "birth": 1906,
+      "death": 1975,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 17.32,
+        "factor": 17.8,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "landmann-georg-peter",
+      "name": "Georg Peter Landmann",
+      "birth": 1911,
+      "death": 1994,
+      "school": "Philosophy",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 8.0,
+        "bm25": 8.48,
+        "factor": 3.4,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "hutchison-terence-wilmot",
+      "name": "Terence Wilmot Hutchison",
+      "birth": 1912,
+      "death": 2007,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 29.0,
+        "bm25": 26.28,
+        "factor": 40.7,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 0.2,
+        "pagerank": 7.03,
+        "cent_ppmi": 8.8
+      }
+    },
+    {
+      "fid": "rawls-john",
+      "name": "John Rawls",
+      "birth": 1921,
+      "death": 2002,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 7.99,
+        "factor": 5.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "kuhn-thomas-samuel",
+      "name": "Thomas Samuel Kuhn",
+      "birth": 1922,
+      "death": 1996,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 23.95,
+        "factor": 27.5,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "hennis-wilhelm",
+      "name": "Wilhelm Hennis",
+      "birth": 1923,
+      "death": 2012,
+      "school": "Philosophy",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 15.55,
+        "factor": 26.2,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "koselleck-reinhart",
+      "name": "Reinhart Koselleck",
+      "birth": 1923,
+      "death": 2006,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 14.56,
+        "factor": 20.2,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 1.7,
+        "pagerank": 3.49,
+        "cent_ppmi": 4.7
+      }
+    },
+    {
+      "fid": "habermas-jurgen",
+      "name": "Jürgen Habermas",
+      "birth": 1929,
+      "death": null,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 12.02,
+        "factor": 17.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "ruse-michael",
+      "name": "Michael Ruse",
+      "birth": 1940,
+      "death": null,
+      "school": "Philosophy",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 11.33,
+        "factor": 17.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "cremaschi-sergio",
+      "name": "Sergio Cremaschi",
+      "birth": 1945,
+      "death": null,
+      "school": "Philosophy",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 14.0,
+        "bm25": 15.64,
+        "factor": 23.5,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "kaye-joel",
+      "name": "Joel Kaye",
+      "birth": 1947,
+      "death": null,
+      "school": "Philosophy",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 18.0,
+        "bm25": 16.05,
+        "factor": 30.4,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 2.2,
+        "pagerank": 4.94,
+        "cent_ppmi": 4.2
+      }
+    },
+    {
+      "fid": "maki-uskali",
+      "name": "Uskali Mäki",
+      "birth": 1951,
+      "death": null,
+      "school": "Philosophy",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 14.5,
+        "factor": 26.2,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "buquoy-georg",
+      "name": "Georg von Buquoy",
+      "birth": 1781,
+      "death": 1851,
+      "school": "Other",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 26.0,
+        "bm25": 16.53,
+        "factor": 37.7,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 1.3,
+        "pagerank": 3.3,
+        "cent_ppmi": 4.7
+      }
+    },
+    {
+      "fid": "darwin-charles-robert",
+      "name": "Charles Robert Darwin",
+      "birth": 1809,
+      "death": 1882,
+      "school": "Other",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 13.0,
+        "bm25": 13.36,
+        "factor": 21.1,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 21.1,
+        "pagerank": 22.09,
+        "cent_ppmi": 15.1
+      }
+    },
+    {
+      "fid": "tschajanow-alexander",
+      "name": "Alexander Tschajanow",
+      "birth": 1888,
+      "death": 1937,
+      "school": "Other",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 7.0,
+        "bm25": 9.0,
+        "factor": 16.1,
+        "rasch": 0.0,
+        "rasch_se": 0.99,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "heimann-eduard",
+      "name": "Eduard Heimann",
+      "birth": 1889,
+      "death": 1967,
+      "school": "Other",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 11.82,
+        "factor": 17.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 5.3,
+        "pagerank": 7.45,
+        "cent_ppmi": 31.6
+      }
+    },
+    {
+      "fid": "gutenberg-erich",
+      "name": "Erich Gutenberg",
+      "birth": 1897,
+      "death": 1984,
+      "school": "Other",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 49.0,
+        "bm25": 15.68,
+        "factor": 39.0,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 3.8,
+        "pagerank": 5.88,
+        "cent_ppmi": 21.3
+      }
+    },
+    {
+      "fid": "neumark-fritz",
+      "name": "Fritz Neumark",
+      "birth": 1900,
+      "death": 1991,
+      "school": "Other",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 85.0,
+        "bm25": 33.6,
+        "factor": 63.0,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 7.1,
+        "pagerank": 13.48,
+        "cent_ppmi": 42.7
+      }
+    },
+    {
+      "fid": "musgrave-richard-abel",
+      "name": "Richard Abel Musgrave",
+      "birth": 1910,
+      "death": 2007,
+      "school": "Other",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 40.0,
+        "bm25": 30.24,
+        "factor": 49.3,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 11.4,
+        "pagerank": 17.5,
+        "cent_ppmi": 74.4
+      }
+    },
+    {
+      "fid": "emminger-otmar",
+      "name": "Otmar Emminger",
+      "birth": 1911,
+      "death": 1986,
+      "school": "Other",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 6.85,
+        "factor": 5.8,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "coser-lewis-a",
+      "name": "Lewis A. Coser",
+      "birth": 1913,
+      "death": 2003,
+      "school": "Other",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 10.89,
+        "factor": 26.2,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "luhmann-niklas",
+      "name": "Niklas Luhmann",
+      "birth": 1927,
+      "death": 1998,
+      "school": "Other",
+      "confidence": "high",
+      "status": "studied",
+      "prominence": {
+        "fixed": 24.0,
+        "bm25": 14.96,
+        "factor": 10.5,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "baloglou-christos",
+      "name": "Christos Baloglou",
+      "birth": 1956,
+      "death": null,
+      "school": "Other",
+      "confidence": "medium",
+      "status": "studied",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 14.14,
+        "factor": 26.2,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 0.0,
+        "pagerank": 2.54,
+        "cent_ppmi": 0.0
+      }
+    },
+    {
+      "fid": "malthus-thomas-robert",
+      "name": "Thomas Robert Malthus",
+      "birth": 1766,
+      "death": 1834,
+      "school": "Classical",
+      "confidence": "readmit",
+      "status": "referenced",
+      "prominence": {
+        "fixed": 14.0,
+        "bm25": 17.27,
+        "factor": 26.3,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 17.7,
+        "pagerank": 18.24,
+        "cent_ppmi": 16.0
+      }
+    },
+    {
+      "fid": "walras-leon",
+      "name": "Léon Walras",
+      "birth": 1834,
+      "death": 1910,
+      "school": "Neoclassical",
+      "confidence": "readmit",
+      "status": "referenced",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 21.54,
+        "factor": 28.7,
+        "rasch": 32.5,
+        "rasch_se": 0.529,
+        "centrality": 33.2,
+        "pagerank": 26.39,
+        "cent_ppmi": 50.0
+      }
+    },
+    {
+      "fid": "pareto-vilfredo",
+      "name": "Vilfredo Pareto",
+      "birth": 1848,
+      "death": 1923,
+      "school": "Neoclassical",
+      "confidence": "readmit",
+      "status": "referenced",
+      "prominence": {
+        "fixed": 8.0,
+        "bm25": 11.67,
+        "factor": 16.9,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 21.6,
+        "pagerank": 20.26,
+        "cent_ppmi": 65.0
+      }
+    },
+    {
+      "fid": "veblen-thorstein",
+      "name": "Thorstein Veblen",
+      "birth": 1857,
+      "death": 1929,
+      "school": "Institutional",
+      "confidence": "readmit",
+      "status": "referenced",
+      "prominence": {
+        "fixed": 11.0,
+        "bm25": 11.32,
+        "factor": 21.9,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 17.4,
+        "pagerank": 17.55,
+        "cent_ppmi": 40.4
+      }
+    },
+    {
+      "fid": "commons-john-r",
+      "name": "John R. Commons",
+      "birth": 1862,
+      "death": 1945,
+      "school": "Institutional",
+      "confidence": "readmit",
+      "status": "referenced",
+      "prominence": {
+        "fixed": 10.0,
+        "bm25": 11.47,
+        "factor": 20.1,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 2.1,
+        "pagerank": 9.71,
+        "cent_ppmi": 29.6
+      }
+    },
+    {
+      "fid": "mitchell-wesley-clair",
+      "name": "Wesley Clair Mitchell",
+      "birth": 1874,
+      "death": 1948,
+      "school": "Institutional",
+      "confidence": "readmit",
+      "status": "referenced",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 15.74,
+        "factor": 22.8,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 3.0,
+        "pagerank": 8.86,
+        "cent_ppmi": 40.3
+      }
+    },
+    {
+      "fid": "taussig-frank-william",
+      "name": "Frank William Taussig",
+      "birth": 1859,
+      "death": 1940,
+      "school": "Neoclassical",
+      "confidence": "readmit",
+      "status": "referenced",
+      "prominence": {
+        "fixed": 12.0,
+        "bm25": 19.93,
+        "factor": 22.8,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 8.9,
+        "pagerank": 11.51,
+        "cent_ppmi": 39.9
+      }
+    },
+    {
+      "fid": "robbins-lionel",
+      "name": "Lionel Robbins",
+      "birth": 1898,
+      "death": 1984,
+      "school": "Neoclassical",
+      "confidence": "readmit",
+      "status": "referenced",
+      "prominence": {
+        "fixed": 31.0,
+        "bm25": 27.61,
+        "factor": 43.9,
+        "rasch": 38.2,
+        "rasch_se": 0.484,
+        "centrality": 13.3,
+        "pagerank": 11.27,
+        "cent_ppmi": 34.9
+      }
+    },
+    {
+      "fid": "viner-jacob",
+      "name": "Jacob Viner",
+      "birth": 1892,
+      "death": 1970,
+      "school": "Neoclassical",
+      "confidence": "readmit",
+      "status": "referenced",
+      "prominence": {
+        "fixed": 16.0,
+        "bm25": 18.76,
+        "factor": 28.7,
+        "rasch": 25.4,
+        "rasch_se": 0.598,
+        "centrality": 14.6,
+        "pagerank": 25.06,
+        "cent_ppmi": 84.4
+      }
+    },
+    {
+      "fid": "palander-tord",
+      "name": "Tord Palander",
+      "birth": 1902,
+      "death": 1972,
+      "school": "Raumwirtschaftslehre",
+      "confidence": "readmit",
+      "status": "referenced",
+      "prominence": {
+        "fixed": 14.0,
+        "bm25": 13.4,
+        "factor": 27.0,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 1.4,
+        "pagerank": 3.81,
+        "cent_ppmi": 18.3
+      }
+    },
+    {
+      "fid": "hoover-edgar-m",
+      "name": "Edgar M. Hoover",
+      "birth": 1907,
+      "death": 1992,
+      "school": "Raumwirtschaftslehre",
+      "confidence": "readmit",
+      "status": "referenced",
+      "prominence": {
+        "fixed": 8.0,
+        "bm25": 8.07,
+        "factor": 16.9,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 10.7,
+        "pagerank": 8.59,
+        "cent_ppmi": 23.8
+      }
+    },
+    {
+      "fid": "isard-walter",
+      "name": "Walter Isard",
+      "birth": 1919,
+      "death": 2010,
+      "school": "Raumwirtschaftslehre",
+      "confidence": "readmit",
+      "status": "referenced",
+      "prominence": {
+        "fixed": 31.0,
+        "bm25": 17.39,
+        "factor": 37.7,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 14.9,
+        "pagerank": 14.93,
+        "cent_ppmi": 27.6
+      }
+    },
+    {
+      "fid": "stolper-wolfgang-f",
+      "name": "Wolfgang F. Stolper",
+      "birth": 1912,
+      "death": 2002,
+      "school": "Raumwirtschaftslehre",
+      "confidence": "readmit",
+      "status": "referenced",
+      "prominence": {
+        "fixed": 40.0,
+        "bm25": 37.82,
+        "factor": 48.6,
+        "rasch": 47.4,
+        "rasch_se": 0.428,
+        "centrality": 18.4,
+        "pagerank": 16.37,
+        "cent_ppmi": 49.3
+      }
+    },
+    {
+      "fid": "spiethoff-arthur",
+      "name": "Arthur Spiethoff",
+      "birth": 1873,
+      "death": 1957,
+      "school": "Historical School",
+      "confidence": "readmit",
+      "status": "referenced",
+      "prominence": {
+        "fixed": 30.0,
+        "bm25": 31.43,
+        "factor": 42.9,
+        "rasch": 43.1,
+        "rasch_se": 0.452,
+        "centrality": 55.7,
+        "pagerank": 39.93,
+        "cent_ppmi": 21.7
+      }
+    },
+    {
+      "fid": "rustow-alexander",
+      "name": "Alexander Rüstow",
+      "birth": 1885,
+      "death": 1963,
+      "school": "Ordoliberalismus",
+      "confidence": "readmit",
+      "status": "referenced",
+      "prominence": {
+        "fixed": 14.0,
+        "bm25": 16.66,
+        "factor": 27.0,
+        "rasch": 15.8,
+        "rasch_se": 0.716,
+        "centrality": 12.4,
+        "pagerank": 13.55,
+        "cent_ppmi": 30.4
+      }
+    },
+    {
+      "fid": "knies-carl",
+      "name": "Carl Knies",
+      "birth": 1821,
+      "death": 1898,
+      "school": "Historical School",
+      "confidence": "readmit",
+      "status": "referenced",
+      "prominence": {
+        "fixed": 56.0,
+        "bm25": 44.18,
+        "factor": 58.4,
+        "rasch": 51.2,
+        "rasch_se": 0.409,
+        "centrality": 35.0,
+        "pagerank": 28.46,
+        "cent_ppmi": 22.6
+      }
+    },
+    {
+      "fid": "landmann-julius",
+      "name": "Julius Landmann",
+      "birth": 1877,
+      "death": 1931,
+      "school": "Neoclassical",
+      "confidence": "readmit",
+      "status": "referenced",
+      "prominence": {
+        "fixed": 0,
+        "bm25": 0,
+        "factor": null,
+        "rasch": null,
+        "rasch_se": null,
+        "centrality": null,
+        "pagerank": null,
+        "cent_ppmi": null
+      }
+    }
+  ]
+}

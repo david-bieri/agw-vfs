@@ -56,8 +56,8 @@ def short_name(fid, name):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--corpus',     type=Path, default=Path('data/agw_corpus.json'))
-    ap.add_argument('--proximity',  type=Path, default=Path('data/agw_proximity_body.json'))
+    ap.add_argument('--corpus',     type=Path, default=Path('tools/agw_corpus.json'))
+    ap.add_argument('--proximity',  type=Path, default=Path('tools/agw_proximity_body.json'))
     ap.add_argument('--lineage',    type=Path, default=Path('agw_lineage_data.js'))
     ap.add_argument('--hero',       type=Path, default=Path('agw_hero_viz.js'))
     args = ap.parse_args()
@@ -101,6 +101,7 @@ def main():
             "n": short_name(r['fid'], r['name']),
             "b": r.get('birth'), "d": r.get('death'),
             "c": COLORS.get(r.get('school'), FALLBACK),
+            "s": r.get('school') or None,          # school name → hero legend + tooltip
             "p": 1 if r['fid'] in lum else 0,
             "f": round(100 * r['prominence']['factor'] / fmax, 1),
             "id": r['fid'],
