@@ -24,7 +24,7 @@ render tunable, not baked here.
 import sys, json, re, argparse, unicodedata
 from pathlib import Path
 
-TOP_N        = 34
+TOP_N        = 40
 N_LUM        = 10          # luminaries (gold ring) = top-N_LUM by factor …
 LUM_EXTRA    = []          # …plus any fids listed here, regardless of rank (explicit picks)
 PIN          = ['losch-august']      # Lösch is #32 by factor; pin guarantees the Raumwirtschaft strand survives a rebuild
@@ -33,10 +33,10 @@ EDGE_PER_NODE = 3
 # Canonical school palette — lifted for a dark background, copied verbatim from
 # agw_schools_net.js so the hero and the Schulen panel speak one colour language.
 COLORS = {
-    "Austrian School": "#3FB0A3", "Classical": "#C2A06B", "Contemporary": "#bab0ac",
-    "Development Economics": "#a0cbe8", "Evolutionary": "#edc948",
+    "Austrian School": "#3FB0A3", "Classical": "#E58F6A", "Contemporary": "#bab0ac",
+    "Development Economics": "#a0cbe8", "Evolutionary": "#B7C24E",
     "Historical School": "#6E8FCB", "Institutional": "#e79ab0", "Keynesian": "#6BB58C",
-    "Marxist": "#b07aa1", "Neoclassical": "#9AA6D0", "Ordoliberalismus": "#D6A24A",
+    "Marxist": "#D25B5B", "Neoclassical": "#A98CD9", "Ordoliberalismus": "#C77A45",
     "Philosophy": "#d4a6c8", "Post-Keynesian/Sraffian": "#7fb3c9",
     "Raumwirtschaftslehre": "#8cd17d",
 }
