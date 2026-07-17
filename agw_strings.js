@@ -29,7 +29,7 @@
 
 
     // ── Site-wide navigation ──────────────────────────────────────
-    nav_back_main:       { de: 'Zur Tagungsseite',      en: 'Back to Conference Site' },
+    nav_back_main:       { de: 'Zur Startseite',      en: 'Back to Home' },
     nav_back_short:      { de: 'Programm',              en: 'Programme' },
     nav_back_analytics:  { de: 'Zur Analyse',            en: 'Back to Analytics' },
     nav_back_guide:      { de: 'Zum Handbuch',           en: 'To User Guide' },
