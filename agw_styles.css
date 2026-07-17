@@ -804,3 +804,59 @@ pre.cite-txt{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:1
   display:flex;justify-content:flex-end;
   position:sticky;bottom:0;background:var(--card,#fff);}
 @media (max-width:640px){ .cite-pop{width:calc(100vw - 16px);} }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   Hero constellation — interactive school legend + node tooltip
+   (agw_hero_viz.js). Navy-hero context; colours from :root tokens.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* School legend — mounts inside .hero-inner, below the rotator */
+.hero-legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;max-width:var(--measure-card);}
+.hero-legend-chip{display:inline-flex;align-items:center;gap:7px;padding:5px 11px;
+  border-radius:var(--radius-pill);border:1px solid rgba(255,255,255,0.18);
+  background:rgba(255,255,255,0.06);color:rgba(255,255,255,0.82);
+  font-family:'Source Sans 3',sans-serif;font-size:var(--fs-label);line-height:1;cursor:pointer;
+  transition:background .18s,border-color .18s,color .18s,opacity .18s;}
+.hero-legend-chip i{width:9px;height:9px;border-radius:50%;flex:none;}
+.hero-legend-chip:hover,.hero-legend-chip:focus-visible{background:rgba(255,255,255,0.12);
+  border-color:rgba(255,255,255,0.42);color:#fff;}
+.hero-legend-chip:focus-visible{outline:2px solid #fff;outline-offset:2px;}
+.hero-legend-chip.on{background:rgba(203,161,58,0.18);border-color:var(--gold-on-navy);color:#fff;}
+.hero-legend[data-active] .hero-legend-chip:not(.on){opacity:.45;}
+
+/* Node tooltip — appended to <body>, fixed + viewport-clamped in JS */
+.hero-tip{position:fixed;z-index:60;pointer-events:none;max-width:264px;padding:12px 14px;
+  border-radius:var(--radius-sm);background:rgba(18,40,82,0.97);
+  border:1px solid rgba(255,255,255,0.14);box-shadow:0 12px 30px rgba(0,0,0,0.34);
+  color:#fff;font-family:'Source Sans 3',sans-serif;opacity:0;transform:translateY(4px);
+  transition:opacity .13s ease,transform .13s ease;}
+.hero-tip.show{opacity:1;transform:translateY(0);}
+.hero-tip-name{font-family:'EB Garamond',serif;font-size:var(--fs-md);font-weight:600;line-height:1.15;}
+.hero-tip-dates{font-size:var(--fs-note);color:rgba(255,255,255,0.6);margin:2px 0 9px;}
+.hero-tip-school{display:flex;align-items:center;gap:7px;font-size:var(--fs-note);
+  color:rgba(255,255,255,0.86);margin-bottom:9px;}
+.hero-tip-school i{width:9px;height:9px;border-radius:50%;flex:none;}
+.hero-tip-badge{display:inline-flex;align-items:center;gap:5px;font-size:var(--fs-micro);
+  font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gold-on-navy);margin-bottom:8px;}
+.hero-tip-prom{font-size:var(--fs-micro);text-transform:uppercase;letter-spacing:.1em;
+  color:rgba(255,255,255,0.5);margin-bottom:4px;}
+.hero-tip-bar{height:4px;border-radius:2px;background:rgba(255,255,255,0.14);overflow:hidden;margin-bottom:10px;}
+.hero-tip-bar span{display:block;height:100%;border-radius:2px;background:var(--gold-on-navy);}
+.hero-tip-hint{font-size:var(--fs-note);color:rgba(255,255,255,0.72);
+  border-top:1px solid rgba(255,255,255,0.12);padding-top:8px;}
+.hero-tip-hint.off{color:rgba(255,255,255,0.42);}
+
+@media (max-width:640px){.hero-legend{gap:6px;margin-top:22px;}
+  .hero-legend-chip{padding:4px 9px;font-size:var(--fs-micro);}}
+@media print{.hero-legend,.hero-tip{display:none!important;}}
+
+/* Mobile tap-to-inspect card variant (agw_hero_viz.js) */
+.hero-tip-tap{pointer-events:auto;padding-top:14px;}
+.hero-tip-tap .hero-tip-name{padding-right:22px;}
+.hero-tip-close{position:absolute;top:6px;right:8px;width:24px;height:24px;padding:0;border:0;
+  background:transparent;color:rgba(255,255,255,0.55);font-size:19px;line-height:1;cursor:pointer;border-radius:6px;}
+.hero-tip-close:hover,.hero-tip-close:focus-visible{color:#fff;background:rgba(255,255,255,0.1);}
+.hero-tip-go{display:block;width:100%;margin-top:2px;padding:8px 13px;border:0;border-radius:var(--radius-sm);
+  background:var(--gold-on-navy);color:var(--navy-dark);font-family:'Source Sans 3',sans-serif;
+  font-size:var(--fs-note);font-weight:600;text-align:left;cursor:pointer;}
+.hero-tip-go:active{filter:brightness(0.94);}
