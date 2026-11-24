@@ -33,7 +33,7 @@
 - ✓ Housekeeping: these notes (v66–v77 reconstructed).
 - ✓ `AGW_HANDOVER.md` deleted — the protocol is core:session-handover; AGW specifics are the **Rules:** line above.
 - ✓ ADR-034 written in `AGW_DECISIONS.md`.
-- ? deploy-pages v5 — next commit.
+- ✓ `.github/workflows/pages.yml`: `actions/deploy-pages@v4` → `@v5`, now identical to GitHub's static Pages template. The root-level `pages.yml` is a stale copy that GitHub doesn't read.
 
 ## 2. Pending dispatch
 
