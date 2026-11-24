@@ -1,0 +1,1 @@
+import{a as u}from"./chunk-AJFPLFZD.js";import"./chunk-HU72XXLY.js";import{a as c,c as s}from"./chunk-5TBO732O.js";var r=c(t=>{"use strict";var e=u();t.createRoot=e.createRoot,t.hydrateRoot=e.hydrateRoot;var l});var o=s(r()),n=o.default??o,E=n,{createRoot:_,hydrateRoot:f}=n;export{_ as createRoot,E as default,f as hydrateRoot};

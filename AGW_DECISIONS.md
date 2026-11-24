@@ -403,6 +403,8 @@ Without the `?external` flag, esm.sh bundles its own copy of React inside the mo
 - Libraries that are React-agnostic (d3, lodash, etc.) do not need the flag
 - The pattern applies to any future page that uses an importmap + CDN React
 
+**Amended 2026-11-24 (SW v79) — superseded in mechanism, principle kept.** esm.sh is gone: it was a third-party script host (visitor IP + referrer to esm.sh on every analytics load, ~180 module requests). Every importmap specifier now resolves to `./vendor/esm/*.js`, one esbuild `--splitting` build (`tools/vendor/build_vendor.sh`) in which react, react-dom, react-dom/client, react/jsx-runtime and recharts all import the **same** hashed React chunk — so the one-React-instance rule this ADR exists for is enforced by the build graph rather than by a `?external` query flag. Verified by clicking all 15 analytics tabs/sub-tabs on live (esm.sh) and local (vendored): identical rendered mark counts, no errors. The old `vendor/*.mjs` shims (including `react-jsx-runtime.mjs`) are deleted; `vendor/` itself stays load-bearing — see `tools/vendor/README.md`.
+
 ---
 
 ## ADR-019: CSS `zoom` over `transform: scale()` for Scrollable Zoom
@@ -459,7 +461,7 @@ The operational protocol lives in `AGW_DEBUG.md` (skill).
 
 ### Consequences
 
-- **ADR-018 correction.** The actual production fix is local vendoring of `react/jsx-runtime` (`./vendor/react-jsx-runtime.mjs`), with `react`/`react-dom` still external via esm.sh and recharts still `?external=react,react-dom`. The previously recorded "definitive fix = rebuild with React bundled in, remove `vendor/`" is **wrong** and superseded: `vendor/` is load-bearing and must be kept. ADR-018's externalization principle stands; only the jsx-runtime delivery mechanism is amended.
+- **ADR-018 correction.** The actual production fix is local vendoring of `react/jsx-runtime` (`./vendor/react-jsx-runtime.mjs`), with `react`/`react-dom` still external via esm.sh and recharts still `?external=react,react-dom`. The previously recorded "definitive fix = rebuild with React bundled in, remove `vendor/`" is **wrong** and superseded: `vendor/` is load-bearing and must be kept. ADR-018's externalization principle stands; only the jsx-runtime delivery mechanism is amended. *(2026-11-24: the shim itself is now replaced by the full local build — see the ADR-018 amendment.)*
 - Debugging gains an explicit evidence gate, which front-loads a small cost (get the Network tab) to avoid multi-hour blind iteration.
 - Deploy verification by artifact hash becomes routine for analytics changes.
 

@@ -8,16 +8,18 @@
 
   <link rel="stylesheet" href="agw_styles.css">
 
-  <!-- ES module import map — resolves bare specifiers to CDN -->
+  <!-- ES module import map — every bare specifier resolves to a local vendored build
+       (vendor/esm/, built with esbuild --splitting so all entries share ONE React —
+       ADR-018). No third-party script host. Rebuild: tools/vendor/build_vendor.sh -->
   <script type="importmap">
   {
     "imports": {
-      "react":             "https://esm.sh/react@18",
-      "react-dom":         "https://esm.sh/react-dom@18",
-      "react-dom/client":  "https://esm.sh/react-dom@18/client",
-      "react/jsx-runtime": "./vendor/react-jsx-runtime.mjs",
-      "recharts":          "https://esm.sh/recharts@2?external=react,react-dom",
-      "d3":                "https://esm.sh/d3@7",
+      "react":             "./vendor/esm/react.js",
+      "react-dom":         "./vendor/esm/react-dom.js",
+      "react-dom/client":  "./vendor/esm/react-dom-client.js",
+      "react/jsx-runtime": "./vendor/esm/react-jsx-runtime.js",
+      "recharts":          "./vendor/esm/recharts.js",
+      "d3":                "./vendor/esm/d3.js",
       "./school_labels.js": "./dist/school_labels.js"
     }
   }

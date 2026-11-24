@@ -9,7 +9,7 @@
 
 ## What this is
 
-Static, multi-page site for the AGW — the VfS standing committee for the history of economic thought. **8 pages**, shared foundation files, vanilla JS. The only build step is the React analytics bundles (esbuild → `dist/`, loaded via importmap from esm.sh).
+Static, multi-page site for the AGW — the VfS standing committee for the history of economic thought. **8 pages**, shared foundation files, vanilla JS. The only build steps are the React analytics bundles (esbuild → `dist/`) and their vendored libraries (`tools/vendor/build_vendor.sh` → `vendor/esm/`, resolved via the importmap in `analytics.html`). No third-party script, style or font host (v78–v79).
 
 **Pages:** `index.html` (committee landing) · `events.html` · `jahrestagung-2026.html` · `archive.html` · `committee.html` · `publications-members.html` · `analytics.html` · `guide.html`
 **Nav:** Aktuelles · Veranstaltungen · Forschung · Über den AGW

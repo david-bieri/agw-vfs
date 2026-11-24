@@ -1,7 +1,7 @@
 /* AGW Jahrestagung 2026 — Service Worker
  * Strategy: Cache-first for shell + static assets; network-first for tiles
  */
-const CACHE = 'agw-2026-v78-self-hosted-fonts';
+const CACHE = 'agw-2026-v79-vendored-libs';
 
 const PRECACHE = [
   '/',
@@ -62,10 +62,11 @@ const PRECACHE = [
   '/fonts/source-sans-3-latin-400-normal.woff2',
   '/fonts/source-sans-3-latin-500-normal.woff2',
   '/fonts/source-sans-3-latin-600-normal.woff2',
-  // External resources
-  'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css',
-  'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js',
+  // Vendored libraries (no third-party script host). vendor/esm/ — the
+  // analytics React/recharts/d3 build, ~900 KB — is cached on demand, not precached.
+  '/vendor/leaflet/leaflet.css',
+  '/vendor/leaflet/leaflet.js',
+  '/vendor/qrcodejs/qrcode.min.js',
 ];
 
 // Install — pre-cache shell
@@ -127,9 +128,9 @@ self.addEventListener('fetch', function(e) {
     caches.match(e.request).then(function(cached) {
       if (cached) return cached;
       return fetch(e.request).then(function(resp) {
-        // Cache self-hosted fonts (latin-ext on demand) and cdnjs resources
-        if (url.indexOf('/fonts/') !== -1 ||
-            url.includes('cdnjs.cloudflare.com')) {
+        // Cache self-hosted fonts (latin-ext on demand) and vendored libraries
+        if (resp.ok && (url.indexOf('/fonts/') !== -1 ||
+            url.indexOf('/vendor/') !== -1)) {
           var clone = resp.clone();
           caches.open(CACHE).then(function(c) { c.put(e.request, clone); });
         }
