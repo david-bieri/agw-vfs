@@ -2,7 +2,7 @@
 
 **Read this and `AGW_SESSION_NOTES.md` before doing anything.** This file is slow-moving project context and non-negotiables; `AGW_SESSION_NOTES.md` is authoritative for present, undeployed state.
 
-**Current version:** v61 (SW cache `agw-2026-v61-theme-view-corpus`) · **Repo:** `david-bieri/agw-vfs` · **Live:** `www.agw-vfs.de`
+**Current version:** v80 (SW cache `agw-2026-v80-page-check`) — `AGW_SESSION_NOTES.md` is authoritative · **Repo:** `david-bieri/agw-vfs` · **Live:** `www.agw-vfs.de`
 **Status:** post-conference. The 46th Jahrestagung (Riva San Vitale, 25–27 June 2026) has concluded; the site is now the committee's evergreen home.
 
 ---
