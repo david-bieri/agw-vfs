@@ -44,7 +44,7 @@ Static, multi-page site for the AGW — the VfS standing committee for the histo
 
 ## Working style
 
-Direct numbered action sequences; explicit before/after verification at each phase; surface architectural constraints before implementing. David notes reading social tone is hard for him — explicit register interpretation in colleague comms is welcome. Handover triggers: "handover / wrap up / switching chats / compaction prep / end of session" → regenerate `AGW_SESSION_NOTES.md` per `AGW_HANDOVER.md`.
+Direct numbered action sequences; explicit before/after verification at each phase; surface architectural constraints before implementing. David notes reading social tone is hard for him — explicit register interpretation in colleague comms is welcome. Handover triggers: "handover / wrap up / switching chats / compaction prep / end of session" → regenerate `AGW_SESSION_NOTES.md` per **core:session-handover** (project rules: the config block's **Rules:** line).
 
 ## Key recent work (see AGW_PROGRESS.md for the full log)
 
@@ -52,4 +52,4 @@ Custom-domain migration · events model + `events.html` · archival `jahrestagun
 
 ## Docs
 
-`AGW_README.md` (what/where) · `AGW_PROGRESS.md` (milestones) · `AGW_DECISIONS.md` (ADR-001…025) · `AGW_SESSION_NOTES.md` (in-flight) · `AGW_HANDOVER.md` (protocol) · `AGW_DEBUG.md` (debug discipline) · `AGW_DESIGN_AUDIT.md` (cohesion audit, 2026-07-10).
+`AGW_README.md` (what/where) · `AGW_PROGRESS.md` (milestones) · `AGW_DECISIONS.md` (ADR-001…025) · `AGW_SESSION_NOTES.md` (in-flight) · `AGW_DEBUG.md` (debug discipline) · `AGW_DESIGN_AUDIT.md` (cohesion audit, 2026-07-10).

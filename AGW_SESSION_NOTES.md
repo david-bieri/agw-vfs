@@ -12,6 +12,7 @@
 **Dispatch:**
   → git push           (git add <files> && git commit -m "..." && git push)
 **Horizon:** [conference date / T-minus days]
+**Rules:** AGW_CLAUDE.md (verify on raw.githubusercontent, bump the SW cache); debugging per AGW_DEBUG.md
 ---
 
 > **This file is in a public repo.** Nothing private here: no money, no attendee
@@ -30,7 +31,8 @@
 - ✓ **v79** `vendor/` — Leaflet 1.9.4, qrcodejs, and the analytics React/recharts/d3 (was esm.sh, ~180 requests a visit) as one esbuild `--splitting` build: one React instance (ADR-018 amended). Fixed: **the committee QR box had been empty since the multi-page split** (qrcodejs loaded on the wrong page).
 - ✓ **v80** `tools/page_check.py` — all 10 pages × 1280/390/320. **Result: zero third-party requests on load, zero console errors.** After user action, only `{a,b,c}.tile.openstreetmap.org`.
 - ✓ Housekeeping: these notes (v66–v77 reconstructed).
-- ? Retire AGW_HANDOVER.md; ADR-034; deploy-pages v5 — next commits.
+- ✓ `AGW_HANDOVER.md` deleted — the protocol is core:session-handover; AGW specifics are the **Rules:** line above.
+- ? ADR-034; deploy-pages v5 — next commits.
 
 ## 2. Pending dispatch
 
