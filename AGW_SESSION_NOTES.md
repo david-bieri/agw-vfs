@@ -32,7 +32,8 @@
 - ✓ **v80** `tools/page_check.py` — all 10 pages × 1280/390/320. **Result: zero third-party requests on load, zero console errors.** After user action, only `{a,b,c}.tile.openstreetmap.org`.
 - ✓ Housekeeping: these notes (v66–v77 reconstructed).
 - ✓ `AGW_HANDOVER.md` deleted — the protocol is core:session-handover; AGW specifics are the **Rules:** line above.
-- ? ADR-034; deploy-pages v5 — next commits.
+- ✓ ADR-034 written in `AGW_DECISIONS.md`.
+- ? deploy-pages v5 — next commit.
 
 ## 2. Pending dispatch
 
@@ -40,7 +41,7 @@
 
 ## 3. Decisions
 
-- **ADR-034 — derive, never hardcode** (with the fallback-slot corollary) — to be written this session.
+- **ADR-034 — derive, never hardcode**, with the fallback-slot corollary. It also records that a fallback can still go stale (v67: 49 vs 52), so grep the HTML on roster changes.
 - **ADR-018 amended:** esm.sh retired; `vendor/esm/` is one build. Never swap a single file in it; rebuild with `tools/vendor/build_vendor.sh`, click every analytics tab, then commit.
 - **Standing release check:** `python tools/page_check.py` before every release. Its target is no third party before user action.
 

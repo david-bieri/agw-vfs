@@ -698,3 +698,26 @@ Neither threw an error. Both looked right. The themes describe the **corpus**, n
 - `agw_member_pubs_app.js` exposes `rowsFor(view)`; `allRows()` is view-aware.
 - Contributor statistics fold names before counting (surname + first initial, umlaut/ß normalised, nobiliary particles kept with the surname) — the corpus spells the same person several ways (`Erich Streißler` / `Erich W. Streissler`, `Jürgen Backhaus` / `Jürgen G. Backhaus`).
 - **A wrong number is more dangerous than a crash.** A guard that returns empty (ADR-016) protects the page but hides the fault; prefer an assertion against the corpus in any new aggregate view.
+
+---
+
+## ADR-034: Derive, Never Hardcode — and Every Derived Slot Ships With Fallback Text
+
+**Date:** 2026-11-24 (decided 2026-07-13, v65; corollary refined by v67)
+**Status:** Accepted
+
+**Decision:**
+Any fact the data already holds is **derived from the data at render time**, never typed into markup or a string. The chair is the `CHAIRS` entry that is not `past`; hosts are `ARCHIVE[].host`; member, volume and conference counts are `.length` of `MEMBERS`, `PUBLICATIONS`, `ARCHIVE`; badge forms inflect from `MEMBERS.gender`. A literal is acceptable only for a fact the data does not (yet) hold, and then the right fix is usually to add the field.
+
+**Corollary — the fallback slot.** A derived slot is never an empty element. It ships with **fallback text**, the value as of the last edit (`<span id="fact-members">52 (Stand 2026)</span>`), and the derivation overwrites it on every load and on every `agw-lang-change`.
+
+**Rationale:**
+`committee.html` held **six** literals on two cards that no data edit could reach. They were the chair's name (twice, still reading *Klump* months after the handover), the member count, the volume count ("42 Bände" in German against "43 volumes" in English), the host's title ("Dr." where `MEMBERS` says "Prof. Dr.") and the host year. **The data was already correct in every case.** Each literal was a second copy of a fact that could only drift from the first, and nothing ever flagged it.
+
+The corollary was learned in v65. GitHub Pages caches assets (~10 min) independently of the HTML, so a visitor can hold new HTML alongside a stale `agw_app.js`. An empty derived slot then renders as a blank box. The fallback makes the failure graceful, not silent.
+
+**Consequences:**
+- `renderCommitteeFacts()` (`agw_app.js`) is the pattern: look up by id, early-return on a missing element (ADR-016), write from data, and re-run on language change.
+- **A fallback can still go stale; it is just low-stakes.** v67 found `fact-members` still reading 49 against a roster of 52. It is only visible when the derivation fails, but it is visible. When a roster, volume or chair change lands, grep the HTML for the old value.
+- New pages, cards and strings: if a sentence contains a number, a name or a year that exists in `agw_data.js`, derive it. In DE/EN strings, use a placeholder filled at render time, never a baked-in count. ADR-014's scholarly-title rule is unaffected.
+- Review heuristic: any literal that matches a value in the data is a bug report waiting to happen. This is the same family as ADR-033: a plausible wrong value is worse than an error.

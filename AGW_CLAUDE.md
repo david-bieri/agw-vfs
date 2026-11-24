@@ -52,4 +52,4 @@ Custom-domain migration · events model + `events.html` · archival `jahrestagun
 
 ## Docs
 
-`AGW_README.md` (what/where) · `AGW_PROGRESS.md` (milestones) · `AGW_DECISIONS.md` (ADR-001…025) · `AGW_SESSION_NOTES.md` (in-flight) · `AGW_DEBUG.md` (debug discipline) · `AGW_DESIGN_AUDIT.md` (cohesion audit, 2026-07-10).
+`AGW_README.md` (what/where) · `AGW_PROGRESS.md` (milestones) · `AGW_DECISIONS.md` (ADR-001…034) · `AGW_SESSION_NOTES.md` (in-flight) · `AGW_DEBUG.md` (debug discipline) · `AGW_DESIGN_AUDIT.md` (cohesion audit, 2026-07-10).
