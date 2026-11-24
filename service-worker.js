@@ -1,7 +1,7 @@
 /* AGW Jahrestagung 2026 — Service Worker
  * Strategy: Cache-first for shell + static assets; network-first for tiles
  */
-const CACHE = 'agw-2026-v77-nav-label';
+const CACHE = 'agw-2026-v78-self-hosted-fonts';
 
 const PRECACHE = [
   '/',
@@ -52,8 +52,17 @@ const PRECACHE = [
   // Gallery manifest (images are cached on demand, NOT precached)
   '/data/gallery.js',
   '/data/highlights.js',
+  // Self-hosted fonts — latin subsets precached; latin-ext cached on demand
+  '/fonts/eb-garamond-latin-400-normal.woff2',
+  '/fonts/eb-garamond-latin-500-normal.woff2',
+  '/fonts/eb-garamond-latin-600-normal.woff2',
+  '/fonts/eb-garamond-latin-400-italic.woff2',
+  '/fonts/eb-garamond-latin-500-italic.woff2',
+  '/fonts/source-sans-3-latin-300-normal.woff2',
+  '/fonts/source-sans-3-latin-400-normal.woff2',
+  '/fonts/source-sans-3-latin-500-normal.woff2',
+  '/fonts/source-sans-3-latin-600-normal.woff2',
   // External resources
-  'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap',
   'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css',
   'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js',
   'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js',
@@ -118,9 +127,8 @@ self.addEventListener('fetch', function(e) {
     caches.match(e.request).then(function(cached) {
       if (cached) return cached;
       return fetch(e.request).then(function(resp) {
-        // Cache Google Fonts and cdnjs resources
-        if (url.includes('fonts.googleapis.com') ||
-            url.includes('fonts.gstatic.com') ||
+        // Cache self-hosted fonts (latin-ext on demand) and cdnjs resources
+        if (url.indexOf('/fonts/') !== -1 ||
             url.includes('cdnjs.cloudflare.com')) {
           var clone = resp.clone();
           caches.open(CACHE).then(function(c) { c.put(e.request, clone); });
