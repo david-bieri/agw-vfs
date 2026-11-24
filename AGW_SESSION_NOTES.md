@@ -30,10 +30,9 @@
 - ✓ **v78** `fonts/` — EB Garamond + Source Sans 3 self-hosted (same weights as the Google URL; latin + latin-ext). Fixed: guide/analytics footers carried Cloudflare email-obfuscation remnants (dead maintainer link).
 - ✓ **v79** `vendor/` — Leaflet 1.9.4, qrcodejs, and the analytics React/recharts/d3 (was esm.sh, ~180 requests a visit) as one esbuild `--splitting` build: one React instance (ADR-018 amended). Fixed: **the committee QR box had been empty since the multi-page split** (qrcodejs loaded on the wrong page).
 - ✓ **v80** `tools/page_check.py` — all 10 pages × 1280/390/320. **Result: zero third-party requests on load, zero console errors.** After user action, only `{a,b,c}.tile.openstreetmap.org`.
-- ✓ Housekeeping: these notes (v66–v77 reconstructed).
-- ✓ `AGW_HANDOVER.md` deleted — the protocol is core:session-handover; AGW specifics are the **Rules:** line above.
+- ✓ Housekeeping: these notes (v66–v77 reconstructed); `AGW_HANDOVER.md` deleted — the protocol is core:session-handover; AGW specifics are the **Rules:** line above.
 - ✓ ADR-034 written in `AGW_DECISIONS.md`.
-- ✓ `.github/workflows/pages.yml`: `actions/deploy-pages@v4` → `@v5`, now identical to GitHub's static Pages template. The root-level `pages.yml` is a stale copy that GitHub doesn't read.
+- ✓ `.github/workflows/pages.yml`: `actions/deploy-pages@v4` → `@v5`, now identical to GitHub's static Pages template. The first v5 run hit the existing intermittent failure (§4). The root-level `pages.yml` is a stale copy that GitHub doesn't read.
 
 ## 2. Pending dispatch
 
@@ -50,6 +49,7 @@
 - **The conference map loads OSM tiles on scroll** (IntersectionObserver), not on click. Scrolling is not consent. A click-to-load placeholder (DE/EN) would make OSM consent-gated; the archive map is already behind a tab click.
 - **Overflow at 320 px** (older than this session): `events.html` +4 px (`.ev-card` min width), `archive.html` +14 px (view/filter buttons don't wrap), `styleguide.html` +55 px (token table).
 - **OCR artefacts in `agw_volume_chapters.js`:** Greek Κ in "V. Κ . Dmitriev" (l. 350), Greek Ε in "Hans-Ε. Loef" (l. 503). They break search and citation export.
+- **Two deploy paths race.** Every push runs both our `Deploy to GitHub Pages` workflow and GitHub's branch-based `pages-build-deployment`. Ours fails intermittently with *No artifacts named "github-pages" were found* (3 of 7 runs on 2026-11-24, on v4 and v5 alike). The site stays current because the branch build has succeeded every time. Fix: Settings → Pages → Source. If it is "Deploy from a branch", delete the workflow and the stale root `pages.yml`; if it is "GitHub Actions", find out why the branch build still runs.
 - **Private content in a public repo:** earlier versions of this file (e.g. `bed1d71`) contain attendee, booking and payment details, and `AGW_CLAUDE.md` § Working style has a personal note. Removing the history needs a rewrite; that is David's call.
 - Carried: `MEMBER_PUBS` co-authorship is single-`mid`; `overlord.bib` lost ligatures; only 5 of 46 conferences have a `host`; ORCID homonyms remain the standing hazard (check `venue`, not name + affiliation).
 
