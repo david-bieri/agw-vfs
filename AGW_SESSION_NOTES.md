@@ -32,7 +32,7 @@
 - ✓ **v80** `tools/page_check.py` — all 10 pages × 1280/390/320. **Result: zero third-party requests on load, zero console errors.** After user action, only `{a,b,c}.tile.openstreetmap.org`.
 - ✓ Housekeeping: these notes (v66–v77 reconstructed); `AGW_HANDOVER.md` deleted — the protocol is core:session-handover; AGW specifics are the **Rules:** line above.
 - ✓ ADR-034 written in `AGW_DECISIONS.md`.
-- ✓ `.github/workflows/pages.yml`: `actions/deploy-pages@v4` → `@v5`, now identical to GitHub's static Pages template. The first v5 run hit the existing intermittent failure (§4). The root-level `pages.yml` is a stale copy that GitHub doesn't read.
+- ✗ `deploy-pages@v5` tried and **reverted to `@v4`**: both v5 runs failed (*artifact not found*), including one isolated push; v4 went 4 of 6 the same day. Retry v5 together with `upload-pages-artifact@v4` once the deploy-path question (§4) is settled. The root-level `pages.yml` is a stale copy that GitHub doesn't read.
 
 ## 2. Pending dispatch
 
@@ -42,28 +42,27 @@
 
 - **ADR-034 — derive, never hardcode**, with the fallback-slot corollary. It also records that a fallback can still go stale (v67: 49 vs 52), so grep the HTML on roster changes.
 - **ADR-018 amended:** esm.sh retired; `vendor/esm/` is one build. Never swap a single file in it; rebuild with `tools/vendor/build_vendor.sh`, click every analytics tab, then commit.
+- **Maps stay always-on (David, 2026-11-24): no click-to-load.** The conference map loads OSM tiles when it scrolls into view, the archive map when its tab opens. The Datenschutzerklärung must therefore name OpenStreetMap (tile.openstreetmap.org) as a recipient of visitor IPs.
 - **Standing release check:** `python tools/page_check.py` before every release. Its target is no third party before user action.
 
 ## 4. Latent issues
 
-- **The conference map loads OSM tiles on scroll** (IntersectionObserver), not on click. Scrolling is not consent. A click-to-load placeholder (DE/EN) would make OSM consent-gated; the archive map is already behind a tab click.
 - **Overflow at 320 px** (older than this session): `events.html` +4 px (`.ev-card` min width), `archive.html` +14 px (view/filter buttons don't wrap), `styleguide.html` +55 px (token table).
 - **OCR artefacts in `agw_volume_chapters.js`:** Greek Κ in "V. Κ . Dmitriev" (l. 350), Greek Ε in "Hans-Ε. Loef" (l. 503). They break search and citation export.
-- **Two deploy paths race.** Every push runs both our `Deploy to GitHub Pages` workflow and GitHub's branch-based `pages-build-deployment`. Ours fails intermittently with *No artifacts named "github-pages" were found* (3 of 7 runs on 2026-11-24, on v4 and v5 alike). The site stays current because the branch build has succeeded every time. Fix: Settings → Pages → Source. If it is "Deploy from a branch", delete the workflow and the stale root `pages.yml`; if it is "GitHub Actions", find out why the branch build still runs.
+- **Two deploy paths race.** Every push runs both our `Deploy to GitHub Pages` workflow and GitHub's branch-based `pages-build-deployment`. Ours fails intermittently with *No artifacts named "github-pages" were found* (2 of 6 runs on v4 on 2026-11-24, 2 of 2 on v5). The site stays current because the branch build has succeeded every time. Fix: Settings → Pages → Source. If it is "Deploy from a branch", delete the workflow and the stale root `pages.yml`; if it is "GitHub Actions", find out why the branch build still runs.
 - **Private content in a public repo:** earlier versions of this file (e.g. `bed1d71`) contain attendee, booking and payment details, and `AGW_CLAUDE.md` § Working style has a personal note. Removing the history needs a rewrite; that is David's call.
 - Carried: `MEMBER_PUBS` co-authorship is single-`mid`; `overlord.bib` lost ligatures; only 5 of 46 conferences have a `host`; ORCID homonyms remain the standing hazard (check `venue`, not name + affiliation).
 
 ## 5. Open questions
 
 ### 🔴 Persistent open items
-- **Impressum + Datenschutzerklärung** — pending since 2026-07 (seventh session). A prerequisite under ADR-031. Blocked on the Diensteanbieter facts, or one email to the VfS Geschäftsstelle. **Easier now:** the privacy notice only has to cover OSM tiles (after user action), GitHub Pages hosting and the SW cache. Google, Cloudflare/cdnjs and esm.sh are gone.
+- **Impressum + Datenschutzerklärung** — pending since 2026-07 (seventh session). A prerequisite under ADR-031. Blocked on the Diensteanbieter facts, or one email to the VfS Geschäftsstelle. **Easier now:** the privacy notice only has to cover OSM tiles (always-on maps, see §3), GitHub Pages hosting and the SW cache. Google, Cloudflare/cdnjs and esm.sh are gone.
 - **Participant settlement email** — pending since 2026-07-13. Drafted; recipients, amounts and two ambiguous mailboxes are private and are kept out of this file.
 - **`p4901` gallery caption** — pending since 2026-07-10. It is the first photo in the grid.
 
 ### Session-specific
-- Click-to-load for the conference map (§4)? It needs two DE/EN strings.
 - The five member emails (Molavi, Wohlgemuth, Blomert, Lorenz, Weizsäcker); Küsters' preferred affiliation; Ehnts 2019 / Barens 2011 still unchecked; `archive.html` loaded with no hash: does it still scroll to the bottom?
 
 ## 6. Suggested next session
 
-"Read AGW_SESSION_NOTES.md, then build click-to-load for the conference map and draft the Datenschutzerklärung around the remaining processors (GitHub Pages, OSM tiles)."
+"Read AGW_SESSION_NOTES.md, then draft the Datenschutzerklärung around the remaining processors (GitHub Pages hosting, OpenStreetMap tiles for the always-on maps)."

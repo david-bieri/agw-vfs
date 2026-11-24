@@ -20,5 +20,6 @@ reproducible build of one.
 - The analytics importmap in `analytics.html` maps each bare specifier to
   `./vendor/esm/<name>.js`. A new React-dependent library goes into
   `build_vendor.sh` as a new entry, not onto a CDN.
-- Map **tiles** still come from `tile.openstreetmap.org`, but only after a visitor
-  opens a map; that is the one remaining third-party request.
+- Map **tiles** still come from `tile.openstreetmap.org` when a map is shown (scrolled
+  into view / Karte tab). The maps are always-on by decision (2026-11-24), so this is
+  the one remaining third-party request and belongs in the Datenschutzerklärung.
